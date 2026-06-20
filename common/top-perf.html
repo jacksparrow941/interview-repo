@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Performance & Observability | InterviewRepo — Backend SDE Interview Prep</title>
+  <meta name="description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Performance & Observability">
+  <meta name="keywords" content="backend interview questions, SDE interview prep, system design, DSA, C++ interview, Java interview, Go interview, performance & observability">
+  <meta name="author" content="InterviewRepo">
+  <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="InterviewRepo — Backend SDE Prep">
+  <meta property="og:title"       content="Performance & Observability | InterviewRepo">
+  <meta property="og:description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Performance & Observability">
+  <meta property="og:url"         content="https://devinterviewvault.netlify.app">
+  <meta property="og:image"       content="https://devinterviewvault.netlify.app/assets/og-image.png">
+  <meta name="twitter:card"       content="summary_large_image">
+  <meta name="twitter:title"      content="Performance & Observability | InterviewRepo">
+  <meta name="twitter:description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Performance & Observability">
+  <meta name="twitter:image"      content="https://devinterviewvault.netlify.app/assets/og-image.png">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://devinterviewvault.netlify.app">
+  <meta name="google-site-verification" content="a8bdedb3bc5f858c">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Performance & Observability", "description": "SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design \u2014 Performance & Observability", "url": "https://devinterviewvault.netlify.app", "publisher": {"@type": "Organization", "name": "InterviewRepo"}}</script>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+</head>
+<body>
+<nav class="navbar">
+  <a class="navbar-brand" href="../index.html">
+    <span class="logo-icon">⚡</span>
+    <span>InterviewRepo</span>
+  </a>
+  <div class="search-bar">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="search-input" placeholder="Search questions… (Ctrl+K)" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <nav class="navbar-nav">
+    <a href="../index.html">Home</a>
+    <a href="../common/top-coding.html">Top DSA</a>
+    <a href="../common/top-system-design.html">System Design</a>
+    <a href="../common/top-backend.html">Backend</a>
+    <a href="../common/top-cpp.html">C++</a>
+    <a href="../common/top-java.html">Java</a>
+    <a href="../common/top-go.html">Go</a>
+  </nav>
+</nav>
+<div class="top-list-header">
+  <div class="container">
+    <div class="breadcrumb"><a href="../index.html">Home</a><span class="breadcrumb-sep">›</span><span>Performance & Observability</span></div>
+    <h1 style="font-size:36px;font-weight:800;margin-bottom:8px">⚡ Performance & Observability</h1>
+    <p style="color:var(--text-muted);font-size:16px">Performance engineering: latency diagnosis, distributed tracing, caching, load testing, observability.</p>
+    <p style="color:var(--text-muted);font-size:14px;margin-top:8px">6 questions</p>
+  </div>
+</div>
+<div class="container section">
+  <div class="filters-bar"><button class="filter-btn active" data-filter="all" data-group="sub">All</button><button class="filter-btn" data-filter="caching" data-group="sub">Caching</button><button class="filter-btn" data-filter="observability" data-group="sub">Observability</button><button class="filter-btn" data-filter="performance" data-group="sub">Performance</button></div>
+  <div class="filters-bar"><button class="filter-btn active" data-filter="all" data-group="diff">All Difficulty</button><button class="filter-btn" data-filter="easy" data-group="diff">Easy</button><button class="filter-btn" data-filter="medium" data-group="diff">Medium</button><button class="filter-btn" data-filter="hard" data-group="diff">Hard</button></div>
+  <div class="question-list"><div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="performance">
+    <span class="q-index">1</span>
+    <span class="q-text">How do you diagnose and fix high API latency?</span>
+    <div class="q-tags"><span class="q-tag">latency</span><span class="q-tag">profiling</span><span class="q-tag">p99</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">92%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Systematic Approach</span><br><pre>1. MEASURE: Where is the time going?
+   - Add distributed tracing (Jaeger/Zipkin): see each span's duration
+   - p50/p95/p99 latency (NOT just average — outliers matter)
+   - Breakdown: network + serialization + DB queries + external API + CPU
+
+2. IDENTIFY bottleneck:
+   Common causes:
+   - N+1 queries (add JOIN FETCH or batch)
+   - Missing DB index (check EXPLAIN ANALYZE → seq scan)
+   - Synchronous external API call in critical path (make async / cache)
+   - Lock contention (connection pool exhausted, mutex hotspot)
+   - GC pauses (Java: -XX:+PrintGCDetails, G1/ZGC tuning)
+   - Memory pressure (swap, cache thrashing)
+
+3. FIX:
+   - Caching: Redis in front of slow DB queries
+   - Async: move non-critical work off request path (Kafka)
+   - Parallelism: concurrent DB queries (CompletableFuture/goroutines)
+   - Index: add composite index for slow query
+   - Connection pooling: tune min/max pool size</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Metrics</span><br><ul><li><b>Latency percentiles:</b> p50=100ms is fine; p99=5s means 1% users wait 5 seconds</li><li><b>Throughput:</b> RPS the service can handle without degrading</li><li><b>Error rate:</b> 5xx rate as % of total requests</li><li><b>Saturation:</b> CPU%, memory%, connection pool utilization, queue depth</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">USE Method</span><br>For every resource: <b>Utilization</b> (how busy), <b>Saturation</b> (how much queuing), <b>Errors</b> (error count). Invented by Brendan Gregg.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you use flame graphs to identify CPU hotspots?<br>• What is the difference between tail latency and average latency?<br>• How do you implement circuit breakers to protect against latency cascades?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="caching">
+    <span class="q-index">2</span>
+    <span class="q-text">Cache strategies — cache-aside, read-through, write-through, write-back</span>
+    <div class="q-tags"><span class="q-tag">caching</span><span class="q-tag">redis</span><span class="q-tag">cache-aside</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Cache Strategies</span><br><ul><li><b>Cache-Aside (Lazy loading):</b> App checks cache first; on miss, reads DB, populates cache. Cache only stores what's actually requested. Risk: thundering herd on cold start.</li><li><b>Read-Through:</b> Cache reads from DB automatically on miss (library handles it). App always reads from cache. DB not directly accessed by app.</li><li><b>Write-Through:</b> Write to cache AND DB synchronously. Cache never stale. High write latency (must wait for both). Good for read-heavy.</li><li><b>Write-Back (Write-Behind):</b> Write to cache, return immediately. Write to DB asynchronously. Fast writes. Risk: data loss if cache crashes before flush.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache-Aside Pattern (most common)</span><br><pre>def get_user(user_id):
+    # Try cache first
+    user = redis.get(f"user:{user_id}")
+    if user:
+        return deserialize(user)  # cache hit
+    
+    # Cache miss — read from DB
+    user = db.query("SELECT * FROM users WHERE id=%s", user_id)
+    
+    # Populate cache with TTL
+    redis.setex(f"user:{user_id}", ttl=3600, value=serialize(user))
+    return user
+
+def update_user(user_id, data):
+    db.execute("UPDATE users SET ... WHERE id=%s", user_id)
+    redis.delete(f"user:{user_id}")  # invalidate — don't update!</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache Eviction Policies</span><br><ul><li><b>LRU:</b> Evict least recently used. Good general-purpose.</li><li><b>LFU:</b> Evict least frequently used. Better for skewed access patterns.</li><li><b>TTL:</b> Time-based expiry. Always stale by at most TTL seconds.</li><li><b>Allkeys-lru (Redis):</b> Apply LRU across all keys when memory full.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the thundering herd problem and how do you prevent it? (mutex/lock on cache miss, staggered TTLs)<br>• How do you handle cache warming after a cold restart?<br>• What is probabilistic early expiration (PER) and how does it prevent dogpile?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Backend Design</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="observability">
+    <span class="q-index">3</span>
+    <span class="q-text">Observability — metrics, logs, traces — the three pillars</span>
+    <div class="q-tags"><span class="q-tag">observability</span><span class="q-tag">prometheus</span><span class="q-tag">grafana</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Three Pillars</span><br><ul><li><b>Metrics:</b> Numeric aggregations over time. Low cardinality. Cheap to store. Tool: Prometheus (pull-based scraping) + Grafana. Counter, Gauge, Histogram, Summary.</li><li><b>Logs:</b> Discrete events with context. High volume. Searchable. Tool: ELK stack (Elasticsearch+Logstash+Kibana) or Loki+Grafana. Structured JSON logs with trace_id for correlation.</li><li><b>Traces:</b> Request journey across services. Tool: Jaeger, Zipkin, Tempo. Essential for microservices debugging.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">SLI / SLO / SLA / Error Budget</span><br><pre>SLI (Service Level Indicator): the metric you measure
+  e.g., "% of requests with latency &lt; 200ms"
+
+SLO (Service Level Objective): your internal target
+  e.g., "99.9% of requests &lt; 200ms over rolling 30 days"
+
+SLA (Service Level Agreement): contractual with customer
+  e.g., "99.5% uptime or credit applied"
+
+Error Budget: 1 - SLO = allowed unreliability
+  99.9% SLO = 0.1% error budget = 43.8 min downtime/month
+  If budget exhausted: freeze feature work, focus on reliability</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">RED Method (for services)</span><br><b>R</b>ate (requests/sec), <b>E</b>rror rate (errors/sec), <b>D</b>uration (latency). Apply to every microservice for quick health check.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you implement alerting without alert fatigue? (symptom-based not cause-based alerts)<br>• What is the difference between blackbox and whitebox monitoring?<br>• How does OpenTelemetry unify metrics, logs, and traces?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="observability">
+    <span class="q-index">4</span>
+    <span class="q-text">Explain distributed tracing — how it works</span>
+    <div class="q-tags"><span class="q-tag">distributed-tracing</span><span class="q-tag">opentelemetry</span><span class="q-tag">jaeger</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">How it works</span><br><pre>Request enters Service A → Tracer generates trace_id (128-bit)
+Service A calls Service B → propagates trace_id + span_id in HTTP header:
+  traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01
+               version  traceId                    parentSpanId   flags
+
+Each service creates a span:
+  span = {traceId, spanId, parentSpanId, name, startTime, duration,
+          tags: {"db.type":"postgresql", "http.status":200},
+          logs: [{"event":"query", "sql":"..."}]}
+
+Spans sent async to collector (Jaeger/Zipkin) → assembled into trace tree</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">OpenTelemetry (OTel)</span><br><ul><li>Vendor-neutral standard for traces, metrics, logs</li><li>SDK instruments your code (auto-instrumentation for popular frameworks)</li><li>Exporter sends to Jaeger, Zipkin, Tempo, AWS X-Ray, Datadog</li><li><code>OTEL_TRACES_EXPORTER=jaeger OTEL_EXPORTER_JAEGER_ENDPOINT=http://jaeger:14268/api/traces</code></li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Sampling</span><br><ul><li><b>Head sampling:</b> Decision at trace start (before outcome known). Simple. Loses tail errors.</li><li><b>Tail sampling:</b> Buffer traces, decide after seeing all spans. Can keep errored/slow traces.</li><li><b>Rate:</b> 1% for healthy services, 100% for errors, 10% for slow (p99 &gt; 1s)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the W3C Trace Context specification?<br>• How does continuous profiling (Pyroscope, Parca) complement distributed tracing?<br>• How do you correlate traces with logs and metrics? (structured logging with trace_id)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="performance">
+    <span class="q-index">5</span>
+    <span class="q-text">Load testing — how to approach and what tools to use</span>
+    <div class="q-tags"><span class="q-tag">load-testing</span><span class="q-tag">k6</span><span class="q-tag">gatling</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Test Types</span><br><ul><li><b>Load test:</b> Expected normal + peak load. Validate SLAs. Measure p99 latency, throughput, error rate.</li><li><b>Stress test:</b> Push beyond expected load until system breaks. Find breaking point. Test recovery.</li><li><b>Soak/endurance test:</b> Normal load for extended time (hours/days). Find memory leaks, connection exhaustion, log rotation issues.</li><li><b>Spike test:</b> Sudden large traffic burst. Test autoscaling, circuit breakers.</li><li><b>Chaos test:</b> Kill instances, inject latency, corrupt network. Test resilience.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">k6 Example</span><br><pre>import http from 'k6/http';
+import { check, sleep } from 'k6';
+
+export const options = {
+  stages: [
+    { duration: '2m', target: 100 },   // ramp up to 100 VUs
+    { duration: '5m', target: 100 },   // hold at 100 VUs
+    { duration: '2m', target: 0 },     // ramp down
+  ],
+  thresholds: {
+    'http_req_duration': ['p(99)&lt;500'],  // 99% requests &lt; 500ms
+    'http_req_failed': ['rate&lt;0.01'],   // &lt;1% error rate
+  },
+};
+
+export default function() {
+  const r = http.get('https://api.example.com/users');
+  check(r, { 'status 200': (r) =&gt; r.status === 200 });
+  sleep(1);
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">What to measure</span><br><ul><li>Throughput: requests/sec at saturation</li><li>Latency: p50, p95, p99, p999 as load increases</li><li>Error rate: 5xx rate, timeout rate</li><li>Resource utilization: CPU, memory, disk I/O, network on each tier</li><li>Database: connection pool saturation, query latency at load</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you load test a WebSocket-based chat system?<br>• What is the difference between vertical and horizontal scaling in response to load tests?<br>• How do you profile a Java application under production load? (async-profiler, JFR)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="performance">
+    <span class="q-index">6</span>
+    <span class="q-text">How does CPU caching work and why does it matter for performance?</span>
+    <div class="q-tags"><span class="q-tag">cpu-cache</span><span class="q-tag">cache-line</span><span class="q-tag">false-sharing</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">74%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Memory Hierarchy</span><br><pre>L1 cache:  ~32KB per core,   ~1ns  latency
+L2 cache: ~256KB per core,   ~4ns  latency
+L3 cache:   ~8MB shared,     ~40ns latency
+RAM:        ~16-64GB,       ~100ns latency
+SSD NVMe:              ~100μs latency
+HDD:                    ~10ms latency</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache Lines</span><br>Data loaded in 64-byte cache lines. Accessing one byte loads entire 64-byte block. Sequential access (arrays) → excellent cache utilization. Random access (linked lists) → cache miss per node.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">False Sharing</span><br><pre># Two threads update different variables in same cache line:
+# Thread 1 updates counter_a, Thread 2 updates counter_b
+# If they're adjacent in memory → same cache line → cache coherence traffic
+# Core 1 invalidates Core 2's cache line on every write → performance degrades!
+
+# Fix: padding
+struct PaddedCounter {
+    alignas(64) std::atomic&lt;int64_t&gt; value;  // 64-byte aligned
+    char padding[64 - sizeof(std::atomic&lt;int64_t&gt;)];  // fill rest of cache line
+};</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Practical Impact</span><br><ul><li>Array of structs vs Struct of arrays (SOA): SOA = better cache usage for column-wise processing</li><li>Cache-oblivious algorithms (recursive divide) beat sequential for large matrices</li><li>Go: sync.Mutex padded to avoid false sharing with adjacent data</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is NUMA (Non-Uniform Memory Access) and how does it affect multi-socket servers?<br>• How does prefetching work and how can you hint the CPU to prefetch?<br>• What is the impact of cache misses on a tight loop processing 100M integers?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Databricks, Snowflake...</span>
+    </div>
+  </div>
+</div></div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-links">
+      <a href="../common/top-coding.html">Top Coding</a>
+      <a href="../common/top-system-design.html">System Design</a>
+      <a href="../common/top-backend.html">Backend</a>
+      <a href="../common/top-cpp.html">C++</a>
+      <a href="../common/top-java.html">Java</a>
+      <a href="../common/top-go.html">Go</a>
+      <a href="../common/top-database.html">Database</a>
+      <a href="../common/top-concurrency.html">Concurrency</a>
+      <a href="../common/top-os.html">OS</a>
+      <a href="../common/top-networking.html">Networking</a>
+      <a href="../common/top-lld.html">LLD</a>
+      <a href="../common/top-cicd.html">CI/CD</a>
+      <a href="../common/top-security.html">Security</a>
+      <a href="../common/top-ml.html">ML Systems</a>
+      <a href="../common/top-perf.html">Performance</a>
+    </div>
+    <p>Built for SDE-1 &amp; SDE-2 Backend Engineers | C++ · Java · Go · Distributed Systems</p>
+    <p style="margin-top:8px;font-size:12px;opacity:.5">Data sourced from LeetCode, Glassdoor, Blind, Reddit &amp; public interview experiences</p>
+  </div>
+</footer>
+<button id="back-to-top" title="Back to top">↑</button>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top Backend Engineering Questions | InterviewRepo — Backend SDE Interview Prep</title>
+  <meta name="description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Top Backend Engineering Questions">
+  <meta name="keywords" content="backend interview questions, SDE interview prep, system design, DSA, C++ interview, Java interview, Go interview, top backend engineering questions">
+  <meta name="author" content="InterviewRepo">
+  <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="InterviewRepo — Backend SDE Prep">
+  <meta property="og:title"       content="Top Backend Engineering Questions | InterviewRepo">
+  <meta property="og:description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Top Backend Engineering Questions">
+  <meta property="og:url"         content="https://devinterviewvault.netlify.app">
+  <meta property="og:image"       content="https://devinterviewvault.netlify.app/assets/og-image.png">
+  <meta name="twitter:card"       content="summary_large_image">
+  <meta name="twitter:title"      content="Top Backend Engineering Questions | InterviewRepo">
+  <meta name="twitter:description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Top Backend Engineering Questions">
+  <meta name="twitter:image"      content="https://devinterviewvault.netlify.app/assets/og-image.png">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://devinterviewvault.netlify.app">
+  <meta name="google-site-verification" content="a8bdedb3bc5f858c">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Top Backend Engineering Questions", "description": "SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design \u2014 Top Backend Engineering Questions", "url": "https://devinterviewvault.netlify.app", "publisher": {"@type": "Organization", "name": "InterviewRepo"}}</script>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+</head>
+<body>
+<nav class="navbar">
+  <a class="navbar-brand" href="../index.html">
+    <span class="logo-icon">⚡</span>
+    <span>InterviewRepo</span>
+  </a>
+  <div class="search-bar">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="search-input" placeholder="Search questions… (Ctrl+K)" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <nav class="navbar-nav">
+    <a href="../index.html">Home</a>
+    <a href="../common/top-coding.html">Top DSA</a>
+    <a href="../common/top-system-design.html">System Design</a>
+    <a href="../common/top-backend.html">Backend</a>
+    <a href="../common/top-cpp.html">C++</a>
+    <a href="../common/top-java.html">Java</a>
+    <a href="../common/top-go.html">Go</a>
+  </nav>
+</nav>
+<div class="top-list-header">
+  <div class="container">
+    <div class="breadcrumb"><a href="../index.html">Home</a><span class="breadcrumb-sep">›</span><span>Top Backend Engineering Questions</span></div>
+    <h1 style="font-size:36px;font-weight:800;margin-bottom:8px">🔧 Top Backend Engineering Questions</h1>
+    <p style="color:var(--text-muted);font-size:16px">Backend design questions on APIs, messaging, distributed systems and resilience.</p>
+    <p style="color:var(--text-muted);font-size:14px;margin-top:8px">20 questions</p>
+  </div>
+</div>
+<div class="container section">
+  <div class="filters-bar"><button class="filter-btn active" data-filter="all" data-group="sub">All</button><button class="filter-btn" data-filter="api_design" data-group="sub">Api Design</button><button class="filter-btn" data-filter="architecture" data-group="sub">Architecture</button><button class="filter-btn" data-filter="devops" data-group="sub">Devops</button><button class="filter-btn" data-filter="distributed" data-group="sub">Distributed</button><button class="filter-btn" data-filter="infrastructure" data-group="sub">Infrastructure</button><button class="filter-btn" data-filter="messaging" data-group="sub">Messaging</button><button class="filter-btn" data-filter="rate_limiting" data-group="sub">Rate Limiting</button><button class="filter-btn" data-filter="resilience" data-group="sub">Resilience</button><button class="filter-btn" data-filter="security" data-group="sub">Security</button></div>
+  <div class="filters-bar"><button class="filter-btn active" data-filter="all" data-group="diff">All Difficulty</button><button class="filter-btn" data-filter="easy" data-group="diff">Easy</button><button class="filter-btn" data-filter="medium" data-group="diff">Medium</button><button class="filter-btn" data-filter="hard" data-group="diff">Hard</button></div>
+  <div class="question-list"><div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="api_design">
+    <span class="q-index">1</span>
+    <span class="q-text">REST vs GraphQL vs gRPC — when to use each?</span>
+    <div class="q-tags"><span class="q-tag">rest</span><span class="q-tag">graphql</span><span class="q-tag">grpc</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">REST vs GraphQL vs gRPC</span><br><ul><li><b>REST:</b> Stateless, resource-based (nouns), HTTP verbs. Cacheable, universally supported. Over-fetching (get entire user object for just the name) / under-fetching (need 3 calls for related data).</li><li><b>GraphQL:</b> Single endpoint. Client specifies exact fields. Eliminates over/under-fetching. Schema as contract. N+1 problem (use DataLoader). Good for complex UIs, mobile (save bandwidth).</li><li><b>gRPC:</b> HTTP/2 + Protocol Buffers. Binary, strongly typed, 5-10x smaller than JSON. Bidirectional streaming. Generated client/server stubs. Best for internal microservices.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Decision Matrix</span><br><ul><li>Public API / browser-to-server → <b>REST</b></li><li>Complex UI with diverse data needs → <b>GraphQL</b></li><li>Internal microservice-to-microservice → <b>gRPC</b></li><li>Real-time bidirectional → <b>WebSocket</b></li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does gRPC handle service discovery?<br>• What is the N+1 problem in GraphQL and how does DataLoader solve it? (batching + caching)<br>• How do you version a REST API? (/v1/users vs Accept header versioning)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Backend Design</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Uber, Stripe, Amazon, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="distributed">
+    <span class="q-index">2</span>
+    <span class="q-text">What is consistent hashing?</span>
+    <div class="q-tags"><span class="q-tag">consistent-hashing</span><span class="q-tag">virtual-nodes</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Consistent Hashing</span><br>Problem with naive modulo hashing: adding/removing 1 server remaps N/S keys (massive cache miss storm).<br><br><b>Ring approach:</b> Hash servers and keys to same circular space (0 to 2^32). A key is assigned to the first server found clockwise from its hash position.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Virtual Nodes</span><br>Each physical server = 100-200 virtual nodes on the ring → even distribution even with few servers. Fewer hot spots. When server added/removed: only 1/N keys remapped.<br><pre>class ConsistentHash:
+    def __init__(self, replicas=150):
+        self.ring = {}
+        self.sorted_keys = []
+        self.replicas = replicas
+
+    def add_server(self, server):
+        for i in range(self.replicas):
+            key = hash(f'{server}:{i}')
+            self.ring[key] = server
+        self.sorted_keys = sorted(self.ring)
+
+    def get_server(self, item):
+        h = hash(item)
+        for k in self.sorted_keys:
+            if h &lt;= k: return self.ring[k]
+        return self.ring[self.sorted_keys[0]]  # wrap around</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does Amazon DynamoDB use consistent hashing?<br>• What is the difference between consistent hashing and rendezvous hashing?<br>• How does virtual node count affect distribution quality?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, Uber, LinkedIn, Databricks, Snowflake...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="architecture">
+    <span class="q-index">3</span>
+    <span class="q-text">Microservices vs Monolith — trade-offs</span>
+    <div class="q-tags"><span class="q-tag">microservices</span><span class="q-tag">monolith</span><span class="q-tag">architecture</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Monolith vs Microservices Trade-offs</span><br><ul><li><b>Monolith pros:</b> Simple deployment, no network latency for inter-module calls, easier debugging, one codebase, great for small teams and early stage.</li><li><b>Monolith cons:</b> Hard to scale individual components, tech lock-in, long build/deploy cycles, large blast radius on failure.</li><li><b>Microservices pros:</b> Independent scale/deploy per service, tech diversity, fault isolation, team autonomy (Conway's Law).</li><li><b>Microservices cons:</b> Distributed system complexity (network failures, eventual consistency), service discovery, distributed tracing, operational overhead (K8s, service mesh).</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">When to migrate</span><br>Only when: you have scaling problems a monolith can't solve, team is large enough (2-pizza rule), you have operational maturity (CI/CD, observability). Don't start with microservices (Martin Fowler: 'don't start with a microservices architecture').</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is a strangler fig pattern for migrating monolith to microservices?<br>• What is a modular monolith and when is it better than microservices?<br>• How do you handle data ownership between microservices? (one DB per service)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 HLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, Meta, Uber, LinkedIn, Microsoft...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="rate_limiting">
+    <span class="q-index">4</span>
+    <span class="q-text">How would you design a rate limiter?</span>
+    <div class="q-tags"><span class="q-tag">token-bucket</span><span class="q-tag">redis</span><span class="q-tag">lua</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">85%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Rate Limiter Algorithms</span><br><ul><li><b>Token Bucket:</b> Bucket holds max N tokens. Refilled at rate R/sec. Request consumes 1 token. Allows bursting up to N. Most commonly implemented.</li><li><b>Sliding Window Log:</b> Store timestamps of each request. Count within window. Accurate but memory-heavy.</li><li><b>Sliding Window Counter:</b> Fix window divided into slots. Weighted count of previous window. Good balance.</li><li><b>Fixed Window:</b> Simple counter per window. Burst possible at window boundary.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Distributed Implementation</span><br><pre># Redis atomic Lua script — token bucket
+local tokens = tonumber(redis.call('GET', KEYS[1]) or ARGV[1])
+if tokens &gt; 0 then
+    redis.call('DECR', KEYS[1])
+    return 1  -- allowed
+end
+return 0  -- rate limited</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Response Headers</span><br><code>X-RateLimit-Limit: 100</code>, <code>X-RateLimit-Remaining: 45</code>, <code>Retry-After: 3600</code></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you implement per-user AND per-endpoint limits simultaneously?<br>• How does Stripe implement rate limiting? (per API key, per endpoint)<br>• What is cell-based rate limiting (GCRA — Generic Cell Rate Algorithm)?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Backend Design</span>
+      <span class="q-meta-chip">🏢 Google, Stripe, Uber, Meta, Amazon, Razorpay...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="messaging">
+    <span class="q-index">5</span>
+    <span class="q-text">How does Apache Kafka work internally?</span>
+    <div class="q-tags"><span class="q-tag">kafka</span><span class="q-tag">partitions</span><span class="q-tag">offset</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Kafka Architecture</span><br><ul><li><b>Topic:</b> Named category. Divided into <b>partitions</b> (immutable ordered log).</li><li><b>Producer:</b> Writes to partition (by key hash or round-robin). Acks: 0/1/all.</li><li><b>Consumer Group:</b> Each partition consumed by exactly 1 consumer in group. Multiple groups = independent reads.</li><li><b>Broker:</b> Stores partition log. Replication: 1 leader + N-1 followers. ISR = in-sync replicas.</li><li><b>ZooKeeper / KRaft:</b> Cluster metadata, leader election (KRaft = ZK-free since Kafka 3.x).</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Internals</span><br><ul><li>Messages appended to segment files. Retention by time or size.</li><li>Consumer tracks offset in <code>__consumer_offsets</code> topic.</li><li>Exactly-once: idempotent producer + transactional API.</li><li>Page cache: Kafka relies on OS page cache for near-disk-speed throughput.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the difference between at-least-once and exactly-once in Kafka?<br>• How does Kafka achieve 1M+ messages/second? (sequential disk I/O, zero-copy sendfile(), batching)<br>• What is consumer group rebalancing and how does it cause pauses?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Backend Design</span>
+      <span class="q-meta-chip">🏢 Uber, LinkedIn, Amazon, Databricks, Razorpay, PhonePe...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="security">
+    <span class="q-index">6</span>
+    <span class="q-text">JWT structure, validation, vulnerabilities</span>
+    <div class="q-tags"><span class="q-tag">jwt</span><span class="q-tag">rs256</span><span class="q-tag">security</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Header.Payload.Signature. Vulnerabilities: alg:none, weak secret, missing expiry check. Use RS256.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Backend Design</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, Meta, Uber, Microsoft, Razorpay...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="distributed">
+    <span class="q-index">7</span>
+    <span class="q-text">Explain eventual consistency vs strong consistency</span>
+    <div class="q-tags"><span class="q-tag">consistency</span><span class="q-tag">cap</span><span class="q-tag">paxos</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Strong Consistency</span><br>All nodes see the same data at the same time. After a write completes, all reads return the new value. Requires synchronous replication. Used in: financial systems, leader election (etcd, ZooKeeper).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Eventual Consistency</span><br>Given no new updates, all replicas will eventually converge. Reads may return stale data temporarily. Higher availability and partition tolerance. Used in: DNS, S3, DynamoDB (default), Cassandra.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">CAP Theorem</span><br>In presence of network Partition, choose Consistency OR Availability:<br><ul><li><b>CP:</b> HBase, MongoDB (primary), etcd, ZooKeeper — prefer consistency over availability</li><li><b>AP:</b> Cassandra, DynamoDB, CouchDB — prefer availability over consistency</li><li>CA systems only work without partitions (single node databases)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">PACELC</span><br>Extension of CAP: Even without partitions, trade-off exists between Latency and Consistency.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is monotonic read consistency and how do you achieve it in a distributed system?<br>• How does DynamoDB implement strong consistency? (quorum reads with ConsistentRead=true)<br>• What is linearizability vs serializability?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 HLD Round</span>
+      <span class="q-meta-chip">🏢 Amazon, Google, Meta, Databricks, LinkedIn, Razorpay</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="infrastructure">
+    <span class="q-index">8</span>
+    <span class="q-text">How does a load balancer work? Types?</span>
+    <div class="q-tags"><span class="q-tag">load-balancing</span><span class="q-tag">l4</span><span class="q-tag">l7</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">L4: TCP/IP. L7: HTTP URL/header routing. Algorithms: Round Robin, Least Conn, Consistent Hash.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 HLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="security">
+    <span class="q-index">9</span>
+    <span class="q-text">How does OAuth 2.0 work?</span>
+    <div class="q-tags"><span class="q-tag">oauth2</span><span class="q-tag">auth-code-flow</span><span class="q-tag">tokens</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Auth code flow: redirect→code→access token+refresh token. Short-lived access, long-lived refresh.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Backend Design</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, Microsoft, Meta, LinkedIn, Razorpay...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="distributed">
+    <span class="q-index">10</span>
+    <span class="q-text">Distributed transactions: 2PC vs Saga</span>
+    <div class="q-tags"><span class="q-tag">2pc</span><span class="q-tag">saga</span><span class="q-tag">distributed-tx</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">2PC — Two-Phase Commit</span><br><b>Phase 1 (Prepare):</b> Coordinator sends PREPARE to all participants. Each votes YES (prepared, locked) or NO.<br><b>Phase 2 (Commit/Abort):</b> If all YES → send COMMIT; if any NO → send ABORT.<br><b>Problems:</b> Coordinator failure in phase 2 → participants stuck holding locks. Blocking protocol. Network partition → split brain possible.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Saga Pattern</span><br><b>Choreography:</b> Each service publishes event → next service reacts. No central coordinator. Decoupled but hard to trace.<br><b>Orchestration:</b> Saga Orchestrator sends commands to each service, receives replies. Easier to manage state.<br><b>Compensating transactions:</b> On failure, execute rollback steps in reverse order.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Example: E-commerce order</span><br><pre>1. Reserve inventory → 2. Debit payment → 3. Assign delivery → 4. Confirm order
+Failure at step 3: Release payment (compensate) → Release inventory (compensate)</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the ACID vs BASE trade-off in distributed transactions?<br>• How does the Outbox Pattern ensure reliable event publishing with Saga?<br>• What is TCC (Try-Confirm-Cancel) pattern?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Backend Design</span>
+      <span class="q-meta-chip">🏢 Amazon, Google, Stripe, PayPal, Razorpay, PhonePe</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="api_design">
+    <span class="q-index">11</span>
+    <span class="q-text">What is idempotency and why critical?</span>
+    <div class="q-tags"><span class="q-tag">idempotency</span><span class="q-tag">api</span><span class="q-tag">payments</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Idempotency</span><br>An operation is <b>idempotent</b> if performing it multiple times has the same effect as performing it once. Critical for retry logic in distributed systems (network timeouts, retries).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Implementation</span><br><pre># Client sends unique idempotency key
+POST /payments
+Idempotency-Key: client-generated-uuid-v4
+{
+  "amount": 1000,
+  "currency": "INR"
+}
+
+# Server:
+INSERT INTO payments (idempotency_key, status, result)
+VALUES ('uuid', 'PROCESSING', NULL)
+ON CONFLICT (idempotency_key) DO NOTHING
+RETURNING *;
+
+# If conflict → return stored result (same response for same key)</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">HTTP Methods</span><br><ul><li><b>Idempotent by nature:</b> GET, PUT, DELETE, HEAD, OPTIONS</li><li><b>NOT idempotent:</b> POST (each call creates new resource)</li><li>Make POST idempotent with idempotency key header</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How long should an idempotency key be stored? (request TTL + processing time + buffer)<br>• How does Stripe implement idempotency? (48-hour window, stripe-idempotency-key header)<br>• What is the exactly-once message processing guarantee in Kafka?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Backend Design</span>
+      <span class="q-meta-chip">🏢 Stripe, PayPal, Razorpay, PhonePe, Amazon, Google</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="distributed">
+    <span class="q-index">12</span>
+    <span class="q-text">How would you implement distributed locks?</span>
+    <div class="q-tags"><span class="q-tag">redis</span><span class="q-tag">redlock</span><span class="q-tag">zookeeper</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Distributed Locks</span><br><b>Requirements:</b> Mutual exclusion, no deadlock, fault tolerance, lock expiry.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Redis SET NX EX (simple)</span><br><pre>SET resource_key unique_token NX EX 30  # NX: only if not exists, EX: expire 30s
+# Release: Lua script to check token before delete (atomic)
+if redis.call('GET', key) == token then
+    redis.call('DEL', key)
+end</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Redlock (HA Redis)</span><br>Acquire lock on N/2+1 independent Redis nodes. If majority acquired within validity time → lock granted. Release on all nodes. Controversial: Martin Kleppmann argues it's unsafe with clock drift.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">ZooKeeper Ephemeral Nodes</span><br>Create sequential ephemeral node. Lock acquired if lowest sequence number. On disconnect: ZK auto-deletes ephemeral node → no zombie locks. More reliable than Redis.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Fencing Tokens</span><br>Lock returns a monotonically increasing token. Storage layer rejects requests with stale token. Prevents GC pauses or clock drift from causing split-brain.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Why does Redlock fail under process pauses? (Martin Kleppmann paper)<br>• What is the difference between pessimistic and optimistic locking?<br>• How does etcd implement distributed locks? (lease + watch)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Backend Design</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, Uber, Stripe, Razorpay, LinkedIn</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="resilience">
+    <span class="q-index">13</span>
+    <span class="q-text">Explain the circuit breaker pattern</span>
+    <div class="q-tags"><span class="q-tag">circuit-breaker</span><span class="q-tag">hystrix</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Circuit Breaker States</span><br><ul><li><b>CLOSED:</b> Normal operation. Failure counter tracks errors. If failures &gt; threshold → OPEN.</li><li><b>OPEN:</b> All calls fail immediately (fail-fast). No downstream load. After timeout → HALF_OPEN.</li><li><b>HALF_OPEN:</b> Allow one probe request. If succeeds → CLOSED. If fails → OPEN again.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Why it matters</span><br>Without circuit breaker: one slow service causes thread pool exhaustion in caller → cascading failure across the system. Circuit breaker prevents this by failing fast and giving downstream service recovery time.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Libraries</span><br><ul><li>Resilience4j (Java): sliding window (count/time based), bulkhead pattern</li><li>Hystrix (deprecated): used at Netflix, pioneered the pattern</li><li>Go: sony/gobreaker, mercadolibre/go-breakers</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the bulkhead pattern and how does it complement circuit breaker?<br>• How do you set the right failure threshold to avoid flapping?<br>• What is the difference between circuit breaker and retry with exponential backoff?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Backend Design</span>
+      <span class="q-meta-chip">🏢 Uber, Netflix, Stripe, Amazon, LinkedIn, Swiggy...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="messaging">
+    <span class="q-index">14</span>
+    <span class="q-text">RabbitMQ vs Kafka — when to use each?</span>
+    <div class="q-tags"><span class="q-tag">rabbitmq</span><span class="q-tag">kafka</span><span class="q-tag">amqp</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">74%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">RabbitMQ: push, message queuing, AMQP, acked deletion. Kafka: pull, log, replay, event streaming.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Backend Design</span>
+      <span class="q-meta-chip">🏢 Amazon, Uber, LinkedIn, PhonePe, Razorpay</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="devops">
+    <span class="q-index">15</span>
+    <span class="q-text">Blue-green vs Canary vs Rolling deployments</span>
+    <div class="q-tags"><span class="q-tag">deployment</span><span class="q-tag">canary</span><span class="q-tag">zero-downtime</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">74%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Deployment Strategies</span><br><ul><li><b>Blue-Green:</b> Two identical environments. New version deployed to 'green'. Switch traffic instantly. Easy rollback: flip back to 'blue'. Requires 2x infrastructure.</li><li><b>Canary:</b> Route small % of traffic (1-5%) to new version. Monitor error rates / latency. Gradually increase if healthy. Slow, but minimizes blast radius.</li><li><b>Rolling:</b> Replace instances one at a time (or in batches). Both versions run simultaneously. No extra infrastructure. Standard Kubernetes Deployment behavior.</li><li><b>Feature Flags:</b> Deploy code disabled; enable per-user/segment at runtime. Decouple deploy from release.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">In Kubernetes</span><br><pre># Canary with Argo Rollouts:
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+spec:
+  strategy:
+    canary:
+      steps:
+      - setWeight: 5    # 5% traffic to new
+      - pause: {duration: 10m}
+      - setWeight: 50
+      - pause: {duration: 10m}
+      - setWeight: 100</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you implement A/B testing alongside a canary deployment?<br>• How does shadow deployment (dark launch) work?<br>• What metrics determine if a canary should be promoted vs rolled back?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 HLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, Meta, Netflix, Uber, LinkedIn</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="distributed">
+    <span class="q-index">16</span>
+    <span class="q-text">Explain the Saga pattern in detail</span>
+    <div class="q-tags"><span class="q-tag">saga</span><span class="q-tag">compensating-txns</span><span class="q-tag">choreography</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">74%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Sequence of local txns. On failure: compensating txns. Choreography (events) vs Orchestration (central coord).</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Backend Design</span>
+      <span class="q-meta-chip">🏢 Uber, Amazon, Stripe, Razorpay, PhonePe</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="distributed">
+    <span class="q-index">17</span>
+    <span class="q-text">How to handle backpressure in streaming systems?</span>
+    <div class="q-tags"><span class="q-tag">backpressure</span><span class="q-tag">reactive</span><span class="q-tag">flow-control</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">70%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Consumer signals producer. Strategies: buffering, dropping, batching, rate adjustment. Reactive Streams.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Backend Design</span>
+      <span class="q-meta-chip">🏢 Uber, LinkedIn, Databricks, Google</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="infrastructure">
+    <span class="q-index">18</span>
+    <span class="q-text">How does a service mesh (Istio) work?</span>
+    <div class="q-tags"><span class="q-tag">istio</span><span class="q-tag">envoy</span><span class="q-tag">sidecar</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">68%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Sidecar proxy (Envoy) handles mTLS, retry, circuit break, tracing. Istiod = control plane.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 HLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Uber, Netflix, LinkedIn</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="api_design">
+    <span class="q-index">19</span>
+    <span class="q-text">How does gRPC streaming work?</span>
+    <div class="q-tags"><span class="q-tag">grpc</span><span class="q-tag">http2</span><span class="q-tag">streaming</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">68%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">4 modes: Unary, Server-stream, Client-stream, Bidirectional. HTTP/2 multiplexing. Protobuf serialization.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Backend Design</span>
+      <span class="q-meta-chip">🏢 Google, Uber, Meta, LinkedIn, Razorpay</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="architecture">
+    <span class="q-index">20</span>
+    <span class="q-text">Explain CQRS and Event Sourcing</span>
+    <div class="q-tags"><span class="q-tag">cqrs</span><span class="q-tag">event-sourcing</span><span class="q-tag">read-model</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">66%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">CQRS — Command Query Responsibility Segregation</span><br>Separate <b>write model</b> (commands: create, update, delete) from <b>read model</b> (queries: optimized for reads). Read model can be denormalized, use different database (e.g., Elasticsearch for search, Redis for fast reads). Scales independently.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Event Sourcing</span><br>State is derived from a <b>sequence of immutable events</b>, not current state snapshot. Events are appended to an event store (log). State reconstructed by replaying events.<br><pre>Events: OrderPlaced → ItemAdded → PaymentProcessed → OrderShipped
+Current state: replay all events → Order{status=SHIPPED, items=[...], payment=PAID}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Benefits and Costs</span><br><ul><li><b>Benefits:</b> Full audit log, time travel (replay to any point), event-driven integration</li><li><b>Costs:</b> Eventual consistency between command and query model, complex querying, schema evolution of events, snapshot needed for long histories</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you handle schema evolution of events in Event Sourcing?<br>• What is a projection in Event Sourcing?<br>• What is the Outbox Pattern and how does it prevent dual-write problems?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Backend Design</span>
+      <span class="q-meta-chip">🏢 Amazon, Stripe, LinkedIn, Databricks</span>
+    </div>
+  </div>
+</div></div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-links">
+      <a href="../common/top-coding.html">Top Coding</a>
+      <a href="../common/top-system-design.html">System Design</a>
+      <a href="../common/top-backend.html">Backend</a>
+      <a href="../common/top-cpp.html">C++</a>
+      <a href="../common/top-java.html">Java</a>
+      <a href="../common/top-go.html">Go</a>
+      <a href="../common/top-database.html">Database</a>
+      <a href="../common/top-concurrency.html">Concurrency</a>
+      <a href="../common/top-os.html">OS</a>
+      <a href="../common/top-networking.html">Networking</a>
+      <a href="../common/top-lld.html">LLD</a>
+      <a href="../common/top-cicd.html">CI/CD</a>
+      <a href="../common/top-security.html">Security</a>
+      <a href="../common/top-ml.html">ML Systems</a>
+      <a href="../common/top-perf.html">Performance</a>
+    </div>
+    <p>Built for SDE-1 &amp; SDE-2 Backend Engineers | C++ · Java · Go · Distributed Systems</p>
+    <p style="margin-top:8px;font-size:12px;opacity:.5">Data sourced from LeetCode, Glassdoor, Blind, Reddit &amp; public interview experiences</p>
+  </div>
+</footer>
+<button id="back-to-top" title="Back to top">↑</button>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

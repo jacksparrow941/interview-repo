@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Sitemap: https://devinterviewvault.netlify.app/sitemap.xml
+
+# Crawl-delay for courtesy
+Crawl-delay: 1

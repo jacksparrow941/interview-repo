@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Airbnb | InterviewRepo — Backend SDE Interview Prep</title>
+  <meta name="description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Airbnb">
+  <meta name="keywords" content="backend interview questions, SDE interview prep, system design, DSA, C++ interview, Java interview, Go interview, airbnb">
+  <meta name="author" content="InterviewRepo">
+  <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="InterviewRepo — Backend SDE Prep">
+  <meta property="og:title"       content="Airbnb | InterviewRepo">
+  <meta property="og:description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Airbnb">
+  <meta property="og:url"         content="https://devinterviewvault.netlify.app">
+  <meta property="og:image"       content="https://devinterviewvault.netlify.app/assets/og-image.png">
+  <meta name="twitter:card"       content="summary_large_image">
+  <meta name="twitter:title"      content="Airbnb | InterviewRepo">
+  <meta name="twitter:description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Airbnb">
+  <meta name="twitter:image"      content="https://devinterviewvault.netlify.app/assets/og-image.png">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://devinterviewvault.netlify.app">
+  <meta name="google-site-verification" content="a8bdedb3bc5f858c">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Airbnb", "description": "SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design \u2014 Airbnb", "url": "https://devinterviewvault.netlify.app", "publisher": {"@type": "Organization", "name": "InterviewRepo"}}</script>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+</head>
+<body>
+<nav class="navbar">
+  <a class="navbar-brand" href="../../index.html">
+    <span class="logo-icon">⚡</span>
+    <span>InterviewRepo</span>
+  </a>
+  <div class="search-bar">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="search-input" placeholder="Search questions… (Ctrl+K)" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <nav class="navbar-nav">
+    <a href="../../index.html">Home</a>
+    <a href="../../common/top-coding.html">Top DSA</a>
+    <a href="../../common/top-system-design.html">System Design</a>
+    <a href="../../common/top-backend.html">Backend</a>
+    <a href="../../common/top-cpp.html">C++</a>
+    <a href="../../common/top-java.html">Java</a>
+    <a href="../../common/top-go.html">Go</a>
+  </nav>
+</nav>
+<div class="company-header">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../../index.html">Home</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="../index.html">Tier 2: Top Product</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>Airbnb</span>
+    </div>
+    <div class="company-header-inner">
+      <div class="company-logo-placeholder">A</div>
+      <div class="company-info">
+        <div style="margin-bottom:8px">
+          <span class="tier-badge" data-tier="2" style="--tier-color:#C0C0C0">Tier 2: Top Product</span>
+          <span class="difficulty-badge diff-hard" style="margin-left:8px">Hard</span>
+        </div>
+        <h1>Airbnb</h1>
+        <p style="color:var(--text-muted);margin-top:8px">Practical coding, cross-team collaboration focus</p>
+        <div class="company-info-meta">
+          <span class="info-chip"><strong>HQ:</strong> San Francisco, CA</span>
+          <span class="info-chip"><strong>Roles:</strong> SDE-1, SDE-2, Senior SDE</span>
+          <span class="info-chip"><strong>Focus:</strong> Backend · System Design · DSA · Cross-functional</span>
+          <span class="info-chip"><strong>Interview:</strong> Coding + HM + Pair programming + System Design</span>
+        </div>
+        <div class="company-stats">
+          <div class="stat-item"><div class="stat-value">15</div><div class="stat-label">Questions</div></div>
+          <div class="stat-item"><div class="stat-value">5</div><div class="stat-label">Avg Rounds</div></div>
+          <div class="stat-item"><div class="stat-value">4.2/5</div><div class="stat-label">Difficulty</div></div>
+          <div class="stat-item"><div class="stat-value">4</div><div class="stat-label">Categories</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><div class="container" style="padding:32px 24px 0">
+  <h2 style="font-size:22px;font-weight:700;margin-bottom:16px">📋 Interview Rounds</h2>
+  <div class="rounds-grid"><div class="round-card">
+  <div class="round-number">Round 1</div>
+  <div class="round-name">Online Assessment (90 min)</div>
+  <div class="round-duration">60-90 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 2</div>
+  <div class="round-name">Technical Phone Screen</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 3</div>
+  <div class="round-name">Coding Round 1</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 4</div>
+  <div class="round-name">System Design / LLD</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 5</div>
+  <div class="round-name">Hiring Manager</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 6</div>
+  <div class="round-name">HR</div>
+  <div class="round-duration">30-45 min</div>
+</div></div>
+</div><div class="container" style="padding:24px 24px 0">
+  <h2 style="font-size:20px;font-weight:700;margin-bottom:14px">🔥 Most Frequently Asked</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:10px;margin-bottom:8px"><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">Design Twitter/Feed System</div>
+    <div style="font-size:12px;color:var(--text-muted)">System Design · Hard · 88% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">Three Sum</div>
+    <div style="font-size:12px;color:var(--text-muted)">Coding · Medium · 85% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">Design an A/B testing platform</div>
+    <div style="font-size:12px;color:var(--text-muted)">Ml Systems · Hard · 85% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">Design a search ranking system</div>
+    <div style="font-size:12px;color:var(--text-muted)">Ml Systems · Hard · 85% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">⭐</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">Design a Hotel Booking System</div>
+    <div style="font-size:12px;color:var(--text-muted)">Lld · Medium · 83% frequency</div>
+  </div>
+</div></div>
+</div><div class="tabs-bar"><div class="tabs-inner"><button class="tab-btn active" data-tab="coding">💻 DSA <span style="opacity:.5;font-size:11px">(11)</span></button>
+<button class="tab-btn" data-tab="system_design">🏗️ System Design <span style="opacity:.5;font-size:11px">(1)</span></button>
+<button class="tab-btn" data-tab="lld">📐 LLD <span style="opacity:.5;font-size:11px">(1)</span></button>
+<button class="tab-btn" data-tab="ml_systems">🤖 ML Systems <span style="opacity:.5;font-size:11px">(2)</span></button></div></div>
+<div class="container"><div class="tab-panel active" id="tab-coding">
+  <div class="questions-header">
+    <h3>💻 DSA</h3>
+    <span class="q-count">11 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="arrays">
+    <span class="q-index">1</span>
+    <span class="q-text">Three Sum</span>
+    <div class="q-tags"><span class="q-tag">two-pointers</span><span class="q-tag">sorting</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">85%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Approach</span><br>Sort array. For each element, use two pointers on the rest to find pairs summing to -nums[i]. Skip duplicates at each level.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Solution</span><br><pre>def threeSum(nums):
+    nums.sort(); res = []
+    for i in range(len(nums)-2):
+        if i &gt; 0 and nums[i] == nums[i-1]: continue
+        l, r = i+1, len(nums)-1
+        while l &lt; r:
+            s = nums[i]+nums[l]+nums[r]
+            if s == 0: res.append([nums[i],nums[l],nums[r]]); l+=1; r-=1
+            while l &lt; r and nums[l]==nums[l-1]: l+=1
+            while l &lt; r and nums[r]==nums[r+1]: r-=1
+            elif s &lt; 0: l+=1
+            else: r-=1
+    return res</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Complexity</span><br>Time: O(n²) | Space: O(1) excluding output</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does 4-Sum extend this? (add outer loop, O(n³))<br>• What is the hash-map approach and why is two-pointer preferred?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Uber, Airbnb, LinkedIn</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="graphs">
+    <span class="q-index">2</span>
+    <span class="q-text">Course Schedule (Cycle Detection)</span>
+    <div class="q-tags"><span class="q-tag">topological-sort</span><span class="q-tag">dfs</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Approach</span><br>DFS with 3-color marking: WHITE(0)=unvisited, GRAY(1)=in-current-path, BLACK(2)=done. Cycle detected if GRAY node encountered again.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Solution</span><br><pre>def canFinish(numCourses, prerequisites):
+    graph = [[] for _ in range(numCourses)]
+    for a, b in prerequisites: graph[b].append(a)
+    color = [0] * numCourses
+    def dfs(v):
+        if color[v] == 1: return False  # cycle
+        if color[v] == 2: return True
+        color[v] = 1
+        if not all(dfs(u) for u in graph[v]): return False
+        color[v] = 2; return True
+    return all(dfs(v) for v in range(numCourses))</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Complexity</span><br>Time: O(V+E) | Space: O(V+E)</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Return actual order (Course Schedule II)? Kahn's BFS topo sort.<br>• Detect cycle in undirected graph? (parent tracking instead of 3-color)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 DSA Round</span>
+      <span class="q-meta-chip">🏢 Google, Airbnb, Uber, Amazon, LinkedIn, Atlassian</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="heap">
+    <span class="q-index">3</span>
+    <span class="q-text">Meeting Rooms II</span>
+    <div class="q-tags"><span class="q-tag">heap</span><span class="q-tag">greedy</span><span class="q-tag">intervals</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Approach</span><br>DP with memoization. <code>dp[i][j]</code> = LCS length of s1[i:] and s2[j:]. If chars match: 1 + dp[i+1][j+1]. Else max(dp[i+1][j], dp[i][j+1]).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Solution</span><br><pre>def longestCommonSubsequence(text1, text2):
+    m, n = len(text1), len(text2)
+    dp = [[0]*(n+1) for _ in range(m+1)]
+    for i in range(m-1,-1,-1):
+        for j in range(n-1,-1,-1):
+            if text1[i]==text2[j]:
+                dp[i][j] = 1 + dp[i+1][j+1]
+            else:
+                dp[i][j] = max(dp[i+1][j], dp[i][j+1])
+    return dp[0][0]</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Complexity</span><br>Time: O(m×n) | Space: O(m×n), optimizable to O(min(m,n))</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Shortest common supersequence? (m+n - LCS)<br>• Edit distance (Levenshtein)? (similar DP with insert/delete/replace)<br>• LCS of 3 strings?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Airbnb, Uber, LinkedIn, Microsoft, Razorpay</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="arrays">
+    <span class="q-index">4</span>
+    <span class="q-text">Product of Array Except Self</span>
+    <div class="q-tags"><span class="q-tag">prefix-suffix</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Approach</span><br>Prefix product from left, then multiply with suffix product from right in one pass. No division needed.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Solution</span><br><pre>def productExceptSelf(nums):
+    n = len(nums); res = [1]*n
+    # Left pass
+    prefix = 1
+    for i in range(n):
+        res[i] = prefix; prefix *= nums[i]
+    # Right pass
+    suffix = 1
+    for i in range(n-1,-1,-1):
+        res[i] *= suffix; suffix *= nums[i]
+    return res</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Complexity</span><br>Time: O(n) | Space: O(1) (output array not counted)</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What if zeros are in the array?<br>• Can you solve with division in O(n) but handle zeros? (count zeros separately)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, LinkedIn, Uber, Airbnb...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="arrays">
+    <span class="q-index">5</span>
+    <span class="q-text">Merge Intervals</span>
+    <div class="q-tags"><span class="q-tag">sorting</span><span class="q-tag">intervals</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">79%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Approach</span><br>Sort by start time. Merge if next interval starts ≤ current end. Extend current end to max of both.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Solution</span><br><pre>def merge(intervals):
+    intervals.sort(key=lambda x: x[0])
+    res = [intervals[0]]
+    for s, e in intervals[1:]:
+        if s &lt;= res[-1][1]: res[-1][1] = max(res[-1][1], e)
+        else: res.append([s, e])
+    return res</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Complexity</span><br>Time: O(n log n) | Space: O(n)</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Insert interval into sorted list of non-overlapping intervals?<br>• Meeting rooms — is there any conflict? (sort + check adjacent)<br>• Minimum meeting rooms needed? (heap tracking end times)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, LinkedIn, Uber, Airbnb...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="dp">
+    <span class="q-index">6</span>
+    <span class="q-text">House Robber</span>
+    <div class="q-tags"><span class="q-tag">dp</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">76%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">dp[i]=max(dp[i-1], dp[i-2]+nums[i]). O(1) space with two vars.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Airbnb, Amazon, LinkedIn, Meta</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="arrays">
+    <span class="q-index">7</span>
+    <span class="q-text">Container With Most Water</span>
+    <div class="q-tags"><span class="q-tag">two-pointers</span><span class="q-tag">greedy</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">75%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Move the shorter pointer inward each step.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Atlassian, Airbnb</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="strings">
+    <span class="q-index">8</span>
+    <span class="q-text">Minimum Window Substring</span>
+    <div class="q-tags"><span class="q-tag">sliding-window</span><span class="q-tag">frequency-map</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">74%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Two freq maps; expand right, contract left when all chars covered.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Uber, LinkedIn, Airbnb</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="trees">
+    <span class="q-index">9</span>
+    <span class="q-text">Kth Smallest in BST</span>
+    <div class="q-tags"><span class="q-tag">inorder</span><span class="q-tag">bst</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">68%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Inorder traversal (sorted for BST); return kth element.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Amazon, Airbnb, LinkedIn, Google</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="graphs">
+    <span class="q-index">10</span>
+    <span class="q-text">Alien Dictionary</span>
+    <div class="q-tags"><span class="q-tag">topological-sort</span><span class="q-tag">graph</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">68%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Build char-order graph from adjacent word pairs; topo sort.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 DSA Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Airbnb, Uber</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="strings">
+    <span class="q-index">11</span>
+    <span class="q-text">Encode and Decode Strings</span>
+    <div class="q-tags"><span class="q-tag">design</span><span class="q-tag">encoding</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">62%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Length-prefix: '4#word'. Unambiguous even with special chars.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Uber, Airbnb, LinkedIn</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-system_design">
+  <div class="questions-header">
+    <h3>🏗️ System Design</h3>
+    <span class="q-count">1 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="design_problems">
+    <span class="q-index">1</span>
+    <span class="q-text">Design Twitter/Feed System</span>
+    <div class="q-tags"><span class="q-tag">fanout</span><span class="q-tag">push-pull</span><span class="q-tag">redis-sorted-set</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Design a Scalable Key-Value Store</span><br>Like DynamoDB/Redis Cluster. Key decisions: partitioning, replication, consistency.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Architecture</span><br><ul><li><b>Consistent hashing ring</b> with virtual nodes for partitioning</li><li><b>Replication:</b> N=3. Coordinator writes to 3 nodes.</li><li><b>Quorum:</b> W=2, R=2. W+R&gt;N → strong consistency. W=1,R=1 → eventual.</li><li><b>Storage engine:</b> LSM-tree (RocksDB) for write optimization</li><li><b>Gossip protocol</b> for cluster membership/failure detection</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Data Flow</span><br><pre>PUT key=A value=X:
+  1. Client → any node (coordinator)
+  2. Hash(A) → ring position → 3 responsible nodes
+  3. Coordinator writes to all 3, waits for W=2 acks
+  4. Returns success
+
+GET key=A:
+  1. Coordinator queries R=2 nodes
+  2. Returns latest version (by timestamp or vector clock)
+  3. Read repair: update stale replica asynchronously</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does hinted handoff handle temporarily unavailable nodes?<br>• What is sloppy quorum vs strict quorum?<br>• How do you handle hot keys? (request sharding, local cache)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, LinkedIn, Uber, Airbnb</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-lld">
+  <div class="questions-header">
+    <h3>📐 LLD</h3>
+    <span class="q-count">1 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="machine_coding">
+    <span class="q-index">1</span>
+    <span class="q-text">Design a Hotel Booking System</span>
+    <div class="q-tags"><span class="q-tag">oop</span><span class="q-tag">decorator</span><span class="q-tag">strategy</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">83%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Entities: Hotel, Room, Booking, Guest, Payment. Strategy for pricing (seasonal). Observer for availability.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Airbnb, Amazon, LinkedIn, Expedia</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-ml_systems">
+  <div class="questions-header">
+    <h3>🤖 ML Systems</h3>
+    <span class="q-count">2 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="ml_systems">
+    <span class="q-index">1</span>
+    <span class="q-text">Design an A/B testing platform</span>
+    <div class="q-tags"><span class="q-tag">ab-testing</span><span class="q-tag">experimentation</span><span class="q-tag">statistics</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">85%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Core Components</span><br><pre>Experiment Config Service → stores experiment definition
+  (variants, allocation %, targeting rules, metrics)
+
+Assignment Service → deterministic bucketing by user_id
+  hash(user_id + experiment_id) % 100 &lt; allocation%
+  → same user always in same bucket (sticky assignment)
+  → results cached in Redis
+
+Event Tracking → user actions logged with experiment_id + variant
+  → Kafka → Data Warehouse (Clickhouse/BigQuery)
+
+Analysis Service → daily/real-time stats computation
+  → t-test / z-test for significance
+  → dashboard with p-value, confidence interval, lift %</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Statistical Concepts</span><br><ul><li><b>p-value &lt; 0.05:</b> Less than 5% chance result is due to random variation</li><li><b>Statistical power:</b> Probability of detecting a real effect. Usually target 80%.</li><li><b>MDE (Minimum Detectable Effect):</b> Smallest effect worth detecting → determines sample size</li><li><b>Sample size calculator:</b> n = 16σ²/δ² (for 80% power, 5% significance)</li><li><b>Multiple testing problem:</b> 20 experiments at 5% significance → 1 false positive on average. Fix: Bonferroni correction or FDR.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Common Pitfalls</span><br><ul><li><b>Novelty effect:</b> New feature gets engagement just because it's new — run longer</li><li><b>Network effect:</b> Treating control and treatment users who interact with each other — cluster randomization</li><li><b>Peeking:</b> Stopping early when p &lt; 0.05 inflates false positive rate — use sequential testing</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is a holdout group and why is it important?<br>• How do you handle metric tradeoffs? (CTR increases but conversion decreases)<br>• What is Bayesian A/B testing and how does it differ from frequentist?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, LinkedIn, Uber...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="ml_systems">
+    <span class="q-index">2</span>
+    <span class="q-text">Design a search ranking system</span>
+    <div class="q-tags"><span class="q-tag">search-ranking</span><span class="q-tag">elasticsearch</span><span class="q-tag">learning-to-rank</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">85%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Search Stack</span><br><pre>User Query
+    ↓
+Query Understanding: spell check, tokenization, synonym expansion, intent classification
+    ↓
+Retrieval (Elasticsearch / Lucene):
+  BM25 score: TF-IDF with length normalization
+  → top-1000 candidates in &lt;50ms
+    ↓
+Learning-to-Rank (LTR) Model:
+  Features: BM25 score, query-doc semantic similarity,
+            user click history, item popularity, freshness, location
+  Model: LightGBM / BERT cross-encoder
+  → rerank top-1000 to top-10
+    ↓
+Business Rules: boost paid listings, filter unavailable items
+    ↓ 
+Response</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Elasticsearch Internals</span><br><ul><li><b>Inverted index:</b> term → [doc_id, positions]. Builds at index time.</li><li><b>Sharding:</b> index split into shards. Search parallelized across shards.</li><li><b>Analyzers:</b> tokenizer + filters (lowercase, stemming, stopwords) at index + query time</li><li><b>Boosting:</b> <code>title^3 body^1</code> — title matches worth 3x body matches</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Learning-to-Rank</span><br><ul><li><b>Pointwise:</b> Independent regression/classification per document</li><li><b>Pairwise (RankNet):</b> Prefer doc A over B → binary classification</li><li><b>Listwise (LambdaMART):</b> Optimize NDCG directly. Best quality.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you handle cold-start for new items with no click data?<br>• What is NDCG (Normalized Discounted Cumulative Gain) and how do you compute it?<br>• How does Airbnb use neural network for search ranking? (listing embeddings)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, LinkedIn, Uber...</span>
+    </div>
+  </div>
+</div>
+</div></div>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-links">
+      <a href="../../common/top-coding.html">Top Coding</a>
+      <a href="../../common/top-system-design.html">System Design</a>
+      <a href="../../common/top-backend.html">Backend</a>
+      <a href="../../common/top-cpp.html">C++</a>
+      <a href="../../common/top-java.html">Java</a>
+      <a href="../../common/top-go.html">Go</a>
+      <a href="../../common/top-database.html">Database</a>
+      <a href="../../common/top-concurrency.html">Concurrency</a>
+      <a href="../../common/top-os.html">OS</a>
+      <a href="../../common/top-networking.html">Networking</a>
+      <a href="../../common/top-lld.html">LLD</a>
+      <a href="../../common/top-cicd.html">CI/CD</a>
+      <a href="../../common/top-security.html">Security</a>
+      <a href="../../common/top-ml.html">ML Systems</a>
+      <a href="../../common/top-perf.html">Performance</a>
+    </div>
+    <p>Built for SDE-1 &amp; SDE-2 Backend Engineers | C++ · Java · Go · Distributed Systems</p>
+    <p style="margin-top:8px;font-size:12px;opacity:.5">Data sourced from LeetCode, Glassdoor, Blind, Reddit &amp; public interview experiences</p>
+  </div>
+</footer>
+<button id="back-to-top" title="Back to top">↑</button>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

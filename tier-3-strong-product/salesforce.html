@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salesforce | InterviewRepo — Backend SDE Interview Prep</title>
+  <meta name="description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Salesforce">
+  <meta name="keywords" content="backend interview questions, SDE interview prep, system design, DSA, C++ interview, Java interview, Go interview, salesforce">
+  <meta name="author" content="InterviewRepo">
+  <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="InterviewRepo — Backend SDE Prep">
+  <meta property="og:title"       content="Salesforce | InterviewRepo">
+  <meta property="og:description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Salesforce">
+  <meta property="og:url"         content="https://devinterviewvault.netlify.app">
+  <meta property="og:image"       content="https://devinterviewvault.netlify.app/assets/og-image.png">
+  <meta name="twitter:card"       content="summary_large_image">
+  <meta name="twitter:title"      content="Salesforce | InterviewRepo">
+  <meta name="twitter:description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Salesforce">
+  <meta name="twitter:image"      content="https://devinterviewvault.netlify.app/assets/og-image.png">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://devinterviewvault.netlify.app">
+  <meta name="google-site-verification" content="a8bdedb3bc5f858c">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Salesforce", "description": "SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design \u2014 Salesforce", "url": "https://devinterviewvault.netlify.app", "publisher": {"@type": "Organization", "name": "InterviewRepo"}}</script>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+</head>
+<body>
+<nav class="navbar">
+  <a class="navbar-brand" href="../../index.html">
+    <span class="logo-icon">⚡</span>
+    <span>InterviewRepo</span>
+  </a>
+  <div class="search-bar">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="search-input" placeholder="Search questions… (Ctrl+K)" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <nav class="navbar-nav">
+    <a href="../../index.html">Home</a>
+    <a href="../../common/top-coding.html">Top DSA</a>
+    <a href="../../common/top-system-design.html">System Design</a>
+    <a href="../../common/top-backend.html">Backend</a>
+    <a href="../../common/top-cpp.html">C++</a>
+    <a href="../../common/top-java.html">Java</a>
+    <a href="../../common/top-go.html">Go</a>
+  </nav>
+</nav>
+<div class="company-header">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../../index.html">Home</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="../index.html">Tier 3: Strong Product</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>Salesforce</span>
+    </div>
+    <div class="company-header-inner">
+      <div class="company-logo-placeholder">S</div>
+      <div class="company-info">
+        <div style="margin-bottom:8px">
+          <span class="tier-badge" data-tier="3" style="--tier-color:#CD7F32">Tier 3: Strong Product</span>
+          <span class="difficulty-badge diff-hard" style="margin-left:8px">Medium-Hard</span>
+        </div>
+        <h1>Salesforce</h1>
+        <p style="color:var(--text-muted);margin-top:8px">Java/Apex heavy, SaaS architecture, Ohana culture</p>
+        <div class="company-info-meta">
+          <span class="info-chip"><strong>HQ:</strong> San Francisco, CA</span>
+          <span class="info-chip"><strong>Roles:</strong> MTS-1, MTS-2, Senior MTS</span>
+          <span class="info-chip"><strong>Focus:</strong> Backend · Java · System Design · OOP</span>
+          <span class="info-chip"><strong>Interview:</strong> Coding + Design + Architecture + Culture</span>
+        </div>
+        <div class="company-stats">
+          <div class="stat-item"><div class="stat-value">7</div><div class="stat-label">Questions</div></div>
+          <div class="stat-item"><div class="stat-value">4</div><div class="stat-label">Avg Rounds</div></div>
+          <div class="stat-item"><div class="stat-value">3.6/5</div><div class="stat-label">Difficulty</div></div>
+          <div class="stat-item"><div class="stat-value">2</div><div class="stat-label">Categories</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><div class="container" style="padding:32px 24px 0">
+  <h2 style="font-size:22px;font-weight:700;margin-bottom:16px">📋 Interview Rounds</h2>
+  <div class="rounds-grid"><div class="round-card">
+  <div class="round-number">Round 1</div>
+  <div class="round-name">Online Assessment (60 min)</div>
+  <div class="round-duration">60-90 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 2</div>
+  <div class="round-name">Technical Screen</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 3</div>
+  <div class="round-name">Coding Round</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 4</div>
+  <div class="round-name">LLD / HLD</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 5</div>
+  <div class="round-name">Hiring Manager</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 6</div>
+  <div class="round-name">HR</div>
+  <div class="round-duration">30-45 min</div>
+</div></div>
+</div><div class="container" style="padding:24px 24px 0">
+  <h2 style="font-size:20px;font-weight:700;margin-bottom:14px">🔥 Most Frequently Asked</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:10px;margin-bottom:8px"><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">⭐</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">Spring Security — JWT authentication flow</div>
+    <div style="font-size:12px;color:var(--text-muted)">Java · Hard · 82% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">⭐</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">Spring Boot auto-configuration</div>
+    <div style="font-size:12px;color:var(--text-muted)">Java · Medium · 80% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">⭐</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">JPA N+1 problem and solutions</div>
+    <div style="font-size:12px;color:var(--text-muted)">Java · Medium · 80% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">⭐</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">Role-based (RBAC) vs Attribute-based (ABAC) access control</div>
+    <div style="font-size:12px;color:var(--text-muted)">Security · Medium · 80% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">⭐</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">Hibernate L1 and L2 cache — how they work</div>
+    <div style="font-size:12px;color:var(--text-muted)">Java · Medium · 76% frequency</div>
+  </div>
+</div></div>
+</div><div class="tabs-bar"><div class="tabs-inner"><button class="tab-btn active" data-tab="java">☕ Java <span style="opacity:.5;font-size:11px">(6)</span></button>
+<button class="tab-btn" data-tab="security">🔒 Security <span style="opacity:.5;font-size:11px">(1)</span></button></div></div>
+<div class="container"><div class="tab-panel active" id="tab-java">
+  <div class="questions-header">
+    <h3>☕ Java</h3>
+    <span class="q-count">6 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="spring">
+    <span class="q-index">1</span>
+    <span class="q-text">Spring Security — JWT authentication flow</span>
+    <div class="q-tags"><span class="q-tag">spring-security</span><span class="q-tag">jwt</span><span class="q-tag">oauth2</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">JWT Flow</span><br><pre>1. POST /login {username, password}
+2. Server validates credentials
+3. Server signs JWT: header.payload.signature (HMAC-SHA256 or RS256)
+4. Client stores JWT (HttpOnly cookie or memory — NOT localStorage)
+5. Client sends: Authorization: Bearer &lt;token&gt;
+6. Server: JwtFilter extracts token → validate signature + expiry
+          → set SecurityContextHolder with authentication
+7. Request proceeds to controller</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">JWT Filter</span><br><pre>@Component
+class JwtAuthFilter extends OncePerRequestFilter {
+    @Override
+    protected void doFilterInternal(HttpServletRequest req, ...) {
+        String token = extractToken(req);
+        if (token != null &amp;&amp; jwtUtil.validate(token)) {
+            UsernamePasswordAuthenticationToken auth =
+                new UsernamePasswordAuthenticationToken(
+                    jwtUtil.getUser(token), null,
+                    jwtUtil.getAuthorities(token));
+            SecurityContextHolder.getContext().setAuthentication(auth);
+        }
+        filterChain.doFilter(req, res);
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">JWT vs Sessions</span><br><ul><li><b>JWT:</b> Stateless, scalable, no server-side storage. Con: can't invalidate before expiry.</li><li><b>Session:</b> Server stores state, easy to invalidate. Con: sticky sessions or distributed session store needed.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Refresh Tokens</span><br>Short-lived access token (15min) + long-lived refresh token (7d) stored in HttpOnly cookie. Refresh endpoint issues new access token without re-login.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you implement token blacklisting for logout?<br>• What is the difference between OAuth2 and JWT?<br>• What are the security risks of storing JWT in localStorage?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Amazon, LinkedIn, PayPal, Salesforce, Razorpay, CRED...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="spring">
+    <span class="q-index">2</span>
+    <span class="q-text">Spring Boot auto-configuration</span>
+    <div class="q-tags"><span class="q-tag">spring-boot</span><span class="q-tag">auto-config</span><span class="q-tag">conditional</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">@EnableAutoConfiguration reads spring.factories. Conditionals (@ConditionalOnClass) enable beans.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Amazon, LinkedIn, Microsoft, PayPal, Oracle, Salesforce</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="jpa">
+    <span class="q-index">3</span>
+    <span class="q-text">JPA N+1 problem and solutions</span>
+    <div class="q-tags"><span class="q-tag">hibernate</span><span class="q-tag">n+1</span><span class="q-tag">join-fetch</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">1 query for parent + N for children. Fix: JOIN FETCH, @EntityGraph, batch size.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 Amazon, LinkedIn, PayPal, Oracle, Salesforce, Infosys</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="jpa">
+    <span class="q-index">4</span>
+    <span class="q-text">Hibernate L1 and L2 cache — how they work</span>
+    <div class="q-tags"><span class="q-tag">hibernate</span><span class="q-tag">cache</span><span class="q-tag">l1</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">76%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">L1 Cache (Session Cache)</span><br><b>Default, always on.</b> Scoped to a single <code>Session</code> (transaction). Within a session, the same entity loaded twice returns the same object (identity map). Cleared on <code>session.close()</code> or <code>session.clear()</code>.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">L2 Cache (Shared Cache)</span><br><b>Optional, cross-session.</b> Shared across all sessions in a SessionFactory. Must be explicitly configured. Providers: <b>Ehcache, Caffeine, Infinispan, Redis</b>.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">L2 Setup</span><br><pre># application.properties
+spring.jpa.properties.hibernate.cache.use_second_level_cache=true
+spring.jpa.properties.hibernate.cache.region.factory_class=\
+    org.hibernate.cache.jcache.JCacheRegionFactory
+
+# Entity
+@Entity
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+public class Product { ... }</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Query Cache</span><br>Cache for JPQL/HQL query results. Must also have L2 enabled. Stores primary keys, not entities. Invalidated when any entity in result changes.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache Strategies</span><br>READ_ONLY, NONSTRICT_READ_WRITE, READ_WRITE, TRANSACTIONAL</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• When should you NOT use L2 cache?<br>• How does L2 cache handle cluster environments?<br>• What is the N+1 problem and how does @EntityGraph solve it?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 Amazon, LinkedIn, PayPal, Oracle, Salesforce, Infosys</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="spring">
+    <span class="q-index">5</span>
+    <span class="q-text">Spring Boot auto-configuration internals deep dive</span>
+    <div class="q-tags"><span class="q-tag">spring-boot</span><span class="q-tag">auto-config</span><span class="q-tag">conditional</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">76%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">How it works</span><br><code>@SpringBootApplication</code> includes <code>@EnableAutoConfiguration</code>.<br>Spring Boot reads <code>META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports</code> (or legacy <code>spring.factories</code>) to find all <code>@AutoConfiguration</code> classes.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Conditional Annotations</span><br><ul><li><code>@ConditionalOnClass(DataSource.class)</code> — only if DataSource on classpath</li><li><code>@ConditionalOnMissingBean</code> — only if no user-defined bean of that type</li><li><code>@ConditionalOnProperty("spring.datasource.url")</code> — only if property set</li><li><code>@ConditionalOnWebApplication</code> — only in web context</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Example: DataSource auto-config</span><br><pre>@AutoConfiguration
+@ConditionalOnClass(DataSource.class)
+@ConditionalOnMissingBean(DataSource.class)
+public class DataSourceAutoConfiguration {
+    @Bean
+    @ConditionalOnProperty("spring.datasource.url")
+    public DataSource dataSource(DataSourceProperties props) {
+        return props.initializeDataSourceBuilder().build();
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Debugging</span><br><code>--debug</code> flag prints auto-config report: POSITIVE (matched) and NEGATIVE (not matched) conditions.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you exclude an auto-configuration?<br>• What is @ConfigurationProperties vs @Value?<br>• How does Spring Boot 3 change auto-configuration imports?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Amazon, LinkedIn, PayPal, Oracle, Salesforce</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="spring">
+    <span class="q-index">6</span>
+    <span class="q-text">Spring WebFlux and Project Reactor — reactive programming</span>
+    <div class="q-tags"><span class="q-tag">webflux</span><span class="q-tag">reactor</span><span class="q-tag">mono</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">74%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">What is Reactive Programming</span><br>Non-blocking, event-driven programming with <b>backpressure</b>. Publisher emits data only as fast as subscriber can consume.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Project Reactor Types</span><br><ul><li><code>Mono&lt;T&gt;</code> — 0 or 1 element (like CompletableFuture)</li><li><code>Flux&lt;T&gt;</code> — 0 to N elements (stream)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Example</span><br><pre>// Blocking (Spring MVC)
+@GetMapping("/user/{id}")
+public User getUser(@PathVariable Long id) {
+    return userService.findById(id);  // blocks thread!
+}
+
+// Reactive (Spring WebFlux)
+@GetMapping("/user/{id}")
+public Mono&lt;User&gt; getUser(@PathVariable Long id) {
+    return userService.findById(id)  // non-blocking Mono
+        .map(UserDto::from)
+        .switchIfEmpty(Mono.error(new NotFoundException()));
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">When to use WebFlux</span><br><ul><li>High-concurrency I/O bound workloads (thousands of concurrent connections)</li><li>Streaming data (SSE, WebSocket)</li><li>Avoid: CPU-bound work, blocking libraries (use bounded elastic scheduler)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the difference between publishOn and subscribeOn?<br>• How do you handle backpressure in Flux?<br>• When would you choose WebFlux over virtual threads (Java 21)?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Amazon, LinkedIn, PayPal, Oracle, Salesforce</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-security">
+  <div class="questions-header">
+    <h3>🔒 Security</h3>
+    <span class="q-count">1 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="appsec">
+    <span class="q-index">1</span>
+    <span class="q-text">Role-based (RBAC) vs Attribute-based (ABAC) access control</span>
+    <div class="q-tags"><span class="q-tag">rbac</span><span class="q-tag">abac</span><span class="q-tag">authorization</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">RBAC — Role-Based Access Control</span><br><pre>User → assigned Roles → Roles have Permissions
+
+Roles: ADMIN, EDITOR, VIEWER, BILLING
+Permissions: read:posts, write:posts, delete:posts, view:billing
+
+User Alice: [EDITOR] → can read:posts + write:posts
+User Bob:   [VIEWER] → can only read:posts
+
+Simple, performant, easy to audit. Rigid: can't express context-based rules.</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">ABAC — Attribute-Based Access Control</span><br><pre>Policy: user.department == resource.department AND resource.classification &lt;= user.clearance
+
+Request evaluated at runtime against policy engine (OPA — Open Policy Agent)
+
+Attributes:
+  Subject: {role, department, clearance, location}
+  Resource: {classification, owner, department, sensitivity}
+  Action: {read, write, delete}
+  Environment: {time, IP, MFA_verified}
+
+More expressive but complex. Used in enterprise, healthcare, government.</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Implementation with OPA</span><br><pre># Rego policy (OPA):
+allow { input.user.role == "admin" }
+allow {
+    input.action == "read"
+    input.resource.owner == input.user.id
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is ReBAC (Relationship-Based Access Control) — Google Zanzibar?<br>• How do you implement row-level security in PostgreSQL?<br>• What is the principle of least privilege and how do you enforce it?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Security Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, LinkedIn, Stripe...</span>
+    </div>
+  </div>
+</div>
+</div></div>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-links">
+      <a href="../../common/top-coding.html">Top Coding</a>
+      <a href="../../common/top-system-design.html">System Design</a>
+      <a href="../../common/top-backend.html">Backend</a>
+      <a href="../../common/top-cpp.html">C++</a>
+      <a href="../../common/top-java.html">Java</a>
+      <a href="../../common/top-go.html">Go</a>
+      <a href="../../common/top-database.html">Database</a>
+      <a href="../../common/top-concurrency.html">Concurrency</a>
+      <a href="../../common/top-os.html">OS</a>
+      <a href="../../common/top-networking.html">Networking</a>
+      <a href="../../common/top-lld.html">LLD</a>
+      <a href="../../common/top-cicd.html">CI/CD</a>
+      <a href="../../common/top-security.html">Security</a>
+      <a href="../../common/top-ml.html">ML Systems</a>
+      <a href="../../common/top-perf.html">Performance</a>
+    </div>
+    <p>Built for SDE-1 &amp; SDE-2 Backend Engineers | C++ · Java · Go · Distributed Systems</p>
+    <p style="margin-top:8px;font-size:12px;opacity:.5">Data sourced from LeetCode, Glassdoor, Blind, Reddit &amp; public interview experiences</p>
+  </div>
+</footer>
+<button id="back-to-top" title="Back to top">↑</button>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adobe | InterviewRepo — Backend SDE Interview Prep</title>
+  <meta name="description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Adobe">
+  <meta name="keywords" content="backend interview questions, SDE interview prep, system design, DSA, C++ interview, Java interview, Go interview, adobe">
+  <meta name="author" content="InterviewRepo">
+  <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="InterviewRepo — Backend SDE Prep">
+  <meta property="og:title"       content="Adobe | InterviewRepo">
+  <meta property="og:description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Adobe">
+  <meta property="og:url"         content="https://devinterviewvault.netlify.app">
+  <meta property="og:image"       content="https://devinterviewvault.netlify.app/assets/og-image.png">
+  <meta name="twitter:card"       content="summary_large_image">
+  <meta name="twitter:title"      content="Adobe | InterviewRepo">
+  <meta name="twitter:description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Adobe">
+  <meta name="twitter:image"      content="https://devinterviewvault.netlify.app/assets/og-image.png">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://devinterviewvault.netlify.app">
+  <meta name="google-site-verification" content="a8bdedb3bc5f858c">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Adobe", "description": "SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design \u2014 Adobe", "url": "https://devinterviewvault.netlify.app", "publisher": {"@type": "Organization", "name": "InterviewRepo"}}</script>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+</head>
+<body>
+<nav class="navbar">
+  <a class="navbar-brand" href="../../index.html">
+    <span class="logo-icon">⚡</span>
+    <span>InterviewRepo</span>
+  </a>
+  <div class="search-bar">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="search-input" placeholder="Search questions… (Ctrl+K)" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <nav class="navbar-nav">
+    <a href="../../index.html">Home</a>
+    <a href="../../common/top-coding.html">Top DSA</a>
+    <a href="../../common/top-system-design.html">System Design</a>
+    <a href="../../common/top-backend.html">Backend</a>
+    <a href="../../common/top-cpp.html">C++</a>
+    <a href="../../common/top-java.html">Java</a>
+    <a href="../../common/top-go.html">Go</a>
+  </nav>
+</nav>
+<div class="company-header">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../../index.html">Home</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="../index.html">Tier 3: Strong Product</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>Adobe</span>
+    </div>
+    <div class="company-header-inner">
+      <div class="company-logo-placeholder">A</div>
+      <div class="company-info">
+        <div style="margin-bottom:8px">
+          <span class="tier-badge" data-tier="3" style="--tier-color:#CD7F32">Tier 3: Strong Product</span>
+          <span class="difficulty-badge diff-hard" style="margin-left:8px">Medium-Hard</span>
+        </div>
+        <h1>Adobe</h1>
+        <p style="color:var(--text-muted);margin-top:8px">Strong LLD focus, creative cloud infra questions</p>
+        <div class="company-info-meta">
+          <span class="info-chip"><strong>HQ:</strong> San Jose, CA</span>
+          <span class="info-chip"><strong>Roles:</strong> MTS-2 (SDE-1), MTS-3 (SDE-2), Senior MTS</span>
+          <span class="info-chip"><strong>Focus:</strong> DSA · LLD · System Design · Domain</span>
+          <span class="info-chip"><strong>Interview:</strong> Online Assessment + Coding + LLD + HLD + Behavioral</span>
+        </div>
+        <div class="company-stats">
+          <div class="stat-item"><div class="stat-value">21</div><div class="stat-label">Questions</div></div>
+          <div class="stat-item"><div class="stat-value">4</div><div class="stat-label">Avg Rounds</div></div>
+          <div class="stat-item"><div class="stat-value">3.7/5</div><div class="stat-label">Difficulty</div></div>
+          <div class="stat-item"><div class="stat-value">3</div><div class="stat-label">Categories</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><div class="container" style="padding:32px 24px 0">
+  <h2 style="font-size:22px;font-weight:700;margin-bottom:16px">📋 Interview Rounds</h2>
+  <div class="rounds-grid"><div class="round-card">
+  <div class="round-number">Round 1</div>
+  <div class="round-name">Online Assessment (60 min)</div>
+  <div class="round-duration">60-90 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 2</div>
+  <div class="round-name">Technical Screen</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 3</div>
+  <div class="round-name">Coding Round</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 4</div>
+  <div class="round-name">LLD / HLD</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 5</div>
+  <div class="round-name">Hiring Manager</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 6</div>
+  <div class="round-name">HR</div>
+  <div class="round-duration">30-45 min</div>
+</div></div>
+</div><div class="container" style="padding:24px 24px 0">
+  <h2 style="font-size:20px;font-weight:700;margin-bottom:14px">🔥 Most Frequently Asked</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:10px;margin-bottom:8px"><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">Two Sum</div>
+    <div style="font-size:12px;color:var(--text-muted)">Coding · Easy · 95% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">Docker container vs Virtual Machine — key differences?</div>
+    <div style="font-size:12px;color:var(--text-muted)">Cicd · Easy · 93% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">Number of Islands</div>
+    <div style="font-size:12px;color:var(--text-muted)">Coding · Medium · 92% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">How do Docker image layers work? (Union filesystem)</div>
+    <div style="font-size:12px;color:var(--text-muted)">Cicd · Medium · 90% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">CI/CD pipeline stages — what should a production pipeline include?</div>
+    <div style="font-size:12px;color:var(--text-muted)">Cicd · Medium · 90% frequency</div>
+  </div>
+</div></div>
+</div><div class="tabs-bar"><div class="tabs-inner"><button class="tab-btn active" data-tab="coding">💻 DSA <span style="opacity:.5;font-size:11px">(9)</span></button>
+<button class="tab-btn" data-tab="cicd">🚀 CI/CD & DevOps <span style="opacity:.5;font-size:11px">(6)</span></button>
+<button class="tab-btn" data-tab="lld">📐 LLD <span style="opacity:.5;font-size:11px">(6)</span></button></div></div>
+<div class="container"><div class="tab-panel active" id="tab-coding">
+  <div class="questions-header">
+    <h3>💻 DSA</h3>
+    <span class="q-count">9 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="arrays">
+    <span class="q-index">1</span>
+    <span class="q-text">Two Sum</span>
+    <div class="q-tags"><span class="q-tag">hash-map</span><span class="q-tag">arrays</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-high">95%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Approach</span><br>Use a hash map to store <code>complement = target - num</code> as you iterate. If current number exists in map → found the pair.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Solution</span><br><pre>def twoSum(nums, target):
+    seen = {}
+    for i, num in enumerate(nums):
+        if num in seen:
+            return [seen[num], i]
+        seen[target - num] = i</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Complexity</span><br>Time: O(n) | Space: O(n)</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What if the array is sorted? (two pointers, O(1) space)<br>• What if we need ALL pairs? (collect instead of return first)<br>• 4-Sum approach?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="graphs">
+    <span class="q-index">2</span>
+    <span class="q-text">Number of Islands</span>
+    <div class="q-tags"><span class="q-tag">dfs</span><span class="q-tag">bfs</span><span class="q-tag">union-find</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">92%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Approach</span><br>DFS or BFS. When land cell found, increment count and DFS to mark all connected land as visited.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Solution</span><br><pre>def numIslands(grid):
+    if not grid: return 0
+    count = 0
+    def dfs(r, c):
+        if r &lt; 0 or r &gt;= len(grid) or c &lt; 0 or c &gt;= len(grid[0]): return
+        if grid[r][c] != '1': return
+        grid[r][c] = '0'  # mark visited
+        for dr, dc in [(0,1),(0,-1),(1,0),(-1,0)]:
+            dfs(r+dr, c+dc)
+    for r in range(len(grid)):
+        for c in range(len(grid[0])):
+            if grid[r][c] == '1':
+                count += 1; dfs(r, c)
+    return count</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Union-Find alternative</span><br><code>find</code> with path compression + <code>union</code> by rank. O(α(n)) per operation. Good for streaming updates.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Complexity</span><br>Time: O(m×n) | Space: O(m×n) recursion stack</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Max area of island? (count cells in each DFS)<br>• Number of distinct islands (accounting for shape)? (encode DFS path)<br>• Surrounded regions (capture)?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 DSA Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="strings">
+    <span class="q-index">3</span>
+    <span class="q-text">Longest Substring Without Repeating Chars</span>
+    <div class="q-tags"><span class="q-tag">sliding-window</span><span class="q-tag">hash-set</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Approach</span><br>Sliding window with a set. Expand right pointer. If duplicate found, shrink left pointer until duplicate removed.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Solution</span><br><pre>def lengthOfLongestSubstring(s):
+    seen = {}; l = res = 0
+    for r, c in enumerate(s):
+        if c in seen and seen[c] &gt;= l:
+            l = seen[c] + 1
+        seen[c] = r
+        res = max(res, r - l + 1)
+    return res</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Complexity</span><br>Time: O(n) | Space: O(min(m,n)) where m = charset size</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• At most 2 distinct characters? (sliding window with count map)<br>• At most k distinct characters? (generalize with deque or count map)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="arrays">
+    <span class="q-index">4</span>
+    <span class="q-text">Maximum Subarray (Kadane's Algorithm)</span>
+    <div class="q-tags"><span class="q-tag">dp</span><span class="q-tag">kadane</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Kadane's Algorithm</span><br>Track current subarray sum. If it goes negative, reset to 0 (start fresh). Track global maximum throughout.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Solution</span><br><pre>def maxSubArray(nums):
+    cur = best = nums[0]
+    for n in nums[1:]:
+        cur = max(n, cur + n)
+        best = max(best, cur)
+    return best</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Complexity</span><br>Time: O(n) | Space: O(1)</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Extension</span><br>For indices: track start/end/temp_start. For 2D: apply Kadane on column sums for each row pair.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What if we need the actual subarray (not just the sum)?<br>• Maximum product subarray — how is it different? (track both min and max because negatives)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="arrays">
+    <span class="q-index">5</span>
+    <span class="q-text">Best Time to Buy and Sell Stock</span>
+    <div class="q-tags"><span class="q-tag">greedy</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Approach</span><br>One pass. Track running minimum price. At each step, compute profit = price - min_price. Track max profit.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Solution</span><br><pre>def maxProfit(prices):
+    min_p, profit = float('inf'), 0
+    for p in prices:
+        min_p = min(min_p, p)
+        profit = max(profit, p - min_p)
+    return profit</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Complexity</span><br>Time: O(n) | Space: O(1)</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Best time to buy and sell stock II — unlimited transactions? (sum all positive differences)<br>• Stock with cooldown? (DP with states)<br>• At most k transactions? (DP)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="strings">
+    <span class="q-index">6</span>
+    <span class="q-text">Valid Parentheses</span>
+    <div class="q-tags"><span class="q-tag">stack</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Approach</span><br>Use a stack. Push open brackets. When closing bracket found, check if top of stack is matching open.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Solution</span><br><pre>def isValid(s):
+    stack = []
+    match = {')':'(', ']':'[', '}':'{'}
+    for c in s:
+        if c in match:
+            if not stack or stack[-1] != match[c]: return False
+            stack.pop()
+        else: stack.append(c)
+    return not stack</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Complexity</span><br>Time: O(n) | Space: O(n)</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Valid parenthesis string with wildcard *? (greedy or DP)<br>• Minimum additions to make string valid? (unmatched opens + unmatched closes)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="trees">
+    <span class="q-index">7</span>
+    <span class="q-text">Binary Tree Level Order Traversal</span>
+    <div class="q-tags"><span class="q-tag">bfs</span><span class="q-tag">queue</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Approach</span><br>BFS with queue. Process all nodes at current level before moving to next. Use level size or sentinel None to track level boundaries.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Solution</span><br><pre>from collections import deque
+def levelOrder(root):
+    if not root: return []
+    res, q = [], deque([root])
+    while q:
+        level = []
+        for _ in range(len(q)):
+            node = q.popleft()
+            level.append(node.val)
+            if node.left: q.append(node.left)
+            if node.right: q.append(node.right)
+        res.append(level)
+    return res</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Complexity</span><br>Time: O(n) | Space: O(w) where w = max width</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Zigzag level order? (alternate direction each level)<br>• Right side view? (take last element of each level)<br>• Average of each level?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Adobe, Atlassian...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="arrays">
+    <span class="q-index">8</span>
+    <span class="q-text">Merge Intervals</span>
+    <div class="q-tags"><span class="q-tag">sorting</span><span class="q-tag">intervals</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">79%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Approach</span><br>Sort by start time. Merge if next interval starts ≤ current end. Extend current end to max of both.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Solution</span><br><pre>def merge(intervals):
+    intervals.sort(key=lambda x: x[0])
+    res = [intervals[0]]
+    for s, e in intervals[1:]:
+        if s &lt;= res[-1][1]: res[-1][1] = max(res[-1][1], e)
+        else: res.append([s, e])
+    return res</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Complexity</span><br>Time: O(n log n) | Space: O(n)</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Insert interval into sorted list of non-overlapping intervals?<br>• Meeting rooms — is there any conflict? (sort + check adjacent)<br>• Minimum meeting rooms needed? (heap tracking end times)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, LinkedIn, Uber, Airbnb...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="arrays">
+    <span class="q-index">9</span>
+    <span class="q-text">Spiral Matrix</span>
+    <div class="q-tags"><span class="q-tag">matrix</span><span class="q-tag">simulation</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">63%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Four boundary pointers (top/bottom/left/right), shrink after each pass.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Microsoft, Apple, Google, Amazon, Adobe</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-cicd">
+  <div class="questions-header">
+    <h3>🚀 CI/CD & DevOps</h3>
+    <span class="q-count">6 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="docker">
+    <span class="q-index">1</span>
+    <span class="q-text">Docker container vs Virtual Machine — key differences?</span>
+    <div class="q-tags"><span class="q-tag">docker</span><span class="q-tag">vm</span><span class="q-tag">container</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-high">93%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Answer</span><br><b>Virtual Machine:</b> Full OS per VM, hardware emulation via hypervisor (Type-1: bare metal, Type-2: hosted). Heavy: ~GBs, slow boot (~minutes), strong isolation.<br><b>Docker Container:</b> Shares host OS kernel, isolates via Linux namespaces (PID, NET, MNT, UTS, IPC) + cgroups for resource limits. Lightweight: ~MBs, starts in milliseconds, process-level isolation.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Differences</span><br><ul><li><b>Boot time:</b> VM ~1-2 min | Container ~100ms</li><li><b>Size:</b> VM ~GBs | Container ~MBs (shared layers)</li><li><b>Isolation:</b> VM = full kernel isolation | Container = namespace isolation (kernel shared)</li><li><b>Use case:</b> VM for multi-OS, strong isolation | Container for microservices, CI/CD</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What Linux namespaces does Docker use? (PID, NET, MNT, IPC, UTS, USER)<br>• How do cgroups limit CPU/memory in containers?<br>• What is a container runtime? (runc, containerd, CRI-O)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 CI/CD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="docker">
+    <span class="q-index">2</span>
+    <span class="q-text">How do Docker image layers work? (Union filesystem)</span>
+    <div class="q-tags"><span class="q-tag">docker</span><span class="q-tag">layers</span><span class="q-tag">overlay2</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Answer</span><br>Docker images are built as <b>read-only layers</b> stacked using a Union Filesystem (OverlayFS/AUFS). Each <code>RUN</code>, <code>COPY</code>, <code>ADD</code> instruction in a Dockerfile creates a new layer.<br><br>When a container runs, Docker adds a thin <b>read-write layer</b> on top (Copy-on-Write). Writes go to the container layer; reads search layers bottom-up.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Dockerfile Layer Example</span><br><pre>FROM ubuntu:22.04          # Layer 1: base OS
+RUN apt-get install -y java # Layer 2: java install
+COPY app.jar /app/          # Layer 3: app binary
+CMD ["java", "-jar", "/app/app.jar"]  # metadata only</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Optimization Tips</span><br><ul><li>Order layers from least to most frequently changing</li><li>Combine <code>RUN</code> commands to reduce layer count</li><li>Use <code>.dockerignore</code> to exclude build artifacts</li><li>Use multi-stage builds to discard build-time layers</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is <code>docker build --cache-from</code>?<br>• How does <code>docker squash</code> work?<br>• Difference between image and container filesystem?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 CI/CD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="pipeline">
+    <span class="q-index">3</span>
+    <span class="q-text">CI/CD pipeline stages — what should a production pipeline include?</span>
+    <div class="q-tags"><span class="q-tag">ci-cd</span><span class="q-tag">pipeline</span><span class="q-tag">stages</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Typical Pipeline</span><br><pre>1. Source  →  git push/PR triggers pipeline
+2. Build   →  compile, docker build
+3. Test    →  unit → integration → contract tests
+4. SAST    →  static analysis (SonarQube, Semgrep)
+5. Scan    →  container vulnerability scan (Trivy, Snyk)
+6. Publish →  push image to registry (ECR/GCR/DockerHub)
+7. Deploy  →  to staging (auto) → prod (gated/manual or canary)
+8. Smoke   →  health check post-deploy
+9. Notify  →  Slack/PagerDuty on failure</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">GitHub Actions Example (simplified)</span><br><pre>on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - run: docker build -t app:${{ github.sha }} .
+    - run: docker push $ECR_REPO:${{ github.sha }}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Metrics</span><br><ul><li><b>DORA:</b> Deployment Frequency, Lead Time for Changes, MTTR, Change Failure Rate</li><li>Aim: deploy multiple times/day, MTTR < 1hr</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you implement trunk-based development vs GitFlow?<br>• How do you handle database migrations in CI/CD?<br>• What is shift-left testing?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 CI/CD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="kubernetes">
+    <span class="q-index">4</span>
+    <span class="q-text">ConfigMaps vs Secrets in Kubernetes</span>
+    <div class="q-tags"><span class="q-tag">kubernetes</span><span class="q-tag">configmap</span><span class="q-tag">secrets</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">ConfigMap</span><br>Stores <b>non-sensitive</b> configuration as key-value pairs. Mounted as environment variables or volume files. Plain text in etcd.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Secret</span><br>Stores <b>sensitive data</b> (passwords, tokens, TLS certs). Base64-encoded in etcd (NOT encrypted by default). Enable encryption at rest with <code>EncryptionConfiguration</code>. Types: Opaque, kubernetes.io/tls, kubernetes.io/dockerconfigjson, etc.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Usage</span><br><pre># Mount as env
+env:
+- name: DB_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: db-secret
+      key: password
+
+# Mount as volume
+volumeMounts:
+- name: config
+  mountPath: /etc/config
+volumes:
+- name: config
+  configMap:
+    name: app-config</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Best Practices</span><br><ul><li>Use <b>external secret managers</b>: HashiCorp Vault, AWS Secrets Manager with External Secrets Operator</li><li>Never bake secrets into Docker images</li><li>RBAC: restrict Secret read access to specific ServiceAccounts</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does Vault Agent injector work?<br>• What is Sealed Secrets (Bitnami)?<br>• How do you rotate secrets without pod restart?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 CI/CD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="git">
+    <span class="q-index">5</span>
+    <span class="q-text">Git internals — rebase vs merge, when to use each</span>
+    <div class="q-tags"><span class="q-tag">git</span><span class="q-tag">rebase</span><span class="q-tag">merge</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Merge</span><br>Creates a <b>merge commit</b> that ties two branches together. Preserves full history including branch structure. Safe for shared branches — never rewrites history.<br><pre>git checkout main
+git merge feature/login
+# Creates commit: Merge branch 'feature/login'</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Rebase</span><br><b>Replays</b> commits from one branch onto another. Creates <b>linear history</b>. Rewrites commit SHAs — <b>never rebase shared/public branches</b>.<br><pre>git checkout feature/login
+git rebase main
+# Moves feature commits on top of latest main</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">When to use</span><br><ul><li><b>Merge:</b> Merging feature into main (preserves context). Shared branches.</li><li><b>Rebase:</b> Keeping feature branch up-to-date with main. Clean PR history. <code>git pull --rebase</code>.</li><li><b>Squash merge:</b> Combine all feature commits into 1 clean commit on main.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Interactive Rebase</span><br><pre>git rebase -i HEAD~3
+# Options: pick, squash, fixup, reword, drop</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is <code>git cherry-pick</code>?<br>• How do you recover from a bad rebase? (<code>git reflog</code>)<br>• What is the difference between <code>git reset</code> and <code>git revert</code>?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 CI/CD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="pipeline">
+    <span class="q-index">6</span>
+    <span class="q-text">GitHub Actions vs Jenkins vs GitLab CI — comparison</span>
+    <div class="q-tags"><span class="q-tag">github-actions</span><span class="q-tag">jenkins</span><span class="q-tag">gitlab-ci</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">GitHub Actions</span><br><ul><li>YAML workflows in <code>.github/workflows/</code></li><li>Hosted runners (GitHub-managed) or self-hosted</li><li>Marketplace: 15,000+ pre-built actions</li><li>Deep GitHub integration (PRs, issues, releases)</li><li>Pricing: free for public repos, limited minutes for private</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Jenkins</span><br><ul><li>Self-hosted, open-source. Most flexible.</li><li>Pipeline as code: <code>Jenkinsfile</code> (declarative or scripted Groovy)</li><li>Huge plugin ecosystem (1,800+ plugins)</li><li>Cons: maintenance overhead, not cloud-native</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">GitLab CI</span><br><ul><li><code>.gitlab-ci.yml</code> in repo root</li><li>Built-in: Docker registry, Kubernetes integration, security scanning</li><li>Runners: shared or self-hosted</li><li>Best for teams already on GitLab</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">When to choose</span><br><ul><li><b>GitHub Actions:</b> GitHub-hosted projects, modern cloud-native teams</li><li><b>Jenkins:</b> Legacy enterprise, complex custom pipelines</li><li><b>GitLab CI:</b> GitLab monorepo, all-in-one DevSecOps</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you cache dependencies in GitHub Actions?<br>• What is a self-hosted runner and when to use it?<br>• How does matrix strategy work for parallel jobs?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 CI/CD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-lld">
+  <div class="questions-header">
+    <h3>📐 LLD</h3>
+    <span class="q-count">6 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="machine_coding">
+    <span class="q-index">1</span>
+    <span class="q-text">Design a Parking Lot System</span>
+    <div class="q-tags"><span class="q-tag">oop</span><span class="q-tag">design-patterns</span><span class="q-tag">state-machine</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Entities & Design</span><br><ul><li><b>ParkingLot:</b> Singleton. Has multiple floors.</li><li><b>ParkingFloor:</b> Has spots of different sizes (SMALL, MEDIUM, LARGE).</li><li><b>ParkingSpot:</b> spotNumber, spotType, isAvailable, parkedVehicle.</li><li><b>Vehicle:</b> Abstract. Subtypes: Car, Bike, Truck. Has licensePlate, vehicleType.</li><li><b>Ticket:</b> ticketId, entryTime, spot. Links vehicle to spot.</li><li><b>ParkingDisplayBoard:</b> Observer — updates on spot change.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Patterns</span><br><ul><li><b>Strategy:</b> PricingStrategy — hourly, daily, per-spot-type</li><li><b>Observer:</b> DisplayBoard observes spot availability changes</li><li><b>Singleton:</b> ParkingLot instance</li><li><b>Factory:</b> VehicleFactory.create(type)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Concurrency</span><br><pre>// Thread-safe spot assignment
+public synchronized Ticket park(Vehicle v) {
+    ParkingSpot spot = findAvailableSpot(v.getType());
+    if (spot == null) throw new ParkingFullException();
+    spot.setOccupied(true);
+    return new Ticket(v, spot, LocalDateTime.now());
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you handle multiple entry/exit gates concurrently?</li><li>How do you implement reserved spots for subscribers?</li><li>How do you calculate the fee for partial hours?</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How would you add electric vehicle charging spots?<br>• How would you implement a monthly pass feature?<br>• How do you find the nearest available spot to a given entrance gate?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, Adobe...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="machine_coding">
+    <span class="q-index">2</span>
+    <span class="q-text">Design an Elevator System</span>
+    <div class="q-tags"><span class="q-tag">design-patterns</span><span class="q-tag">scheduler</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">85%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Scheduling Strategies</span><br><ul><li><b>SCAN (Elevator algorithm):</b> Go in one direction, serve all requests, reverse. Minimizes total travel.</li><li><b>LOOK:</b> Like SCAN but reverses when no more requests in current direction (doesn't go to end).</li><li><b>FCFS:</b> First come first served. Simple but suboptimal.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Design</span><br><pre>class Elevator {
+    int currentFloor; Direction dir; ElevatorState state;
+    List&lt;Request&gt; queue;  // sorted by floor
+    void addRequest(Request r) { queue.add(r); processNext(); }
+    void processNext() {
+        Request next = schedulingStrategy.pickNext(queue, currentFloor, dir);
+        moveTo(next.floor);
+    }
+}
+class ElevatorSystem {
+    List&lt;Elevator&gt; elevators;
+    void requestElevator(int floor, Direction d) {
+        Elevator best = findOptimalElevator(floor, d);  // least-travel heuristic
+        best.addRequest(new Request(floor, d));
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you handle emergency (fire) — all elevators to ground floor?</li><li>How do you optimize for a building with VIP floors?</li><li>How do you handle overweight detection?</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does this system scale to a 100-floor building with 20 elevators?<br>• What is the SSTF (Shortest Seek Time First) strategy and what is its starvation problem?<br>• How would you add a dispatch algorithm that minimizes average wait time?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Amazon, Adobe</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="machine_coding">
+    <span class="q-index">3</span>
+    <span class="q-text">Design a Library Management System</span>
+    <div class="q-tags"><span class="q-tag">oop</span><span class="q-tag">design-patterns</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Entities: Library, Book, Member, Librarian, Loan. Observer for due-date alerts. Factory for book types.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Adobe, Amazon...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="machine_coding">
+    <span class="q-index">4</span>
+    <span class="q-text">Design a Logger Framework</span>
+    <div class="q-tags"><span class="q-tag">chain-of-responsibility</span><span class="q-tag">singleton</span><span class="q-tag">observer</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Log levels (DEBUG/INFO/WARN/ERROR). Chain of Responsibility for handlers. Appenders (File/Console/Remote). Async logging.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, Adobe...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
+    <span class="q-index">5</span>
+    <span class="q-text">Design a Chess Game</span>
+    <div class="q-tags"><span class="q-tag">oop</span><span class="q-tag">strategy</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Piece hierarchy (King/Queen/Rook/Bishop/Knight/Pawn). Board, Player, Game, Move. Each piece has valid_moves().</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Apple, Adobe</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="machine_coding">
+    <span class="q-index">6</span>
+    <span class="q-text">Design a Snake and Ladder Game</span>
+    <div class="q-tags"><span class="q-tag">oop</span><span class="q-tag">simulation</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Board, Player, Dice, Snake, Ladder entities. Turn-based simulation. Simple to extend with special cells.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Amazon, Microsoft, Adobe, TCS, Infosys</span>
+    </div>
+  </div>
+</div>
+</div></div>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-links">
+      <a href="../../common/top-coding.html">Top Coding</a>
+      <a href="../../common/top-system-design.html">System Design</a>
+      <a href="../../common/top-backend.html">Backend</a>
+      <a href="../../common/top-cpp.html">C++</a>
+      <a href="../../common/top-java.html">Java</a>
+      <a href="../../common/top-go.html">Go</a>
+      <a href="../../common/top-database.html">Database</a>
+      <a href="../../common/top-concurrency.html">Concurrency</a>
+      <a href="../../common/top-os.html">OS</a>
+      <a href="../../common/top-networking.html">Networking</a>
+      <a href="../../common/top-lld.html">LLD</a>
+      <a href="../../common/top-cicd.html">CI/CD</a>
+      <a href="../../common/top-security.html">Security</a>
+      <a href="../../common/top-ml.html">ML Systems</a>
+      <a href="../../common/top-perf.html">Performance</a>
+    </div>
+    <p>Built for SDE-1 &amp; SDE-2 Backend Engineers | C++ · Java · Go · Distributed Systems</p>
+    <p style="margin-top:8px;font-size:12px;opacity:.5">Data sourced from LeetCode, Glassdoor, Blind, Reddit &amp; public interview experiences</p>
+  </div>
+</footer>
+<button id="back-to-top" title="Back to top">↑</button>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>
