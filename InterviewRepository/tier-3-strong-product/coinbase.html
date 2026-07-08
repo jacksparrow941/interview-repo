@@ -144,10 +144,10 @@
 </div><div class="tabs-bar"><div class="tabs-inner"><button class="tab-btn active" data-tab="system_design">🏗️ System Design <span style="opacity:.5;font-size:11px">(2)</span></button>
 <button class="tab-btn" data-tab="go">🐹 Go <span style="opacity:.5;font-size:11px">(17)</span></button>
 <button class="tab-btn" data-tab="security">🔒 Security <span style="opacity:.5;font-size:11px">(4)</span></button>
-<button class="tab-btn" data-tab="lld">📐 LLD <span style="opacity:.5;font-size:11px">(3)</span></button>
 <button class="tab-btn" data-tab="networking">🌐 Networking <span style="opacity:.5;font-size:11px">(11)</span></button>
 <button class="tab-btn" data-tab="cicd">🚀 CI/CD & DevOps <span style="opacity:.5;font-size:11px">(6)</span></button>
-<button class="tab-btn" data-tab="ml_systems">🤖 ML Systems <span style="opacity:.5;font-size:11px">(2)</span></button></div></div>
+<button class="tab-btn" data-tab="ml_systems">🤖 ML Systems <span style="opacity:.5;font-size:11px">(2)</span></button>
+<button class="tab-btn" data-tab="lld">📐 LLD <span style="opacity:.5;font-size:11px">(3)</span></button></div></div>
 <div class="container"><div class="tab-panel active" id="tab-system_design">
   <div class="questions-header">
     <h3>🏗️ System Design</h3>
@@ -900,141 +900,6 @@ encoder.matches(rawPassword, hash);  // timing-safe comparison</pre></div><div c
   </div>
 </div>
 </div>
-<div class="tab-panel" id="tab-lld">
-  <div class="questions-header">
-    <h3>📐 LLD</h3>
-    <span class="q-count">3 questions</span>
-  </div>
-  <div class="q-wrapper">
-  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
-    <span class="q-index">1</span>
-    <span class="q-text">Design a Sliding Window Rate Limiter (code-level)</span>
-    <div class="q-tags"><span class="q-tag">rate-limiter</span><span class="q-tag">sliding-window</span><span class="q-tag">redis</span></div>
-    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
-    <span class="q-freq freq-high">90%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Sliding Window Log Algorithm</span><br>Store timestamps of each request in a sorted set. On each request: remove old entries, count remaining, allow if below limit.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">In-Memory Thread-Safe</span><br><pre>class SlidingWindowRateLimiter {
-    private final int maxRequests;
-    private final long windowMs;
-    private final Map&lt;String, Deque&lt;Long&gt;&gt; windows = new ConcurrentHashMap&lt;&gt;();
-
-    boolean allow(String clientId) {
-        long now = System.currentTimeMillis();
-        long cutoff = now - windowMs;
-
-        Deque&lt;Long&gt; timestamps = windows.computeIfAbsent(clientId, k -&gt; new ArrayDeque&lt;&gt;());
-
-        synchronized (timestamps) {
-            // Remove expired
-            while (!timestamps.isEmpty() &amp;&amp; timestamps.peekFirst() &lt;= cutoff)
-                timestamps.pollFirst();
-            if (timestamps.size() &gt;= maxRequests) return false;
-            timestamps.addLast(now);
-            return true;
-        }
-    }
-}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Redis-based (Distributed)</span><br><pre>MULTI
-ZREMRANGEBYSCORE rate:user1 0 {window_start}
-ZCARD rate:user1
-ZADD rate:user1 {now} {request_uuid}
-EXPIRE rate:user1 {window_seconds}
-EXEC
--- Check count from ZCARD result &lt; limit</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How does sliding window differ from fixed window? (fixed window: burst at boundary)</li><li>How do you implement per-route limits vs global user limits?</li><li>What is the token bucket trade-off vs sliding window? (token bucket allows bursting)</li><li>How do you handle distributed rate limiting across 10 API servers?</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the leaky bucket algorithm?<br>• How do you rate-limit by user + endpoint combination?<br>• What is cell-based rate limiting (GCRA)?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 LLD Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
-    <span class="q-index">2</span>
-    <span class="q-text">Design a Snowflake-style Distributed ID Generator</span>
-    <div class="q-tags"><span class="q-tag">snowflake</span><span class="q-tag">distributed-id</span><span class="q-tag">epoch</span></div>
-    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
-    <span class="q-freq freq-high">88%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Twitter Snowflake Structure (64-bit)</span><br><pre>| 1 bit sign | 41 bits timestamp (ms) | 10 bits machine ID | 12 bits sequence |
-
-- Timestamp: ms since custom epoch (Jan 1, 2010)
-  → supports 2^41 ms ≈ 69 years
-- Machine ID: 10 bits → 1024 machines
-- Sequence: 12 bits → 4096 IDs/ms/machine
-
-Total: ~4 million IDs/second per machine, globally unique, sortable!</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Implementation</span><br><pre>class SnowflakeIdGenerator {
-    private final long EPOCH = 1288834974657L;  // Nov 4, 2010
-    private final long MACHINE_ID;              // 0-1023
-    private long sequence = 0;
-    private long lastTs = -1;
-
-    synchronized long nextId() {
-        long ts = System.currentTimeMillis();
-        if (ts == lastTs) {
-            sequence = (sequence + 1) &amp; 0xFFF;  // 12-bit mask
-            if (sequence == 0) ts = waitNextMs(lastTs);  // sequence exhausted
-        } else { sequence = 0; }
-        lastTs = ts;
-        return ((ts - EPOCH) &lt;&lt; 22) | (MACHINE_ID &lt;&lt; 12) | sequence;
-    }
-
-    private long waitNextMs(long ts) {
-        long now = System.currentTimeMillis();
-        while (now &lt;= ts) now = System.currentTimeMillis();
-        return now;
-    }
-}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>What happens if system clock goes backwards? (NTP clock skew) → block until clock catches up</li><li>How do you assign machine IDs in a dynamic cloud environment? (ZooKeeper ephemeral node, Redis INCR)</li><li>How would you make it monotonic across machines? (ULIDs)</li><li>Why is UUID v4 not a good database primary key? (random → B+tree fragmentation)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is ULID and how does it improve on UUID?<br>• How does Instagram's ID generation work? (PostgreSQL function + shard ID)<br>• What is the trade-off between centralized vs decentralized ID generation?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 LLD Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
-    <span class="q-index">3</span>
-    <span class="q-text">Design a Bloom Filter</span>
-    <div class="q-tags"><span class="q-tag">bloom-filter</span><span class="q-tag">probabilistic</span><span class="q-tag">bitarray</span></div>
-    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
-    <span class="q-freq freq-high">82%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">What is a Bloom Filter</span><br>Space-efficient probabilistic data structure. Answers: 'definitely not in set' OR 'probably in set'. No false negatives, configurable false positive rate.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Implementation</span><br><pre>class BloomFilter {
-    private final BitSet bits;
-    private final int numBits;
-    private final int numHashFunctions;
-
-    BloomFilter(int expectedItems, double falsePositiveRate) {
-        // Optimal bit count: -n*ln(p) / (ln2)^2
-        numBits = (int)(-expectedItems * Math.log(falsePositiveRate) / (Math.log(2)*Math.log(2)));
-        // Optimal hash count: (m/n) * ln2
-        numHashFunctions = (int)(numBits * 1.0 / expectedItems * Math.log(2));
-        bits = new BitSet(numBits);
-    }
-
-    void add(String item) {
-        for (int i = 0; i &lt; numHashFunctions; i++)
-            bits.set(Math.abs(hash(item, i)) % numBits);
-    }
-
-    boolean mightContain(String item) {
-        for (int i = 0; i &lt; numHashFunctions; i++)
-            if (!bits.get(Math.abs(hash(item, i)) % numBits)) return false;  // Definitely not
-        return true;  // Probably yes
-    }
-
-    private int hash(String s, int seed) {
-        return Objects.hash(s, seed);
-    }
-}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you calculate false positive rate given n items and m bits? (1 - e^(-kn/m))^k</li><li>Can you delete from a Bloom filter? (No — use Counting Bloom Filter instead)</li><li>What is Cuckoo filter and how does it improve on Bloom? (supports deletion, better lookup perf)</li><li>How does Cassandra use Bloom filters? (before SSTable disk lookup)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is a scalable Bloom filter?<br>• How does Redis implement Bloom filter? (RedisBloom module)<br>• What is HyperLogLog and how does it differ from Bloom filter?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 LLD Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Stripe, Databricks...</span>
-    </div>
-  </div>
-</div>
-</div>
 <div class="tab-panel" id="tab-networking">
   <div class="questions-header">
     <h3>🌐 Networking</h3>
@@ -1475,6 +1340,141 @@ Output = Attention_weights × V
     <div class="q-meta-row">
       <span class="q-meta-chip">🗓 ML Round</span>
       <span class="q-meta-chip">🏢 Google, Meta, Microsoft, Amazon, OpenAI, Databricks...</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-lld">
+  <div class="questions-header">
+    <h3>📐 LLD</h3>
+    <span class="q-count">3 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
+    <span class="q-index">1</span>
+    <span class="q-text">Design a Sliding Window Rate Limiter (code-level)</span>
+    <div class="q-tags"><span class="q-tag">rate-limiter</span><span class="q-tag">sliding-window</span><span class="q-tag">redis</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Sliding Window Log Algorithm</span><br>Store timestamps of each request in a sorted set. On each request: remove old entries, count remaining, allow if below limit.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">In-Memory Thread-Safe</span><br><pre>class SlidingWindowRateLimiter {
+    private final int maxRequests;
+    private final long windowMs;
+    private final Map&lt;String, Deque&lt;Long&gt;&gt; windows = new ConcurrentHashMap&lt;&gt;();
+
+    boolean allow(String clientId) {
+        long now = System.currentTimeMillis();
+        long cutoff = now - windowMs;
+
+        Deque&lt;Long&gt; timestamps = windows.computeIfAbsent(clientId, k -&gt; new ArrayDeque&lt;&gt;());
+
+        synchronized (timestamps) {
+            // Remove expired
+            while (!timestamps.isEmpty() &amp;&amp; timestamps.peekFirst() &lt;= cutoff)
+                timestamps.pollFirst();
+            if (timestamps.size() &gt;= maxRequests) return false;
+            timestamps.addLast(now);
+            return true;
+        }
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Redis-based (Distributed)</span><br><pre>MULTI
+ZREMRANGEBYSCORE rate:user1 0 {window_start}
+ZCARD rate:user1
+ZADD rate:user1 {now} {request_uuid}
+EXPIRE rate:user1 {window_seconds}
+EXEC
+-- Check count from ZCARD result &lt; limit</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How does sliding window differ from fixed window? (fixed window: burst at boundary)</li><li>How do you implement per-route limits vs global user limits?</li><li>What is the token bucket trade-off vs sliding window? (token bucket allows bursting)</li><li>How do you handle distributed rate limiting across 10 API servers?</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the leaky bucket algorithm?<br>• How do you rate-limit by user + endpoint combination?<br>• What is cell-based rate limiting (GCRA)?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
+    <span class="q-index">2</span>
+    <span class="q-text">Design a Snowflake-style Distributed ID Generator</span>
+    <div class="q-tags"><span class="q-tag">snowflake</span><span class="q-tag">distributed-id</span><span class="q-tag">epoch</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Twitter Snowflake Structure (64-bit)</span><br><pre>| 1 bit sign | 41 bits timestamp (ms) | 10 bits machine ID | 12 bits sequence |
+
+- Timestamp: ms since custom epoch (Jan 1, 2010)
+  → supports 2^41 ms ≈ 69 years
+- Machine ID: 10 bits → 1024 machines
+- Sequence: 12 bits → 4096 IDs/ms/machine
+
+Total: ~4 million IDs/second per machine, globally unique, sortable!</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Implementation</span><br><pre>class SnowflakeIdGenerator {
+    private final long EPOCH = 1288834974657L;  // Nov 4, 2010
+    private final long MACHINE_ID;              // 0-1023
+    private long sequence = 0;
+    private long lastTs = -1;
+
+    synchronized long nextId() {
+        long ts = System.currentTimeMillis();
+        if (ts == lastTs) {
+            sequence = (sequence + 1) &amp; 0xFFF;  // 12-bit mask
+            if (sequence == 0) ts = waitNextMs(lastTs);  // sequence exhausted
+        } else { sequence = 0; }
+        lastTs = ts;
+        return ((ts - EPOCH) &lt;&lt; 22) | (MACHINE_ID &lt;&lt; 12) | sequence;
+    }
+
+    private long waitNextMs(long ts) {
+        long now = System.currentTimeMillis();
+        while (now &lt;= ts) now = System.currentTimeMillis();
+        return now;
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>What happens if system clock goes backwards? (NTP clock skew) → block until clock catches up</li><li>How do you assign machine IDs in a dynamic cloud environment? (ZooKeeper ephemeral node, Redis INCR)</li><li>How would you make it monotonic across machines? (ULIDs)</li><li>Why is UUID v4 not a good database primary key? (random → B+tree fragmentation)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is ULID and how does it improve on UUID?<br>• How does Instagram's ID generation work? (PostgreSQL function + shard ID)<br>• What is the trade-off between centralized vs decentralized ID generation?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
+    <span class="q-index">3</span>
+    <span class="q-text">Design a Bloom Filter</span>
+    <div class="q-tags"><span class="q-tag">bloom-filter</span><span class="q-tag">probabilistic</span><span class="q-tag">bitarray</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">What is a Bloom Filter</span><br>Space-efficient probabilistic data structure. Answers: 'definitely not in set' OR 'probably in set'. No false negatives, configurable false positive rate.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Implementation</span><br><pre>class BloomFilter {
+    private final BitSet bits;
+    private final int numBits;
+    private final int numHashFunctions;
+
+    BloomFilter(int expectedItems, double falsePositiveRate) {
+        // Optimal bit count: -n*ln(p) / (ln2)^2
+        numBits = (int)(-expectedItems * Math.log(falsePositiveRate) / (Math.log(2)*Math.log(2)));
+        // Optimal hash count: (m/n) * ln2
+        numHashFunctions = (int)(numBits * 1.0 / expectedItems * Math.log(2));
+        bits = new BitSet(numBits);
+    }
+
+    void add(String item) {
+        for (int i = 0; i &lt; numHashFunctions; i++)
+            bits.set(Math.abs(hash(item, i)) % numBits);
+    }
+
+    boolean mightContain(String item) {
+        for (int i = 0; i &lt; numHashFunctions; i++)
+            if (!bits.get(Math.abs(hash(item, i)) % numBits)) return false;  // Definitely not
+        return true;  // Probably yes
+    }
+
+    private int hash(String s, int seed) {
+        return Objects.hash(s, seed);
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you calculate false positive rate given n items and m bits? (1 - e^(-kn/m))^k</li><li>Can you delete from a Bloom filter? (No — use Counting Bloom Filter instead)</li><li>What is Cuckoo filter and how does it improve on Bloom? (supports deletion, better lookup perf)</li><li>How does Cassandra use Bloom filters? (before SSTable disk lookup)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is a scalable Bloom filter?<br>• How does Redis implement Bloom filter? (RedisBloom module)<br>• What is HyperLogLog and how does it differ from Bloom filter?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Stripe, Databricks...</span>
     </div>
   </div>
 </div>

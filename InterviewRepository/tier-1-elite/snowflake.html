@@ -145,12 +145,12 @@
 <button class="tab-btn" data-tab="system_design">🏗️ System Design <span style="opacity:.5;font-size:11px">(2)</span></button>
 <button class="tab-btn" data-tab="database">🗄️ Database <span style="opacity:.5;font-size:11px">(4)</span></button>
 <button class="tab-btn" data-tab="cpp">⚙️ C++ <span style="opacity:.5;font-size:11px">(22)</span></button>
+<button class="tab-btn" data-tab="backend">🔧 Backend <span style="opacity:.5;font-size:11px">(1)</span></button>
 <button class="tab-btn" data-tab="security">🔒 Security <span style="opacity:.5;font-size:11px">(1)</span></button>
-<button class="tab-btn" data-tab="lld">📐 LLD <span style="opacity:.5;font-size:11px">(1)</span></button>
+<button class="tab-btn" data-tab="os">🖥️ OS <span style="opacity:.5;font-size:11px">(3)</span></button>
 <button class="tab-btn" data-tab="performance">⚡ Performance <span style="opacity:.5;font-size:11px">(1)</span></button>
 <button class="tab-btn" data-tab="networking">🌐 Networking <span style="opacity:.5;font-size:11px">(1)</span></button>
-<button class="tab-btn" data-tab="backend">🔧 Backend <span style="opacity:.5;font-size:11px">(1)</span></button>
-<button class="tab-btn" data-tab="os">🖥️ OS <span style="opacity:.5;font-size:11px">(3)</span></button></div></div>
+<button class="tab-btn" data-tab="lld">📐 LLD <span style="opacity:.5;font-size:11px">(1)</span></button></div></div>
 <div class="container"><div class="tab-panel active" id="tab-coding">
   <div class="questions-header">
     <h3>💻 DSA</h3>
@@ -876,6 +876,44 @@ v.push_back(42);  // no malloc!
   </div>
 </div>
 </div>
+<div class="tab-panel" id="tab-backend">
+  <div class="questions-header">
+    <h3>🔧 Backend</h3>
+    <span class="q-count">1 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="distributed">
+    <span class="q-index">1</span>
+    <span class="q-text">What is consistent hashing?</span>
+    <div class="q-tags"><span class="q-tag">consistent-hashing</span><span class="q-tag">virtual-nodes</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Consistent Hashing</span><br>Problem with naive modulo hashing: adding/removing 1 server remaps N/S keys (massive cache miss storm).<br><br><b>Ring approach:</b> Hash servers and keys to same circular space (0 to 2^32). A key is assigned to the first server found clockwise from its hash position.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Virtual Nodes</span><br>Each physical server = 100-200 virtual nodes on the ring → even distribution even with few servers. Fewer hot spots. When server added/removed: only 1/N keys remapped.<br><pre>class ConsistentHash:
+    def __init__(self, replicas=150):
+        self.ring = {}
+        self.sorted_keys = []
+        self.replicas = replicas
+
+    def add_server(self, server):
+        for i in range(self.replicas):
+            key = hash(f'{server}:{i}')
+            self.ring[key] = server
+        self.sorted_keys = sorted(self.ring)
+
+    def get_server(self, item):
+        h = hash(item)
+        for k in self.sorted_keys:
+            if h &lt;= k: return self.ring[k]
+        return self.ring[self.sorted_keys[0]]  # wrap around</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does Amazon DynamoDB use consistent hashing?<br>• What is the difference between consistent hashing and rendezvous hashing?<br>• How does virtual node count affect distribution quality?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, Uber, LinkedIn, Databricks, Snowflake...</span>
+    </div>
+  </div>
+</div>
+</div>
 <div class="tab-panel" id="tab-security">
   <div class="questions-header">
     <h3>🔒 Security</h3>
@@ -905,44 +943,56 @@ String secret = vault.read("secret/data/db-password").get("value");</pre></div><
   </div>
 </div>
 </div>
-<div class="tab-panel" id="tab-lld">
+<div class="tab-panel" id="tab-os">
   <div class="questions-header">
-    <h3>📐 LLD</h3>
-    <span class="q-count">1 questions</span>
+    <h3>🖥️ OS</h3>
+    <span class="q-count">3 questions</span>
   </div>
   <div class="q-wrapper">
-  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
+  <div class="question-item" data-difficulty="hard" data-subcategory="memory">
     <span class="q-index">1</span>
-    <span class="q-text">Design a Key-Value Store</span>
-    <div class="q-tags"><span class="q-tag">lsm-tree</span><span class="q-tag">wal</span><span class="q-tag">concurrent</span></div>
+    <span class="q-text">Virtual memory and page tables</span>
+    <div class="q-tags"><span class="q-tag">virtual-memory</span><span class="q-tag">paging</span><span class="q-tag">mmu</span></div>
     <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
     <span class="q-freq freq-high">83%</span>
   </div>
   <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Architecture</span><br><ul><li><b>MemTable:</b> In-memory sorted tree (TreeMap). Writes go here first.</li><li><b>WAL (Write-Ahead Log):</b> Append-only log for crash recovery.</li><li><b>SSTable:</b> Immutable sorted file flushed from MemTable when full.</li><li><b>Compaction:</b> Background merge of SSTables (remove tombstones, deduplicate).</li><li><b>Bloom Filter:</b> Per-SSTable to skip files that don't contain a key (fast miss detection).</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Core Operations</span><br><pre>class KVStore {
-    TreeMap&lt;String,String&gt; memTable = new TreeMap&lt;&gt;();
-    List&lt;SSTable&gt; ssTables = new ArrayList&lt;&gt;();
-    WriteAheadLog wal;
-    final int MEM_TABLE_LIMIT = 1_000_000;
-
-    synchronized void put(String key, String value) {
-        wal.append(key, value);
-        memTable.put(key, value);
-        if (memTable.size() &gt;= MEM_TABLE_LIMIT) flush();
-    }
-
-    String get(String key) {
-        if (memTable.containsKey(key)) return memTable.get(key);
-        for (int i = ssTables.size()-1; i &gt;= 0; i--) {
-            if (ssTables.get(i).bloomFilter.mightContain(key))
-                return ssTables.get(i).get(key);  // binary search in sorted file
-        }
-        return null;
-    }
-}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you implement TTL (key expiry)?</li><li>How does compaction prevent unbounded disk growth?</li><li>How do you implement range queries efficiently?</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does RocksDB differ from a simple LSM implementation?<br>• What is leveled vs size-tiered compaction strategy?<br>• How do you implement atomic multi-key transactions?</div></div></div>
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Page Replacement Algorithms</span><br><ul><li><b>OPT (Optimal):</b> Replace page that won't be used for longest time. Theoretical baseline.</li><li><b>FIFO:</b> Evict oldest loaded page. Simple. Belady's anomaly (more frames → more faults).</li><li><b>LRU:</b> Evict least recently used. Approximates OPT well. Expensive exact tracking.</li><li><b>Clock (LRU approximation):</b> Circular list. Reference bit: on access set to 1, on clock hand pass clear to 0, evict when 0. Linux uses clock-PRO.</li><li><b>LFU:</b> Evict least frequently used. Doesn't adapt to recent access pattern changes.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Working Set</span><br>Set of pages currently needed by process. If working set &gt; available frames → thrashing (process spends more time swapping than executing). OS monitors WSS, suspends processes if needed.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is Belady's anomaly? (FIFO gets more page faults with more frames)<br>• How does Linux implement page replacement? (kswapd, active/inactive lists)<br>• What is the difference between paging and segmentation?</div></div></div>
     <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 LLD Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Databricks, Snowflake</span>
+      <span class="q-meta-chip">🗓 OS Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Apple, Nvidia, VMware, Cisco...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="memory">
+    <span class="q-index">2</span>
+    <span class="q-text">Memory-mapped files</span>
+    <div class="q-tags"><span class="q-tag">mmap</span><span class="q-tag">shared-memory</span><span class="q-tag">ipc</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">72%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Map file into virtual address space. OS pages on demand. Used in IPC, databases (fast I/O).</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 OS Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Databricks, Snowflake</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="hardware">
+    <span class="q-index">3</span>
+    <span class="q-text">NUMA (Non-Uniform Memory Access) — impact on performance</span>
+    <div class="q-tags"><span class="q-tag">numa</span><span class="q-tag">memory-locality</span><span class="q-tag">cpu-affinity</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">72%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">NUMA Architecture</span><br>Multi-socket servers: each CPU socket has its own local DRAM. Accessing local memory: fast (~80ns). Accessing remote memory (other socket's DRAM): slow (~150ns, ~2x). OS/hardware provides NUMA node topology.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">NUMA Problems</span><br><ul><li>Thread on node 0 allocates, migrated to node 1 → remote memory access</li><li>False sharing: different threads on different NUMA nodes modify same cache line → cache coherence traffic</li><li>Memory-intensive apps (databases, ML) severely impacted</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Mitigation</span><br><ul><li><code>numactl --membind=0 --cpubind=0 ./app</code> — bind to single NUMA node</li><li><code>numactl --interleave=all</code> — round-robin allocation across nodes (reduces hot-spots)</li><li>NUMA-aware memory allocators (jemalloc, tcmalloc have NUMA support)</li><li>Database NUMA awareness: MySQL/PostgreSQL can bind buffer pool per node</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache Hierarchy</span><br>L1 (4 cycles, 32KB per core) → L2 (12 cycles, 256KB per core) → L3 (30-50 cycles, shared per socket, 32-64MB) → DRAM (~200 cycles) → Remote DRAM (~400 cycles) → NVMe SSD (~100μs) → HDD (~10ms).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is cache line size and how does false sharing occur?<br>• How does CPU affinity (<code>taskset</code>) help performance?<br>• What is NUMA balancing in Linux?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Databricks, Snowflake, Apple</span>
     </div>
   </div>
 </div>
@@ -1005,94 +1055,44 @@ struct PaddedCounter {
   </div>
 </div>
 </div>
-<div class="tab-panel" id="tab-backend">
+<div class="tab-panel" id="tab-lld">
   <div class="questions-header">
-    <h3>🔧 Backend</h3>
+    <h3>📐 LLD</h3>
     <span class="q-count">1 questions</span>
   </div>
   <div class="q-wrapper">
-  <div class="question-item" data-difficulty="hard" data-subcategory="distributed">
+  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
     <span class="q-index">1</span>
-    <span class="q-text">What is consistent hashing?</span>
-    <div class="q-tags"><span class="q-tag">consistent-hashing</span><span class="q-tag">virtual-nodes</span></div>
-    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
-    <span class="q-freq freq-high">86%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Consistent Hashing</span><br>Problem with naive modulo hashing: adding/removing 1 server remaps N/S keys (massive cache miss storm).<br><br><b>Ring approach:</b> Hash servers and keys to same circular space (0 to 2^32). A key is assigned to the first server found clockwise from its hash position.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Virtual Nodes</span><br>Each physical server = 100-200 virtual nodes on the ring → even distribution even with few servers. Fewer hot spots. When server added/removed: only 1/N keys remapped.<br><pre>class ConsistentHash:
-    def __init__(self, replicas=150):
-        self.ring = {}
-        self.sorted_keys = []
-        self.replicas = replicas
-
-    def add_server(self, server):
-        for i in range(self.replicas):
-            key = hash(f'{server}:{i}')
-            self.ring[key] = server
-        self.sorted_keys = sorted(self.ring)
-
-    def get_server(self, item):
-        h = hash(item)
-        for k in self.sorted_keys:
-            if h &lt;= k: return self.ring[k]
-        return self.ring[self.sorted_keys[0]]  # wrap around</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does Amazon DynamoDB use consistent hashing?<br>• What is the difference between consistent hashing and rendezvous hashing?<br>• How does virtual node count affect distribution quality?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 System Design</span>
-      <span class="q-meta-chip">🏢 Google, Amazon, Uber, LinkedIn, Databricks, Snowflake...</span>
-    </div>
-  </div>
-</div>
-</div>
-<div class="tab-panel" id="tab-os">
-  <div class="questions-header">
-    <h3>🖥️ OS</h3>
-    <span class="q-count">3 questions</span>
-  </div>
-  <div class="q-wrapper">
-  <div class="question-item" data-difficulty="hard" data-subcategory="memory">
-    <span class="q-index">1</span>
-    <span class="q-text">Virtual memory and page tables</span>
-    <div class="q-tags"><span class="q-tag">virtual-memory</span><span class="q-tag">paging</span><span class="q-tag">mmu</span></div>
+    <span class="q-text">Design a Key-Value Store</span>
+    <div class="q-tags"><span class="q-tag">lsm-tree</span><span class="q-tag">wal</span><span class="q-tag">concurrent</span></div>
     <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
     <span class="q-freq freq-high">83%</span>
   </div>
   <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Page Replacement Algorithms</span><br><ul><li><b>OPT (Optimal):</b> Replace page that won't be used for longest time. Theoretical baseline.</li><li><b>FIFO:</b> Evict oldest loaded page. Simple. Belady's anomaly (more frames → more faults).</li><li><b>LRU:</b> Evict least recently used. Approximates OPT well. Expensive exact tracking.</li><li><b>Clock (LRU approximation):</b> Circular list. Reference bit: on access set to 1, on clock hand pass clear to 0, evict when 0. Linux uses clock-PRO.</li><li><b>LFU:</b> Evict least frequently used. Doesn't adapt to recent access pattern changes.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Working Set</span><br>Set of pages currently needed by process. If working set &gt; available frames → thrashing (process spends more time swapping than executing). OS monitors WSS, suspends processes if needed.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is Belady's anomaly? (FIFO gets more page faults with more frames)<br>• How does Linux implement page replacement? (kswapd, active/inactive lists)<br>• What is the difference between paging and segmentation?</div></div></div>
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Architecture</span><br><ul><li><b>MemTable:</b> In-memory sorted tree (TreeMap). Writes go here first.</li><li><b>WAL (Write-Ahead Log):</b> Append-only log for crash recovery.</li><li><b>SSTable:</b> Immutable sorted file flushed from MemTable when full.</li><li><b>Compaction:</b> Background merge of SSTables (remove tombstones, deduplicate).</li><li><b>Bloom Filter:</b> Per-SSTable to skip files that don't contain a key (fast miss detection).</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Core Operations</span><br><pre>class KVStore {
+    TreeMap&lt;String,String&gt; memTable = new TreeMap&lt;&gt;();
+    List&lt;SSTable&gt; ssTables = new ArrayList&lt;&gt;();
+    WriteAheadLog wal;
+    final int MEM_TABLE_LIMIT = 1_000_000;
+
+    synchronized void put(String key, String value) {
+        wal.append(key, value);
+        memTable.put(key, value);
+        if (memTable.size() &gt;= MEM_TABLE_LIMIT) flush();
+    }
+
+    String get(String key) {
+        if (memTable.containsKey(key)) return memTable.get(key);
+        for (int i = ssTables.size()-1; i &gt;= 0; i--) {
+            if (ssTables.get(i).bloomFilter.mightContain(key))
+                return ssTables.get(i).get(key);  // binary search in sorted file
+        }
+        return null;
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you implement TTL (key expiry)?</li><li>How does compaction prevent unbounded disk growth?</li><li>How do you implement range queries efficiently?</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does RocksDB differ from a simple LSM implementation?<br>• What is leveled vs size-tiered compaction strategy?<br>• How do you implement atomic multi-key transactions?</div></div></div>
     <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 OS Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Apple, Nvidia, VMware, Cisco...</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="medium" data-subcategory="memory">
-    <span class="q-index">2</span>
-    <span class="q-text">Memory-mapped files</span>
-    <div class="q-tags"><span class="q-tag">mmap</span><span class="q-tag">shared-memory</span><span class="q-tag">ipc</span></div>
-    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
-    <span class="q-freq freq-med">72%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer">Map file into virtual address space. OS pages on demand. Used in IPC, databases (fast I/O).</div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 OS Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Databricks, Snowflake</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="hard" data-subcategory="hardware">
-    <span class="q-index">3</span>
-    <span class="q-text">NUMA (Non-Uniform Memory Access) — impact on performance</span>
-    <div class="q-tags"><span class="q-tag">numa</span><span class="q-tag">memory-locality</span><span class="q-tag">cpu-affinity</span></div>
-    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
-    <span class="q-freq freq-med">72%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">NUMA Architecture</span><br>Multi-socket servers: each CPU socket has its own local DRAM. Accessing local memory: fast (~80ns). Accessing remote memory (other socket's DRAM): slow (~150ns, ~2x). OS/hardware provides NUMA node topology.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">NUMA Problems</span><br><ul><li>Thread on node 0 allocates, migrated to node 1 → remote memory access</li><li>False sharing: different threads on different NUMA nodes modify same cache line → cache coherence traffic</li><li>Memory-intensive apps (databases, ML) severely impacted</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Mitigation</span><br><ul><li><code>numactl --membind=0 --cpubind=0 ./app</code> — bind to single NUMA node</li><li><code>numactl --interleave=all</code> — round-robin allocation across nodes (reduces hot-spots)</li><li>NUMA-aware memory allocators (jemalloc, tcmalloc have NUMA support)</li><li>Database NUMA awareness: MySQL/PostgreSQL can bind buffer pool per node</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache Hierarchy</span><br>L1 (4 cycles, 32KB per core) → L2 (12 cycles, 256KB per core) → L3 (30-50 cycles, shared per socket, 32-64MB) → DRAM (~200 cycles) → Remote DRAM (~400 cycles) → NVMe SSD (~100μs) → HDD (~10ms).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is cache line size and how does false sharing occur?<br>• How does CPU affinity (<code>taskset</code>) help performance?<br>• What is NUMA balancing in Linux?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Coding Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Databricks, Snowflake, Apple</span>
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Databricks, Snowflake</span>
     </div>
   </div>
 </div>

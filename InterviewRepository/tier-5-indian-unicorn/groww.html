@@ -143,11 +143,11 @@
 </div></div>
 </div><div class="tabs-bar"><div class="tabs-inner"><button class="tab-btn active" data-tab="system_design">🏗️ System Design <span style="opacity:.5;font-size:11px">(1)</span></button>
 <button class="tab-btn" data-tab="database">🗄️ Database <span style="opacity:.5;font-size:11px">(9)</span></button>
+<button class="tab-btn" data-tab="behavioral">💬 Behavioral <span style="opacity:.5;font-size:11px">(4)</span></button>
 <button class="tab-btn" data-tab="security">🔒 Security <span style="opacity:.5;font-size:11px">(1)</span></button>
-<button class="tab-btn" data-tab="lld">📐 LLD <span style="opacity:.5;font-size:11px">(2)</span></button>
 <button class="tab-btn" data-tab="cicd">🚀 CI/CD & DevOps <span style="opacity:.5;font-size:11px">(6)</span></button>
 <button class="tab-btn" data-tab="ml_systems">🤖 ML Systems <span style="opacity:.5;font-size:11px">(1)</span></button>
-<button class="tab-btn" data-tab="behavioral">💬 Behavioral <span style="opacity:.5;font-size:11px">(4)</span></button></div></div>
+<button class="tab-btn" data-tab="lld">📐 LLD <span style="opacity:.5;font-size:11px">(2)</span></button></div></div>
 <div class="container"><div class="tab-panel active" id="tab-system_design">
   <div class="questions-header">
     <h3>🏗️ System Design</h3>
@@ -378,6 +378,81 @@ COMMIT;
   </div>
 </div>
 </div>
+<div class="tab-panel" id="tab-behavioral">
+  <div class="questions-header">
+    <h3>💬 Behavioral</h3>
+    <span class="q-count">4 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="design">
+    <span class="q-index">1</span>
+    <span class="q-text">Tell me about the most complex system you designed</span>
+    <div class="q-tags"><span class="q-tag">system-design</span><span class="q-tag">complexity</span><span class="q-tag">scale</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Use STAR. Focus on scale challenges, trade-offs made, alternatives considered, outcome metrics.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Behavioral Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="failure">
+    <span class="q-index">2</span>
+    <span class="q-text">Describe your biggest technical failure and what you learned</span>
+    <div class="q-tags"><span class="q-tag">ownership</span><span class="q-tag">learning</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">85%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">How to Answer a Failure Question</span><br>Interviewers want to see: <b>genuine reflection</b>, not a humble-brag. Choose a real technical failure with real impact. Do NOT say 'I work too hard' or choose trivial failures.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Strong Answer Framework</span><br><pre>1. Context: What was the failure? (missed deadline, data loss, wrong architecture choice)
+2. My specific contribution to the failure
+3. What happened when it went wrong (measurable impact)
+4. How I responded (owned it, fixed it)
+5. What I CONCRETELY changed afterward (new process, test added, design review)
+6. What I would do differently today</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Example Angles</span><br><ul><li>Chose wrong tech stack → had to migrate → cost N weeks. Learned: POC + load test before committing.</li><li>Missed an edge case in prod → data corruption for 500 users. Learned: chaos testing, invariant checks.</li><li>Ignored a code reviewer's concern → led to security issue. Learned: never dismiss security feedback without data.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How have you changed your approach to prevent similar failures?<br>• How did your team react to the failure?<br>• What would you tell a junior engineer who just made the same mistake?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Behavioral Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="growth">
+    <span class="q-index">3</span>
+    <span class="q-text">Describe a time you had to learn a new technology quickly</span>
+    <div class="q-tags"><span class="q-tag">learning</span><span class="q-tag">adaptability</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Show initiative, structured learning approach, how you applied it, and what you'd do differently.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Behavioral Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="leadership">
+    <span class="q-index">4</span>
+    <span class="q-text">Tell me about a time you improved a team's engineering process</span>
+    <div class="q-tags"><span class="q-tag">leadership</span><span class="q-tag">process-improvement</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Show initiative. Metrics before/after. Got buy-in. Made it stick with documentation and ownership.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Behavioral Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+</div>
 <div class="tab-panel" id="tab-security">
   <div class="questions-header">
     <h3>🔒 Security</h3>
@@ -405,98 +480,6 @@ encoder.matches(rawPassword, hash);  // timing-safe comparison</pre></div><div c
     <div class="q-meta-row">
       <span class="q-meta-chip">🗓 Security Round</span>
       <span class="q-meta-chip">🏢 Stripe, PayPal, Razorpay, PhonePe, CRED, Groww...</span>
-    </div>
-  </div>
-</div>
-</div>
-<div class="tab-panel" id="tab-lld">
-  <div class="questions-header">
-    <h3>📐 LLD</h3>
-    <span class="q-count">2 questions</span>
-  </div>
-  <div class="q-wrapper">
-  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
-    <span class="q-index">1</span>
-    <span class="q-text">Design a Sliding Window Rate Limiter (code-level)</span>
-    <div class="q-tags"><span class="q-tag">rate-limiter</span><span class="q-tag">sliding-window</span><span class="q-tag">redis</span></div>
-    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
-    <span class="q-freq freq-high">90%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Sliding Window Log Algorithm</span><br>Store timestamps of each request in a sorted set. On each request: remove old entries, count remaining, allow if below limit.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">In-Memory Thread-Safe</span><br><pre>class SlidingWindowRateLimiter {
-    private final int maxRequests;
-    private final long windowMs;
-    private final Map&lt;String, Deque&lt;Long&gt;&gt; windows = new ConcurrentHashMap&lt;&gt;();
-
-    boolean allow(String clientId) {
-        long now = System.currentTimeMillis();
-        long cutoff = now - windowMs;
-
-        Deque&lt;Long&gt; timestamps = windows.computeIfAbsent(clientId, k -&gt; new ArrayDeque&lt;&gt;());
-
-        synchronized (timestamps) {
-            // Remove expired
-            while (!timestamps.isEmpty() &amp;&amp; timestamps.peekFirst() &lt;= cutoff)
-                timestamps.pollFirst();
-            if (timestamps.size() &gt;= maxRequests) return false;
-            timestamps.addLast(now);
-            return true;
-        }
-    }
-}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Redis-based (Distributed)</span><br><pre>MULTI
-ZREMRANGEBYSCORE rate:user1 0 {window_start}
-ZCARD rate:user1
-ZADD rate:user1 {now} {request_uuid}
-EXPIRE rate:user1 {window_seconds}
-EXEC
--- Check count from ZCARD result &lt; limit</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How does sliding window differ from fixed window? (fixed window: burst at boundary)</li><li>How do you implement per-route limits vs global user limits?</li><li>What is the token bucket trade-off vs sliding window? (token bucket allows bursting)</li><li>How do you handle distributed rate limiting across 10 API servers?</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the leaky bucket algorithm?<br>• How do you rate-limit by user + endpoint combination?<br>• What is cell-based rate limiting (GCRA)?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 LLD Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
-    <span class="q-index">2</span>
-    <span class="q-text">Design a Snowflake-style Distributed ID Generator</span>
-    <div class="q-tags"><span class="q-tag">snowflake</span><span class="q-tag">distributed-id</span><span class="q-tag">epoch</span></div>
-    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
-    <span class="q-freq freq-high">88%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Twitter Snowflake Structure (64-bit)</span><br><pre>| 1 bit sign | 41 bits timestamp (ms) | 10 bits machine ID | 12 bits sequence |
-
-- Timestamp: ms since custom epoch (Jan 1, 2010)
-  → supports 2^41 ms ≈ 69 years
-- Machine ID: 10 bits → 1024 machines
-- Sequence: 12 bits → 4096 IDs/ms/machine
-
-Total: ~4 million IDs/second per machine, globally unique, sortable!</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Implementation</span><br><pre>class SnowflakeIdGenerator {
-    private final long EPOCH = 1288834974657L;  // Nov 4, 2010
-    private final long MACHINE_ID;              // 0-1023
-    private long sequence = 0;
-    private long lastTs = -1;
-
-    synchronized long nextId() {
-        long ts = System.currentTimeMillis();
-        if (ts == lastTs) {
-            sequence = (sequence + 1) &amp; 0xFFF;  // 12-bit mask
-            if (sequence == 0) ts = waitNextMs(lastTs);  // sequence exhausted
-        } else { sequence = 0; }
-        lastTs = ts;
-        return ((ts - EPOCH) &lt;&lt; 22) | (MACHINE_ID &lt;&lt; 12) | sequence;
-    }
-
-    private long waitNextMs(long ts) {
-        long now = System.currentTimeMillis();
-        while (now &lt;= ts) now = System.currentTimeMillis();
-        return now;
-    }
-}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>What happens if system clock goes backwards? (NTP clock skew) → block until clock catches up</li><li>How do you assign machine IDs in a dynamic cloud environment? (ZooKeeper ephemeral node, Redis INCR)</li><li>How would you make it monotonic across machines? (ULIDs)</li><li>Why is UUID v4 not a good database primary key? (random → B+tree fragmentation)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is ULID and how does it improve on UUID?<br>• How does Instagram's ID generation work? (PostgreSQL function + shard ID)<br>• What is the trade-off between centralized vs decentralized ID generation?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 LLD Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
     </div>
   </div>
 </div>
@@ -651,76 +634,93 @@ helm template ./chart  # render YAML without installing</pre></div><div class="a
   </div>
 </div>
 </div>
-<div class="tab-panel" id="tab-behavioral">
+<div class="tab-panel" id="tab-lld">
   <div class="questions-header">
-    <h3>💬 Behavioral</h3>
-    <span class="q-count">4 questions</span>
+    <h3>📐 LLD</h3>
+    <span class="q-count">2 questions</span>
   </div>
   <div class="q-wrapper">
-  <div class="question-item" data-difficulty="hard" data-subcategory="design">
+  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
     <span class="q-index">1</span>
-    <span class="q-text">Tell me about the most complex system you designed</span>
-    <div class="q-tags"><span class="q-tag">system-design</span><span class="q-tag">complexity</span><span class="q-tag">scale</span></div>
+    <span class="q-text">Design a Sliding Window Rate Limiter (code-level)</span>
+    <div class="q-tags"><span class="q-tag">rate-limiter</span><span class="q-tag">sliding-window</span><span class="q-tag">redis</span></div>
     <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
-    <span class="q-freq freq-high">86%</span>
+    <span class="q-freq freq-high">90%</span>
   </div>
   <div class="question-expand">
-    <div class="q-answer">Use STAR. Focus on scale challenges, trade-offs made, alternatives considered, outcome metrics.</div>
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Sliding Window Log Algorithm</span><br>Store timestamps of each request in a sorted set. On each request: remove old entries, count remaining, allow if below limit.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">In-Memory Thread-Safe</span><br><pre>class SlidingWindowRateLimiter {
+    private final int maxRequests;
+    private final long windowMs;
+    private final Map&lt;String, Deque&lt;Long&gt;&gt; windows = new ConcurrentHashMap&lt;&gt;();
+
+    boolean allow(String clientId) {
+        long now = System.currentTimeMillis();
+        long cutoff = now - windowMs;
+
+        Deque&lt;Long&gt; timestamps = windows.computeIfAbsent(clientId, k -&gt; new ArrayDeque&lt;&gt;());
+
+        synchronized (timestamps) {
+            // Remove expired
+            while (!timestamps.isEmpty() &amp;&amp; timestamps.peekFirst() &lt;= cutoff)
+                timestamps.pollFirst();
+            if (timestamps.size() &gt;= maxRequests) return false;
+            timestamps.addLast(now);
+            return true;
+        }
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Redis-based (Distributed)</span><br><pre>MULTI
+ZREMRANGEBYSCORE rate:user1 0 {window_start}
+ZCARD rate:user1
+ZADD rate:user1 {now} {request_uuid}
+EXPIRE rate:user1 {window_seconds}
+EXEC
+-- Check count from ZCARD result &lt; limit</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How does sliding window differ from fixed window? (fixed window: burst at boundary)</li><li>How do you implement per-route limits vs global user limits?</li><li>What is the token bucket trade-off vs sliding window? (token bucket allows bursting)</li><li>How do you handle distributed rate limiting across 10 API servers?</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the leaky bucket algorithm?<br>• How do you rate-limit by user + endpoint combination?<br>• What is cell-based rate limiting (GCRA)?</div></div></div>
     <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Behavioral Round</span>
+      <span class="q-meta-chip">🗓 LLD Round</span>
       <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
     </div>
   </div>
 </div>
 <div class="q-wrapper">
-  <div class="question-item" data-difficulty="medium" data-subcategory="failure">
+  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
     <span class="q-index">2</span>
-    <span class="q-text">Describe your biggest technical failure and what you learned</span>
-    <div class="q-tags"><span class="q-tag">ownership</span><span class="q-tag">learning</span></div>
-    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
-    <span class="q-freq freq-high">85%</span>
+    <span class="q-text">Design a Snowflake-style Distributed ID Generator</span>
+    <div class="q-tags"><span class="q-tag">snowflake</span><span class="q-tag">distributed-id</span><span class="q-tag">epoch</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">88%</span>
   </div>
   <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">How to Answer a Failure Question</span><br>Interviewers want to see: <b>genuine reflection</b>, not a humble-brag. Choose a real technical failure with real impact. Do NOT say 'I work too hard' or choose trivial failures.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Strong Answer Framework</span><br><pre>1. Context: What was the failure? (missed deadline, data loss, wrong architecture choice)
-2. My specific contribution to the failure
-3. What happened when it went wrong (measurable impact)
-4. How I responded (owned it, fixed it)
-5. What I CONCRETELY changed afterward (new process, test added, design review)
-6. What I would do differently today</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Example Angles</span><br><ul><li>Chose wrong tech stack → had to migrate → cost N weeks. Learned: POC + load test before committing.</li><li>Missed an edge case in prod → data corruption for 500 users. Learned: chaos testing, invariant checks.</li><li>Ignored a code reviewer's concern → led to security issue. Learned: never dismiss security feedback without data.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How have you changed your approach to prevent similar failures?<br>• How did your team react to the failure?<br>• What would you tell a junior engineer who just made the same mistake?</div></div></div>
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Twitter Snowflake Structure (64-bit)</span><br><pre>| 1 bit sign | 41 bits timestamp (ms) | 10 bits machine ID | 12 bits sequence |
+
+- Timestamp: ms since custom epoch (Jan 1, 2010)
+  → supports 2^41 ms ≈ 69 years
+- Machine ID: 10 bits → 1024 machines
+- Sequence: 12 bits → 4096 IDs/ms/machine
+
+Total: ~4 million IDs/second per machine, globally unique, sortable!</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Implementation</span><br><pre>class SnowflakeIdGenerator {
+    private final long EPOCH = 1288834974657L;  // Nov 4, 2010
+    private final long MACHINE_ID;              // 0-1023
+    private long sequence = 0;
+    private long lastTs = -1;
+
+    synchronized long nextId() {
+        long ts = System.currentTimeMillis();
+        if (ts == lastTs) {
+            sequence = (sequence + 1) &amp; 0xFFF;  // 12-bit mask
+            if (sequence == 0) ts = waitNextMs(lastTs);  // sequence exhausted
+        } else { sequence = 0; }
+        lastTs = ts;
+        return ((ts - EPOCH) &lt;&lt; 22) | (MACHINE_ID &lt;&lt; 12) | sequence;
+    }
+
+    private long waitNextMs(long ts) {
+        long now = System.currentTimeMillis();
+        while (now &lt;= ts) now = System.currentTimeMillis();
+        return now;
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>What happens if system clock goes backwards? (NTP clock skew) → block until clock catches up</li><li>How do you assign machine IDs in a dynamic cloud environment? (ZooKeeper ephemeral node, Redis INCR)</li><li>How would you make it monotonic across machines? (ULIDs)</li><li>Why is UUID v4 not a good database primary key? (random → B+tree fragmentation)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is ULID and how does it improve on UUID?<br>• How does Instagram's ID generation work? (PostgreSQL function + shard ID)<br>• What is the trade-off between centralized vs decentralized ID generation?</div></div></div>
     <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Behavioral Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="medium" data-subcategory="growth">
-    <span class="q-index">3</span>
-    <span class="q-text">Describe a time you had to learn a new technology quickly</span>
-    <div class="q-tags"><span class="q-tag">learning</span><span class="q-tag">adaptability</span></div>
-    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
-    <span class="q-freq freq-high">82%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer">Show initiative, structured learning approach, how you applied it, and what you'd do differently.</div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Behavioral Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="medium" data-subcategory="leadership">
-    <span class="q-index">4</span>
-    <span class="q-text">Tell me about a time you improved a team's engineering process</span>
-    <div class="q-tags"><span class="q-tag">leadership</span><span class="q-tag">process-improvement</span></div>
-    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
-    <span class="q-freq freq-high">80%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer">Show initiative. Metrics before/after. Got buy-in. Made it stick with documentation and ownership.</div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Behavioral Round</span>
+      <span class="q-meta-chip">🗓 LLD Round</span>
       <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
     </div>
   </div>

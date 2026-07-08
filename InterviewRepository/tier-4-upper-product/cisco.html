@@ -141,9 +141,9 @@
 <button class="tab-btn" data-tab="cpp">⚙️ C++ <span style="opacity:.5;font-size:11px">(15)</span></button>
 <button class="tab-btn" data-tab="os">🖥️ OS <span style="opacity:.5;font-size:11px">(3)</span></button>
 <button class="tab-btn" data-tab="security">🔒 Security <span style="opacity:.5;font-size:11px">(1)</span></button>
-<button class="tab-btn" data-tab="lld">📐 LLD <span style="opacity:.5;font-size:11px">(2)</span></button>
 <button class="tab-btn" data-tab="performance">⚡ Performance <span style="opacity:.5;font-size:11px">(1)</span></button>
-<button class="tab-btn" data-tab="concurrency">⚡ Concurrency <span style="opacity:.5;font-size:11px">(1)</span></button></div></div>
+<button class="tab-btn" data-tab="concurrency">⚡ Concurrency <span style="opacity:.5;font-size:11px">(1)</span></button>
+<button class="tab-btn" data-tab="lld">📐 LLD <span style="opacity:.5;font-size:11px">(2)</span></button></div></div>
 <div class="container"><div class="tab-panel active" id="tab-networking">
   <div class="questions-header">
     <h3>🌐 Networking</h3>
@@ -728,44 +728,6 @@ D d; d.x = 5;         // OK: unambiguous</pre></div><div class="answer-section" 
   </div>
 </div>
 </div>
-<div class="tab-panel" id="tab-lld">
-  <div class="questions-header">
-    <h3>📐 LLD</h3>
-    <span class="q-count">2 questions</span>
-  </div>
-  <div class="q-wrapper">
-  <div class="question-item" data-difficulty="medium" data-subcategory="machine_coding">
-    <span class="q-index">1</span>
-    <span class="q-text">Design a Vending Machine</span>
-    <div class="q-tags"><span class="q-tag">state-machine</span><span class="q-tag">design-patterns</span></div>
-    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
-    <span class="q-freq freq-high">82%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer">States: Idle→HasMoney→SelectProduct→Dispensing→GiveChange. Strategy for payment. State pattern.</div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 LLD Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Oracle, Cisco</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="medium" data-subcategory="machine_coding">
-    <span class="q-index">2</span>
-    <span class="q-text">Design a Traffic Light System</span>
-    <div class="q-tags"><span class="q-tag">state-machine</span><span class="q-tag">observer</span></div>
-    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
-    <span class="q-freq freq-med">75%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer">State machine per light: Red→Green→Yellow→Red. Timer triggers transitions. Observer notifies connected intersections.</div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 LLD Round</span>
-      <span class="q-meta-chip">🏢 Cisco, Google, Uber, Amazon</span>
-    </div>
-  </div>
-</div>
-</div>
 <div class="tab-panel" id="tab-performance">
   <div class="questions-header">
     <h3>⚡ Performance</h3>
@@ -820,6 +782,44 @@ struct PaddedCounter {
     <div class="q-meta-row">
       <span class="q-meta-chip">🗓 Concurrency Round</span>
       <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Cisco, VMware...</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-lld">
+  <div class="questions-header">
+    <h3>📐 LLD</h3>
+    <span class="q-count">2 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="machine_coding">
+    <span class="q-index">1</span>
+    <span class="q-text">Design a Vending Machine</span>
+    <div class="q-tags"><span class="q-tag">state-machine</span><span class="q-tag">design-patterns</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">States: Idle→HasMoney→SelectProduct→Dispensing→GiveChange. Strategy for payment. State pattern.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Oracle, Cisco</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="machine_coding">
+    <span class="q-index">2</span>
+    <span class="q-text">Design a Traffic Light System</span>
+    <div class="q-tags"><span class="q-tag">state-machine</span><span class="q-tag">observer</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">75%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">State machine per light: Red→Green→Yellow→Red. Timer triggers transitions. Observer notifies connected intersections.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Cisco, Google, Uber, Amazon</span>
     </div>
   </div>
 </div>

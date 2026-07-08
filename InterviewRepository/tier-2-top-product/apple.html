@@ -145,8 +145,8 @@
 <button class="tab-btn" data-tab="cpp">⚙️ C++ <span style="opacity:.5;font-size:11px">(20)</span></button>
 <button class="tab-btn" data-tab="os">🖥️ OS <span style="opacity:.5;font-size:11px">(15)</span></button>
 <button class="tab-btn" data-tab="concurrency">⚡ Concurrency <span style="opacity:.5;font-size:11px">(2)</span></button>
-<button class="tab-btn" data-tab="lld">📐 LLD <span style="opacity:.5;font-size:11px">(2)</span></button>
-<button class="tab-btn" data-tab="performance">⚡ Performance <span style="opacity:.5;font-size:11px">(1)</span></button></div></div>
+<button class="tab-btn" data-tab="performance">⚡ Performance <span style="opacity:.5;font-size:11px">(1)</span></button>
+<button class="tab-btn" data-tab="lld">📐 LLD <span style="opacity:.5;font-size:11px">(2)</span></button></div></div>
 <div class="container"><div class="tab-panel active" id="tab-coding">
   <div class="questions-header">
     <h3>💻 DSA</h3>
@@ -991,6 +991,42 @@ atomic.AddInt64(&amp;counter, 1)
   </div>
 </div>
 </div>
+<div class="tab-panel" id="tab-performance">
+  <div class="questions-header">
+    <h3>⚡ Performance</h3>
+    <span class="q-count">1 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="performance">
+    <span class="q-index">1</span>
+    <span class="q-text">How does CPU caching work and why does it matter for performance?</span>
+    <div class="q-tags"><span class="q-tag">cpu-cache</span><span class="q-tag">cache-line</span><span class="q-tag">false-sharing</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">74%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Memory Hierarchy</span><br><pre>L1 cache:  ~32KB per core,   ~1ns  latency
+L2 cache: ~256KB per core,   ~4ns  latency
+L3 cache:   ~8MB shared,     ~40ns latency
+RAM:        ~16-64GB,       ~100ns latency
+SSD NVMe:              ~100μs latency
+HDD:                    ~10ms latency</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache Lines</span><br>Data loaded in 64-byte cache lines. Accessing one byte loads entire 64-byte block. Sequential access (arrays) → excellent cache utilization. Random access (linked lists) → cache miss per node.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">False Sharing</span><br><pre># Two threads update different variables in same cache line:
+# Thread 1 updates counter_a, Thread 2 updates counter_b
+# If they're adjacent in memory → same cache line → cache coherence traffic
+# Core 1 invalidates Core 2's cache line on every write → performance degrades!
+
+# Fix: padding
+struct PaddedCounter {
+    alignas(64) std::atomic&lt;int64_t&gt; value;  // 64-byte aligned
+    char padding[64 - sizeof(std::atomic&lt;int64_t&gt;)];  // fill rest of cache line
+};</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Practical Impact</span><br><ul><li>Array of structs vs Struct of arrays (SOA): SOA = better cache usage for column-wise processing</li><li>Cache-oblivious algorithms (recursive divide) beat sequential for large matrices</li><li>Go: sync.Mutex padded to avoid false sharing with adjacent data</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is NUMA (Non-Uniform Memory Access) and how does it affect multi-socket servers?<br>• How does prefetching work and how can you hint the CPU to prefetch?<br>• What is the impact of cache misses on a tight loop processing 100M integers?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Databricks, Snowflake...</span>
+    </div>
+  </div>
+</div>
+</div>
 <div class="tab-panel" id="tab-lld">
   <div class="questions-header">
     <h3>📐 LLD</h3>
@@ -1025,42 +1061,6 @@ atomic.AddInt64(&amp;counter, 1)
     <div class="q-meta-row">
       <span class="q-meta-chip">🗓 LLD Round</span>
       <span class="q-meta-chip">🏢 Google, Meta, Apple, Dropbox, Microsoft</span>
-    </div>
-  </div>
-</div>
-</div>
-<div class="tab-panel" id="tab-performance">
-  <div class="questions-header">
-    <h3>⚡ Performance</h3>
-    <span class="q-count">1 questions</span>
-  </div>
-  <div class="q-wrapper">
-  <div class="question-item" data-difficulty="hard" data-subcategory="performance">
-    <span class="q-index">1</span>
-    <span class="q-text">How does CPU caching work and why does it matter for performance?</span>
-    <div class="q-tags"><span class="q-tag">cpu-cache</span><span class="q-tag">cache-line</span><span class="q-tag">false-sharing</span></div>
-    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
-    <span class="q-freq freq-med">74%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Memory Hierarchy</span><br><pre>L1 cache:  ~32KB per core,   ~1ns  latency
-L2 cache: ~256KB per core,   ~4ns  latency
-L3 cache:   ~8MB shared,     ~40ns latency
-RAM:        ~16-64GB,       ~100ns latency
-SSD NVMe:              ~100μs latency
-HDD:                    ~10ms latency</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache Lines</span><br>Data loaded in 64-byte cache lines. Accessing one byte loads entire 64-byte block. Sequential access (arrays) → excellent cache utilization. Random access (linked lists) → cache miss per node.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">False Sharing</span><br><pre># Two threads update different variables in same cache line:
-# Thread 1 updates counter_a, Thread 2 updates counter_b
-# If they're adjacent in memory → same cache line → cache coherence traffic
-# Core 1 invalidates Core 2's cache line on every write → performance degrades!
-
-# Fix: padding
-struct PaddedCounter {
-    alignas(64) std::atomic&lt;int64_t&gt; value;  // 64-byte aligned
-    char padding[64 - sizeof(std::atomic&lt;int64_t&gt;)];  // fill rest of cache line
-};</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Practical Impact</span><br><ul><li>Array of structs vs Struct of arrays (SOA): SOA = better cache usage for column-wise processing</li><li>Cache-oblivious algorithms (recursive divide) beat sequential for large matrices</li><li>Go: sync.Mutex padded to avoid false sharing with adjacent data</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is NUMA (Non-Uniform Memory Access) and how does it affect multi-socket servers?<br>• How does prefetching work and how can you hint the CPU to prefetch?<br>• What is the impact of cache misses on a tight loop processing 100M integers?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Coding Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Databricks, Snowflake...</span>
     </div>
   </div>
 </div>
