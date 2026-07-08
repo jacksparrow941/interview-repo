@@ -1,0 +1,336 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Part XI: DevOps & Tools — C++ Interview Handbook</title>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<div style="background:#0f172a;border-bottom:1px solid #334155;padding:8px 20px;
+  display:flex;align-items:center;gap:16px;font-size:13px;position:fixed;top:0;left:0;right:0;z-index:400;height:38px">
+  <a href="../index.html" style="color:#3b82f6;font-weight:600;text-decoration:none;
+     display:flex;align-items:center;gap:6px">
+    <span>⚡</span><span>InterviewRepo</span>
+  </a>
+  <span style="color:#334155">|</span>
+  <a href="index.html" style="color:#94a3b8;text-decoration:none">📘 C++ Master Handbook</a>
+  <span style="color:#334155;margin-left:auto;font-size:11px;color:#475569">
+    C++ · Multithreading · OS · Networks · AI Runtime · Embedded · 150 Problems
+  </span>
+</div>
+<nav id="sidebar"><div class="sb-head"><b>C++ Handbook</b><br><small>15 Parts · 150 Problems</small></div><a href="index.html" >🏠 Table of Contents</a>
+<a href="part01.html"><span class="badge" style="background:#1a2744">01</span>Part I: C++ Mastery</a>
+<a href="part02.html"><span class="badge" style="background:#065f46">02</span>Part II: Multithreading & Concurrency</a>
+<a href="part03.html"><span class="badge" style="background:#7c3aed">03</span>Part III: Operating Systems</a>
+<a href="part04.html"><span class="badge" style="background:#0e7490">04</span>Part IV: Computer Networks</a>
+<a href="part05.html"><span class="badge" style="background:#92400e">05</span>Part V: Linux & Performance Tools</a>
+<a href="part06.html"><span class="badge" style="background:#1e40af">06</span>Part VI: Distributed Systems</a>
+<a href="part07.html"><span class="badge" style="background:#b45309">07</span>Part VII: System Design</a>
+<a href="part08.html"><span class="badge" style="background:#be185d">08</span>Part VIII: Compiler Internals</a>
+<a href="part09.html"><span class="badge" style="background:#0f766e">09</span>Part IX: AI Runtime</a>
+<a href="part10.html"><span class="badge" style="background:#4338ca">10</span>Part X: Embedded Systems</a>
+<a href="part11.html" class="active"><span class="badge" style="background:#0369a1">11</span>Part XI: DevOps & Tools</a>
+<a href="part12.html"><span class="badge" style="background:#1e3a5f">12</span>Part XII: Coding Interviews — 150 Problems</a>
+<a href="part13.html"><span class="badge" style="background:#3f1f69">13</span>Part XIII: Behavioral & STAR</a>
+<a href="part14.html"><span class="badge" style="background:#064e3b">14</span>Part XIV: Resume Deep Dive</a>
+<a href="part15.html"><span class="badge" style="background:#7f1d1d">15</span>Part XV: Company-Specific</a>
+</nav>
+<div id="main">
+  <div id="topbar"><div class="tb-title" style="border-left:4px solid #0369a1;padding-left:12px">Part XI: DevOps & Tools</div></div>
+  <div id="content">
+    <h1 class="part-title">Part XI: DevOps & Tools</h1>
+    <p class="subtitle">Part XI</p><hr class="divider">
+    <h2 class="chap">Chapter 1 — Git: Internals and Best Practices</h2><p>Git stores everything as content-addressed objects. Understanding the object model helps you resolve complex merges, recover 'lost' commits, and use git as a tool rather than a black box.</p><div class="diagram">Git Object Model (.git/objects/):
+
+blob   — raw file content. SHA1 = hash(content).
+           No filename stored in blob — filename stored in tree.
+tree   — directory listing: [(mode, name, sha1)...]
+           References blobs (files) and other trees (subdirectories)
+commit — tree (root snapshot) + parent(s) + author + message
+           Two commits with same tree SHA1 are identical snapshots
+tag    — points to another object (usually commit) + message
+
+Every commit is a SNAPSHOT, not a diff.
+Diffs are computed on-demand by comparing two snapshots.
+
+DAG (Directed Acyclic Graph) of commits:
+  A ← B ← C ← D (main)
+              ↑
+              E ← F (feature branch)
+  HEAD: pointer to current branch. Branch: pointer to a commit.</div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code># Essential git commands with explanation
+
+# Interactive staging — commit only specific changes in a file
+git add -p                        # review each hunk, stage selectively
+
+# Fix last commit without creating a new one
+git commit --amend --no-edit      # add staged changes to last commit silently
+git commit --amend -m "better msg" # just fix the message
+
+# Clean up local history before PR (rebase interactively)
+git rebase -i HEAD~4              # squash, reorder, edit last 4 commits
+# In editor: pick=keep, squash=merge into prev, fixup=squash+drop msg, reword=edit msg
+
+# Binary search for the commit that introduced a bug
+git bisect start
+git bisect bad HEAD               # current commit is broken
+git bisect good v1.0.0            # this tag was fine
+# Git checks out middle commit. Test. Then:
+git bisect good  # or bad — git narrows down. O(log n) attempts!
+git bisect reset # done
+
+# Recover "deleted" commits (reflog keeps all HEAD movements for 90 days)
+git reflog                        # shows all HEAD positions with timestamps
+git checkout HEAD@{3}             # go back to where HEAD was 3 moves ago
+git branch recovery HEAD@{3}      # create branch to save it
+
+# Work on two branches simultaneously
+git worktree add ../hotfix hotfix-v1.2  # second checkout in ../hotfix/
+# Now you can run two terminals: one in main, one in hotfix
+# No stashing needed!</code></pre><div class="ex-why">✅ Why this works: git bisect is underutilised. For a regression that appeared in a 500-commit range: bisect does ~9 tests (log2(500)) instead of manually testing each commit. Essential for performance regressions.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code># BAD: force-pushing to shared branches — overwrites others' work
+git push --force origin main     # DO NOT do this on shared branches!
+# Teammates who have fetched will have diverged history
+# They must do: git pull --rebase — potentially losing work
+
+# Fix: use --force-with-lease which fails if someone else pushed
+git push --force-with-lease      # safe force: fails if remote was updated
+
+# BAD: committing large binaries to git
+git add model_weights.h5         # 2GB model weights committed to history
+# Git stores full copy in every clone — 2GB per developer
+# Impossible to remove from history without git filter-branch/BFG
+
+# Fix: Git LFS (Large File Storage) for binary assets
+git lfs track "*.bin" "*.h5" "*.onnx"  # track large files separately
+git add .gitattributes &amp;&amp; git commit -m "chore: track large files in LFS"
+
+# BAD: committing secrets (API keys, passwords)
+git add config.h  # contains: #define AWS_SECRET_KEY "AKIAIOSFODNN7..."
+# Secret is in git history forever — even after deletion in next commit
+# git log -S 'AKIAIOSFODNN7' will find it
+
+# Fix: use environment variables, never commit secrets
+# Add to .gitignore: *.env, config/secrets.h, credentials.json</code></pre><div class="ex-why bad-why">❌ Why this fails: Force-pushing rewrites history — teammates' local branches become diverged. Always use --force-with-lease as a safety net. Secrets in git history must be treated as compromised — rotation required.</div></div><h2 class="chap">Chapter 2 — Docker: Containers for C++ and AI</h2><p>Docker packages your application with all dependencies into a reproducible, isolated container. Essential for: reproducible CI builds, GPU inference deployment, multi-version testing.</p><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code># Multi-stage Dockerfile for C++ AI runtime
+# Stage 1: Builder — full build environment (large)
+FROM ubuntu:22.04 AS builder
+
+# Install build tools — combine into one RUN to minimize layers
+RUN apt-get update &amp;&amp; apt-get install -y --no-install-recommends     cmake=3.22*     ninja-build     g++-12     libssl-dev     &amp;&amp; rm -rf /var/lib/apt/lists/*   # clean up — reduces image size
+
+WORKDIR /src
+# Copy dependency files first — enables layer caching
+# If CMakeLists.txt doesn't change, this layer is cached even if source changes
+COPY CMakeLists.txt .
+COPY cmake/ cmake/
+RUN cmake -B build -G Ninja     -DCMAKE_BUILD_TYPE=Release     -DCMAKE_CXX_COMPILER=g++-12     -DCMAKE_CXX_FLAGS="-O3 -march=native"
+COPY src/ src/
+COPY include/ include/
+RUN cmake --build build --target inference_server -j$(nproc)
+
+# Stage 2: Runtime — minimal image (small, deployed)
+FROM ubuntu:22.04 AS runtime
+RUN apt-get update &amp;&amp; apt-get install -y --no-install-recommends     libgomp1     &amp;&amp; rm -rf /var/lib/apt/lists/*
+
+# Non-root user for security
+RUN useradd -m -u 1001 appuser
+
+# Copy ONLY the binary and required assets
+COPY --from=builder /src/build/inference_server /usr/local/bin/
+COPY models/ /models/
+
+USER appuser
+EXPOSE 8080
+HEALTHCHECK --interval=30s --timeout=5s     CMD curl -f http://localhost:8080/health || exit 1
+ENTRYPOINT ["/usr/local/bin/inference_server"]
+CMD ["--port=8080", "--model-dir=/models"]</code></pre><div class="ex-why">✅ Why this works: Multi-stage builds are essential for C++. Builder stage can be 2GB+ (compilers, headers). Runtime stage can be 50MB. NEVER ship the build tools in production images — they're attack surface.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code># BAD: single-stage Dockerfile — ships build tools in production
+FROM ubuntu:22.04
+RUN apt-get install -y cmake g++ libssl-dev ninja-build python3
+COPY . .
+RUN cmake -B build &amp;&amp; cmake --build build
+# Result: 2.5GB image with:
+# - gcc (400MB), cmake, ninja, Python, all dev headers
+# - These are attack surface — unnecessary in production
+# - CVE in development tools = vulnerability in your production image
+
+# BAD: running as root
+USER root  # default — most base images run as root
+ENTRYPOINT ["./server"]
+# If server has a vulnerability → attacker has root in container
+# Root in container can often escape to host (depends on container config)
+
+# BAD: not specifying package versions — non-reproducible builds
+RUN apt-get install -y cmake  # installs "latest" cmake
+# CI builds today may use cmake 3.22; next month uses 3.28
+# Build breaks silently when cmake API changes between versions</code></pre><div class="ex-why bad-why">❌ Why this fails: Always pin package versions in Dockerfiles for reproducibility. Run as non-root. Use multi-stage builds. Scan images with trivy or snyk for CVEs before deployment.</div></div><h2 class="chap">Chapter 3 — Kubernetes: Running AI Inference at Scale</h2><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code># Complete deployment for GPU inference server
+# deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inference-server
+  namespace: production
+spec:
+  replicas: 3
+  selector:
+    matchLabels: {app: inference}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1    # at most 1 pod unavailable during update
+      maxSurge: 1          # at most 1 extra pod during update
+  template:
+    metadata:
+      labels: {app: inference}
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9090"
+    spec:
+      containers:
+      - name: server
+        image: myrepo/inference:v1.2.3   # always pin to specific version, not 'latest'
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            memory: "2Gi"
+            cpu: "1000m"
+            nvidia.com/gpu: "1"
+          limits:
+            memory: "4Gi"
+            cpu: "2000m"
+            nvidia.com/gpu: "1"
+        # Readiness: is pod ready to serve traffic?
+        readinessProbe:
+          httpGet: {path: /ready, port: 8080}
+          initialDelaySeconds: 30   # wait for model loading
+          periodSeconds: 5
+          failureThreshold: 3
+        # Liveness: is pod still alive?
+        livenessProbe:
+          httpGet: {path: /health, port: 8080}
+          initialDelaySeconds: 60
+          periodSeconds: 15
+          failureThreshold: 4
+        env:
+        - name: MODEL_PATH
+          value: /models/resnet50
+        - name: MAX_BATCH_SIZE
+          value: "32"
+        volumeMounts:
+        - name: model-storage
+          mountPath: /models
+          readOnly: true
+      volumes:
+      - name: model-storage
+        persistentVolumeClaim:
+          claimName: model-pvc
+---
+# HorizontalPodAutoscaler — scale based on GPU utilization or custom metric
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: inference-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: inference-server
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70</code></pre><div class="ex-why">✅ Why this works: Pin image versions — 'latest' in production means unpredictable deployments when the image changes. Always use specific SHA or semantic version tags.</div></div><h2 class="chap">Chapter 4 — CI/CD Pipeline for C++</h2><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code># .github/workflows/ci.yml — production-grade CI for C++ AI runtime
+name: CI
+on:
+  push:
+    branches: [main, release/*]
+  pull_request:
+    branches: [main]
+
+jobs:
+  # Job 1: Static analysis (fast, catches issues before compile)
+  lint:
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@v4
+    - name: clang-format check
+      run: find src include -name "*.cpp" -o -name "*.h" |
+             xargs clang-format --dry-run --Werror
+    - name: clang-tidy
+      run: cmake -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON &amp;&amp;
+           run-clang-tidy -p build src/
+
+  # Job 2: Build matrix (multiple compilers and build types)
+  build-test:
+    runs-on: ubuntu-22.04
+    needs: lint
+    strategy:
+      fail-fast: false   # run all combinations even if one fails
+      matrix:
+        compiler: [g++-11, g++-12, clang-14, clang-15]
+        build_type: [Debug, Release]
+        exclude:
+        - compiler: g++-11   # skip Debug+g++-11 (too slow)
+          build_type: Debug
+    steps:
+    - uses: actions/checkout@v4
+      with: {submodules: recursive}
+    - name: Install dependencies
+      run: sudo apt-get install -y ${{ matrix.compiler }} cmake ninja-build
+    - name: Configure
+      run: cmake -B build -G Ninja
+             -DCMAKE_CXX_COMPILER=${{ matrix.compiler }}
+             -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+    - name: Build
+      run: cmake --build build --parallel $(nproc)
+    - name: Test
+      run: cd build &amp;&amp; ctest --output-on-failure --parallel $(nproc)
+
+  # Job 3: Sanitizers (debug build with ASan + TSan)
+  sanitizers:
+    runs-on: ubuntu-22.04
+    needs: lint
+    steps:
+    - uses: actions/checkout@v4
+    - name: ASan + UBSan
+      run: |
+        cmake -B build_asan -DCMAKE_BUILD_TYPE=Debug
+          -DCMAKE_CXX_FLAGS="-fsanitize=address,undefined -fno-sanitize-recover=all"
+        cmake --build build_asan --parallel $(nproc)
+        cd build_asan &amp;&amp; ctest --output-on-failure
+    - name: TSan (separate build — incompatible with ASan)
+      run: |
+        cmake -B build_tsan -DCMAKE_BUILD_TYPE=Debug
+          -DCMAKE_CXX_FLAGS="-fsanitize=thread"
+        cmake --build build_tsan --parallel $(nproc)
+        cd build_tsan &amp;&amp; ctest --output-on-failure
+
+  # Job 4: Performance benchmark regression
+  benchmark:
+    runs-on: [self-hosted, linux, gpu]   # needs actual GPU
+    needs: build-test
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build Release
+      run: cmake -B build -DCMAKE_BUILD_TYPE=Release &amp;&amp; cmake --build build -j4
+    - name: Run benchmarks
+      run: ./build/benchmarks --benchmark-out=results.json
+    - name: Compare vs baseline
+      run: python3 compare_benchmarks.py baseline.json results.json
+           --fail-threshold 0.05  # fail if any benchmark regresses &gt;5%</code></pre><div class="ex-why">✅ Why this works: The benchmark regression job is what keeps performance from slowly degrading over many commits. A 5% threshold prevents alarm fatigue while catching real regressions.</div></div><h2 class="chap">Interview Q&A — DevOps</h2><div class="qa"><div class="question">❓ What is the difference between Docker and a VM? When would you use each?</div><div class="answer">VM (Virtual Machine): virtualizes hardware. Each VM has its own OS kernel, device drivers, and full userspace. Hypervisor (VMware, KVM, VirtualBox) manages VMs. Overhead: ~1-2% CPU, ~1GB+ image, 30-60s startup. Strong isolation — separate kernels means a kernel exploit in one VM doesn't affect others. Container: virtualizes userspace only. All containers share the host kernel — different processes with different filesystem namespaces (using Linux namespaces: PID, net, mnt, uts, ipc) and resource limits (cgroups). Overhead: ~0.1% CPU, ~10-100MB image, <1s startup. Weaker isolation — a kernel vulnerability affects all containers. Use containers: microservices, CI/CD pipelines, consistent environments, fast scaling. Use VMs: strong security isolation requirements, different OS kernels (Windows workloads on Linux host), hardware-level isolation for multi-tenant environments.</div><div class="followup"><b>Follow-up questions interviewers ask:</b><ul><li>What is containerd? What is the OCI specification?</li><li>How do Docker namespaces work?</li><li>What is a container escape and how is it prevented?</li></ul></div><div class="followup" style="background:#fef2f2;border-color:#fca5a5"><b>Common mistakes in answers:</b><ul><li>Saying containers are as secure as VMs — they share the kernel, which is a significant difference.</li><li>Saying Docker IS a container — Docker is a tool for building/running containers. containerd is the runtime. runc creates the actual container.</li></ul></div></div><div class="qa"><div class="question">❓ How would you set up a CI/CD pipeline for a C++ inference runtime?</div><div class="answer">Stages: (1) Lint (fast, catch early): clang-format --dry-run, clang-tidy, cmake --check. (2) Build matrix: all combinations of compiler (GCC/Clang) × build type (Debug/Release) × platform (x86/ARM). Fail fast on any. (3) Unit tests: ctest with parallel execution. Minimum 80% coverage. (4) Sanitizers: separate ASan+UBSan and TSan builds and test runs. (5) Integration tests: run inference on reference inputs, compare outputs vs golden files (cosine similarity > 0.999, max error < 1e-4). (6) Performance benchmarks: compare vs baseline, fail if p99 latency regresses >5%. (7) Docker build: multi-stage, tag with git SHA. Push to registry. (8) Deploy to staging: kubectl rollout. (9) Smoke tests on staging: end-to-end request with expected output verification. (10) Manual approval gate. (11) Rollout to production: 10% → 50% → 100% canary.</div><div class="followup"><b>Follow-up questions interviewers ask:</b><ul><li>How do you handle flaky tests in CI?</li><li>What is a canary deployment?</li><li>How do you roll back quickly if production deployment fails?</li></ul></div></div>
+    <div class="pagination"><a href="part10.html">← Part 10</a><a href="part12.html">Part 12 →</a></div>
+  </div>
+</div>
+<button id="btt">↑</button>
+<script>
+document.querySelectorAll('pre').forEach(p=>{
+  const b=document.createElement('button');b.className='copy-btn';b.textContent='Copy';
+  p.appendChild(b);b.onclick=()=>{navigator.clipboard.writeText(p.innerText.replace('Copy','').trim())
+  .then(()=>{b.textContent='Copied!';setTimeout(()=>b.textContent='Copy',2000);});};});
+const btt=document.getElementById('btt');
+window.addEventListener('scroll',()=>btt&&btt.classList.toggle('show',scrollY>300));
+btt&&btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+const si=document.getElementById('search');
+if(si)si.addEventListener('input',function(){const q=this.value.toLowerCase();
+  document.querySelectorAll('.part-card').forEach(c=>c.style.display=
+    c.textContent.toLowerCase().includes(q)?'':'none');});
+</script></body></html>

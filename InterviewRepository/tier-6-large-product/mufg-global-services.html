@@ -148,10 +148,10 @@
 <button class="tab-btn" data-tab="database">🗄️ Database <span style="opacity:.5;font-size:11px">(4)</span></button>
 <button class="tab-btn" data-tab="cicd">🚀 CI/CD & DevOps <span style="opacity:.5;font-size:11px">(2)</span></button>
 <button class="tab-btn" data-tab="security">🔒 Security <span style="opacity:.5;font-size:11px">(3)</span></button>
-<button class="tab-btn" data-tab="spring">Spring <span style="opacity:.5;font-size:11px">(1)</span></button>
-<button class="tab-btn" data-tab="coding">💻 DSA <span style="opacity:.5;font-size:11px">(3)</span></button>
+<button class="tab-btn" data-tab="behavioral">💬 Behavioral <span style="opacity:.5;font-size:11px">(2)</span></button>
 <button class="tab-btn" data-tab="concurrency">⚡ Concurrency <span style="opacity:.5;font-size:11px">(1)</span></button>
-<button class="tab-btn" data-tab="behavioral">💬 Behavioral <span style="opacity:.5;font-size:11px">(2)</span></button></div></div>
+<button class="tab-btn" data-tab="spring">Spring <span style="opacity:.5;font-size:11px">(1)</span></button>
+<button class="tab-btn" data-tab="coding">💻 DSA <span style="opacity:.5;font-size:11px">(3)</span></button></div></div>
 <div class="container"><div class="tab-panel active" id="tab-java">
   <div class="questions-header">
     <h3>☕ Java</h3>
@@ -2024,6 +2024,99 @@ public class SecurityConfig {
   </div>
 </div>
 </div>
+<div class="tab-panel" id="tab-behavioral">
+  <div class="questions-header">
+    <h3>💬 Behavioral</h3>
+    <span class="q-count">2 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="situational">
+    <span class="q-index">1</span>
+    <span class="q-text">Behavioral — STAR format: challenging project, conflict resolution, teamwork</span>
+    <div class="q-tags"><span class="q-tag">behavioral</span><span class="q-tag">star</span><span class="q-tag">conflict</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-high">85%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Design a Real-Time Reconciliation System (Challenge STAR)</span><br><b>Situation:</b> Legacy nightly batch reconciliation took 8 hours — breaches weren't caught until next morning.<br><b>Task:</b> Redesign as near-real-time with &lt;15 min breach detection window.<br><b>Action:</b> Replaced batch SQL with Kafka consumer comparing SWIFT confirmations vs internal bookings. Used ConcurrentHashMap for in-memory position cache, Spring Batch for EOD reporting, Splunk alerting.<br><b>Result:</b> Reconciliation latency reduced from 8 hours to 12 minutes. Breach detection SLA met. Zero production incidents in 6 months post-launch.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Stakeholder Conflict (STAR)</span><br><b>Situation:</b> Business wanted a new trade amendment feature in 2 weeks; security team required Veracode scan which takes 5 days.<br><b>Task:</b> Balance delivery speed with security compliance.<br><b>Action:</b> Proposed incremental approach — baseline feature with Veracode scan done in parallel (not blocking). Set up automated Veracode in Jenkins so future features are scanned continuously, not as a gate.<br><b>Result:</b> Feature delivered in 2 weeks, security scans embedded in pipeline permanently.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Why MUFG / Banking</span><br>MUFG's mission to be the world's most trusted financial group aligns with building high-integrity systems. Banking requires the highest standards of reliability, security, and audit — challenges that drive engineering excellence in distributed systems, concurrency, and data integrity.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Tell me about a time you had to learn a new technology quickly.<br>• How do you prioritize when multiple high-priority issues come simultaneously?<br>• Describe a time you disagreed with your manager — how did you handle it?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 HR Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="agile">
+    <span class="q-index">2</span>
+    <span class="q-text">Agile/Scrum for banking delivery — sprints, ceremonies, definition of done</span>
+    <div class="q-tags"><span class="q-tag">agile</span><span class="q-tag">scrum</span><span class="q-tag">sprint</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Scrum Framework at MUFG</span><br><b>Roles:</b> Product Owner (PO), Scrum Master, Development Team (you)<br><br><b>Events (Ceremonies):</b><br><ul><li><b>Sprint Planning (start of sprint):</b> Team pulls stories from backlog into sprint. Estimates via story points (Fibonacci: 1,2,3,5,8,13). Agree on sprint goal.</li><li><b>Daily Standup (15 min):</b> What did I do? What will I do? Any blockers?</li><li><b>Sprint Review (end of sprint):</b> Demo completed features to stakeholders</li><li><b>Sprint Retrospective:</b> What went well? What to improve? Action items.</li><li><b>Backlog Refinement (mid-sprint):</b> Groom future stories, clarify ACs, estimate</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Definition of Done (DoD) in Banking</span><br>A story is DONE only when:<br><ol><li>Code complete + peer reviewed (PR approved)</li><li>Unit tests written (>80% coverage via JaCoCo)</li><li>Integration tests pass</li><li>Veracode SAST scan — no P1/P2 findings</li><li>Jenkins pipeline green (build + test + scan + deploy to UAT)</li><li>Functional testing in UAT signed off by QA</li><li>No known critical bugs</li><li>API documentation updated (Swagger/OpenAPI)</li></ol></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">User Story Format at MUFG</span><br><pre>Title: As a Trader, I want to book an equity trade via REST API
+
+Acceptance Criteria (Gherkin):
+Given: I have a valid trade payload with idempotency key
+When: I POST to /api/v1/trades
+Then: Trade is created with status=BOOKED
+And: Trade is published to Kafka trade.booked topic
+And: HTTP 201 Created is returned with trade ID
+
+Non-functional:
+- Response time &lt; 200ms p99
+- Idempotent: same key returns same result without re-processing</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Handling Banking-Specific Constraints in Agile</span><br><ul><li><b>Regulatory releases:</b> Fixed deadlines (MIFID II reporting, Volcker rule compliance)</li><li><b>Change Management:</b> All prod deployments need CAB approval — plan release windows</li><li><b>Risk gates:</b> Security review and Veracode scan mandatory before go-live</li><li><b>Audit trails:</b> Every story must generate traceable audit log entries</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-Questions &amp; Follow-ups</span><br><div class="followup">• What is velocity and how do you use it for sprint planning?<br>• How do you handle a story that won't fit in a sprint? (spike → break down)<br>• Scrum vs Kanban — when would MUFG use Kanban?<br>• How do you manage technical debt in banking systems where feature delivery pressure is high?<br>• What is a release train (SAFe) and do large banks like MUFG use it?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 HR Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-concurrency">
+  <div class="questions-header">
+    <h3>⚡ Concurrency</h3>
+    <span class="q-count">1 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="locking">
+    <span class="q-index">1</span>
+    <span class="q-text">Java concurrency — synchronized vs ReentrantLock, ExecutorService for trade processing</span>
+    <div class="q-tags"><span class="q-tag">synchronized</span><span class="q-tag">reentrantlock</span><span class="q-tag">executorservice</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">synchronized vs ReentrantLock</span><br><pre>// synchronized — simple, no tryLock
+public synchronized void updatePosition(String book, BigDecimal delta) {
+    positions.merge(book, delta, BigDecimal::add);
+}
+
+// ReentrantReadWriteLock — multiple readers OR one writer
+ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
+public void update(String book, BigDecimal d) {
+    rwl.writeLock().lock();
+    try { positions.merge(book, d, BigDecimal::add); }
+    finally { rwl.writeLock().unlock(); }
+}
+public BigDecimal get(String book) {
+    rwl.readLock().lock();
+    try { return positions.getOrDefault(book, ZERO); }
+    finally { rwl.readLock().unlock(); }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Trade Processing ThreadPool</span><br><pre>ExecutorService pool = new ThreadPoolExecutor(
+    10, 50, 60L, SECONDS,
+    new ArrayBlockingQueue&lt;&gt;(10000),   // bounded = backpressure
+    new ThreadFactoryBuilder().setNameFormat("trade-worker-%d").build(),
+    new CallerRunsPolicy());            // natural backpressure on caller
+
+pool.submit(() -&gt; tradeService.process(event));</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Avoiding Deadlock</span><br><ul><li>Always acquire locks in the same order across all threads</li><li>Use <code>tryLock(timeout)</code> to avoid indefinite blocking</li><li>Prefer <code>ConcurrentHashMap</code> + atomic ops over coarse synchronized</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Why is Executors.newFixedThreadPool() dangerous? (unbounded LinkedBlockingQueue)<br>• What is StampedLock and when is it better than RRW Lock?<br>• How do virtual threads (Java 21) change concurrency in banking services?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+</div>
 <div class="tab-panel" id="tab-spring">
   <div class="questions-header">
     <h3>Spring</h3>
@@ -2217,99 +2310,6 @@ public void merge(int[] nums1, int m, int[] nums2, int n) {
 }</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Banking Context</span><br>Used in trade reconciliation — merging sorted trade lists from two feeds for match detection.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Merge K sorted arrays? (min-heap, O(N log K))<br>• Java Arrays.sort() internals? (dual-pivot quicksort for primitives, Timsort for objects)</div></div></div>
     <div class="q-meta-row">
       <span class="q-meta-chip">🗓 Coding Test</span>
-      <span class="q-meta-chip">🏢 MUFG Global Services</span>
-    </div>
-  </div>
-</div>
-</div>
-<div class="tab-panel" id="tab-concurrency">
-  <div class="questions-header">
-    <h3>⚡ Concurrency</h3>
-    <span class="q-count">1 questions</span>
-  </div>
-  <div class="q-wrapper">
-  <div class="question-item" data-difficulty="hard" data-subcategory="locking">
-    <span class="q-index">1</span>
-    <span class="q-text">Java concurrency — synchronized vs ReentrantLock, ExecutorService for trade processing</span>
-    <div class="q-tags"><span class="q-tag">synchronized</span><span class="q-tag">reentrantlock</span><span class="q-tag">executorservice</span></div>
-    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
-    <span class="q-freq freq-med">78%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">synchronized vs ReentrantLock</span><br><pre>// synchronized — simple, no tryLock
-public synchronized void updatePosition(String book, BigDecimal delta) {
-    positions.merge(book, delta, BigDecimal::add);
-}
-
-// ReentrantReadWriteLock — multiple readers OR one writer
-ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
-public void update(String book, BigDecimal d) {
-    rwl.writeLock().lock();
-    try { positions.merge(book, d, BigDecimal::add); }
-    finally { rwl.writeLock().unlock(); }
-}
-public BigDecimal get(String book) {
-    rwl.readLock().lock();
-    try { return positions.getOrDefault(book, ZERO); }
-    finally { rwl.readLock().unlock(); }
-}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Trade Processing ThreadPool</span><br><pre>ExecutorService pool = new ThreadPoolExecutor(
-    10, 50, 60L, SECONDS,
-    new ArrayBlockingQueue&lt;&gt;(10000),   // bounded = backpressure
-    new ThreadFactoryBuilder().setNameFormat("trade-worker-%d").build(),
-    new CallerRunsPolicy());            // natural backpressure on caller
-
-pool.submit(() -&gt; tradeService.process(event));</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Avoiding Deadlock</span><br><ul><li>Always acquire locks in the same order across all threads</li><li>Use <code>tryLock(timeout)</code> to avoid indefinite blocking</li><li>Prefer <code>ConcurrentHashMap</code> + atomic ops over coarse synchronized</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Why is Executors.newFixedThreadPool() dangerous? (unbounded LinkedBlockingQueue)<br>• What is StampedLock and when is it better than RRW Lock?<br>• How do virtual threads (Java 21) change concurrency in banking services?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Concurrency Round</span>
-      <span class="q-meta-chip">🏢 MUFG Global Services</span>
-    </div>
-  </div>
-</div>
-</div>
-<div class="tab-panel" id="tab-behavioral">
-  <div class="questions-header">
-    <h3>💬 Behavioral</h3>
-    <span class="q-count">2 questions</span>
-  </div>
-  <div class="q-wrapper">
-  <div class="question-item" data-difficulty="easy" data-subcategory="situational">
-    <span class="q-index">1</span>
-    <span class="q-text">Behavioral — STAR format: challenging project, conflict resolution, teamwork</span>
-    <div class="q-tags"><span class="q-tag">behavioral</span><span class="q-tag">star</span><span class="q-tag">conflict</span></div>
-    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
-    <span class="q-freq freq-high">85%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Design a Real-Time Reconciliation System (Challenge STAR)</span><br><b>Situation:</b> Legacy nightly batch reconciliation took 8 hours — breaches weren't caught until next morning.<br><b>Task:</b> Redesign as near-real-time with &lt;15 min breach detection window.<br><b>Action:</b> Replaced batch SQL with Kafka consumer comparing SWIFT confirmations vs internal bookings. Used ConcurrentHashMap for in-memory position cache, Spring Batch for EOD reporting, Splunk alerting.<br><b>Result:</b> Reconciliation latency reduced from 8 hours to 12 minutes. Breach detection SLA met. Zero production incidents in 6 months post-launch.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Stakeholder Conflict (STAR)</span><br><b>Situation:</b> Business wanted a new trade amendment feature in 2 weeks; security team required Veracode scan which takes 5 days.<br><b>Task:</b> Balance delivery speed with security compliance.<br><b>Action:</b> Proposed incremental approach — baseline feature with Veracode scan done in parallel (not blocking). Set up automated Veracode in Jenkins so future features are scanned continuously, not as a gate.<br><b>Result:</b> Feature delivered in 2 weeks, security scans embedded in pipeline permanently.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Why MUFG / Banking</span><br>MUFG's mission to be the world's most trusted financial group aligns with building high-integrity systems. Banking requires the highest standards of reliability, security, and audit — challenges that drive engineering excellence in distributed systems, concurrency, and data integrity.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Tell me about a time you had to learn a new technology quickly.<br>• How do you prioritize when multiple high-priority issues come simultaneously?<br>• Describe a time you disagreed with your manager — how did you handle it?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 HR Round</span>
-      <span class="q-meta-chip">🏢 MUFG Global Services</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="easy" data-subcategory="agile">
-    <span class="q-index">2</span>
-    <span class="q-text">Agile/Scrum for banking delivery — sprints, ceremonies, definition of done</span>
-    <div class="q-tags"><span class="q-tag">agile</span><span class="q-tag">scrum</span><span class="q-tag">sprint</span></div>
-    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
-    <span class="q-freq freq-high">80%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Scrum Framework at MUFG</span><br><b>Roles:</b> Product Owner (PO), Scrum Master, Development Team (you)<br><br><b>Events (Ceremonies):</b><br><ul><li><b>Sprint Planning (start of sprint):</b> Team pulls stories from backlog into sprint. Estimates via story points (Fibonacci: 1,2,3,5,8,13). Agree on sprint goal.</li><li><b>Daily Standup (15 min):</b> What did I do? What will I do? Any blockers?</li><li><b>Sprint Review (end of sprint):</b> Demo completed features to stakeholders</li><li><b>Sprint Retrospective:</b> What went well? What to improve? Action items.</li><li><b>Backlog Refinement (mid-sprint):</b> Groom future stories, clarify ACs, estimate</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Definition of Done (DoD) in Banking</span><br>A story is DONE only when:<br><ol><li>Code complete + peer reviewed (PR approved)</li><li>Unit tests written (>80% coverage via JaCoCo)</li><li>Integration tests pass</li><li>Veracode SAST scan — no P1/P2 findings</li><li>Jenkins pipeline green (build + test + scan + deploy to UAT)</li><li>Functional testing in UAT signed off by QA</li><li>No known critical bugs</li><li>API documentation updated (Swagger/OpenAPI)</li></ol></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">User Story Format at MUFG</span><br><pre>Title: As a Trader, I want to book an equity trade via REST API
-
-Acceptance Criteria (Gherkin):
-Given: I have a valid trade payload with idempotency key
-When: I POST to /api/v1/trades
-Then: Trade is created with status=BOOKED
-And: Trade is published to Kafka trade.booked topic
-And: HTTP 201 Created is returned with trade ID
-
-Non-functional:
-- Response time &lt; 200ms p99
-- Idempotent: same key returns same result without re-processing</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Handling Banking-Specific Constraints in Agile</span><br><ul><li><b>Regulatory releases:</b> Fixed deadlines (MIFID II reporting, Volcker rule compliance)</li><li><b>Change Management:</b> All prod deployments need CAB approval — plan release windows</li><li><b>Risk gates:</b> Security review and Veracode scan mandatory before go-live</li><li><b>Audit trails:</b> Every story must generate traceable audit log entries</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-Questions &amp; Follow-ups</span><br><div class="followup">• What is velocity and how do you use it for sprint planning?<br>• How do you handle a story that won't fit in a sprint? (spike → break down)<br>• Scrum vs Kanban — when would MUFG use Kanban?<br>• How do you manage technical debt in banking systems where feature delivery pressure is high?<br>• What is a release train (SAFe) and do large banks like MUFG use it?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 HR Round</span>
       <span class="q-meta-chip">🏢 MUFG Global Services</span>
     </div>
   </div>

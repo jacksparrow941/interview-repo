@@ -1,0 +1,467 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Part II: Multithreading & Concurrency — C++ Interview Handbook</title>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<div style="background:#0f172a;border-bottom:1px solid #334155;padding:8px 20px;
+  display:flex;align-items:center;gap:16px;font-size:13px;position:fixed;top:0;left:0;right:0;z-index:400;height:38px">
+  <a href="../index.html" style="color:#3b82f6;font-weight:600;text-decoration:none;
+     display:flex;align-items:center;gap:6px">
+    <span>⚡</span><span>InterviewRepo</span>
+  </a>
+  <span style="color:#334155">|</span>
+  <a href="index.html" style="color:#94a3b8;text-decoration:none">📘 C++ Master Handbook</a>
+  <span style="color:#334155;margin-left:auto;font-size:11px;color:#475569">
+    C++ · Multithreading · OS · Networks · AI Runtime · Embedded · 150 Problems
+  </span>
+</div>
+<nav id="sidebar"><div class="sb-head"><b>C++ Handbook</b><br><small>15 Parts · 150 Problems</small></div><a href="index.html" >🏠 Table of Contents</a>
+<a href="part01.html"><span class="badge" style="background:#1a2744">01</span>Part I: C++ Mastery</a>
+<a href="part02.html" class="active"><span class="badge" style="background:#065f46">02</span>Part II: Multithreading & Concurrency</a>
+<a href="part03.html"><span class="badge" style="background:#7c3aed">03</span>Part III: Operating Systems</a>
+<a href="part04.html"><span class="badge" style="background:#0e7490">04</span>Part IV: Computer Networks</a>
+<a href="part05.html"><span class="badge" style="background:#92400e">05</span>Part V: Linux & Performance Tools</a>
+<a href="part06.html"><span class="badge" style="background:#1e40af">06</span>Part VI: Distributed Systems</a>
+<a href="part07.html"><span class="badge" style="background:#b45309">07</span>Part VII: System Design</a>
+<a href="part08.html"><span class="badge" style="background:#be185d">08</span>Part VIII: Compiler Internals</a>
+<a href="part09.html"><span class="badge" style="background:#0f766e">09</span>Part IX: AI Runtime</a>
+<a href="part10.html"><span class="badge" style="background:#4338ca">10</span>Part X: Embedded Systems</a>
+<a href="part11.html"><span class="badge" style="background:#0369a1">11</span>Part XI: DevOps & Tools</a>
+<a href="part12.html"><span class="badge" style="background:#1e3a5f">12</span>Part XII: Coding Interviews — 150 Problems</a>
+<a href="part13.html"><span class="badge" style="background:#3f1f69">13</span>Part XIII: Behavioral & STAR</a>
+<a href="part14.html"><span class="badge" style="background:#064e3b">14</span>Part XIV: Resume Deep Dive</a>
+<a href="part15.html"><span class="badge" style="background:#7f1d1d">15</span>Part XV: Company-Specific</a>
+</nav>
+<div id="main">
+  <div id="topbar"><div class="tb-title" style="border-left:4px solid #065f46;padding-left:12px">Part II: Multithreading & Concurrency</div></div>
+  <div id="content">
+    <h1 class="part-title">Part II: Multithreading & Concurrency</h1>
+    <p class="subtitle">Part II</p><hr class="divider">
+    <h2 class="chap">Chapter 1 — Thread Basics</h2><p>A thread is the smallest unit of CPU scheduling. Threads in the same process share address space, heap, file descriptors, and global data — but each has its own stack (~1-8MB), registers, and thread-local storage.</p><div class="diagram">Process address space (shared by all threads):
+┌───────────────────────────────────────────────────────┐
+│  .text (code)  │  .data / .bss (globals)  │  Heap      │
+└───────────────────────────────────────────────────────┘
+        Thread 1 stack     Thread 2 stack     Thread 3 stack
+           │                   │                  │
+     (separate, private)  (separate, private)  (separate, private)
+
+Thread lifecycle:
+  Created ──► Runnable ◄──► Running ──► Blocked (wait/sleep/I/O)
+                                  └──► Terminated</div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>#include &lt;thread&gt;
+#include &lt;iostream&gt;
+
+// Worker function: accepts data by value — safe across threads
+void compute(int id, std::vector&lt;int&gt; data) {   // own copy of data
+    int sum = 0;
+    for (int x : data) sum += x;
+    std::cout &lt;&lt; "Thread " &lt;&lt; id &lt;&lt; " sum: " &lt;&lt; sum &lt;&lt; "\n";
+}
+
+int main() {
+    std::vector&lt;int&gt; big_data(1000, 1);
+
+    std::thread t1(compute, 1, big_data);          // copy of big_data to t1
+    std::thread t2(compute, 2, std::vector&lt;int&gt;(500, 2)); // temp moved in
+
+    t1.join();   // wait for t1 to finish — REQUIRED before main exits
+    t2.join();   // wait for t2 to finish
+
+    return 0;
+}
+// Thread destructor calls std::terminate() if thread is joinable but not joined!</code></pre><div class="ex-why">✅ Why this works: Always join (or detach) every thread before it goes out of scope. std::thread destructor calls terminate() on a joinable thread — a hard crash.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// BAD 1: Thread not joined — std::terminate() at destructor
+void bad_no_join() {
+    std::thread t([]{ do_work(); });
+    if (some_condition()) return;   // t not joined! → std::terminate() crash
+    t.join();
+}
+
+// BAD 2: Passing local by reference — dangling reference
+void bad_dangling() {
+    int local = 42;
+    std::thread t([&amp;local]() {   // captures local by reference
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+        std::cout &lt;&lt; local;   // local is GONE! UB — stack frame was freed
+    });
+    t.detach();   // bad_dangling() returns → local destroyed → thread reads garbage
+}
+
+// FIX for BAD 2: capture by value
+std::thread t([local]() { std::cout &lt;&lt; local; });   // own copy — safe</code></pre><div class="ex-why bad-why">❌ Why this fails: Dangling reference in a thread lambda is the #1 beginner threading bug. The thread captures a reference to a local variable, the function returns, and the thread runs with freed stack memory.</div></div><h2 class="chap">Chapter 2 — Mutexes: Theory to Practice</h2><p>A mutex (mutual exclusion) ensures only one thread at a time executes the critical section. Without mutex: two threads writing the same variable simultaneously produce data races — undefined behavior in C++.</p><div class="diagram">Without mutex (data race):
+  Thread 1: reads count=5
+  Thread 2: reads count=5   (before Thread 1 writes)
+  Thread 1: writes count=6  ← lost update!
+  Thread 2: writes count=6  ← both wrote 6 instead of 7
+
+With mutex:
+  Thread 1: lock → reads 5 → writes 6 → unlock
+  Thread 2: ........waits.......................... lock → reads 6 → writes 7 → unlock
+  Final: count = 7 ✓</div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>#include &lt;mutex&gt;
+#include &lt;shared_mutex&gt;
+
+class ThreadSafeCounter {
+    mutable std::mutex mtx_;   // mutable: allow locking in const methods
+    int value_ = 0;
+public:
+    void increment() {
+        std::lock_guard&lt;std::mutex&gt; lk(mtx_);  // locked; released at }
+        ++value_;
+    }
+
+    // Atomic increment and return new value
+    int add(int delta) {
+        std::lock_guard&lt;std::mutex&gt; lk(mtx_);
+        value_ += delta;
+        return value_;
+    }
+
+    int get() const {
+        std::lock_guard&lt;std::mutex&gt; lk(mtx_);  // const method also needs lock
+        return value_;
+    }
+};
+
+// Reader-Writer Lock: many readers OR one writer
+class Config {
+    mutable std::shared_mutex rw_;
+    std::map&lt;std::string, std::string&gt; data_;
+public:
+    std::string get(const std::string&amp; key) const {
+        std::shared_lock lk(rw_);   // multiple readers can hold this simultaneously
+        auto it = data_.find(key);
+        return it != data_.end() ? it-&gt;second : "";
+    }
+    void set(const std::string&amp; key, std::string val) {
+        std::unique_lock lk(rw_);  // exclusive: no readers or writers while held
+        data_[key] = std::move(val);
+    }
+};</code></pre><div class="ex-why">✅ Why this works: shared_mutex is the right tool when reads heavily outnumber writes (e.g., config data, caches). Multiple readers run in parallel; writers get exclusive access.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// BAD 1: Raw lock/unlock — easy to miss on every exit path
+class BadCounter {
+    std::mutex mtx_;
+    int v_ = 0;
+public:
+    int increment() {
+        mtx_.lock();
+        if (v_ &gt;= MAX) {
+            mtx_.unlock();   // must manually unlock on every path
+            return -1;
+        }
+        ++v_;
+        return v_;
+        // FORGOT mtx_.unlock() before return! → DEADLOCK
+    }
+};
+
+// BAD 2: Locking same non-recursive mutex twice → DEADLOCK
+class Bad2 {
+    std::mutex mtx_;
+    void inner() {
+        std::lock_guard lk(mtx_);   // locks mtx_
+        // ...
+    }
+    void outer() {
+        std::lock_guard lk(mtx_);   // locks mtx_ again from same thread
+        inner();   // tries to lock mtx_ AGAIN → DEADLOCK (mutex is not recursive)
+    }
+};
+// Fix: use std::recursive_mutex, or refactor inner() to not lock</code></pre><div class="ex-why bad-why">❌ Why this fails: Double-locking (locking a non-recursive mutex you already hold) causes an instant deadlock in the same thread. This is why large critical sections that call other locking methods are dangerous.</div></div><h3 class="sec">2.1 Deadlock — Four Conditions and Prevention</h3><div class="diagram">Deadlock (all four conditions present simultaneously):
+  1. Mutual exclusion: at least one resource is non-shareable
+  2. Hold and wait: thread holds resource while waiting for another
+  3. No preemption: resources released only voluntarily
+  4. Circular wait: T1 waits for T2's lock; T2 waits for T1's lock
+
+  Thread 1: Lock(A) ──waiting──► Lock(B) ─locked by Thread 2─►◄
+  Thread 2: Lock(B) ──waiting──► Lock(A) ─locked by Thread 1─►◄
+  Both wait forever.</div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// Fix 1: Always acquire locks in the same global order
+// Define: A must be locked before B — always
+void transfer(Account&amp; from, Account&amp; to, double amount) {
+    // Ensure consistent order by comparing addresses
+    auto* first  = (&amp;from &lt; &amp;to) ? &amp;from : &amp;to;
+    auto* second = (&amp;from &lt; &amp;to) ? &amp;to : &amp;from;
+    std::lock_guard lk1(first-&gt;mtx_);
+    std::lock_guard lk2(second-&gt;mtx_);
+    from.balance -= amount;
+    to.balance   += amount;
+}
+
+// Fix 2: std::scoped_lock — atomically locks BOTH, deadlock-free (C++17)
+void transfer_safe(Account&amp; from, Account&amp; to, double amount) {
+    std::scoped_lock lk(from.mtx_, to.mtx_);  // locks both atomically
+    from.balance -= amount;
+    to.balance   += amount;
+}
+// scoped_lock uses a deadlock-avoidance algorithm internally</code></pre><div class="ex-why">✅ Why this works: std::scoped_lock is the cleanest solution for multi-mutex locking. It uses std::lock internally which tries lock/backoff/retry to avoid deadlock.</div></div><h2 class="chap">Chapter 3 — Condition Variables</h2><p>Condition variables allow threads to sleep until a condition is true. Used with a mutex — the thread releases the mutex while sleeping, so others can update the condition.</p><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>#include &lt;condition_variable&gt;
+
+class BoundedQueue {
+    std::mutex              mtx_;
+    std::condition_variable not_full_, not_empty_;
+    std::queue&lt;int&gt;         q_;
+    const size_t            capacity_;
+public:
+    explicit BoundedQueue(size_t cap) : capacity_(cap) {}
+
+    void push(int val) {
+        std::unique_lock lk(mtx_);
+        not_full_.wait(lk, [this]{ return q_.size() &lt; capacity_; });
+        //          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        //  wait(): release lock, sleep until woken, reacquire lock, CHECK predicate
+        //  If predicate is false (spurious wakeup), go back to sleep
+        q_.push(val);
+        not_empty_.notify_one();   // wake one consumer
+    }
+
+    int pop() {
+        std::unique_lock lk(mtx_);
+        not_empty_.wait(lk, [this]{ return !q_.empty(); });
+        int val = q_.front(); q_.pop();
+        not_full_.notify_one();   // wake one producer
+        return val;
+    }
+};</code></pre><div class="ex-why">✅ Why this works: The predicate lambda in wait() handles spurious wakeups — the OS may wake a thread even when not notified. The predicate re-checks the condition and goes back to sleep if needed.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// BAD: no predicate → spurious wakeup bug
+void bad_consumer(std::queue&lt;int&gt;&amp; q, std::mutex&amp; m, std::condition_variable&amp; cv) {
+    std::unique_lock lk(m);
+    cv.wait(lk);          // ← no predicate!
+    // Spurious wakeup: OS wakes thread even when queue is empty
+    int val = q.front();  // q is empty → CRASH or undefined behavior
+    q.pop();
+}
+
+// BAD: signaling outside lock
+void bad_producer(std::queue&lt;int&gt;&amp; q, std::mutex&amp; m, std::condition_variable&amp; cv) {
+    {
+        std::lock_guard lk(m);
+        q.push(42);
+    }   // lock released here
+    // Consumer might run here, see queue, go back to sleep
+    cv.notify_one();   // notify AFTER lock released: consumer misses it!
+    // (In practice this specific ordering is technically fine per C++ standard,
+    //  but it's fragile and confusing. Better: notify while holding lock or just after)
+}</code></pre><div class="ex-why bad-why">❌ Why this fails: Always use the predicate form of wait(). Spurious wakeups are real — the Linux kernel can wake waiting threads without notification (e.g., signal delivery). The predicate protects against them.</div></div><h2 class="chap">Chapter 4 — Atomics and Memory Ordering</h2><p>Atomics provide lock-free, thread-safe operations. Memory ordering controls what other memory operations become visible relative to the atomic operation.</p><div class="diagram">Memory ordering visualized:
+
+relaxed: No ordering guarantee — just atomicity
+  Thread A: x=1; cnt.store(1, relaxed)
+  Thread B: cnt.load(relaxed); // might see 1 but x might still see 0!
+
+release/acquire: Synchronization point
+  Thread A: x=1; flag.store(true, release) // x must be written BEFORE flag
+  Thread B: while(!flag.load(acquire)); x  // once flag seen, x is also visible
+
+seq_cst: Total order — all threads see operations in the same order
+  Most expensive but easiest to reason about</div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>#include &lt;atomic&gt;
+
+// Pattern 1: Simple counter (no ordering needed between threads)
+std::atomic&lt;int&gt; request_count{0};
+void on_request() {
+    request_count.fetch_add(1, std::memory_order_relaxed);  // just count
+}
+int get_count() {
+    return request_count.load(std::memory_order_relaxed);
+}
+
+// Pattern 2: Publish-Subscribe (release/acquire pair)
+struct Data { int value; std::string name; };
+Data shared_data;
+std::atomic&lt;bool&gt; data_ready{false};
+
+// Publisher thread:
+void publish(int v, const std::string&amp; n) {
+    shared_data.value = v;     // write data
+    shared_data.name  = n;     // write data
+    data_ready.store(true, std::memory_order_release);
+    //                       ^^^^^^^ all writes above are visible to matching acquire
+}
+// Subscriber thread:
+void subscribe() {
+    while (!data_ready.load(std::memory_order_acquire));
+    //                       ^^^^^^^ once true, shared_data writes are visible
+    use(shared_data.value, shared_data.name);  // guaranteed correct
+}
+
+// Pattern 3: CAS (Compare-And-Swap) — the lock-free building block
+bool push_if_empty(std::atomic&lt;int&gt;&amp; slot, int val) {
+    int expected = 0;
+    return slot.compare_exchange_strong(expected, val);
+    // If slot==0: set slot=val, return true
+    // If slot!=0: set expected=slot's value, return false
+}</code></pre><div class="ex-why">✅ Why this works: Release/acquire is the minimum ordering needed for producer-consumer patterns. It's cheaper than seq_cst (no global memory fence) while still providing the synchronization guarantee you need.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// BAD: data race — two threads write same int with no protection
+int shared = 0;
+void thread1() { ++shared; }   // NOT ATOMIC: read-modify-write is 3 ops
+void thread2() { ++shared; }   // interleaving possible → lost updates
+
+// Expected: shared == 2. Actual: might be 1 (lost update)
+// This is UNDEFINED BEHAVIOR in C++ — compiler may assume no data races
+
+// BAD: wrong memory ordering for publish-subscribe
+std::atomic&lt;bool&gt; ready{false};
+int data = 0;
+// Thread A:
+data = 42;
+ready.store(true, std::memory_order_relaxed);   // WRONG: relaxed doesn't sync data
+
+// Thread B:
+while (!ready.load(std::memory_order_relaxed)); // WRONG: relaxed doesn't sync
+assert(data == 42);   // FAILS: data=42 write may not be visible to Thread B!</code></pre><div class="ex-why bad-why">❌ Why this fails: Using relaxed ordering for a publish-subscribe pattern gives you atomicity but no synchronization guarantee. Thread B may see the flag as true but still see data as 0.</div></div><h2 class="chap">Chapter 5 — Lock-Free Programming</h2><h3 class="sec">5.1 CAS Loop — The Fundamental Lock-Free Pattern</h3><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// Lock-free stack using CAS
+template&lt;typename T&gt;
+class LockFreeStack {
+    struct Node { T data; Node* next; };
+    std::atomic&lt;Node*&gt; head_{nullptr};
+public:
+    void push(T val) {
+        Node* new_node = new Node{std::move(val), nullptr};
+        // CAS loop: retry until we successfully update head_
+        do {
+            new_node-&gt;next = head_.load(std::memory_order_relaxed);
+        } while (!head_.compare_exchange_weak(
+                new_node-&gt;next,   // expected (updated on failure)
+                new_node,         // desired
+                std::memory_order_release,   // success: publish new node
+                std::memory_order_relaxed)); // failure: just retry
+    }
+
+    std::optional&lt;T&gt; pop() {
+        Node* old_head = head_.load(std::memory_order_acquire);
+        while (old_head) {
+            if (head_.compare_exchange_weak(old_head, old_head-&gt;next,
+                    std::memory_order_acquire,
+                    std::memory_order_relaxed)) {
+                T val = std::move(old_head-&gt;data);
+                delete old_head;   // NOTE: hazard pointers needed for safe reclaim
+                return val;
+            }
+            // old_head was updated to current head_ on failure — retry
+        }
+        return std::nullopt;   // empty stack
+    }
+};</code></pre><div class="ex-why">✅ Why this works: compare_exchange_weak is used in loops — it may fail spuriously (cheaper on some architectures). compare_exchange_strong never fails spuriously but costs more. Use weak in loops, strong for single-attempt.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// BAD: ABA problem — CAS succeeds incorrectly
+// Thread 1: reads head_ = NodeA
+// Thread 2: pops NodeA, pops NodeB, pushes NodeA back (same address)
+// Thread 1: CAS(head_, NodeA, NodeA-&gt;next) — succeeds!
+//           But NodeA-&gt;next now points to freed memory!
+
+// This is the ABA problem: address A → B → A looks like "nothing changed"
+// to a CAS, but the state DID change.
+
+// Real consequences in lock-free stacks:
+// - Nodes freed and reused: dangling pointers
+// - Corrupted linked list structure
+
+// Solutions:
+// 1. Tagged pointer: pack a version counter into the pointer
+//    (use low/high bits on 64-bit systems)
+// 2. Hazard pointers: thread registers the pointer before use
+// 3. Epoch-based reclamation: defer free until no thread could use it</code></pre><div class="ex-why bad-why">❌ Why this fails: ABA is the most subtle lock-free bug. It doesn't crash immediately — it corrupts data structure integrity, causing occasional hangs or wrong results under load. Use established libraries (folly::hazptr, libatomic_ops) for production lock-free code.</div></div><h2 class="chap">Chapter 6 — Thread Pool Design</h2><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>class ThreadPool {
+    std::vector&lt;std::thread&gt;          workers_;
+    std::queue&lt;std::function&lt;void()&gt;&gt; tasks_;
+    std::mutex                        mtx_;
+    std::condition_variable           cv_;
+    std::atomic&lt;bool&gt;                 stop_{false};
+public:
+    explicit ThreadPool(size_t n) {
+        workers_.reserve(n);
+        for (size_t i = 0; i &lt; n; ++i)
+            workers_.emplace_back([this] {
+                while (true) {
+                    std::function&lt;void()&gt; task;
+                    {
+                        std::unique_lock lk(mtx_);
+                        cv_.wait(lk, [this] {
+                            return stop_.load() || !tasks_.empty();
+                        });
+                        if (stop_.load() &amp;&amp; tasks_.empty()) return;
+                        task = std::move(tasks_.front());
+                        tasks_.pop();
+                    }   // unlock before running task — important for throughput
+                    task();
+                }
+            });
+    }
+
+    // Submit any callable — returns future for the result
+    template&lt;typename F, typename... Args&gt;
+    auto submit(F&amp;&amp; f, Args&amp;&amp;... args) {
+        using R = std::invoke_result_t&lt;F, Args...&gt;;
+        auto pkg = std::make_shared&lt;std::packaged_task&lt;R()&gt;&gt;(
+            [f=std::forward&lt;F&gt;(f), ...args=std::forward&lt;Args&gt;(args)]() mutable {
+                return f(args...);
+            });
+        std::future&lt;R&gt; fut = pkg-&gt;get_future();
+        {
+            std::lock_guard lk(mtx_);
+            tasks_.emplace([pkg]{ (*pkg)(); });
+        }
+        cv_.notify_one();
+        return fut;
+    }
+
+    ~ThreadPool() {
+        stop_.store(true);
+        cv_.notify_all();        // wake all sleeping workers
+        for (auto&amp; t : workers_) t.join();   // wait for completion
+    }
+};
+
+// Usage:
+ThreadPool pool(std::thread::hardware_concurrency());
+auto fut1 = pool.submit(compute_hash, data1);
+auto fut2 = pool.submit(compute_hash, data2);
+auto h1 = fut1.get();   // blocks until result ready
+auto h2 = fut2.get();</code></pre><div class="ex-why">✅ Why this works: Unlock the mutex before running the task — otherwise the lock is held for the entire duration of the task, serializing all workers.</div></div><h2 class="chap">Chapter 7 — False Sharing and Cache Coherency</h2><div class="diagram">Cache line = 64 bytes (typical on x86)
+
+False sharing:
+  Thread 1: reads/writes counter1 (offset 0)
+  Thread 2: reads/writes counter2 (offset 4)
+  ┌────────────────────────────────────────────────────────────────┐
+  │ counter1 (4B) │ counter2 (4B) │ padding (56B)                 │
+  └────────────────────────────────────────────────────────────────┘
+  ↑─────────────same cache line (64 bytes)───────────────────────↑
+  → Each write by either thread invalidates the other's L1 cache!
+  → Cache line bounces between cores: 100-300 cycle penalty per access
+
+Fix: align each to a separate cache line:</div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// Pad each counter to its own 64-byte cache line
+struct alignas(64) PaddedCounter {
+    std::atomic&lt;long&gt; value{0};
+    // char padding[64 - sizeof(value)];  // implicit via alignas(64)
+};
+
+// Per-thread counters (no sharing at all)
+class ShardedCounter {
+    static constexpr size_t SHARDS = 16;
+    PaddedCounter shards_[SHARDS];
+public:
+    void increment() {
+        // Each thread hits its own shard — no cache contention
+        size_t idx = std::hash&lt;std::thread::id&gt;{}(std::this_thread::get_id()) % SHARDS;
+        shards_[idx].value.fetch_add(1, std::memory_order_relaxed);
+    }
+    long total() const {
+        long sum = 0;
+        for (auto&amp; s : shards_) sum += s.value.load(std::memory_order_relaxed);
+        return sum;
+    }
+};
+// ~8x faster than a single atomic&lt;long&gt; under 8-thread contention</code></pre><div class="ex-why">✅ Why this works: ShardedCounter trades slightly stale reads (total()) for dramatically better write throughput. This pattern is used in Linux kernel's percpu counters, Java's LongAdder, and high-performance event counters.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// BAD: naive struct — counter1 and counter2 share cache line
+struct NaiveCounters {
+    std::atomic&lt;long&gt; counter1{0};   // bytes 0-7
+    std::atomic&lt;long&gt; counter2{0};   // bytes 8-15
+};
+// Both fit in one 64-byte cache line
+// Thread1 writes counter1 → invalidates cache line on Thread2's core
+// Thread2 writes counter2 → invalidates cache line on Thread1's core
+// Performance: ~300 cycles per operation instead of ~1 cycle
+// Detected by: perf c2c record ./app &amp;&amp; perf c2c report</code></pre><div class="ex-why bad-why">❌ Why this fails: False sharing looks like a data race in profilers (high cache miss rate, low IPC) but has no correctness issue — just catastrophic performance. The fix is alignment.</div></div><h2 class="chap">Interview Q&amp;A — Multithreading</h2><div class="qa"><div class="question">❓ What is priority inversion? How does an RTOS solve it?</div><div class="answer">Priority inversion: High-priority task H waits on a mutex held by low-priority task L. Medium-priority task M preempts L (L has lower priority than M), so M runs instead of L. L can't release the mutex, H can't proceed — H is effectively blocked by M, a lower-priority task. This violates priority-based scheduling. Solution — Priority Inheritance: when H blocks on a mutex held by L, L's priority is temporarily raised to H's level. L runs preempting M, finishes critical section, releases mutex, H can proceed, L's priority reverts. POSIX: pthread_mutexattr_setprotocol(PTHREAD_PRIO_INHERIT). FreeRTOS: xSemaphoreCreateMutex() has this built-in.</div><div class="followup"><b>Follow-up questions interviewers ask:</b><ul><li>What is priority ceiling protocol?</li><li>How is priority inversion different from deadlock?</li><li>Give a real-world example of priority inversion.</li></ul></div><div class="followup" style="background:#fef2f2;border-color:#fca5a5"><b>Common mistakes in answers:</b><ul><li>Saying 'just use a higher-priority mutex' — priority ceiling is a specific protocol, not just raising priority.</li><li>Confusing priority inversion with deadlock — H isn't deadlocked, it's just delayed incorrectly.</li></ul></div></div><div class="qa"><div class="question">❓ Explain the difference between mutex, semaphore, and condition variable.</div><div class="answer"><b>Mutex</b>: binary lock with ownership semantics. Only the thread that locked it can unlock it. Used for: mutual exclusion of a critical section. <b>Semaphore</b>: signaling primitive with a counter. Any thread can signal (post) or wait. No ownership. Use for: producer-consumer signaling (binary semaphore), resource pools (counting semaphore — allows N concurrent accesses). <b>Condition variable</b>: used WITH a mutex. Allows a thread to atomically release the mutex and sleep until a condition becomes true. Use for: waiting for a complex condition (queue not empty, data ready). Key difference: mutex is about exclusion; condition variable is about waiting for a state change.</div><div class="followup"><b>Follow-up questions interviewers ask:</b><ul><li>When would you use a counting semaphore?</li><li>Why does condition variable require a mutex?</li><li>What is a monitor? How does it relate to condition variables?</li></ul></div><div class="followup" style="background:#fef2f2;border-color:#fca5a5"><b>Common mistakes in answers:</b><ul><li>Saying semaphore = mutex — semaphore has no ownership, is broader in use.</li><li>Saying you'd use condition variable without a predicate — spurious wakeups require a predicate.</li></ul></div></div>
+    <div class="pagination"><a href="part01.html">← Part 01</a><a href="part03.html">Part 03 →</a></div>
+  </div>
+</div>
+<button id="btt">↑</button>
+<script>
+document.querySelectorAll('pre').forEach(p=>{
+  const b=document.createElement('button');b.className='copy-btn';b.textContent='Copy';
+  p.appendChild(b);b.onclick=()=>{navigator.clipboard.writeText(p.innerText.replace('Copy','').trim())
+  .then(()=>{b.textContent='Copied!';setTimeout(()=>b.textContent='Copy',2000);});};});
+const btt=document.getElementById('btt');
+window.addEventListener('scroll',()=>btt&&btt.classList.toggle('show',scrollY>300));
+btt&&btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+const si=document.getElementById('search');
+if(si)si.addEventListener('input',function(){const q=this.value.toLowerCase();
+  document.querySelectorAll('.part-card').forEach(c=>c.style.display=
+    c.textContent.toLowerCase().includes(q)?'':'none');});
+</script></body></html>

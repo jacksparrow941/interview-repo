@@ -147,13 +147,13 @@
 <button class="tab-btn" data-tab="backend">🔧 Backend <span style="opacity:.5;font-size:11px">(5)</span></button>
 <button class="tab-btn" data-tab="database">🗄️ Database <span style="opacity:.5;font-size:11px">(7)</span></button>
 <button class="tab-btn" data-tab="concurrency">⚡ Concurrency <span style="opacity:.5;font-size:11px">(2)</span></button>
-<button class="tab-btn" data-tab="cpp">⚙️ C++ <span style="opacity:.5;font-size:11px">(25)</span></button>
+<button class="tab-btn" data-tab="java">☕ Java <span style="opacity:.5;font-size:11px">(1)</span></button>
 <button class="tab-btn" data-tab="ml_systems">🤖 ML Systems <span style="opacity:.5;font-size:11px">(4)</span></button>
-<button class="tab-btn" data-tab="os">🖥️ OS <span style="opacity:.5;font-size:11px">(11)</span></button>
-<button class="tab-btn" data-tab="lld">📐 LLD <span style="opacity:.5;font-size:11px">(3)</span></button>
-<button class="tab-btn" data-tab="security">🔒 Security <span style="opacity:.5;font-size:11px">(1)</span></button>
 <button class="tab-btn" data-tab="performance">⚡ Performance <span style="opacity:.5;font-size:11px">(6)</span></button>
-<button class="tab-btn" data-tab="java">☕ Java <span style="opacity:.5;font-size:11px">(1)</span></button></div></div>
+<button class="tab-btn" data-tab="cpp">⚙️ C++ <span style="opacity:.5;font-size:11px">(25)</span></button>
+<button class="tab-btn" data-tab="security">🔒 Security <span style="opacity:.5;font-size:11px">(1)</span></button>
+<button class="tab-btn" data-tab="lld">📐 LLD <span style="opacity:.5;font-size:11px">(3)</span></button>
+<button class="tab-btn" data-tab="os">🖥️ OS <span style="opacity:.5;font-size:11px">(11)</span></button></div></div>
 <div class="container"><div class="tab-panel active" id="tab-coding">
   <div class="questions-header">
     <h3>💻 DSA</h3>
@@ -601,6 +601,322 @@ if (CAS(&amp;head, expected, { nodeB, 6 })) { /* won */ }
     <div class="q-meta-row">
       <span class="q-meta-chip">🗓 Concurrency Round</span>
       <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Databricks</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-java">
+  <div class="questions-header">
+    <h3>☕ Java</h3>
+    <span class="q-count">1 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="concurrency">
+    <span class="q-index">1</span>
+    <span class="q-text">Java Memory Model and happens-before</span>
+    <div class="q-tags"><span class="q-tag">jmm</span><span class="q-tag">happens-before</span><span class="q-tag">volatile</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Java Memory Model (JMM) Happens-Before</span><br>If action A happens-before B, then A's writes are visible to B. Established by:<br><ul><li>Monitor unlock happens-before lock by any thread</li><li>volatile write happens-before volatile read of same field</li><li>Thread.start() happens-before all actions in started thread</li><li>Thread.join() happens-before all actions after join returns</li><li>Program order within single thread</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">volatile vs synchronized</span><br><ul><li><b>volatile:</b> Visibility + ordering for single variable. No atomicity for compound ops (i++ is not atomic).</li><li><b>synchronized:</b> Mutual exclusion + full memory visibility. Heavier.</li><li><b>Atomic classes:</b> CAS-based, lock-free, best for single variable atomic operations.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Why does double-checked locking need volatile? (prevents reordering of new T() allocation vs pointer assignment)<br>• What is a publication failure and how does final field guarantee prevent it?<br>• What is memory_order in C++ and how does it map to JMM concepts?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, LinkedIn, Meta, Databricks</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-ml_systems">
+  <div class="questions-header">
+    <h3>🤖 ML Systems</h3>
+    <span class="q-count">4 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="ml_systems">
+    <span class="q-index">1</span>
+    <span class="q-text">Design a ML feature store — what is it and why?</span>
+    <div class="q-tags"><span class="q-tag">feature-store</span><span class="q-tag">ml</span><span class="q-tag">feast</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">What is a Feature Store?</span><br>Centralized repository for ML features. Solves two problems:<br><ul><li><b>Training-serving skew:</b> Feature computed differently at training vs inference → model underperforms in production</li><li><b>Feature reuse:</b> Team A computes user_30d_spend, Team B recomputes it separately → wasted effort</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Architecture</span><br><pre>Data Sources (events, DB, streams)
+    ↓
+Feature Engineering (Spark/Flink job)
+    ↓ write
+┌────────────────────────────────────┐
+│ Feature Store (Feast / Tecton)     │
+│  Offline Store: S3/BigQuery/Hive   │ ← batch training data
+│  Online Store:  Redis/DynamoDB     │ ← low-latency serving
+└────────────────────────────────────┘
+    ↑ read at training time          ↑ read at inference time (&lt;10ms)
+    Training Job                     Inference Service</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Concepts</span><br><ul><li><b>Point-in-time correct joins:</b> Feature store returns the feature value as it was at prediction time (prevents data leakage)</li><li><b>Feature versioning:</b> Rollback features if model performance degrades</li><li><b>Feature monitoring:</b> Drift detection — alert if feature distribution changes significantly</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you handle feature freshness requirements? (real-time vs hourly vs daily features)<br>• What is training-serving skew and how does a feature store prevent it?<br>• How does Uber Michelangelo implement feature serving?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, LinkedIn, Uber...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="ml_systems">
+    <span class="q-index">2</span>
+    <span class="q-text">Explain transformer architecture and attention mechanism</span>
+    <div class="q-tags"><span class="q-tag">transformer</span><span class="q-tag">attention</span><span class="q-tag">self-attention</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Self-Attention Mechanism</span><br><pre>Input: sequence of tokens → embeddings (d_model=768 for BERT-base)
+
+For each token, compute:
+  Q (query) = embedding × W_Q
+  K (key)   = embedding × W_K
+  V (value) = embedding × W_V
+
+Attention weights = softmax(Q × K^T / sqrt(d_k))
+Output = Attention_weights × V
+
+# Each token attends to all other tokens — captures long-range dependencies
+# Multi-head: run h parallel attention heads, concat, project</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Transformer Architecture</span><br><ul><li><b>Encoder (BERT):</b> Bidirectional. Sees full context. Used for classification, NER, embeddings.</li><li><b>Decoder (GPT):</b> Autoregressive. Each token attends only to previous tokens (causal mask). Used for generation.</li><li><b>Encoder-Decoder (T5, BART):</b> Seq2seq tasks: translation, summarization, QA.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Why Transformers replaced RNNs</span><br><ul><li>RNN: sequential computation → no parallelism. Gradient vanishing for long sequences.</li><li>Transformer: parallel over all positions. Self-attention = O(n²d) but parallelizable on GPU.</li><li>Position encoding: sinusoidal or learned — since attention is permutation-invariant, positional info must be added explicitly.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the computational complexity of self-attention and how does sparse attention solve it?<br>• What is RLHF (Reinforcement Learning from Human Feedback) and how is it used to train ChatGPT?<br>• What is the difference between fine-tuning and prompt engineering vs RAG?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 ML Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Microsoft, Amazon, OpenAI, Databricks...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="ml_systems">
+    <span class="q-index">3</span>
+    <span class="q-text">What is the difference between batch inference and online inference?</span>
+    <div class="q-tags"><span class="q-tag">batch-inference</span><span class="q-tag">online-inference</span><span class="q-tag">real-time-ml</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Batch Inference</span><br><pre>Trigger: scheduled (hourly/daily)
+Input:   entire dataset (all users)
+Output:  precomputed predictions stored in DB/cache
+Latency: hours (acceptable)
+Use cases: email recommendations, next-day demand forecast,
+           weekly personalization, offline reporting
+
+Stack: Spark/EMR → run model → write to S3 → load to serving DB</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Online (Real-time) Inference</span><br><pre>Trigger: user action (click, search, checkout)
+Input:   single request features
+Output:  prediction within SLA (p99 &lt; 100ms)
+Latency: milliseconds
+Use cases: fraud detection, search ranking, ad bidding, chatbot
+
+Stack: REST/gRPC → Feature store (Redis, &lt;5ms) → Model server (TorchServe/TFServing) → Cache</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Hybrid Approach</span><br>Pre-compute slow features (batch) + compute fast features (online) → merge at serving time. E.g., Netflix: batch compute user long-term embeddings + online compute session context → real-time ranking.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you optimize model inference latency? (quantization, ONNX runtime, model pruning)<br>• What is model serving and how does TorchServe handle batching?<br>• When would you choose a rule-based system over a ML model?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 ML Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Netflix, Uber...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="ml_systems">
+    <span class="q-index">4</span>
+    <span class="q-text">How do you detect and handle model drift?</span>
+    <div class="q-tags"><span class="q-tag">model-drift</span><span class="q-tag">data-drift</span><span class="q-tag">monitoring</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Types of Drift</span><br><ul><li><b>Data drift (covariate shift):</b> Input feature distribution changes. User behavior changed, new user segment, seasonality. Model predictions become unreliable.</li><li><b>Concept drift:</b> Relationship between features and label changes. E.g., 'fraud' patterns evolve.</li><li><b>Label drift:</b> Output distribution changes. E.g., more fraudulent transactions in new season.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Detection Methods</span><br><ul><li><b>Statistical tests:</b> KS-test, PSI (Population Stability Index), Chi-squared for categorical features</li><li><b>Model performance metrics:</b> Track AUC, precision, recall on labeled samples in production</li><li><b>Shadow deployment:</b> Run new model in shadow, compare predictions vs current model</li><li><b>Outlier detection:</b> Flag inputs far from training distribution (z-score, isolation forest)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Response Strategy</span><br><ul><li><b>Auto-retrain trigger:</b> PSI &gt; 0.2 → trigger retraining pipeline in MLflow/SageMaker</li><li><b>Continuous training:</b> Retrain on rolling window of recent data (online learning for fast-moving data)</li><li><b>Canary deployment:</b> New model serves 5% traffic, compare metrics before full rollout</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is PSI (Population Stability Index) and what thresholds indicate drift?<br>• How do you maintain a training data pipeline that is always fresh?<br>• What is the difference between online and batch retraining?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 ML Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, LinkedIn, Uber...</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-performance">
+  <div class="questions-header">
+    <h3>⚡ Performance</h3>
+    <span class="q-count">6 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="performance">
+    <span class="q-index">1</span>
+    <span class="q-text">How do you diagnose and fix high API latency?</span>
+    <div class="q-tags"><span class="q-tag">latency</span><span class="q-tag">profiling</span><span class="q-tag">p99</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">92%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Systematic Approach</span><br><pre>1. MEASURE: Where is the time going?
+   - Add distributed tracing (Jaeger/Zipkin): see each span's duration
+   - p50/p95/p99 latency (NOT just average — outliers matter)
+   - Breakdown: network + serialization + DB queries + external API + CPU
+
+2. IDENTIFY bottleneck:
+   Common causes:
+   - N+1 queries (add JOIN FETCH or batch)
+   - Missing DB index (check EXPLAIN ANALYZE → seq scan)
+   - Synchronous external API call in critical path (make async / cache)
+   - Lock contention (connection pool exhausted, mutex hotspot)
+   - GC pauses (Java: -XX:+PrintGCDetails, G1/ZGC tuning)
+   - Memory pressure (swap, cache thrashing)
+
+3. FIX:
+   - Caching: Redis in front of slow DB queries
+   - Async: move non-critical work off request path (Kafka)
+   - Parallelism: concurrent DB queries (CompletableFuture/goroutines)
+   - Index: add composite index for slow query
+   - Connection pooling: tune min/max pool size</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Metrics</span><br><ul><li><b>Latency percentiles:</b> p50=100ms is fine; p99=5s means 1% users wait 5 seconds</li><li><b>Throughput:</b> RPS the service can handle without degrading</li><li><b>Error rate:</b> 5xx rate as % of total requests</li><li><b>Saturation:</b> CPU%, memory%, connection pool utilization, queue depth</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">USE Method</span><br>For every resource: <b>Utilization</b> (how busy), <b>Saturation</b> (how much queuing), <b>Errors</b> (error count). Invented by Brendan Gregg.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you use flame graphs to identify CPU hotspots?<br>• What is the difference between tail latency and average latency?<br>• How do you implement circuit breakers to protect against latency cascades?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="caching">
+    <span class="q-index">2</span>
+    <span class="q-text">Cache strategies — cache-aside, read-through, write-through, write-back</span>
+    <div class="q-tags"><span class="q-tag">caching</span><span class="q-tag">redis</span><span class="q-tag">cache-aside</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Cache Strategies</span><br><ul><li><b>Cache-Aside (Lazy loading):</b> App checks cache first; on miss, reads DB, populates cache. Cache only stores what's actually requested. Risk: thundering herd on cold start.</li><li><b>Read-Through:</b> Cache reads from DB automatically on miss (library handles it). App always reads from cache. DB not directly accessed by app.</li><li><b>Write-Through:</b> Write to cache AND DB synchronously. Cache never stale. High write latency (must wait for both). Good for read-heavy.</li><li><b>Write-Back (Write-Behind):</b> Write to cache, return immediately. Write to DB asynchronously. Fast writes. Risk: data loss if cache crashes before flush.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache-Aside Pattern (most common)</span><br><pre>def get_user(user_id):
+    # Try cache first
+    user = redis.get(f"user:{user_id}")
+    if user:
+        return deserialize(user)  # cache hit
+    
+    # Cache miss — read from DB
+    user = db.query("SELECT * FROM users WHERE id=%s", user_id)
+    
+    # Populate cache with TTL
+    redis.setex(f"user:{user_id}", ttl=3600, value=serialize(user))
+    return user
+
+def update_user(user_id, data):
+    db.execute("UPDATE users SET ... WHERE id=%s", user_id)
+    redis.delete(f"user:{user_id}")  # invalidate — don't update!</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache Eviction Policies</span><br><ul><li><b>LRU:</b> Evict least recently used. Good general-purpose.</li><li><b>LFU:</b> Evict least frequently used. Better for skewed access patterns.</li><li><b>TTL:</b> Time-based expiry. Always stale by at most TTL seconds.</li><li><b>Allkeys-lru (Redis):</b> Apply LRU across all keys when memory full.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the thundering herd problem and how do you prevent it? (mutex/lock on cache miss, staggered TTLs)<br>• How do you handle cache warming after a cold restart?<br>• What is probabilistic early expiration (PER) and how does it prevent dogpile?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Backend Design</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="observability">
+    <span class="q-index">3</span>
+    <span class="q-text">Observability — metrics, logs, traces — the three pillars</span>
+    <div class="q-tags"><span class="q-tag">observability</span><span class="q-tag">prometheus</span><span class="q-tag">grafana</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Three Pillars</span><br><ul><li><b>Metrics:</b> Numeric aggregations over time. Low cardinality. Cheap to store. Tool: Prometheus (pull-based scraping) + Grafana. Counter, Gauge, Histogram, Summary.</li><li><b>Logs:</b> Discrete events with context. High volume. Searchable. Tool: ELK stack (Elasticsearch+Logstash+Kibana) or Loki+Grafana. Structured JSON logs with trace_id for correlation.</li><li><b>Traces:</b> Request journey across services. Tool: Jaeger, Zipkin, Tempo. Essential for microservices debugging.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">SLI / SLO / SLA / Error Budget</span><br><pre>SLI (Service Level Indicator): the metric you measure
+  e.g., "% of requests with latency &lt; 200ms"
+
+SLO (Service Level Objective): your internal target
+  e.g., "99.9% of requests &lt; 200ms over rolling 30 days"
+
+SLA (Service Level Agreement): contractual with customer
+  e.g., "99.5% uptime or credit applied"
+
+Error Budget: 1 - SLO = allowed unreliability
+  99.9% SLO = 0.1% error budget = 43.8 min downtime/month
+  If budget exhausted: freeze feature work, focus on reliability</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">RED Method (for services)</span><br><b>R</b>ate (requests/sec), <b>E</b>rror rate (errors/sec), <b>D</b>uration (latency). Apply to every microservice for quick health check.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you implement alerting without alert fatigue? (symptom-based not cause-based alerts)<br>• What is the difference between blackbox and whitebox monitoring?<br>• How does OpenTelemetry unify metrics, logs, and traces?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="observability">
+    <span class="q-index">4</span>
+    <span class="q-text">Explain distributed tracing — how it works</span>
+    <div class="q-tags"><span class="q-tag">distributed-tracing</span><span class="q-tag">opentelemetry</span><span class="q-tag">jaeger</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">How it works</span><br><pre>Request enters Service A → Tracer generates trace_id (128-bit)
+Service A calls Service B → propagates trace_id + span_id in HTTP header:
+  traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01
+               version  traceId                    parentSpanId   flags
+
+Each service creates a span:
+  span = {traceId, spanId, parentSpanId, name, startTime, duration,
+          tags: {"db.type":"postgresql", "http.status":200},
+          logs: [{"event":"query", "sql":"..."}]}
+
+Spans sent async to collector (Jaeger/Zipkin) → assembled into trace tree</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">OpenTelemetry (OTel)</span><br><ul><li>Vendor-neutral standard for traces, metrics, logs</li><li>SDK instruments your code (auto-instrumentation for popular frameworks)</li><li>Exporter sends to Jaeger, Zipkin, Tempo, AWS X-Ray, Datadog</li><li><code>OTEL_TRACES_EXPORTER=jaeger OTEL_EXPORTER_JAEGER_ENDPOINT=http://jaeger:14268/api/traces</code></li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Sampling</span><br><ul><li><b>Head sampling:</b> Decision at trace start (before outcome known). Simple. Loses tail errors.</li><li><b>Tail sampling:</b> Buffer traces, decide after seeing all spans. Can keep errored/slow traces.</li><li><b>Rate:</b> 1% for healthy services, 100% for errors, 10% for slow (p99 &gt; 1s)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the W3C Trace Context specification?<br>• How does continuous profiling (Pyroscope, Parca) complement distributed tracing?<br>• How do you correlate traces with logs and metrics? (structured logging with trace_id)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="performance">
+    <span class="q-index">5</span>
+    <span class="q-text">Load testing — how to approach and what tools to use</span>
+    <div class="q-tags"><span class="q-tag">load-testing</span><span class="q-tag">k6</span><span class="q-tag">gatling</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Test Types</span><br><ul><li><b>Load test:</b> Expected normal + peak load. Validate SLAs. Measure p99 latency, throughput, error rate.</li><li><b>Stress test:</b> Push beyond expected load until system breaks. Find breaking point. Test recovery.</li><li><b>Soak/endurance test:</b> Normal load for extended time (hours/days). Find memory leaks, connection exhaustion, log rotation issues.</li><li><b>Spike test:</b> Sudden large traffic burst. Test autoscaling, circuit breakers.</li><li><b>Chaos test:</b> Kill instances, inject latency, corrupt network. Test resilience.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">k6 Example</span><br><pre>import http from 'k6/http';
+import { check, sleep } from 'k6';
+
+export const options = {
+  stages: [
+    { duration: '2m', target: 100 },   // ramp up to 100 VUs
+    { duration: '5m', target: 100 },   // hold at 100 VUs
+    { duration: '2m', target: 0 },     // ramp down
+  ],
+  thresholds: {
+    'http_req_duration': ['p(99)&lt;500'],  // 99% requests &lt; 500ms
+    'http_req_failed': ['rate&lt;0.01'],   // &lt;1% error rate
+  },
+};
+
+export default function() {
+  const r = http.get('https://api.example.com/users');
+  check(r, { 'status 200': (r) =&gt; r.status === 200 });
+  sleep(1);
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">What to measure</span><br><ul><li>Throughput: requests/sec at saturation</li><li>Latency: p50, p95, p99, p999 as load increases</li><li>Error rate: 5xx rate, timeout rate</li><li>Resource utilization: CPU, memory, disk I/O, network on each tier</li><li>Database: connection pool saturation, query latency at load</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you load test a WebSocket-based chat system?<br>• What is the difference between vertical and horizontal scaling in response to load tests?<br>• How do you profile a Java application under production load? (async-profiler, JFR)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="performance">
+    <span class="q-index">6</span>
+    <span class="q-text">How does CPU caching work and why does it matter for performance?</span>
+    <div class="q-tags"><span class="q-tag">cpu-cache</span><span class="q-tag">cache-line</span><span class="q-tag">false-sharing</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">74%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Memory Hierarchy</span><br><pre>L1 cache:  ~32KB per core,   ~1ns  latency
+L2 cache: ~256KB per core,   ~4ns  latency
+L3 cache:   ~8MB shared,     ~40ns latency
+RAM:        ~16-64GB,       ~100ns latency
+SSD NVMe:              ~100μs latency
+HDD:                    ~10ms latency</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache Lines</span><br>Data loaded in 64-byte cache lines. Accessing one byte loads entire 64-byte block. Sequential access (arrays) → excellent cache utilization. Random access (linked lists) → cache miss per node.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">False Sharing</span><br><pre># Two threads update different variables in same cache line:
+# Thread 1 updates counter_a, Thread 2 updates counter_b
+# If they're adjacent in memory → same cache line → cache coherence traffic
+# Core 1 invalidates Core 2's cache line on every write → performance degrades!
+
+# Fix: padding
+struct PaddedCounter {
+    alignas(64) std::atomic&lt;int64_t&gt; value;  // 64-byte aligned
+    char padding[64 - sizeof(std::atomic&lt;int64_t&gt;)];  // fill rest of cache line
+};</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Practical Impact</span><br><ul><li>Array of structs vs Struct of arrays (SOA): SOA = better cache usage for column-wise processing</li><li>Cache-oblivious algorithms (recursive divide) beat sequential for large matrices</li><li>Go: sync.Mutex padded to avoid false sharing with adjacent data</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is NUMA (Non-Uniform Memory Access) and how does it affect multi-socket servers?<br>• How does prefetching work and how can you hint the CPU to prefetch?<br>• What is the impact of cache misses on a tight loop processing 100M integers?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Databricks, Snowflake...</span>
     </div>
   </div>
 </div>
@@ -1287,106 +1603,152 @@ struct MyContainer {
   </div>
 </div>
 </div>
-<div class="tab-panel" id="tab-ml_systems">
+<div class="tab-panel" id="tab-security">
   <div class="questions-header">
-    <h3>🤖 ML Systems</h3>
-    <span class="q-count">4 questions</span>
+    <h3>🔒 Security</h3>
+    <span class="q-count">1 questions</span>
   </div>
   <div class="q-wrapper">
-  <div class="question-item" data-difficulty="hard" data-subcategory="ml_systems">
+  <div class="question-item" data-difficulty="medium" data-subcategory="appsec">
     <span class="q-index">1</span>
-    <span class="q-text">Design a ML feature store — what is it and why?</span>
-    <div class="q-tags"><span class="q-tag">feature-store</span><span class="q-tag">ml</span><span class="q-tag">feast</span></div>
-    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
-    <span class="q-freq freq-high">82%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">What is a Feature Store?</span><br>Centralized repository for ML features. Solves two problems:<br><ul><li><b>Training-serving skew:</b> Feature computed differently at training vs inference → model underperforms in production</li><li><b>Feature reuse:</b> Team A computes user_30d_spend, Team B recomputes it separately → wasted effort</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Architecture</span><br><pre>Data Sources (events, DB, streams)
-    ↓
-Feature Engineering (Spark/Flink job)
-    ↓ write
-┌────────────────────────────────────┐
-│ Feature Store (Feast / Tecton)     │
-│  Offline Store: S3/BigQuery/Hive   │ ← batch training data
-│  Online Store:  Redis/DynamoDB     │ ← low-latency serving
-└────────────────────────────────────┘
-    ↑ read at training time          ↑ read at inference time (&lt;10ms)
-    Training Job                     Inference Service</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Concepts</span><br><ul><li><b>Point-in-time correct joins:</b> Feature store returns the feature value as it was at prediction time (prevents data leakage)</li><li><b>Feature versioning:</b> Rollback features if model performance degrades</li><li><b>Feature monitoring:</b> Drift detection — alert if feature distribution changes significantly</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you handle feature freshness requirements? (real-time vs hourly vs daily features)<br>• What is training-serving skew and how does a feature store prevent it?<br>• How does Uber Michelangelo implement feature serving?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 System Design Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, LinkedIn, Uber...</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="hard" data-subcategory="ml_systems">
-    <span class="q-index">2</span>
-    <span class="q-text">Explain transformer architecture and attention mechanism</span>
-    <div class="q-tags"><span class="q-tag">transformer</span><span class="q-tag">attention</span><span class="q-tag">self-attention</span></div>
-    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
-    <span class="q-freq freq-high">82%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Self-Attention Mechanism</span><br><pre>Input: sequence of tokens → embeddings (d_model=768 for BERT-base)
-
-For each token, compute:
-  Q (query) = embedding × W_Q
-  K (key)   = embedding × W_K
-  V (value) = embedding × W_V
-
-Attention weights = softmax(Q × K^T / sqrt(d_k))
-Output = Attention_weights × V
-
-# Each token attends to all other tokens — captures long-range dependencies
-# Multi-head: run h parallel attention heads, concat, project</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Transformer Architecture</span><br><ul><li><b>Encoder (BERT):</b> Bidirectional. Sees full context. Used for classification, NER, embeddings.</li><li><b>Decoder (GPT):</b> Autoregressive. Each token attends only to previous tokens (causal mask). Used for generation.</li><li><b>Encoder-Decoder (T5, BART):</b> Seq2seq tasks: translation, summarization, QA.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Why Transformers replaced RNNs</span><br><ul><li>RNN: sequential computation → no parallelism. Gradient vanishing for long sequences.</li><li>Transformer: parallel over all positions. Self-attention = O(n²d) but parallelizable on GPU.</li><li>Position encoding: sinusoidal or learned — since attention is permutation-invariant, positional info must be added explicitly.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the computational complexity of self-attention and how does sparse attention solve it?<br>• What is RLHF (Reinforcement Learning from Human Feedback) and how is it used to train ChatGPT?<br>• What is the difference between fine-tuning and prompt engineering vs RAG?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 ML Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Microsoft, Amazon, OpenAI, Databricks...</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="medium" data-subcategory="ml_systems">
-    <span class="q-index">3</span>
-    <span class="q-text">What is the difference between batch inference and online inference?</span>
-    <div class="q-tags"><span class="q-tag">batch-inference</span><span class="q-tag">online-inference</span><span class="q-tag">real-time-ml</span></div>
+    <span class="q-text">Secrets management — best practices</span>
+    <div class="q-tags"><span class="q-tag">secrets</span><span class="q-tag">vault</span><span class="q-tag">env-vars</span></div>
     <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
-    <span class="q-freq freq-high">80%</span>
+    <span class="q-freq freq-high">84%</span>
   </div>
   <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Batch Inference</span><br><pre>Trigger: scheduled (hourly/daily)
-Input:   entire dataset (all users)
-Output:  precomputed predictions stored in DB/cache
-Latency: hours (acceptable)
-Use cases: email recommendations, next-day demand forecast,
-           weekly personalization, offline reporting
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Anti-patterns</span><br><ul><li>Hardcoded secrets in code → leaked to Git history forever</li><li>Secrets in environment variables → visible in process list, crash dumps, logs</li><li>Secrets in docker-compose.yml committed to repo</li><li>Secrets passed as command-line args → visible in ps output</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">HashiCorp Vault</span><br><pre># Dynamic secrets — Vault generates short-lived DB credentials per request
+vault read database/creds/my-role
+# Returns: {username: "v-app-XyZ", password: "...", lease_duration: "1h"}
+# Automatically revoked after 1h — no long-lived DB passwords!
 
-Stack: Spark/EMR → run model → write to S3 → load to serving DB</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Online (Real-time) Inference</span><br><pre>Trigger: user action (click, search, checkout)
-Input:   single request features
-Output:  prediction within SLA (p99 &lt; 100ms)
-Latency: milliseconds
-Use cases: fraud detection, search ranking, ad bidding, chatbot
-
-Stack: REST/gRPC → Feature store (Redis, &lt;5ms) → Model server (TorchServe/TFServing) → Cache</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Hybrid Approach</span><br>Pre-compute slow features (batch) + compute fast features (online) → merge at serving time. E.g., Netflix: batch compute user long-term embeddings + online compute session context → real-time ranking.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you optimize model inference latency? (quantization, ONNX runtime, model pruning)<br>• What is model serving and how does TorchServe handle batching?<br>• When would you choose a rule-based system over a ML model?</div></div></div>
+# App integration:
+VaultClient vault = new VaultClient("https://vault.internal");
+String secret = vault.read("secret/data/db-password").get("value");</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Best Practices</span><br><ul><li><b>Vault / AWS Secrets Manager / GCP Secret Manager:</b> Centralized, audit-logged, auto-rotation</li><li><b>Secret rotation:</b> Automatic rotation without app restart (blue-green credential rotation)</li><li><b>Just-in-time secrets:</b> Request credential when needed, revoke immediately after</li><li><b>Kubernetes:</b> Use external-secrets operator to sync from Vault/SM into K8s Secrets</li><li><b>Git scanning:</b> TruffleHog, GitGuardian pre-commit hooks to prevent secret commits</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is envelope encryption and how does AWS KMS implement it?<br>• How do you handle secret rotation without downtime?<br>• What is SPIFFE/SPIRE for workload identity?</div></div></div>
     <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 ML Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Netflix, Uber...</span>
+      <span class="q-meta-chip">🗓 Security Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Stripe, PayPal...</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-lld">
+  <div class="questions-header">
+    <h3>📐 LLD</h3>
+    <span class="q-count">3 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
+    <span class="q-index">1</span>
+    <span class="q-text">Design a Cache (LRU / LFU)</span>
+    <div class="q-tags"><span class="q-tag">design-patterns</span><span class="q-tag">doubly-linked-list</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">LRU Cache</span><br><pre>class LRUCache&lt;K,V&gt; {
+    int capacity;
+    LinkedHashMap&lt;K,V&gt; cache;
+    LRUCache(int cap) {
+        capacity = cap;
+        cache = new LinkedHashMap&lt;&gt;(16, 0.75f, true) {  // accessOrder=true
+            protected boolean removeEldestEntry(Map.Entry&lt;K,V&gt; e) {
+                return size() &gt; capacity;
+            }
+        };
+    }
+    public synchronized V get(K key) { return cache.getOrDefault(key, null); }
+    public synchronized void put(K key, V val) { cache.put(key, val); }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">LFU Cache</span><br><pre>class LFUCache {
+    Map&lt;Integer,Integer&gt; vals = new HashMap&lt;&gt;();
+    Map&lt;Integer,Integer&gt; counts = new HashMap&lt;&gt;();
+    Map&lt;Integer, LinkedHashSet&lt;Integer&gt;&gt; freqMap = new HashMap&lt;&gt;();
+    int minFreq, cap;
+    // On get: increment freq, move to higher freq bucket
+    // On put: if cap exceeded, evict from minFreq bucket (oldest entry)
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Strategy Pattern</span><br>Pluggable eviction: <code>EvictionPolicy</code> interface with <code>LRU</code>, <code>LFU</code>, <code>FIFO</code> implementations.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you make LRU thread-safe without a global lock? (shard by key hash)</li><li>How do you implement TTL-based expiry alongside LRU eviction?</li><li>How does Redis implement LRU? (approximate LRU — sample 5 keys, evict oldest)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the time complexity of LFU vs LRU? (both O(1) with right structures)<br>• How does Caffeine (Java) implement W-TinyLFU?<br>• What is a 2Q (Two-Queue) cache?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, Razorpay...</span>
     </div>
   </div>
 </div>
 <div class="q-wrapper">
-  <div class="question-item" data-difficulty="hard" data-subcategory="ml_systems">
-    <span class="q-index">4</span>
-    <span class="q-text">How do you detect and handle model drift?</span>
-    <div class="q-tags"><span class="q-tag">model-drift</span><span class="q-tag">data-drift</span><span class="q-tag">monitoring</span></div>
+  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
+    <span class="q-index">2</span>
+    <span class="q-text">Design a Key-Value Store</span>
+    <div class="q-tags"><span class="q-tag">lsm-tree</span><span class="q-tag">wal</span><span class="q-tag">concurrent</span></div>
     <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
-    <span class="q-freq freq-med">78%</span>
+    <span class="q-freq freq-high">83%</span>
   </div>
   <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Types of Drift</span><br><ul><li><b>Data drift (covariate shift):</b> Input feature distribution changes. User behavior changed, new user segment, seasonality. Model predictions become unreliable.</li><li><b>Concept drift:</b> Relationship between features and label changes. E.g., 'fraud' patterns evolve.</li><li><b>Label drift:</b> Output distribution changes. E.g., more fraudulent transactions in new season.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Detection Methods</span><br><ul><li><b>Statistical tests:</b> KS-test, PSI (Population Stability Index), Chi-squared for categorical features</li><li><b>Model performance metrics:</b> Track AUC, precision, recall on labeled samples in production</li><li><b>Shadow deployment:</b> Run new model in shadow, compare predictions vs current model</li><li><b>Outlier detection:</b> Flag inputs far from training distribution (z-score, isolation forest)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Response Strategy</span><br><ul><li><b>Auto-retrain trigger:</b> PSI &gt; 0.2 → trigger retraining pipeline in MLflow/SageMaker</li><li><b>Continuous training:</b> Retrain on rolling window of recent data (online learning for fast-moving data)</li><li><b>Canary deployment:</b> New model serves 5% traffic, compare metrics before full rollout</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is PSI (Population Stability Index) and what thresholds indicate drift?<br>• How do you maintain a training data pipeline that is always fresh?<br>• What is the difference between online and batch retraining?</div></div></div>
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Architecture</span><br><ul><li><b>MemTable:</b> In-memory sorted tree (TreeMap). Writes go here first.</li><li><b>WAL (Write-Ahead Log):</b> Append-only log for crash recovery.</li><li><b>SSTable:</b> Immutable sorted file flushed from MemTable when full.</li><li><b>Compaction:</b> Background merge of SSTables (remove tombstones, deduplicate).</li><li><b>Bloom Filter:</b> Per-SSTable to skip files that don't contain a key (fast miss detection).</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Core Operations</span><br><pre>class KVStore {
+    TreeMap&lt;String,String&gt; memTable = new TreeMap&lt;&gt;();
+    List&lt;SSTable&gt; ssTables = new ArrayList&lt;&gt;();
+    WriteAheadLog wal;
+    final int MEM_TABLE_LIMIT = 1_000_000;
+
+    synchronized void put(String key, String value) {
+        wal.append(key, value);
+        memTable.put(key, value);
+        if (memTable.size() &gt;= MEM_TABLE_LIMIT) flush();
+    }
+
+    String get(String key) {
+        if (memTable.containsKey(key)) return memTable.get(key);
+        for (int i = ssTables.size()-1; i &gt;= 0; i--) {
+            if (ssTables.get(i).bloomFilter.mightContain(key))
+                return ssTables.get(i).get(key);  // binary search in sorted file
+        }
+        return null;
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you implement TTL (key expiry)?</li><li>How does compaction prevent unbounded disk growth?</li><li>How do you implement range queries efficiently?</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does RocksDB differ from a simple LSM implementation?<br>• What is leveled vs size-tiered compaction strategy?<br>• How do you implement atomic multi-key transactions?</div></div></div>
     <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 ML Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, LinkedIn, Uber...</span>
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Databricks, Snowflake</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
+    <span class="q-index">3</span>
+    <span class="q-text">Design a Bloom Filter</span>
+    <div class="q-tags"><span class="q-tag">bloom-filter</span><span class="q-tag">probabilistic</span><span class="q-tag">bitarray</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">What is a Bloom Filter</span><br>Space-efficient probabilistic data structure. Answers: 'definitely not in set' OR 'probably in set'. No false negatives, configurable false positive rate.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Implementation</span><br><pre>class BloomFilter {
+    private final BitSet bits;
+    private final int numBits;
+    private final int numHashFunctions;
+
+    BloomFilter(int expectedItems, double falsePositiveRate) {
+        // Optimal bit count: -n*ln(p) / (ln2)^2
+        numBits = (int)(-expectedItems * Math.log(falsePositiveRate) / (Math.log(2)*Math.log(2)));
+        // Optimal hash count: (m/n) * ln2
+        numHashFunctions = (int)(numBits * 1.0 / expectedItems * Math.log(2));
+        bits = new BitSet(numBits);
+    }
+
+    void add(String item) {
+        for (int i = 0; i &lt; numHashFunctions; i++)
+            bits.set(Math.abs(hash(item, i)) % numBits);
+    }
+
+    boolean mightContain(String item) {
+        for (int i = 0; i &lt; numHashFunctions; i++)
+            if (!bits.get(Math.abs(hash(item, i)) % numBits)) return false;  // Definitely not
+        return true;  // Probably yes
+    }
+
+    private int hash(String s, int seed) {
+        return Objects.hash(s, seed);
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you calculate false positive rate given n items and m bits? (1 - e^(-kn/m))^k</li><li>Can you delete from a Bloom filter? (No — use Counting Bloom Filter instead)</li><li>What is Cuckoo filter and how does it improve on Bloom? (supports deletion, better lookup perf)</li><li>How does Cassandra use Bloom filters? (before SSTable disk lookup)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is a scalable Bloom filter?<br>• How does Redis implement Bloom filter? (RedisBloom module)<br>• What is HyperLogLog and how does it differ from Bloom filter?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Stripe, Databricks...</span>
     </div>
   </div>
 </div>
@@ -1585,368 +1947,6 @@ void* ptr = mmap(0, 4096, PROT_READ|PROT_WRITE, MAP_SHARED, fd, 0);
     <div class="q-meta-row">
       <span class="q-meta-chip">🗓 Coding Round</span>
       <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Databricks, Snowflake, Apple</span>
-    </div>
-  </div>
-</div>
-</div>
-<div class="tab-panel" id="tab-lld">
-  <div class="questions-header">
-    <h3>📐 LLD</h3>
-    <span class="q-count">3 questions</span>
-  </div>
-  <div class="q-wrapper">
-  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
-    <span class="q-index">1</span>
-    <span class="q-text">Design a Cache (LRU / LFU)</span>
-    <div class="q-tags"><span class="q-tag">design-patterns</span><span class="q-tag">doubly-linked-list</span></div>
-    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
-    <span class="q-freq freq-high">90%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">LRU Cache</span><br><pre>class LRUCache&lt;K,V&gt; {
-    int capacity;
-    LinkedHashMap&lt;K,V&gt; cache;
-    LRUCache(int cap) {
-        capacity = cap;
-        cache = new LinkedHashMap&lt;&gt;(16, 0.75f, true) {  // accessOrder=true
-            protected boolean removeEldestEntry(Map.Entry&lt;K,V&gt; e) {
-                return size() &gt; capacity;
-            }
-        };
-    }
-    public synchronized V get(K key) { return cache.getOrDefault(key, null); }
-    public synchronized void put(K key, V val) { cache.put(key, val); }
-}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">LFU Cache</span><br><pre>class LFUCache {
-    Map&lt;Integer,Integer&gt; vals = new HashMap&lt;&gt;();
-    Map&lt;Integer,Integer&gt; counts = new HashMap&lt;&gt;();
-    Map&lt;Integer, LinkedHashSet&lt;Integer&gt;&gt; freqMap = new HashMap&lt;&gt;();
-    int minFreq, cap;
-    // On get: increment freq, move to higher freq bucket
-    // On put: if cap exceeded, evict from minFreq bucket (oldest entry)
-}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Strategy Pattern</span><br>Pluggable eviction: <code>EvictionPolicy</code> interface with <code>LRU</code>, <code>LFU</code>, <code>FIFO</code> implementations.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you make LRU thread-safe without a global lock? (shard by key hash)</li><li>How do you implement TTL-based expiry alongside LRU eviction?</li><li>How does Redis implement LRU? (approximate LRU — sample 5 keys, evict oldest)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the time complexity of LFU vs LRU? (both O(1) with right structures)<br>• How does Caffeine (Java) implement W-TinyLFU?<br>• What is a 2Q (Two-Queue) cache?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 LLD Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, Razorpay...</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
-    <span class="q-index">2</span>
-    <span class="q-text">Design a Key-Value Store</span>
-    <div class="q-tags"><span class="q-tag">lsm-tree</span><span class="q-tag">wal</span><span class="q-tag">concurrent</span></div>
-    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
-    <span class="q-freq freq-high">83%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Architecture</span><br><ul><li><b>MemTable:</b> In-memory sorted tree (TreeMap). Writes go here first.</li><li><b>WAL (Write-Ahead Log):</b> Append-only log for crash recovery.</li><li><b>SSTable:</b> Immutable sorted file flushed from MemTable when full.</li><li><b>Compaction:</b> Background merge of SSTables (remove tombstones, deduplicate).</li><li><b>Bloom Filter:</b> Per-SSTable to skip files that don't contain a key (fast miss detection).</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Core Operations</span><br><pre>class KVStore {
-    TreeMap&lt;String,String&gt; memTable = new TreeMap&lt;&gt;();
-    List&lt;SSTable&gt; ssTables = new ArrayList&lt;&gt;();
-    WriteAheadLog wal;
-    final int MEM_TABLE_LIMIT = 1_000_000;
-
-    synchronized void put(String key, String value) {
-        wal.append(key, value);
-        memTable.put(key, value);
-        if (memTable.size() &gt;= MEM_TABLE_LIMIT) flush();
-    }
-
-    String get(String key) {
-        if (memTable.containsKey(key)) return memTable.get(key);
-        for (int i = ssTables.size()-1; i &gt;= 0; i--) {
-            if (ssTables.get(i).bloomFilter.mightContain(key))
-                return ssTables.get(i).get(key);  // binary search in sorted file
-        }
-        return null;
-    }
-}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you implement TTL (key expiry)?</li><li>How does compaction prevent unbounded disk growth?</li><li>How do you implement range queries efficiently?</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does RocksDB differ from a simple LSM implementation?<br>• What is leveled vs size-tiered compaction strategy?<br>• How do you implement atomic multi-key transactions?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 LLD Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Databricks, Snowflake</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
-    <span class="q-index">3</span>
-    <span class="q-text">Design a Bloom Filter</span>
-    <div class="q-tags"><span class="q-tag">bloom-filter</span><span class="q-tag">probabilistic</span><span class="q-tag">bitarray</span></div>
-    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
-    <span class="q-freq freq-high">82%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">What is a Bloom Filter</span><br>Space-efficient probabilistic data structure. Answers: 'definitely not in set' OR 'probably in set'. No false negatives, configurable false positive rate.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Implementation</span><br><pre>class BloomFilter {
-    private final BitSet bits;
-    private final int numBits;
-    private final int numHashFunctions;
-
-    BloomFilter(int expectedItems, double falsePositiveRate) {
-        // Optimal bit count: -n*ln(p) / (ln2)^2
-        numBits = (int)(-expectedItems * Math.log(falsePositiveRate) / (Math.log(2)*Math.log(2)));
-        // Optimal hash count: (m/n) * ln2
-        numHashFunctions = (int)(numBits * 1.0 / expectedItems * Math.log(2));
-        bits = new BitSet(numBits);
-    }
-
-    void add(String item) {
-        for (int i = 0; i &lt; numHashFunctions; i++)
-            bits.set(Math.abs(hash(item, i)) % numBits);
-    }
-
-    boolean mightContain(String item) {
-        for (int i = 0; i &lt; numHashFunctions; i++)
-            if (!bits.get(Math.abs(hash(item, i)) % numBits)) return false;  // Definitely not
-        return true;  // Probably yes
-    }
-
-    private int hash(String s, int seed) {
-        return Objects.hash(s, seed);
-    }
-}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you calculate false positive rate given n items and m bits? (1 - e^(-kn/m))^k</li><li>Can you delete from a Bloom filter? (No — use Counting Bloom Filter instead)</li><li>What is Cuckoo filter and how does it improve on Bloom? (supports deletion, better lookup perf)</li><li>How does Cassandra use Bloom filters? (before SSTable disk lookup)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is a scalable Bloom filter?<br>• How does Redis implement Bloom filter? (RedisBloom module)<br>• What is HyperLogLog and how does it differ from Bloom filter?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 LLD Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Stripe, Databricks...</span>
-    </div>
-  </div>
-</div>
-</div>
-<div class="tab-panel" id="tab-security">
-  <div class="questions-header">
-    <h3>🔒 Security</h3>
-    <span class="q-count">1 questions</span>
-  </div>
-  <div class="q-wrapper">
-  <div class="question-item" data-difficulty="medium" data-subcategory="appsec">
-    <span class="q-index">1</span>
-    <span class="q-text">Secrets management — best practices</span>
-    <div class="q-tags"><span class="q-tag">secrets</span><span class="q-tag">vault</span><span class="q-tag">env-vars</span></div>
-    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
-    <span class="q-freq freq-high">84%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Anti-patterns</span><br><ul><li>Hardcoded secrets in code → leaked to Git history forever</li><li>Secrets in environment variables → visible in process list, crash dumps, logs</li><li>Secrets in docker-compose.yml committed to repo</li><li>Secrets passed as command-line args → visible in ps output</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">HashiCorp Vault</span><br><pre># Dynamic secrets — Vault generates short-lived DB credentials per request
-vault read database/creds/my-role
-# Returns: {username: "v-app-XyZ", password: "...", lease_duration: "1h"}
-# Automatically revoked after 1h — no long-lived DB passwords!
-
-# App integration:
-VaultClient vault = new VaultClient("https://vault.internal");
-String secret = vault.read("secret/data/db-password").get("value");</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Best Practices</span><br><ul><li><b>Vault / AWS Secrets Manager / GCP Secret Manager:</b> Centralized, audit-logged, auto-rotation</li><li><b>Secret rotation:</b> Automatic rotation without app restart (blue-green credential rotation)</li><li><b>Just-in-time secrets:</b> Request credential when needed, revoke immediately after</li><li><b>Kubernetes:</b> Use external-secrets operator to sync from Vault/SM into K8s Secrets</li><li><b>Git scanning:</b> TruffleHog, GitGuardian pre-commit hooks to prevent secret commits</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is envelope encryption and how does AWS KMS implement it?<br>• How do you handle secret rotation without downtime?<br>• What is SPIFFE/SPIRE for workload identity?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Security Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Stripe, PayPal...</span>
-    </div>
-  </div>
-</div>
-</div>
-<div class="tab-panel" id="tab-performance">
-  <div class="questions-header">
-    <h3>⚡ Performance</h3>
-    <span class="q-count">6 questions</span>
-  </div>
-  <div class="q-wrapper">
-  <div class="question-item" data-difficulty="hard" data-subcategory="performance">
-    <span class="q-index">1</span>
-    <span class="q-text">How do you diagnose and fix high API latency?</span>
-    <div class="q-tags"><span class="q-tag">latency</span><span class="q-tag">profiling</span><span class="q-tag">p99</span></div>
-    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
-    <span class="q-freq freq-high">92%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Systematic Approach</span><br><pre>1. MEASURE: Where is the time going?
-   - Add distributed tracing (Jaeger/Zipkin): see each span's duration
-   - p50/p95/p99 latency (NOT just average — outliers matter)
-   - Breakdown: network + serialization + DB queries + external API + CPU
-
-2. IDENTIFY bottleneck:
-   Common causes:
-   - N+1 queries (add JOIN FETCH or batch)
-   - Missing DB index (check EXPLAIN ANALYZE → seq scan)
-   - Synchronous external API call in critical path (make async / cache)
-   - Lock contention (connection pool exhausted, mutex hotspot)
-   - GC pauses (Java: -XX:+PrintGCDetails, G1/ZGC tuning)
-   - Memory pressure (swap, cache thrashing)
-
-3. FIX:
-   - Caching: Redis in front of slow DB queries
-   - Async: move non-critical work off request path (Kafka)
-   - Parallelism: concurrent DB queries (CompletableFuture/goroutines)
-   - Index: add composite index for slow query
-   - Connection pooling: tune min/max pool size</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Metrics</span><br><ul><li><b>Latency percentiles:</b> p50=100ms is fine; p99=5s means 1% users wait 5 seconds</li><li><b>Throughput:</b> RPS the service can handle without degrading</li><li><b>Error rate:</b> 5xx rate as % of total requests</li><li><b>Saturation:</b> CPU%, memory%, connection pool utilization, queue depth</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">USE Method</span><br>For every resource: <b>Utilization</b> (how busy), <b>Saturation</b> (how much queuing), <b>Errors</b> (error count). Invented by Brendan Gregg.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you use flame graphs to identify CPU hotspots?<br>• What is the difference between tail latency and average latency?<br>• How do you implement circuit breakers to protect against latency cascades?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 System Design Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="medium" data-subcategory="caching">
-    <span class="q-index">2</span>
-    <span class="q-text">Cache strategies — cache-aside, read-through, write-through, write-back</span>
-    <div class="q-tags"><span class="q-tag">caching</span><span class="q-tag">redis</span><span class="q-tag">cache-aside</span></div>
-    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
-    <span class="q-freq freq-high">88%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Cache Strategies</span><br><ul><li><b>Cache-Aside (Lazy loading):</b> App checks cache first; on miss, reads DB, populates cache. Cache only stores what's actually requested. Risk: thundering herd on cold start.</li><li><b>Read-Through:</b> Cache reads from DB automatically on miss (library handles it). App always reads from cache. DB not directly accessed by app.</li><li><b>Write-Through:</b> Write to cache AND DB synchronously. Cache never stale. High write latency (must wait for both). Good for read-heavy.</li><li><b>Write-Back (Write-Behind):</b> Write to cache, return immediately. Write to DB asynchronously. Fast writes. Risk: data loss if cache crashes before flush.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache-Aside Pattern (most common)</span><br><pre>def get_user(user_id):
-    # Try cache first
-    user = redis.get(f"user:{user_id}")
-    if user:
-        return deserialize(user)  # cache hit
-    
-    # Cache miss — read from DB
-    user = db.query("SELECT * FROM users WHERE id=%s", user_id)
-    
-    # Populate cache with TTL
-    redis.setex(f"user:{user_id}", ttl=3600, value=serialize(user))
-    return user
-
-def update_user(user_id, data):
-    db.execute("UPDATE users SET ... WHERE id=%s", user_id)
-    redis.delete(f"user:{user_id}")  # invalidate — don't update!</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache Eviction Policies</span><br><ul><li><b>LRU:</b> Evict least recently used. Good general-purpose.</li><li><b>LFU:</b> Evict least frequently used. Better for skewed access patterns.</li><li><b>TTL:</b> Time-based expiry. Always stale by at most TTL seconds.</li><li><b>Allkeys-lru (Redis):</b> Apply LRU across all keys when memory full.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the thundering herd problem and how do you prevent it? (mutex/lock on cache miss, staggered TTLs)<br>• How do you handle cache warming after a cold restart?<br>• What is probabilistic early expiration (PER) and how does it prevent dogpile?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Backend Design</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="medium" data-subcategory="observability">
-    <span class="q-index">3</span>
-    <span class="q-text">Observability — metrics, logs, traces — the three pillars</span>
-    <div class="q-tags"><span class="q-tag">observability</span><span class="q-tag">prometheus</span><span class="q-tag">grafana</span></div>
-    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
-    <span class="q-freq freq-high">86%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Three Pillars</span><br><ul><li><b>Metrics:</b> Numeric aggregations over time. Low cardinality. Cheap to store. Tool: Prometheus (pull-based scraping) + Grafana. Counter, Gauge, Histogram, Summary.</li><li><b>Logs:</b> Discrete events with context. High volume. Searchable. Tool: ELK stack (Elasticsearch+Logstash+Kibana) or Loki+Grafana. Structured JSON logs with trace_id for correlation.</li><li><b>Traces:</b> Request journey across services. Tool: Jaeger, Zipkin, Tempo. Essential for microservices debugging.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">SLI / SLO / SLA / Error Budget</span><br><pre>SLI (Service Level Indicator): the metric you measure
-  e.g., "% of requests with latency &lt; 200ms"
-
-SLO (Service Level Objective): your internal target
-  e.g., "99.9% of requests &lt; 200ms over rolling 30 days"
-
-SLA (Service Level Agreement): contractual with customer
-  e.g., "99.5% uptime or credit applied"
-
-Error Budget: 1 - SLO = allowed unreliability
-  99.9% SLO = 0.1% error budget = 43.8 min downtime/month
-  If budget exhausted: freeze feature work, focus on reliability</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">RED Method (for services)</span><br><b>R</b>ate (requests/sec), <b>E</b>rror rate (errors/sec), <b>D</b>uration (latency). Apply to every microservice for quick health check.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you implement alerting without alert fatigue? (symptom-based not cause-based alerts)<br>• What is the difference between blackbox and whitebox monitoring?<br>• How does OpenTelemetry unify metrics, logs, and traces?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 System Design Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="medium" data-subcategory="observability">
-    <span class="q-index">4</span>
-    <span class="q-text">Explain distributed tracing — how it works</span>
-    <div class="q-tags"><span class="q-tag">distributed-tracing</span><span class="q-tag">opentelemetry</span><span class="q-tag">jaeger</span></div>
-    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
-    <span class="q-freq freq-high">84%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">How it works</span><br><pre>Request enters Service A → Tracer generates trace_id (128-bit)
-Service A calls Service B → propagates trace_id + span_id in HTTP header:
-  traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01
-               version  traceId                    parentSpanId   flags
-
-Each service creates a span:
-  span = {traceId, spanId, parentSpanId, name, startTime, duration,
-          tags: {"db.type":"postgresql", "http.status":200},
-          logs: [{"event":"query", "sql":"..."}]}
-
-Spans sent async to collector (Jaeger/Zipkin) → assembled into trace tree</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">OpenTelemetry (OTel)</span><br><ul><li>Vendor-neutral standard for traces, metrics, logs</li><li>SDK instruments your code (auto-instrumentation for popular frameworks)</li><li>Exporter sends to Jaeger, Zipkin, Tempo, AWS X-Ray, Datadog</li><li><code>OTEL_TRACES_EXPORTER=jaeger OTEL_EXPORTER_JAEGER_ENDPOINT=http://jaeger:14268/api/traces</code></li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Sampling</span><br><ul><li><b>Head sampling:</b> Decision at trace start (before outcome known). Simple. Loses tail errors.</li><li><b>Tail sampling:</b> Buffer traces, decide after seeing all spans. Can keep errored/slow traces.</li><li><b>Rate:</b> 1% for healthy services, 100% for errors, 10% for slow (p99 &gt; 1s)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the W3C Trace Context specification?<br>• How does continuous profiling (Pyroscope, Parca) complement distributed tracing?<br>• How do you correlate traces with logs and metrics? (structured logging with trace_id)</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 System Design Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="medium" data-subcategory="performance">
-    <span class="q-index">5</span>
-    <span class="q-text">Load testing — how to approach and what tools to use</span>
-    <div class="q-tags"><span class="q-tag">load-testing</span><span class="q-tag">k6</span><span class="q-tag">gatling</span></div>
-    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
-    <span class="q-freq freq-med">78%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Test Types</span><br><ul><li><b>Load test:</b> Expected normal + peak load. Validate SLAs. Measure p99 latency, throughput, error rate.</li><li><b>Stress test:</b> Push beyond expected load until system breaks. Find breaking point. Test recovery.</li><li><b>Soak/endurance test:</b> Normal load for extended time (hours/days). Find memory leaks, connection exhaustion, log rotation issues.</li><li><b>Spike test:</b> Sudden large traffic burst. Test autoscaling, circuit breakers.</li><li><b>Chaos test:</b> Kill instances, inject latency, corrupt network. Test resilience.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">k6 Example</span><br><pre>import http from 'k6/http';
-import { check, sleep } from 'k6';
-
-export const options = {
-  stages: [
-    { duration: '2m', target: 100 },   // ramp up to 100 VUs
-    { duration: '5m', target: 100 },   // hold at 100 VUs
-    { duration: '2m', target: 0 },     // ramp down
-  ],
-  thresholds: {
-    'http_req_duration': ['p(99)&lt;500'],  // 99% requests &lt; 500ms
-    'http_req_failed': ['rate&lt;0.01'],   // &lt;1% error rate
-  },
-};
-
-export default function() {
-  const r = http.get('https://api.example.com/users');
-  check(r, { 'status 200': (r) =&gt; r.status === 200 });
-  sleep(1);
-}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">What to measure</span><br><ul><li>Throughput: requests/sec at saturation</li><li>Latency: p50, p95, p99, p999 as load increases</li><li>Error rate: 5xx rate, timeout rate</li><li>Resource utilization: CPU, memory, disk I/O, network on each tier</li><li>Database: connection pool saturation, query latency at load</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you load test a WebSocket-based chat system?<br>• What is the difference between vertical and horizontal scaling in response to load tests?<br>• How do you profile a Java application under production load? (async-profiler, JFR)</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 System Design Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="hard" data-subcategory="performance">
-    <span class="q-index">6</span>
-    <span class="q-text">How does CPU caching work and why does it matter for performance?</span>
-    <div class="q-tags"><span class="q-tag">cpu-cache</span><span class="q-tag">cache-line</span><span class="q-tag">false-sharing</span></div>
-    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
-    <span class="q-freq freq-med">74%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Memory Hierarchy</span><br><pre>L1 cache:  ~32KB per core,   ~1ns  latency
-L2 cache: ~256KB per core,   ~4ns  latency
-L3 cache:   ~8MB shared,     ~40ns latency
-RAM:        ~16-64GB,       ~100ns latency
-SSD NVMe:              ~100μs latency
-HDD:                    ~10ms latency</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache Lines</span><br>Data loaded in 64-byte cache lines. Accessing one byte loads entire 64-byte block. Sequential access (arrays) → excellent cache utilization. Random access (linked lists) → cache miss per node.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">False Sharing</span><br><pre># Two threads update different variables in same cache line:
-# Thread 1 updates counter_a, Thread 2 updates counter_b
-# If they're adjacent in memory → same cache line → cache coherence traffic
-# Core 1 invalidates Core 2's cache line on every write → performance degrades!
-
-# Fix: padding
-struct PaddedCounter {
-    alignas(64) std::atomic&lt;int64_t&gt; value;  // 64-byte aligned
-    char padding[64 - sizeof(std::atomic&lt;int64_t&gt;)];  // fill rest of cache line
-};</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Practical Impact</span><br><ul><li>Array of structs vs Struct of arrays (SOA): SOA = better cache usage for column-wise processing</li><li>Cache-oblivious algorithms (recursive divide) beat sequential for large matrices</li><li>Go: sync.Mutex padded to avoid false sharing with adjacent data</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is NUMA (Non-Uniform Memory Access) and how does it affect multi-socket servers?<br>• How does prefetching work and how can you hint the CPU to prefetch?<br>• What is the impact of cache misses on a tight loop processing 100M integers?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Coding Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Databricks, Snowflake...</span>
-    </div>
-  </div>
-</div>
-</div>
-<div class="tab-panel" id="tab-java">
-  <div class="questions-header">
-    <h3>☕ Java</h3>
-    <span class="q-count">1 questions</span>
-  </div>
-  <div class="q-wrapper">
-  <div class="question-item" data-difficulty="hard" data-subcategory="concurrency">
-    <span class="q-index">1</span>
-    <span class="q-text">Java Memory Model and happens-before</span>
-    <div class="q-tags"><span class="q-tag">jmm</span><span class="q-tag">happens-before</span><span class="q-tag">volatile</span></div>
-    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
-    <span class="q-freq freq-high">82%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Java Memory Model (JMM) Happens-Before</span><br>If action A happens-before B, then A's writes are visible to B. Established by:<br><ul><li>Monitor unlock happens-before lock by any thread</li><li>volatile write happens-before volatile read of same field</li><li>Thread.start() happens-before all actions in started thread</li><li>Thread.join() happens-before all actions after join returns</li><li>Program order within single thread</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">volatile vs synchronized</span><br><ul><li><b>volatile:</b> Visibility + ordering for single variable. No atomicity for compound ops (i++ is not atomic).</li><li><b>synchronized:</b> Mutual exclusion + full memory visibility. Heavier.</li><li><b>Atomic classes:</b> CAS-based, lock-free, best for single variable atomic operations.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Why does double-checked locking need volatile? (prevents reordering of new T() allocation vs pointer assignment)<br>• What is a publication failure and how does final field guarantee prevent it?<br>• What is memory_order in C++ and how does it map to JMM concepts?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Concurrency Round</span>
-      <span class="q-meta-chip">🏢 Google, Amazon, LinkedIn, Meta, Databricks</span>
     </div>
   </div>
 </div>

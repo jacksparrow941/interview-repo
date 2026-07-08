@@ -526,6 +526,13 @@ def build():
     assets_src = ROOT / "assets"
     assets_dst = OUT / "assets"
     shutil.copytree(assets_src, assets_dst, dirs_exist_ok=True)
+
+    # Copy C++ Handbook (static, not generated)
+    cpp_src = ROOT / "cpp-handbook"
+    cpp_dst = OUT / "cpp-handbook"
+    if cpp_src.exists():
+        shutil.copytree(cpp_src, cpp_dst, dirs_exist_ok=True)
+        print("✓ cpp-handbook copied")
     print("✓ Assets copied")
 
     # Homepage

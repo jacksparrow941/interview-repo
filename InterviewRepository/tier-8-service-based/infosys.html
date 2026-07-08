@@ -133,14 +133,14 @@
 </div><div class="tabs-bar"><div class="tabs-inner"><button class="tab-btn active" data-tab="coding">💻 DSA <span style="opacity:.5;font-size:11px">(7)</span></button>
 <button class="tab-btn" data-tab="java">☕ Java <span style="opacity:.5;font-size:11px">(9)</span></button>
 <button class="tab-btn" data-tab="database">🗄️ Database <span style="opacity:.5;font-size:11px">(1)</span></button>
-<button class="tab-btn" data-tab="cpp">⚙️ C++ <span style="opacity:.5;font-size:11px">(1)</span></button>
-<button class="tab-btn" data-tab="networking">🌐 Networking <span style="opacity:.5;font-size:11px">(3)</span></button>
 <button class="tab-btn" data-tab="system_design">🏗️ System Design <span style="opacity:.5;font-size:11px">(1)</span></button>
-<button class="tab-btn" data-tab="concurrency">⚡ Concurrency <span style="opacity:.5;font-size:11px">(3)</span></button>
-<button class="tab-btn" data-tab="os">🖥️ OS <span style="opacity:.5;font-size:11px">(4)</span></button>
-<button class="tab-btn" data-tab="lld">📐 LLD <span style="opacity:.5;font-size:11px">(2)</span></button>
+<button class="tab-btn" data-tab="cpp">⚙️ C++ <span style="opacity:.5;font-size:11px">(1)</span></button>
 <button class="tab-btn" data-tab="security">🔒 Security <span style="opacity:.5;font-size:11px">(1)</span></button>
-<button class="tab-btn" data-tab="backend">🔧 Backend <span style="opacity:.5;font-size:11px">(1)</span></button></div></div>
+<button class="tab-btn" data-tab="concurrency">⚡ Concurrency <span style="opacity:.5;font-size:11px">(3)</span></button>
+<button class="tab-btn" data-tab="lld">📐 LLD <span style="opacity:.5;font-size:11px">(2)</span></button>
+<button class="tab-btn" data-tab="backend">🔧 Backend <span style="opacity:.5;font-size:11px">(1)</span></button>
+<button class="tab-btn" data-tab="networking">🌐 Networking <span style="opacity:.5;font-size:11px">(3)</span></button>
+<button class="tab-btn" data-tab="os">🖥️ OS <span style="opacity:.5;font-size:11px">(4)</span></button></div></div>
 <div class="container"><div class="tab-panel active" id="tab-coding">
   <div class="questions-header">
     <h3>💻 DSA</h3>
@@ -483,6 +483,38 @@ public class Product { ... }</pre></div><div class="answer-section" style="margi
   </div>
 </div>
 </div>
+<div class="tab-panel" id="tab-system_design">
+  <div class="questions-header">
+    <h3>🏗️ System Design</h3>
+    <span class="q-count">1 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="design_problems">
+    <span class="q-index">1</span>
+    <span class="q-text">Design URL Shortener (bit.ly)</span>
+    <div class="q-tags"><span class="q-tag">encoding</span><span class="q-tag">hashing</span><span class="q-tag">cache</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">92%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Design URL Shortener — Architecture</span><br><pre>Client → Load Balancer → App Server (stateless) → Cache (Redis) → Database
+                                                     ↓ on miss
+                                               Consistent Hash ID Gen</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Core Components</span><br><ul><li><b>ID Generation:</b> Snowflake ID → Base62 encode → 7-char short code</li><li><b>Storage:</b> MySQL/PostgreSQL for persistence; Redis for read cache (TTL = URL TTL)</li><li><b>Redirect:</b> 301 (browser caches) vs 302 (always hits server — better for analytics)</li><li><b>Scale:</b> 100M URLs/day = ~1160 URLs/sec write, 10× reads → cache hit rate 99%</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">DB Schema</span><br><pre>CREATE TABLE urls (
+    id BIGINT PRIMARY KEY,           -- Snowflake ID
+    short_code VARCHAR(8) UNIQUE,
+    long_url TEXT NOT NULL,
+    user_id BIGINT,
+    created_at TIMESTAMP,
+    expires_at TIMESTAMP,
+    click_count BIGINT DEFAULT 0
+);</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you prevent abuse (phishing URLs)? (URL reputation API, blacklist)<br>• How do you implement analytics? (Kafka + ClickHouse for click stream)<br>• How would you support custom vanity URLs?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, Meta, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+</div>
 <div class="tab-panel" id="tab-cpp">
   <div class="questions-header">
     <h3>⚙️ C++</h3>
@@ -507,6 +539,179 @@ public class Product { ... }</pre></div><div class="answer-section" style="margi
     <div class="q-meta-row">
       <span class="q-meta-chip">🗓 Coding Round</span>
       <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Microsoft, TCS...</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-security">
+  <div class="questions-header">
+    <h3>🔒 Security</h3>
+    <span class="q-count">1 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="appsec">
+    <span class="q-index">1</span>
+    <span class="q-text">SQL Injection — how it works and prevention</span>
+    <div class="q-tags"><span class="q-tag">sql-injection</span><span class="q-tag">prepared-statements</span><span class="q-tag">parameterized</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-high">92%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">How it works</span><br><pre># Vulnerable code:
+query = "SELECT * FROM users WHERE name='" + username + "' AND pwd='" + password + "'";
+
+# Attacker input: username = admin' --
+# Resulting query:
+SELECT * FROM users WHERE name='admin' --' AND pwd='anything'
+# -- comments out the password check → logged in as admin!
+
+# Even worse:
+username = "'; DROP TABLE users; --"
+# Drops the entire users table!</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Prevention</span><br><pre># Java PreparedStatement:
+PreparedStatement stmt = conn.prepareStatement(
+    "SELECT * FROM users WHERE name=? AND pwd=?");
+stmt.setString(1, username);
+stmt.setString(2, hashedPassword);
+
+# Python SQLAlchemy:
+result = db.execute("SELECT * FROM users WHERE name=:n", {"n": username})
+
+# ORM (Hibernate/JPA): inherently parameterized
+User user = em.createQuery("FROM User WHERE name=:n", User.class)
+    .setParameter("n", username).getSingleResult();</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Defense in depth</span><br><ul><li>Least privilege DB user (SELECT only for read, no DROP)</li><li>WAF (Web Application Firewall) to detect patterns</li><li>Input validation (whitelist expected characters)</li><li>Error messages: never expose DB error details to client</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is second-order SQL injection?<br>• How does NoSQL injection work in MongoDB? ($where, $regex)<br>• What is blind SQL injection and how do time-based blind attacks work?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Security Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Stripe, PayPal...</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-concurrency">
+  <div class="questions-header">
+    <h3>⚡ Concurrency</h3>
+    <span class="q-count">3 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="fundamentals">
+    <span class="q-index">1</span>
+    <span class="q-text">Race condition — what and how to prevent</span>
+    <div class="q-tags"><span class="q-tag">race-condition</span><span class="q-tag">mutex</span><span class="q-tag">atomic</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-high">92%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Race Condition</span><br>Two or more threads access shared mutable state without synchronization. Result depends on thread scheduling (timing). Non-deterministic bugs.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Examples and Fixes</span><br><pre># Python — unsafe counter (GIL helps here but not in C/Java)
+counter = 0
+def increment():
+    global counter
+    counter += 1  # NOT atomic in Java/C: read, add, write — 3 ops
+
+# Java fix:
+AtomicInteger counter = new AtomicInteger(0);
+counter.incrementAndGet();  // single atomic CAS instruction
+
+# OR use synchronized:
+synchronized void increment() { counter++; }
+
+# Go: use atomic
+var counter int64
+atomic.AddInt64(&amp;counter, 1)
+# OR: go run -race ./...  (built-in race detector)</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Detection</span><br>Go: <code>go run -race</code>. Java: ThreadSanitizer (TSAN) in native, FindBugs for JVM. Helgrind (Valgrind) for C/C++.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is a benign data race and when is it acceptable?<br>• How does the Go race detector work? (shadow memory — 4 words per memory location tracking last 4 accesses)<br>• What is the difference between a race condition and a data race?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="fundamentals">
+    <span class="q-index">2</span>
+    <span class="q-text">Deadlock vs livelock vs starvation</span>
+    <div class="q-tags"><span class="q-tag">deadlock</span><span class="q-tag">livelock</span><span class="q-tag">starvation</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Deadlock: circular wait. Livelock: active but no progress. Starvation: indefinitely low priority.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="patterns">
+    <span class="q-index">3</span>
+    <span class="q-text">Producer-consumer problem</span>
+    <div class="q-tags"><span class="q-tag">producer-consumer</span><span class="q-tag">semaphore</span><span class="q-tag">queue</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Bounded buffer. Semaphores: empty+full+mutex. Or BlockingQueue in Java. Channel in Go.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, TCS...</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-lld">
+  <div class="questions-header">
+    <h3>📐 LLD</h3>
+    <span class="q-count">2 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="machine_coding">
+    <span class="q-index">1</span>
+    <span class="q-text">Design a Cricket Score Tracker</span>
+    <div class="q-tags"><span class="q-tag">oop</span><span class="q-tag">observer</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Match, Innings, Over, Ball, Batsman, Bowler entities. Observer for scorecard updates. Strategy for DLS method.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Dream11, Amazon, Microsoft, TCS, Infosys</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="machine_coding">
+    <span class="q-index">2</span>
+    <span class="q-text">Design a Snake and Ladder Game</span>
+    <div class="q-tags"><span class="q-tag">oop</span><span class="q-tag">simulation</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Board, Player, Dice, Snake, Ladder entities. Turn-based simulation. Simple to extend with special cells.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Amazon, Microsoft, Adobe, TCS, Infosys</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-backend">
+  <div class="questions-header">
+    <h3>🔧 Backend</h3>
+    <span class="q-count">1 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="infrastructure">
+    <span class="q-index">1</span>
+    <span class="q-text">How does a load balancer work? Types?</span>
+    <div class="q-tags"><span class="q-tag">load-balancing</span><span class="q-tag">l4</span><span class="q-tag">l7</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">L4: TCP/IP. L7: HTTP URL/header routing. Algorithms: Round Robin, Least Conn, Consistent Hash.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 HLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
     </div>
   </div>
 </div>
@@ -582,108 +787,6 @@ Teardown (4-way):
   </div>
 </div>
 </div>
-<div class="tab-panel" id="tab-system_design">
-  <div class="questions-header">
-    <h3>🏗️ System Design</h3>
-    <span class="q-count">1 questions</span>
-  </div>
-  <div class="q-wrapper">
-  <div class="question-item" data-difficulty="medium" data-subcategory="design_problems">
-    <span class="q-index">1</span>
-    <span class="q-text">Design URL Shortener (bit.ly)</span>
-    <div class="q-tags"><span class="q-tag">encoding</span><span class="q-tag">hashing</span><span class="q-tag">cache</span></div>
-    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
-    <span class="q-freq freq-high">92%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Design URL Shortener — Architecture</span><br><pre>Client → Load Balancer → App Server (stateless) → Cache (Redis) → Database
-                                                     ↓ on miss
-                                               Consistent Hash ID Gen</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Core Components</span><br><ul><li><b>ID Generation:</b> Snowflake ID → Base62 encode → 7-char short code</li><li><b>Storage:</b> MySQL/PostgreSQL for persistence; Redis for read cache (TTL = URL TTL)</li><li><b>Redirect:</b> 301 (browser caches) vs 302 (always hits server — better for analytics)</li><li><b>Scale:</b> 100M URLs/day = ~1160 URLs/sec write, 10× reads → cache hit rate 99%</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">DB Schema</span><br><pre>CREATE TABLE urls (
-    id BIGINT PRIMARY KEY,           -- Snowflake ID
-    short_code VARCHAR(8) UNIQUE,
-    long_url TEXT NOT NULL,
-    user_id BIGINT,
-    created_at TIMESTAMP,
-    expires_at TIMESTAMP,
-    click_count BIGINT DEFAULT 0
-);</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you prevent abuse (phishing URLs)? (URL reputation API, blacklist)<br>• How do you implement analytics? (Kafka + ClickHouse for click stream)<br>• How would you support custom vanity URLs?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 System Design</span>
-      <span class="q-meta-chip">🏢 Google, Amazon, Meta, Microsoft, Uber, LinkedIn...</span>
-    </div>
-  </div>
-</div>
-</div>
-<div class="tab-panel" id="tab-concurrency">
-  <div class="questions-header">
-    <h3>⚡ Concurrency</h3>
-    <span class="q-count">3 questions</span>
-  </div>
-  <div class="q-wrapper">
-  <div class="question-item" data-difficulty="easy" data-subcategory="fundamentals">
-    <span class="q-index">1</span>
-    <span class="q-text">Race condition — what and how to prevent</span>
-    <div class="q-tags"><span class="q-tag">race-condition</span><span class="q-tag">mutex</span><span class="q-tag">atomic</span></div>
-    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
-    <span class="q-freq freq-high">92%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Race Condition</span><br>Two or more threads access shared mutable state without synchronization. Result depends on thread scheduling (timing). Non-deterministic bugs.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Examples and Fixes</span><br><pre># Python — unsafe counter (GIL helps here but not in C/Java)
-counter = 0
-def increment():
-    global counter
-    counter += 1  # NOT atomic in Java/C: read, add, write — 3 ops
-
-# Java fix:
-AtomicInteger counter = new AtomicInteger(0);
-counter.incrementAndGet();  // single atomic CAS instruction
-
-# OR use synchronized:
-synchronized void increment() { counter++; }
-
-# Go: use atomic
-var counter int64
-atomic.AddInt64(&amp;counter, 1)
-# OR: go run -race ./...  (built-in race detector)</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Detection</span><br>Go: <code>go run -race</code>. Java: ThreadSanitizer (TSAN) in native, FindBugs for JVM. Helgrind (Valgrind) for C/C++.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is a benign data race and when is it acceptable?<br>• How does the Go race detector work? (shadow memory — 4 words per memory location tracking last 4 accesses)<br>• What is the difference between a race condition and a data race?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Concurrency Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="medium" data-subcategory="fundamentals">
-    <span class="q-index">2</span>
-    <span class="q-text">Deadlock vs livelock vs starvation</span>
-    <div class="q-tags"><span class="q-tag">deadlock</span><span class="q-tag">livelock</span><span class="q-tag">starvation</span></div>
-    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
-    <span class="q-freq freq-high">88%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer">Deadlock: circular wait. Livelock: active but no progress. Starvation: indefinitely low priority.</div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Concurrency Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="medium" data-subcategory="patterns">
-    <span class="q-index">3</span>
-    <span class="q-text">Producer-consumer problem</span>
-    <div class="q-tags"><span class="q-tag">producer-consumer</span><span class="q-tag">semaphore</span><span class="q-tag">queue</span></div>
-    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
-    <span class="q-freq freq-high">82%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer">Bounded buffer. Semaphores: empty+full+mutex. Or BlockingQueue in Java. Channel in Go.</div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Concurrency Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, TCS...</span>
-    </div>
-  </div>
-</div>
-</div>
 <div class="tab-panel" id="tab-os">
   <div class="questions-header">
     <h3>🖥️ OS</h3>
@@ -750,109 +853,6 @@ atomic.AddInt64(&amp;counter, 1)
     <div class="q-meta-row">
       <span class="q-meta-chip">🗓 OS Round</span>
       <span class="q-meta-chip">🏢 Google, Meta, Apple, Nvidia, TCS, Infosys</span>
-    </div>
-  </div>
-</div>
-</div>
-<div class="tab-panel" id="tab-lld">
-  <div class="questions-header">
-    <h3>📐 LLD</h3>
-    <span class="q-count">2 questions</span>
-  </div>
-  <div class="q-wrapper">
-  <div class="question-item" data-difficulty="medium" data-subcategory="machine_coding">
-    <span class="q-index">1</span>
-    <span class="q-text">Design a Cricket Score Tracker</span>
-    <div class="q-tags"><span class="q-tag">oop</span><span class="q-tag">observer</span></div>
-    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
-    <span class="q-freq freq-high">80%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer">Match, Innings, Over, Ball, Batsman, Bowler entities. Observer for scorecard updates. Strategy for DLS method.</div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 LLD Round</span>
-      <span class="q-meta-chip">🏢 Dream11, Amazon, Microsoft, TCS, Infosys</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="easy" data-subcategory="machine_coding">
-    <span class="q-index">2</span>
-    <span class="q-text">Design a Snake and Ladder Game</span>
-    <div class="q-tags"><span class="q-tag">oop</span><span class="q-tag">simulation</span></div>
-    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
-    <span class="q-freq freq-med">78%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer">Board, Player, Dice, Snake, Ladder entities. Turn-based simulation. Simple to extend with special cells.</div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 LLD Round</span>
-      <span class="q-meta-chip">🏢 Amazon, Microsoft, Adobe, TCS, Infosys</span>
-    </div>
-  </div>
-</div>
-</div>
-<div class="tab-panel" id="tab-security">
-  <div class="questions-header">
-    <h3>🔒 Security</h3>
-    <span class="q-count">1 questions</span>
-  </div>
-  <div class="q-wrapper">
-  <div class="question-item" data-difficulty="easy" data-subcategory="appsec">
-    <span class="q-index">1</span>
-    <span class="q-text">SQL Injection — how it works and prevention</span>
-    <div class="q-tags"><span class="q-tag">sql-injection</span><span class="q-tag">prepared-statements</span><span class="q-tag">parameterized</span></div>
-    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
-    <span class="q-freq freq-high">92%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">How it works</span><br><pre># Vulnerable code:
-query = "SELECT * FROM users WHERE name='" + username + "' AND pwd='" + password + "'";
-
-# Attacker input: username = admin' --
-# Resulting query:
-SELECT * FROM users WHERE name='admin' --' AND pwd='anything'
-# -- comments out the password check → logged in as admin!
-
-# Even worse:
-username = "'; DROP TABLE users; --"
-# Drops the entire users table!</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Prevention</span><br><pre># Java PreparedStatement:
-PreparedStatement stmt = conn.prepareStatement(
-    "SELECT * FROM users WHERE name=? AND pwd=?");
-stmt.setString(1, username);
-stmt.setString(2, hashedPassword);
-
-# Python SQLAlchemy:
-result = db.execute("SELECT * FROM users WHERE name=:n", {"n": username})
-
-# ORM (Hibernate/JPA): inherently parameterized
-User user = em.createQuery("FROM User WHERE name=:n", User.class)
-    .setParameter("n", username).getSingleResult();</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Defense in depth</span><br><ul><li>Least privilege DB user (SELECT only for read, no DROP)</li><li>WAF (Web Application Firewall) to detect patterns</li><li>Input validation (whitelist expected characters)</li><li>Error messages: never expose DB error details to client</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is second-order SQL injection?<br>• How does NoSQL injection work in MongoDB? ($where, $regex)<br>• What is blind SQL injection and how do time-based blind attacks work?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Security Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Stripe, PayPal...</span>
-    </div>
-  </div>
-</div>
-</div>
-<div class="tab-panel" id="tab-backend">
-  <div class="questions-header">
-    <h3>🔧 Backend</h3>
-    <span class="q-count">1 questions</span>
-  </div>
-  <div class="q-wrapper">
-  <div class="question-item" data-difficulty="medium" data-subcategory="infrastructure">
-    <span class="q-index">1</span>
-    <span class="q-text">How does a load balancer work? Types?</span>
-    <div class="q-tags"><span class="q-tag">load-balancing</span><span class="q-tag">l4</span><span class="q-tag">l7</span></div>
-    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
-    <span class="q-freq freq-high">82%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer">L4: TCP/IP. L7: HTTP URL/header routing. Algorithms: Round Robin, Least Conn, Consistent Hash.</div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 HLD Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
     </div>
   </div>
 </div>

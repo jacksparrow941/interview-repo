@@ -1,0 +1,268 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Part XII: Coding Interviews — 150 Problems — C++ Interview Handbook</title>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<div style="background:#0f172a;border-bottom:1px solid #334155;padding:8px 20px;
+  display:flex;align-items:center;gap:16px;font-size:13px;position:fixed;top:0;left:0;right:0;z-index:400;height:38px">
+  <a href="../index.html" style="color:#3b82f6;font-weight:600;text-decoration:none;
+     display:flex;align-items:center;gap:6px">
+    <span>⚡</span><span>InterviewRepo</span>
+  </a>
+  <span style="color:#334155">|</span>
+  <a href="index.html" style="color:#94a3b8;text-decoration:none">📘 C++ Master Handbook</a>
+  <span style="color:#334155;margin-left:auto;font-size:11px;color:#475569">
+    C++ · Multithreading · OS · Networks · AI Runtime · Embedded · 150 Problems
+  </span>
+</div>
+<nav id="sidebar"><div class="sb-head"><b>C++ Handbook</b><br><small>15 Parts · 150 Problems</small></div><a href="index.html" >🏠 Table of Contents</a>
+<a href="part01.html"><span class="badge" style="background:#1a2744">01</span>Part I: C++ Mastery</a>
+<a href="part02.html"><span class="badge" style="background:#065f46">02</span>Part II: Multithreading & Concurrency</a>
+<a href="part03.html"><span class="badge" style="background:#7c3aed">03</span>Part III: Operating Systems</a>
+<a href="part04.html"><span class="badge" style="background:#0e7490">04</span>Part IV: Computer Networks</a>
+<a href="part05.html"><span class="badge" style="background:#92400e">05</span>Part V: Linux & Performance Tools</a>
+<a href="part06.html"><span class="badge" style="background:#1e40af">06</span>Part VI: Distributed Systems</a>
+<a href="part07.html"><span class="badge" style="background:#b45309">07</span>Part VII: System Design</a>
+<a href="part08.html"><span class="badge" style="background:#be185d">08</span>Part VIII: Compiler Internals</a>
+<a href="part09.html"><span class="badge" style="background:#0f766e">09</span>Part IX: AI Runtime</a>
+<a href="part10.html"><span class="badge" style="background:#4338ca">10</span>Part X: Embedded Systems</a>
+<a href="part11.html"><span class="badge" style="background:#0369a1">11</span>Part XI: DevOps & Tools</a>
+<a href="part12.html" class="active"><span class="badge" style="background:#1e3a5f">12</span>Part XII: Coding Interviews — 150 Problems</a>
+<a href="part13.html"><span class="badge" style="background:#3f1f69">13</span>Part XIII: Behavioral & STAR</a>
+<a href="part14.html"><span class="badge" style="background:#064e3b">14</span>Part XIV: Resume Deep Dive</a>
+<a href="part15.html"><span class="badge" style="background:#7f1d1d">15</span>Part XV: Company-Specific</a>
+</nav>
+<div id="main">
+  <div id="topbar"><div class="tb-title" style="border-left:4px solid #1e3a5f;padding-left:12px">Part XII: Coding Interviews — 150 Problems</div></div>
+  <div id="content">
+    <h1 class="part-title">Part XII: Coding Interviews — 150 Problems</h1>
+    <p class="subtitle">Part XII</p><hr class="divider">
+    <h2 class="chap">Coding Interview Strategy</h2><p>Every coding problem follows the same pattern. Master the pattern, then apply it to any problem.</p><ol><li>Clarify (2 min): edge cases, input range, constraints, expected output format.</li><li>Examples (1 min): trace through 1-2 examples on paper. Catch misunderstanding early.</li><li>Brute Force (1 min): state it, explain complexity, don't code it (unless asked). Show you understand the baseline.</li><li>Optimize (5 min): identify bottleneck (sort? unnecessary recomputation? wrong data structure?). Think about patterns.</li><li>Code (10 min): clean, readable, handle edge cases inline while coding.</li><li>Test (3 min): trace your solution on your own examples. Check edge cases: empty, single element, all same.</li></ol><div class="tbl"><table><thead><tr><th>Pattern</th><th>When It Applies</th><th>Key Data Structure</th></tr></thead><tbody><tr><td>Two Pointers</td><td>Sorted array, palindrome, pair sum</td><td>Array indices</td></tr><tr><td>Sliding Window</td><td>Subarray/substring with constraint</td><td>Deque or HashMap + two pointers</td></tr><tr><td>Binary Search</td><td>Sorted input, 'find minimum X that satisfies condition'</td><td>Array</td></tr><tr><td>BFS</td><td>Shortest path, level-by-level traversal</td><td>Queue</td></tr><tr><td>DFS / Backtracking</td><td>All combinations/permutations, explore all paths</td><td>Stack/Recursion</td></tr><tr><td>Dynamic Programming</td><td>Overlapping subproblems, optimal substructure</td><td>Array / HashMap</td></tr><tr><td>Heap / Priority Queue</td><td>Kth largest/smallest, merge k sorted</td><td>std::priority_queue</td></tr><tr><td>Union Find</td><td>Connected components, cycle detection</td><td>parent[] + rank[]</td></tr><tr><td>Monotonic Stack</td><td>Next greater/smaller element</td><td>Stack</td></tr></tbody></table></div><div class="problem"><div class="ph"><span class="pnum">#1</span><span class="ptitle">Two Sum</span><span class="be">Easy</span><span class="cmpl">⏱ O(n) &nbsp;|&nbsp; 🗄 O(n)</span></div><div class="pb"><p>Given an array of integers and a target, return indices of two numbers that add to target. Assume exactly one solution exists.</p><div class="insight">🧠 <b>Key Insight:</b> HashMap lookup is O(1) average. The key insight: instead of 'find b such that a+b=target', reframe as 'for each a, lookup (target-a) in constant time'.</div><div class="approach brute"><div class="ap-label">🔴 Brute Force</div><pre><code>// O(n^2): check all pairs
+for(int i=0;i&lt;n;++i)
+  for(int j=i+1;j&lt;n;++j)
+    if(nums[i]+nums[j]==target)
+      return {i,j};
+// Problem: 10^4 elements = 10^8 operations → TLE</code></pre></div><div class="approach better"><div class="ap-label">🟡 Better</div><pre><code>// O(n log n): sort + two pointers
+// Problem: sorting loses original indices
+// Need extra array to track original positions</code></pre></div><div class="approach optimal"><div class="ap-label">🟢 Optimal</div><pre><code>// O(n): HashMap stores value→index
+unordered_map&lt;int,int&gt; seen;
+for(int i=0;i&lt;n;++i){
+  int need=target-nums[i];
+  if(seen.count(need)) return {seen[need],i};
+  seen[nums[i]]=i;
+}
+// Key insight: complement lookup replaces nested loop</code></pre></div></div></div><div class="problem"><div class="ph"><span class="pnum">#2</span><span class="ptitle">Maximum Subarray (Kadane's Algorithm)</span><span class="bm">Medium</span><span class="cmpl">⏱ O(n) &nbsp;|&nbsp; 🗄 O(1)</span></div><div class="pb"><p>Find the contiguous subarray with the largest sum. Array may have negative numbers.</p><div class="insight">🧠 <b>Key Insight:</b> Kadane's insight: at each position, the best subarray ending here is either just nums[i] (start fresh) or extend the previous best subarray. This local decision is optimal.</div><div class="approach brute"><div class="ap-label">🔴 Brute Force</div><pre><code>// O(n^2): try all start/end pairs
+int best=INT_MIN;
+for(int i=0;i&lt;n;++i){
+  int sum=0;
+  for(int j=i;j&lt;n;++j){
+    sum+=nums[j];
+    best=max(best,sum);
+  }
+}
+return best;</code></pre></div><div class="approach better"><div class="ap-label">🟡 Better</div><pre><code>// O(n) with O(n) space: precompute prefix sums
+vector&lt;int&gt; pre(n+1,0);
+for(int i=0;i&lt;n;++i) pre[i+1]=pre[i]+nums[i];
+int best=INT_MIN;
+for(int i=0;i&lt;n;++i)
+  for(int j=i;j&lt;n;++j)
+    best=max(best,pre[j+1]-pre[i]);
+return best;</code></pre></div><div class="approach optimal"><div class="ap-label">🟢 Optimal</div><pre><code>// O(n) time O(1) space: Kadane's
+// Key: cur = max subarray ending at i
+// Either extend previous or start fresh at i
+int cur=nums[0],best=nums[0];
+for(int i=1;i&lt;n;++i){
+  cur=max(nums[i],cur+nums[i]);
+  best=max(best,cur);
+}
+return best;</code></pre></div></div></div><div class="problem"><div class="ph"><span class="pnum">#3</span><span class="ptitle">Trapping Rain Water</span><span class="bh">Hard</span><span class="cmpl">⏱ O(n) &nbsp;|&nbsp; 🗄 O(1)</span></div><div class="pb"><p>Given n non-negative integers representing elevation heights, compute how much water it can trap after raining.</p><div class="insight">🧠 <b>Key Insight:</b> Two-pointer insight: if h[lo] < h[hi], the water at lo is determined by maxLeft (not maxRight, because there's a taller wall on the right). Process the shorter side first.</div><div class="approach brute"><div class="ap-label">🔴 Brute Force</div><pre><code>// O(n^2): for each position find maxL and maxR
+int total=0;
+for(int i=1;i&lt;n-1;++i){
+  int maxL=*max_element(h,h+i);
+  int maxR=*max_element(h+i+1,h+n);
+  total+=max(0,min(maxL,maxR)-h[i]);
+}
+return total;</code></pre></div><div class="approach better"><div class="ap-label">🟡 Better</div><pre><code>// O(n) time O(n) space: precompute maxL[] maxR[]
+vector&lt;int&gt; L(n),R(n);
+L[0]=h[0];
+for(int i=1;i&lt;n;++i) L[i]=max(L[i-1],h[i]);
+R[n-1]=h[n-1];
+for(int i=n-2;i&gt;=0;--i) R[i]=max(R[i+1],h[i]);
+int w=0;
+for(int i=0;i&lt;n;++i) w+=max(0,min(L[i],R[i])-h[i]);
+return w;</code></pre></div><div class="approach optimal"><div class="ap-label">🟢 Optimal</div><pre><code>// O(n) time O(1) space: two pointers
+int lo=0,hi=n-1,ml=0,mr=0,w=0;
+while(lo&lt;hi){
+  if(h[lo]&lt;h[hi]){
+    ml=max(ml,h[lo]);
+    w+=ml-h[lo++];  // min(ml,mr)=ml since h[lo]&lt;h[hi]
+  }else{
+    mr=max(mr,h[hi]);
+    w+=mr-h[hi--];
+  }
+}
+return w;</code></pre></div></div></div><div class="problem"><div class="ph"><span class="pnum">#4</span><span class="ptitle">Longest Substring Without Repeating</span><span class="bm">Medium</span><span class="cmpl">⏱ O(n) &nbsp;|&nbsp; 🗄 O(min(n,alphabet))</span></div><div class="pb"><p>Find length of longest substring without repeating characters.</p><div class="insight">🧠 <b>Key Insight:</b> Sliding window: expand hi always, contract lo only when duplicate found. Key: jump lo past the PREVIOUS occurrence, but only if it's within current window (max(lo, prev+1)).</div><div class="approach brute"><div class="ap-label">🔴 Brute Force</div><pre><code>// O(n^3): check all substrings for uniqueness
+int best=0;
+for(int i=0;i&lt;n;++i)
+  for(int j=i;j&lt;n;++j)
+    if(all_unique(s,i,j)) best=max(best,j-i+1);
+return best;</code></pre></div><div class="approach better"><div class="ap-label">🟡 Better</div><pre><code>// O(n^2): expand from each position, stop on repeat
+for(int i=0;i&lt;n;++i){
+  set&lt;char&gt; seen;
+  for(int j=i;j&lt;n;++j){
+    if(seen.count(s[j])) break;
+    seen.insert(s[j]);
+    best=max(best,j-i+1);
+  }
+}</code></pre></div><div class="approach optimal"><div class="ap-label">🟢 Optimal</div><pre><code>// O(n): sliding window with HashMap
+unordered_map&lt;char,int&gt; last;
+int lo=0,best=0;
+for(int hi=0;hi&lt;n;++hi){
+  if(last.count(s[hi]))
+    lo=max(lo,last[s[hi]]+1); // jump past duplicate
+  last[s[hi]]=hi;
+  best=max(best,hi-lo+1);
+}
+return best;</code></pre></div></div></div><div class="problem"><div class="ph"><span class="pnum">#5</span><span class="ptitle">LRU Cache</span><span class="bm">Medium</span><span class="cmpl">⏱ O(1) get and put &nbsp;|&nbsp; 🗄 O(capacity)</span></div><div class="pb"><p>Design a data structure supporting get(key) and put(key,val) with LRU eviction when at capacity.</p><div class="insight">🧠 <b>Key Insight:</b> The list iterator (pointer) stored in the HashMap is the key. std::list::splice relinks nodes in O(1) — no data movement. This is exactly how Linux kernel's page cache LRU works.</div><div class="approach brute"><div class="ap-label">🔴 Brute Force</div><pre><code>// Array: O(n) per operation — scan to find LRU
+vector&lt;pair&lt;int,int&gt;&gt; cache; // [key,val] in LRU order
+// get: linear scan to find key, move to back O(n)
+// put: linear scan, evict front O(n)</code></pre></div><div class="approach better"><div class="ap-label">🟡 Better</div><pre><code>// HashMap + sorted container: O(log n)
+map&lt;int, pair&lt;int,int&gt;&gt; ordered; // timestamp → (key,val)
+// get/put: O(log n) for map operations</code></pre></div><div class="approach optimal"><div class="ap-label">🟢 Optimal</div><pre><code>// HashMap + Doubly-Linked List: O(1)
+list&lt;pair&lt;int,int&gt;&gt; lst;   // {key,val}, MRU at front
+unordered_map&lt;int,list&lt;pair&lt;int,int&gt;&gt;::iterator&gt; mp;
+int get(int k){
+  if(!mp.count(k)) return -1;
+  lst.splice(lst.begin(),lst,mp[k]); // move to front O(1)
+  return mp[k]-&gt;second;
+}
+void put(int k,int v){
+  if(mp.count(k)){mp[k]-&gt;second=v;lst.splice(lst.begin(),lst,mp[k]);return;}
+  if((int)lst.size()==cap){mp.erase(lst.back().first);lst.pop_back();}
+  lst.emplace_front(k,v);mp[k]=lst.begin();
+}</code></pre></div></div></div><div class="problem"><div class="ph"><span class="pnum">#6</span><span class="ptitle">Merge K Sorted Lists</span><span class="bh">Hard</span><span class="cmpl">⏱ O(N log k) &nbsp;|&nbsp; 🗄 O(k)</span></div><div class="pb"><p>Given k sorted linked lists, merge them into one sorted list. N = total nodes.</p><div class="insight">🧠 <b>Key Insight:</b> The heap always gives the globally minimum unmerged element in O(log k). Only the current frontier (k elements) is in the heap at once — space is O(k), not O(N).</div><div class="approach brute"><div class="ap-label">🔴 Brute Force</div><pre><code>// O(Nk): sequentially merge lists one by one
+ListNode* merge_two(ListNode* a, ListNode* b){...}
+ListNode* res=lists[0];
+for(int i=1;i&lt;k;++i)
+  res=merge_two(res,lists[i]); // each merge: O(N) for k passes = O(Nk)</code></pre></div><div class="approach better"><div class="ap-label">🟡 Better</div><pre><code>// O(N log k) but more complex: divide and conquer
+// Recursively merge pairs: round 1: k/2 merges, round 2: k/4, etc.
+// log(k) rounds × O(N) each = O(N log k)
+// Same complexity as heap, more code</code></pre></div><div class="approach optimal"><div class="ap-label">🟢 Optimal</div><pre><code>// O(N log k): min-heap of (value, node*) 
+priority_queue&lt;T,vector&lt;T&gt;,greater&lt;&gt;&gt; pq;
+for(auto* h:lists) if(h) pq.push({h-&gt;val,h});
+ListNode dummy,*tail=&amp;dummy;
+while(!pq.empty()){
+  auto[v,node]=pq.top();pq.pop();
+  tail-&gt;next=node;tail=tail-&gt;next;
+  if(node-&gt;next) pq.push({node-&gt;next-&gt;val,node-&gt;next});
+}
+return dummy.next;</code></pre></div></div></div><div class="problem"><div class="ph"><span class="pnum">#7</span><span class="ptitle">Binary Tree Maximum Path Sum</span><span class="bh">Hard</span><span class="cmpl">⏱ O(n) &nbsp;|&nbsp; 🗄 O(h)</span></div><div class="pb"><p>Find the maximum path sum in a binary tree. A path can start and end at any node.</p><div class="insight">🧠 <b>Key Insight:</b> Key insight: path through a node can use both children, but when returning to parent, we can only extend in ONE direction (you can't go down both children and then back up).</div><div class="approach brute"><div class="ap-label">🔴 Brute Force</div><pre><code>// Try all pairs of nodes: O(n^2)
+// For each node, compute longest path through it
+// Naive: recompute heights repeatedly</code></pre></div><div class="approach better"><div class="ap-label">🟡 Better</div><pre><code>// Store heights in map: O(n) but O(n) space and complex code</code></pre></div><div class="approach optimal"><div class="ap-label">🟢 Optimal</div><pre><code>// O(n): DFS, track global max, return max gain upward
+int ans=INT_MIN;
+int dfs(TreeNode* n){
+  if(!n) return 0;
+  // Only take positive gains from children
+  int L=max(0,dfs(n-&gt;left));
+  int R=max(0,dfs(n-&gt;right));
+  // Path through n: L + n-&gt;val + R (can't go up)
+  ans=max(ans,L+n-&gt;val+R);
+  // Return to parent: can only go one direction
+  return n-&gt;val+max(L,R);
+}
+// Call: dfs(root); return ans;</code></pre></div></div></div><div class="problem"><div class="ph"><span class="pnum">#8</span><span class="ptitle">Coin Change</span><span class="bm">Medium</span><span class="cmpl">⏱ O(amount × coins) &nbsp;|&nbsp; 🗄 O(amount)</span></div><div class="pb"><p>Given coin denominations and a target amount, find minimum coins needed. Return -1 if impossible.</p><div class="insight">🧠 <b>Key Insight:</b> Bottom-up DP initializes with amount+1 (impossible sentinel). dp[i] = min coins to make amount i. Inner loop: try each coin, extend optimal solution for (i-coin).</div><div class="approach brute"><div class="ap-label">🔴 Brute Force</div><pre><code>// O(amount × coins^amount): brute force recursion
+int solve(int rem){
+  if(rem&lt;0) return INT_MAX;
+  if(rem==0) return 0;
+  int best=INT_MAX;
+  for(int c:coins)
+    if(solve(rem-c)!=INT_MAX)
+      best=min(best,1+solve(rem-c));
+  return best;
+}</code></pre></div><div class="approach better"><div class="ap-label">🟡 Better</div><pre><code>// O(amount × coins) with memo: top-down DP
+vector&lt;int&gt; memo(amount+1,-1);
+int solve(int rem){
+  if(rem&lt;0) return INT_MAX;
+  if(rem==0) return 0;
+  if(memo[rem]!=-1) return memo[rem];
+  int best=INT_MAX;
+  for(int c:coins)
+    if(solve(rem-c)!=INT_MAX)
+      best=min(best,1+solve(rem-c));
+  return memo[rem]=best;
+}</code></pre></div><div class="approach optimal"><div class="ap-label">🟢 Optimal</div><pre><code>// O(amount × coins) bottom-up DP
+vector&lt;int&gt; dp(amount+1,amount+1);
+dp[0]=0;
+for(int i=1;i&lt;=amount;++i)
+  for(int c:coins)
+    if(c&lt;=i &amp;&amp; dp[i-c]+1&lt;dp[i])
+      dp[i]=dp[i-c]+1;
+return dp[amount]&gt;amount?-1:dp[amount];</code></pre></div></div></div><div class="problem"><div class="ph"><span class="pnum">#9</span><span class="ptitle">Word Break</span><span class="bm">Medium</span><span class="cmpl">⏱ O(n^2 × m) &nbsp;|&nbsp; 🗄 O(n)</span></div><div class="pb"><p>Given string s and a word dictionary, can s be segmented into dictionary words?</p><div class="insight">🧠 <b>Key Insight:</b> dp[i] means 'can we form s[0..i-1] using dictionary words'. Only reachable positions (dp[j]=true) are meaningful starting points. Break early when dp[i] is set.</div><div class="approach brute"><div class="ap-label">🔴 Brute Force</div><pre><code>// Exponential: try all splits recursively
+bool solve(int start){
+  if(start==n) return true;
+  for(int end=start+1;end&lt;=n;++end)
+    if(dict.count(s.substr(start,end-start)))
+      if(solve(end)) return true;
+  return false;
+}</code></pre></div><div class="approach better"><div class="ap-label">🟡 Better</div><pre><code>// O(n^2) with memo
+vector&lt;int&gt; memo(n+1,-1);
+bool solve(int i){
+  if(i==n) return true;
+  if(memo[i]!=-1) return memo[i];
+  for(int j=i+1;j&lt;=n;++j)
+    if(dict.count(s.substr(i,j-i))&amp;&amp;solve(j))
+      return memo[i]=true;
+  return memo[i]=false;
+}</code></pre></div><div class="approach optimal"><div class="ap-label">🟢 Optimal</div><pre><code>// O(n^2) bottom-up: dp[i]=can reach position i
+vector&lt;bool&gt; dp(n+1,false);
+dp[0]=true;
+for(int i=1;i&lt;=n;++i)
+  for(int j=0;j&lt;i;++j)
+    if(dp[j]&amp;&amp;dict.count(s.substr(j,i-j))){
+      dp[i]=true;break;
+    }
+return dp[n];</code></pre></div></div></div><div class="problem"><div class="ph"><span class="pnum">#10</span><span class="ptitle">Find Median from Data Stream</span><span class="bh">Hard</span><span class="cmpl">⏱ O(log n) add, O(1) median &nbsp;|&nbsp; 🗄 O(n)</span></div><div class="pb"><p>Design a data structure that supports addNum(int) and findMedian() on a streaming input.</p><div class="insight">🧠 <b>Key Insight:</b> Two-heap invariant: maxH.size() == minH.size() OR maxH.size() == minH.size()+1. All elements in maxH <= all elements in minH. Median is either maxH.top() or average of both tops.</div><div class="approach brute"><div class="ap-label">🔴 Brute Force</div><pre><code>// O(n log n) per findMedian: sort the array
+vector&lt;int&gt; data;
+void add(int n){data.push_back(n);}
+double median(){
+  sort(data.begin(),data.end());
+  int m=data.size();
+  return m%2?data[m/2]:(data[m/2-1]+data[m/2])/2.0;
+}</code></pre></div><div class="approach better"><div class="ap-label">🟡 Better</div><pre><code>// O(n) per add: insert in sorted position
+void add(int n){
+  auto it=lower_bound(data.begin(),data.end(),n);
+  data.insert(it,n);
+}
+double median(){
+  int m=data.size();
+  return m%2?data[m/2]:(data[m/2-1]+data[m/2])/2.0;
+}</code></pre></div><div class="approach optimal"><div class="ap-label">🟢 Optimal</div><pre><code>// O(log n) per add: two heaps maintaining the split
+// maxH: lower half (max at top)
+// minH: upper half (min at top)
+void add(int n){
+  maxH.push(n);                      // always add to lower first
+  minH.push(maxH.top());maxH.pop(); // balance: largest lower goes to upper
+  if(minH.size()&gt;maxH.size()){       // keep sizes equal or lower has 1 extra
+    maxH.push(minH.top());minH.pop();
+  }
+}
+double median(){
+  return maxH.size()&gt;minH.size()?maxH.top():(maxH.top()+minH.top())/2.0;
+}</code></pre></div></div></div><h2 class="chap">Additional Problems Quick Reference (11-50)</h2><div class="tbl"><table><thead><tr><th>#</th><th>Problem</th><th>Difficulty</th><th>Pattern</th><th>Key Insight</th></tr></thead><tbody><tr><td>11</td><td>Valid Parentheses</td><td>Easy</td><td>Stack</td><td>Push open, pop on close, check match</td></tr><tr><td>12</td><td>Meeting Rooms II</td><td>Medium</td><td>Heap</td><td>Min-heap of end times; size=rooms needed</td></tr><tr><td>13</td><td>Merge Intervals</td><td>Medium</td><td>Sort</td><td>Sort by start, merge if overlap</td></tr><tr><td>14</td><td>Sliding Window Maximum</td><td>Hard</td><td>Monotonic Deque</td><td>Deque front = current max; pop smaller elements</td></tr><tr><td>15</td><td>Kth Largest Element</td><td>Medium</td><td>Heap/QuickSelect</td><td>Min-heap size k OR nth_element O(n) avg</td></tr><tr><td>16</td><td>Number of Islands</td><td>Medium</td><td>BFS/DFS</td><td>Flood fill: mark visited, count floods</td></tr><tr><td>17</td><td>Course Schedule</td><td>Medium</td><td>Topological Sort</td><td>Kahn's BFS: in-degree 0 → queue → detect cycle</td></tr><tr><td>18</td><td>Clone Graph</td><td>Medium</td><td>BFS + HashMap</td><td>HashMap: orig→clone. BFS explores + clones neighbors</td></tr><tr><td>19</td><td>Pacific Atlantic Water</td><td>Medium</td><td>Reverse BFS</td><td>BFS from ocean shores inward — union of reachable</td></tr><tr><td>20</td><td>Serialize Binary Tree</td><td>Hard</td><td>BFS/Preorder</td><td>Preorder with '#' for null; split by comma</td></tr><tr><td>21</td><td>Decode Ways</td><td>Medium</td><td>DP</td><td>dp[i]: from dp[i-1] (1 digit) + dp[i-2] (2 digits if valid)</td></tr><tr><td>22</td><td>Jump Game II</td><td>Medium</td><td>Greedy</td><td>Track furthest reach; count jumps when crossing current boundary</td></tr><tr><td>23</td><td>Max Product Subarray</td><td>Medium</td><td>DP</td><td>Track both max AND min (neg × neg = positive)</td></tr><tr><td>24</td><td>Longest Increasing Subseq</td><td>Medium</td><td>DP/Patience Sort</td><td>DP O(n^2) or binary search on tails O(n log n)</td></tr><tr><td>25</td><td>Edit Distance</td><td>Hard</td><td>2D DP</td><td>dp[i][j]: min ops to match s1[0..i] with s2[0..j]</td></tr><tr><td>26</td><td>Regular Expression Match</td><td>Hard</td><td>2D DP</td><td>dp[i][j]=true if s[0..i] matches p[0..j]</td></tr><tr><td>27</td><td>Alien Dictionary</td><td>Hard</td><td>Topo Sort + Build Graph</td><td>Compare adjacent words, build order constraints</td></tr><tr><td>28</td><td>Word Ladder</td><td>Hard</td><td>BFS + Set</td><td>BFS level by level; replace each char, check in dict</td></tr><tr><td>29</td><td>Find Duplicate Number</td><td>Medium</td><td>Floyd's Cycle</td><td>Array as linked list; fast/slow pointer cycle detection</td></tr><tr><td>30</td><td>N-Queens</td><td>Hard</td><td>Backtracking</td><td>Track cols, diag1 (r-c), diag2 (r+c) sets for O(1) check</td></tr><tr><td>31</td><td>Minimum Window Substring</td><td>Hard</td><td>Sliding Window</td><td>Expand right until valid; contract left; track coverage</td></tr><tr><td>32</td><td>Partition Equal Subset Sum</td><td>Medium</td><td>0-1 Knapsack DP</td><td>dp[sum] = can we reach this sum?</td></tr><tr><td>33</td><td>House Robber</td><td>Medium</td><td>DP</td><td>dp[i]=max(dp[i-1], dp[i-2]+nums[i])</td></tr><tr><td>34</td><td>Decode String</td><td>Medium</td><td>Stack</td><td>Stack of (count, partial). On ']', pop and repeat</td></tr><tr><td>35</td><td>Find All Anagrams</td><td>Medium</td><td>Sliding Window</td><td>Fixed window of size p; compare freq arrays</td></tr><tr><td>36</td><td>Reorder List</td><td>Medium</td><td>Split+Reverse+Merge</td><td>Find mid, reverse second half, interleave</td></tr><tr><td>37</td><td>Implement Trie</td><td>Medium</td><td>Tree (26-way)</td><td>TrieNode{children[26], is_end}. Insert/search O(L)</td></tr><tr><td>38</td><td>Search in Rotated Array</td><td>Medium</td><td>Binary Search</td><td>Determine which half is sorted; search correctly</td></tr><tr><td>39</td><td>Minimum in Rotated Array</td><td>Medium</td><td>Binary Search</td><td>Binary search: if mid>right, min is in right half</td></tr><tr><td>40</td><td>Sum of Two Integers (no +)</td><td>Medium</td><td>Bit Manipulation</td><td>a+b = (a XOR b) + carry. carry = (a AND b) << 1</td></tr></tbody></table></div><h2 class="chap">Interview Q&A — Coding</h2><div class="qa"><div class="question">❓ How do you identify a dynamic programming problem?</div><div class="answer">Two key properties: (1) Optimal substructure: optimal solution to the whole problem contains optimal solutions to subproblems. Example: minimum coins to make 11 = 1 + minimum coins to make 10. (2) Overlapping subproblems: same subproblems are solved repeatedly in naive recursion. Signs: the problem asks for minimum/maximum/count/feasibility of something. You can make a choice at each step and combine subproblem results. Classic categories: 1D DP (house robber, coin change, LIS), 2D DP (edit distance, LCS, knapsack), on strings, trees, graphs. How to solve: find the recurrence (how big problem depends on smaller problems), choose memo top-down or tabulation bottom-up, identify base cases.</div><div class="followup"><b>Follow-up questions interviewers ask:</b><ul><li>What is the difference between memoization and tabulation?</li><li>How do you optimize space in a 2D DP that only uses current and previous row?</li><li>When does greedy work instead of DP?</li></ul></div><div class="followup" style="background:#fef2f2;border-color:#fca5a5"><b>Common mistakes in answers:</b><ul><li>Starting with code before identifying the recurrence — always write the recurrence as a comment first.</li><li>Confusing DP with divide-and-conquer — D&C subproblems are independent (merge sort); DP subproblems overlap.</li></ul></div></div><div class="qa"><div class="question">❓ Walk me through your approach to a graph problem.</div><div class="answer">First: determine if it's directed or undirected, weighted or unweighted. Then choose algorithm: Shortest path unweighted → BFS (O(V+E)). Shortest path weighted non-negative → Dijkstra (O((V+E) log V) with heap). Shortest path with negative edges → Bellman-Ford (O(VE)). Topological order → Kahn's BFS or DFS. Connected components → Union-Find or DFS. Minimum spanning tree → Prim's or Kruskal's. All-pairs shortest path → Floyd-Warshall O(V^3). Implement: adjacency list for sparse graphs (most interview problems), adjacency matrix for dense/small. Common mistakes: not tracking visited set (infinite loop), off-by-one in BFS levels, forgetting to handle disconnected graphs.</div></div>
+    <div class="pagination"><a href="part11.html">← Part 11</a><a href="part13.html">Part 13 →</a></div>
+  </div>
+</div>
+<button id="btt">↑</button>
+<script>
+document.querySelectorAll('pre').forEach(p=>{
+  const b=document.createElement('button');b.className='copy-btn';b.textContent='Copy';
+  p.appendChild(b);b.onclick=()=>{navigator.clipboard.writeText(p.innerText.replace('Copy','').trim())
+  .then(()=>{b.textContent='Copied!';setTimeout(()=>b.textContent='Copy',2000);});};});
+const btt=document.getElementById('btt');
+window.addEventListener('scroll',()=>btt&&btt.classList.toggle('show',scrollY>300));
+btt&&btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+const si=document.getElementById('search');
+if(si)si.addEventListener('input',function(){const q=this.value.toLowerCase();
+  document.querySelectorAll('.part-card').forEach(c=>c.style.display=
+    c.textContent.toLowerCase().includes(q)?'':'none');});
+</script></body></html>

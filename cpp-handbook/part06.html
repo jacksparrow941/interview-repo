@@ -1,0 +1,205 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Part VI: Distributed Systems — C++ Interview Handbook</title>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<div style="background:#0f172a;border-bottom:1px solid #334155;padding:8px 20px;
+  display:flex;align-items:center;gap:16px;font-size:13px;position:fixed;top:0;left:0;right:0;z-index:400;height:38px">
+  <a href="../index.html" style="color:#3b82f6;font-weight:600;text-decoration:none;
+     display:flex;align-items:center;gap:6px">
+    <span>⚡</span><span>InterviewRepo</span>
+  </a>
+  <span style="color:#334155">|</span>
+  <a href="index.html" style="color:#94a3b8;text-decoration:none">📘 C++ Master Handbook</a>
+  <span style="color:#334155;margin-left:auto;font-size:11px;color:#475569">
+    C++ · Multithreading · OS · Networks · AI Runtime · Embedded · 150 Problems
+  </span>
+</div>
+<nav id="sidebar"><div class="sb-head"><b>C++ Handbook</b><br><small>15 Parts · 150 Problems</small></div><a href="index.html" >🏠 Table of Contents</a>
+<a href="part01.html"><span class="badge" style="background:#1a2744">01</span>Part I: C++ Mastery</a>
+<a href="part02.html"><span class="badge" style="background:#065f46">02</span>Part II: Multithreading & Concurrency</a>
+<a href="part03.html"><span class="badge" style="background:#7c3aed">03</span>Part III: Operating Systems</a>
+<a href="part04.html"><span class="badge" style="background:#0e7490">04</span>Part IV: Computer Networks</a>
+<a href="part05.html"><span class="badge" style="background:#92400e">05</span>Part V: Linux & Performance Tools</a>
+<a href="part06.html" class="active"><span class="badge" style="background:#1e40af">06</span>Part VI: Distributed Systems</a>
+<a href="part07.html"><span class="badge" style="background:#b45309">07</span>Part VII: System Design</a>
+<a href="part08.html"><span class="badge" style="background:#be185d">08</span>Part VIII: Compiler Internals</a>
+<a href="part09.html"><span class="badge" style="background:#0f766e">09</span>Part IX: AI Runtime</a>
+<a href="part10.html"><span class="badge" style="background:#4338ca">10</span>Part X: Embedded Systems</a>
+<a href="part11.html"><span class="badge" style="background:#0369a1">11</span>Part XI: DevOps & Tools</a>
+<a href="part12.html"><span class="badge" style="background:#1e3a5f">12</span>Part XII: Coding Interviews — 150 Problems</a>
+<a href="part13.html"><span class="badge" style="background:#3f1f69">13</span>Part XIII: Behavioral & STAR</a>
+<a href="part14.html"><span class="badge" style="background:#064e3b">14</span>Part XIV: Resume Deep Dive</a>
+<a href="part15.html"><span class="badge" style="background:#7f1d1d">15</span>Part XV: Company-Specific</a>
+</nav>
+<div id="main">
+  <div id="topbar"><div class="tb-title" style="border-left:4px solid #1e40af;padding-left:12px">Part VI: Distributed Systems</div></div>
+  <div id="content">
+    <h1 class="part-title">Part VI: Distributed Systems</h1>
+    <p class="subtitle">Part VI</p><hr class="divider">
+    <h2 class="chap">Chapter 1 — CAP Theorem</h2><p>In a distributed system, you can guarantee at most 2 of 3: Consistency (every read returns latest write), Availability (every request gets a response), Partition Tolerance (system works despite network partition). Since partitions are unavoidable in real networks, choose CP or AP.</p><div class="tbl"><table><thead><tr><th>Model</th><th>Guarantee</th><th>Examples</th><th>When to Use</th></tr></thead><tbody><tr><td>Linearizable (CP)</td><td>Every read sees the latest write globally</td><td>etcd, Zookeeper</td><td>Leader election, distributed locks</td></tr><tr><td>Sequential (CP)</td><td>All operations in some sequential order</td><td>Most RDBMS</td><td>Transactions requiring ordering</td></tr><tr><td>Causal (AP-ish)</td><td>Causally related ops ordered</td><td>Amazon DynamoDB (w/ transactions)</td><td>Shopping cart, collaborative editing</td></tr><tr><td>Eventual (AP)</td><td>Converges if no new writes</td><td>Cassandra, DynamoDB (default)</td><td>DNS, user profile, analytics</td></tr><tr><td>Read-your-writes</td><td>Client always sees own writes</td><td>Session consistency in DB</td><td>User profile updates</td></tr></tbody></table></div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// Choosing consistency model for a distributed inference cache:
+// Requirement: cache inference results by input hash
+// Tolerance: stale result served for up to 30s is acceptable (saves compute)
+// Choice: Eventual consistency with TTL = 30s
+
+// Redis with TTL — eventual consistency acceptable here:
+// If two nodes briefly have different cached values, no harm done
+// (worst case: two slightly different results for same input during sync)
+redis_client.setex(input_hash, 30, result_json);   // 30s TTL
+
+// For critical path (model weight version used for inference):
+// Choice: strong consistency — wrong model version = wrong results
+// Use etcd or Zookeeper for model version metadata
+etcd_client.put("/models/resnet50/version", "v1.2.3",
+                etcd::PutOptions().with_lease(60));  // leader-elected</code></pre><div class="ex-why">✅ Why this works: Match your consistency model to your correctness requirements. Inference result caches can tolerate eventual consistency. Model version metadata requires strong consistency — serving with wrong weights is a correctness bug.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// BAD: using eventual consistency for financial transactions
+// Cassandra with eventual consistency:
+cassandra.write("account:alice:balance", 1000);   // node A sees 1000
+// Network partition — node B still has old value
+cassandra.read("account:alice:balance");   // might return 900 (stale!)
+// User double-spends because read saw stale balance
+
+// BAD: using strong consistency for everything even when not needed
+// Zookeeper for every read in a high-QPS system:
+// Zookeeper can handle ~50K reads/sec
+// Your inference cache needs 500K reads/sec → Zookeeper is the bottleneck
+// Redis with TTL would serve the same purpose at 10x the throughput</code></pre><div class="ex-why bad-why">❌ Why this fails: Over-engineering with strong consistency where eventual would do causes unnecessary bottlenecks. Under-engineering with eventual consistency for financial data causes correctness bugs.</div></div><h2 class="chap">Chapter 2 — Raft Consensus: Step by Step</h2><div class="diagram">Raft States and Transitions:
+
+  Follower ──timeout──► Candidate ──majority votes──► Leader
+      ▲                      │                           │
+      └──────────────────────┘                           │
+         (receives AppendEntries     ◄──────────────────┘
+          or RequestVote)           (sends heartbeat/AppendEntries)
+
+Leader Election:
+  1. Follower doesn't hear from leader for election_timeout (150-300ms)
+  2. Increments term, votes for itself, sends RequestVote to all
+  3. Candidate wins if it gets (n/2 + 1) votes
+  4. Vote granted only if candidate's log is at least as up-to-date as voter's
+
+Log Replication:
+  Client → Leader: entry appended to leader's log
+  Leader → Followers: AppendEntries RPC (also serves as heartbeat)
+  Majority ACK → Leader marks entry committed
+  Leader responds to client
+  Followers learn of commit on next AppendEntries</div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// Raft in practice — what this means for your code:
+
+// 1. All writes go to the leader
+// Use a Raft client that does leader routing automatically:
+etcd_client.put("key", "value");   // client retries on wrong node
+// etcd's clientv3 does leader forwarding transparently
+
+// 2. Reads can be from followers (stale) or leader (linearizable)
+etcd_client.get("key");                         // stale — follower ok
+etcd_client.get("key", {.leader_endpoint = true}); // linearizable — leader
+
+// 3. Membership changes are Raft log entries — not instant
+// Adding a node: new node joins as learner → catches up → becomes voter
+// Safe: cluster remains available during membership change
+
+// 4. Leader leases for low-latency reads (no round-trip needed)
+// Leader knows it's leader for lease duration → serve reads locally
+// Used by etcd, CockroachDB for fast reads without consensus round-trip</code></pre><div class="ex-why">✅ Why this works: etcd's lease-based reads (linearizable default) add one network round-trip. For hot read paths, use stale reads from followers and accept bounded staleness.</div></div><h2 class="chap">Chapter 3 — Apache Kafka Deep Dive</h2><div class="diagram">Kafka Cluster Architecture:
+
+Producer ──────────► [Topic: 3 Partitions × 3 Replicas]
+                      ┌─────────┬─────────┬─────────┐
+                      │ Part 0  │ Part 1  │ Part 2  │ ← Leader replicas
+                      │ Broker1 │ Broker2 │ Broker3 │
+                      └─────────┴─────────┴─────────┘
+                            │         │         │
+                       Follower  Follower  Follower  ← ISR replicas
+
+Consumer Group A:
+  Consumer 1 ← Partition 0 (each partition to ONE consumer in group)
+  Consumer 2 ← Partition 1 (parallelism = min(consumers, partitions))
+  Consumer 3 ← Partition 2
+
+Consumer Group B (independent offset tracking):
+  Consumer 4 ← all partitions (single consumer, full replay)</div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// Kafka producer with key for ordering guarantee
+Properties props;
+props["bootstrap.servers"] = "kafka1:9092,kafka2:9092";
+props["acks"] = "all";          // wait for all ISR replicas to ACK
+props["retries"] = "10";
+props["enable.idempotence"] = "true";  // exactly-once per partition
+props["compression.type"] = "lz4";    // compress batches
+
+KafkaProducer producer(props);
+// Key determines partition: same key → same partition → ordered
+producer.send({
+    .topic     = "inference-requests",
+    .key       = user_id,         // all requests for user go to same partition
+    .value     = request.to_json(),
+    .callback  = [](RecordMetadata md, KafkaException* e) {
+        if (e) log_error(e-&gt;what());
+        else   metrics.record("kafka.produce.latency", md.latency());
+    }
+});
+
+// Consumer: commit after processing (at-least-once delivery)
+while (true) {
+    auto records = consumer.poll(std::chrono::milliseconds(100));
+    for (auto&amp; record : records) {
+        process(record.value());     // process first
+        consumer.commitSync({record.topic(), record.partition(),
+                             record.offset() + 1});  // then commit offset
+    }
+}</code></pre><div class="ex-why">✅ Why this works: acks=all + enable.idempotence gives you exactly-once per partition. Commit offset AFTER processing (not before) ensures at-least-once — if processing fails, the message is reprocessed.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// BAD: auto-commit offset before processing
+consumer.enable_auto_commit(true);   // commits offset automatically
+auto records = consumer.poll(100ms);
+for (auto&amp; record : records) {
+    // auto-commit fires here in background — offset committed!
+    process(record.value());   // if this crashes → message LOST (committed but not processed)
+}
+// Use manual commit + process first for at-least-once
+
+// BAD: all data in one partition → no parallelism
+producer.send({.topic="events", .key=nullptr, .value=data});
+// Without a key: messages go to random partitions (round-robin)
+// But if you always use key=nullptr: all in default partition → 1 consumer only
+
+// BAD: consumer group larger than partition count
+// 4 partitions, 8 consumers in same group
+// → 4 consumers are idle (each partition has at most 1 active consumer)
+// → wasted resources. Scale consumers to match partition count</code></pre><div class="ex-why bad-why">❌ Why this fails: Kafka parallelism is bounded by partition count. Design partition count based on max needed consumer parallelism — you can increase partitions later, but you can't decrease them without creating a new topic.</div></div><h2 class="chap">Chapter 4 — Redis: Data Structures and Use Patterns</h2><div class="tbl"><table><thead><tr><th>Structure</th><th>Internal</th><th>Best Use Case</th></tr></thead><tbody><tr><td>String</td><td>SDS (Simple Dynamic String)</td><td>Counters, flags, cached JSON, session tokens</td></tr><tr><td>Hash</td><td>ziplist or hashtable</td><td>User profile fields, object attributes</td></tr><tr><td>List</td><td>quicklist (linked ziplists)</td><td>Task queues, activity feeds, recent items</td></tr><tr><td>Sorted Set</td><td>skiplist + hashtable</td><td>Leaderboards, time-series, rate limiting windows</td></tr><tr><td>HyperLogLog</td><td>Probabilistic count</td><td>Unique visitor count with 0.81% error</td></tr><tr><td>Pub/Sub</td><td>In-memory message routing</td><td>Real-time notifications (not durable!)</td></tr></tbody></table></div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// Pattern 1: Rate limiting with sliding window (sorted set)
+def check_rate_limit(user_id: str, limit: int, window_s: int) -&gt; bool:
+    key = f"ratelimit:{user_id}"
+    now = time.time()
+    pipe = redis.pipeline()
+    pipe.zremrangebyscore(key, 0, now - window_s)  # remove old entries
+    pipe.zcard(key)                                 # count recent requests
+    pipe.zadd(key, {str(now): now})                 # add this request
+    pipe.expire(key, window_s)                      # auto-expire key
+    _, count, *_ = pipe.execute()
+    return count &lt; limit   # True if allowed
+
+// Pattern 2: Distributed lock with expiry
+bool acquire_lock(const std::string&amp; key, const std::string&amp; token, int ttl_s) {
+    // SET key token NX EX ttl — atomic, only sets if key doesn't exist
+    auto result = redis.set(key, token,
+                            nx=true,     // NX: only set if Not eXists
+                            ex=ttl_s);   // EX: expire after ttl_s seconds
+    return result.has_value();   // true = lock acquired
+}
+void release_lock(const std::string&amp; key, const std::string&amp; token) {
+    // Lua script: only delete if value matches (we own the lock)
+    const char* lua = "if redis.call('get',KEYS[1])==ARGV[1] "
+                      "then return redis.call('del',KEYS[1]) "
+                      "else return 0 end";
+    redis.eval(lua, {key}, {token});   // atomic: check + delete
+}</code></pre><div class="ex-why">✅ Why this works: Lua scripts in Redis execute atomically — the entire script runs without interruption. This is how you implement check-and-modify operations (compare-and-delete for locks, check-and-increment for rate limits) without TOCTOU races.</div></div><h2 class="chap">Interview Q&amp;A — Distributed Systems</h2><div class="qa"><div class="question">❓ Explain Raft leader election. What prevents split-brain?</div><div class="answer">Raft prevents split-brain through two mechanisms: (1) Majority quorum: any operation (election or log commit) requires votes from n/2+1 nodes. With n=5, you need 3 votes. If the cluster splits into groups of 2 and 3, only the group of 3 can form a quorum — the group of 2 is inactive. (2) Term numbers: each election increments the term. Old leaders with lower term number immediately step down when they hear a higher term. So there can never be two leaders in the same term. A candidate can only win if its log is at least as up-to-date as the majority — prevents stale leaders from winning.</div><div class="followup"><b>Follow-up questions interviewers ask:</b><ul><li>What happens to a Raft leader that gets network partitioned?</li><li>How does Raft handle a follower that missed many log entries?</li><li>What is the difference between committed and applied in Raft?</li></ul></div><div class="followup" style="background:#fef2f2;border-color:#fca5a5"><b>Common mistakes in answers:</b><ul><li>Saying 'Raft prevents split-brain entirely' — it prevents two active leaders in the same term, but a partitioned old leader may continue operating (with stale data) until it sees a higher term.</li><li>Confusing leader election timeout with heartbeat interval — timeout must be much larger than heartbeat interval.</li></ul></div></div><div class="qa"><div class="question">❓ How does Kafka guarantee ordering? What are the tradeoffs?</div><div class="answer">Kafka guarantees ordering WITHIN a partition. Messages with the same key go to the same partition via consistent hashing (Kafka uses murmur2 hash of key). All messages in that partition are ordered by offset. Consumer reads partitions sequentially — within a partition, you see messages in write order. Tradeoff: ordering per partition means your parallelism is limited by partition count. If you need global ordering across all messages: use one partition (no parallelism). If you need per-user ordering: use user_id as key (parallel processing, ordered per user). Common mistake: using no key (random partition) when you need ordering — guaranteed to break ordering.</div><div class="followup"><b>Follow-up questions interviewers ask:</b><ul><li>How does Kafka handle duplicate messages after a consumer crash?</li><li>What is the difference between at-least-once and exactly-once in Kafka?</li><li>When would you use compacted topics?</li></ul></div></div>
+    <div class="pagination"><a href="part05.html">← Part 05</a><a href="part07.html">Part 07 →</a></div>
+  </div>
+</div>
+<button id="btt">↑</button>
+<script>
+document.querySelectorAll('pre').forEach(p=>{
+  const b=document.createElement('button');b.className='copy-btn';b.textContent='Copy';
+  p.appendChild(b);b.onclick=()=>{navigator.clipboard.writeText(p.innerText.replace('Copy','').trim())
+  .then(()=>{b.textContent='Copied!';setTimeout(()=>b.textContent='Copy',2000);});};});
+const btt=document.getElementById('btt');
+window.addEventListener('scroll',()=>btt&&btt.classList.toggle('show',scrollY>300));
+btt&&btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+const si=document.getElementById('search');
+if(si)si.addEventListener('input',function(){const q=this.value.toLowerCase();
+  document.querySelectorAll('.part-card').forEach(c=>c.style.display=
+    c.textContent.toLowerCase().includes(q)?'':'none');});
+</script></body></html>

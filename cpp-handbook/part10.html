@@ -1,0 +1,242 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Part X: Embedded Systems — C++ Interview Handbook</title>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<div style="background:#0f172a;border-bottom:1px solid #334155;padding:8px 20px;
+  display:flex;align-items:center;gap:16px;font-size:13px;position:fixed;top:0;left:0;right:0;z-index:400;height:38px">
+  <a href="../index.html" style="color:#3b82f6;font-weight:600;text-decoration:none;
+     display:flex;align-items:center;gap:6px">
+    <span>⚡</span><span>InterviewRepo</span>
+  </a>
+  <span style="color:#334155">|</span>
+  <a href="index.html" style="color:#94a3b8;text-decoration:none">📘 C++ Master Handbook</a>
+  <span style="color:#334155;margin-left:auto;font-size:11px;color:#475569">
+    C++ · Multithreading · OS · Networks · AI Runtime · Embedded · 150 Problems
+  </span>
+</div>
+<nav id="sidebar"><div class="sb-head"><b>C++ Handbook</b><br><small>15 Parts · 150 Problems</small></div><a href="index.html" >🏠 Table of Contents</a>
+<a href="part01.html"><span class="badge" style="background:#1a2744">01</span>Part I: C++ Mastery</a>
+<a href="part02.html"><span class="badge" style="background:#065f46">02</span>Part II: Multithreading & Concurrency</a>
+<a href="part03.html"><span class="badge" style="background:#7c3aed">03</span>Part III: Operating Systems</a>
+<a href="part04.html"><span class="badge" style="background:#0e7490">04</span>Part IV: Computer Networks</a>
+<a href="part05.html"><span class="badge" style="background:#92400e">05</span>Part V: Linux & Performance Tools</a>
+<a href="part06.html"><span class="badge" style="background:#1e40af">06</span>Part VI: Distributed Systems</a>
+<a href="part07.html"><span class="badge" style="background:#b45309">07</span>Part VII: System Design</a>
+<a href="part08.html"><span class="badge" style="background:#be185d">08</span>Part VIII: Compiler Internals</a>
+<a href="part09.html"><span class="badge" style="background:#0f766e">09</span>Part IX: AI Runtime</a>
+<a href="part10.html" class="active"><span class="badge" style="background:#4338ca">10</span>Part X: Embedded Systems</a>
+<a href="part11.html"><span class="badge" style="background:#0369a1">11</span>Part XI: DevOps & Tools</a>
+<a href="part12.html"><span class="badge" style="background:#1e3a5f">12</span>Part XII: Coding Interviews — 150 Problems</a>
+<a href="part13.html"><span class="badge" style="background:#3f1f69">13</span>Part XIII: Behavioral & STAR</a>
+<a href="part14.html"><span class="badge" style="background:#064e3b">14</span>Part XIV: Resume Deep Dive</a>
+<a href="part15.html"><span class="badge" style="background:#7f1d1d">15</span>Part XV: Company-Specific</a>
+</nav>
+<div id="main">
+  <div id="topbar"><div class="tb-title" style="border-left:4px solid #4338ca;padding-left:12px">Part X: Embedded Systems</div></div>
+  <div id="content">
+    <h1 class="part-title">Part X: Embedded Systems</h1>
+    <p class="subtitle">Part X</p><hr class="divider">
+    <h2 class="chap">Chapter 1 — RTOS: Real-Time Operating Systems</h2><p>An RTOS guarantees response within a bounded time — determinism is the key property. Not necessarily fast, but <em>predictably</em> fast. Used in automotive ECUs, medical devices, industrial robots, drones.</p><div class="tbl"><table><thead><tr><th>Property</th><th>RTOS (FreeRTOS/Zephyr)</th><th>General-Purpose OS (Linux)</th></tr></thead><tbody><tr><td>Scheduling</td><td>Priority preemptive — highest ready task always runs</td><td>CFS — fairness, no hard guarantees</td></tr><tr><td>Worst-case latency</td><td>< 10 µs (bounded and tested)</td><td>Milliseconds — not guaranteed</td></tr><tr><td>Footprint</td><td>4KB–4MB</td><td>64MB–GB</td></tr><tr><td>Interrupt latency</td><td>< 1 µs (with priority grouping)</td><td>Typically 50–500 µs</td></tr><tr><td>Memory protection</td><td>Optional (MPU-based)</td><td>Full MMU (virtual memory)</td></tr><tr><td>Context switch</td><td>2-10 µs</td><td>1-10 µs but non-deterministic</td></tr><tr><td>File system</td><td>FAT/LittleFS or none</td><td>ext4, tmpfs, etc.</td></tr></tbody></table></div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
+#include "semphr.h"
+
+// CORRECT: Task communicates via queue — not global variables with no sync
+static QueueHandle_t xDataQ;
+
+// Sensor task: reads ADC, sends to queue
+void vSensorTask(void* pvParams) {
+    const TickType_t xDelay = pdMS_TO_TICKS(10);  // 10ms period
+    for (;;) {
+        uint16_t adc_val = read_adc_channel(0);
+        // Non-blocking send: drop sample if queue is full (OK for sensors)
+        xQueueSend(xDataQ, &amp;adc_val, 0);
+        vTaskDelay(xDelay);   // yield CPU — don't busy-spin!
+    }
+}
+
+// Processing task: receives from queue, applies filter
+void vProcessTask(void* pvParams) {
+    uint16_t val;
+    for (;;) {
+        // Block indefinitely until data arrives
+        if (xQueueReceive(xDataQ, &amp;val, portMAX_DELAY) == pdTRUE) {
+            uint16_t filtered = apply_low_pass_filter(val);
+            update_display(filtered);
+        }
+    }
+}
+
+void app_main(void) {
+    xDataQ = xQueueCreate(16, sizeof(uint16_t));  // 16-element queue
+    xTaskCreate(vSensorTask,  "Sensor",  256, nullptr, 3, nullptr); // priority 3
+    xTaskCreate(vProcessTask, "Process", 512, nullptr, 2, nullptr); // priority 2
+    vTaskStartScheduler();  // never returns
+}</code></pre><div class="ex-why">✅ Why this works: Use queues for inter-task communication — they're thread-safe and provide natural flow control. Sensor task at higher priority ensures timely sampling; process task runs when data is available.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// BAD: global variable shared between tasks without synchronization
+uint16_t g_adc_value = 0;   // shared, NO protection!
+
+void vSensorTask(void* p) {
+    for (;;) {
+        g_adc_value = read_adc_channel(0);   // writes without lock
+        vTaskDelay(10);
+    }
+}
+void vProcessTask(void* p) {
+    for (;;) {
+        uint16_t v = g_adc_value;   // reads without lock
+        // If 16-bit write is not atomic on your MCU: torn read!
+        // On ARM Cortex-M0: 16-bit reads ARE atomic for aligned access
+        // But on multi-word data structures: race condition guaranteed
+        process(v);
+        vTaskDelay(10);
+    }
+}
+
+// BAD: blocking call inside ISR
+void TIMER1_IRQHandler(void) {
+    vTaskDelay(10);   // NEVER in ISR! vTaskDelay calls scheduler — crash/hang
+    xSemaphoreTake(mutex, portMAX_DELAY);  // NEVER in ISR! portMAX_DELAY blocks
+}</code></pre><div class="ex-why bad-why">❌ Why this fails: From ISR: ONLY use FromISR variants — xQueueSendFromISR, xSemaphoreGiveFromISR. Always call portYIELD_FROM_ISR at the end if xHigherPriorityTaskWoken is set.</div></div><h2 class="chap">Chapter 2 — DMA: Direct Memory Access</h2><p>DMA transfers data between peripherals and memory without CPU involvement. Critical for: UART at 1 Mbps (requires interrupt every byte without DMA), ADC continuous sampling, SPI displays.</p><div class="diagram">Without DMA:
+  UART receives byte → CPU interrupt → ISR reads byte → ISR stores to buffer
+  At 1 Mbps: 100,000 interrupts/second → CPU spending 30-50% time in ISR!
+
+With DMA:
+  UART receives bytes → DMA automatically writes to RAM buffer → interrupt ONLY when full
+  CPU is free for actual computation
+  DMA Controller:  src (UART DR) → dst (RAM buf) → count (256 bytes) → start
+                   [transfers autonomously via bus matrix]
+                   [raises IRQ only when complete or half-complete]
+
+DMA Circular Mode (for continuous streaming):
+  [buf[0]...buf[127]] [buf[128]...buf[255]] [buf[0]...] ...
+       ↑ half-complete IRQ  ↑ complete IRQ   ↑ half-complete again</div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// STM32 UART DMA RX with double-buffering
+// Uses DMA circular mode: half-transfer and full-transfer interrupts
+// While DMA fills second half, CPU processes first half (and vice versa)
+
+static uint8_t  dma_buf[512];   // double buffer: [0..255] and [256..511]
+static uint8_t  processed_buf[256];
+
+// Start continuous DMA receive
+HAL_UART_Receive_DMA(&amp;huart1, dma_buf, sizeof(dma_buf));
+
+// Half-complete: DMA filled dma_buf[0..255], now filling dma_buf[256..511]
+// CRITICAL on Cortex-M7: invalidate D-cache before reading DMA-filled memory
+void HAL_UART_RxHalfCpltCallback(UART_HandleTypeDef* huart) {
+    if (huart-&gt;Instance != USART1) return;
+    // Invalidate cache for first half — DMA wrote to RAM, cache may be stale
+    SCB_InvalidateDCache_by_Addr((uint32_t*)dma_buf, 256);
+    // Process first half while DMA fills second half
+    memcpy(processed_buf, dma_buf, 256);
+    process_uart_data(processed_buf, 256);
+}
+
+// Full-complete: DMA filled dma_buf[256..511], wraps back to dma_buf[0]
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef* huart) {
+    if (huart-&gt;Instance != USART1) return;
+    SCB_InvalidateDCache_by_Addr((uint32_t*)(dma_buf + 256), 256);
+    memcpy(processed_buf, dma_buf + 256, 256);
+    process_uart_data(processed_buf, 256);
+}</code></pre><div class="ex-why">✅ Why this works: Double-buffering with DMA circular mode gives zero-copy continuous streaming. CPU always processes one half while DMA fills the other. Cache invalidation is essential on Cortex-M7/A-class.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// BAD: forgetting cache invalidation on Cortex-M7 with D-cache enabled
+uint8_t dma_rx_buf[256];
+HAL_UART_Receive_DMA(&amp;huart1, dma_rx_buf, sizeof(dma_rx_buf));
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef* huart) {
+    // NO cache invalidation!
+    uint8_t first_byte = dma_rx_buf[0];   // may read STALE cached value!
+    // DMA wrote to RAM, but CPU's D-cache still has old data
+    // Bug: intermittent wrong data, depends on cache state
+    // Very hard to debug — only fails sometimes, not reproducibly
+}
+// FIX: SCB_InvalidateDCache_by_Addr() before reading DMA-filled buffer
+
+// BAD: DMA buffer not in cacheable-safe region without invalidation
+// OR: using non-aligned buffer
+uint8_t unaligned_buf[257];   // not 32-byte aligned!
+// SCB_InvalidateDCache_by_Addr rounds DOWN to cache line boundary
+// Invalidating unaligned buffer may leave some bytes un-invalidated</code></pre><div class="ex-why bad-why">❌ Why this fails: Cache coherency with DMA is the #1 source of hard-to-debug bugs on Cortex-M7. Buffer must be 32-byte aligned (cache line size). Always invalidate (SCB_InvalidateDCache) after DMA write to RAM before CPU read.</div></div><h2 class="chap">Chapter 3 — Serial Protocols</h2><div class="tbl"><table><thead><tr><th>Property</th><th>UART</th><th>SPI</th><th>I2C</th></tr></thead><tbody><tr><td>Wires</td><td>2 (TX,RX)</td><td>4 (MOSI,MISO,CLK,CS)</td><td>2 (SDA,SCL)</td></tr><tr><td>Speed</td><td>≤5 Mbps</td><td>≤50+ Mbps</td><td>100K/400K/1M/3.4M bps</td></tr><tr><td>Full-duplex</td><td>Yes</td><td>Yes</td><td>No (half-duplex)</td></tr><tr><td>Multi-slave</td><td>No</td><td>Yes (one CS per slave)</td><td>Yes (7/10-bit address)</td></tr><tr><td>Clock</td><td>None (async)</td><td>Master provides</td><td>Master provides</td></tr><tr><td>Error detection</td><td>Optional parity</td><td>None (layer 2)</td><td>ACK/NACK per byte</td></tr><tr><td>Use case</td><td>Debug, GPS, BT</td><td>Flash, ADC, display</td><td>IMU, EEPROM, pressure sensor</td></tr></tbody></table></div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// I2C write: send command to BME280 pressure sensor
+// I2C frame: START | ADDR(7)+W | ACK | REG_ADDR | ACK | DATA | ACK | STOP
+#define BME280_ADDR 0x76   // 7-bit address, SDO pin to GND
+
+uint8_t write_buf[2] = {0xF3, 0x01};   // reg=0xF3, value=0x01
+HAL_I2C_Master_Transmit(&amp;hi2c1,
+                         BME280_ADDR &lt;&lt; 1,  // HAL expects 8-bit (7-bit &lt;&lt; 1)
+                         write_buf, 2,
+                         HAL_MAX_DELAY);
+
+// I2C read: burst read 8 bytes of sensor data
+uint8_t rx_buf[8];
+uint8_t reg_addr = 0xF7;   // pressure MSB register
+// Write register address, then read data (repeated start)
+HAL_I2C_Master_Transmit(&amp;hi2c1, BME280_ADDR&lt;&lt;1, &amp;reg_addr, 1, HAL_MAX_DELAY);
+HAL_I2C_Master_Receive (&amp;hi2c1, BME280_ADDR&lt;&lt;1, rx_buf, 8,  HAL_MAX_DELAY);</code></pre><div class="ex-why">✅ Why this works: I2C addresses are 7 bits, but HAL expects the 8-bit form (address << 1, with R/W bit = 0 for write). The HAL adds the R/W bit internally. This is the most common I2C beginner mistake.</div></div><h2 class="chap">Chapter 4 — Bootloader and OTA Update</h2><div class="diagram">Safe OTA Update Protocol:
+
+  Flash Layout:
+  ┌──────────────┬──────────────┬──────────────┬─────────────────┐
+  │  Bootloader  │  Slot A      │  Slot B      │  Update Metadata│
+  │  (32KB)      │  (App v1.2)  │  (Download)  │  (flags, CRC)   │
+  └──────────────┴──────────────┴──────────────┴─────────────────┘
+
+  Step 1: Download new firmware to Slot B (never overwrite running code)
+  Step 2: Verify: CRC32 check of downloaded image
+  Step 3: Verify: ECDSA signature (optional, for security)
+  Step 4: Mark Slot B as 'pending' in metadata
+  Step 5: Reboot → Bootloader runs
+  Step 6: BL verifies Slot B → swap A↔B (or copy B→A)
+  Step 7: Set 'boot count' = 0, boot from new firmware
+  Step 8: If boot count exceeds limit (3 crashes) → rollback to old slot
+  Step 9: App sets 'confirmed' flag after successful operation</div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// Bootloader jump to application — safety-critical sequence
+// Must be done carefully: wrong sequence = non-bootable device!
+
+void boot_to_application(uint32_t app_start_addr) {
+    // 1. Disable all interrupts — clean state for application
+    __disable_irq();
+
+    // 2. Disable SysTick (RTOS timer) — app will reconfigure
+    SysTick-&gt;CTRL = 0;
+    SysTick-&gt;LOAD = 0;
+    SysTick-&gt;VAL  = 0;
+
+    // 3. Clear all pending NVIC interrupts
+    for (int i = 0; i &lt; 8; ++i) {
+        NVIC-&gt;ICER[i] = 0xFFFFFFFF;   // disable
+        NVIC-&gt;ICPR[i] = 0xFFFFFFFF;   // clear pending
+    }
+
+    // 4. Relocate vector table to application's vector table
+    SCB-&gt;VTOR = app_start_addr;
+    __DSB();   // data sync barrier — ensure VTOR write is complete
+    __ISB();   // instruction sync barrier — flush pipeline
+
+    // 5. Load application's initial stack pointer (first word in vector table)
+    uint32_t app_sp    = *(volatile uint32_t*)(app_start_addr);
+    // 6. Load application's reset handler (second word in vector table)
+    uint32_t app_entry = *(volatile uint32_t*)(app_start_addr + 4);
+
+    // 7. Set stack pointer
+    __set_MSP(app_sp);
+
+    // 8. Re-enable interrupts
+    __enable_irq();
+
+    // 9. Jump to application reset handler
+    typedef void (*AppEntry_t)(void);
+    AppEntry_t app = (AppEntry_t)(app_entry);
+    app();   // execution transfers to application — never returns
+}</code></pre><div class="ex-why">✅ Why this works: The DSB+ISB pair after VTOR write is critical — without them, the CPU may execute instructions using the old vector table. On Cortex-M7 with speculative execution, this causes hard-to-reproduce crashes.</div></div><h2 class="chap">Interview Q&A — Embedded</h2><div class="qa"><div class="question">❓ What is volatile and when MUST you use it in embedded C++?</div><div class="answer">volatile tells the compiler: this memory location may change externally, without any C++ code writing it. Never cache the value in a register — always read from memory. Must use for: (1) Memory-mapped I/O registers: hardware changes them independently of software. Without volatile: compiler may optimize away repeated reads of a status register in a polling loop. (2) ISR-shared variables: an ISR modifies a variable that the main loop reads. Without volatile: compiler may keep the value in a register and never re-read from RAM. Note: volatile does NOT provide atomicity or memory ordering. For cross-core or cross-thread visibility, you need atomic operations or memory barriers IN ADDITION TO volatile (or just use atomic<T> which subsumes volatile for this purpose).</div><div class="followup"><b>Follow-up questions interviewers ask:</b><ul><li>volatile vs atomic — what's the difference?</li><li>Can volatile replace a mutex?</li><li>Give an example where missing volatile causes a real bug.</li></ul></div><div class="followup" style="background:#fef2f2;border-color:#fca5a5"><b>Common mistakes in answers:</b><ul><li>Saying volatile is sufficient for thread safety — it's not. It only prevents compiler optimization, not CPU reordering.</li><li>Saying volatile is unnecessary in modern C++ — for memory-mapped I/O, volatile is irreplaceable.</li></ul></div></div><div class="qa"><div class="question">❓ How would you implement a safe OTA firmware update on an embedded device?</div><div class="answer">Critical requirements: (1) Never brick the device — if power fails mid-update, old firmware must still boot. Solution: A/B partition scheme — download to inactive slot, never overwrite running firmware. (2) Verify integrity before booting — CRC32 or SHA-256 check of downloaded image. (3) Verify authenticity — ECDSA or RSA signature check using manufacturer's public key baked into bootloader. Prevents malicious firmware. (4) Rollback mechanism — bootloader counts boot attempts; if app crashes N times (typically 3), boot from previous slot. App must explicitly confirm successful boot (set a flag). (5) Incremental updates (delta patching) — send only changed bytes, reconstruct full image on device (bsdiff/fossil). Reduces bandwidth for large MCU flash. Implementation: bootloader in first 32KB of flash (never overwritten), two application slots, small metadata region for flags.</div><div class="followup"><b>Follow-up questions interviewers ask:</b><ul><li>How do you handle power failure during flash write?</li><li>What is flash wear leveling and why does it matter?</li><li>How do you verify firmware authenticity in a resource-constrained MCU?</li></ul></div></div>
+    <div class="pagination"><a href="part09.html">← Part 09</a><a href="part11.html">Part 11 →</a></div>
+  </div>
+</div>
+<button id="btt">↑</button>
+<script>
+document.querySelectorAll('pre').forEach(p=>{
+  const b=document.createElement('button');b.className='copy-btn';b.textContent='Copy';
+  p.appendChild(b);b.onclick=()=>{navigator.clipboard.writeText(p.innerText.replace('Copy','').trim())
+  .then(()=>{b.textContent='Copied!';setTimeout(()=>b.textContent='Copy',2000);});};});
+const btt=document.getElementById('btt');
+window.addEventListener('scroll',()=>btt&&btt.classList.toggle('show',scrollY>300));
+btt&&btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+const si=document.getElementById('search');
+if(si)si.addEventListener('input',function(){const q=this.value.toLowerCase();
+  document.querySelectorAll('.part-card').forEach(c=>c.style.display=
+    c.textContent.toLowerCase().includes(q)?'':'none');});
+</script></body></html>

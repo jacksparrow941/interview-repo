@@ -1,0 +1,243 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Part IV: Computer Networks — C++ Interview Handbook</title>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<div style="background:#0f172a;border-bottom:1px solid #334155;padding:8px 20px;
+  display:flex;align-items:center;gap:16px;font-size:13px;position:fixed;top:0;left:0;right:0;z-index:400;height:38px">
+  <a href="../index.html" style="color:#3b82f6;font-weight:600;text-decoration:none;
+     display:flex;align-items:center;gap:6px">
+    <span>⚡</span><span>InterviewRepo</span>
+  </a>
+  <span style="color:#334155">|</span>
+  <a href="index.html" style="color:#94a3b8;text-decoration:none">📘 C++ Master Handbook</a>
+  <span style="color:#334155;margin-left:auto;font-size:11px;color:#475569">
+    C++ · Multithreading · OS · Networks · AI Runtime · Embedded · 150 Problems
+  </span>
+</div>
+<nav id="sidebar"><div class="sb-head"><b>C++ Handbook</b><br><small>15 Parts · 150 Problems</small></div><a href="index.html" >🏠 Table of Contents</a>
+<a href="part01.html"><span class="badge" style="background:#1a2744">01</span>Part I: C++ Mastery</a>
+<a href="part02.html"><span class="badge" style="background:#065f46">02</span>Part II: Multithreading & Concurrency</a>
+<a href="part03.html"><span class="badge" style="background:#7c3aed">03</span>Part III: Operating Systems</a>
+<a href="part04.html" class="active"><span class="badge" style="background:#0e7490">04</span>Part IV: Computer Networks</a>
+<a href="part05.html"><span class="badge" style="background:#92400e">05</span>Part V: Linux & Performance Tools</a>
+<a href="part06.html"><span class="badge" style="background:#1e40af">06</span>Part VI: Distributed Systems</a>
+<a href="part07.html"><span class="badge" style="background:#b45309">07</span>Part VII: System Design</a>
+<a href="part08.html"><span class="badge" style="background:#be185d">08</span>Part VIII: Compiler Internals</a>
+<a href="part09.html"><span class="badge" style="background:#0f766e">09</span>Part IX: AI Runtime</a>
+<a href="part10.html"><span class="badge" style="background:#4338ca">10</span>Part X: Embedded Systems</a>
+<a href="part11.html"><span class="badge" style="background:#0369a1">11</span>Part XI: DevOps & Tools</a>
+<a href="part12.html"><span class="badge" style="background:#1e3a5f">12</span>Part XII: Coding Interviews — 150 Problems</a>
+<a href="part13.html"><span class="badge" style="background:#3f1f69">13</span>Part XIII: Behavioral & STAR</a>
+<a href="part14.html"><span class="badge" style="background:#064e3b">14</span>Part XIV: Resume Deep Dive</a>
+<a href="part15.html"><span class="badge" style="background:#7f1d1d">15</span>Part XV: Company-Specific</a>
+</nav>
+<div id="main">
+  <div id="topbar"><div class="tb-title" style="border-left:4px solid #0e7490;padding-left:12px">Part IV: Computer Networks</div></div>
+  <div id="content">
+    <h1 class="part-title">Part IV: Computer Networks</h1>
+    <p class="subtitle">Part IV</p><hr class="divider">
+    <h2 class="chap">Chapter 1 — TCP/IP Stack</h2><div class="diagram">Application (HTTP, gRPC, DNS)
+   │ creates message
+   ▼
+Transport (TCP/UDP) — adds port numbers, seq numbers, checksum
+   │
+   ▼
+Network (IP) — adds src/dst IP, TTL, routing
+   │
+   ▼
+Link (Ethernet) — adds MAC addresses, CRC
+   │
+   ▼
+Physical — bits on wire</div><h3 class="sec">TCP Connection Lifecycle</h3><div class="diagram">3-Way Handshake:
+  Client              Server
+  ──SYN(seq=x)──────►  SYN_RCVD
+  ◄──SYN-ACK(seq=y,ack=x+1)──
+  ──ACK(ack=y+1)────►  ESTABLISHED
+
+4-Way Teardown (active close by client):
+  Client              Server
+  ──FIN──────────────►  (server enters CLOSE_WAIT)
+  ◄──ACK───────────────
+  ◄──FIN───────────────  (server closes its side)
+  ──ACK──────────────►  Client: TIME_WAIT (waits 2×MSL ≈ 60s)
+                         Server: CLOSED</div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// TCP server with non-blocking I/O + epoll (scales to 100K+ connections)
+#include &lt;sys/epoll.h&gt;
+
+int server_fd = socket(AF_INET, SOCK_STREAM | SOCK_NONBLOCK, 0);
+
+// Critical socket options
+int opt = 1;
+setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR, &amp;opt, sizeof(opt));
+// SO_REUSEADDR: reuse port in TIME_WAIT state — essential for fast server restart
+
+setsockopt(server_fd, IPPROTO_TCP, TCP_NODELAY, &amp;opt, sizeof(opt));
+// TCP_NODELAY: disable Nagle algorithm — send small packets immediately
+// Essential for low-latency RPC (gRPC disables Nagle by default)
+
+// Large socket buffers for high throughput
+int buf_size = 4 * 1024 * 1024;   // 4MB
+setsockopt(server_fd, SOL_SOCKET, SO_RCVBUF, &amp;buf_size, sizeof(buf_size));
+setsockopt(server_fd, SOL_SOCKET, SO_SNDBUF, &amp;buf_size, sizeof(buf_size));
+
+sockaddr_in addr{};
+addr.sin_family = AF_INET;
+addr.sin_port   = htons(8080);
+addr.sin_addr.s_addr = INADDR_ANY;
+bind(server_fd, (sockaddr*)&amp;addr, sizeof(addr));
+listen(server_fd, SOMAXCONN);   // SOMAXCONN: max backlog
+
+// epoll event loop
+int epfd = epoll_create1(0);
+epoll_event ev{EPOLLIN | EPOLLET, {.fd = server_fd}};  // edge-triggered
+epoll_ctl(epfd, EPOLL_CTL_ADD, server_fd, &amp;ev);
+
+epoll_event events[256];
+while (true) {
+    int n = epoll_wait(epfd, events, 256, -1);
+    for (int i = 0; i &lt; n; ++i) {
+        if (events[i].data.fd == server_fd) {
+            int conn = accept4(server_fd, nullptr, nullptr, SOCK_NONBLOCK);
+            epoll_event ce{EPOLLIN | EPOLLET, {.fd = conn}};
+            epoll_ctl(epfd, EPOLL_CTL_ADD, conn, &amp;ce);
+        } else {
+            handle_connection(events[i].data.fd);
+        }
+    }
+}</code></pre><div class="ex-why">✅ Why this works: epoll is O(active events) — scales to 100K connections without performance degradation. select() and poll() are O(total fds) — fail at high connection counts.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// BAD: select() or poll() for high-connection servers
+// select() has two problems:
+// 1. FD_SETSIZE limit: typically 1024 file descriptors max
+// 2. O(n) scan: copies and scans entire fd_set on every call
+// At 10K connections: 10K fds scanned per wake → unusable
+
+// BAD: fork() per connection (Apache pre-fork model)
+// One process per connection: 10K connections = 10K processes
+// Each process: ~8MB stack + page tables → 80GB for 10K connections
+// Context switch: ~10µs × 10K = 100ms just in scheduling overhead
+
+// BAD: thread per connection
+// One thread per connection: 10K connections = 10K threads
+// Default 8MB stack per thread: 80GB for stacks alone
+// Context switches: expensive for idle threads
+// Threshold: thread-per-connection works up to ~100-1000 connections
+
+// GOOD alternatives:
+// - epoll + event loop + thread pool (nginx model)
+// - io_uring for even lower overhead (Linux 5.1+)</code></pre><div class="ex-why bad-why">❌ Why this fails: Thread/process per connection doesn't scale. A modern inference server might have 10K concurrent HTTP/2 connections — only epoll or io_uring handles this efficiently.</div></div><h2 class="chap">Chapter 2 — HTTP Versions Deep Dive</h2><div class="tbl"><table><thead><tr><th>Feature</th><th>HTTP/1.1</th><th>HTTP/2</th><th>HTTP/3 (QUIC)</th></tr></thead><tbody><tr><td>Transport</td><td>TCP</td><td>TCP</td><td>QUIC (UDP-based)</td></tr><tr><td>Multiplexing</td><td>No (pipelining, but broken)</td><td>Yes — binary streams</td><td>Yes — independent streams</td></tr><tr><td>Head-of-line blocking</td><td>Yes (per connection)</td><td>Yes (at TCP level)</td><td>No (per stream)</td></tr><tr><td>Header compression</td><td>None</td><td>HPACK (Huffman)</td><td>QPACK</td></tr><tr><td>Server push</td><td>No</td><td>Yes</td><td>Yes</td></tr><tr><td>TLS</td><td>Optional</td><td>Required in practice</td><td>Always (TLS 1.3 built-in)</td></tr><tr><td>Connection setup</td><td>1 RTT TCP + optional TLS</td><td>1 RTT TCP + TLS</td><td>0-RTT or 1 RTT (0-RTT for returning clients)</td></tr></tbody></table></div><p><b>HTTP/2 HOL blocking explained:</b> HTTP/2 multiplexes multiple streams over one TCP connection. If a TCP segment is lost, ALL streams wait for retransmission — TCP-level HOL blocking. HTTP/3 uses QUIC (UDP-based) where each stream is independent — one stream's loss doesn't block others.</p><h2 class="chap">Chapter 3 — gRPC & Protocol Buffers</h2><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// model.proto
+syntax = "proto3";
+package inference;
+
+service ModelService {
+    rpc Predict (PredictRequest)  returns (PredictResponse);
+    rpc PredictStream (PredictRequest) returns (stream PredictResponse);
+    rpc BatchPredict  (stream PredictRequest) returns (stream PredictResponse);
+}
+
+message PredictRequest {
+    bytes  image_data  = 1;   // field number 1: encoded as 0x0A in wire format
+    string model_name  = 2;
+    float  confidence_threshold = 3;
+    map&lt;string, string&gt; metadata = 4;
+}
+message PredictResponse {
+    repeated float   scores  = 1;   // packed encoding for numeric arrays
+    repeated string  labels  = 2;
+    float            latency_ms = 3;
+}
+
+// C++ client:
+auto channel = grpc::CreateChannel("inference:50051",
+    grpc::InsecureChannelCredentials());
+auto stub = ModelService::NewStub(channel);
+
+grpc::ClientContext ctx;
+ctx.set_deadline(std::chrono::system_clock::now()
+                 + std::chrono::milliseconds(500));  // 500ms timeout
+
+PredictRequest req;
+req.set_model_name("resnet50");
+req.set_image_data(image_bytes);
+
+PredictResponse resp;
+auto status = stub-&gt;Predict(&amp;ctx, req, &amp;resp);
+if (!status.ok())
+    throw std::runtime_error("gRPC error: " + status.error_message());
+
+for (int i = 0; i &lt; resp.scores_size(); ++i)
+    std::cout &lt;&lt; resp.labels(i) &lt;&lt; ": " &lt;&lt; resp.scores(i) &lt;&lt; "\n";</code></pre><div class="ex-why">✅ Why this works: Always set a deadline on gRPC calls — without it, a slow server will block the client indefinitely. gRPC's deadline propagates through the call chain automatically.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// BAD: gRPC without deadline — hangs indefinitely on server issues
+auto status = stub-&gt;Predict(&amp;ctx, req, &amp;resp);  // ctx has no deadline
+// If server is slow, overloaded, or hung: client waits forever
+
+// BAD: creating a new channel per request — extremely expensive
+void handle_request(Request&amp; req) {
+    auto channel = grpc::CreateChannel(...);   // TCP + TLS handshake every time!
+    auto stub = Service::NewStub(channel);
+    // This adds ~50-200ms latency per request!
+}
+// FIX: create channel once, reuse stub for all requests
+// gRPC channels maintain a connection pool internally
+
+// BAD: ignoring metadata size limits
+ctx.AddMetadata("user-data", huge_string);  // gRPC has 4MB default limit
+// Headers too large → server rejects with RESOURCE_EXHAUSTED</code></pre><div class="ex-why bad-why">❌ Why this fails: Channel creation involves DNS resolution + TCP handshake + TLS handshake — ~100ms. Creating a new channel per RPC adds unacceptable latency. Create once, reuse the stub.</div></div><h2 class="chap">Chapter 4 — TLS 1.3 Handshake</h2><div class="diagram">TLS 1.3 Handshake (1-RTT, compared to TLS 1.2's 2-RTT):
+
+Client                          Server
+──ClientHello──────────────────►  (supported ciphers, key shares for multiple groups)
+◄──ServerHello──────────────────  (chosen cipher, server's key share)
+◄──{EncryptedExtensions}─────────  (encrypted with handshake key)
+◄──{Certificate}─────────────────  (server's X.509 cert)
+◄──{CertificateVerify}───────────  (signature over transcript hash)
+◄──{Finished}────────────────────  (MAC over transcript)
+──{Finished}───────────────────►  (MAC over transcript)
+══ Application Data (encrypted) ══
+
+0-RTT (for reconnecting clients):
+──ClientHello + EarlyData──────►  (reuse pre-shared key from previous session)
+══ Application Data immediately ══  (before server responds!)
+Risk: replay attacks — don't use 0-RTT for non-idempotent requests</div><h2 class="chap">Chapter 5 — Zero-Copy Networking</h2><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// Method 1: sendfile() — kernel copies file to socket without user-space copy
+// Traditional: file → page cache → user buffer → kernel socket buffer → NIC
+// sendfile:   file → page cache ──────────────→ NIC (2 copies instead of 4)
+
+#include &lt;sys/sendfile.h&gt;
+ssize_t sent = sendfile(sock_fd,    // destination socket
+                        file_fd,    // source file
+                        &amp;offset,    // file offset (updated by sendfile)
+                        file_size); // bytes to send
+// Used by: nginx static file serving, Kafka log shipping
+
+// Method 2: splice() — pipe between two fds without user-space copy
+#include &lt;fcntl.h&gt;
+int pipefd[2];
+pipe(pipefd);
+splice(file_fd, nullptr, pipefd[1], nullptr, chunk, SPLICE_F_MOVE);
+splice(pipefd[0], nullptr, sock_fd, nullptr, chunk, SPLICE_F_MOVE | SPLICE_F_MORE);
+
+// Method 3: io_uring (Linux 5.1+) — async I/O with submission ring buffer
+// Batches I/O operations to reduce syscall overhead
+struct io_uring ring;
+io_uring_queue_init(256, &amp;ring, 0);
+io_uring_sqe* sqe = io_uring_get_sqe(&amp;ring);
+io_uring_prep_send(sqe, sock_fd, buf, len, 0);
+io_uring_sqe_set_data(sqe, &amp;context);
+io_uring_submit(&amp;ring);
+// ... later ...
+io_uring_cqe* cqe;
+io_uring_wait_cqe(&amp;ring, &amp;cqe);
+int result = cqe-&gt;res;   // bytes sent or error</code></pre><div class="ex-why">✅ Why this works: sendfile is used by nginx for all static file serving. At 10Gbps network speeds, the difference between copying through user-space and zero-copy is the bottleneck.</div></div><h2 class="chap">Interview Q&amp;A — Networks</h2><div class="qa"><div class="question">❓ Why does TCP have TIME_WAIT? How do you mitigate the port exhaustion problem?</div><div class="answer">TIME_WAIT lasts 2×MSL (Maximum Segment Lifetime, typically 60s) after the active closer sends the final ACK. Two reasons: (1) Ensure any delayed packets from the old connection don't corrupt a new connection with the same 4-tuple (src_ip, src_port, dst_ip, dst_port). (2) Guarantee the remote side received the final ACK — if the ACK is lost, the remote retransmits FIN, and the TIME_WAIT side re-ACKs. Problem: high-QPS servers making many outgoing connections exhaust ephemeral ports (~28K-60K). Each TIME_WAIT ties up a port for 60s. Fix: SO_REUSEADDR (allows reusing TIME_WAIT ports for new connections with different remote addr), increase net.ipv4.ip_local_port_range to 1024-65535, SO_LINGER(0) sends RST instead (risky — may lose data), connection pools (reuse existing connections instead of creating new ones), HTTP/2 (multiplexes 1000s of requests on one connection).</div><div class="followup"><b>Follow-up questions interviewers ask:</b><ul><li>What is the difference between TIME_WAIT and CLOSE_WAIT?</li><li>What is TCP FIN_WAIT_2 state?</li><li>How does HTTP/2 help with port exhaustion?</li></ul></div><div class="followup" style="background:#fef2f2;border-color:#fca5a5"><b>Common mistakes in answers:</b><ul><li>Confusing TIME_WAIT (client side) with CLOSE_WAIT (server side — means server hasn't called close() yet).</li><li>Saying SO_REUSEADDR allows multiple connections with same 4-tuple — it doesn't.</li></ul></div></div><div class="qa"><div class="question">❓ Explain TCP congestion control — how does the kernel decide how fast to send?</div><div class="answer">TCP congestion control maintains cwnd (congestion window): max bytes in flight. Phases: Slow Start: cwnd starts at ~10 MSS, doubles every RTT (exponential growth until ssthresh). Congestion Avoidance: cwnd grows by 1 MSS per RTT (linear) once cwnd >= ssthresh. Loss detection: 3 duplicate ACKs → packet loss → reduce cwnd. Timeout → severe congestion → reset cwnd to 1. Algorithms: Reno: cut cwnd in half on 3 dup ACKs. CUBIC (Linux default): cubic function of time since last loss — recovers faster on high-bandwidth-delay-product links. BBR (Google): model-based, measures actual bottleneck bandwidth and RTT — doesn't wait for loss to detect congestion. BBR achieves higher throughput on satellite links and is used in YouTube.</div><div class="followup"><b>Follow-up questions interviewers ask:</b><ul><li>Why does BBR sometimes cause unfairness with CUBIC flows?</li><li>What is the bandwidth-delay product?</li><li>How does QUIC handle congestion differently than TCP?</li></ul></div></div>
+    <div class="pagination"><a href="part03.html">← Part 03</a><a href="part05.html">Part 05 →</a></div>
+  </div>
+</div>
+<button id="btt">↑</button>
+<script>
+document.querySelectorAll('pre').forEach(p=>{
+  const b=document.createElement('button');b.className='copy-btn';b.textContent='Copy';
+  p.appendChild(b);b.onclick=()=>{navigator.clipboard.writeText(p.innerText.replace('Copy','').trim())
+  .then(()=>{b.textContent='Copied!';setTimeout(()=>b.textContent='Copy',2000);});};});
+const btt=document.getElementById('btt');
+window.addEventListener('scroll',()=>btt&&btt.classList.toggle('show',scrollY>300));
+btt&&btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+const si=document.getElementById('search');
+if(si)si.addEventListener('input',function(){const q=this.value.toLowerCase();
+  document.querySelectorAll('.part-card').forEach(c=>c.style.display=
+    c.textContent.toLowerCase().includes(q)?'':'none');});
+</script></body></html>

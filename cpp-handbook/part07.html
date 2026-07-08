@@ -1,0 +1,221 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Part VII: System Design — C++ Interview Handbook</title>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<div style="background:#0f172a;border-bottom:1px solid #334155;padding:8px 20px;
+  display:flex;align-items:center;gap:16px;font-size:13px;position:fixed;top:0;left:0;right:0;z-index:400;height:38px">
+  <a href="../index.html" style="color:#3b82f6;font-weight:600;text-decoration:none;
+     display:flex;align-items:center;gap:6px">
+    <span>⚡</span><span>InterviewRepo</span>
+  </a>
+  <span style="color:#334155">|</span>
+  <a href="index.html" style="color:#94a3b8;text-decoration:none">📘 C++ Master Handbook</a>
+  <span style="color:#334155;margin-left:auto;font-size:11px;color:#475569">
+    C++ · Multithreading · OS · Networks · AI Runtime · Embedded · 150 Problems
+  </span>
+</div>
+<nav id="sidebar"><div class="sb-head"><b>C++ Handbook</b><br><small>15 Parts · 150 Problems</small></div><a href="index.html" >🏠 Table of Contents</a>
+<a href="part01.html"><span class="badge" style="background:#1a2744">01</span>Part I: C++ Mastery</a>
+<a href="part02.html"><span class="badge" style="background:#065f46">02</span>Part II: Multithreading & Concurrency</a>
+<a href="part03.html"><span class="badge" style="background:#7c3aed">03</span>Part III: Operating Systems</a>
+<a href="part04.html"><span class="badge" style="background:#0e7490">04</span>Part IV: Computer Networks</a>
+<a href="part05.html"><span class="badge" style="background:#92400e">05</span>Part V: Linux & Performance Tools</a>
+<a href="part06.html"><span class="badge" style="background:#1e40af">06</span>Part VI: Distributed Systems</a>
+<a href="part07.html" class="active"><span class="badge" style="background:#b45309">07</span>Part VII: System Design</a>
+<a href="part08.html"><span class="badge" style="background:#be185d">08</span>Part VIII: Compiler Internals</a>
+<a href="part09.html"><span class="badge" style="background:#0f766e">09</span>Part IX: AI Runtime</a>
+<a href="part10.html"><span class="badge" style="background:#4338ca">10</span>Part X: Embedded Systems</a>
+<a href="part11.html"><span class="badge" style="background:#0369a1">11</span>Part XI: DevOps & Tools</a>
+<a href="part12.html"><span class="badge" style="background:#1e3a5f">12</span>Part XII: Coding Interviews — 150 Problems</a>
+<a href="part13.html"><span class="badge" style="background:#3f1f69">13</span>Part XIII: Behavioral & STAR</a>
+<a href="part14.html"><span class="badge" style="background:#064e3b">14</span>Part XIV: Resume Deep Dive</a>
+<a href="part15.html"><span class="badge" style="background:#7f1d1d">15</span>Part XV: Company-Specific</a>
+</nav>
+<div id="main">
+  <div id="topbar"><div class="tb-title" style="border-left:4px solid #b45309;padding-left:12px">Part VII: System Design</div></div>
+  <div id="content">
+    <h1 class="part-title">Part VII: System Design</h1>
+    <p class="subtitle">Part VII</p><hr class="divider">
+    <h2 class="chap">System Design Interview Framework</h2><p>System design interviews evaluate your ability to build large-scale systems. The interviewer is looking for structured thinking, awareness of tradeoffs, and real-world engineering judgment — not a perfect answer.</p><ol><li>Clarify requirements (5 min): What does it DO? What are non-functional requirements? Scale?</li><li>Estimate scale (5 min): QPS, DAU, storage size, bandwidth. Determines architecture.</li><li>High-level design (10 min): Key components, data flow, main APIs.</li><li>Deep dive (15 min): Critical component. Interviewer usually steers this.</li><li>Tradeoffs (5 min): What did you choose and why? What alternatives exist?</li></ol><div class="tbl"><table><thead><tr><th>Metric</th><th>Value</th><th>Notes</th></tr></thead><tbody><tr><td>L1 cache hit</td><td>~1 ns</td><td>In CPU</td></tr><tr><td>L2 cache hit</td><td>~4 ns</td><td>In CPU</td></tr><tr><td>RAM access</td><td>~100 ns</td><td>DDR4</td></tr><tr><td>SSD random read</td><td>~100 µs</td><td>NVMe</td></tr><tr><td>Network within DC</td><td>~500 µs</td><td>Same data center</td></tr><tr><td>Packet CA→EU</td><td>~150 ms</td><td>Round trip</td></tr><tr><td>MySQL</td><td>~1K reads/s</td><td>Simple queries, single server</td></tr><tr><td>Redis</td><td>~100K ops/s</td><td>Per node, simple get/set</td></tr><tr><td>Kafka</td><td>~1M msgs/s</td><td>Per partition, small messages</td></tr><tr><td>Postgres</td><td>~5K TPS</td><td>Complex queries w/ indexes</td></tr></tbody></table></div><h2 class="chap">Case Study 1 — Design an AI Inference Service</h2><p><b>Requirements:</b> Serve ResNet-50 image classification. 10K QPS, p99 &lt; 100ms, 99.9% availability. Support multiple models.</p><div class="diagram">Client (mobile app / API consumer)
+   │ HTTPS REST or gRPC
+   ▼
+API Gateway (authentication, rate limiting, routing)
+   │
+   ▼
+Inference Service Cluster (N GPU servers)
+   ┌────────────────────────────────────────┐
+   │  Request Handler (async epoll loop)   │
+   │         │                            │
+   │  Dynamic Batcher (5ms window, 32 max)│
+   │         │                            │
+   │  TensorRT Engine (GPU inference)     │
+   │         │                            │
+   │  Result Cache (Redis, 30s TTL)       │
+   └────────────────────────────────────────┘
+         │
+   Model Registry (S3 / object store)
+   Metrics (Prometheus + Grafana)
+   Tracing (OpenTelemetry)</div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// Dynamic batching — key for GPU throughput
+class DynamicBatcher {
+    struct PendingRequest {
+        cv::Mat image;
+        std::promise&lt;std::vector&lt;float&gt;&gt; promise;
+    };
+    std::queue&lt;PendingRequest&gt;    pending_;
+    std::mutex                    mtx_;
+    std::condition_variable       cv_;
+    const size_t MAX_BATCH = 32;
+    const std::chrono::milliseconds TIMEOUT{5};   // 5ms batch window
+
+    void batch_loop() {
+        while (running_) {
+            std::vector&lt;PendingRequest&gt; batch;
+            {
+                std::unique_lock lk(mtx_);
+                // Wait up to 5ms or until batch is full
+                cv_.wait_for(lk, TIMEOUT, [this]{
+                    return pending_.size() &gt;= MAX_BATCH || stop_;
+                });
+                while (!pending_.empty() &amp;&amp; batch.size() &lt; MAX_BATCH) {
+                    batch.push_back(std::move(pending_.front()));
+                    pending_.pop();
+                }
+            }
+            if (batch.empty()) continue;
+
+            // Run GPU inference on batch of images
+            auto results = engine_-&gt;run_batch(batch);
+            for (size_t i = 0; i &lt; batch.size(); ++i)
+                batch[i].promise.set_value(std::move(results[i]));
+        }
+    }
+public:
+    std::future&lt;std::vector&lt;float&gt;&gt; infer(cv::Mat image) {
+        std::promise&lt;std::vector&lt;float&gt;&gt; p;
+        auto fut = p.get_future();
+        {std::lock_guard lk(mtx_); pending_.push({image, std::move(p)});}
+        cv_.notify_one();
+        return fut;
+    }
+};</code></pre><div class="ex-why">✅ Why this works: Dynamic batching is the single biggest throughput improvement for GPU inference. A GPU is designed for batch parallelism — 32 images at once is often only 2-3x slower than 1 image, giving 10x throughput improvement.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// BAD: one-image-at-a-time inference
+std::vector&lt;float&gt; infer(cv::Mat image) {
+    return engine_-&gt;run(image);   // one image → full GPU round-trip overhead
+}
+// GPU utilization: ~5-10% (kernel launch overhead dominates)
+// Throughput: limited by kernel launch latency (~50µs)
+// With dynamic batching: 32 images for ~2x the GPU time = 16x better throughput
+
+// BAD: synchronous inference on request thread
+void handle_request(HttpRequest&amp; req, HttpResponse&amp; resp) {
+    auto result = infer(req.image());   // BLOCKS request thread during inference!
+    resp.write(result);
+}
+// With 100ms inference time: thread pool of 100 handles 1000 QPS maximum
+// Better: async submit to GPU, release thread to handle other requests</code></pre><div class="ex-why bad-why">❌ Why this fails: Synchronous per-request inference blocks a thread for each request duration. With async + batching: threads are only blocked for the HTTP parsing overhead, not the GPU inference time.</div></div><h2 class="chap">Case Study 2 — Design a Distributed Rate Limiter</h2><p><b>Requirements:</b> Rate limit 100K users at 100 req/min each. Consistent limit across all nodes. <100ms added latency.</p><div class="diagram">Request → API Server N
+                │
+                ├──► Redis Cluster (check+increment)
+                │    (sharded by user_id hash)
+                │    Lua script: atomic check and increment
+                │
+                ├── Allowed → forward to backend
+                └── Denied  → 429 Too Many Requests
+
+Redis Cluster: 6 shards × 2 replicas
+  Shard key: hash(user_id) % 6
+  Data: sorted_set(user_id) with TTL
+  Lua atomicity: no race condition between check and increment</div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>-- Redis Lua script for sliding window rate limiting (atomic!)
+local key = KEYS[1]              -- e.g., "ratelimit:user:12345"
+local now = tonumber(ARGV[1])    -- current timestamp (microseconds)
+local window = tonumber(ARGV[2]) -- window size in microseconds
+local limit = tonumber(ARGV[3])  -- max requests per window
+local req_id = ARGV[4]           -- unique request ID
+
+-- Remove entries older than window
+redis.call('ZREMRANGEBYSCORE', key, 0, now - window)
+-- Count remaining entries
+local count = redis.call('ZCARD', key)
+
+if count &lt; limit then
+    -- Add this request's timestamp
+    redis.call('ZADD', key, now, req_id)
+    redis.call('EXPIRE', key, math.ceil(window / 1000000))
+    return 1   -- allowed
+else
+    return 0   -- rate limited
+end
+-- Entire script runs atomically — no TOCTOU race between check and add</code></pre><div class="ex-why">✅ Why this works: The Lua script is atomic — no other Redis command can execute between ZCARD and ZADD. Without atomicity, two concurrent requests could both pass the check and both increment, exceeding the limit by 2x.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// BAD: non-atomic rate limiting — race condition
+bool check_rate_limit(const std::string&amp; user_id) {
+    int count = redis.zcard("rl:" + user_id);   // check
+    if (count &gt;= LIMIT) return false;
+    // RACE CONDITION: another request can pass check here
+    redis.zadd("rl:" + user_id, now(), request_id);  // increment
+    return true;
+}
+// Under concurrent load: two requests both read count=99 (limit=100)
+// Both see count &lt; limit, both zadd → count becomes 101
+// Rate limit exceeded by concurrent requests
+
+// BAD: in-memory rate limiting without Redis
+// Each API server has its own counter
+// 10 API servers: each allows 100 req/min → total 1000 req/min allowed
+// User exploits by spreading requests across servers</code></pre><div class="ex-why bad-why">❌ Why this fails: Always use Redis with Lua or Redis atomic commands (SET NX, INCR+EXPIRE) for distributed rate limiting. In-memory rate limiting is incorrect in a multi-server deployment.</div></div><h2 class="chap">Case Study 3 — Design a URL Shortener</h2><div class="diagram">Write path (POST /shorten):
+  Client → API Server → ID Generator (Snowflake) → Base62 encode → PostgreSQL
+                     → return short URL
+
+Read path (GET /:code):
+  Client → API Server → Redis cache lookup
+                     → hit: 301 redirect immediately
+                     → miss: PostgreSQL lookup → cache it → 301 redirect
+
+Scale numbers:
+  Writes: 100 URLs/sec → 100M URLs/year → ~50GB storage (5 years)
+  Reads: 10K redirects/sec → 95% Redis hit → 500 DB queries/sec</div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// Snowflake ID for globally unique, roughly sortable IDs
+// Format: [41 bits timestamp][10 bits machine_id][12 bits sequence]
+// Generates 4096 IDs per millisecond per machine — no coordination needed
+
+uint64_t generate_id() {
+    auto now_ms = duration_cast&lt;milliseconds&gt;(steady_clock::now()
+                                              .time_since_epoch()).count();
+    auto seq = sequence_.fetch_add(1) &amp; 0xFFF;   // 12-bit sequence
+    return (now_ms &lt;&lt; 22) | (machine_id_ &lt;&lt; 12) | seq;
+}
+
+// Base62 encode the ID to get short code
+std::string to_base62(uint64_t id) {
+    const char* chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    std::string result;
+    while (id &gt; 0) {
+        result = chars[id % 62] + result;
+        id /= 62;
+    }
+    return result;   // 7 chars handles 62^7 = 3.5 trillion URLs
+}
+
+// Postgres schema
+// CREATE TABLE urls (
+//     id BIGINT PRIMARY KEY,        -- Snowflake ID
+//     short_code VARCHAR(10) NOT NULL UNIQUE,
+//     long_url TEXT NOT NULL,
+//     created_at TIMESTAMPTZ DEFAULT NOW(),
+//     user_id BIGINT,
+//     click_count BIGINT DEFAULT 0
+// );
+// CREATE INDEX ON urls(short_code);</code></pre><div class="ex-why">✅ Why this works: Snowflake IDs are sortable by creation time (timestamp in high bits) — good for database indexing. No coordination needed between servers — machine_id makes IDs unique.</div></div><h2 class="chap">Interview Q&A — System Design</h2><div class="qa"><div class="question">❓ How do you design for 99.9% availability (the 'three nines')?</div><div class="answer">99.9% = 8.76 hours downtime/year = 43.8 minutes/month = 1.44 minutes/day. Key techniques: (1) Eliminate single points of failure: every component has at least 2 replicas. Load balancer in front of all services. (2) Health checks + automatic failover: load balancer probes /health every 10s, removes unhealthy instances automatically. (3) Circuit breakers: if downstream service fails, fail fast instead of waiting (prevents cascading failures). (4) Graceful degradation: if recommendation service is down, serve default recommendations rather than error. (5) Rolling deployments: deploy new version to 10% of instances first, watch error rate, then roll out. (6) Database: primary-replica replication, automatic failover (Patroni for Postgres). (7) Multi-AZ/multi-region for higher availability. Calculate availability: two independent instances with 99.9% each = 1-(0.001^2) = 99.9999% (if both must fail to have downtime).</div><div class="followup"><b>Follow-up questions interviewers ask:</b><ul><li>What is the difference between 99.9% and 99.99% availability?</li><li>How does a circuit breaker work?</li><li>What is blue-green deployment?</li></ul></div><div class="followup" style="background:#fef2f2;border-color:#fca5a5"><b>Common mistakes in answers:</b><ul><li>Saying 'just add more servers' — availability requires removing SPOFs, not just adding capacity.</li><li>Forgetting that deployment itself is a source of downtime without careful strategies.</li></ul></div></div><div class="qa"><div class="question">❓ Design the data model for a distributed key-value store.</div><div class="answer">Storage engine: LSM-tree (Log-Structured Merge-tree) like RocksDB — optimized for writes. Writes go to in-memory memtable + WAL (Write-Ahead Log for durability). Memtable flushed to SSTable on disk when full. Background compaction merges SSTables and removes deleted keys. Keys partitioned across nodes using consistent hashing — each node owns a range. Replication: each key replicated to N=3 nodes (configurable). Consistency: quorum reads/writes (R=2, W=2, R+W>N guarantees reads see latest write). Operations: GET(key): route to any of N replicas for read, quorum vote on version. PUT(key,val): route to all N replicas, wait for W=2 ACKs. Version vectors for conflict detection (last-write-wins or application-level merge). MVCC for concurrent reads without blocking writes.</div><div class="followup"><b>Follow-up questions interviewers ask:</b><ul><li>How does consistent hashing handle node failure?</li><li>What is the difference between LSM-tree and B-tree storage?</li><li>How do you handle hot spots (one key getting all traffic)?</li></ul></div></div>
+    <div class="pagination"><a href="part06.html">← Part 06</a><a href="part08.html">Part 08 →</a></div>
+  </div>
+</div>
+<button id="btt">↑</button>
+<script>
+document.querySelectorAll('pre').forEach(p=>{
+  const b=document.createElement('button');b.className='copy-btn';b.textContent='Copy';
+  p.appendChild(b);b.onclick=()=>{navigator.clipboard.writeText(p.innerText.replace('Copy','').trim())
+  .then(()=>{b.textContent='Copied!';setTimeout(()=>b.textContent='Copy',2000);});};});
+const btt=document.getElementById('btt');
+window.addEventListener('scroll',()=>btt&&btt.classList.toggle('show',scrollY>300));
+btt&&btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+const si=document.getElementById('search');
+if(si)si.addEventListener('input',function(){const q=this.value.toLowerCase();
+  document.querySelectorAll('.part-card').forEach(c=>c.style.display=
+    c.textContent.toLowerCase().includes(q)?'':'none');});
+</script></body></html>

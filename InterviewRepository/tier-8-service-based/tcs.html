@@ -133,14 +133,14 @@
 </div><div class="tabs-bar"><div class="tabs-inner"><button class="tab-btn active" data-tab="coding">💻 DSA <span style="opacity:.5;font-size:11px">(7)</span></button>
 <button class="tab-btn" data-tab="java">☕ Java <span style="opacity:.5;font-size:11px">(7)</span></button>
 <button class="tab-btn" data-tab="database">🗄️ Database <span style="opacity:.5;font-size:11px">(1)</span></button>
-<button class="tab-btn" data-tab="cpp">⚙️ C++ <span style="opacity:.5;font-size:11px">(2)</span></button>
-<button class="tab-btn" data-tab="networking">🌐 Networking <span style="opacity:.5;font-size:11px">(3)</span></button>
 <button class="tab-btn" data-tab="system_design">🏗️ System Design <span style="opacity:.5;font-size:11px">(1)</span></button>
-<button class="tab-btn" data-tab="concurrency">⚡ Concurrency <span style="opacity:.5;font-size:11px">(4)</span></button>
-<button class="tab-btn" data-tab="os">🖥️ OS <span style="opacity:.5;font-size:11px">(4)</span></button>
-<button class="tab-btn" data-tab="lld">📐 LLD <span style="opacity:.5;font-size:11px">(2)</span></button>
+<button class="tab-btn" data-tab="cpp">⚙️ C++ <span style="opacity:.5;font-size:11px">(2)</span></button>
 <button class="tab-btn" data-tab="security">🔒 Security <span style="opacity:.5;font-size:11px">(1)</span></button>
-<button class="tab-btn" data-tab="backend">🔧 Backend <span style="opacity:.5;font-size:11px">(1)</span></button></div></div>
+<button class="tab-btn" data-tab="concurrency">⚡ Concurrency <span style="opacity:.5;font-size:11px">(4)</span></button>
+<button class="tab-btn" data-tab="lld">📐 LLD <span style="opacity:.5;font-size:11px">(2)</span></button>
+<button class="tab-btn" data-tab="backend">🔧 Backend <span style="opacity:.5;font-size:11px">(1)</span></button>
+<button class="tab-btn" data-tab="networking">🌐 Networking <span style="opacity:.5;font-size:11px">(3)</span></button>
+<button class="tab-btn" data-tab="os">🖥️ OS <span style="opacity:.5;font-size:11px">(4)</span></button></div></div>
 <div class="container"><div class="tab-panel active" id="tab-coding">
   <div class="questions-header">
     <h3>💻 DSA</h3>
@@ -443,6 +443,38 @@ try {
   </div>
 </div>
 </div>
+<div class="tab-panel" id="tab-system_design">
+  <div class="questions-header">
+    <h3>🏗️ System Design</h3>
+    <span class="q-count">1 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="design_problems">
+    <span class="q-index">1</span>
+    <span class="q-text">Design URL Shortener (bit.ly)</span>
+    <div class="q-tags"><span class="q-tag">encoding</span><span class="q-tag">hashing</span><span class="q-tag">cache</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">92%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Design URL Shortener — Architecture</span><br><pre>Client → Load Balancer → App Server (stateless) → Cache (Redis) → Database
+                                                     ↓ on miss
+                                               Consistent Hash ID Gen</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Core Components</span><br><ul><li><b>ID Generation:</b> Snowflake ID → Base62 encode → 7-char short code</li><li><b>Storage:</b> MySQL/PostgreSQL for persistence; Redis for read cache (TTL = URL TTL)</li><li><b>Redirect:</b> 301 (browser caches) vs 302 (always hits server — better for analytics)</li><li><b>Scale:</b> 100M URLs/day = ~1160 URLs/sec write, 10× reads → cache hit rate 99%</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">DB Schema</span><br><pre>CREATE TABLE urls (
+    id BIGINT PRIMARY KEY,           -- Snowflake ID
+    short_code VARCHAR(8) UNIQUE,
+    long_url TEXT NOT NULL,
+    user_id BIGINT,
+    created_at TIMESTAMP,
+    expires_at TIMESTAMP,
+    click_count BIGINT DEFAULT 0
+);</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you prevent abuse (phishing URLs)? (URL reputation API, blacklist)<br>• How do you implement analytics? (Kafka + ClickHouse for click stream)<br>• How would you support custom vanity URLs?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, Meta, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+</div>
 <div class="tab-panel" id="tab-cpp">
   <div class="questions-header">
     <h3>⚙️ C++</h3>
@@ -493,105 +525,45 @@ struct Node { std::weak_ptr&lt;Node&gt; parent; std::shared_ptr&lt;Node&gt; chil
   </div>
 </div>
 </div>
-<div class="tab-panel" id="tab-networking">
+<div class="tab-panel" id="tab-security">
   <div class="questions-header">
-    <h3>🌐 Networking</h3>
-    <span class="q-count">3 questions</span>
-  </div>
-  <div class="q-wrapper">
-  <div class="question-item" data-difficulty="easy" data-subcategory="protocols">
-    <span class="q-index">1</span>
-    <span class="q-text">TCP vs UDP — when to use each?</span>
-    <div class="q-tags"><span class="q-tag">tcp</span><span class="q-tag">udp</span><span class="q-tag">reliability</span></div>
-    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
-    <span class="q-freq freq-high">90%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">TCP vs UDP</span><br><ul><li><b>TCP:</b> Connection-oriented (3-way handshake). Reliable (ACKs, retransmit). Ordered. Flow + congestion control. ~20-60byte headers. Higher latency.</li><li><b>UDP:</b> Connectionless. No guarantees. No ordering. No congestion control. ~8byte header. Lower latency. Can multicast.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">When to use UDP</span><br><ul><li><b>Gaming / VoIP / video calls:</b> stale data worse than loss. TCP retransmit would cause jitter.</li><li><b>DNS:</b> single request-response, small payload. Retry at app layer if timeout.</li><li><b>DHCP, TFTP, SNMP:</b> simple protocols where TCP overhead isn't worth it.</li><li><b>HTTP/3 (QUIC):</b> UDP + built-in reliability at QUIC layer — gets benefits of both.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is QUIC and why does it use UDP?<br>• How do game engines handle packet loss with UDP? (delta compression, interpolation)<br>• What is the difference between TCP TIME_WAIT and CLOSE_WAIT?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Networking Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="easy" data-subcategory="protocols">
-    <span class="q-index">2</span>
-    <span class="q-text">TCP three-way handshake</span>
-    <div class="q-tags"><span class="q-tag">tcp</span><span class="q-tag">syn</span><span class="q-tag">ack</span></div>
-    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
-    <span class="q-freq freq-high">88%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">TCP Handshake</span><br><pre>Client          Server
-  |---SYN(seq=x)----&gt;|  Client: CLOSED→SYN_SENT
-  |&lt;--SYN-ACK(seq=y,ack=x+1)---|
-  |---ACK(ack=y+1)--&gt;|  Both: ESTABLISHED
-
-Teardown (4-way):
-  |---FIN-----------&gt;|  Client: ESTABLISHED→FIN_WAIT_1
-  |&lt;--ACK-----------|
-  |&lt;--FIN-----------|
-  |---ACK-----------&gt;|  Client: TIME_WAIT (2×MSL = 60-120s)
-                       Server: CLOSED</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">TIME_WAIT purpose</span><br>Ensures delayed packets from old connection don't confuse new connection on same 4-tuple. 2×MSL (Maximum Segment Lifetime). Can cause port exhaustion on high-traffic servers. Fix: SO_REUSEADDR, SO_REUSEPORT, or increase local port range.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">SYN Flood</span><br>Attacker sends many SYN packets, never completes handshake. Server holds half-open connections (SYN_RCVD state). Defense: SYN cookies — encode state in ISN, allocate resources only after ACK.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Why is teardown 4-way but handshake is 3-way?<br>• What is TCP Fast Open (TFO) and how does it reduce latency?<br>• What is the maximum number of connections per IP:port pair?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Networking Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Cisco, TCS...</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="easy" data-subcategory="infrastructure">
-    <span class="q-index">3</span>
-    <span class="q-text">DNS resolution process</span>
-    <div class="q-tags"><span class="q-tag">dns</span><span class="q-tag">resolver</span><span class="q-tag">recursive</span></div>
-    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
-    <span class="q-freq freq-high">84%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">DNS Resolution Chain</span><br><pre>Browser → Check browser cache (TTL)
-       → Check OS resolver cache (/etc/hosts, nscd)
-       → Recursive Resolver (ISP or 8.8.8.8)
-             → Root Name Server (.) → returns TLD server
-             → TLD Server (.com) → returns authoritative NS
-             → Authoritative NS (ns1.example.com) → returns IP
-       → Cache at each level with TTL
-       → Return IP to browser</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Record Types</span><br><ul><li><b>A:</b> hostname → IPv4</li><li><b>AAAA:</b> hostname → IPv6</li><li><b>CNAME:</b> alias → canonical name (CDN, subdomains)</li><li><b>MX:</b> mail exchange server</li><li><b>TXT:</b> arbitrary text (SPF, DKIM, DMARC, domain verification)</li><li><b>NS:</b> name server for domain</li><li><b>SOA:</b> Start of Authority (zone info, serial number)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is DNS propagation delay and how does TTL control it?<br>• How does DNS-based load balancing work? (round-robin A records)<br>• What is DNSSEC and what attack does it prevent? (cache poisoning)</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Networking Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Cisco, TCS...</span>
-    </div>
-  </div>
-</div>
-</div>
-<div class="tab-panel" id="tab-system_design">
-  <div class="questions-header">
-    <h3>🏗️ System Design</h3>
+    <h3>🔒 Security</h3>
     <span class="q-count">1 questions</span>
   </div>
   <div class="q-wrapper">
-  <div class="question-item" data-difficulty="medium" data-subcategory="design_problems">
+  <div class="question-item" data-difficulty="easy" data-subcategory="appsec">
     <span class="q-index">1</span>
-    <span class="q-text">Design URL Shortener (bit.ly)</span>
-    <div class="q-tags"><span class="q-tag">encoding</span><span class="q-tag">hashing</span><span class="q-tag">cache</span></div>
-    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-text">SQL Injection — how it works and prevention</span>
+    <div class="q-tags"><span class="q-tag">sql-injection</span><span class="q-tag">prepared-statements</span><span class="q-tag">parameterized</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
     <span class="q-freq freq-high">92%</span>
   </div>
   <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Design URL Shortener — Architecture</span><br><pre>Client → Load Balancer → App Server (stateless) → Cache (Redis) → Database
-                                                     ↓ on miss
-                                               Consistent Hash ID Gen</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Core Components</span><br><ul><li><b>ID Generation:</b> Snowflake ID → Base62 encode → 7-char short code</li><li><b>Storage:</b> MySQL/PostgreSQL for persistence; Redis for read cache (TTL = URL TTL)</li><li><b>Redirect:</b> 301 (browser caches) vs 302 (always hits server — better for analytics)</li><li><b>Scale:</b> 100M URLs/day = ~1160 URLs/sec write, 10× reads → cache hit rate 99%</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">DB Schema</span><br><pre>CREATE TABLE urls (
-    id BIGINT PRIMARY KEY,           -- Snowflake ID
-    short_code VARCHAR(8) UNIQUE,
-    long_url TEXT NOT NULL,
-    user_id BIGINT,
-    created_at TIMESTAMP,
-    expires_at TIMESTAMP,
-    click_count BIGINT DEFAULT 0
-);</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you prevent abuse (phishing URLs)? (URL reputation API, blacklist)<br>• How do you implement analytics? (Kafka + ClickHouse for click stream)<br>• How would you support custom vanity URLs?</div></div></div>
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">How it works</span><br><pre># Vulnerable code:
+query = "SELECT * FROM users WHERE name='" + username + "' AND pwd='" + password + "'";
+
+# Attacker input: username = admin' --
+# Resulting query:
+SELECT * FROM users WHERE name='admin' --' AND pwd='anything'
+# -- comments out the password check → logged in as admin!
+
+# Even worse:
+username = "'; DROP TABLE users; --"
+# Drops the entire users table!</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Prevention</span><br><pre># Java PreparedStatement:
+PreparedStatement stmt = conn.prepareStatement(
+    "SELECT * FROM users WHERE name=? AND pwd=?");
+stmt.setString(1, username);
+stmt.setString(2, hashedPassword);
+
+# Python SQLAlchemy:
+result = db.execute("SELECT * FROM users WHERE name=:n", {"n": username})
+
+# ORM (Hibernate/JPA): inherently parameterized
+User user = em.createQuery("FROM User WHERE name=:n", User.class)
+    .setParameter("n", username).getSingleResult();</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Defense in depth</span><br><ul><li>Least privilege DB user (SELECT only for read, no DROP)</li><li>WAF (Web Application Firewall) to detect patterns</li><li>Input validation (whitelist expected characters)</li><li>Error messages: never expose DB error details to client</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is second-order SQL injection?<br>• How does NoSQL injection work in MongoDB? ($where, $regex)<br>• What is blind SQL injection and how do time-based blind attacks work?</div></div></div>
     <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 System Design</span>
-      <span class="q-meta-chip">🏢 Google, Amazon, Meta, Microsoft, Uber, LinkedIn...</span>
+      <span class="q-meta-chip">🗓 Security Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Stripe, PayPal...</span>
     </div>
   </div>
 </div>
@@ -682,6 +654,137 @@ atomic.AddInt64(&amp;counter, 1)
   </div>
 </div>
 </div>
+<div class="tab-panel" id="tab-lld">
+  <div class="questions-header">
+    <h3>📐 LLD</h3>
+    <span class="q-count">2 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="machine_coding">
+    <span class="q-index">1</span>
+    <span class="q-text">Design a Cricket Score Tracker</span>
+    <div class="q-tags"><span class="q-tag">oop</span><span class="q-tag">observer</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Match, Innings, Over, Ball, Batsman, Bowler entities. Observer for scorecard updates. Strategy for DLS method.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Dream11, Amazon, Microsoft, TCS, Infosys</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="machine_coding">
+    <span class="q-index">2</span>
+    <span class="q-text">Design a Snake and Ladder Game</span>
+    <div class="q-tags"><span class="q-tag">oop</span><span class="q-tag">simulation</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Board, Player, Dice, Snake, Ladder entities. Turn-based simulation. Simple to extend with special cells.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Amazon, Microsoft, Adobe, TCS, Infosys</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-backend">
+  <div class="questions-header">
+    <h3>🔧 Backend</h3>
+    <span class="q-count">1 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="infrastructure">
+    <span class="q-index">1</span>
+    <span class="q-text">How does a load balancer work? Types?</span>
+    <div class="q-tags"><span class="q-tag">load-balancing</span><span class="q-tag">l4</span><span class="q-tag">l7</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">L4: TCP/IP. L7: HTTP URL/header routing. Algorithms: Round Robin, Least Conn, Consistent Hash.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 HLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-networking">
+  <div class="questions-header">
+    <h3>🌐 Networking</h3>
+    <span class="q-count">3 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="protocols">
+    <span class="q-index">1</span>
+    <span class="q-text">TCP vs UDP — when to use each?</span>
+    <div class="q-tags"><span class="q-tag">tcp</span><span class="q-tag">udp</span><span class="q-tag">reliability</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">TCP vs UDP</span><br><ul><li><b>TCP:</b> Connection-oriented (3-way handshake). Reliable (ACKs, retransmit). Ordered. Flow + congestion control. ~20-60byte headers. Higher latency.</li><li><b>UDP:</b> Connectionless. No guarantees. No ordering. No congestion control. ~8byte header. Lower latency. Can multicast.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">When to use UDP</span><br><ul><li><b>Gaming / VoIP / video calls:</b> stale data worse than loss. TCP retransmit would cause jitter.</li><li><b>DNS:</b> single request-response, small payload. Retry at app layer if timeout.</li><li><b>DHCP, TFTP, SNMP:</b> simple protocols where TCP overhead isn't worth it.</li><li><b>HTTP/3 (QUIC):</b> UDP + built-in reliability at QUIC layer — gets benefits of both.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is QUIC and why does it use UDP?<br>• How do game engines handle packet loss with UDP? (delta compression, interpolation)<br>• What is the difference between TCP TIME_WAIT and CLOSE_WAIT?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Networking Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="protocols">
+    <span class="q-index">2</span>
+    <span class="q-text">TCP three-way handshake</span>
+    <div class="q-tags"><span class="q-tag">tcp</span><span class="q-tag">syn</span><span class="q-tag">ack</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">TCP Handshake</span><br><pre>Client          Server
+  |---SYN(seq=x)----&gt;|  Client: CLOSED→SYN_SENT
+  |&lt;--SYN-ACK(seq=y,ack=x+1)---|
+  |---ACK(ack=y+1)--&gt;|  Both: ESTABLISHED
+
+Teardown (4-way):
+  |---FIN-----------&gt;|  Client: ESTABLISHED→FIN_WAIT_1
+  |&lt;--ACK-----------|
+  |&lt;--FIN-----------|
+  |---ACK-----------&gt;|  Client: TIME_WAIT (2×MSL = 60-120s)
+                       Server: CLOSED</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">TIME_WAIT purpose</span><br>Ensures delayed packets from old connection don't confuse new connection on same 4-tuple. 2×MSL (Maximum Segment Lifetime). Can cause port exhaustion on high-traffic servers. Fix: SO_REUSEADDR, SO_REUSEPORT, or increase local port range.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">SYN Flood</span><br>Attacker sends many SYN packets, never completes handshake. Server holds half-open connections (SYN_RCVD state). Defense: SYN cookies — encode state in ISN, allocate resources only after ACK.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Why is teardown 4-way but handshake is 3-way?<br>• What is TCP Fast Open (TFO) and how does it reduce latency?<br>• What is the maximum number of connections per IP:port pair?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Networking Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Cisco, TCS...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="infrastructure">
+    <span class="q-index">3</span>
+    <span class="q-text">DNS resolution process</span>
+    <div class="q-tags"><span class="q-tag">dns</span><span class="q-tag">resolver</span><span class="q-tag">recursive</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">DNS Resolution Chain</span><br><pre>Browser → Check browser cache (TTL)
+       → Check OS resolver cache (/etc/hosts, nscd)
+       → Recursive Resolver (ISP or 8.8.8.8)
+             → Root Name Server (.) → returns TLD server
+             → TLD Server (.com) → returns authoritative NS
+             → Authoritative NS (ns1.example.com) → returns IP
+       → Cache at each level with TTL
+       → Return IP to browser</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Record Types</span><br><ul><li><b>A:</b> hostname → IPv4</li><li><b>AAAA:</b> hostname → IPv6</li><li><b>CNAME:</b> alias → canonical name (CDN, subdomains)</li><li><b>MX:</b> mail exchange server</li><li><b>TXT:</b> arbitrary text (SPF, DKIM, DMARC, domain verification)</li><li><b>NS:</b> name server for domain</li><li><b>SOA:</b> Start of Authority (zone info, serial number)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is DNS propagation delay and how does TTL control it?<br>• How does DNS-based load balancing work? (round-robin A records)<br>• What is DNSSEC and what attack does it prevent? (cache poisoning)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Networking Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Cisco, TCS...</span>
+    </div>
+  </div>
+</div>
+</div>
 <div class="tab-panel" id="tab-os">
   <div class="questions-header">
     <h3>🖥️ OS</h3>
@@ -748,109 +851,6 @@ atomic.AddInt64(&amp;counter, 1)
     <div class="q-meta-row">
       <span class="q-meta-chip">🗓 OS Round</span>
       <span class="q-meta-chip">🏢 Google, Meta, Apple, Nvidia, TCS, Infosys</span>
-    </div>
-  </div>
-</div>
-</div>
-<div class="tab-panel" id="tab-lld">
-  <div class="questions-header">
-    <h3>📐 LLD</h3>
-    <span class="q-count">2 questions</span>
-  </div>
-  <div class="q-wrapper">
-  <div class="question-item" data-difficulty="medium" data-subcategory="machine_coding">
-    <span class="q-index">1</span>
-    <span class="q-text">Design a Cricket Score Tracker</span>
-    <div class="q-tags"><span class="q-tag">oop</span><span class="q-tag">observer</span></div>
-    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
-    <span class="q-freq freq-high">80%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer">Match, Innings, Over, Ball, Batsman, Bowler entities. Observer for scorecard updates. Strategy for DLS method.</div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 LLD Round</span>
-      <span class="q-meta-chip">🏢 Dream11, Amazon, Microsoft, TCS, Infosys</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="easy" data-subcategory="machine_coding">
-    <span class="q-index">2</span>
-    <span class="q-text">Design a Snake and Ladder Game</span>
-    <div class="q-tags"><span class="q-tag">oop</span><span class="q-tag">simulation</span></div>
-    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
-    <span class="q-freq freq-med">78%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer">Board, Player, Dice, Snake, Ladder entities. Turn-based simulation. Simple to extend with special cells.</div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 LLD Round</span>
-      <span class="q-meta-chip">🏢 Amazon, Microsoft, Adobe, TCS, Infosys</span>
-    </div>
-  </div>
-</div>
-</div>
-<div class="tab-panel" id="tab-security">
-  <div class="questions-header">
-    <h3>🔒 Security</h3>
-    <span class="q-count">1 questions</span>
-  </div>
-  <div class="q-wrapper">
-  <div class="question-item" data-difficulty="easy" data-subcategory="appsec">
-    <span class="q-index">1</span>
-    <span class="q-text">SQL Injection — how it works and prevention</span>
-    <div class="q-tags"><span class="q-tag">sql-injection</span><span class="q-tag">prepared-statements</span><span class="q-tag">parameterized</span></div>
-    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
-    <span class="q-freq freq-high">92%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">How it works</span><br><pre># Vulnerable code:
-query = "SELECT * FROM users WHERE name='" + username + "' AND pwd='" + password + "'";
-
-# Attacker input: username = admin' --
-# Resulting query:
-SELECT * FROM users WHERE name='admin' --' AND pwd='anything'
-# -- comments out the password check → logged in as admin!
-
-# Even worse:
-username = "'; DROP TABLE users; --"
-# Drops the entire users table!</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Prevention</span><br><pre># Java PreparedStatement:
-PreparedStatement stmt = conn.prepareStatement(
-    "SELECT * FROM users WHERE name=? AND pwd=?");
-stmt.setString(1, username);
-stmt.setString(2, hashedPassword);
-
-# Python SQLAlchemy:
-result = db.execute("SELECT * FROM users WHERE name=:n", {"n": username})
-
-# ORM (Hibernate/JPA): inherently parameterized
-User user = em.createQuery("FROM User WHERE name=:n", User.class)
-    .setParameter("n", username).getSingleResult();</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Defense in depth</span><br><ul><li>Least privilege DB user (SELECT only for read, no DROP)</li><li>WAF (Web Application Firewall) to detect patterns</li><li>Input validation (whitelist expected characters)</li><li>Error messages: never expose DB error details to client</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is second-order SQL injection?<br>• How does NoSQL injection work in MongoDB? ($where, $regex)<br>• What is blind SQL injection and how do time-based blind attacks work?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Security Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Stripe, PayPal...</span>
-    </div>
-  </div>
-</div>
-</div>
-<div class="tab-panel" id="tab-backend">
-  <div class="questions-header">
-    <h3>🔧 Backend</h3>
-    <span class="q-count">1 questions</span>
-  </div>
-  <div class="q-wrapper">
-  <div class="question-item" data-difficulty="medium" data-subcategory="infrastructure">
-    <span class="q-index">1</span>
-    <span class="q-text">How does a load balancer work? Types?</span>
-    <div class="q-tags"><span class="q-tag">load-balancing</span><span class="q-tag">l4</span><span class="q-tag">l7</span></div>
-    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
-    <span class="q-freq freq-high">82%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer">L4: TCP/IP. L7: HTTP URL/header routing. Algorithms: Round Robin, Least Conn, Consistent Hash.</div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 HLD Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
     </div>
   </div>
 </div>

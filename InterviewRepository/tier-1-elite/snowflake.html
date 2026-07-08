@@ -146,12 +146,12 @@
 <button class="tab-btn" data-tab="system_design">🏗️ System Design <span style="opacity:.5;font-size:11px">(2)</span></button>
 <button class="tab-btn" data-tab="database">🗄️ Database <span style="opacity:.5;font-size:11px">(4)</span></button>
 <button class="tab-btn" data-tab="cpp">⚙️ C++ <span style="opacity:.5;font-size:11px">(22)</span></button>
-<button class="tab-btn" data-tab="networking">🌐 Networking <span style="opacity:.5;font-size:11px">(1)</span></button>
-<button class="tab-btn" data-tab="os">🖥️ OS <span style="opacity:.5;font-size:11px">(3)</span></button>
-<button class="tab-btn" data-tab="lld">📐 LLD <span style="opacity:.5;font-size:11px">(1)</span></button>
-<button class="tab-btn" data-tab="security">🔒 Security <span style="opacity:.5;font-size:11px">(1)</span></button>
 <button class="tab-btn" data-tab="performance">⚡ Performance <span style="opacity:.5;font-size:11px">(1)</span></button>
-<button class="tab-btn" data-tab="backend">🔧 Backend <span style="opacity:.5;font-size:11px">(1)</span></button></div></div>
+<button class="tab-btn" data-tab="security">🔒 Security <span style="opacity:.5;font-size:11px">(1)</span></button>
+<button class="tab-btn" data-tab="lld">📐 LLD <span style="opacity:.5;font-size:11px">(1)</span></button>
+<button class="tab-btn" data-tab="backend">🔧 Backend <span style="opacity:.5;font-size:11px">(1)</span></button>
+<button class="tab-btn" data-tab="networking">🌐 Networking <span style="opacity:.5;font-size:11px">(1)</span></button>
+<button class="tab-btn" data-tab="os">🖥️ OS <span style="opacity:.5;font-size:11px">(3)</span></button></div></div>
 <div class="container"><div class="tab-panel active" id="tab-coding">
   <div class="questions-header">
     <h3>💻 DSA</h3>
@@ -877,6 +877,151 @@ v.push_back(42);  // no malloc!
   </div>
 </div>
 </div>
+<div class="tab-panel" id="tab-performance">
+  <div class="questions-header">
+    <h3>⚡ Performance</h3>
+    <span class="q-count">1 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="performance">
+    <span class="q-index">1</span>
+    <span class="q-text">How does CPU caching work and why does it matter for performance?</span>
+    <div class="q-tags"><span class="q-tag">cpu-cache</span><span class="q-tag">cache-line</span><span class="q-tag">false-sharing</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">74%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Memory Hierarchy</span><br><pre>L1 cache:  ~32KB per core,   ~1ns  latency
+L2 cache: ~256KB per core,   ~4ns  latency
+L3 cache:   ~8MB shared,     ~40ns latency
+RAM:        ~16-64GB,       ~100ns latency
+SSD NVMe:              ~100μs latency
+HDD:                    ~10ms latency</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache Lines</span><br>Data loaded in 64-byte cache lines. Accessing one byte loads entire 64-byte block. Sequential access (arrays) → excellent cache utilization. Random access (linked lists) → cache miss per node.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">False Sharing</span><br><pre># Two threads update different variables in same cache line:
+# Thread 1 updates counter_a, Thread 2 updates counter_b
+# If they're adjacent in memory → same cache line → cache coherence traffic
+# Core 1 invalidates Core 2's cache line on every write → performance degrades!
+
+# Fix: padding
+struct PaddedCounter {
+    alignas(64) std::atomic&lt;int64_t&gt; value;  // 64-byte aligned
+    char padding[64 - sizeof(std::atomic&lt;int64_t&gt;)];  // fill rest of cache line
+};</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Practical Impact</span><br><ul><li>Array of structs vs Struct of arrays (SOA): SOA = better cache usage for column-wise processing</li><li>Cache-oblivious algorithms (recursive divide) beat sequential for large matrices</li><li>Go: sync.Mutex padded to avoid false sharing with adjacent data</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is NUMA (Non-Uniform Memory Access) and how does it affect multi-socket servers?<br>• How does prefetching work and how can you hint the CPU to prefetch?<br>• What is the impact of cache misses on a tight loop processing 100M integers?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Databricks, Snowflake...</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-security">
+  <div class="questions-header">
+    <h3>🔒 Security</h3>
+    <span class="q-count">1 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="appsec">
+    <span class="q-index">1</span>
+    <span class="q-text">Secrets management — best practices</span>
+    <div class="q-tags"><span class="q-tag">secrets</span><span class="q-tag">vault</span><span class="q-tag">env-vars</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Anti-patterns</span><br><ul><li>Hardcoded secrets in code → leaked to Git history forever</li><li>Secrets in environment variables → visible in process list, crash dumps, logs</li><li>Secrets in docker-compose.yml committed to repo</li><li>Secrets passed as command-line args → visible in ps output</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">HashiCorp Vault</span><br><pre># Dynamic secrets — Vault generates short-lived DB credentials per request
+vault read database/creds/my-role
+# Returns: {username: "v-app-XyZ", password: "...", lease_duration: "1h"}
+# Automatically revoked after 1h — no long-lived DB passwords!
+
+# App integration:
+VaultClient vault = new VaultClient("https://vault.internal");
+String secret = vault.read("secret/data/db-password").get("value");</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Best Practices</span><br><ul><li><b>Vault / AWS Secrets Manager / GCP Secret Manager:</b> Centralized, audit-logged, auto-rotation</li><li><b>Secret rotation:</b> Automatic rotation without app restart (blue-green credential rotation)</li><li><b>Just-in-time secrets:</b> Request credential when needed, revoke immediately after</li><li><b>Kubernetes:</b> Use external-secrets operator to sync from Vault/SM into K8s Secrets</li><li><b>Git scanning:</b> TruffleHog, GitGuardian pre-commit hooks to prevent secret commits</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is envelope encryption and how does AWS KMS implement it?<br>• How do you handle secret rotation without downtime?<br>• What is SPIFFE/SPIRE for workload identity?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Security Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Stripe, PayPal...</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-lld">
+  <div class="questions-header">
+    <h3>📐 LLD</h3>
+    <span class="q-count">1 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
+    <span class="q-index">1</span>
+    <span class="q-text">Design a Key-Value Store</span>
+    <div class="q-tags"><span class="q-tag">lsm-tree</span><span class="q-tag">wal</span><span class="q-tag">concurrent</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">83%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Architecture</span><br><ul><li><b>MemTable:</b> In-memory sorted tree (TreeMap). Writes go here first.</li><li><b>WAL (Write-Ahead Log):</b> Append-only log for crash recovery.</li><li><b>SSTable:</b> Immutable sorted file flushed from MemTable when full.</li><li><b>Compaction:</b> Background merge of SSTables (remove tombstones, deduplicate).</li><li><b>Bloom Filter:</b> Per-SSTable to skip files that don't contain a key (fast miss detection).</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Core Operations</span><br><pre>class KVStore {
+    TreeMap&lt;String,String&gt; memTable = new TreeMap&lt;&gt;();
+    List&lt;SSTable&gt; ssTables = new ArrayList&lt;&gt;();
+    WriteAheadLog wal;
+    final int MEM_TABLE_LIMIT = 1_000_000;
+
+    synchronized void put(String key, String value) {
+        wal.append(key, value);
+        memTable.put(key, value);
+        if (memTable.size() &gt;= MEM_TABLE_LIMIT) flush();
+    }
+
+    String get(String key) {
+        if (memTable.containsKey(key)) return memTable.get(key);
+        for (int i = ssTables.size()-1; i &gt;= 0; i--) {
+            if (ssTables.get(i).bloomFilter.mightContain(key))
+                return ssTables.get(i).get(key);  // binary search in sorted file
+        }
+        return null;
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you implement TTL (key expiry)?</li><li>How does compaction prevent unbounded disk growth?</li><li>How do you implement range queries efficiently?</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does RocksDB differ from a simple LSM implementation?<br>• What is leveled vs size-tiered compaction strategy?<br>• How do you implement atomic multi-key transactions?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Databricks, Snowflake</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-backend">
+  <div class="questions-header">
+    <h3>🔧 Backend</h3>
+    <span class="q-count">1 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="distributed">
+    <span class="q-index">1</span>
+    <span class="q-text">What is consistent hashing?</span>
+    <div class="q-tags"><span class="q-tag">consistent-hashing</span><span class="q-tag">virtual-nodes</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Consistent Hashing</span><br>Problem with naive modulo hashing: adding/removing 1 server remaps N/S keys (massive cache miss storm).<br><br><b>Ring approach:</b> Hash servers and keys to same circular space (0 to 2^32). A key is assigned to the first server found clockwise from its hash position.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Virtual Nodes</span><br>Each physical server = 100-200 virtual nodes on the ring → even distribution even with few servers. Fewer hot spots. When server added/removed: only 1/N keys remapped.<br><pre>class ConsistentHash:
+    def __init__(self, replicas=150):
+        self.ring = {}
+        self.sorted_keys = []
+        self.replicas = replicas
+
+    def add_server(self, server):
+        for i in range(self.replicas):
+            key = hash(f'{server}:{i}')
+            self.ring[key] = server
+        self.sorted_keys = sorted(self.ring)
+
+    def get_server(self, item):
+        h = hash(item)
+        for k in self.sorted_keys:
+            if h &lt;= k: return self.ring[k]
+        return self.ring[self.sorted_keys[0]]  # wrap around</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does Amazon DynamoDB use consistent hashing?<br>• What is the difference between consistent hashing and rendezvous hashing?<br>• How does virtual node count affect distribution quality?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, Uber, LinkedIn, Databricks, Snowflake...</span>
+    </div>
+  </div>
+</div>
+</div>
 <div class="tab-panel" id="tab-networking">
   <div class="questions-header">
     <h3>🌐 Networking</h3>
@@ -949,151 +1094,6 @@ v.push_back(42);  // no malloc!
     <div class="q-meta-row">
       <span class="q-meta-chip">🗓 Coding Round</span>
       <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Databricks, Snowflake, Apple</span>
-    </div>
-  </div>
-</div>
-</div>
-<div class="tab-panel" id="tab-lld">
-  <div class="questions-header">
-    <h3>📐 LLD</h3>
-    <span class="q-count">1 questions</span>
-  </div>
-  <div class="q-wrapper">
-  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
-    <span class="q-index">1</span>
-    <span class="q-text">Design a Key-Value Store</span>
-    <div class="q-tags"><span class="q-tag">lsm-tree</span><span class="q-tag">wal</span><span class="q-tag">concurrent</span></div>
-    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
-    <span class="q-freq freq-high">83%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Architecture</span><br><ul><li><b>MemTable:</b> In-memory sorted tree (TreeMap). Writes go here first.</li><li><b>WAL (Write-Ahead Log):</b> Append-only log for crash recovery.</li><li><b>SSTable:</b> Immutable sorted file flushed from MemTable when full.</li><li><b>Compaction:</b> Background merge of SSTables (remove tombstones, deduplicate).</li><li><b>Bloom Filter:</b> Per-SSTable to skip files that don't contain a key (fast miss detection).</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Core Operations</span><br><pre>class KVStore {
-    TreeMap&lt;String,String&gt; memTable = new TreeMap&lt;&gt;();
-    List&lt;SSTable&gt; ssTables = new ArrayList&lt;&gt;();
-    WriteAheadLog wal;
-    final int MEM_TABLE_LIMIT = 1_000_000;
-
-    synchronized void put(String key, String value) {
-        wal.append(key, value);
-        memTable.put(key, value);
-        if (memTable.size() &gt;= MEM_TABLE_LIMIT) flush();
-    }
-
-    String get(String key) {
-        if (memTable.containsKey(key)) return memTable.get(key);
-        for (int i = ssTables.size()-1; i &gt;= 0; i--) {
-            if (ssTables.get(i).bloomFilter.mightContain(key))
-                return ssTables.get(i).get(key);  // binary search in sorted file
-        }
-        return null;
-    }
-}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you implement TTL (key expiry)?</li><li>How does compaction prevent unbounded disk growth?</li><li>How do you implement range queries efficiently?</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does RocksDB differ from a simple LSM implementation?<br>• What is leveled vs size-tiered compaction strategy?<br>• How do you implement atomic multi-key transactions?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 LLD Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Databricks, Snowflake</span>
-    </div>
-  </div>
-</div>
-</div>
-<div class="tab-panel" id="tab-security">
-  <div class="questions-header">
-    <h3>🔒 Security</h3>
-    <span class="q-count">1 questions</span>
-  </div>
-  <div class="q-wrapper">
-  <div class="question-item" data-difficulty="medium" data-subcategory="appsec">
-    <span class="q-index">1</span>
-    <span class="q-text">Secrets management — best practices</span>
-    <div class="q-tags"><span class="q-tag">secrets</span><span class="q-tag">vault</span><span class="q-tag">env-vars</span></div>
-    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
-    <span class="q-freq freq-high">84%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Anti-patterns</span><br><ul><li>Hardcoded secrets in code → leaked to Git history forever</li><li>Secrets in environment variables → visible in process list, crash dumps, logs</li><li>Secrets in docker-compose.yml committed to repo</li><li>Secrets passed as command-line args → visible in ps output</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">HashiCorp Vault</span><br><pre># Dynamic secrets — Vault generates short-lived DB credentials per request
-vault read database/creds/my-role
-# Returns: {username: "v-app-XyZ", password: "...", lease_duration: "1h"}
-# Automatically revoked after 1h — no long-lived DB passwords!
-
-# App integration:
-VaultClient vault = new VaultClient("https://vault.internal");
-String secret = vault.read("secret/data/db-password").get("value");</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Best Practices</span><br><ul><li><b>Vault / AWS Secrets Manager / GCP Secret Manager:</b> Centralized, audit-logged, auto-rotation</li><li><b>Secret rotation:</b> Automatic rotation without app restart (blue-green credential rotation)</li><li><b>Just-in-time secrets:</b> Request credential when needed, revoke immediately after</li><li><b>Kubernetes:</b> Use external-secrets operator to sync from Vault/SM into K8s Secrets</li><li><b>Git scanning:</b> TruffleHog, GitGuardian pre-commit hooks to prevent secret commits</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is envelope encryption and how does AWS KMS implement it?<br>• How do you handle secret rotation without downtime?<br>• What is SPIFFE/SPIRE for workload identity?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Security Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Stripe, PayPal...</span>
-    </div>
-  </div>
-</div>
-</div>
-<div class="tab-panel" id="tab-performance">
-  <div class="questions-header">
-    <h3>⚡ Performance</h3>
-    <span class="q-count">1 questions</span>
-  </div>
-  <div class="q-wrapper">
-  <div class="question-item" data-difficulty="hard" data-subcategory="performance">
-    <span class="q-index">1</span>
-    <span class="q-text">How does CPU caching work and why does it matter for performance?</span>
-    <div class="q-tags"><span class="q-tag">cpu-cache</span><span class="q-tag">cache-line</span><span class="q-tag">false-sharing</span></div>
-    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
-    <span class="q-freq freq-med">74%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Memory Hierarchy</span><br><pre>L1 cache:  ~32KB per core,   ~1ns  latency
-L2 cache: ~256KB per core,   ~4ns  latency
-L3 cache:   ~8MB shared,     ~40ns latency
-RAM:        ~16-64GB,       ~100ns latency
-SSD NVMe:              ~100μs latency
-HDD:                    ~10ms latency</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache Lines</span><br>Data loaded in 64-byte cache lines. Accessing one byte loads entire 64-byte block. Sequential access (arrays) → excellent cache utilization. Random access (linked lists) → cache miss per node.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">False Sharing</span><br><pre># Two threads update different variables in same cache line:
-# Thread 1 updates counter_a, Thread 2 updates counter_b
-# If they're adjacent in memory → same cache line → cache coherence traffic
-# Core 1 invalidates Core 2's cache line on every write → performance degrades!
-
-# Fix: padding
-struct PaddedCounter {
-    alignas(64) std::atomic&lt;int64_t&gt; value;  // 64-byte aligned
-    char padding[64 - sizeof(std::atomic&lt;int64_t&gt;)];  // fill rest of cache line
-};</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Practical Impact</span><br><ul><li>Array of structs vs Struct of arrays (SOA): SOA = better cache usage for column-wise processing</li><li>Cache-oblivious algorithms (recursive divide) beat sequential for large matrices</li><li>Go: sync.Mutex padded to avoid false sharing with adjacent data</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is NUMA (Non-Uniform Memory Access) and how does it affect multi-socket servers?<br>• How does prefetching work and how can you hint the CPU to prefetch?<br>• What is the impact of cache misses on a tight loop processing 100M integers?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Coding Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Databricks, Snowflake...</span>
-    </div>
-  </div>
-</div>
-</div>
-<div class="tab-panel" id="tab-backend">
-  <div class="questions-header">
-    <h3>🔧 Backend</h3>
-    <span class="q-count">1 questions</span>
-  </div>
-  <div class="q-wrapper">
-  <div class="question-item" data-difficulty="hard" data-subcategory="distributed">
-    <span class="q-index">1</span>
-    <span class="q-text">What is consistent hashing?</span>
-    <div class="q-tags"><span class="q-tag">consistent-hashing</span><span class="q-tag">virtual-nodes</span></div>
-    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
-    <span class="q-freq freq-high">86%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Consistent Hashing</span><br>Problem with naive modulo hashing: adding/removing 1 server remaps N/S keys (massive cache miss storm).<br><br><b>Ring approach:</b> Hash servers and keys to same circular space (0 to 2^32). A key is assigned to the first server found clockwise from its hash position.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Virtual Nodes</span><br>Each physical server = 100-200 virtual nodes on the ring → even distribution even with few servers. Fewer hot spots. When server added/removed: only 1/N keys remapped.<br><pre>class ConsistentHash:
-    def __init__(self, replicas=150):
-        self.ring = {}
-        self.sorted_keys = []
-        self.replicas = replicas
-
-    def add_server(self, server):
-        for i in range(self.replicas):
-            key = hash(f'{server}:{i}')
-            self.ring[key] = server
-        self.sorted_keys = sorted(self.ring)
-
-    def get_server(self, item):
-        h = hash(item)
-        for k in self.sorted_keys:
-            if h &lt;= k: return self.ring[k]
-        return self.ring[self.sorted_keys[0]]  # wrap around</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does Amazon DynamoDB use consistent hashing?<br>• What is the difference between consistent hashing and rendezvous hashing?<br>• How does virtual node count affect distribution quality?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 System Design</span>
-      <span class="q-meta-chip">🏢 Google, Amazon, Uber, LinkedIn, Databricks, Snowflake...</span>
     </div>
   </div>
 </div>
