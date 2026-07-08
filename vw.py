@@ -1,5 +1,0 @@
-f=open(r'd:\InterViewQuestionScraper\InterviewRepository\tier-6-large-product\mufg-global-services.html',encoding='utf-8')
-c=f.read()
-f.close()
-i=c.find('question-card')
-print(c[i:i+800])
