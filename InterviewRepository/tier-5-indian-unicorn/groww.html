@@ -43,6 +43,7 @@
     <a href="../../common/top-system-design.html">System Design</a>
     <a href="../../common/top-backend.html">Backend</a>
     <a href="../../common/top-cpp.html">C++</a>
+    <a href="../../cpp-handbook/index.html">&#x1F4D8; Handbook</a>
     <a href="../../common/top-java.html">Java</a>
     <a href="../../common/top-go.html">Go</a>
     <a href="../../mcq-quiz.html" style="background:linear-gradient(90deg,#6366f1,#8b5cf6);color:#fff;padding:.3rem .75rem;border-radius:.4rem;font-weight:600">🎯 MCQ Quiz</a>
@@ -143,11 +144,11 @@
 </div></div>
 </div><div class="tabs-bar"><div class="tabs-inner"><button class="tab-btn active" data-tab="system_design">🏗️ System Design <span style="opacity:.5;font-size:11px">(1)</span></button>
 <button class="tab-btn" data-tab="database">🗄️ Database <span style="opacity:.5;font-size:11px">(9)</span></button>
-<button class="tab-btn" data-tab="behavioral">💬 Behavioral <span style="opacity:.5;font-size:11px">(4)</span></button>
-<button class="tab-btn" data-tab="security">🔒 Security <span style="opacity:.5;font-size:11px">(1)</span></button>
-<button class="tab-btn" data-tab="cicd">🚀 CI/CD & DevOps <span style="opacity:.5;font-size:11px">(6)</span></button>
 <button class="tab-btn" data-tab="ml_systems">🤖 ML Systems <span style="opacity:.5;font-size:11px">(1)</span></button>
-<button class="tab-btn" data-tab="lld">📐 LLD <span style="opacity:.5;font-size:11px">(2)</span></button></div></div>
+<button class="tab-btn" data-tab="cicd">🚀 CI/CD & DevOps <span style="opacity:.5;font-size:11px">(6)</span></button>
+<button class="tab-btn" data-tab="lld">📐 LLD <span style="opacity:.5;font-size:11px">(2)</span></button>
+<button class="tab-btn" data-tab="behavioral">💬 Behavioral <span style="opacity:.5;font-size:11px">(4)</span></button>
+<button class="tab-btn" data-tab="security">🔒 Security <span style="opacity:.5;font-size:11px">(1)</span></button></div></div>
 <div class="container"><div class="tab-panel active" id="tab-system_design">
   <div class="questions-header">
     <h3>🏗️ System Design</h3>
@@ -378,107 +379,36 @@ COMMIT;
   </div>
 </div>
 </div>
-<div class="tab-panel" id="tab-behavioral">
+<div class="tab-panel" id="tab-ml_systems">
   <div class="questions-header">
-    <h3>💬 Behavioral</h3>
-    <span class="q-count">4 questions</span>
-  </div>
-  <div class="q-wrapper">
-  <div class="question-item" data-difficulty="hard" data-subcategory="design">
-    <span class="q-index">1</span>
-    <span class="q-text">Tell me about the most complex system you designed</span>
-    <div class="q-tags"><span class="q-tag">system-design</span><span class="q-tag">complexity</span><span class="q-tag">scale</span></div>
-    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
-    <span class="q-freq freq-high">86%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer">Use STAR. Focus on scale challenges, trade-offs made, alternatives considered, outcome metrics.</div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Behavioral Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="medium" data-subcategory="failure">
-    <span class="q-index">2</span>
-    <span class="q-text">Describe your biggest technical failure and what you learned</span>
-    <div class="q-tags"><span class="q-tag">ownership</span><span class="q-tag">learning</span></div>
-    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
-    <span class="q-freq freq-high">85%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">How to Answer a Failure Question</span><br>Interviewers want to see: <b>genuine reflection</b>, not a humble-brag. Choose a real technical failure with real impact. Do NOT say 'I work too hard' or choose trivial failures.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Strong Answer Framework</span><br><pre>1. Context: What was the failure? (missed deadline, data loss, wrong architecture choice)
-2. My specific contribution to the failure
-3. What happened when it went wrong (measurable impact)
-4. How I responded (owned it, fixed it)
-5. What I CONCRETELY changed afterward (new process, test added, design review)
-6. What I would do differently today</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Example Angles</span><br><ul><li>Chose wrong tech stack → had to migrate → cost N weeks. Learned: POC + load test before committing.</li><li>Missed an edge case in prod → data corruption for 500 users. Learned: chaos testing, invariant checks.</li><li>Ignored a code reviewer's concern → led to security issue. Learned: never dismiss security feedback without data.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How have you changed your approach to prevent similar failures?<br>• How did your team react to the failure?<br>• What would you tell a junior engineer who just made the same mistake?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Behavioral Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="medium" data-subcategory="growth">
-    <span class="q-index">3</span>
-    <span class="q-text">Describe a time you had to learn a new technology quickly</span>
-    <div class="q-tags"><span class="q-tag">learning</span><span class="q-tag">adaptability</span></div>
-    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
-    <span class="q-freq freq-high">82%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer">Show initiative, structured learning approach, how you applied it, and what you'd do differently.</div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Behavioral Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="medium" data-subcategory="leadership">
-    <span class="q-index">4</span>
-    <span class="q-text">Tell me about a time you improved a team's engineering process</span>
-    <div class="q-tags"><span class="q-tag">leadership</span><span class="q-tag">process-improvement</span></div>
-    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
-    <span class="q-freq freq-high">80%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer">Show initiative. Metrics before/after. Got buy-in. Made it stick with documentation and ownership.</div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Behavioral Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
-    </div>
-  </div>
-</div>
-</div>
-<div class="tab-panel" id="tab-security">
-  <div class="questions-header">
-    <h3>🔒 Security</h3>
+    <h3>🤖 ML Systems</h3>
     <span class="q-count">1 questions</span>
   </div>
   <div class="q-wrapper">
-  <div class="question-item" data-difficulty="medium" data-subcategory="appsec">
+  <div class="question-item" data-difficulty="hard" data-subcategory="ml_systems">
     <span class="q-index">1</span>
-    <span class="q-text">Password hashing — bcrypt vs Argon2 vs PBKDF2</span>
-    <div class="q-tags"><span class="q-tag">bcrypt</span><span class="q-tag">argon2</span><span class="q-tag">password-hashing</span></div>
-    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
-    <span class="q-freq freq-high">82%</span>
+    <span class="q-text">How does a fraud detection system work?</span>
+    <div class="q-tags"><span class="q-tag">fraud-detection</span><span class="q-tag">real-time</span><span class="q-tag">rules-engine</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">87%</span>
   </div>
   <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Why not MD5/SHA?</span><br>MD5/SHA are fast → GPU can try billions/sec. Rainbow table: precompute hash for common passwords.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Password Hashing Algorithms</span><br><ul><li><b>bcrypt:</b> Work factor (cost). Each increment doubles computation. Built-in 128-bit salt. Memory-light (can be GPU-accelerated). Widely supported.</li><li><b>Argon2 (winner of Password Hashing Competition 2015):</b> Memory-hard. Three variants: Argon2i (side-channel resistant), Argon2d (GPU-resistant), Argon2id (recommended — hybrid). Parameters: time, memory, parallelism.</li><li><b>PBKDF2:</b> NIST/FIPS approved. Iterations + HMAC. Less memory-hard than Argon2. Required for some compliance frameworks.</li><li><b>scrypt:</b> Memory-hard. Used by Litecoin. Harder to tune than Argon2.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Best Practices</span><br><pre># Python — Argon2
-from argon2 import PasswordHasher
-ph = PasswordHasher(time_cost=2, memory_cost=65536, parallelism=2)
-hash = ph.hash("user_password")      # store this
-ph.verify(hash, "input_password")    # True/False
-
-# Spring Security (bcrypt strength 12):
-PasswordEncoder encoder = new BCryptPasswordEncoder(12);
-String hash = encoder.encode(rawPassword);
-encoder.matches(rawPassword, hash);  // timing-safe comparison</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is a timing attack on password comparison and how does constant-time comparison prevent it?<br>• How do you handle password migration from MD5 to bcrypt? (rehash on next login)<br>• What is credential stuffing and how does rate limiting + MFA prevent it?</div></div></div>
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Layered Defense Architecture</span><br><pre>Transaction Request
+    ↓ (sync, &lt;200ms)
+1. Rules Engine (hard rules, fast)
+   - Deny if: card stolen (blocklist), impossible geography, country blocked
+   - Flag if: unusual amount, new device
+    ↓
+2. ML Model (gradient boosting / neural net, &lt;50ms)
+   - Features: velocity (5 txns in 1min), device fingerprint, merchant category,
+               user history embedding, IP reputation, network graph features
+   - Output: fraud probability score 0-1
+    ↓
+3. Decision: score &lt; 0.3 → approve | 0.3-0.7 → 3DS challenge | &gt; 0.7 → decline
+    ↓ (async, post-transaction)
+4. Chargeback feedback → retrain loop</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Features</span><br><ul><li><b>Velocity features:</b> count(txns) per user/card/device in last 1m/5m/1h/24h using Redis sliding window</li><li><b>Device fingerprinting:</b> browser/app fingerprint, cookie, canvas fingerprint</li><li><b>Network graph:</b> card linked to account linked to device → graph neural network for collusion</li><li><b>Geospatial:</b> impossible travel (transaction in Mumbai then London in 30min)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Class Imbalance</span><br>Fraud rate: 0.1-1%. Training: oversample fraud (SMOTE), undersample legitimate, or use class weights. Evaluation metric: precision@threshold, recall, AUC-ROC. NOT accuracy (99% accuracy by saying everything is legitimate).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you handle false positives? (customer friction vs loss prevention tradeoff)<br>• How do you use graph neural networks for fraud ring detection?<br>• How do you evaluate a fraud model when labels arrive weeks later via chargebacks?</div></div></div>
     <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Security Round</span>
+      <span class="q-meta-chip">🗓 System Design Round</span>
       <span class="q-meta-chip">🏢 Stripe, PayPal, Razorpay, PhonePe, CRED, Groww...</span>
     </div>
   </div>
@@ -599,41 +529,6 @@ helm template ./chart  # render YAML without installing</pre></div><div class="a
   </div>
 </div>
 </div>
-<div class="tab-panel" id="tab-ml_systems">
-  <div class="questions-header">
-    <h3>🤖 ML Systems</h3>
-    <span class="q-count">1 questions</span>
-  </div>
-  <div class="q-wrapper">
-  <div class="question-item" data-difficulty="hard" data-subcategory="ml_systems">
-    <span class="q-index">1</span>
-    <span class="q-text">How does a fraud detection system work?</span>
-    <div class="q-tags"><span class="q-tag">fraud-detection</span><span class="q-tag">real-time</span><span class="q-tag">rules-engine</span></div>
-    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
-    <span class="q-freq freq-high">87%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Layered Defense Architecture</span><br><pre>Transaction Request
-    ↓ (sync, &lt;200ms)
-1. Rules Engine (hard rules, fast)
-   - Deny if: card stolen (blocklist), impossible geography, country blocked
-   - Flag if: unusual amount, new device
-    ↓
-2. ML Model (gradient boosting / neural net, &lt;50ms)
-   - Features: velocity (5 txns in 1min), device fingerprint, merchant category,
-               user history embedding, IP reputation, network graph features
-   - Output: fraud probability score 0-1
-    ↓
-3. Decision: score &lt; 0.3 → approve | 0.3-0.7 → 3DS challenge | &gt; 0.7 → decline
-    ↓ (async, post-transaction)
-4. Chargeback feedback → retrain loop</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Features</span><br><ul><li><b>Velocity features:</b> count(txns) per user/card/device in last 1m/5m/1h/24h using Redis sliding window</li><li><b>Device fingerprinting:</b> browser/app fingerprint, cookie, canvas fingerprint</li><li><b>Network graph:</b> card linked to account linked to device → graph neural network for collusion</li><li><b>Geospatial:</b> impossible travel (transaction in Mumbai then London in 30min)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Class Imbalance</span><br>Fraud rate: 0.1-1%. Training: oversample fraud (SMOTE), undersample legitimate, or use class weights. Evaluation metric: precision@threshold, recall, AUC-ROC. NOT accuracy (99% accuracy by saying everything is legitimate).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you handle false positives? (customer friction vs loss prevention tradeoff)<br>• How do you use graph neural networks for fraud ring detection?<br>• How do you evaluate a fraud model when labels arrive weeks later via chargebacks?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 System Design Round</span>
-      <span class="q-meta-chip">🏢 Stripe, PayPal, Razorpay, PhonePe, CRED, Groww...</span>
-    </div>
-  </div>
-</div>
-</div>
 <div class="tab-panel" id="tab-lld">
   <div class="questions-header">
     <h3>📐 LLD</h3>
@@ -725,6 +620,112 @@ Total: ~4 million IDs/second per machine, globally unique, sortable!</pre></div>
     </div>
   </div>
 </div>
+</div>
+<div class="tab-panel" id="tab-behavioral">
+  <div class="questions-header">
+    <h3>💬 Behavioral</h3>
+    <span class="q-count">4 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="design">
+    <span class="q-index">1</span>
+    <span class="q-text">Tell me about the most complex system you designed</span>
+    <div class="q-tags"><span class="q-tag">system-design</span><span class="q-tag">complexity</span><span class="q-tag">scale</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Use STAR. Focus on scale challenges, trade-offs made, alternatives considered, outcome metrics.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Behavioral Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="failure">
+    <span class="q-index">2</span>
+    <span class="q-text">Describe your biggest technical failure and what you learned</span>
+    <div class="q-tags"><span class="q-tag">ownership</span><span class="q-tag">learning</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">85%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">How to Answer a Failure Question</span><br>Interviewers want to see: <b>genuine reflection</b>, not a humble-brag. Choose a real technical failure with real impact. Do NOT say 'I work too hard' or choose trivial failures.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Strong Answer Framework</span><br><pre>1. Context: What was the failure? (missed deadline, data loss, wrong architecture choice)
+2. My specific contribution to the failure
+3. What happened when it went wrong (measurable impact)
+4. How I responded (owned it, fixed it)
+5. What I CONCRETELY changed afterward (new process, test added, design review)
+6. What I would do differently today</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Example Angles</span><br><ul><li>Chose wrong tech stack → had to migrate → cost N weeks. Learned: POC + load test before committing.</li><li>Missed an edge case in prod → data corruption for 500 users. Learned: chaos testing, invariant checks.</li><li>Ignored a code reviewer's concern → led to security issue. Learned: never dismiss security feedback without data.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How have you changed your approach to prevent similar failures?<br>• How did your team react to the failure?<br>• What would you tell a junior engineer who just made the same mistake?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Behavioral Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="growth">
+    <span class="q-index">3</span>
+    <span class="q-text">Describe a time you had to learn a new technology quickly</span>
+    <div class="q-tags"><span class="q-tag">learning</span><span class="q-tag">adaptability</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Show initiative, structured learning approach, how you applied it, and what you'd do differently.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Behavioral Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="leadership">
+    <span class="q-index">4</span>
+    <span class="q-text">Tell me about a time you improved a team's engineering process</span>
+    <div class="q-tags"><span class="q-tag">leadership</span><span class="q-tag">process-improvement</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Show initiative. Metrics before/after. Got buy-in. Made it stick with documentation and ownership.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Behavioral Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-security">
+  <div class="questions-header">
+    <h3>🔒 Security</h3>
+    <span class="q-count">1 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="appsec">
+    <span class="q-index">1</span>
+    <span class="q-text">Password hashing — bcrypt vs Argon2 vs PBKDF2</span>
+    <div class="q-tags"><span class="q-tag">bcrypt</span><span class="q-tag">argon2</span><span class="q-tag">password-hashing</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Why not MD5/SHA?</span><br>MD5/SHA are fast → GPU can try billions/sec. Rainbow table: precompute hash for common passwords.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Password Hashing Algorithms</span><br><ul><li><b>bcrypt:</b> Work factor (cost). Each increment doubles computation. Built-in 128-bit salt. Memory-light (can be GPU-accelerated). Widely supported.</li><li><b>Argon2 (winner of Password Hashing Competition 2015):</b> Memory-hard. Three variants: Argon2i (side-channel resistant), Argon2d (GPU-resistant), Argon2id (recommended — hybrid). Parameters: time, memory, parallelism.</li><li><b>PBKDF2:</b> NIST/FIPS approved. Iterations + HMAC. Less memory-hard than Argon2. Required for some compliance frameworks.</li><li><b>scrypt:</b> Memory-hard. Used by Litecoin. Harder to tune than Argon2.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Best Practices</span><br><pre># Python — Argon2
+from argon2 import PasswordHasher
+ph = PasswordHasher(time_cost=2, memory_cost=65536, parallelism=2)
+hash = ph.hash("user_password")      # store this
+ph.verify(hash, "input_password")    # True/False
+
+# Spring Security (bcrypt strength 12):
+PasswordEncoder encoder = new BCryptPasswordEncoder(12);
+String hash = encoder.encode(rawPassword);
+encoder.matches(rawPassword, hash);  // timing-safe comparison</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is a timing attack on password comparison and how does constant-time comparison prevent it?<br>• How do you handle password migration from MD5 to bcrypt? (rehash on next login)<br>• What is credential stuffing and how does rate limiting + MFA prevent it?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Security Round</span>
+      <span class="q-meta-chip">🏢 Stripe, PayPal, Razorpay, PhonePe, CRED, Groww...</span>
+    </div>
+  </div>
+</div>
 </div></div>
 <footer class="footer">
   <div class="container">
@@ -733,6 +734,7 @@ Total: ~4 million IDs/second per machine, globally unique, sortable!</pre></div>
       <a href="../../common/top-system-design.html">System Design</a>
       <a href="../../common/top-backend.html">Backend</a>
       <a href="../../common/top-cpp.html">C++</a>
+    <a href="../../cpp-handbook/index.html">&#x1F4D8; Handbook</a>
       <a href="../../common/top-java.html">Java</a>
       <a href="../../common/top-go.html">Go</a>
       <a href="../../common/top-database.html">Database</a>

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 Interview Repository Static Site Generator
 Generates a complete static HTML website from question and company data.
@@ -141,6 +141,7 @@ def navbar(pfx=""):
     <a href="{pfx}common/top-system-design.html">System Design</a>
     <a href="{pfx}common/top-backend.html">Backend</a>
     <a href="{pfx}common/top-cpp.html">C++</a>
+    <a href="{pfx}cpp-handbook/index.html">&#x1F4D8; Handbook</a>
     <a href="{pfx}common/top-java.html">Java</a>
     <a href="{pfx}common/top-go.html">Go</a>
     <a href="{pfx}mcq-quiz.html" style="background:linear-gradient(90deg,#6366f1,#8b5cf6);color:#fff;padding:.3rem .75rem;border-radius:.4rem;font-weight:600">🎯 MCQ Quiz</a>
@@ -155,6 +156,7 @@ def footer(pfx=""):
       <a href="{pfx}common/top-system-design.html">System Design</a>
       <a href="{pfx}common/top-backend.html">Backend</a>
       <a href="{pfx}common/top-cpp.html">C++</a>
+    <a href="{pfx}cpp-handbook/index.html">&#x1F4D8; Handbook</a>
       <a href="{pfx}common/top-java.html">Java</a>
       <a href="{pfx}common/top-go.html">Go</a>
       <a href="{pfx}common/top-database.html">Database</a>

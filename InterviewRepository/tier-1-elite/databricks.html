@@ -43,6 +43,7 @@
     <a href="../../common/top-system-design.html">System Design</a>
     <a href="../../common/top-backend.html">Backend</a>
     <a href="../../common/top-cpp.html">C++</a>
+    <a href="../../cpp-handbook/index.html">&#x1F4D8; Handbook</a>
     <a href="../../common/top-java.html">Java</a>
     <a href="../../common/top-go.html">Go</a>
     <a href="../../mcq-quiz.html" style="background:linear-gradient(90deg,#6366f1,#8b5cf6);color:#fff;padding:.3rem .75rem;border-radius:.4rem;font-weight:600">🎯 MCQ Quiz</a>
@@ -146,13 +147,13 @@
 <button class="tab-btn" data-tab="backend">🔧 Backend <span style="opacity:.5;font-size:11px">(5)</span></button>
 <button class="tab-btn" data-tab="database">🗄️ Database <span style="opacity:.5;font-size:11px">(7)</span></button>
 <button class="tab-btn" data-tab="concurrency">⚡ Concurrency <span style="opacity:.5;font-size:11px">(2)</span></button>
-<button class="tab-btn" data-tab="security">🔒 Security <span style="opacity:.5;font-size:11px">(1)</span></button>
-<button class="tab-btn" data-tab="os">🖥️ OS <span style="opacity:.5;font-size:11px">(11)</span></button>
-<button class="tab-btn" data-tab="performance">⚡ Performance <span style="opacity:.5;font-size:11px">(6)</span></button>
 <button class="tab-btn" data-tab="cpp">⚙️ C++ <span style="opacity:.5;font-size:11px">(25)</span></button>
 <button class="tab-btn" data-tab="ml_systems">🤖 ML Systems <span style="opacity:.5;font-size:11px">(4)</span></button>
-<button class="tab-btn" data-tab="java">☕ Java <span style="opacity:.5;font-size:11px">(1)</span></button>
-<button class="tab-btn" data-tab="lld">📐 LLD <span style="opacity:.5;font-size:11px">(3)</span></button></div></div>
+<button class="tab-btn" data-tab="os">🖥️ OS <span style="opacity:.5;font-size:11px">(11)</span></button>
+<button class="tab-btn" data-tab="lld">📐 LLD <span style="opacity:.5;font-size:11px">(3)</span></button>
+<button class="tab-btn" data-tab="security">🔒 Security <span style="opacity:.5;font-size:11px">(1)</span></button>
+<button class="tab-btn" data-tab="performance">⚡ Performance <span style="opacity:.5;font-size:11px">(6)</span></button>
+<button class="tab-btn" data-tab="java">☕ Java <span style="opacity:.5;font-size:11px">(1)</span></button></div></div>
 <div class="container"><div class="tab-panel active" id="tab-coding">
   <div class="questions-header">
     <h3>💻 DSA</h3>
@@ -600,423 +601,6 @@ if (CAS(&amp;head, expected, { nodeB, 6 })) { /* won */ }
     <div class="q-meta-row">
       <span class="q-meta-chip">🗓 Concurrency Round</span>
       <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Databricks</span>
-    </div>
-  </div>
-</div>
-</div>
-<div class="tab-panel" id="tab-security">
-  <div class="questions-header">
-    <h3>🔒 Security</h3>
-    <span class="q-count">1 questions</span>
-  </div>
-  <div class="q-wrapper">
-  <div class="question-item" data-difficulty="medium" data-subcategory="appsec">
-    <span class="q-index">1</span>
-    <span class="q-text">Secrets management — best practices</span>
-    <div class="q-tags"><span class="q-tag">secrets</span><span class="q-tag">vault</span><span class="q-tag">env-vars</span></div>
-    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
-    <span class="q-freq freq-high">84%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Anti-patterns</span><br><ul><li>Hardcoded secrets in code → leaked to Git history forever</li><li>Secrets in environment variables → visible in process list, crash dumps, logs</li><li>Secrets in docker-compose.yml committed to repo</li><li>Secrets passed as command-line args → visible in ps output</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">HashiCorp Vault</span><br><pre># Dynamic secrets — Vault generates short-lived DB credentials per request
-vault read database/creds/my-role
-# Returns: {username: "v-app-XyZ", password: "...", lease_duration: "1h"}
-# Automatically revoked after 1h — no long-lived DB passwords!
-
-# App integration:
-VaultClient vault = new VaultClient("https://vault.internal");
-String secret = vault.read("secret/data/db-password").get("value");</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Best Practices</span><br><ul><li><b>Vault / AWS Secrets Manager / GCP Secret Manager:</b> Centralized, audit-logged, auto-rotation</li><li><b>Secret rotation:</b> Automatic rotation without app restart (blue-green credential rotation)</li><li><b>Just-in-time secrets:</b> Request credential when needed, revoke immediately after</li><li><b>Kubernetes:</b> Use external-secrets operator to sync from Vault/SM into K8s Secrets</li><li><b>Git scanning:</b> TruffleHog, GitGuardian pre-commit hooks to prevent secret commits</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is envelope encryption and how does AWS KMS implement it?<br>• How do you handle secret rotation without downtime?<br>• What is SPIFFE/SPIRE for workload identity?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Security Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Stripe, PayPal...</span>
-    </div>
-  </div>
-</div>
-</div>
-<div class="tab-panel" id="tab-os">
-  <div class="questions-header">
-    <h3>🖥️ OS</h3>
-    <span class="q-count">11 questions</span>
-  </div>
-  <div class="q-wrapper">
-  <div class="question-item" data-difficulty="hard" data-subcategory="io">
-    <span class="q-index">1</span>
-    <span class="q-text">I/O models — blocking, non-blocking, I/O multiplexing, async, signals</span>
-    <div class="q-tags"><span class="q-tag">io-models</span><span class="q-tag">blocking</span><span class="q-tag">epoll</span></div>
-    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
-    <span class="q-freq freq-high">90%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">5 I/O Models</span><br><ul><li><b>Blocking I/O:</b> Thread blocks until data ready. Simple. Scales poorly (1 thread/connection).</li><li><b>Non-blocking I/O:</b> Returns EAGAIN immediately if no data. Polling loop wastes CPU.</li><li><b>I/O Multiplexing (select/poll/epoll):</b> One thread watches many fds. Blocks on select, wakes when any fd ready. Efficient for many connections.</li><li><b>Signal-driven I/O (SIGIO):</b> Signal when data ready. Complex, rarely used.</li><li><b>Async I/O (AIO, io_uring):</b> Kernel does I/O, notifies completion. True async. io_uring (Linux 5.1+): submission/completion queues in shared memory, no syscall overhead.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">epoll vs select vs poll</span><br><ul><li><b>select:</b> fd_set bitmap, max 1024 fds, O(n) scan, copies fd_set each call</li><li><b>poll:</b> array of pollfd, no 1024 limit, still O(n) scan</li><li><b>epoll:</b> O(1) event notification. Register fds once (<code>epoll_ctl</code>), wait (<code>epoll_wait</code>) returns only ready fds. Kernel red-black tree for O(log n) add/remove. Level-triggered or edge-triggered modes.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">io_uring (Modern Linux)</span><br>Fully async: app submits I/O requests to SQ ring, kernel processes, posts completions to CQ ring. Zero syscall on fast path. Used in: Tokio (Rust), QEMU, PostgreSQL, Nginx.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is edge-triggered vs level-triggered epoll?<br>• How does Node.js use libuv to implement the event loop?<br>• What is O_DIRECT and when would you use it?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Coding Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Nvidia, Apple...</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="hard" data-subcategory="memory">
-    <span class="q-index">2</span>
-    <span class="q-text">Virtual memory — paging, page tables, TLB</span>
-    <div class="q-tags"><span class="q-tag">virtual-memory</span><span class="q-tag">paging</span><span class="q-tag">page-table</span></div>
-    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
-    <span class="q-freq freq-high">88%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Virtual Memory</span><br>Each process has its own virtual address space (e.g., 0 to 2^48 on 64-bit). OS maps virtual pages → physical frames via <b>page table</b>. Allows: isolation between processes, overcommit memory, memory-mapped files, copy-on-write.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Multi-level Page Tables</span><br>64-bit systems use 4-level (x86-64) or 5-level page tables to reduce space. Each level is a 4KB page of 512 8-byte entries. Virtual address split:<br><pre>[sign ext | L4 (9) | L3 (9) | L2 (9) | L1 (9) | Offset (12)]</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">TLB (Translation Lookaside Buffer)</span><br>Hardware cache for recent virtual→physical translations. TLB hit: 1 cycle. TLB miss: walk page table (several cycles + memory accesses). TLB flushed on context switch (unless ASID used). Huge pages (2MB/1GB) reduce TLB misses.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Page Fault</span><br><ul><li><b>Minor:</b> Page in memory but not mapped (memory-mapped file, copy-on-write) → map it</li><li><b>Major:</b> Page not in memory → read from disk (swap). Expensive (~ms)</li><li><b>Invalid:</b> Access to unmapped address → SIGSEGV</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is demand paging and how does it relate to exec()?<br>• What is transparent huge pages (THP) and when is it harmful? (database workloads)<br>• How does mmap() differ from malloc()?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Coding Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Nvidia, Apple...</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="hard" data-subcategory="concurrency">
-    <span class="q-index">3</span>
-    <span class="q-text">Deadlock — conditions, prevention, avoidance, detection</span>
-    <div class="q-tags"><span class="q-tag">deadlock</span><span class="q-tag">coffman</span><span class="q-tag">banker</span></div>
-    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
-    <span class="q-freq freq-high">88%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Coffman's Four Necessary Conditions</span><br><ul><li><b>Mutual Exclusion:</b> Resources not sharable</li><li><b>Hold and Wait:</b> Process holds resource while waiting for another</li><li><b>No Preemption:</b> Resources can't be forcibly taken</li><li><b>Circular Wait:</b> T1→waits for T2→waits for T3→waits for T1</li></ul>Breaking <b>any one</b> prevents deadlock.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Prevention</span><br><ul><li><b>Eliminate Hold and Wait:</b> Request all resources at once before starting</li><li><b>Allow Preemption:</b> If waiting, release held resources (costly)</li><li><b>Eliminate Circular Wait:</b> Global ordering of resources (always lock in same order)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Avoidance — Banker's Algorithm</span><br>Each process declares max resource claim. System checks if granting a request leaves system in <b>safe state</b> (all processes can complete). If unsafe → deny and wait. Used in theory; impractical for dynamic systems.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Detection and Recovery</span><br>Allow deadlocks to occur. Periodically run deadlock detector (wait-for graph cycle detection). Recovery: kill one victim process, or preempt + rollback resources.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does Linux kernel handle deadlocks? (lockdep detector in debug build)<br>• What is a livelock vs deadlock?<br>• How does optimistic concurrency (OCC) avoid deadlocks?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Concurrency Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Nvidia, Apple...</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="medium" data-subcategory="process">
-    <span class="q-index">4</span>
-    <span class="q-text">Context switching — cost, what is saved/restored</span>
-    <div class="q-tags"><span class="q-tag">context-switch</span><span class="q-tag">registers</span><span class="q-tag">tlb-flush</span></div>
-    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
-    <span class="q-freq freq-high">86%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">What is Context Switch</span><br>OS saving state of running process/thread and restoring another's. Triggered by: timer interrupt (preemption), syscall, I/O wait, voluntary yield.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Saved State</span><br><ul><li>CPU registers: PC (instruction pointer), SP (stack pointer), general-purpose registers, EFLAGS</li><li>FPU/SIMD state (optional, lazy)</li><li>TLB entries (or flush TLB on switch — expensive on older hardware)</li><li>Process: page table base register (CR3 on x86) → TLB flush → 100s of ns extra</li><li>Thread (same process): no page table switch → cheaper (~1-10μs vs ~10-100μs)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cost</span><br>Process switch: ~1-100μs depending on TLB state, cache warmth, address space size. Thread switch (same process): ~1-10μs. Goroutine/coroutine switch: ~100ns (no kernel, no TLB flush — all in userspace).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Reducing Context Switches</span><br><ul><li>Thread pools (avoid creation overhead)</li><li>Async I/O / event loops (fewer threads, less switching)</li><li>CPU affinity (keep thread on same core → warm L1/L2 cache)</li><li>Lock-free algorithms (avoid blocking)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is ASID (Address Space ID) and how does it reduce TLB flushing?<br>• How does the Linux scheduler decide when to preempt? (timer interrupt + vruntime)<br>• What is voluntary vs involuntary context switch? (cs vs nvcswch in /proc/PID/status)</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Coding Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Nvidia, Apple...</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="medium" data-subcategory="memory">
-    <span class="q-index">5</span>
-    <span class="q-text">Copy-on-Write (COW) in fork() — how it works</span>
-    <div class="q-tags"><span class="q-tag">copy-on-write</span><span class="q-tag">fork</span><span class="q-tag">page-table</span></div>
-    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
-    <span class="q-freq freq-high">84%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">fork() without COW</span><br>Old approach: fork duplicates entire parent address space immediately. Expensive for large processes — most forked children exec() immediately, wasting the copy.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">COW Optimization</span><br>After fork(), parent and child share the same physical pages (marked read-only). On first write by either process → page fault → OS copies only that page → independent copy.<br><pre>fork()
-  → Page tables copied (cheap)
-  → Physical pages marked read-only + copy-on-write
-
-Child writes to variable x:
-  → Page fault (read-only violation)
-  → OS copies page → child gets private copy
-  → Child's page marked writable
-  → Parent still sees original</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Where COW is used</span><br><ul><li>fork() in Unix/Linux</li><li>mmap(MAP_PRIVATE): shared initially, COW on write</li><li>Container images: layers are shared via COW (OverlayFS)</li><li>Redis persistence: BGSAVE forks → COW allows snapshot without blocking writes</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is vfork() and how does it differ from COW fork()?<br>• How does Redis BGSAVE use COW for non-blocking snapshots?<br>• What is the transparent huge page and COW interaction?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Coding Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Nvidia, Apple...</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="hard" data-subcategory="concurrency">
-    <span class="q-index">6</span>
-    <span class="q-text">Spinlock vs Mutex vs Semaphore — detailed comparison</span>
-    <div class="q-tags"><span class="q-tag">spinlock</span><span class="q-tag">mutex</span><span class="q-tag">semaphore</span></div>
-    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
-    <span class="q-freq freq-high">84%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Spinlock</span><br>Thread loops (busy-waits) until lock is free. No OS involvement for uncontended case.<br><b>Pros:</b> Near-zero overhead for very short critical sections, no context switch.<br><b>Cons:</b> Wastes CPU if lock held long, terrible on uniprocessor, can cause priority inversion.<br><b>Use when:</b> Critical section &lt;~100ns (kernel code, interrupt handlers, lock-free structures).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Mutex</span><br>Thread puts itself to sleep if lock unavailable. OS wakes it when lock released.<br><b>Pros:</b> No CPU waste while waiting, works with long critical sections.<br><b>Cons:</b> Context switch overhead (~1-10μs), kernel involvement.<br><b>Adaptive Mutex (Linux futex):</b> Spin briefly, then sleep. Best of both worlds.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Semaphore</span><br>Generalized mutex: can allow N concurrent holders (counting semaphore). Binary semaphore = mutex but can be released by different thread (unlike mutex, which must be released by owner). Use for: resource pools, producer-consumer signaling.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">futex (Linux fast userspace mutex)</span><br>Check lock in userspace (atomic). Only make syscall when contended (wait/wake). Foundation of pthread_mutex, Java synchronized.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the difference between mutex and binary semaphore?<br>• What is priority inversion and how does priority inheritance solve it? (Mars Pathfinder bug)<br>• What are reader-writer locks and when do they help?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Concurrency Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Nvidia, Apple...</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="hard" data-subcategory="scheduling">
-    <span class="q-index">7</span>
-    <span class="q-text">Process scheduling — CFS (Completely Fair Scheduler) in Linux</span>
-    <div class="q-tags"><span class="q-tag">cfs</span><span class="q-tag">scheduler</span><span class="q-tag">vruntime</span></div>
-    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
-    <span class="q-freq freq-med">78%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">CFS Algorithm</span><br>CFS maintains a <b>virtual runtime (vruntime)</b> per process — time the process has run, weighted by priority (nice value). Always picks the process with <b>minimum vruntime</b> (leftmost node in red-black tree).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">vruntime Update</span><br><pre>vruntime += actual_runtime × (NICE_0_WEIGHT / task_weight)
-# Low-priority (high nice) tasks: vruntime increases faster → scheduled less
-# High-priority (low nice): vruntime increases slower → scheduled more</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Time Slice</span><br>No fixed time slice in CFS. Scheduling period (default 6ms) divided proportionally by weights. Minimum granularity: 0.75ms. Prevents starvation.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Priority Inheritance</span><br>When high-priority task blocks on mutex held by low-priority task → boost low-priority task's priority temporarily to prevent priority inversion (critical in RT systems).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the difference between CFS and O(1) scheduler?<br>• What is nice value range and how does it map to weight?<br>• How does SCHED_FIFO differ from SCHED_OTHER (CFS)?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Coding Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Nvidia, Apple...</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="medium" data-subcategory="memory">
-    <span class="q-index">8</span>
-    <span class="q-text">Memory-mapped files (mmap) — mechanics and use cases</span>
-    <div class="q-tags"><span class="q-tag">mmap</span><span class="q-tag">memory-mapped</span><span class="q-tag">file-io</span></div>
-    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
-    <span class="q-freq freq-med">78%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">How mmap works</span><br><code>mmap()</code> maps a file or device into virtual address space. OS does NOT read file immediately — uses demand paging. Reading page triggers major page fault → kernel reads from file into physical page → mapped.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">mmap vs read()/write()</span><br><ul><li><b>read():</b> Kernel copies file data → kernel buffer → user buffer. Double copy.</li><li><b>mmap():</b> Maps kernel page cache directly into user address space. Zero copy on access. Better for large files with random access.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Shared Memory via mmap</span><br><pre>// Process A:
-int fd = open("/tmp/shm", O_CREAT|O_RDWR, 0666);
-ftruncate(fd, 4096);
-void* ptr = mmap(0, 4096, PROT_READ|PROT_WRITE, MAP_SHARED, fd, 0);
-
-// Process B: same mmap call — both map same physical pages
-// Writes by A immediately visible to B</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Use Cases</span><br><ul><li>Databases: InnoDB buffer pool, SQLite, LMDB use mmap for zero-copy I/O</li><li>Shared memory IPC: multiple processes sharing data structures</li><li>Executable loading: kernel mmaps ELF segments — text, data, BSS</li><li>io_uring: submission/completion queues mapped into user space</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the difference between MAP_SHARED and MAP_PRIVATE?<br>• What is msync() and when do you need it?<br>• How does mmap interact with the page cache?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Coding Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Nvidia, Apple...</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="hard" data-subcategory="filesystem">
-    <span class="q-index">9</span>
-    <span class="q-text">Linux file system internals — inode, dentry, VFS, page cache</span>
-    <div class="q-tags"><span class="q-tag">inode</span><span class="q-tag">dentry</span><span class="q-tag">vfs</span></div>
-    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
-    <span class="q-freq freq-med">76%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">VFS (Virtual File System)</span><br>Abstraction layer. Provides uniform API (open/read/write/close) for all file systems (ext4, XFS, btrfs, tmpfs, NFS, procfs). Drivers implement VFS operations.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Inode</span><br>Fixed-size metadata structure for each file:<br><ul><li>File type, permissions, owner (UID/GID)</li><li>Size, timestamps (atime/mtime/ctime)</li><li>Block pointers (direct, indirect, double-indirect)</li><li>Link count (hard links)</li><li><b>NOT:</b> file name (stored in directory entry)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Dentry (Directory Entry)</span><br>Cache of name → inode mappings. Path lookup: <code>/home/user/file.txt</code> → traverse dentries: root dentry → home dentry → user dentry → file inode. Dentry cache (dcache) avoids repeated disk lookups.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Page Cache</span><br>Buffer for file data. read() → kernel checks page cache first. On miss: read from disk, cache page. write() → write to page cache (writeback=async), or writethrough, or direct I/O (O_DIRECT bypasses cache). <code>free</code> command: 'cached' = page cache using RAM (can be reclaimed).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the difference between hard link and soft (symbolic) link?<br>• How does journaling (ext4) protect against filesystem corruption on crash?<br>• What is a union filesystem and how is it used in Docker?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Coding Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Nvidia, Apple...</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="medium" data-subcategory="memory">
-    <span class="q-index">10</span>
-    <span class="q-text">Memory-mapped files</span>
-    <div class="q-tags"><span class="q-tag">mmap</span><span class="q-tag">shared-memory</span><span class="q-tag">ipc</span></div>
-    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
-    <span class="q-freq freq-med">72%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer">Map file into virtual address space. OS pages on demand. Used in IPC, databases (fast I/O).</div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 OS Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Databricks, Snowflake</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="hard" data-subcategory="hardware">
-    <span class="q-index">11</span>
-    <span class="q-text">NUMA (Non-Uniform Memory Access) — impact on performance</span>
-    <div class="q-tags"><span class="q-tag">numa</span><span class="q-tag">memory-locality</span><span class="q-tag">cpu-affinity</span></div>
-    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
-    <span class="q-freq freq-med">72%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">NUMA Architecture</span><br>Multi-socket servers: each CPU socket has its own local DRAM. Accessing local memory: fast (~80ns). Accessing remote memory (other socket's DRAM): slow (~150ns, ~2x). OS/hardware provides NUMA node topology.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">NUMA Problems</span><br><ul><li>Thread on node 0 allocates, migrated to node 1 → remote memory access</li><li>False sharing: different threads on different NUMA nodes modify same cache line → cache coherence traffic</li><li>Memory-intensive apps (databases, ML) severely impacted</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Mitigation</span><br><ul><li><code>numactl --membind=0 --cpubind=0 ./app</code> — bind to single NUMA node</li><li><code>numactl --interleave=all</code> — round-robin allocation across nodes (reduces hot-spots)</li><li>NUMA-aware memory allocators (jemalloc, tcmalloc have NUMA support)</li><li>Database NUMA awareness: MySQL/PostgreSQL can bind buffer pool per node</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache Hierarchy</span><br>L1 (4 cycles, 32KB per core) → L2 (12 cycles, 256KB per core) → L3 (30-50 cycles, shared per socket, 32-64MB) → DRAM (~200 cycles) → Remote DRAM (~400 cycles) → NVMe SSD (~100μs) → HDD (~10ms).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is cache line size and how does false sharing occur?<br>• How does CPU affinity (<code>taskset</code>) help performance?<br>• What is NUMA balancing in Linux?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Coding Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Databricks, Snowflake, Apple</span>
-    </div>
-  </div>
-</div>
-</div>
-<div class="tab-panel" id="tab-performance">
-  <div class="questions-header">
-    <h3>⚡ Performance</h3>
-    <span class="q-count">6 questions</span>
-  </div>
-  <div class="q-wrapper">
-  <div class="question-item" data-difficulty="hard" data-subcategory="performance">
-    <span class="q-index">1</span>
-    <span class="q-text">How do you diagnose and fix high API latency?</span>
-    <div class="q-tags"><span class="q-tag">latency</span><span class="q-tag">profiling</span><span class="q-tag">p99</span></div>
-    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
-    <span class="q-freq freq-high">92%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Systematic Approach</span><br><pre>1. MEASURE: Where is the time going?
-   - Add distributed tracing (Jaeger/Zipkin): see each span's duration
-   - p50/p95/p99 latency (NOT just average — outliers matter)
-   - Breakdown: network + serialization + DB queries + external API + CPU
-
-2. IDENTIFY bottleneck:
-   Common causes:
-   - N+1 queries (add JOIN FETCH or batch)
-   - Missing DB index (check EXPLAIN ANALYZE → seq scan)
-   - Synchronous external API call in critical path (make async / cache)
-   - Lock contention (connection pool exhausted, mutex hotspot)
-   - GC pauses (Java: -XX:+PrintGCDetails, G1/ZGC tuning)
-   - Memory pressure (swap, cache thrashing)
-
-3. FIX:
-   - Caching: Redis in front of slow DB queries
-   - Async: move non-critical work off request path (Kafka)
-   - Parallelism: concurrent DB queries (CompletableFuture/goroutines)
-   - Index: add composite index for slow query
-   - Connection pooling: tune min/max pool size</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Metrics</span><br><ul><li><b>Latency percentiles:</b> p50=100ms is fine; p99=5s means 1% users wait 5 seconds</li><li><b>Throughput:</b> RPS the service can handle without degrading</li><li><b>Error rate:</b> 5xx rate as % of total requests</li><li><b>Saturation:</b> CPU%, memory%, connection pool utilization, queue depth</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">USE Method</span><br>For every resource: <b>Utilization</b> (how busy), <b>Saturation</b> (how much queuing), <b>Errors</b> (error count). Invented by Brendan Gregg.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you use flame graphs to identify CPU hotspots?<br>• What is the difference between tail latency and average latency?<br>• How do you implement circuit breakers to protect against latency cascades?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 System Design Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="medium" data-subcategory="caching">
-    <span class="q-index">2</span>
-    <span class="q-text">Cache strategies — cache-aside, read-through, write-through, write-back</span>
-    <div class="q-tags"><span class="q-tag">caching</span><span class="q-tag">redis</span><span class="q-tag">cache-aside</span></div>
-    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
-    <span class="q-freq freq-high">88%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Cache Strategies</span><br><ul><li><b>Cache-Aside (Lazy loading):</b> App checks cache first; on miss, reads DB, populates cache. Cache only stores what's actually requested. Risk: thundering herd on cold start.</li><li><b>Read-Through:</b> Cache reads from DB automatically on miss (library handles it). App always reads from cache. DB not directly accessed by app.</li><li><b>Write-Through:</b> Write to cache AND DB synchronously. Cache never stale. High write latency (must wait for both). Good for read-heavy.</li><li><b>Write-Back (Write-Behind):</b> Write to cache, return immediately. Write to DB asynchronously. Fast writes. Risk: data loss if cache crashes before flush.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache-Aside Pattern (most common)</span><br><pre>def get_user(user_id):
-    # Try cache first
-    user = redis.get(f"user:{user_id}")
-    if user:
-        return deserialize(user)  # cache hit
-    
-    # Cache miss — read from DB
-    user = db.query("SELECT * FROM users WHERE id=%s", user_id)
-    
-    # Populate cache with TTL
-    redis.setex(f"user:{user_id}", ttl=3600, value=serialize(user))
-    return user
-
-def update_user(user_id, data):
-    db.execute("UPDATE users SET ... WHERE id=%s", user_id)
-    redis.delete(f"user:{user_id}")  # invalidate — don't update!</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache Eviction Policies</span><br><ul><li><b>LRU:</b> Evict least recently used. Good general-purpose.</li><li><b>LFU:</b> Evict least frequently used. Better for skewed access patterns.</li><li><b>TTL:</b> Time-based expiry. Always stale by at most TTL seconds.</li><li><b>Allkeys-lru (Redis):</b> Apply LRU across all keys when memory full.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the thundering herd problem and how do you prevent it? (mutex/lock on cache miss, staggered TTLs)<br>• How do you handle cache warming after a cold restart?<br>• What is probabilistic early expiration (PER) and how does it prevent dogpile?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Backend Design</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="medium" data-subcategory="observability">
-    <span class="q-index">3</span>
-    <span class="q-text">Observability — metrics, logs, traces — the three pillars</span>
-    <div class="q-tags"><span class="q-tag">observability</span><span class="q-tag">prometheus</span><span class="q-tag">grafana</span></div>
-    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
-    <span class="q-freq freq-high">86%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Three Pillars</span><br><ul><li><b>Metrics:</b> Numeric aggregations over time. Low cardinality. Cheap to store. Tool: Prometheus (pull-based scraping) + Grafana. Counter, Gauge, Histogram, Summary.</li><li><b>Logs:</b> Discrete events with context. High volume. Searchable. Tool: ELK stack (Elasticsearch+Logstash+Kibana) or Loki+Grafana. Structured JSON logs with trace_id for correlation.</li><li><b>Traces:</b> Request journey across services. Tool: Jaeger, Zipkin, Tempo. Essential for microservices debugging.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">SLI / SLO / SLA / Error Budget</span><br><pre>SLI (Service Level Indicator): the metric you measure
-  e.g., "% of requests with latency &lt; 200ms"
-
-SLO (Service Level Objective): your internal target
-  e.g., "99.9% of requests &lt; 200ms over rolling 30 days"
-
-SLA (Service Level Agreement): contractual with customer
-  e.g., "99.5% uptime or credit applied"
-
-Error Budget: 1 - SLO = allowed unreliability
-  99.9% SLO = 0.1% error budget = 43.8 min downtime/month
-  If budget exhausted: freeze feature work, focus on reliability</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">RED Method (for services)</span><br><b>R</b>ate (requests/sec), <b>E</b>rror rate (errors/sec), <b>D</b>uration (latency). Apply to every microservice for quick health check.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you implement alerting without alert fatigue? (symptom-based not cause-based alerts)<br>• What is the difference between blackbox and whitebox monitoring?<br>• How does OpenTelemetry unify metrics, logs, and traces?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 System Design Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="medium" data-subcategory="observability">
-    <span class="q-index">4</span>
-    <span class="q-text">Explain distributed tracing — how it works</span>
-    <div class="q-tags"><span class="q-tag">distributed-tracing</span><span class="q-tag">opentelemetry</span><span class="q-tag">jaeger</span></div>
-    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
-    <span class="q-freq freq-high">84%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">How it works</span><br><pre>Request enters Service A → Tracer generates trace_id (128-bit)
-Service A calls Service B → propagates trace_id + span_id in HTTP header:
-  traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01
-               version  traceId                    parentSpanId   flags
-
-Each service creates a span:
-  span = {traceId, spanId, parentSpanId, name, startTime, duration,
-          tags: {"db.type":"postgresql", "http.status":200},
-          logs: [{"event":"query", "sql":"..."}]}
-
-Spans sent async to collector (Jaeger/Zipkin) → assembled into trace tree</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">OpenTelemetry (OTel)</span><br><ul><li>Vendor-neutral standard for traces, metrics, logs</li><li>SDK instruments your code (auto-instrumentation for popular frameworks)</li><li>Exporter sends to Jaeger, Zipkin, Tempo, AWS X-Ray, Datadog</li><li><code>OTEL_TRACES_EXPORTER=jaeger OTEL_EXPORTER_JAEGER_ENDPOINT=http://jaeger:14268/api/traces</code></li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Sampling</span><br><ul><li><b>Head sampling:</b> Decision at trace start (before outcome known). Simple. Loses tail errors.</li><li><b>Tail sampling:</b> Buffer traces, decide after seeing all spans. Can keep errored/slow traces.</li><li><b>Rate:</b> 1% for healthy services, 100% for errors, 10% for slow (p99 &gt; 1s)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the W3C Trace Context specification?<br>• How does continuous profiling (Pyroscope, Parca) complement distributed tracing?<br>• How do you correlate traces with logs and metrics? (structured logging with trace_id)</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 System Design Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="medium" data-subcategory="performance">
-    <span class="q-index">5</span>
-    <span class="q-text">Load testing — how to approach and what tools to use</span>
-    <div class="q-tags"><span class="q-tag">load-testing</span><span class="q-tag">k6</span><span class="q-tag">gatling</span></div>
-    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
-    <span class="q-freq freq-med">78%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Test Types</span><br><ul><li><b>Load test:</b> Expected normal + peak load. Validate SLAs. Measure p99 latency, throughput, error rate.</li><li><b>Stress test:</b> Push beyond expected load until system breaks. Find breaking point. Test recovery.</li><li><b>Soak/endurance test:</b> Normal load for extended time (hours/days). Find memory leaks, connection exhaustion, log rotation issues.</li><li><b>Spike test:</b> Sudden large traffic burst. Test autoscaling, circuit breakers.</li><li><b>Chaos test:</b> Kill instances, inject latency, corrupt network. Test resilience.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">k6 Example</span><br><pre>import http from 'k6/http';
-import { check, sleep } from 'k6';
-
-export const options = {
-  stages: [
-    { duration: '2m', target: 100 },   // ramp up to 100 VUs
-    { duration: '5m', target: 100 },   // hold at 100 VUs
-    { duration: '2m', target: 0 },     // ramp down
-  ],
-  thresholds: {
-    'http_req_duration': ['p(99)&lt;500'],  // 99% requests &lt; 500ms
-    'http_req_failed': ['rate&lt;0.01'],   // &lt;1% error rate
-  },
-};
-
-export default function() {
-  const r = http.get('https://api.example.com/users');
-  check(r, { 'status 200': (r) =&gt; r.status === 200 });
-  sleep(1);
-}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">What to measure</span><br><ul><li>Throughput: requests/sec at saturation</li><li>Latency: p50, p95, p99, p999 as load increases</li><li>Error rate: 5xx rate, timeout rate</li><li>Resource utilization: CPU, memory, disk I/O, network on each tier</li><li>Database: connection pool saturation, query latency at load</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you load test a WebSocket-based chat system?<br>• What is the difference between vertical and horizontal scaling in response to load tests?<br>• How do you profile a Java application under production load? (async-profiler, JFR)</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 System Design Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
-    </div>
-  </div>
-</div>
-<div class="q-wrapper">
-  <div class="question-item" data-difficulty="hard" data-subcategory="performance">
-    <span class="q-index">6</span>
-    <span class="q-text">How does CPU caching work and why does it matter for performance?</span>
-    <div class="q-tags"><span class="q-tag">cpu-cache</span><span class="q-tag">cache-line</span><span class="q-tag">false-sharing</span></div>
-    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
-    <span class="q-freq freq-med">74%</span>
-  </div>
-  <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Memory Hierarchy</span><br><pre>L1 cache:  ~32KB per core,   ~1ns  latency
-L2 cache: ~256KB per core,   ~4ns  latency
-L3 cache:   ~8MB shared,     ~40ns latency
-RAM:        ~16-64GB,       ~100ns latency
-SSD NVMe:              ~100μs latency
-HDD:                    ~10ms latency</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache Lines</span><br>Data loaded in 64-byte cache lines. Accessing one byte loads entire 64-byte block. Sequential access (arrays) → excellent cache utilization. Random access (linked lists) → cache miss per node.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">False Sharing</span><br><pre># Two threads update different variables in same cache line:
-# Thread 1 updates counter_a, Thread 2 updates counter_b
-# If they're adjacent in memory → same cache line → cache coherence traffic
-# Core 1 invalidates Core 2's cache line on every write → performance degrades!
-
-# Fix: padding
-struct PaddedCounter {
-    alignas(64) std::atomic&lt;int64_t&gt; value;  // 64-byte aligned
-    char padding[64 - sizeof(std::atomic&lt;int64_t&gt;)];  // fill rest of cache line
-};</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Practical Impact</span><br><ul><li>Array of structs vs Struct of arrays (SOA): SOA = better cache usage for column-wise processing</li><li>Cache-oblivious algorithms (recursive divide) beat sequential for large matrices</li><li>Go: sync.Mutex padded to avoid false sharing with adjacent data</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is NUMA (Non-Uniform Memory Access) and how does it affect multi-socket servers?<br>• How does prefetching work and how can you hint the CPU to prefetch?<br>• What is the impact of cache misses on a tight loop processing 100M integers?</div></div></div>
-    <div class="q-meta-row">
-      <span class="q-meta-chip">🗓 Coding Round</span>
-      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Databricks, Snowflake...</span>
     </div>
   </div>
 </div>
@@ -1807,24 +1391,200 @@ Stack: REST/gRPC → Feature store (Redis, &lt;5ms) → Model server (TorchServe
   </div>
 </div>
 </div>
-<div class="tab-panel" id="tab-java">
+<div class="tab-panel" id="tab-os">
   <div class="questions-header">
-    <h3>☕ Java</h3>
-    <span class="q-count">1 questions</span>
+    <h3>🖥️ OS</h3>
+    <span class="q-count">11 questions</span>
   </div>
   <div class="q-wrapper">
-  <div class="question-item" data-difficulty="hard" data-subcategory="concurrency">
+  <div class="question-item" data-difficulty="hard" data-subcategory="io">
     <span class="q-index">1</span>
-    <span class="q-text">Java Memory Model and happens-before</span>
-    <div class="q-tags"><span class="q-tag">jmm</span><span class="q-tag">happens-before</span><span class="q-tag">volatile</span></div>
+    <span class="q-text">I/O models — blocking, non-blocking, I/O multiplexing, async, signals</span>
+    <div class="q-tags"><span class="q-tag">io-models</span><span class="q-tag">blocking</span><span class="q-tag">epoll</span></div>
     <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
-    <span class="q-freq freq-high">82%</span>
+    <span class="q-freq freq-high">90%</span>
   </div>
   <div class="question-expand">
-    <div class="q-answer"><div class="answer-section"><span class="answer-label">Java Memory Model (JMM) Happens-Before</span><br>If action A happens-before B, then A's writes are visible to B. Established by:<br><ul><li>Monitor unlock happens-before lock by any thread</li><li>volatile write happens-before volatile read of same field</li><li>Thread.start() happens-before all actions in started thread</li><li>Thread.join() happens-before all actions after join returns</li><li>Program order within single thread</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">volatile vs synchronized</span><br><ul><li><b>volatile:</b> Visibility + ordering for single variable. No atomicity for compound ops (i++ is not atomic).</li><li><b>synchronized:</b> Mutual exclusion + full memory visibility. Heavier.</li><li><b>Atomic classes:</b> CAS-based, lock-free, best for single variable atomic operations.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Why does double-checked locking need volatile? (prevents reordering of new T() allocation vs pointer assignment)<br>• What is a publication failure and how does final field guarantee prevent it?<br>• What is memory_order in C++ and how does it map to JMM concepts?</div></div></div>
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">5 I/O Models</span><br><ul><li><b>Blocking I/O:</b> Thread blocks until data ready. Simple. Scales poorly (1 thread/connection).</li><li><b>Non-blocking I/O:</b> Returns EAGAIN immediately if no data. Polling loop wastes CPU.</li><li><b>I/O Multiplexing (select/poll/epoll):</b> One thread watches many fds. Blocks on select, wakes when any fd ready. Efficient for many connections.</li><li><b>Signal-driven I/O (SIGIO):</b> Signal when data ready. Complex, rarely used.</li><li><b>Async I/O (AIO, io_uring):</b> Kernel does I/O, notifies completion. True async. io_uring (Linux 5.1+): submission/completion queues in shared memory, no syscall overhead.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">epoll vs select vs poll</span><br><ul><li><b>select:</b> fd_set bitmap, max 1024 fds, O(n) scan, copies fd_set each call</li><li><b>poll:</b> array of pollfd, no 1024 limit, still O(n) scan</li><li><b>epoll:</b> O(1) event notification. Register fds once (<code>epoll_ctl</code>), wait (<code>epoll_wait</code>) returns only ready fds. Kernel red-black tree for O(log n) add/remove. Level-triggered or edge-triggered modes.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">io_uring (Modern Linux)</span><br>Fully async: app submits I/O requests to SQ ring, kernel processes, posts completions to CQ ring. Zero syscall on fast path. Used in: Tokio (Rust), QEMU, PostgreSQL, Nginx.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is edge-triggered vs level-triggered epoll?<br>• How does Node.js use libuv to implement the event loop?<br>• What is O_DIRECT and when would you use it?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Nvidia, Apple...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="memory">
+    <span class="q-index">2</span>
+    <span class="q-text">Virtual memory — paging, page tables, TLB</span>
+    <div class="q-tags"><span class="q-tag">virtual-memory</span><span class="q-tag">paging</span><span class="q-tag">page-table</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Virtual Memory</span><br>Each process has its own virtual address space (e.g., 0 to 2^48 on 64-bit). OS maps virtual pages → physical frames via <b>page table</b>. Allows: isolation between processes, overcommit memory, memory-mapped files, copy-on-write.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Multi-level Page Tables</span><br>64-bit systems use 4-level (x86-64) or 5-level page tables to reduce space. Each level is a 4KB page of 512 8-byte entries. Virtual address split:<br><pre>[sign ext | L4 (9) | L3 (9) | L2 (9) | L1 (9) | Offset (12)]</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">TLB (Translation Lookaside Buffer)</span><br>Hardware cache for recent virtual→physical translations. TLB hit: 1 cycle. TLB miss: walk page table (several cycles + memory accesses). TLB flushed on context switch (unless ASID used). Huge pages (2MB/1GB) reduce TLB misses.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Page Fault</span><br><ul><li><b>Minor:</b> Page in memory but not mapped (memory-mapped file, copy-on-write) → map it</li><li><b>Major:</b> Page not in memory → read from disk (swap). Expensive (~ms)</li><li><b>Invalid:</b> Access to unmapped address → SIGSEGV</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is demand paging and how does it relate to exec()?<br>• What is transparent huge pages (THP) and when is it harmful? (database workloads)<br>• How does mmap() differ from malloc()?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Nvidia, Apple...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="concurrency">
+    <span class="q-index">3</span>
+    <span class="q-text">Deadlock — conditions, prevention, avoidance, detection</span>
+    <div class="q-tags"><span class="q-tag">deadlock</span><span class="q-tag">coffman</span><span class="q-tag">banker</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Coffman's Four Necessary Conditions</span><br><ul><li><b>Mutual Exclusion:</b> Resources not sharable</li><li><b>Hold and Wait:</b> Process holds resource while waiting for another</li><li><b>No Preemption:</b> Resources can't be forcibly taken</li><li><b>Circular Wait:</b> T1→waits for T2→waits for T3→waits for T1</li></ul>Breaking <b>any one</b> prevents deadlock.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Prevention</span><br><ul><li><b>Eliminate Hold and Wait:</b> Request all resources at once before starting</li><li><b>Allow Preemption:</b> If waiting, release held resources (costly)</li><li><b>Eliminate Circular Wait:</b> Global ordering of resources (always lock in same order)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Avoidance — Banker's Algorithm</span><br>Each process declares max resource claim. System checks if granting a request leaves system in <b>safe state</b> (all processes can complete). If unsafe → deny and wait. Used in theory; impractical for dynamic systems.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Detection and Recovery</span><br>Allow deadlocks to occur. Periodically run deadlock detector (wait-for graph cycle detection). Recovery: kill one victim process, or preempt + rollback resources.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does Linux kernel handle deadlocks? (lockdep detector in debug build)<br>• What is a livelock vs deadlock?<br>• How does optimistic concurrency (OCC) avoid deadlocks?</div></div></div>
     <div class="q-meta-row">
       <span class="q-meta-chip">🗓 Concurrency Round</span>
-      <span class="q-meta-chip">🏢 Google, Amazon, LinkedIn, Meta, Databricks</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Nvidia, Apple...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="process">
+    <span class="q-index">4</span>
+    <span class="q-text">Context switching — cost, what is saved/restored</span>
+    <div class="q-tags"><span class="q-tag">context-switch</span><span class="q-tag">registers</span><span class="q-tag">tlb-flush</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">What is Context Switch</span><br>OS saving state of running process/thread and restoring another's. Triggered by: timer interrupt (preemption), syscall, I/O wait, voluntary yield.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Saved State</span><br><ul><li>CPU registers: PC (instruction pointer), SP (stack pointer), general-purpose registers, EFLAGS</li><li>FPU/SIMD state (optional, lazy)</li><li>TLB entries (or flush TLB on switch — expensive on older hardware)</li><li>Process: page table base register (CR3 on x86) → TLB flush → 100s of ns extra</li><li>Thread (same process): no page table switch → cheaper (~1-10μs vs ~10-100μs)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cost</span><br>Process switch: ~1-100μs depending on TLB state, cache warmth, address space size. Thread switch (same process): ~1-10μs. Goroutine/coroutine switch: ~100ns (no kernel, no TLB flush — all in userspace).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Reducing Context Switches</span><br><ul><li>Thread pools (avoid creation overhead)</li><li>Async I/O / event loops (fewer threads, less switching)</li><li>CPU affinity (keep thread on same core → warm L1/L2 cache)</li><li>Lock-free algorithms (avoid blocking)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is ASID (Address Space ID) and how does it reduce TLB flushing?<br>• How does the Linux scheduler decide when to preempt? (timer interrupt + vruntime)<br>• What is voluntary vs involuntary context switch? (cs vs nvcswch in /proc/PID/status)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Nvidia, Apple...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="memory">
+    <span class="q-index">5</span>
+    <span class="q-text">Copy-on-Write (COW) in fork() — how it works</span>
+    <div class="q-tags"><span class="q-tag">copy-on-write</span><span class="q-tag">fork</span><span class="q-tag">page-table</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">fork() without COW</span><br>Old approach: fork duplicates entire parent address space immediately. Expensive for large processes — most forked children exec() immediately, wasting the copy.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">COW Optimization</span><br>After fork(), parent and child share the same physical pages (marked read-only). On first write by either process → page fault → OS copies only that page → independent copy.<br><pre>fork()
+  → Page tables copied (cheap)
+  → Physical pages marked read-only + copy-on-write
+
+Child writes to variable x:
+  → Page fault (read-only violation)
+  → OS copies page → child gets private copy
+  → Child's page marked writable
+  → Parent still sees original</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Where COW is used</span><br><ul><li>fork() in Unix/Linux</li><li>mmap(MAP_PRIVATE): shared initially, COW on write</li><li>Container images: layers are shared via COW (OverlayFS)</li><li>Redis persistence: BGSAVE forks → COW allows snapshot without blocking writes</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is vfork() and how does it differ from COW fork()?<br>• How does Redis BGSAVE use COW for non-blocking snapshots?<br>• What is the transparent huge page and COW interaction?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Nvidia, Apple...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="concurrency">
+    <span class="q-index">6</span>
+    <span class="q-text">Spinlock vs Mutex vs Semaphore — detailed comparison</span>
+    <div class="q-tags"><span class="q-tag">spinlock</span><span class="q-tag">mutex</span><span class="q-tag">semaphore</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Spinlock</span><br>Thread loops (busy-waits) until lock is free. No OS involvement for uncontended case.<br><b>Pros:</b> Near-zero overhead for very short critical sections, no context switch.<br><b>Cons:</b> Wastes CPU if lock held long, terrible on uniprocessor, can cause priority inversion.<br><b>Use when:</b> Critical section &lt;~100ns (kernel code, interrupt handlers, lock-free structures).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Mutex</span><br>Thread puts itself to sleep if lock unavailable. OS wakes it when lock released.<br><b>Pros:</b> No CPU waste while waiting, works with long critical sections.<br><b>Cons:</b> Context switch overhead (~1-10μs), kernel involvement.<br><b>Adaptive Mutex (Linux futex):</b> Spin briefly, then sleep. Best of both worlds.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Semaphore</span><br>Generalized mutex: can allow N concurrent holders (counting semaphore). Binary semaphore = mutex but can be released by different thread (unlike mutex, which must be released by owner). Use for: resource pools, producer-consumer signaling.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">futex (Linux fast userspace mutex)</span><br>Check lock in userspace (atomic). Only make syscall when contended (wait/wake). Foundation of pthread_mutex, Java synchronized.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the difference between mutex and binary semaphore?<br>• What is priority inversion and how does priority inheritance solve it? (Mars Pathfinder bug)<br>• What are reader-writer locks and when do they help?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Nvidia, Apple...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="scheduling">
+    <span class="q-index">7</span>
+    <span class="q-text">Process scheduling — CFS (Completely Fair Scheduler) in Linux</span>
+    <div class="q-tags"><span class="q-tag">cfs</span><span class="q-tag">scheduler</span><span class="q-tag">vruntime</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">CFS Algorithm</span><br>CFS maintains a <b>virtual runtime (vruntime)</b> per process — time the process has run, weighted by priority (nice value). Always picks the process with <b>minimum vruntime</b> (leftmost node in red-black tree).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">vruntime Update</span><br><pre>vruntime += actual_runtime × (NICE_0_WEIGHT / task_weight)
+# Low-priority (high nice) tasks: vruntime increases faster → scheduled less
+# High-priority (low nice): vruntime increases slower → scheduled more</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Time Slice</span><br>No fixed time slice in CFS. Scheduling period (default 6ms) divided proportionally by weights. Minimum granularity: 0.75ms. Prevents starvation.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Priority Inheritance</span><br>When high-priority task blocks on mutex held by low-priority task → boost low-priority task's priority temporarily to prevent priority inversion (critical in RT systems).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the difference between CFS and O(1) scheduler?<br>• What is nice value range and how does it map to weight?<br>• How does SCHED_FIFO differ from SCHED_OTHER (CFS)?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Nvidia, Apple...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="memory">
+    <span class="q-index">8</span>
+    <span class="q-text">Memory-mapped files (mmap) — mechanics and use cases</span>
+    <div class="q-tags"><span class="q-tag">mmap</span><span class="q-tag">memory-mapped</span><span class="q-tag">file-io</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">How mmap works</span><br><code>mmap()</code> maps a file or device into virtual address space. OS does NOT read file immediately — uses demand paging. Reading page triggers major page fault → kernel reads from file into physical page → mapped.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">mmap vs read()/write()</span><br><ul><li><b>read():</b> Kernel copies file data → kernel buffer → user buffer. Double copy.</li><li><b>mmap():</b> Maps kernel page cache directly into user address space. Zero copy on access. Better for large files with random access.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Shared Memory via mmap</span><br><pre>// Process A:
+int fd = open("/tmp/shm", O_CREAT|O_RDWR, 0666);
+ftruncate(fd, 4096);
+void* ptr = mmap(0, 4096, PROT_READ|PROT_WRITE, MAP_SHARED, fd, 0);
+
+// Process B: same mmap call — both map same physical pages
+// Writes by A immediately visible to B</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Use Cases</span><br><ul><li>Databases: InnoDB buffer pool, SQLite, LMDB use mmap for zero-copy I/O</li><li>Shared memory IPC: multiple processes sharing data structures</li><li>Executable loading: kernel mmaps ELF segments — text, data, BSS</li><li>io_uring: submission/completion queues mapped into user space</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the difference between MAP_SHARED and MAP_PRIVATE?<br>• What is msync() and when do you need it?<br>• How does mmap interact with the page cache?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Nvidia, Apple...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="filesystem">
+    <span class="q-index">9</span>
+    <span class="q-text">Linux file system internals — inode, dentry, VFS, page cache</span>
+    <div class="q-tags"><span class="q-tag">inode</span><span class="q-tag">dentry</span><span class="q-tag">vfs</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">76%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">VFS (Virtual File System)</span><br>Abstraction layer. Provides uniform API (open/read/write/close) for all file systems (ext4, XFS, btrfs, tmpfs, NFS, procfs). Drivers implement VFS operations.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Inode</span><br>Fixed-size metadata structure for each file:<br><ul><li>File type, permissions, owner (UID/GID)</li><li>Size, timestamps (atime/mtime/ctime)</li><li>Block pointers (direct, indirect, double-indirect)</li><li>Link count (hard links)</li><li><b>NOT:</b> file name (stored in directory entry)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Dentry (Directory Entry)</span><br>Cache of name → inode mappings. Path lookup: <code>/home/user/file.txt</code> → traverse dentries: root dentry → home dentry → user dentry → file inode. Dentry cache (dcache) avoids repeated disk lookups.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Page Cache</span><br>Buffer for file data. read() → kernel checks page cache first. On miss: read from disk, cache page. write() → write to page cache (writeback=async), or writethrough, or direct I/O (O_DIRECT bypasses cache). <code>free</code> command: 'cached' = page cache using RAM (can be reclaimed).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the difference between hard link and soft (symbolic) link?<br>• How does journaling (ext4) protect against filesystem corruption on crash?<br>• What is a union filesystem and how is it used in Docker?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Nvidia, Apple...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="memory">
+    <span class="q-index">10</span>
+    <span class="q-text">Memory-mapped files</span>
+    <div class="q-tags"><span class="q-tag">mmap</span><span class="q-tag">shared-memory</span><span class="q-tag">ipc</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">72%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Map file into virtual address space. OS pages on demand. Used in IPC, databases (fast I/O).</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 OS Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Databricks, Snowflake</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="hardware">
+    <span class="q-index">11</span>
+    <span class="q-text">NUMA (Non-Uniform Memory Access) — impact on performance</span>
+    <div class="q-tags"><span class="q-tag">numa</span><span class="q-tag">memory-locality</span><span class="q-tag">cpu-affinity</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">72%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">NUMA Architecture</span><br>Multi-socket servers: each CPU socket has its own local DRAM. Accessing local memory: fast (~80ns). Accessing remote memory (other socket's DRAM): slow (~150ns, ~2x). OS/hardware provides NUMA node topology.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">NUMA Problems</span><br><ul><li>Thread on node 0 allocates, migrated to node 1 → remote memory access</li><li>False sharing: different threads on different NUMA nodes modify same cache line → cache coherence traffic</li><li>Memory-intensive apps (databases, ML) severely impacted</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Mitigation</span><br><ul><li><code>numactl --membind=0 --cpubind=0 ./app</code> — bind to single NUMA node</li><li><code>numactl --interleave=all</code> — round-robin allocation across nodes (reduces hot-spots)</li><li>NUMA-aware memory allocators (jemalloc, tcmalloc have NUMA support)</li><li>Database NUMA awareness: MySQL/PostgreSQL can bind buffer pool per node</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache Hierarchy</span><br>L1 (4 cycles, 32KB per core) → L2 (12 cycles, 256KB per core) → L3 (30-50 cycles, shared per socket, 32-64MB) → DRAM (~200 cycles) → Remote DRAM (~400 cycles) → NVMe SSD (~100μs) → HDD (~10ms).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is cache line size and how does false sharing occur?<br>• How does CPU affinity (<code>taskset</code>) help performance?<br>• What is NUMA balancing in Linux?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Databricks, Snowflake, Apple</span>
     </div>
   </div>
 </div>
@@ -1949,6 +1709,247 @@ Stack: REST/gRPC → Feature store (Redis, &lt;5ms) → Model server (TorchServe
     </div>
   </div>
 </div>
+</div>
+<div class="tab-panel" id="tab-security">
+  <div class="questions-header">
+    <h3>🔒 Security</h3>
+    <span class="q-count">1 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="appsec">
+    <span class="q-index">1</span>
+    <span class="q-text">Secrets management — best practices</span>
+    <div class="q-tags"><span class="q-tag">secrets</span><span class="q-tag">vault</span><span class="q-tag">env-vars</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Anti-patterns</span><br><ul><li>Hardcoded secrets in code → leaked to Git history forever</li><li>Secrets in environment variables → visible in process list, crash dumps, logs</li><li>Secrets in docker-compose.yml committed to repo</li><li>Secrets passed as command-line args → visible in ps output</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">HashiCorp Vault</span><br><pre># Dynamic secrets — Vault generates short-lived DB credentials per request
+vault read database/creds/my-role
+# Returns: {username: "v-app-XyZ", password: "...", lease_duration: "1h"}
+# Automatically revoked after 1h — no long-lived DB passwords!
+
+# App integration:
+VaultClient vault = new VaultClient("https://vault.internal");
+String secret = vault.read("secret/data/db-password").get("value");</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Best Practices</span><br><ul><li><b>Vault / AWS Secrets Manager / GCP Secret Manager:</b> Centralized, audit-logged, auto-rotation</li><li><b>Secret rotation:</b> Automatic rotation without app restart (blue-green credential rotation)</li><li><b>Just-in-time secrets:</b> Request credential when needed, revoke immediately after</li><li><b>Kubernetes:</b> Use external-secrets operator to sync from Vault/SM into K8s Secrets</li><li><b>Git scanning:</b> TruffleHog, GitGuardian pre-commit hooks to prevent secret commits</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is envelope encryption and how does AWS KMS implement it?<br>• How do you handle secret rotation without downtime?<br>• What is SPIFFE/SPIRE for workload identity?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Security Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Stripe, PayPal...</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-performance">
+  <div class="questions-header">
+    <h3>⚡ Performance</h3>
+    <span class="q-count">6 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="performance">
+    <span class="q-index">1</span>
+    <span class="q-text">How do you diagnose and fix high API latency?</span>
+    <div class="q-tags"><span class="q-tag">latency</span><span class="q-tag">profiling</span><span class="q-tag">p99</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">92%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Systematic Approach</span><br><pre>1. MEASURE: Where is the time going?
+   - Add distributed tracing (Jaeger/Zipkin): see each span's duration
+   - p50/p95/p99 latency (NOT just average — outliers matter)
+   - Breakdown: network + serialization + DB queries + external API + CPU
+
+2. IDENTIFY bottleneck:
+   Common causes:
+   - N+1 queries (add JOIN FETCH or batch)
+   - Missing DB index (check EXPLAIN ANALYZE → seq scan)
+   - Synchronous external API call in critical path (make async / cache)
+   - Lock contention (connection pool exhausted, mutex hotspot)
+   - GC pauses (Java: -XX:+PrintGCDetails, G1/ZGC tuning)
+   - Memory pressure (swap, cache thrashing)
+
+3. FIX:
+   - Caching: Redis in front of slow DB queries
+   - Async: move non-critical work off request path (Kafka)
+   - Parallelism: concurrent DB queries (CompletableFuture/goroutines)
+   - Index: add composite index for slow query
+   - Connection pooling: tune min/max pool size</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Metrics</span><br><ul><li><b>Latency percentiles:</b> p50=100ms is fine; p99=5s means 1% users wait 5 seconds</li><li><b>Throughput:</b> RPS the service can handle without degrading</li><li><b>Error rate:</b> 5xx rate as % of total requests</li><li><b>Saturation:</b> CPU%, memory%, connection pool utilization, queue depth</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">USE Method</span><br>For every resource: <b>Utilization</b> (how busy), <b>Saturation</b> (how much queuing), <b>Errors</b> (error count). Invented by Brendan Gregg.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you use flame graphs to identify CPU hotspots?<br>• What is the difference between tail latency and average latency?<br>• How do you implement circuit breakers to protect against latency cascades?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="caching">
+    <span class="q-index">2</span>
+    <span class="q-text">Cache strategies — cache-aside, read-through, write-through, write-back</span>
+    <div class="q-tags"><span class="q-tag">caching</span><span class="q-tag">redis</span><span class="q-tag">cache-aside</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Cache Strategies</span><br><ul><li><b>Cache-Aside (Lazy loading):</b> App checks cache first; on miss, reads DB, populates cache. Cache only stores what's actually requested. Risk: thundering herd on cold start.</li><li><b>Read-Through:</b> Cache reads from DB automatically on miss (library handles it). App always reads from cache. DB not directly accessed by app.</li><li><b>Write-Through:</b> Write to cache AND DB synchronously. Cache never stale. High write latency (must wait for both). Good for read-heavy.</li><li><b>Write-Back (Write-Behind):</b> Write to cache, return immediately. Write to DB asynchronously. Fast writes. Risk: data loss if cache crashes before flush.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache-Aside Pattern (most common)</span><br><pre>def get_user(user_id):
+    # Try cache first
+    user = redis.get(f"user:{user_id}")
+    if user:
+        return deserialize(user)  # cache hit
+    
+    # Cache miss — read from DB
+    user = db.query("SELECT * FROM users WHERE id=%s", user_id)
+    
+    # Populate cache with TTL
+    redis.setex(f"user:{user_id}", ttl=3600, value=serialize(user))
+    return user
+
+def update_user(user_id, data):
+    db.execute("UPDATE users SET ... WHERE id=%s", user_id)
+    redis.delete(f"user:{user_id}")  # invalidate — don't update!</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache Eviction Policies</span><br><ul><li><b>LRU:</b> Evict least recently used. Good general-purpose.</li><li><b>LFU:</b> Evict least frequently used. Better for skewed access patterns.</li><li><b>TTL:</b> Time-based expiry. Always stale by at most TTL seconds.</li><li><b>Allkeys-lru (Redis):</b> Apply LRU across all keys when memory full.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the thundering herd problem and how do you prevent it? (mutex/lock on cache miss, staggered TTLs)<br>• How do you handle cache warming after a cold restart?<br>• What is probabilistic early expiration (PER) and how does it prevent dogpile?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Backend Design</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="observability">
+    <span class="q-index">3</span>
+    <span class="q-text">Observability — metrics, logs, traces — the three pillars</span>
+    <div class="q-tags"><span class="q-tag">observability</span><span class="q-tag">prometheus</span><span class="q-tag">grafana</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Three Pillars</span><br><ul><li><b>Metrics:</b> Numeric aggregations over time. Low cardinality. Cheap to store. Tool: Prometheus (pull-based scraping) + Grafana. Counter, Gauge, Histogram, Summary.</li><li><b>Logs:</b> Discrete events with context. High volume. Searchable. Tool: ELK stack (Elasticsearch+Logstash+Kibana) or Loki+Grafana. Structured JSON logs with trace_id for correlation.</li><li><b>Traces:</b> Request journey across services. Tool: Jaeger, Zipkin, Tempo. Essential for microservices debugging.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">SLI / SLO / SLA / Error Budget</span><br><pre>SLI (Service Level Indicator): the metric you measure
+  e.g., "% of requests with latency &lt; 200ms"
+
+SLO (Service Level Objective): your internal target
+  e.g., "99.9% of requests &lt; 200ms over rolling 30 days"
+
+SLA (Service Level Agreement): contractual with customer
+  e.g., "99.5% uptime or credit applied"
+
+Error Budget: 1 - SLO = allowed unreliability
+  99.9% SLO = 0.1% error budget = 43.8 min downtime/month
+  If budget exhausted: freeze feature work, focus on reliability</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">RED Method (for services)</span><br><b>R</b>ate (requests/sec), <b>E</b>rror rate (errors/sec), <b>D</b>uration (latency). Apply to every microservice for quick health check.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you implement alerting without alert fatigue? (symptom-based not cause-based alerts)<br>• What is the difference between blackbox and whitebox monitoring?<br>• How does OpenTelemetry unify metrics, logs, and traces?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="observability">
+    <span class="q-index">4</span>
+    <span class="q-text">Explain distributed tracing — how it works</span>
+    <div class="q-tags"><span class="q-tag">distributed-tracing</span><span class="q-tag">opentelemetry</span><span class="q-tag">jaeger</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">How it works</span><br><pre>Request enters Service A → Tracer generates trace_id (128-bit)
+Service A calls Service B → propagates trace_id + span_id in HTTP header:
+  traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01
+               version  traceId                    parentSpanId   flags
+
+Each service creates a span:
+  span = {traceId, spanId, parentSpanId, name, startTime, duration,
+          tags: {"db.type":"postgresql", "http.status":200},
+          logs: [{"event":"query", "sql":"..."}]}
+
+Spans sent async to collector (Jaeger/Zipkin) → assembled into trace tree</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">OpenTelemetry (OTel)</span><br><ul><li>Vendor-neutral standard for traces, metrics, logs</li><li>SDK instruments your code (auto-instrumentation for popular frameworks)</li><li>Exporter sends to Jaeger, Zipkin, Tempo, AWS X-Ray, Datadog</li><li><code>OTEL_TRACES_EXPORTER=jaeger OTEL_EXPORTER_JAEGER_ENDPOINT=http://jaeger:14268/api/traces</code></li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Sampling</span><br><ul><li><b>Head sampling:</b> Decision at trace start (before outcome known). Simple. Loses tail errors.</li><li><b>Tail sampling:</b> Buffer traces, decide after seeing all spans. Can keep errored/slow traces.</li><li><b>Rate:</b> 1% for healthy services, 100% for errors, 10% for slow (p99 &gt; 1s)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the W3C Trace Context specification?<br>• How does continuous profiling (Pyroscope, Parca) complement distributed tracing?<br>• How do you correlate traces with logs and metrics? (structured logging with trace_id)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="performance">
+    <span class="q-index">5</span>
+    <span class="q-text">Load testing — how to approach and what tools to use</span>
+    <div class="q-tags"><span class="q-tag">load-testing</span><span class="q-tag">k6</span><span class="q-tag">gatling</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Test Types</span><br><ul><li><b>Load test:</b> Expected normal + peak load. Validate SLAs. Measure p99 latency, throughput, error rate.</li><li><b>Stress test:</b> Push beyond expected load until system breaks. Find breaking point. Test recovery.</li><li><b>Soak/endurance test:</b> Normal load for extended time (hours/days). Find memory leaks, connection exhaustion, log rotation issues.</li><li><b>Spike test:</b> Sudden large traffic burst. Test autoscaling, circuit breakers.</li><li><b>Chaos test:</b> Kill instances, inject latency, corrupt network. Test resilience.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">k6 Example</span><br><pre>import http from 'k6/http';
+import { check, sleep } from 'k6';
+
+export const options = {
+  stages: [
+    { duration: '2m', target: 100 },   // ramp up to 100 VUs
+    { duration: '5m', target: 100 },   // hold at 100 VUs
+    { duration: '2m', target: 0 },     // ramp down
+  ],
+  thresholds: {
+    'http_req_duration': ['p(99)&lt;500'],  // 99% requests &lt; 500ms
+    'http_req_failed': ['rate&lt;0.01'],   // &lt;1% error rate
+  },
+};
+
+export default function() {
+  const r = http.get('https://api.example.com/users');
+  check(r, { 'status 200': (r) =&gt; r.status === 200 });
+  sleep(1);
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">What to measure</span><br><ul><li>Throughput: requests/sec at saturation</li><li>Latency: p50, p95, p99, p999 as load increases</li><li>Error rate: 5xx rate, timeout rate</li><li>Resource utilization: CPU, memory, disk I/O, network on each tier</li><li>Database: connection pool saturation, query latency at load</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you load test a WebSocket-based chat system?<br>• What is the difference between vertical and horizontal scaling in response to load tests?<br>• How do you profile a Java application under production load? (async-profiler, JFR)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="performance">
+    <span class="q-index">6</span>
+    <span class="q-text">How does CPU caching work and why does it matter for performance?</span>
+    <div class="q-tags"><span class="q-tag">cpu-cache</span><span class="q-tag">cache-line</span><span class="q-tag">false-sharing</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">74%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Memory Hierarchy</span><br><pre>L1 cache:  ~32KB per core,   ~1ns  latency
+L2 cache: ~256KB per core,   ~4ns  latency
+L3 cache:   ~8MB shared,     ~40ns latency
+RAM:        ~16-64GB,       ~100ns latency
+SSD NVMe:              ~100μs latency
+HDD:                    ~10ms latency</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache Lines</span><br>Data loaded in 64-byte cache lines. Accessing one byte loads entire 64-byte block. Sequential access (arrays) → excellent cache utilization. Random access (linked lists) → cache miss per node.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">False Sharing</span><br><pre># Two threads update different variables in same cache line:
+# Thread 1 updates counter_a, Thread 2 updates counter_b
+# If they're adjacent in memory → same cache line → cache coherence traffic
+# Core 1 invalidates Core 2's cache line on every write → performance degrades!
+
+# Fix: padding
+struct PaddedCounter {
+    alignas(64) std::atomic&lt;int64_t&gt; value;  // 64-byte aligned
+    char padding[64 - sizeof(std::atomic&lt;int64_t&gt;)];  // fill rest of cache line
+};</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Practical Impact</span><br><ul><li>Array of structs vs Struct of arrays (SOA): SOA = better cache usage for column-wise processing</li><li>Cache-oblivious algorithms (recursive divide) beat sequential for large matrices</li><li>Go: sync.Mutex padded to avoid false sharing with adjacent data</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is NUMA (Non-Uniform Memory Access) and how does it affect multi-socket servers?<br>• How does prefetching work and how can you hint the CPU to prefetch?<br>• What is the impact of cache misses on a tight loop processing 100M integers?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Databricks, Snowflake...</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-java">
+  <div class="questions-header">
+    <h3>☕ Java</h3>
+    <span class="q-count">1 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="concurrency">
+    <span class="q-index">1</span>
+    <span class="q-text">Java Memory Model and happens-before</span>
+    <div class="q-tags"><span class="q-tag">jmm</span><span class="q-tag">happens-before</span><span class="q-tag">volatile</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Java Memory Model (JMM) Happens-Before</span><br>If action A happens-before B, then A's writes are visible to B. Established by:<br><ul><li>Monitor unlock happens-before lock by any thread</li><li>volatile write happens-before volatile read of same field</li><li>Thread.start() happens-before all actions in started thread</li><li>Thread.join() happens-before all actions after join returns</li><li>Program order within single thread</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">volatile vs synchronized</span><br><ul><li><b>volatile:</b> Visibility + ordering for single variable. No atomicity for compound ops (i++ is not atomic).</li><li><b>synchronized:</b> Mutual exclusion + full memory visibility. Heavier.</li><li><b>Atomic classes:</b> CAS-based, lock-free, best for single variable atomic operations.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Why does double-checked locking need volatile? (prevents reordering of new T() allocation vs pointer assignment)<br>• What is a publication failure and how does final field guarantee prevent it?<br>• What is memory_order in C++ and how does it map to JMM concepts?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, LinkedIn, Meta, Databricks</span>
+    </div>
+  </div>
+</div>
 </div></div>
 <footer class="footer">
   <div class="container">
@@ -1957,6 +1958,7 @@ Stack: REST/gRPC → Feature store (Redis, &lt;5ms) → Model server (TorchServe
       <a href="../../common/top-system-design.html">System Design</a>
       <a href="../../common/top-backend.html">Backend</a>
       <a href="../../common/top-cpp.html">C++</a>
+    <a href="../../cpp-handbook/index.html">&#x1F4D8; Handbook</a>
       <a href="../../common/top-java.html">Java</a>
       <a href="../../common/top-go.html">Go</a>
       <a href="../../common/top-database.html">Database</a>
