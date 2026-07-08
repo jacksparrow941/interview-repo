@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Networking Questions | InterviewRepo — Backend SDE Interview Prep</title>
+  <meta name="description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Networking Questions">
+  <meta name="keywords" content="backend interview questions, SDE interview prep, system design, DSA, C++ interview, Java interview, Go interview, networking questions">
+  <meta name="author" content="InterviewRepo">
+  <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="InterviewRepo — Backend SDE Prep">
+  <meta property="og:title"       content="Networking Questions | InterviewRepo">
+  <meta property="og:description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Networking Questions">
+  <meta property="og:url"         content="https://devinterviewvault.netlify.app">
+  <meta property="og:image"       content="https://devinterviewvault.netlify.app/assets/og-image.png">
+  <meta name="twitter:card"       content="summary_large_image">
+  <meta name="twitter:title"      content="Networking Questions | InterviewRepo">
+  <meta name="twitter:description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Networking Questions">
+  <meta name="twitter:image"      content="https://devinterviewvault.netlify.app/assets/og-image.png">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://devinterviewvault.netlify.app">
+  <meta name="google-site-verification" content="a8bdedb3bc5f858c">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Networking Questions", "description": "SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design \u2014 Networking Questions", "url": "https://devinterviewvault.netlify.app", "publisher": {"@type": "Organization", "name": "InterviewRepo"}}</script>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+</head>
+<body>
+<nav class="navbar">
+  <a class="navbar-brand" href="../index.html">
+    <span class="logo-icon">⚡</span>
+    <span>InterviewRepo</span>
+  </a>
+  <div class="search-bar">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="search-input" placeholder="Search questions… (Ctrl+K)" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <nav class="navbar-nav">
+    <a href="../index.html">Home</a>
+    <a href="../common/top-coding.html">Top DSA</a>
+    <a href="../common/top-system-design.html">System Design</a>
+    <a href="../common/top-backend.html">Backend</a>
+    <a href="../common/top-cpp.html">C++</a>
+    <a href="../common/top-java.html">Java</a>
+    <a href="../common/top-go.html">Go</a>
+  </nav>
+</nav>
+<div class="top-list-header">
+  <div class="container">
+    <div class="breadcrumb"><a href="../index.html">Home</a><span class="breadcrumb-sep">›</span><span>Networking Questions</span></div>
+    <h1 style="font-size:36px;font-weight:800;margin-bottom:8px">🌐 Networking Questions</h1>
+    <p style="color:var(--text-muted);font-size:16px">Networking fundamentals: TCP/UDP, TLS, HTTP/2, DNS, WebSockets and CDN.</p>
+    <p style="color:var(--text-muted);font-size:14px;margin-top:8px">19 questions</p>
+  </div>
+</div>
+<div class="container section">
+  <div class="filters-bar"><button class="filter-btn active" data-filter="all" data-group="sub">All</button><button class="filter-btn" data-filter="api" data-group="sub">Api</button><button class="filter-btn" data-filter="auth" data-group="sub">Auth</button><button class="filter-btn" data-filter="cdn" data-group="sub">Cdn</button><button class="filter-btn" data-filter="dns" data-group="sub">Dns</button><button class="filter-btn" data-filter="http" data-group="sub">Http</button><button class="filter-btn" data-filter="infrastructure" data-group="sub">Infrastructure</button><button class="filter-btn" data-filter="load-balancing" data-group="sub">Load-Balancing</button><button class="filter-btn" data-filter="protocols" data-group="sub">Protocols</button><button class="filter-btn" data-filter="security" data-group="sub">Security</button><button class="filter-btn" data-filter="tcp" data-group="sub">Tcp</button><button class="filter-btn" data-filter="tls" data-group="sub">Tls</button><button class="filter-btn" data-filter="web-security" data-group="sub">Web-Security</button><button class="filter-btn" data-filter="websockets" data-group="sub">Websockets</button></div>
+  <div class="filters-bar"><button class="filter-btn active" data-filter="all" data-group="diff">All Difficulty</button><button class="filter-btn" data-filter="easy" data-group="diff">Easy</button><button class="filter-btn" data-filter="medium" data-group="diff">Medium</button><button class="filter-btn" data-filter="hard" data-group="diff">Hard</button></div>
+  <div class="question-list"><div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="tcp">
+    <span class="q-index">1</span>
+    <span class="q-text">TCP 3-way handshake, 4-way termination, TIME_WAIT</span>
+    <div class="q-tags"><span class="q-tag">tcp</span><span class="q-tag">handshake</span><span class="q-tag">syn</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">92%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">3-Way Handshake (Connection Setup)</span><br><pre>Client ----- SYN (seq=x) --------&gt; Server
+Client &lt;---- SYN-ACK (seq=y,ack=x+1)- Server
+Client ----- ACK (ack=y+1) -------&gt; Server
+[Connection ESTABLISHED]
+
+SYN_SENT → SYN_RECEIVED → ESTABLISHED</pre>Purpose: synchronize initial sequence numbers, agree on connection parameters.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">4-Way Termination</span><br><pre>Active  --- FIN ---&gt; Passive   (ACTIVE: FIN_WAIT_1)
+Active  &lt;-- ACK --- Passive   (ACTIVE: FIN_WAIT_2)
+Active  &lt;-- FIN --- Passive   (PASSIVE: sends own FIN)
+Active  --- ACK --&gt; Passive   (ACTIVE: TIME_WAIT → CLOSED after 2×MSL)
+</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">TIME_WAIT (2×MSL ≈ 60s-4min)</span><br><ul><li>Ensures last ACK reaches passive closer</li><li>Prevents old duplicate packets from confusing new connection on same port</li><li>Causes: Cannot reuse port immediately. <code>SO_REUSEADDR</code> allows reuse in server context.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Why does the client go into TIME_WAIT, not the server?<br>• What is SYN flood attack and how is SYN cookies a defense?<br>• What is TCP Fast Open (TFO)?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Networking Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="protocols">
+    <span class="q-index">2</span>
+    <span class="q-text">TCP vs UDP — when to use each?</span>
+    <div class="q-tags"><span class="q-tag">tcp</span><span class="q-tag">udp</span><span class="q-tag">reliability</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">TCP vs UDP</span><br><ul><li><b>TCP:</b> Connection-oriented (3-way handshake). Reliable (ACKs, retransmit). Ordered. Flow + congestion control. ~20-60byte headers. Higher latency.</li><li><b>UDP:</b> Connectionless. No guarantees. No ordering. No congestion control. ~8byte header. Lower latency. Can multicast.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">When to use UDP</span><br><ul><li><b>Gaming / VoIP / video calls:</b> stale data worse than loss. TCP retransmit would cause jitter.</li><li><b>DNS:</b> single request-response, small payload. Retry at app layer if timeout.</li><li><b>DHCP, TFTP, SNMP:</b> simple protocols where TCP overhead isn't worth it.</li><li><b>HTTP/3 (QUIC):</b> UDP + built-in reliability at QUIC layer — gets benefits of both.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is QUIC and why does it use UDP?<br>• How do game engines handle packet loss with UDP? (delta compression, interpolation)<br>• What is the difference between TCP TIME_WAIT and CLOSE_WAIT?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Networking Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="load-balancing">
+    <span class="q-index">3</span>
+    <span class="q-text">Load balancer algorithms — round-robin, least-connections, consistent hashing</span>
+    <div class="q-tags"><span class="q-tag">load-balancer</span><span class="q-tag">round-robin</span><span class="q-tag">consistent-hashing</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Algorithms</span><br><ul><li><b>Round Robin:</b> Requests distributed evenly in rotation. Simple, ignores server load.</li><li><b>Weighted Round Robin:</b> Servers with higher weight get more requests. For heterogeneous servers.</li><li><b>Least Connections:</b> Route to server with fewest active connections. Better for varying request durations.</li><li><b>Least Response Time:</b> Combines active connections + response latency.</li><li><b>IP Hash:</b> Hash client IP → fixed server. Session stickiness (but unbalanced if some IPs dominate).</li><li><b>Random with 2 Choices (Power of Two):</b> Pick 2 random servers, choose less loaded. Near-optimal, simple.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Consistent Hashing</span><br>Used for stateful routing (cache sharding, WebSocket servers).<br>Hash ring: servers placed on ring. Request hashed → clockwise to nearest server. Adding/removing server only remaps 1/N of keys (vs modulo hashing remaps all).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">L4 vs L7 Load Balancer</span><br><ul><li><b>L4 (Transport):</b> Routes by TCP/UDP (IP + port). Faster, less overhead. No content awareness.</li><li><b>L7 (Application):</b> Routes by HTTP headers, URL, cookies. Content-based routing, SSL termination, retries.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does HAProxy differ from Nginx as a load balancer?<br>• What are virtual nodes in consistent hashing and why are they needed?<br>• How does a global load balancer (Anycast, GeoDNS) work?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Networking Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="api">
+    <span class="q-index">4</span>
+    <span class="q-text">REST vs gRPC vs GraphQL vs WebSocket — when to use each</span>
+    <div class="q-tags"><span class="q-tag">rest</span><span class="q-tag">grpc</span><span class="q-tag">graphql</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">REST</span><br>HTTP/1.1 or 2, JSON/XML. Stateless, simple, widely supported. Cacheable (GET), intuitive with HTTP verbs. Cons: over-fetching/under-fetching, multiple round trips for related data. Best for: public APIs, simple CRUD, browser-to-server.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">gRPC</span><br>HTTP/2 + Protocol Buffers. Binary, strongly typed, multiplexed. 5-10x smaller payload than JSON. Bidirectional streaming, connection reuse. Generated client/server code. Cons: not human-readable, no native browser support (grpc-web workaround). Best for: internal microservice communication, real-time streaming, polyglot services.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">GraphQL</span><br>Single endpoint, client specifies exact data shape. Eliminates over-fetching. Subscriptions for real-time. Schema as contract. Cons: N+1 problem (use DataLoader), complex caching (no HTTP cache headers), schema overhead. Best for: complex UIs with diverse data needs (mobile apps, dashboards).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">WebSocket</span><br>Full-duplex, persistent TCP connection. Low-latency bidirectional. Best for: chat, live collaboration, gaming, stock tickers, notifications.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Quick Decision</span><br><ul><li>Public CRUD API → REST</li><li>Microservice-to-microservice → gRPC</li><li>Complex queries, mobile app → GraphQL</li><li>Real-time bidirectional → WebSocket</li><li>Server→client notifications → SSE</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does gRPC handle service discovery?<br>• What is the N+1 problem in GraphQL and how does DataLoader solve it?<br>• How do you version a REST API vs a GraphQL API?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="protocols">
+    <span class="q-index">5</span>
+    <span class="q-text">TCP three-way handshake</span>
+    <div class="q-tags"><span class="q-tag">tcp</span><span class="q-tag">syn</span><span class="q-tag">ack</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">TCP Handshake</span><br><pre>Client          Server
+  |---SYN(seq=x)----&gt;|  Client: CLOSED→SYN_SENT
+  |&lt;--SYN-ACK(seq=y,ack=x+1)---|
+  |---ACK(ack=y+1)--&gt;|  Both: ESTABLISHED
+
+Teardown (4-way):
+  |---FIN-----------&gt;|  Client: ESTABLISHED→FIN_WAIT_1
+  |&lt;--ACK-----------|
+  |&lt;--FIN-----------|
+  |---ACK-----------&gt;|  Client: TIME_WAIT (2×MSL = 60-120s)
+                       Server: CLOSED</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">TIME_WAIT purpose</span><br>Ensures delayed packets from old connection don't confuse new connection on same 4-tuple. 2×MSL (Maximum Segment Lifetime). Can cause port exhaustion on high-traffic servers. Fix: SO_REUSEADDR, SO_REUSEPORT, or increase local port range.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">SYN Flood</span><br>Attacker sends many SYN packets, never completes handshake. Server holds half-open connections (SYN_RCVD state). Defense: SYN cookies — encode state in ISN, allocate resources only after ACK.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Why is teardown 4-way but handshake is 3-way?<br>• What is TCP Fast Open (TFO) and how does it reduce latency?<br>• What is the maximum number of connections per IP:port pair?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Networking Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Cisco, TCS...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="http">
+    <span class="q-index">6</span>
+    <span class="q-text">HTTP/2 vs HTTP/3 (QUIC) — feature comparison</span>
+    <div class="q-tags"><span class="q-tag">http2</span><span class="q-tag">http3</span><span class="q-tag">quic</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">HTTP/2 Features</span><br><ul><li><b>Multiplexing:</b> Multiple streams over one TCP connection. No request queuing.</li><li><b>Header compression (HPACK):</b> Reduce redundant headers (cookies, user-agent)</li><li><b>Server push:</b> Server proactively sends resources before client requests</li><li><b>Binary framing:</b> Efficient parsing vs text-based HTTP/1.1</li><li><b>Stream priority:</b> Weighted dependency tree</li><li><b>Problem:</b> TCP head-of-line blocking — one lost packet blocks ALL streams</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">HTTP/3 / QUIC</span><br><ul><li>Runs over <b>UDP</b>, not TCP. Implements reliable delivery in userspace.</li><li><b>Stream-level reliability:</b> Lost packet blocks only affected stream, not all</li><li><b>0-RTT connection setup:</b> QUIC + TLS 1.3 combined handshake (1-RTT new, 0-RTT resume)</li><li><b>Connection migration:</b> Connection ID-based, survives IP change (WiFi → 4G)</li><li><b>QPACK:</b> Header compression without HOL blocking (vs HPACK)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">When HTTP/3 helps</span><br>High latency (mobile), packet loss, many parallel requests, clients switching networks. Major adopters: Google, Meta, Cloudflare, YouTube.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is head-of-line blocking at TCP level?<br>• Why does QUIC run over UDP instead of redesigning TCP?<br>• How does server push in HTTP/2 compare to HTTP/103 Early Hints?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Networking Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="dns">
+    <span class="q-index">7</span>
+    <span class="q-text">DNS resolution — full chain from browser to authoritative server</span>
+    <div class="q-tags"><span class="q-tag">dns</span><span class="q-tag">resolver</span><span class="q-tag">authoritative</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Full Resolution Chain</span><br><pre>1. Browser cache (TTL based)
+2. OS cache / /etc/hosts
+3. Stub Resolver → Recursive Resolver (ISP or 8.8.8.8)
+4. Recursive Resolver cache
+5. Root Name Server ("." zone) → returns NS for .com
+6. TLD Name Server (.com zone) → returns NS for google.com
+7. Authoritative Name Server (google.com zone) → returns A record
+8. Recursive Resolver caches result (TTL seconds)
+9. Returns to client → browser connects</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Record Types</span><br><ul><li><b>A:</b> Domain → IPv4</li><li><b>AAAA:</b> Domain → IPv6</li><li><b>CNAME:</b> Alias → canonical name (followed recursively)</li><li><b>MX:</b> Mail exchange server</li><li><b>TXT:</b> SPF, DKIM, domain verification</li><li><b>NS:</b> Authoritative name servers for domain</li><li><b>SRV:</b> Service discovery (host + port + priority)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">DNS in Kubernetes</span><br>CoreDNS runs as a pod. Service DNS: <code>&lt;service&gt;.&lt;namespace&gt;.svc.cluster.local</code>. Pods: <code>&lt;pod-ip&gt;.&lt;namespace&gt;.pod.cluster.local</code>.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is DNSSEC and what does it protect against?<br>• How does DNS-based load balancing work? (multiple A records, low TTL)<br>• What is negative caching (NXDOMAIN) and its TTL?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Networking Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="tls">
+    <span class="q-index">8</span>
+    <span class="q-text">TLS 1.3 handshake — 1-RTT and 0-RTT</span>
+    <div class="q-tags"><span class="q-tag">tls</span><span class="q-tag">tls1.3</span><span class="q-tag">handshake</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">TLS 1.3 Full Handshake (1-RTT)</span><br><pre>Client → Server: ClientHello + key_share (ECDHE public key) + supported ciphers
+Server → Client: ServerHello + key_share (server ECDHE public key)
+                  + Certificate + CertificateVerify + Finished
+[Both derive session keys immediately from shared ECDHE secret]
+Client → Server: Finished + HTTP request
+[TLS 1.2 needed 2-RTT; TLS 1.3 = 1-RTT]</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">0-RTT Session Resumption</span><br>Client stores <b>session ticket</b> from previous connection. On reconnect, sends early data in first packet — zero round trips before HTTP request. <b>Risk:</b> replay attacks (early data not protected against replay). Mitigate: use only for idempotent requests.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Improvements over TLS 1.2</span><br><ul><li>1-RTT instead of 2-RTT for new connections</li><li>Forward secrecy mandatory: ECDHE always used (ephemeral keys)</li><li>Removed weak algorithms: RSA key exchange, RC4, SHA-1, MD5</li><li>Encrypted handshake: Certificate encrypted (hidden from observers)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Certificate Verification</span><br>Client verifies server cert chain up to trusted CA root. CT (Certificate Transparency) logs prevent mis-issuance. OCSP stapling for revocation.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is perfect forward secrecy and why does ECDHE provide it?<br>• How does mTLS (mutual TLS) work for service-to-service auth?<br>• What is certificate pinning and when is it used?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Networking Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="websockets">
+    <span class="q-index">9</span>
+    <span class="q-text">WebSocket — upgrade, framing, use cases vs SSE vs long polling</span>
+    <div class="q-tags"><span class="q-tag">websocket</span><span class="q-tag">sse</span><span class="q-tag">long-polling</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">WebSocket Upgrade</span><br><pre>Client Request:
+GET /chat HTTP/1.1
+Connection: Upgrade
+Upgrade: websocket
+Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==
+
+Server Response:
+HTTP/1.1 101 Switching Protocols
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=
+[TCP connection stays open — full duplex from now]</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">WebSocket Frame</span><br>Binary or text frames. Control frames: ping/pong/close. Low overhead: 2-14 byte header vs HTTP's ~500 byte headers per request.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Comparison</span><br><ul><li><b>WebSocket:</b> Full-duplex, persistent, binary/text. Chat, gaming, trading, collaboration.</li><li><b>SSE (Server-Sent Events):</b> Server→client only, over HTTP/1.1, auto-reconnect. Dashboards, notifications. Simpler than WS.</li><li><b>Long Polling:</b> Client holds HTTP request open until server has data. Fallback. High latency, wasteful.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Scaling WebSockets</span><br>Stateful — connection pinned to server. Use:<br><ul><li>Sticky sessions (HAProxy/Nginx)</li><li>Message broker for fan-out: Pub/Sub via Redis, Kafka, or NATS</li><li>Socket.IO: WS with fallback to long-polling</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you handle WebSocket reconnection with message replay?<br>• What is a WebSocket subprotocol?<br>• How does HTTP/2 server push compare to WebSocket for server→client messaging?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Networking Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="web-security">
+    <span class="q-index">10</span>
+    <span class="q-text">CORS — same-origin policy, preflight, headers</span>
+    <div class="q-tags"><span class="q-tag">cors</span><span class="q-tag">same-origin</span><span class="q-tag">preflight</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Same-Origin Policy</span><br>Browser blocks cross-origin requests by default. Origin = scheme + host + port. <code>https://api.com:443</code> ≠ <code>http://api.com:80</code>.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Simple vs Preflight Requests</span><br><b>Simple:</b> GET/POST/HEAD with safe headers → no preflight. Browser sends request with <code>Origin</code> header; server must return <code>Access-Control-Allow-Origin</code>.<br><br><b>Preflight (OPTIONS):</b> Triggered for: non-simple methods (PUT/DELETE/PATCH), custom headers, content-type=application/json.<br><pre>OPTIONS /api/data HTTP/1.1
+Origin: https://app.example.com
+Access-Control-Request-Method: DELETE
+Access-Control-Request-Headers: Authorization
+
+--- Server response:
+Access-Control-Allow-Origin: https://app.example.com
+Access-Control-Allow-Methods: GET, POST, DELETE
+Access-Control-Allow-Headers: Authorization
+Access-Control-Max-Age: 86400  # cache preflight for 1 day</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Credentialed Requests</span><br>Cookies/auth headers in cross-origin require:<br><code>Access-Control-Allow-Credentials: true</code> AND <code>Access-Control-Allow-Origin</code> must be specific (not *).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Does CORS prevent all cross-origin attacks? (No — doesn't protect server from CSRF)<br>• What is CSRF and how is it different from what CORS prevents?<br>• How does a wildcard origin (*) work with credentials?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Networking Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="auth">
+    <span class="q-index">11</span>
+    <span class="q-text">OAuth 2.0 flows — Authorization Code, Client Credentials, PKCE</span>
+    <div class="q-tags"><span class="q-tag">oauth2</span><span class="q-tag">authorization-code</span><span class="q-tag">pkce</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Authorization Code Flow (Web Apps)</span><br><pre>1. User clicks 'Login with Google'
+2. App redirects to Google: /auth?client_id=..&amp;redirect_uri=..&amp;scope=email&amp;state=random
+3. User logs in on Google, grants consent
+4. Google redirects to app with ?code=AUTH_CODE&amp;state=...
+5. App server exchanges code for tokens: POST /token {code, client_secret}
+6. Gets: access_token (short-lived), refresh_token (long-lived)
+7. App uses access_token to call APIs on user's behalf</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">PKCE (Proof Key for Code Exchange)</span><br>For mobile/SPA apps that can't store client_secret securely.<br><ul><li>App generates <code>code_verifier</code> (random), <code>code_challenge = SHA256(verifier)</code></li><li>Sends challenge in auth request, sends verifier in token exchange</li><li>Server verifies: SHA256(verifier) == challenge → prevents auth code interception</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Client Credentials (Machine-to-Machine)</span><br><pre>POST /token
+client_id=svc1&amp;client_secret=secret&amp;grant_type=client_credentials
+→ access_token (no user context)
+# Used for: microservice-to-microservice, background jobs</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">JWT Access Token</span><br>Access tokens are often JWTs: <code>header.payload.signature</code>. Resource servers validate signature without calling authorization server. Payload contains: sub (user), iat, exp, scope, aud.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the difference between OAuth 2.0 and OpenID Connect (OIDC)?<br>• How do you revoke an access token before expiry?<br>• What is the device authorization grant flow?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Networking Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="security">
+    <span class="q-index">12</span>
+    <span class="q-text">TLS/SSL handshake</span>
+    <div class="q-tags"><span class="q-tag">tls</span><span class="q-tag">certificate</span><span class="q-tag">encryption</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">85%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">ClientHello→ServerHello+Cert→KeyExchange→Finished. TLS 1.3: 1-RTT. Mutual TLS for services.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Networking Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Stripe, PayPal, Razorpay...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="infrastructure">
+    <span class="q-index">13</span>
+    <span class="q-text">DNS resolution process</span>
+    <div class="q-tags"><span class="q-tag">dns</span><span class="q-tag">resolver</span><span class="q-tag">recursive</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">DNS Resolution Chain</span><br><pre>Browser → Check browser cache (TTL)
+       → Check OS resolver cache (/etc/hosts, nscd)
+       → Recursive Resolver (ISP or 8.8.8.8)
+             → Root Name Server (.) → returns TLD server
+             → TLD Server (.com) → returns authoritative NS
+             → Authoritative NS (ns1.example.com) → returns IP
+       → Cache at each level with TTL
+       → Return IP to browser</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Record Types</span><br><ul><li><b>A:</b> hostname → IPv4</li><li><b>AAAA:</b> hostname → IPv6</li><li><b>CNAME:</b> alias → canonical name (CDN, subdomains)</li><li><b>MX:</b> mail exchange server</li><li><b>TXT:</b> arbitrary text (SPF, DKIM, DMARC, domain verification)</li><li><b>NS:</b> name server for domain</li><li><b>SOA:</b> Start of Authority (zone info, serial number)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is DNS propagation delay and how does TTL control it?<br>• How does DNS-based load balancing work? (round-robin A records)<br>• What is DNSSEC and what attack does it prevent? (cache poisoning)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Networking Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Cisco, TCS...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="cdn">
+    <span class="q-index">14</span>
+    <span class="q-text">CDN architecture — how content is cached and served</span>
+    <div class="q-tags"><span class="q-tag">cdn</span><span class="q-tag">edge</span><span class="q-tag">pop</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">CDN Architecture</span><br><b>Points of Presence (PoPs):</b> Edge servers distributed globally (Cloudflare: 300+ PoPs, Akamai: 4000+). User request routed to nearest PoP via <b>Anycast</b> (same IP, BGP routes to nearest datacenter) or GeoDNS.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache Flow</span><br><pre>User → CDN Edge (PoP)
+  → Cache HIT: return immediately (&lt;5ms)
+  → Cache MISS: fetch from origin (100-300ms), cache response, serve
+
+Subsequent users at same PoP → cache HIT
+Users at different PoP → may still be cache MISS (PoP-local cache)</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache Control Headers</span><br><pre>Cache-Control: max-age=31536000, immutable     # 1 year, static assets
+Cache-Control: max-age=60, stale-while-revalidate=30  # 1min fresh, serve stale while revalidating
+Cache-Control: no-store                         # never cache (auth pages)
+Surrogate-Control: max-age=3600                 # CDN-only hint (Varnish/Fastly)
+Vary: Accept-Encoding                           # different cache per encoding</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Dynamic Content</span><br>Not all content is cacheable. Edge computing (Cloudflare Workers, Lambda@Edge) runs logic at edge. For personalized content: cache fragment (Edge Side Includes) or stream-stitch.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you purge CDN cache? (cache invalidation API, cache tags)<br>• What is cache stampede / thundering herd and how to prevent it?<br>• How does TLS termination at CDN edge work?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="protocols">
+    <span class="q-index">15</span>
+    <span class="q-text">HTTP/2 vs HTTP/1.1</span>
+    <div class="q-tags"><span class="q-tag">http2</span><span class="q-tag">multiplexing</span><span class="q-tag">hpack</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">HTTP/2: multiplexing (multiple streams), header compression (HPACK), server push, binary framing.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Networking Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Uber, LinkedIn, Amazon</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="protocols">
+    <span class="q-index">16</span>
+    <span class="q-text">WebSockets vs HTTP polling</span>
+    <div class="q-tags"><span class="q-tag">websocket</span><span class="q-tag">long-polling</span><span class="q-tag">real-time</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">WebSocket: persistent bidirectional TCP. HTTP polling: repeated requests. SSE: server→client only.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Networking Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Uber, LinkedIn, Amazon, Razorpay</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="tcp">
+    <span class="q-index">17</span>
+    <span class="q-text">TCP flow control (receive window) vs congestion control (CWND)</span>
+    <div class="q-tags"><span class="q-tag">tcp</span><span class="q-tag">flow-control</span><span class="q-tag">congestion</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Flow Control (Receiver-side)</span><br>Prevents sender from overwhelming receiver's buffer.<br>Receiver advertises <b>receive window (rwnd)</b> in ACK headers. Sender must not have more than rwnd unacknowledged bytes in flight.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Congestion Control (Network-side)</span><br>Prevents sender from overwhelming the network (routers/links).<br>Sender maintains <b>congestion window (cwnd)</b>. Effective window = min(cwnd, rwnd).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Congestion Control Phases</span><br><ul><li><b>Slow Start:</b> cwnd=1 MSS → doubles each RTT until ssthresh or packet loss</li><li><b>Congestion Avoidance:</b> cwnd grows +1 MSS per RTT (linear)</li><li><b>Fast Retransmit:</b> 3 duplicate ACKs → retransmit lost segment immediately (don't wait for timeout)</li><li><b>Fast Recovery (CUBIC, BBR):</b> On loss: ssthresh = cwnd/2, cwnd = ssthresh (not back to 1)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">BBR (Google)</span><br>Model-based congestion control. Estimates bottleneck bandwidth and RTT. Less reactive to loss, better for high-bandwidth long-distance links. Used in YouTube, cloud networking.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is buffer bloat and how does it cause high latency?<br>• What is ECN (Explicit Congestion Notification)?<br>• How does QUIC handle congestion control differently from TCP?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Networking Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="infrastructure">
+    <span class="q-index">18</span>
+    <span class="q-text">What is a CDN and how does it work?</span>
+    <div class="q-tags"><span class="q-tag">cdn</span><span class="q-tag">edge</span><span class="q-tag">anycast</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">CDN Architecture</span><br><ul><li><b>Edge PoPs (Points of Presence):</b> Hundreds of locations near users</li><li><b>Anycast routing:</b> Same IP announced from multiple locations, BGP routes to nearest</li><li><b>Cache hierarchy:</b> Edge → Regional → Origin</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache Invalidation</span><br><ul><li><b>TTL-based:</b> Simple. Stale content during TTL window.</li><li><b>Purge API:</b> CloudFront invalidation, Fastly instant purge. On deploy.</li><li><b>Versioned URLs:</b> /static/app.v5.js — never expires. Best for static assets.</li><li><b>Cache-Control:</b> <code>max-age=31536000, immutable</code> for fingerprinted assets</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Pull vs Push CDN</span><br><ul><li><b>Pull:</b> CDN fetches from origin on first request (cache miss). Simple. Good for dynamic content.</li><li><b>Push:</b> You upload content to CDN proactively. Good for large files, predictable access patterns.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does Cloudflare Workers extend CDN to edge compute?<br>• How do you handle geo-restricted content on CDN?<br>• What is the difference between Anycast and unicast routing?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Networking Round</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, Meta, Uber, LinkedIn, Razorpay</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="protocols">
+    <span class="q-index">19</span>
+    <span class="q-text">TCP congestion control</span>
+    <div class="q-tags"><span class="q-tag">congestion-control</span><span class="q-tag">slow-start</span><span class="q-tag">bbr</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">75%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Slow start → Congestion avoidance → Fast retransmit/recovery. CWND. BBR: bandwidth-delay model.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Networking Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Cisco, Snowflake</span>
+    </div>
+  </div>
+</div></div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-links">
+      <a href="../common/top-coding.html">Top Coding</a>
+      <a href="../common/top-system-design.html">System Design</a>
+      <a href="../common/top-backend.html">Backend</a>
+      <a href="../common/top-cpp.html">C++</a>
+      <a href="../common/top-java.html">Java</a>
+      <a href="../common/top-go.html">Go</a>
+      <a href="../common/top-database.html">Database</a>
+      <a href="../common/top-concurrency.html">Concurrency</a>
+      <a href="../common/top-os.html">OS</a>
+      <a href="../common/top-networking.html">Networking</a>
+      <a href="../common/top-lld.html">LLD</a>
+      <a href="../common/top-cicd.html">CI/CD</a>
+      <a href="../common/top-security.html">Security</a>
+      <a href="../common/top-ml.html">ML Systems</a>
+      <a href="../common/top-perf.html">Performance</a>
+    </div>
+    <p>Built for SDE-1 &amp; SDE-2 Backend Engineers | C++ · Java · Go · Distributed Systems</p>
+    <p style="margin-top:8px;font-size:12px;opacity:.5">Data sourced from LeetCode, Glassdoor, Blind, Reddit &amp; public interview experiences</p>
+  </div>
+</footer>
+<button id="back-to-top" title="Back to top">↑</button>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

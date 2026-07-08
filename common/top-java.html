@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top Java Questions | InterviewRepo — Backend SDE Interview Prep</title>
+  <meta name="description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Top Java Questions">
+  <meta name="keywords" content="backend interview questions, SDE interview prep, system design, DSA, C++ interview, Java interview, Go interview, top java questions">
+  <meta name="author" content="InterviewRepo">
+  <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="InterviewRepo — Backend SDE Prep">
+  <meta property="og:title"       content="Top Java Questions | InterviewRepo">
+  <meta property="og:description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Top Java Questions">
+  <meta property="og:url"         content="https://devinterviewvault.netlify.app">
+  <meta property="og:image"       content="https://devinterviewvault.netlify.app/assets/og-image.png">
+  <meta name="twitter:card"       content="summary_large_image">
+  <meta name="twitter:title"      content="Top Java Questions | InterviewRepo">
+  <meta name="twitter:description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Top Java Questions">
+  <meta name="twitter:image"      content="https://devinterviewvault.netlify.app/assets/og-image.png">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://devinterviewvault.netlify.app">
+  <meta name="google-site-verification" content="a8bdedb3bc5f858c">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Top Java Questions", "description": "SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design \u2014 Top Java Questions", "url": "https://devinterviewvault.netlify.app", "publisher": {"@type": "Organization", "name": "InterviewRepo"}}</script>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+</head>
+<body>
+<nav class="navbar">
+  <a class="navbar-brand" href="../index.html">
+    <span class="logo-icon">⚡</span>
+    <span>InterviewRepo</span>
+  </a>
+  <div class="search-bar">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="search-input" placeholder="Search questions… (Ctrl+K)" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <nav class="navbar-nav">
+    <a href="../index.html">Home</a>
+    <a href="../common/top-coding.html">Top DSA</a>
+    <a href="../common/top-system-design.html">System Design</a>
+    <a href="../common/top-backend.html">Backend</a>
+    <a href="../common/top-cpp.html">C++</a>
+    <a href="../common/top-java.html">Java</a>
+    <a href="../common/top-go.html">Go</a>
+  </nav>
+</nav>
+<div class="top-list-header">
+  <div class="container">
+    <div class="breadcrumb"><a href="../index.html">Home</a><span class="breadcrumb-sep">›</span><span>Top Java Questions</span></div>
+    <h1 style="font-size:36px;font-weight:800;margin-bottom:8px">☕ Top Java Questions</h1>
+    <p style="color:var(--text-muted);font-size:16px">Core Java questions on JVM, collections, concurrency and Spring.</p>
+    <p style="color:var(--text-muted);font-size:14px;margin-top:8px">35 questions</p>
+  </div>
+</div>
+<div class="container section">
+  <div class="filters-bar"><button class="filter-btn active" data-filter="all" data-group="sub">All</button><button class="filter-btn" data-filter="collections" data-group="sub">Collections</button><button class="filter-btn" data-filter="concurrency" data-group="sub">Concurrency</button><button class="filter-btn" data-filter="java-records" data-group="sub">Java-Records</button><button class="filter-btn" data-filter="java8" data-group="sub">Java8</button><button class="filter-btn" data-filter="jpa" data-group="sub">Jpa</button><button class="filter-btn" data-filter="jvm" data-group="sub">Jvm</button><button class="filter-btn" data-filter="language" data-group="sub">Language</button><button class="filter-btn" data-filter="nio" data-group="sub">Nio</button><button class="filter-btn" data-filter="spring" data-group="sub">Spring</button><button class="filter-btn" data-filter="streams" data-group="sub">Streams</button><button class="filter-btn" data-filter="virtual-threads" data-group="sub">Virtual-Threads</button></div>
+  <div class="filters-bar"><button class="filter-btn active" data-filter="all" data-group="diff">All Difficulty</button><button class="filter-btn" data-filter="easy" data-group="diff">Easy</button><button class="filter-btn" data-filter="medium" data-group="diff">Medium</button><button class="filter-btn" data-filter="hard" data-group="diff">Hard</button></div>
+  <div class="question-list"><div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="jvm">
+    <span class="q-index">1</span>
+    <span class="q-text">JVM memory model: heap, stack, metaspace</span>
+    <div class="q-tags"><span class="q-tag">jvm</span><span class="q-tag">memory</span><span class="q-tag">gc</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">92%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">JVM Memory Areas</span><br><ul><li><b>Heap:</b> All objects (new). Divided into Young (Eden + 2 Survivors) + Old/Tenured. GC managed.</li><li><b>Stack:</b> Per-thread. Holds stack frames: local variables, operand stack, method calls. Fixed size (typically 512KB-1MB). StackOverflowError if exceeded.</li><li><b>Metaspace (Java 8+):</b> Class metadata (class bytecode, method data). Native memory, grows dynamically. Replaced PermGen which had fixed max size.</li><li><b>Code Cache:</b> JIT-compiled native code.</li><li><b>Direct Memory:</b> Off-heap via NIO ByteBuffer.allocateDirect(). Not GC'd, must be freed explicitly.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Tuning Flags</span><br><pre>-Xms512m -Xmx4g       # initial and max heap
+-XX:MetaspaceSize=256m # initial metaspace
+-XX:MaxMetaspaceSize=512m
+-Xss512k               # thread stack size</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What causes OutOfMemoryError in heap vs metaspace vs direct memory?<br>• What is object header size in JVM? (12-16 bytes: mark word + klass pointer)<br>• How does compressed OOPs affect memory usage?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, LinkedIn, Microsoft, PayPal, Oracle...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="jvm">
+    <span class="q-index">2</span>
+    <span class="q-text">Java GC: types and how they work</span>
+    <div class="q-tags"><span class="q-tag">gc</span><span class="q-tag">g1</span><span class="q-tag">zgc</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Generational mark-sweep-compact. G1: region-based. ZGC/Shenandoah: low-latency <1ms STW.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, LinkedIn, Microsoft, PayPal, Oracle</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="collections">
+    <span class="q-index">3</span>
+    <span class="q-text">HashMap internals in Java 8+</span>
+    <div class="q-tags"><span class="q-tag">hashmap</span><span class="q-tag">treeify</span><span class="q-tag">collision</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">HashMap Internals</span><br><pre>// Java 8+ structure:
+// Node&lt;K,V&gt;[] table  (array of buckets, power of 2 size)
+// Each bucket: null | Node (linked list) | TreeNode (red-black tree)
+
+// Hash calculation:
+static int hash(Object key) {
+    int h;
+    return (key == null) ? 0 : (h = key.hashCode()) ^ (h &gt;&gt;&gt; 16);
+    // XOR high bits into low bits — better distribution
+}
+// Bucket index: (n-1) &amp; hash  (n = table length, power of 2)</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Thresholds</span><br><ul><li><b>TREEIFY_THRESHOLD = 8:</b> Bucket with &gt;8 nodes → convert to red-black tree (O(log n) per op)</li><li><b>UNTREEIFY_THRESHOLD = 6:</b> Tree shrinks back to list on removal</li><li><b>LOAD_FACTOR = 0.75:</b> Resize (double) when size/capacity &gt; 0.75</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Thread Safety</span><br>HashMap is NOT thread-safe. Use ConcurrentHashMap (lock-striping, CAS) or Collections.synchronizedMap() (coarse lock).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the time complexity of get() in worst case? O(log n) with tree buckets<br>• Why XOR high bits into low bits in hash()? (prevents collision when table size is small)<br>• What is the difference between HashMap.keySet() and EntrySet iteration performance?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, LinkedIn, Microsoft, Meta, PayPal...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="concurrency">
+    <span class="q-index">4</span>
+    <span class="q-text">ThreadPoolExecutor — all 7 parameters explained</span>
+    <div class="q-tags"><span class="q-tag">thread-pool</span><span class="q-tag">executor</span><span class="q-tag">queue</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Constructor Parameters</span><br><pre>new ThreadPoolExecutor(
+    int corePoolSize,      // threads always alive
+    int maximumPoolSize,   // max threads under load
+    long keepAliveTime,    // idle non-core thread timeout
+    TimeUnit unit,
+    BlockingQueue&lt;Runnable&gt; workQueue,  // task buffer
+    ThreadFactory threadFactory,         // name/daemon threads
+    RejectedExecutionHandler handler     // queue full policy
+);</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Sizing Strategy</span><br><ul><li><b>CPU-bound:</b> core = max = N_CPU + 1</li><li><b>I/O-bound:</b> core = N_CPU × (1 + wait/compute). Use virtual threads (Java 21) instead.</li><li><b>Queue type:</b> <code>LinkedBlockingQueue</code> (unbounded, dangerous), <code>ArrayBlockingQueue</code> (bounded, triggers max threads), <code>SynchronousQueue</code> (handoff, always spawns threads)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Rejection Policies</span><br><ul><li><code>AbortPolicy</code>: throw RejectedExecutionException (default)</li><li><code>CallerRunsPolicy</code>: run task in caller thread (natural backpressure)</li><li><code>DiscardPolicy</code>: silently drop task</li><li><code>DiscardOldestPolicy</code>: drop oldest queued task</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Thread Lifecycle</span><br>core threads → fill queue → spawn non-core threads to maxPoolSize → reject</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• When do non-core threads get created? (queue full, &lt; maxPoolSize)<br>• How do you monitor thread pool health? (getActiveCount, getQueue().size())<br>• Why is Executors.newFixedThreadPool() dangerous? (unbounded LinkedBlockingQueue)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Amazon, Google, LinkedIn, Microsoft, Meta, PayPal</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="collections">
+    <span class="q-index">5</span>
+    <span class="q-text">ConcurrentHashMap internals</span>
+    <div class="q-tags"><span class="q-tag">concurrenthashmap</span><span class="q-tag">cas</span><span class="q-tag">lock-striping</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Java8: CAS for non-contended; synchronized on bucket head for contended. Lock-free reads.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, LinkedIn, Microsoft, Meta</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="concurrency">
+    <span class="q-index">6</span>
+    <span class="q-text">volatile keyword in Java</span>
+    <div class="q-tags"><span class="q-tag">volatile</span><span class="q-tag">visibility</span><span class="q-tag">reordering</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Guarantees visibility and prevents reordering. Does NOT guarantee atomicity. Use for flags.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, LinkedIn, Meta, Microsoft, TCS...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="java8">
+    <span class="q-index">7</span>
+    <span class="q-text">Java Streams and lazy evaluation</span>
+    <div class="q-tags"><span class="q-tag">streams</span><span class="q-tag">lambda</span><span class="q-tag">functional</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Lazy pipeline; intermediate ops don't execute until terminal op. Enables fusion, short-circuit.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, LinkedIn, Microsoft, Meta, TCS...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="collections">
+    <span class="q-index">8</span>
+    <span class="q-text">HashMap vs LinkedHashMap vs TreeMap internals</span>
+    <div class="q-tags"><span class="q-tag">hashmap</span><span class="q-tag">linkedhashmap</span><span class="q-tag">treemap</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">HashMap</span><br>Array of Node&lt;K,V&gt; buckets. Hash → index via <code>(n-1) &amp; hash</code>. Collision: linked list, then treeify at threshold 8 (TREEIFY_THRESHOLD). Resize (double) at 75% load factor. Java 8: balanced BST (TreeNode) for long chains.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">LinkedHashMap</span><br>Extends HashMap. Adds doubly-linked list through all entries maintaining <b>insertion order</b>. Can be configured for <b>access order</b> (LRU behaviour) with constructor parameter.<br><pre>// LRU Cache using LinkedHashMap
+Map&lt;K,V&gt; lru = new LinkedHashMap&lt;&gt;(16, 0.75f, true) {  // accessOrder=true
+    protected boolean removeEldestEntry(Map.Entry&lt;K,V&gt; e) {
+        return size() &gt; capacity;
+    }
+};</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">TreeMap</span><br>Red-Black tree. Keys always <b>sorted</b> (natural order or Comparator). O(log n) get/put/remove. Extra operations: <code>floorKey</code>, <code>ceilingKey</code>, <code>headMap</code>, <code>tailMap</code>, <code>subMap</code>.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Quick Comparison</span><br><ul><li><b>HashMap:</b> O(1) avg, unordered, null key/values allowed</li><li><b>LinkedHashMap:</b> O(1) avg, insertion/access ordered, LRU capable</li><li><b>TreeMap:</b> O(log n), sorted, no null key</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is HashMap's initial capacity and load factor trade-off?<br>• Why is String a good HashMap key? (immutable, cached hashCode)<br>• What causes ConcurrentModificationException?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Amazon, Google, LinkedIn, Microsoft, TCS, Infosys...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="concurrency">
+    <span class="q-index">9</span>
+    <span class="q-text">Java Memory Model and happens-before</span>
+    <div class="q-tags"><span class="q-tag">jmm</span><span class="q-tag">happens-before</span><span class="q-tag">volatile</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Java Memory Model (JMM) Happens-Before</span><br>If action A happens-before B, then A's writes are visible to B. Established by:<br><ul><li>Monitor unlock happens-before lock by any thread</li><li>volatile write happens-before volatile read of same field</li><li>Thread.start() happens-before all actions in started thread</li><li>Thread.join() happens-before all actions after join returns</li><li>Program order within single thread</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">volatile vs synchronized</span><br><ul><li><b>volatile:</b> Visibility + ordering for single variable. No atomicity for compound ops (i++ is not atomic).</li><li><b>synchronized:</b> Mutual exclusion + full memory visibility. Heavier.</li><li><b>Atomic classes:</b> CAS-based, lock-free, best for single variable atomic operations.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Why does double-checked locking need volatile? (prevents reordering of new T() allocation vs pointer assignment)<br>• What is a publication failure and how does final field guarantee prevent it?<br>• What is memory_order in C++ and how does it map to JMM concepts?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, LinkedIn, Meta, Databricks</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="concurrency">
+    <span class="q-index">10</span>
+    <span class="q-text">ExecutorService and thread pool types</span>
+    <div class="q-tags"><span class="q-tag">executorservice</span><span class="q-tag">thread-pool</span><span class="q-tag">forkjoin</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">ExecutorService Types</span><br><pre>Executors.newFixedThreadPool(10)       // fixed N threads, unbounded queue (DANGEROUS!)
+Executors.newCachedThreadPool()        // grows/shrinks, no queue — risky under load
+Executors.newSingleThreadExecutor()    // 1 thread, sequential, unbounded queue
+Executors.newScheduledThreadPool(2)    // for delayed / periodic tasks
+ForkJoinPool.commonPool()             // work-stealing, for parallel streams
+
+// RECOMMENDED:
+new ThreadPoolExecutor(core, max, keepAlive, unit, new ArrayBlockingQueue&lt;&gt;(1000),
+    new ThreadPoolExecutor.CallerRunsPolicy());  // bounded queue + backpressure</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Lifecycle</span><br><pre>ExecutorService ex = Executors.newFixedThreadPool(4);
+try {
+    ex.submit(task1); ex.submit(task2);
+} finally {
+    ex.shutdown();                          // stop accepting new tasks
+    if (!ex.awaitTermination(60, SECONDS))
+        ex.shutdownNow();                   // cancel running tasks
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Why is newFixedThreadPool dangerous? (unbounded LinkedBlockingQueue can OOM)<br>• What is the difference between submit() and execute()?<br>• How does ForkJoinPool differ from ThreadPoolExecutor?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Amazon, Google, LinkedIn, Microsoft, Meta</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="concurrency">
+    <span class="q-index">11</span>
+    <span class="q-text">CompletableFuture — common patterns and pitfalls</span>
+    <div class="q-tags"><span class="q-tag">completablefuture</span><span class="q-tag">async</span><span class="q-tag">compose</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Key Methods</span><br><pre>// Chain
+CompletableFuture.supplyAsync(() -&gt; fetchUser(id))    // async supplier
+    .thenApply(user -&gt; enrichUser(user))              // transform (same thread)
+    .thenCompose(user -&gt; fetchOrders(user.id()))      // flatMap (new CF)
+    .thenAccept(System.out::println)                  // consume result
+    .exceptionally(ex -&gt; { log(ex); return null; })  // error handling</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Parallel execution</span><br><pre>var cfA = CompletableFuture.supplyAsync(() -&gt; callServiceA());
+var cfB = CompletableFuture.supplyAsync(() -&gt; callServiceB());
+
+// Wait for both
+CompletableFuture.allOf(cfA, cfB).join();
+
+// Combine results
+var result = cfA.thenCombine(cfB, (a, b) -&gt; merge(a, b));</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Common Pitfalls</span><br><ul><li><b>Default executor</b> is ForkJoinPool.commonPool() — shared, avoid for blocking I/O</li><li>Always provide custom executor: <code>supplyAsync(() -&gt; ..., myExecutor)</code></li><li>Unhandled exceptions in async chain silently swallowed — always add <code>exceptionally</code></li><li><code>join()</code> vs <code>get()</code>: join throws unchecked, get throws checked</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Difference between thenApply, thenApplyAsync, thenCompose?<br>• How do you implement timeout in CompletableFuture?<br>• How does CompletableFuture compare to Mono/Flux?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Amazon, Google, LinkedIn, Microsoft, Meta, PayPal</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="concurrency">
+    <span class="q-index">12</span>
+    <span class="q-text">CountDownLatch vs CyclicBarrier vs Semaphore vs Phaser</span>
+    <div class="q-tags"><span class="q-tag">countdown-latch</span><span class="q-tag">barrier</span><span class="q-tag">semaphore</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">CountDownLatch</span><br>One-time gate. Threads <code>await()</code> until count reaches 0 via <code>countDown()</code>. Cannot be reset.<br><pre>CountDownLatch latch = new CountDownLatch(3);
+// 3 workers call latch.countDown() when done
+latch.await();  // main thread blocks until all 3 done</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">CyclicBarrier</span><br>Reusable rendezvous point. All N threads call <code>await()</code> and block until all arrive. Then all proceed.<br><pre>CyclicBarrier barrier = new CyclicBarrier(3, () -&gt; System.out.println("phase done"));
+// Each thread calls barrier.await() — blocked until 3 threads reach barrier</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Semaphore</span><br>Controls access to N permits. <code>acquire()</code> blocks if 0 permits. <code>release()</code> returns one.<br><pre>Semaphore sem = new Semaphore(5);  // max 5 concurrent threads
+sem.acquire();  // blocks if 5 already running
+try { doWork(); } finally { sem.release(); }</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Phaser (Java 7+)</span><br>Most flexible: dynamic party count, multiple phases, tree structure for scaling.<br><code>phaser.arriveAndAwaitAdvance()</code> — arrive + wait for next phase.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">When to use</span><br><ul><li><code>CountDownLatch</code>: wait for N events (startup, test setup)</li><li><code>CyclicBarrier</code>: parallel computation phases (map-reduce stages)</li><li><code>Semaphore</code>: connection pool, rate limiting, bounded resource access</li><li><code>Phaser</code>: complex multi-phase parallel algorithms</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How would you implement a CountDownLatch using Semaphore?<br>• What is Exchanger and when is it used?<br>• How does CyclicBarrier handle thread interruption?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Amazon, Google, LinkedIn, Microsoft, PayPal</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="spring">
+    <span class="q-index">13</span>
+    <span class="q-text">Spring Security — JWT authentication flow</span>
+    <div class="q-tags"><span class="q-tag">spring-security</span><span class="q-tag">jwt</span><span class="q-tag">oauth2</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">JWT Flow</span><br><pre>1. POST /login {username, password}
+2. Server validates credentials
+3. Server signs JWT: header.payload.signature (HMAC-SHA256 or RS256)
+4. Client stores JWT (HttpOnly cookie or memory — NOT localStorage)
+5. Client sends: Authorization: Bearer &lt;token&gt;
+6. Server: JwtFilter extracts token → validate signature + expiry
+          → set SecurityContextHolder with authentication
+7. Request proceeds to controller</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">JWT Filter</span><br><pre>@Component
+class JwtAuthFilter extends OncePerRequestFilter {
+    @Override
+    protected void doFilterInternal(HttpServletRequest req, ...) {
+        String token = extractToken(req);
+        if (token != null &amp;&amp; jwtUtil.validate(token)) {
+            UsernamePasswordAuthenticationToken auth =
+                new UsernamePasswordAuthenticationToken(
+                    jwtUtil.getUser(token), null,
+                    jwtUtil.getAuthorities(token));
+            SecurityContextHolder.getContext().setAuthentication(auth);
+        }
+        filterChain.doFilter(req, res);
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">JWT vs Sessions</span><br><ul><li><b>JWT:</b> Stateless, scalable, no server-side storage. Con: can't invalidate before expiry.</li><li><b>Session:</b> Server stores state, easy to invalidate. Con: sticky sessions or distributed session store needed.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Refresh Tokens</span><br>Short-lived access token (15min) + long-lived refresh token (7d) stored in HttpOnly cookie. Refresh endpoint issues new access token without re-login.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you implement token blacklisting for logout?<br>• What is the difference between OAuth2 and JWT?<br>• What are the security risks of storing JWT in localStorage?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Amazon, LinkedIn, PayPal, Salesforce, Razorpay, CRED...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="concurrency">
+    <span class="q-index">14</span>
+    <span class="q-text">CompletableFuture vs Future</span>
+    <div class="q-tags"><span class="q-tag">completablefuture</span><span class="q-tag">async</span><span class="q-tag">non-blocking</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">CompletableFuture vs Future</span><br><ul><li><b>Future.get():</b> Blocking. No composition. No exception handling except checked exceptions.</li><li><b>CompletableFuture:</b> Non-blocking. Rich composition API. Exception handling. Async pipelines.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key APIs</span><br><pre>CompletableFuture.supplyAsync(() -&gt; fetchUser(id))     // run async
+    .thenApplyAsync(user -&gt; fetchOrders(user))          // chain
+    .thenCombine(fetchInventory(), (orders, inv) -&gt; merge(orders, inv)) // combine 2
+    .exceptionally(ex -&gt; defaultOrders())              // handle error
+    .thenAccept(result -&gt; render(result))               // consume
+    .orTimeout(5, TimeUnit.SECONDS)                     // timeout
+    .get();
+
+// Wait for all:
+CompletableFuture.allOf(cf1, cf2, cf3).join();
+// First to complete:
+CompletableFuture.anyOf(cf1, cf2, cf3).join();</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Thread Pool</span><br>Uses ForkJoinPool.commonPool() by default. Pass custom executor for IO-heavy tasks: <code>supplyAsync(() -&gt; ..., ioThreadPool)</code></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the difference between thenApply vs thenApplyAsync?<br>• How does CompletableFuture handle exceptions in chained stages?<br>• How does Project Loom virtual threads change CompletableFuture usage?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Amazon, Google, LinkedIn, Microsoft, Meta</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="spring">
+    <span class="q-index">15</span>
+    <span class="q-text">Spring Boot auto-configuration</span>
+    <div class="q-tags"><span class="q-tag">spring-boot</span><span class="q-tag">auto-config</span><span class="q-tag">conditional</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">@EnableAutoConfiguration reads spring.factories. Conditionals (@ConditionalOnClass) enable beans.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Amazon, LinkedIn, Microsoft, PayPal, Oracle, Salesforce</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="jpa">
+    <span class="q-index">16</span>
+    <span class="q-text">JPA N+1 problem and solutions</span>
+    <div class="q-tags"><span class="q-tag">hibernate</span><span class="q-tag">n+1</span><span class="q-tag">join-fetch</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">1 query for parent + N for children. Fix: JOIN FETCH, @EntityGraph, batch size.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 Amazon, LinkedIn, PayPal, Oracle, Salesforce, Infosys</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="jvm">
+    <span class="q-index">17</span>
+    <span class="q-text">Java Memory Leaks — common causes and detection</span>
+    <div class="q-tags"><span class="q-tag">memory-leak</span><span class="q-tag">heap</span><span class="q-tag">jvm</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Common Causes</span><br><ul><li><b>Static references:</b> Static fields holding large objects or collections never GC'd</li><li><b>ThreadLocal leak:</b> In thread pools, ThreadLocal not removed → memory leak per thread</li><li><b>Listeners/callbacks:</b> Registered but never removed (event listeners, MBean)</li><li><b>Unclosed resources:</b> Connection pools, file handles (use try-with-resources)</li><li><b>Cache without eviction:</b> Unbounded HashMap growing forever</li><li><b>ClassLoader leak:</b> Hot deployment in app servers — classloader + all loaded classes retained</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Detection Tools</span><br><ul><li><b>jmap -histo &lt;pid&gt;</b> — histogram of heap objects</li><li><b>jmap -dump:format=b,file=heap.hprof &lt;pid&gt;</b> — heap dump</li><li><b>Eclipse MAT / VisualVM</b> — analyze heap dump, find GC roots</li><li><b>Java Flight Recorder (JFR) + JMC</b> — low-overhead production profiling</li><li><b>async-profiler</b> — CPU and allocation profiling</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">ThreadLocal Fix</span><br><pre>private static final ThreadLocal&lt;Context&gt; ctx = new ThreadLocal&lt;&gt;();
+
+try {
+    ctx.set(new Context());
+    doWork();
+} finally {
+    ctx.remove();  // CRITICAL in thread pools!
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is a WeakHashMap and when does it help?<br>• How do you find the GC root of a retained object in MAT?<br>• What is heap fragmentation in old generation?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Amazon, Google, LinkedIn, Microsoft, Meta, TCS...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="concurrency">
+    <span class="q-index">18</span>
+    <span class="q-text">ThreadLocal usage and pitfalls</span>
+    <div class="q-tags"><span class="q-tag">threadlocal</span><span class="q-tag">per-thread</span><span class="q-tag">memory-leak</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Per-thread storage. Use for request context. Risk: memory leak in thread pools — always remove().</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Amazon, LinkedIn, Google, Meta, PayPal</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="virtual-threads">
+    <span class="q-index">19</span>
+    <span class="q-text">Java Virtual Threads (Project Loom, Java 21)</span>
+    <div class="q-tags"><span class="q-tag">virtual-threads</span><span class="q-tag">loom</span><span class="q-tag">project-loom</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Problem with Platform Threads</span><br>Java platform thread = OS thread. Creating 10,000 threads = 10,000 OS threads. Each uses ~1MB stack. I/O blocking wastes the OS thread.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Virtual Threads</span><br>Java 21 GA. Virtual threads are <b>JVM-managed, lightweight</b>. Mounted on platform threads (carrier threads) from a pool. On blocking I/O: JVM <b>unmounts</b> virtual thread, frees the carrier for others. Millions of VTs are feasible.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Usage</span><br><pre>// Simple
+Thread.ofVirtual().start(() -> handleRequest());
+
+// With ExecutorService
+try (var exec = Executors.newVirtualThreadPerTaskExecutor()) {
+    for (int i = 0; i &lt; 1_000_000; i++) {
+        exec.submit(this::handleRequest);
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">When to use</span><br>I/O-bound workloads (HTTP servers, DB queries). CPU-bound: still use platform threads or ForkJoinPool. Don't use <code>synchronized</code> blocks (causes carrier pinning) — use <code>ReentrantLock</code>.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is thread pinning in virtual threads?<br>• How do structured concurrency (StructuredTaskScope) and virtual threads interact?<br>• Compare virtual threads to Kotlin coroutines and Go goroutines.</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, LinkedIn, Microsoft, Meta, PayPal</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="java-records">
+    <span class="q-index">20</span>
+    <span class="q-text">Java Records — what are they and when to use?</span>
+    <div class="q-tags"><span class="q-tag">records</span><span class="q-tag">immutable</span><span class="q-tag">data-classes</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Records (Java 16+)</span><br>Compact syntax for <b>immutable data carriers</b>. Compiler auto-generates: all-args constructor, getters, <code>equals()</code>, <code>hashCode()</code>, <code>toString()</code>.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Example</span><br><pre>// Old way (12 lines)
+public final class Point {
+    private final int x, y;
+    public Point(int x, int y) { this.x=x; this.y=y; }
+    public int x() { return x; } public int y() { return y; }
+    // + equals, hashCode, toString...
+}
+
+// Record way (1 line!)
+public record Point(int x, int y) {}
+
+// Usage
+Point p = new Point(3, 4);
+System.out.println(p.x());  // 3
+System.out.println(p);      // Point[x=3, y=4]</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Restrictions</span><br><ul><li>Fields are implicitly final (immutable)</li><li>Cannot extend other classes (implicitly extends Record)</li><li>Can implement interfaces</li><li>Can add compact constructors, static methods, instance methods</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Use Cases</span><br>DTOs, value objects, API response/request types, configuration classes.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is a compact constructor in records?<br>• How do records work with pattern matching (Java 21)?<br>• Records vs Lombok @Data — when to prefer which?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Amazon, LinkedIn, Microsoft, Google, Meta, PayPal</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="streams">
+    <span class="q-index">21</span>
+    <span class="q-text">Java Stream API internals — lazy evaluation, spliterator</span>
+    <div class="q-tags"><span class="q-tag">streams</span><span class="q-tag">lazy</span><span class="q-tag">spliterator</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Lazy Evaluation</span><br>Intermediate operations (<code>filter</code>, <code>map</code>, <code>flatMap</code>) return a new Stream — <b>nothing executes</b>. Terminal operations (<code>collect</code>, <code>forEach</code>, <code>reduce</code>) trigger the pipeline. Short-circuit ops (<code>findFirst</code>, <code>limit</code>) stop early.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Pipeline Example</span><br><pre>List&lt;String&gt; result = list.stream()
+    .filter(s -&gt; s.length() &gt; 3)   // lazy: creates filter stage
+    .map(String::toUpperCase)         // lazy: creates map stage
+    .sorted()                          // stateful: must see all elements!
+    .limit(5)                          // short-circuit terminal
+    .collect(Collectors.toList());     // triggers whole pipeline</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Spliterator</span><br>The engine behind parallel streams. Splits data into chunks for ForkJoinPool. Characteristics: SIZED, ORDERED, DISTINCT, SORTED, IMMUTABLE, CONCURRENT.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Parallel Streams</span><br><pre>long count = LongStream.rangeClosed(1, 1_000_000)
+    .parallel()
+    .filter(n -&gt; isPrime(n))
+    .count();
+// Uses ForkJoinPool.commonPool()
+// Custom pool: submit to ForkJoinPool explicitly</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Common Collectors</span><br><pre>Collectors.toList()          // ArrayList
+Collectors.toUnmodifiableList() // immutable
+Collectors.groupingBy(key)   // Map&lt;K,List&lt;T&gt;&gt;
+Collectors.counting()
+Collectors.joining(", ", "[", "]")
+Collectors.teeing(c1, c2, merger)  // Java 12+</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• When does sorted() break stream laziness?<br>• How do you create a custom Collector?<br>• When is parallel stream harmful? (overhead > benefit for small lists)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Amazon, Google, LinkedIn, Meta, Microsoft</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="jvm">
+    <span class="q-index">22</span>
+    <span class="q-text">Java Memory Model — happens-before, volatile, final</span>
+    <div class="q-tags"><span class="q-tag">java-memory-model</span><span class="q-tag">happens-before</span><span class="q-tag">volatile</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Happens-Before Rules</span><br>If A happens-before B, A's writes are visible to B.<br><ul><li>Program order: actions in a thread</li><li>Monitor unlock HB lock by any thread</li><li>volatile write HB volatile read of same field</li><li>Thread.start() HB all actions in started thread</li><li>Thread.join() HB actions after join returns</li><li>Static initializer HB first use of class</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">volatile</span><br>Guarantees: (1) reads/writes are atomic for long/double, (2) no caching in registers, (3) volatile write HB volatile read. Does NOT guarantee atomicity of compound operations (i++ is not atomic even on volatile).<br><pre>volatile boolean running = true;
+void stop() { running = false; }  // immediately visible to reader thread</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Double-Checked Locking — Safe with volatile</span><br><pre>class Singleton {
+    private volatile static Singleton instance;
+    public static Singleton get() {
+        if (instance == null) {           // first check (no lock)
+            synchronized (Singleton.class) {
+                if (instance == null)     // second check (locked)
+                    instance = new Singleton();
+            }
+        }
+        return instance;
+    }
+}  // volatile prevents reordering of: alloc → init → assign</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Why was double-checked locking broken before Java 5?<br>• What is the difference between volatile and synchronized?<br>• How does final field guarantee visibility?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Amazon, Google, LinkedIn, Meta, Microsoft</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="concurrency">
+    <span class="q-index">23</span>
+    <span class="q-text">double-checked locking — correct implementation</span>
+    <div class="q-tags"><span class="q-tag">double-checked-locking</span><span class="q-tag">volatile</span><span class="q-tag">singleton</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">76%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Without volatile: broken (reordering). Fix: volatile field. Or use class holder idiom.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, LinkedIn, Meta</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="jpa">
+    <span class="q-index">24</span>
+    <span class="q-text">Hibernate L1 and L2 cache — how they work</span>
+    <div class="q-tags"><span class="q-tag">hibernate</span><span class="q-tag">cache</span><span class="q-tag">l1</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">76%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">L1 Cache (Session Cache)</span><br><b>Default, always on.</b> Scoped to a single <code>Session</code> (transaction). Within a session, the same entity loaded twice returns the same object (identity map). Cleared on <code>session.close()</code> or <code>session.clear()</code>.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">L2 Cache (Shared Cache)</span><br><b>Optional, cross-session.</b> Shared across all sessions in a SessionFactory. Must be explicitly configured. Providers: <b>Ehcache, Caffeine, Infinispan, Redis</b>.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">L2 Setup</span><br><pre># application.properties
+spring.jpa.properties.hibernate.cache.use_second_level_cache=true
+spring.jpa.properties.hibernate.cache.region.factory_class=\
+    org.hibernate.cache.jcache.JCacheRegionFactory
+
+# Entity
+@Entity
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+public class Product { ... }</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Query Cache</span><br>Cache for JPQL/HQL query results. Must also have L2 enabled. Stores primary keys, not entities. Invalidated when any entity in result changes.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache Strategies</span><br>READ_ONLY, NONSTRICT_READ_WRITE, READ_WRITE, TRANSACTIONAL</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• When should you NOT use L2 cache?<br>• How does L2 cache handle cluster environments?<br>• What is the N+1 problem and how does @EntityGraph solve it?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 Amazon, LinkedIn, PayPal, Oracle, Salesforce, Infosys</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="spring">
+    <span class="q-index">25</span>
+    <span class="q-text">Spring Boot auto-configuration internals deep dive</span>
+    <div class="q-tags"><span class="q-tag">spring-boot</span><span class="q-tag">auto-config</span><span class="q-tag">conditional</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">76%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">How it works</span><br><code>@SpringBootApplication</code> includes <code>@EnableAutoConfiguration</code>.<br>Spring Boot reads <code>META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports</code> (or legacy <code>spring.factories</code>) to find all <code>@AutoConfiguration</code> classes.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Conditional Annotations</span><br><ul><li><code>@ConditionalOnClass(DataSource.class)</code> — only if DataSource on classpath</li><li><code>@ConditionalOnMissingBean</code> — only if no user-defined bean of that type</li><li><code>@ConditionalOnProperty("spring.datasource.url")</code> — only if property set</li><li><code>@ConditionalOnWebApplication</code> — only in web context</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Example: DataSource auto-config</span><br><pre>@AutoConfiguration
+@ConditionalOnClass(DataSource.class)
+@ConditionalOnMissingBean(DataSource.class)
+public class DataSourceAutoConfiguration {
+    @Bean
+    @ConditionalOnProperty("spring.datasource.url")
+    public DataSource dataSource(DataSourceProperties props) {
+        return props.initializeDataSourceBuilder().build();
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Debugging</span><br><code>--debug</code> flag prints auto-config report: POSITIVE (matched) and NEGATIVE (not matched) conditions.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you exclude an auto-configuration?<br>• What is @ConfigurationProperties vs @Value?<br>• How does Spring Boot 3 change auto-configuration imports?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Amazon, LinkedIn, PayPal, Oracle, Salesforce</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="jvm">
+    <span class="q-index">26</span>
+    <span class="q-text">Java ClassLoader hierarchy and how class loading works</span>
+    <div class="q-tags"><span class="q-tag">classloader</span><span class="q-tag">bootstrap</span><span class="q-tag">delegation</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">76%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">ClassLoader Hierarchy</span><br><ul><li><b>Bootstrap ClassLoader:</b> Loads JDK core classes (java.lang, java.util) from rt.jar/modules. C++ code, no Java object.</li><li><b>Platform ClassLoader (was Extension):</b> Loads java.se, java.xml etc.</li><li><b>Application ClassLoader:</b> Loads from classpath (your app + third-party JARs).</li><li>Custom ClassLoaders: hot-deploy, OSGi, isolation (one classloader per plugin).</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Delegation Model</span><br>When loading class X: check cache → delegate to parent → parent delegates to its parent → reach Bootstrap → if not found, child tries to load itself → ClassNotFoundException if all fail.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Class Identity</span><br>Same class name loaded by different ClassLoaders = <b>different classes</b>. ClassCastException when assigning across loaders. Root of hot-deploy complexity.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Custom ClassLoader</span><br><pre>class HotLoader extends ClassLoader {
+    @Override
+    protected Class&lt;?&gt; findClass(String name) throws ClassNotFoundException {
+        byte[] bytes = readBytesFromFile(name);
+        return defineClass(name, bytes, 0, bytes.length);
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the ClassLoader leak in application servers?<br>• How does OSGi use ClassLoaders for module isolation?<br>• What is --add-opens in Java 9+ and why is it needed?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Amazon, Google, Oracle, LinkedIn, TCS, Infosys</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="jvm">
+    <span class="q-index">27</span>
+    <span class="q-text">Java GC algorithms — Mark-Sweep, Mark-Compact, Copying, Generational</span>
+    <div class="q-tags"><span class="q-tag">gc-algorithms</span><span class="q-tag">mark-sweep</span><span class="q-tag">generational</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">76%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Mark-Sweep</span><br><b>Mark:</b> traverse GC roots, mark all reachable objects. <b>Sweep:</b> scan heap, free unmarked objects. Problem: <b>fragmentation</b> — free spaces scattered.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Mark-Compact</span><br>Mark phase same. Compact phase: slide all live objects to one end. No fragmentation. Slower than sweep (extra copy). G1GC uses this for selected regions.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Copying Collection</span><br>Divide heap into From/To spaces. Copy live objects to To, flip spaces. No fragmentation, fast allocation (bump pointer). Wastes 50% of heap. Used for young generation.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Generational Hypothesis</span><br>Most objects die young. Java heap split:<br><ul><li><b>Young (Eden + 2 Survivors):</b> Minor GC — fast, copying collector</li><li><b>Old (Tenured):</b> Major/Full GC — mark-compact or concurrent marking</li></ul>Promotion: object surviving N minor GCs (default 15) moves to Old gen.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">G1GC</span><br>Divides heap into equal regions (~1-32MB). Marks concurrently. Selects regions with most garbage (Garbage-First) for collection. Pause target: <code>-XX:MaxGCPauseMillis=200</code>.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What triggers a Full GC and why is it bad?<br>• How does G1GC concurrent marking work alongside application threads?<br>• What is humongous object in G1GC?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, Oracle, LinkedIn, Meta</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="spring">
+    <span class="q-index">28</span>
+    <span class="q-text">Spring WebFlux and Project Reactor — reactive programming</span>
+    <div class="q-tags"><span class="q-tag">webflux</span><span class="q-tag">reactor</span><span class="q-tag">mono</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">74%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">What is Reactive Programming</span><br>Non-blocking, event-driven programming with <b>backpressure</b>. Publisher emits data only as fast as subscriber can consume.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Project Reactor Types</span><br><ul><li><code>Mono&lt;T&gt;</code> — 0 or 1 element (like CompletableFuture)</li><li><code>Flux&lt;T&gt;</code> — 0 to N elements (stream)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Example</span><br><pre>// Blocking (Spring MVC)
+@GetMapping("/user/{id}")
+public User getUser(@PathVariable Long id) {
+    return userService.findById(id);  // blocks thread!
+}
+
+// Reactive (Spring WebFlux)
+@GetMapping("/user/{id}")
+public Mono&lt;User&gt; getUser(@PathVariable Long id) {
+    return userService.findById(id)  // non-blocking Mono
+        .map(UserDto::from)
+        .switchIfEmpty(Mono.error(new NotFoundException()));
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">When to use WebFlux</span><br><ul><li>High-concurrency I/O bound workloads (thousands of concurrent connections)</li><li>Streaming data (SSE, WebSocket)</li><li>Avoid: CPU-bound work, blocking libraries (use bounded elastic scheduler)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the difference between publishOn and subscribeOn?<br>• How do you handle backpressure in Flux?<br>• When would you choose WebFlux over virtual threads (Java 21)?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Amazon, LinkedIn, PayPal, Oracle, Salesforce</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="jvm">
+    <span class="q-index">29</span>
+    <span class="q-text">Java GC tuning — G1GC flags and when to use ZGC/Shenandoah</span>
+    <div class="q-tags"><span class="q-tag">gc</span><span class="q-tag">g1gc</span><span class="q-tag">zgc</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">74%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">G1GC (Default Java 9+)</span><br>Region-based collector. Divides heap into equal regions (~1-32MB). Concurrent marking + stop-the-world compaction of selected regions. Target: balance throughput with pause goals.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key G1GC Flags</span><br><pre>-XX:+UseG1GC
+-Xms4g -Xmx4g              # fix heap size
+-XX:MaxGCPauseMillis=200   # target pause (default 200ms)
+-XX:G1HeapRegionSize=16m   # region size
+-XX:G1NewSizePercent=20    # young gen min %
+-XX:G1MaxNewSizePercent=40 # young gen max %
+-Xlog:gc*:file=gc.log      # GC logging</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">ZGC (Java 21 — production ready)</span><br>Concurrent, scalable, <b>&lt;1ms pauses</b> regardless of heap size (even TBs). Uses colored pointers + load barriers. Ideal for latency-sensitive workloads.<br><code>-XX:+UseZGC -XX:SoftMaxHeapSize=8g</code></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Shenandoah</span><br>Similar to ZGC. Concurrent compaction. Used in OpenJDK builds.<br><code>-XX:+UseShenandoahGC</code></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">When to choose</span><br><ul><li><b>G1GC:</b> Default, good balance, 100-200ms pauses acceptable</li><li><b>ZGC/Shenandoah:</b> Latency-critical services (trading, real-time), &lt;10ms p99</li><li><b>ParallelGC:</b> Batch processing, maximize throughput, pauses OK</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you identify GC pressure? (GC logs, JVM metrics)<br>• What is heap fragmentation and how does G1 handle it?<br>• What is GraalVM native image and how does it change GC?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, LinkedIn, Meta, Oracle</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="nio">
+    <span class="q-index">30</span>
+    <span class="q-text">Java NIO — Channels, Buffers, Selectors (non-blocking I/O)</span>
+    <div class="q-tags"><span class="q-tag">nio</span><span class="q-tag">channel</span><span class="q-tag">buffer</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">74%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">NIO vs Old IO</span><br><ul><li><b>Old IO (java.io):</b> Stream-based, blocking, thread-per-connection</li><li><b>NIO (java.nio):</b> Buffer-based, non-blocking, multiplexed via Selector</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Components</span><br><ul><li><b>Buffer:</b> Fixed-size data container (ByteBuffer, IntBuffer). Has position, limit, capacity.</li><li><b>Channel:</b> Bidirectional, non-blocking I/O endpoint (SocketChannel, FileChannel, ServerSocketChannel)</li><li><b>Selector:</b> Monitors multiple channels on one thread. OS epoll/kqueue underneath.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Non-blocking Server Skeleton</span><br><pre>Selector selector = Selector.open();
+ServerSocketChannel ssc = ServerSocketChannel.open();
+ssc.configureBlocking(false);
+ssc.bind(new InetSocketAddress(8080));
+ssc.register(selector, SelectionKey.OP_ACCEPT);
+
+while (true) {
+    selector.select();  // blocks until event
+    Set&lt;SelectionKey&gt; keys = selector.selectedKeys();
+    for (SelectionKey key : keys) {
+        if (key.isAcceptable()) { accept(key); }
+        else if (key.isReadable()) { read(key); }
+    }
+    keys.clear();
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">ByteBuffer</span><br><code>flip()</code> switches from write to read mode. <code>clear()</code> resets for writing. <code>compact()</code> keeps unread bytes, moves to front.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is NIO.2 (java.nio.file)? (Path, Files, WatchService)<br>• How does Netty build on NIO? (EventLoop, ChannelPipeline)<br>• When would you choose NIO over virtual threads?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Amazon, Google, LinkedIn, Oracle</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="spring">
+    <span class="q-index">31</span>
+    <span class="q-text">Spring @Transactional propagation types</span>
+    <div class="q-tags"><span class="q-tag">transactional</span><span class="q-tag">propagation</span><span class="q-tag">spring</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">72%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">REQUIRED(default)/REQUIRES_NEW/NESTED/SUPPORTS/MANDATORY. REQUIRES_NEW suspends outer txn.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 Amazon, LinkedIn, PayPal, Oracle</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="jvm">
+    <span class="q-index">32</span>
+    <span class="q-text">Java class loading mechanism</span>
+    <div class="q-tags"><span class="q-tag">classloader</span><span class="q-tag">delegation</span><span class="q-tag">isolation</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">72%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Load→Link(verify/prepare/resolve)→Initialize. Delegation: Bootstrap→Extension→App ClassLoader.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, LinkedIn, Meta</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="language">
+    <span class="q-index">33</span>
+    <span class="q-text">Java Sealed Classes and Pattern Matching</span>
+    <div class="q-tags"><span class="q-tag">sealed</span><span class="q-tag">pattern-matching</span><span class="q-tag">switch</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">72%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Sealed Classes (Java 17+)</span><br>Restrict which classes can extend/implement a sealed class/interface. Enables exhaustive pattern matching in <code>switch</code>.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Example</span><br><pre>// Sealed hierarchy
+public sealed interface Shape
+    permits Circle, Rectangle, Triangle {}
+
+public record Circle(double radius) implements Shape {}
+public record Rectangle(double w, double h) implements Shape {}
+public record Triangle(double base, double height) implements Shape {}
+
+// Pattern matching switch (Java 21)
+double area = switch (shape) {
+    case Circle c -&gt; Math.PI * c.radius() * c.radius();
+    case Rectangle r -&gt; r.w() * r.h();
+    case Triangle t -&gt; 0.5 * t.base() * t.height();
+    // Compiler checks exhaustiveness — no default needed!
+};</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Benefits</span><br><ul><li>Compiler ensures exhaustive handling (like Scala/Kotlin sealed)</li><li>Eliminates <code>instanceof</code> chains</li><li>ADT (Algebraic Data Type) support in Java</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do sealed classes work with records?<br>• What is a guarded pattern? (<code>case Circle c when c.radius() &gt; 10</code>)<br>• Compare to Kotlin sealed classes.</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, LinkedIn, Meta</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="concurrency">
+    <span class="q-index">34</span>
+    <span class="q-text">ReentrantReadWriteLock vs StampedLock</span>
+    <div class="q-tags"><span class="q-tag">rwlock</span><span class="q-tag">stampedlock</span><span class="q-tag">optimistic</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">72%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">ReentrantReadWriteLock</span><br>Multiple concurrent readers OR one exclusive writer. Writer starvation risk if readers never release.<br><pre>ReadWriteLock rwl = new ReentrantReadWriteLock();
+Lock rl = rwl.readLock();
+Lock wl = rwl.writeLock();
+
+// Read
+rl.lock(); try { return value; } finally { rl.unlock(); }
+// Write
+wl.lock(); try { value = newVal; } finally { wl.unlock(); }</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">StampedLock (Java 8)</span><br>Better throughput via <b>optimistic reads</b> — no lock acquisition for reads if no writer active.<br><pre>StampedLock sl = new StampedLock();
+
+// Optimistic read (no blocking):
+long stamp = sl.tryOptimisticRead();
+int val = value;                      // read without lock
+if (!sl.validate(stamp)) {            // check if writer intervened
+    stamp = sl.readLock();            // fallback to real read lock
+    try { val = value; } finally { sl.unlockRead(stamp); }
+}
+
+// Write:
+long ws = sl.writeLock();
+try { value = newVal; } finally { sl.unlockWrite(ws); }</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">When to use</span><br><ul><li><code>RRW Lock</code>: read-heavy, need reentrant locking</li><li><code>StampedLock</code>: read-heavy, max throughput, no reentrancy needed</li><li>Avoid StampedLock if writes are frequent (optimistic reads will always fail)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Why is StampedLock not reentrant?<br>• What is lock downgrading (write → read) in ReentrantRWLock?<br>• How does StampedLock compare to ConcurrentHashMap for thread safety?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Amazon, Google, LinkedIn, Meta</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="jvm">
+    <span class="q-index">35</span>
+    <span class="q-text">Java modules system (JPMS — Java 9+)</span>
+    <div class="q-tags"><span class="q-tag">jpms</span><span class="q-tag">modules</span><span class="q-tag">module-info</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">68%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">What is JPMS</span><br>Java Platform Module System (Java 9). Introduces strong encapsulation at the package level. Replaces classpath with modulepath. Eliminates split packages, illegal access.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">module-info.java</span><br><pre>// com.myapp.service module
+module com.myapp.service {
+    requires java.net.http;       // depend on module
+    requires com.myapp.model;
+    exports com.myapp.service.api; // expose this package
+    exports com.myapp.service.impl to com.myapp.web; // targeted export
+    provides com.myapp.spi.Parser  // service provider
+        with com.myapp.service.impl.JsonParser;
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Benefits</span><br><ul><li>Strong encapsulation: internal packages hidden by default</li><li>Reliable configuration: missing dependencies fail at startup, not runtime</li><li>Smaller JVM images with <code>jlink</code></li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Classpath vs Modulepath</span><br>Classpath: no encapsulation, all public APIs accessible. Modulepath: only exported packages visible. Automatic modules for legacy JARs.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is <code>--add-opens</code> and when is it needed?<br>• How does jlink create a custom JRE?<br>• How do Spring Boot apps handle JPMS?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Oracle, Amazon, LinkedIn</span>
+    </div>
+  </div>
+</div></div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-links">
+      <a href="../common/top-coding.html">Top Coding</a>
+      <a href="../common/top-system-design.html">System Design</a>
+      <a href="../common/top-backend.html">Backend</a>
+      <a href="../common/top-cpp.html">C++</a>
+      <a href="../common/top-java.html">Java</a>
+      <a href="../common/top-go.html">Go</a>
+      <a href="../common/top-database.html">Database</a>
+      <a href="../common/top-concurrency.html">Concurrency</a>
+      <a href="../common/top-os.html">OS</a>
+      <a href="../common/top-networking.html">Networking</a>
+      <a href="../common/top-lld.html">LLD</a>
+      <a href="../common/top-cicd.html">CI/CD</a>
+      <a href="../common/top-security.html">Security</a>
+      <a href="../common/top-ml.html">ML Systems</a>
+      <a href="../common/top-perf.html">Performance</a>
+    </div>
+    <p>Built for SDE-1 &amp; SDE-2 Backend Engineers | C++ · Java · Go · Distributed Systems</p>
+    <p style="margin-top:8px;font-size:12px;opacity:.5">Data sourced from LeetCode, Glassdoor, Blind, Reddit &amp; public interview experiences</p>
+  </div>
+</footer>
+<button id="back-to-top" title="Back to top">↑</button>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

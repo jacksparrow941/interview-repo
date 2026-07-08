@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apple | InterviewRepo — Backend SDE Interview Prep</title>
+  <meta name="description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Apple">
+  <meta name="keywords" content="backend interview questions, SDE interview prep, system design, DSA, C++ interview, Java interview, Go interview, apple">
+  <meta name="author" content="InterviewRepo">
+  <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="InterviewRepo — Backend SDE Prep">
+  <meta property="og:title"       content="Apple | InterviewRepo">
+  <meta property="og:description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Apple">
+  <meta property="og:url"         content="https://devinterviewvault.netlify.app">
+  <meta property="og:image"       content="https://devinterviewvault.netlify.app/assets/og-image.png">
+  <meta name="twitter:card"       content="summary_large_image">
+  <meta name="twitter:title"      content="Apple | InterviewRepo">
+  <meta name="twitter:description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Apple">
+  <meta name="twitter:image"      content="https://devinterviewvault.netlify.app/assets/og-image.png">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://devinterviewvault.netlify.app">
+  <meta name="google-site-verification" content="a8bdedb3bc5f858c">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Apple", "description": "SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design \u2014 Apple", "url": "https://devinterviewvault.netlify.app", "publisher": {"@type": "Organization", "name": "InterviewRepo"}}</script>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+</head>
+<body>
+<nav class="navbar">
+  <a class="navbar-brand" href="../../index.html">
+    <span class="logo-icon">⚡</span>
+    <span>InterviewRepo</span>
+  </a>
+  <div class="search-bar">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="search-input" placeholder="Search questions… (Ctrl+K)" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <nav class="navbar-nav">
+    <a href="../../index.html">Home</a>
+    <a href="../../common/top-coding.html">Top DSA</a>
+    <a href="../../common/top-system-design.html">System Design</a>
+    <a href="../../common/top-backend.html">Backend</a>
+    <a href="../../common/top-cpp.html">C++</a>
+    <a href="../../common/top-java.html">Java</a>
+    <a href="../../common/top-go.html">Go</a>
+  </nav>
+</nav>
+<div class="company-header">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../../index.html">Home</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="../index.html">Tier 2: Top Product</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>Apple</span>
+    </div>
+    <div class="company-header-inner">
+      <div class="company-logo-placeholder">A</div>
+      <div class="company-info">
+        <div style="margin-bottom:8px">
+          <span class="tier-badge" data-tier="2" style="--tier-color:#C0C0C0">Tier 2: Top Product</span>
+          <span class="difficulty-badge diff-hard" style="margin-left:8px">Hard</span>
+        </div>
+        <h1>Apple</h1>
+        <p style="color:var(--text-muted);margin-top:8px">Systems programming, very secretive, team-specific questions</p>
+        <div class="company-info-meta">
+          <span class="info-chip"><strong>HQ:</strong> Cupertino, CA</span>
+          <span class="info-chip"><strong>Roles:</strong> ICT2, ICT3 (SDE-1), ICT4 (SDE-2)</span>
+          <span class="info-chip"><strong>Focus:</strong> DSA · System Design · Domain-specific · C++</span>
+          <span class="info-chip"><strong>Interview:</strong> Team-specific interviews, very domain focused</span>
+        </div>
+        <div class="company-stats">
+          <div class="stat-item"><div class="stat-value">41</div><div class="stat-label">Questions</div></div>
+          <div class="stat-item"><div class="stat-value">5</div><div class="stat-label">Avg Rounds</div></div>
+          <div class="stat-item"><div class="stat-value">4.1/5</div><div class="stat-label">Difficulty</div></div>
+          <div class="stat-item"><div class="stat-value">6</div><div class="stat-label">Categories</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><div class="container" style="padding:32px 24px 0">
+  <h2 style="font-size:22px;font-weight:700;margin-bottom:16px">📋 Interview Rounds</h2>
+  <div class="rounds-grid"><div class="round-card">
+  <div class="round-number">Round 1</div>
+  <div class="round-name">Online Assessment (90 min)</div>
+  <div class="round-duration">60-90 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 2</div>
+  <div class="round-name">Technical Phone Screen</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 3</div>
+  <div class="round-name">Coding Round 1</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 4</div>
+  <div class="round-name">System Design / LLD</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 5</div>
+  <div class="round-name">Hiring Manager</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 6</div>
+  <div class="round-name">HR</div>
+  <div class="round-duration">30-45 min</div>
+</div></div>
+</div><div class="container" style="padding:24px 24px 0">
+  <h2 style="font-size:20px;font-weight:700;margin-bottom:14px">🔥 Most Frequently Asked</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:10px;margin-bottom:8px"><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">Smart pointers: unique_ptr, shared_ptr, weak_ptr</div>
+    <div style="font-size:12px;color:var(--text-muted)">Cpp · Medium · 92% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">Race condition — what and how to prevent</div>
+    <div style="font-size:12px;color:var(--text-muted)">Concurrency · Easy · 92% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">Process vs Thread vs Goroutine</div>
+    <div style="font-size:12px;color:var(--text-muted)">Os · Medium · 90% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">I/O models — blocking, non-blocking, I/O multiplexing, async, signals</div>
+    <div style="font-size:12px;color:var(--text-muted)">Os · Hard · 90% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">Virtual memory — paging, page tables, TLB</div>
+    <div style="font-size:12px;color:var(--text-muted)">Os · Hard · 88% frequency</div>
+  </div>
+</div></div>
+</div><div class="tabs-bar"><div class="tabs-inner"><button class="tab-btn active" data-tab="coding">💻 DSA <span style="opacity:.5;font-size:11px">(1)</span></button>
+<button class="tab-btn" data-tab="cpp">⚙️ C++ <span style="opacity:.5;font-size:11px">(20)</span></button>
+<button class="tab-btn" data-tab="os">🖥️ OS <span style="opacity:.5;font-size:11px">(15)</span></button>
+<button class="tab-btn" data-tab="concurrency">⚡ Concurrency <span style="opacity:.5;font-size:11px">(2)</span></button>
+<button class="tab-btn" data-tab="lld">📐 LLD <span style="opacity:.5;font-size:11px">(2)</span></button>
+<button class="tab-btn" data-tab="performance">⚡ Performance <span style="opacity:.5;font-size:11px">(1)</span></button></div></div>
+<div class="container"><div class="tab-panel active" id="tab-coding">
+  <div class="questions-header">
+    <h3>💻 DSA</h3>
+    <span class="q-count">1 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="arrays">
+    <span class="q-index">1</span>
+    <span class="q-text">Spiral Matrix</span>
+    <div class="q-tags"><span class="q-tag">matrix</span><span class="q-tag">simulation</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">63%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Four boundary pointers (top/bottom/left/right), shrink after each pass.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Microsoft, Apple, Google, Amazon, Adobe</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-cpp">
+  <div class="questions-header">
+    <h3>⚙️ C++</h3>
+    <span class="q-count">20 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="memory">
+    <span class="q-index">1</span>
+    <span class="q-text">Smart pointers: unique_ptr, shared_ptr, weak_ptr</span>
+    <div class="q-tags"><span class="q-tag">smart-pointers</span><span class="q-tag">raii</span><span class="q-tag">memory</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">92%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Smart Pointer Types</span><br><ul><li><b>unique_ptr:</b> Exclusive ownership. Non-copyable, move-only. Zero overhead vs raw pointer. Use as default for heap objects.</li><li><b>shared_ptr:</b> Shared ownership via reference count. Thread-safe refcount (atomic). Overhead: control block allocation + atomic ops.</li><li><b>weak_ptr:</b> Non-owning observer of shared_ptr. Breaks circular references. Must <code>lock()</code> before use — returns shared_ptr (empty if object deleted).</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Code Examples</span><br><pre>auto up = std::make_unique&lt;Widget&gt;();     // unique_ptr
+auto sp = std::make_shared&lt;Widget&gt;();     // shared_ptr (single allocation)
+std::weak_ptr&lt;Widget&gt; wp = sp;             // weak_ptr
+if (auto spt = wp.lock()) { spt-&gt;use(); } // safe access
+
+// Cycle breaking:
+struct Node { std::weak_ptr&lt;Node&gt; parent; std::shared_ptr&lt;Node&gt; children; };</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Custom Deleter</span><br><code>unique_ptr&lt;FILE, decltype(&fclose)&gt; f(fopen("x","r"), fclose);</code></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Why prefer make_shared over shared_ptr(new T)? (single allocation for object+control block)<br>• What is enable_shared_from_this and when do you need it?<br>• When would you still use a raw pointer?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Snowflake, Cisco...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="patterns">
+    <span class="q-index">2</span>
+    <span class="q-text">Explain RAII</span>
+    <div class="q-tags"><span class="q-tag">raii</span><span class="q-tag">exceptions</span><span class="q-tag">resource</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">87%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">RAII — Resource Acquisition Is Initialization</span><br>Resource lifetime is bound to object lifetime. Acquire in constructor, release in destructor. Guarantees release even on exceptions (stack unwinding calls destructors).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Examples</span><br><pre>class FileGuard {
+    FILE* f;
+public:
+    explicit FileGuard(const char* path) : f(fopen(path, "r")) {
+        if (!f) throw std::runtime_error("open failed");
+    }
+    ~FileGuard() { if (f) fclose(f); }  // always runs
+    // Delete copy; use move only
+    FileGuard(const FileGuard&) = delete;
+    FileGuard& operator=(const FileGuard&) = delete;
+};
+
+// RAII wrappers: lock_guard, unique_lock, ifstream, unique_ptr, jthread</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Why it matters</span><br>Without RAII: every error path must manually release resources → leak-prone. With RAII: destructor always called → exception-safe, leak-free.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does RAII differ from finally blocks in Java/Python?<br>• What is the ScopeGuard pattern?<br>• How does RAII interact with noexcept?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Snowflake, VMware</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="language">
+    <span class="q-index">3</span>
+    <span class="q-text">Move semantics and rvalue references</span>
+    <div class="q-tags"><span class="q-tag">move-semantics</span><span class="q-tag">rvalue</span><span class="q-tag">performance</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Move Semantics</span><br>C++11 introduces rvalue references (<code>T&&</code>). Move constructor/assignment <b>steals</b> resources from temporaries instead of copying. Enables zero-cost transfer of ownership.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Rvalue References</span><br><pre>class Buffer {
+    int* data; size_t size;
+public:
+    Buffer(Buffer&& other) noexcept :  // move constructor
+        data(other.data), size(other.size) {
+        other.data = nullptr; other.size = 0;  // leave source valid but empty
+    }
+    Buffer& operator=(Buffer&& other) noexcept {
+        if (this != &other) {
+            delete[] data;          // free own resource
+            data = other.data; size = other.size;
+            other.data = nullptr; other.size = 0;
+        } return *this;
+    }
+};
+
+void process(Buffer&& b) { Buffer local = std::move(b); } // move, not copy
+Buffer create() { Buffer b(1024); return b; }  // NRVO: no copy at all!</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">std::move vs std::forward</span><br><code>std::move(x)</code>: unconditional cast to rvalue. <code>std::forward&lt;T&gt;(x)</code>: conditional — preserves lvalue/rvalue category in template (perfect forwarding).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• When should a move constructor be noexcept? (essential for vector reallocation to use moves)<br>• What is the moved-from state guarantee?<br>• What is the difference between universal reference and rvalue reference?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Snowflake, Databricks</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="stl">
+    <span class="q-index">4</span>
+    <span class="q-text">How does std::vector grow?</span>
+    <div class="q-tags"><span class="q-tag">vector</span><span class="q-tag">amortized</span><span class="q-tag">reallocation</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">std::vector Growth</span><br>When capacity is exceeded, vector allocates new buffer (typically 2× current capacity), moves all elements, then deallocates old buffer. Amortized O(1) push_back.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Internals</span><br><pre>struct vector_internals {
+    T* begin;    // pointer to first element
+    T* end;      // pointer past last element (size)
+    T* cap_end;  // pointer to end of allocation (capacity)
+};
+// size() = end - begin
+// capacity() = cap_end - begin</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Important APIs</span><br><ul><li><code>reserve(n)</code>: pre-allocate without changing size. Prevents reallocations.</li><li><code>shrink_to_fit()</code>: release excess capacity (non-binding request).</li><li><code>emplace_back(args)</code>: construct in-place, avoids extra copy/move.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Why does push_back invalidate iterators? (reallocation moves all elements)<br>• What is the growth factor trade-off (2x vs 1.5x)?<br>• How does vector differ from deque in terms of memory layout?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Microsoft, TCS...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="language">
+    <span class="q-index">5</span>
+    <span class="q-text">Move semantics — rvalue references, std::move, std::forward</span>
+    <div class="q-tags"><span class="q-tag">move-semantics</span><span class="q-tag">rvalue</span><span class="q-tag">forward</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Rvalue References</span><br><pre>int&amp;&amp; r = 42;           // rvalue reference: binds to temporaries
+void take(std::string&amp;&amp; s); // accepts rvalue (temporary)
+
+std::string s = "hello";
+take(std::move(s));    // cast to rvalue (s is now valid-but-unspecified)
+take("world");         // temporary: OK</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">std::move</span><br><b>Cast</b> to rvalue reference — enables move constructor/assignment to be called. After move, source is in valid but unspecified state. Do NOT use moved-from object except to assign or destroy.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">std::forward — Perfect Forwarding</span><br><pre>// Forward preserves value category (lvalue stays lvalue, rvalue stays rvalue)
+template&lt;typename T, typename... Args&gt;
+T* create(Args&amp;&amp;... args) {
+    return new T(std::forward&lt;Args&gt;(args)...);
+}
+// If passed lvalue → forwards as lvalue
+// If passed rvalue → forwards as rvalue</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Universal Reference</span><br><code>T&amp;&amp;</code> in a template (deduced context) is a <b>universal/forwarding reference</b>, not an rvalue reference. With <code>T=int&amp;</code>, <code>T&amp;&amp;</code> collapses to <code>int&amp;</code> (reference collapsing).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is reference collapsing? (T&amp;&amp; + T=int&amp; → int&amp;)<br>• When is a move more expensive than a copy? (std::array, trivial types)<br>• How does return value optimization (RVO/NRVO) interact with moves?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Databricks, VMware...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="patterns">
+    <span class="q-index">6</span>
+    <span class="q-text">Rule of Five</span>
+    <div class="q-tags"><span class="q-tag">rule-of-5</span><span class="q-tag">constructors</span><span class="q-tag">destructors</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Define all 5 if you define any: dtor, copy-ctor, copy-assign, move-ctor, move-assign.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Apple, Nvidia, VMware</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="oop">
+    <span class="q-index">7</span>
+    <span class="q-text">How does vtable work?</span>
+    <div class="q-tags"><span class="q-tag">vtable</span><span class="q-tag">virtual</span><span class="q-tag">polymorphism</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">vtable Mechanism</span><br>For each class with virtual functions, compiler generates a <b>vtable</b> — a static array of function pointers. Each object has a hidden <b>vptr</b> pointing to its class's vtable (set in constructor).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Virtual Dispatch</span><br><pre>class Animal {
+public:
+    virtual void sound() { printf("..."); }
+    virtual ~Animal() {}
+};
+// vtable_Animal = { &Animal::sound, &Animal::~Animal }
+
+class Dog : public Animal {
+    void sound() override { printf("Bark"); }
+};
+// vtable_Dog = { &Dog::sound, &Dog::~Dog }
+
+Animal* a = new Dog();
+a-&gt;sound();  // a-&gt;vptr -&gt; vtable_Dog[0] = Dog::sound() → "Bark"</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Costs</span><br><ul><li>Memory: 1 vptr per object (8 bytes on 64-bit)</li><li>Time: extra pointer indirection per call (cache miss possible)</li><li>No inlining: compiler can't inline virtual calls (mostly)</li><li>Final keyword: hints compiler to devirtualize</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is devirtualization and when does the compiler perform it?<br>• How does CRTP achieve static polymorphism without vtable overhead?<br>• Why is virtual destructor needed in base classes?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Apple, Nvidia, Cisco, VMware...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="oop">
+    <span class="q-index">8</span>
+    <span class="q-text">Rule of 0, Rule of 3, Rule of 5 — explain with examples</span>
+    <div class="q-tags"><span class="q-tag">rule-of-3</span><span class="q-tag">rule-of-5</span><span class="q-tag">move</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Rule of 3 (pre-C++11)</span><br>If you define any of: <b>destructor</b>, <b>copy constructor</b>, <b>copy assignment</b>, you should define all three. (Managing raw resource → need custom copy + destructor)</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Rule of 5 (C++11+)</span><br>Add <b>move constructor</b> + <b>move assignment</b>. Without them, moves fall back to copies (expensive).<br><pre>class Buffer {
+    char* data; size_t sz;
+public:
+    Buffer(size_t n) : data(new char[n]), sz(n) {}
+    ~Buffer() { delete[] data; }               // 1: destructor
+    Buffer(const Buffer&amp; o)                   // 2: copy ctor
+        : data(new char[o.sz]), sz(o.sz) { memcpy(data,o.data,sz); }
+    Buffer&amp; operator=(const Buffer&amp; o) {       // 3: copy assign
+        if(this==&amp;o) return *this;
+        delete[] data; sz=o.sz; data=new char[sz]; memcpy(data,o.data,sz); return *this;
+    }
+    Buffer(Buffer&amp;&amp; o) noexcept                // 4: move ctor
+        : data(o.data), sz(o.sz) { o.data=nullptr; o.sz=0; }
+    Buffer&amp; operator=(Buffer&amp;&amp; o) noexcept {   // 5: move assign
+        if(this==&amp;o) return *this;
+        delete[] data; data=o.data; sz=o.sz; o.data=nullptr; return *this;
+    }
+};</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Rule of 0</span><br>Best practice: design classes to own no raw resources. Use RAII wrappers (<code>unique_ptr</code>, <code>vector</code>, <code>string</code>). Then you need ZERO custom special members — compiler generates correct ones.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What does <code>=default</code> and <code>=delete</code> do?<br>• What is the copy-and-swap idiom?<br>• When is a move constructor marked noexcept important?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Databricks, VMware...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="language">
+    <span class="q-index">9</span>
+    <span class="q-text">Undefined behavior — common examples</span>
+    <div class="q-tags"><span class="q-tag">ub</span><span class="q-tag">safety</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Null deref, signed overflow, OOB access, use-after-free, strict aliasing. Compiler assumes UB never occurs.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="concurrency">
+    <span class="q-index">10</span>
+    <span class="q-text">std::condition_variable usage</span>
+    <div class="q-tags"><span class="q-tag">condition-variable</span><span class="q-tag">mutex</span><span class="q-tag">wait</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Lock mutex, wait on condition (with predicate), notify. Predicate guards against spurious wakeups.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Cisco</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="concurrency">
+    <span class="q-index">11</span>
+    <span class="q-text">std::condition_variable — producer-consumer pattern</span>
+    <div class="q-tags"><span class="q-tag">condition-variable</span><span class="q-tag">mutex</span><span class="q-tag">notify</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Full Producer-Consumer</span><br><pre>#include &lt;mutex&gt;
+#include &lt;condition_variable&gt;
+#include &lt;queue&gt;
+
+std::mutex mtx;
+std::condition_variable cv;
+std::queue&lt;int&gt; q;
+bool done = false;
+
+void producer() {
+    for(int i=0;i&lt;10;i++) {
+        std::unique_lock lock(mtx);
+        q.push(i);
+        cv.notify_one();  // wake one consumer
+    }
+    { std::lock_guard lock(mtx); done=true; }
+    cv.notify_all();
+}
+
+void consumer() {
+    while(true) {
+        std::unique_lock lock(mtx);
+        cv.wait(lock, []{ return !q.empty() || done; });  // predicate prevents spurious wakeup
+        while(!q.empty()) { process(q.front()); q.pop(); }
+        if(done) break;
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Spurious Wakeups</span><br>Always use <code>cv.wait(lock, predicate)</code> — without predicate, spurious wakeups cause bugs. Equivalent to: <code>while(!pred()) cv.wait(lock);</code></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">notify_one vs notify_all</span><br><code>notify_one</code>: wake 1 waiter (use for single-consumer or rotating consumers). <code>notify_all</code>: wake all waiters (use for broadcast events like shutdown).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is std::condition_variable_any?<br>• Why must you always hold the mutex when calling notify?<br>• How would you implement a bounded buffer (semaphore-like)?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Databricks, VMware...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="oop">
+    <span class="q-index">12</span>
+    <span class="q-text">Virtual inheritance and diamond problem</span>
+    <div class="q-tags"><span class="q-tag">virtual-inheritance</span><span class="q-tag">diamond</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">76%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Diamond: A inherited twice via B,C. virtual keyword creates single shared A subobject.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Apple, Cisco</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="concurrency">
+    <span class="q-index">13</span>
+    <span class="q-text">unique_lock vs lock_guard vs scoped_lock</span>
+    <div class="q-tags"><span class="q-tag">lock-guard</span><span class="q-tag">unique-lock</span><span class="q-tag">scoped-lock</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">76%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">lock_guard (C++11)</span><br>Simplest RAII wrapper. Locks on construction, unlocks on destruction. Cannot be unlocked/relocked. Cannot be moved. Use when you need a simple lock for a scope.<br><code>std::lock_guard&lt;std::mutex&gt; lock(m);</code></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">unique_lock (C++11)</span><br>More flexible. Can unlock/relock, deferred locking, timed locking. Required for <code>condition_variable</code>.<br><pre>std::unique_lock lock(m, std::defer_lock);  // don't lock yet
+lock.lock();        // lock later
+lock.unlock();      // unlock early
+bool got = lock.try_lock_for(100ms);  // timed</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">scoped_lock (C++17)</span><br>Locks <b>multiple mutexes atomically</b> without deadlock (uses deadlock-free algorithm). Replaces <code>std::lock(m1,m2) + lock_guard(adopt)</code> pattern.<br><code>std::scoped_lock lock(m1, m2, m3);  // all or nothing</code></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">When to use</span><br><ul><li><code>lock_guard</code>: simple scope lock, no condition_variable</li><li><code>unique_lock</code>: condition_variable, deferred/timed locking, early unlock</li><li><code>scoped_lock</code>: locking 2+ mutexes, avoiding deadlock</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does scoped_lock prevent deadlock? (std::lock uses try-lock backoff)<br>• What is std::adopt_lock and std::defer_lock?<br>• When would you use a recursive_mutex?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Databricks, VMware...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="language">
+    <span class="q-index">14</span>
+    <span class="q-text">Structured bindings (C++17) and std::tie</span>
+    <div class="q-tags"><span class="q-tag">structured-bindings</span><span class="q-tag">tuple</span><span class="q-tag">tie</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-med">76%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Structured Bindings (C++17)</span><br><pre>// Decompose pair
+auto [key, val] = std::make_pair("name", 42);
+
+// Decompose struct
+struct Point { int x, y; };
+Point p{3, 4};
+auto [x, y] = p;
+
+// Decompose map iteration
+std::map&lt;std::string,int&gt; m = {{"a",1},{"b",2}};
+for (auto&amp; [key, value] : m) {
+    std::cout &lt;&lt; key &lt;&lt; ":" &lt;&lt; value &lt;&lt; "\n";
+}
+
+// Decompose array
+int arr[3] = {1,2,3};
+auto [a,b,c] = arr;</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">std::tie (pre-C++17)</span><br>Bind to existing variables (not declarations):<br><pre>int x, y;
+std::tie(x, y) = std::make_pair(10, 20);
+
+// Ignore elements:
+std::tie(x, std::ignore) = returnPair();</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Multiple return values</span><br><pre>auto [min, max] = std::minmax({5,2,8,1});
+auto [it, inserted] = myMap.emplace("key", 99);  // map::emplace returns pair</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Can you use structured bindings with custom types? (yes, via get&lt;N&gt; specialization)<br>• What is std::get&lt;N&gt; and how does it relate to structured bindings?<br>• How do structured bindings handle by-reference vs by-value?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Databricks, VMware...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="language">
+    <span class="q-index">15</span>
+    <span class="q-text">std::string_view vs std::string — performance implications</span>
+    <div class="q-tags"><span class="q-tag">string-view</span><span class="q-tag">non-owning</span><span class="q-tag">zero-copy</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-med">75%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">std::string_view</span><br>A <b>non-owning, read-only view</b> into a character sequence. No heap allocation. Just a pointer + length. O(1) construction from any string-like object.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Performance Comparison</span><br><pre>// Bad: copies string for each call
+void log(std::string msg);
+
+// Good: zero-copy read
+void log(std::string_view msg);
+
+// Works with: string, const char*, string literals, substrings
+log("hello");         // no alloc
+log(user_string);    // no alloc
+log(str.substr(0,5)); // DANGER: substr returns string, but view is valid
+
+// Safe substring (zero-copy):
+log(std::string_view(str).substr(0, 5));</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Dangers</span><br><ul><li>Dangling reference if underlying string is destroyed</li><li>Not null-terminated (can't pass to C APIs directly)</li><li>Don't store string_view as a class member if source may outlive it</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is std::span (C++20)?<br>• When must you use std::string over string_view?<br>• How does string_view enable SSO (Small String Optimization)?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Databricks, Snowflake...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="language">
+    <span class="q-index">16</span>
+    <span class="q-text">std::variant, std::optional, std::any — when to use each</span>
+    <div class="q-tags"><span class="q-tag">variant</span><span class="q-tag">optional</span><span class="q-tag">any</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">74%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">std::optional&lt;T&gt;</span><br>Represents a value that <b>may or may not be present</b>. Replaces nullable pointers and sentinel values.<br><pre>std::optional&lt;User&gt; findUser(int id);
+auto u = findUser(42);
+if (u) { std::cout &lt;&lt; u-&gt;name; }</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">std::variant&lt;T1,T2,...&gt;</span><br>Type-safe union. Holds exactly one of a fixed set of types.<br><pre>std::variant&lt;int, double, std::string&gt; v = 42;
+std::visit(overloaded{
+    [](int i)   { cout &lt;&lt; "int: " &lt;&lt; i; },
+    [](double d){ cout &lt;&lt; "double: " &lt;&lt; d; },
+    [](auto&amp; s) { cout &lt;&lt; "str: " &lt;&lt; s; }
+}, v);</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">std::any</span><br>Holds <b>any type</b> at runtime (type-erased). Use <code>std::any_cast</code>. Performance overhead: heap allocation for large objects. Use sparingly.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">When to use</span><br><ul><li><b>optional:</b> Function may fail or return nothing</li><li><b>variant:</b> Known set of alternatives (Result type, AST nodes, event types)</li><li><b>any:</b> Truly unknown type at compile time (config maps, plugin systems)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you implement a Result&lt;T,E&gt; type using variant?<br>• What is std::expected (C++23)?<br>• Performance of variant vs virtual dispatch?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Databricks, Snowflake...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="concurrency">
+    <span class="q-index">17</span>
+    <span class="q-text">std::async — launch policies, futures, shared_future</span>
+    <div class="q-tags"><span class="q-tag">async</span><span class="q-tag">future</span><span class="q-tag">promise</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">74%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">std::async</span><br><pre>// async: launch policy = async (new thread) or deferred (lazy, same thread)
+auto fut = std::async(std::launch::async, []{
+    return heavyCompute();
+});
+// ... do other work ...
+int result = fut.get();  // blocks until ready</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Launch Policies</span><br><ul><li><code>std::launch::async</code>: spawn new thread immediately</li><li><code>std::launch::deferred</code>: run lazily when <code>.get()</code> or <code>.wait()</code> is called (same thread)</li><li><code>std::launch::async | std::launch::deferred</code> (default): implementation chooses — <b>dangerous</b>, may never run</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Promise/Future</span><br><pre>std::promise&lt;int&gt; prom;
+std::future&lt;int&gt; fut = prom.get_future();
+
+std::thread t([&amp;]{ prom.set_value(42); });
+std::cout &lt;&lt; fut.get();  // blocks until set_value
+t.join();</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">shared_future</span><br>Multiple threads can wait on the same result. <code>std::shared_future&lt;T&gt; sf = fut.share();</code> — can be copied, each can call <code>.get()</code>.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What happens if an exception is thrown in async task?<br>• How do you implement a thread pool with futures?<br>• Why is the default launch policy dangerous?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Databricks, VMware...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="language">
+    <span class="q-index">18</span>
+    <span class="q-text">Exception handling internals</span>
+    <div class="q-tags"><span class="q-tag">exceptions</span><span class="q-tag">stack-unwinding</span><span class="q-tag">noexcept</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">72%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Stack unwind calls destructors. RTTI for type matching. noexcept enables optimizations.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Apple, Nvidia</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="templates">
+    <span class="q-index">19</span>
+    <span class="q-text">What is SFINAE and how is it used?</span>
+    <div class="q-tags"><span class="q-tag">sfinae</span><span class="q-tag">enable_if</span><span class="q-tag">type_traits</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">72%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Answer</span><br><b>SFINAE</b> = Substitution Failure Is Not An Error. When template argument substitution fails during overload resolution, the compiler removes that candidate instead of throwing an error.<br>Used with <code>std::enable_if</code> to conditionally enable functions.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Example</span><br><pre>template&lt;typename T,
+         typename = std::enable_if_t&lt;std::is_integral_v&lt;T&gt;&gt;&gt;
+void process(T val) { /* integers only */ }
+
+// C++20 cleaner with concepts:
+template&lt;std::integral T&gt;
+void process(T val) { }</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Use Cases</span><br><ul><li>Tag dispatch based on type properties</li><li>Selecting different implementations for trivial vs non-trivial types</li><li>Building type traits</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What replaced SFINAE in C++20? (Concepts)<br>• Explain <code>std::void_t</code> and detection idiom.<br>• What is <code>std::conditional_t</code>?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Databricks, Snowflake...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="patterns">
+    <span class="q-index">20</span>
+    <span class="q-text">What is the PIMPL idiom and why use it?</span>
+    <div class="q-tags"><span class="q-tag">pimpl</span><span class="q-tag">compilation-firewall</span><span class="q-tag">binary-compatibility</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">72%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">PIMPL = Pointer to IMPLementation</span><br>Hide implementation details behind a pointer. Reduces compilation dependencies and enables ABI stability.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Example</span><br><pre>// widget.h (public header)
+class Widget {
+    struct Impl;  // forward declaration
+    std::unique_ptr&lt;Impl&gt; pImpl;
+public:
+    Widget();
+    ~Widget();  // must be defined where Impl is complete
+    void draw();
+};
+
+// widget.cpp
+struct Widget::Impl { /* all private data here */ int x, y; SDL_Surface* surf; };
+Widget::Widget() : pImpl(std::make_unique&lt;Impl&gt;()) {}
+void Widget::draw() { /* use pImpl-&gt;x */ }</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Benefits</span><br><ul><li><b>Compilation firewall:</b> header changes don't propagate to all users</li><li><b>ABI stability:</b> adding private members doesn't break binary compatibility</li><li><b>Encapsulation:</b> private data truly hidden</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Costs</span><br>Extra heap allocation, one level of indirection, requires explicit dtor definition.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does PIMPL affect move semantics?<br>• What is the fast PIMPL (in-place storage)?<br>• Compare to using abstract interface (pure virtual).</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Apple, Cisco, VMware</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-os">
+  <div class="questions-header">
+    <h3>🖥️ OS</h3>
+    <span class="q-count">15 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="fundamentals">
+    <span class="q-index">1</span>
+    <span class="q-text">Process vs Thread vs Goroutine</span>
+    <div class="q-tags"><span class="q-tag">process</span><span class="q-tag">thread</span><span class="q-tag">goroutine</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Processes vs Threads</span><br><ul><li><b>Process:</b> Independent address space, separate heap/stack/code/data. Isolated — one process crash doesn't affect others. IPC needed (pipes, sockets, shared memory).</li><li><b>Thread:</b> Shares address space (heap, code, global data) with other threads in same process. Has own stack + registers. Cheaper to create/switch than process. Direct memory sharing.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Context Switch Cost</span><br><ul><li>Process switch: save/restore full CPU state + page table switch (TLB flush) → ~100μs</li><li>Thread switch (same process): save/restore registers, stack pointer. No TLB flush → ~1-10μs</li><li>Goroutine/fiber switch: userspace, ~100ns</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Linux Internals</span><br>Both processes and threads are <code>task_struct</code> in Linux kernel. Threads created with <code>CLONE_VM</code> flag — share address space. <code>fork()</code> creates new address space.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is a zombie process?<br>• What is the difference between fork() and vfork()?<br>• How do Python GIL and threads interact?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 OS Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="io">
+    <span class="q-index">2</span>
+    <span class="q-text">I/O models — blocking, non-blocking, I/O multiplexing, async, signals</span>
+    <div class="q-tags"><span class="q-tag">io-models</span><span class="q-tag">blocking</span><span class="q-tag">epoll</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">5 I/O Models</span><br><ul><li><b>Blocking I/O:</b> Thread blocks until data ready. Simple. Scales poorly (1 thread/connection).</li><li><b>Non-blocking I/O:</b> Returns EAGAIN immediately if no data. Polling loop wastes CPU.</li><li><b>I/O Multiplexing (select/poll/epoll):</b> One thread watches many fds. Blocks on select, wakes when any fd ready. Efficient for many connections.</li><li><b>Signal-driven I/O (SIGIO):</b> Signal when data ready. Complex, rarely used.</li><li><b>Async I/O (AIO, io_uring):</b> Kernel does I/O, notifies completion. True async. io_uring (Linux 5.1+): submission/completion queues in shared memory, no syscall overhead.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">epoll vs select vs poll</span><br><ul><li><b>select:</b> fd_set bitmap, max 1024 fds, O(n) scan, copies fd_set each call</li><li><b>poll:</b> array of pollfd, no 1024 limit, still O(n) scan</li><li><b>epoll:</b> O(1) event notification. Register fds once (<code>epoll_ctl</code>), wait (<code>epoll_wait</code>) returns only ready fds. Kernel red-black tree for O(log n) add/remove. Level-triggered or edge-triggered modes.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">io_uring (Modern Linux)</span><br>Fully async: app submits I/O requests to SQ ring, kernel processes, posts completions to CQ ring. Zero syscall on fast path. Used in: Tokio (Rust), QEMU, PostgreSQL, Nginx.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is edge-triggered vs level-triggered epoll?<br>• How does Node.js use libuv to implement the event loop?<br>• What is O_DIRECT and when would you use it?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Nvidia, Apple...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="memory">
+    <span class="q-index">3</span>
+    <span class="q-text">Virtual memory — paging, page tables, TLB</span>
+    <div class="q-tags"><span class="q-tag">virtual-memory</span><span class="q-tag">paging</span><span class="q-tag">page-table</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Virtual Memory</span><br>Each process has its own virtual address space (e.g., 0 to 2^48 on 64-bit). OS maps virtual pages → physical frames via <b>page table</b>. Allows: isolation between processes, overcommit memory, memory-mapped files, copy-on-write.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Multi-level Page Tables</span><br>64-bit systems use 4-level (x86-64) or 5-level page tables to reduce space. Each level is a 4KB page of 512 8-byte entries. Virtual address split:<br><pre>[sign ext | L4 (9) | L3 (9) | L2 (9) | L1 (9) | Offset (12)]</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">TLB (Translation Lookaside Buffer)</span><br>Hardware cache for recent virtual→physical translations. TLB hit: 1 cycle. TLB miss: walk page table (several cycles + memory accesses). TLB flushed on context switch (unless ASID used). Huge pages (2MB/1GB) reduce TLB misses.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Page Fault</span><br><ul><li><b>Minor:</b> Page in memory but not mapped (memory-mapped file, copy-on-write) → map it</li><li><b>Major:</b> Page not in memory → read from disk (swap). Expensive (~ms)</li><li><b>Invalid:</b> Access to unmapped address → SIGSEGV</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is demand paging and how does it relate to exec()?<br>• What is transparent huge pages (THP) and when is it harmful? (database workloads)<br>• How does mmap() differ from malloc()?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Nvidia, Apple...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="concurrency">
+    <span class="q-index">4</span>
+    <span class="q-text">Deadlock — conditions, prevention, avoidance, detection</span>
+    <div class="q-tags"><span class="q-tag">deadlock</span><span class="q-tag">coffman</span><span class="q-tag">banker</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Coffman's Four Necessary Conditions</span><br><ul><li><b>Mutual Exclusion:</b> Resources not sharable</li><li><b>Hold and Wait:</b> Process holds resource while waiting for another</li><li><b>No Preemption:</b> Resources can't be forcibly taken</li><li><b>Circular Wait:</b> T1→waits for T2→waits for T3→waits for T1</li></ul>Breaking <b>any one</b> prevents deadlock.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Prevention</span><br><ul><li><b>Eliminate Hold and Wait:</b> Request all resources at once before starting</li><li><b>Allow Preemption:</b> If waiting, release held resources (costly)</li><li><b>Eliminate Circular Wait:</b> Global ordering of resources (always lock in same order)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Avoidance — Banker's Algorithm</span><br>Each process declares max resource claim. System checks if granting a request leaves system in <b>safe state</b> (all processes can complete). If unsafe → deny and wait. Used in theory; impractical for dynamic systems.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Detection and Recovery</span><br>Allow deadlocks to occur. Periodically run deadlock detector (wait-for graph cycle detection). Recovery: kill one victim process, or preempt + rollback resources.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does Linux kernel handle deadlocks? (lockdep detector in debug build)<br>• What is a livelock vs deadlock?<br>• How does optimistic concurrency (OCC) avoid deadlocks?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Nvidia, Apple...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="scheduling">
+    <span class="q-index">5</span>
+    <span class="q-text">Context switching — what and cost</span>
+    <div class="q-tags"><span class="q-tag">context-switch</span><span class="q-tag">cache</span><span class="q-tag">tlb</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Scheduling Algorithms</span><br><ul><li><b>FCFS:</b> Non-preemptive. Convoy effect (short jobs wait behind long ones).</li><li><b>SJF:</b> Shortest job first. Optimal average wait time. Requires knowing burst time.</li><li><b>Round Robin:</b> Time quantum (10-100ms). Fair. High throughput for interactive tasks.</li><li><b>Priority Scheduling:</b> Highest priority runs first. Risk of starvation (aging fixes this).</li><li><b>CFS (Linux):</b> Virtual runtime. Always runs goroutine with minimum vruntime. Weighted fair sharing.</li><li><b>MLFQ:</b> Multiple queues with decreasing priority + aging. Adapts to CPU vs I/O bound behavior.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Preemptive vs Non-Preemptive</span><br>Preemptive: OS can force context switch (timer interrupt). Necessary for interactive systems. Non-preemptive: process runs until done or blocks. Simpler but poor interactivity.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is starvation and how does aging solve it?<br>• How does Linux CFS handle I/O-bound vs CPU-bound processes?<br>• What is the difference between preemptive priority scheduling and non-preemptive?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 OS Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, VMware, Cisco</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="process">
+    <span class="q-index">6</span>
+    <span class="q-text">Context switching — cost, what is saved/restored</span>
+    <div class="q-tags"><span class="q-tag">context-switch</span><span class="q-tag">registers</span><span class="q-tag">tlb-flush</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">What is Context Switch</span><br>OS saving state of running process/thread and restoring another's. Triggered by: timer interrupt (preemption), syscall, I/O wait, voluntary yield.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Saved State</span><br><ul><li>CPU registers: PC (instruction pointer), SP (stack pointer), general-purpose registers, EFLAGS</li><li>FPU/SIMD state (optional, lazy)</li><li>TLB entries (or flush TLB on switch — expensive on older hardware)</li><li>Process: page table base register (CR3 on x86) → TLB flush → 100s of ns extra</li><li>Thread (same process): no page table switch → cheaper (~1-10μs vs ~10-100μs)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cost</span><br>Process switch: ~1-100μs depending on TLB state, cache warmth, address space size. Thread switch (same process): ~1-10μs. Goroutine/coroutine switch: ~100ns (no kernel, no TLB flush — all in userspace).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Reducing Context Switches</span><br><ul><li>Thread pools (avoid creation overhead)</li><li>Async I/O / event loops (fewer threads, less switching)</li><li>CPU affinity (keep thread on same core → warm L1/L2 cache)</li><li>Lock-free algorithms (avoid blocking)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is ASID (Address Space ID) and how does it reduce TLB flushing?<br>• How does the Linux scheduler decide when to preempt? (timer interrupt + vruntime)<br>• What is voluntary vs involuntary context switch? (cs vs nvcswch in /proc/PID/status)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Nvidia, Apple...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="concurrency">
+    <span class="q-index">7</span>
+    <span class="q-text">Mutex vs Semaphore vs Spinlock</span>
+    <div class="q-tags"><span class="q-tag">mutex</span><span class="q-tag">semaphore</span><span class="q-tag">spinlock</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Synchronization Primitives</span><br><ul><li><b>Mutex (Mutual Exclusion):</b> Binary lock. Owner must release. Sleeping lock — blocked thread sleeps, woken by OS. Priority inversion risk.</li><li><b>Semaphore:</b> Counter (0..N). Binary semaphore ≈ mutex but no ownership. Counting semaphore for resource pools (N available resources).</li><li><b>Spinlock:</b> Busy-wait loop checking flag. No context switch. Great for very short critical sections (kernel code). Wastes CPU if held long.</li><li><b>Condition Variable:</b> Wait + signal pattern. Used WITH mutex (monitor). Always use predicate loop (spurious wakeups).</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Futex (Linux)</span><br>Fast Userspace muTEX. Fast path: atomic CAS in userspace (no syscall). Slow path (contended): syscall to sleep. Basis for pthreads mutex and Java's synchronized.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is priority inversion and how does Mars Pathfinder demonstrate it?<br>• What is a recursive mutex and when do you need it?<br>• How does Go sync.Mutex use futex internally?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 OS Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Cisco, VMware...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="memory">
+    <span class="q-index">8</span>
+    <span class="q-text">Copy-on-Write (COW) in fork() — how it works</span>
+    <div class="q-tags"><span class="q-tag">copy-on-write</span><span class="q-tag">fork</span><span class="q-tag">page-table</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">fork() without COW</span><br>Old approach: fork duplicates entire parent address space immediately. Expensive for large processes — most forked children exec() immediately, wasting the copy.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">COW Optimization</span><br>After fork(), parent and child share the same physical pages (marked read-only). On first write by either process → page fault → OS copies only that page → independent copy.<br><pre>fork()
+  → Page tables copied (cheap)
+  → Physical pages marked read-only + copy-on-write
+
+Child writes to variable x:
+  → Page fault (read-only violation)
+  → OS copies page → child gets private copy
+  → Child's page marked writable
+  → Parent still sees original</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Where COW is used</span><br><ul><li>fork() in Unix/Linux</li><li>mmap(MAP_PRIVATE): shared initially, COW on write</li><li>Container images: layers are shared via COW (OverlayFS)</li><li>Redis persistence: BGSAVE forks → COW allows snapshot without blocking writes</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is vfork() and how does it differ from COW fork()?<br>• How does Redis BGSAVE use COW for non-blocking snapshots?<br>• What is the transparent huge page and COW interaction?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Nvidia, Apple...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="concurrency">
+    <span class="q-index">9</span>
+    <span class="q-text">Spinlock vs Mutex vs Semaphore — detailed comparison</span>
+    <div class="q-tags"><span class="q-tag">spinlock</span><span class="q-tag">mutex</span><span class="q-tag">semaphore</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Spinlock</span><br>Thread loops (busy-waits) until lock is free. No OS involvement for uncontended case.<br><b>Pros:</b> Near-zero overhead for very short critical sections, no context switch.<br><b>Cons:</b> Wastes CPU if lock held long, terrible on uniprocessor, can cause priority inversion.<br><b>Use when:</b> Critical section &lt;~100ns (kernel code, interrupt handlers, lock-free structures).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Mutex</span><br>Thread puts itself to sleep if lock unavailable. OS wakes it when lock released.<br><b>Pros:</b> No CPU waste while waiting, works with long critical sections.<br><b>Cons:</b> Context switch overhead (~1-10μs), kernel involvement.<br><b>Adaptive Mutex (Linux futex):</b> Spin briefly, then sleep. Best of both worlds.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Semaphore</span><br>Generalized mutex: can allow N concurrent holders (counting semaphore). Binary semaphore = mutex but can be released by different thread (unlike mutex, which must be released by owner). Use for: resource pools, producer-consumer signaling.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">futex (Linux fast userspace mutex)</span><br>Check lock in userspace (atomic). Only make syscall when contended (wait/wake). Foundation of pthread_mutex, Java synchronized.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the difference between mutex and binary semaphore?<br>• What is priority inversion and how does priority inheritance solve it? (Mars Pathfinder bug)<br>• What are reader-writer locks and when do they help?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Nvidia, Apple...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="memory">
+    <span class="q-index">10</span>
+    <span class="q-text">Virtual memory and page tables</span>
+    <div class="q-tags"><span class="q-tag">virtual-memory</span><span class="q-tag">paging</span><span class="q-tag">mmu</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">83%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Page Replacement Algorithms</span><br><ul><li><b>OPT (Optimal):</b> Replace page that won't be used for longest time. Theoretical baseline.</li><li><b>FIFO:</b> Evict oldest loaded page. Simple. Belady's anomaly (more frames → more faults).</li><li><b>LRU:</b> Evict least recently used. Approximates OPT well. Expensive exact tracking.</li><li><b>Clock (LRU approximation):</b> Circular list. Reference bit: on access set to 1, on clock hand pass clear to 0, evict when 0. Linux uses clock-PRO.</li><li><b>LFU:</b> Evict least frequently used. Doesn't adapt to recent access pattern changes.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Working Set</span><br>Set of pages currently needed by process. If working set &gt; available frames → thrashing (process spends more time swapping than executing). OS monitors WSS, suspends processes if needed.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is Belady's anomaly? (FIFO gets more page faults with more frames)<br>• How does Linux implement page replacement? (kswapd, active/inactive lists)<br>• What is the difference between paging and segmentation?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 OS Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Apple, Nvidia, VMware, Cisco...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="scheduling">
+    <span class="q-index">11</span>
+    <span class="q-text">CPU scheduling algorithms</span>
+    <div class="q-tags"><span class="q-tag">fcfs</span><span class="q-tag">sjf</span><span class="q-tag">round-robin</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">FCFS, SJF, Round Robin (preemptive), Priority, MLFQ. OS uses MLFQ. Real-time: EDF.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 OS Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Apple, Nvidia, TCS, Infosys</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="scheduling">
+    <span class="q-index">12</span>
+    <span class="q-text">Process scheduling — CFS (Completely Fair Scheduler) in Linux</span>
+    <div class="q-tags"><span class="q-tag">cfs</span><span class="q-tag">scheduler</span><span class="q-tag">vruntime</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">CFS Algorithm</span><br>CFS maintains a <b>virtual runtime (vruntime)</b> per process — time the process has run, weighted by priority (nice value). Always picks the process with <b>minimum vruntime</b> (leftmost node in red-black tree).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">vruntime Update</span><br><pre>vruntime += actual_runtime × (NICE_0_WEIGHT / task_weight)
+# Low-priority (high nice) tasks: vruntime increases faster → scheduled less
+# High-priority (low nice): vruntime increases slower → scheduled more</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Time Slice</span><br>No fixed time slice in CFS. Scheduling period (default 6ms) divided proportionally by weights. Minimum granularity: 0.75ms. Prevents starvation.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Priority Inheritance</span><br>When high-priority task blocks on mutex held by low-priority task → boost low-priority task's priority temporarily to prevent priority inversion (critical in RT systems).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the difference between CFS and O(1) scheduler?<br>• What is nice value range and how does it map to weight?<br>• How does SCHED_FIFO differ from SCHED_OTHER (CFS)?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Nvidia, Apple...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="memory">
+    <span class="q-index">13</span>
+    <span class="q-text">Memory-mapped files (mmap) — mechanics and use cases</span>
+    <div class="q-tags"><span class="q-tag">mmap</span><span class="q-tag">memory-mapped</span><span class="q-tag">file-io</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">How mmap works</span><br><code>mmap()</code> maps a file or device into virtual address space. OS does NOT read file immediately — uses demand paging. Reading page triggers major page fault → kernel reads from file into physical page → mapped.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">mmap vs read()/write()</span><br><ul><li><b>read():</b> Kernel copies file data → kernel buffer → user buffer. Double copy.</li><li><b>mmap():</b> Maps kernel page cache directly into user address space. Zero copy on access. Better for large files with random access.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Shared Memory via mmap</span><br><pre>// Process A:
+int fd = open("/tmp/shm", O_CREAT|O_RDWR, 0666);
+ftruncate(fd, 4096);
+void* ptr = mmap(0, 4096, PROT_READ|PROT_WRITE, MAP_SHARED, fd, 0);
+
+// Process B: same mmap call — both map same physical pages
+// Writes by A immediately visible to B</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Use Cases</span><br><ul><li>Databases: InnoDB buffer pool, SQLite, LMDB use mmap for zero-copy I/O</li><li>Shared memory IPC: multiple processes sharing data structures</li><li>Executable loading: kernel mmaps ELF segments — text, data, BSS</li><li>io_uring: submission/completion queues mapped into user space</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the difference between MAP_SHARED and MAP_PRIVATE?<br>• What is msync() and when do you need it?<br>• How does mmap interact with the page cache?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Nvidia, Apple...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="filesystem">
+    <span class="q-index">14</span>
+    <span class="q-text">Linux file system internals — inode, dentry, VFS, page cache</span>
+    <div class="q-tags"><span class="q-tag">inode</span><span class="q-tag">dentry</span><span class="q-tag">vfs</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">76%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">VFS (Virtual File System)</span><br>Abstraction layer. Provides uniform API (open/read/write/close) for all file systems (ext4, XFS, btrfs, tmpfs, NFS, procfs). Drivers implement VFS operations.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Inode</span><br>Fixed-size metadata structure for each file:<br><ul><li>File type, permissions, owner (UID/GID)</li><li>Size, timestamps (atime/mtime/ctime)</li><li>Block pointers (direct, indirect, double-indirect)</li><li>Link count (hard links)</li><li><b>NOT:</b> file name (stored in directory entry)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Dentry (Directory Entry)</span><br>Cache of name → inode mappings. Path lookup: <code>/home/user/file.txt</code> → traverse dentries: root dentry → home dentry → user dentry → file inode. Dentry cache (dcache) avoids repeated disk lookups.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Page Cache</span><br>Buffer for file data. read() → kernel checks page cache first. On miss: read from disk, cache page. write() → write to page cache (writeback=async), or writethrough, or direct I/O (O_DIRECT bypasses cache). <code>free</code> command: 'cached' = page cache using RAM (can be reclaimed).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the difference between hard link and soft (symbolic) link?<br>• How does journaling (ext4) protect against filesystem corruption on crash?<br>• What is a union filesystem and how is it used in Docker?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Nvidia, Apple...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="hardware">
+    <span class="q-index">15</span>
+    <span class="q-text">NUMA (Non-Uniform Memory Access) — impact on performance</span>
+    <div class="q-tags"><span class="q-tag">numa</span><span class="q-tag">memory-locality</span><span class="q-tag">cpu-affinity</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">72%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">NUMA Architecture</span><br>Multi-socket servers: each CPU socket has its own local DRAM. Accessing local memory: fast (~80ns). Accessing remote memory (other socket's DRAM): slow (~150ns, ~2x). OS/hardware provides NUMA node topology.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">NUMA Problems</span><br><ul><li>Thread on node 0 allocates, migrated to node 1 → remote memory access</li><li>False sharing: different threads on different NUMA nodes modify same cache line → cache coherence traffic</li><li>Memory-intensive apps (databases, ML) severely impacted</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Mitigation</span><br><ul><li><code>numactl --membind=0 --cpubind=0 ./app</code> — bind to single NUMA node</li><li><code>numactl --interleave=all</code> — round-robin allocation across nodes (reduces hot-spots)</li><li>NUMA-aware memory allocators (jemalloc, tcmalloc have NUMA support)</li><li>Database NUMA awareness: MySQL/PostgreSQL can bind buffer pool per node</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache Hierarchy</span><br>L1 (4 cycles, 32KB per core) → L2 (12 cycles, 256KB per core) → L3 (30-50 cycles, shared per socket, 32-64MB) → DRAM (~200 cycles) → Remote DRAM (~400 cycles) → NVMe SSD (~100μs) → HDD (~10ms).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is cache line size and how does false sharing occur?<br>• How does CPU affinity (<code>taskset</code>) help performance?<br>• What is NUMA balancing in Linux?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Databricks, Snowflake, Apple</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-concurrency">
+  <div class="questions-header">
+    <h3>⚡ Concurrency</h3>
+    <span class="q-count">2 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="fundamentals">
+    <span class="q-index">1</span>
+    <span class="q-text">Race condition — what and how to prevent</span>
+    <div class="q-tags"><span class="q-tag">race-condition</span><span class="q-tag">mutex</span><span class="q-tag">atomic</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-high">92%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Race Condition</span><br>Two or more threads access shared mutable state without synchronization. Result depends on thread scheduling (timing). Non-deterministic bugs.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Examples and Fixes</span><br><pre># Python — unsafe counter (GIL helps here but not in C/Java)
+counter = 0
+def increment():
+    global counter
+    counter += 1  # NOT atomic in Java/C: read, add, write — 3 ops
+
+# Java fix:
+AtomicInteger counter = new AtomicInteger(0);
+counter.incrementAndGet();  // single atomic CAS instruction
+
+# OR use synchronized:
+synchronized void increment() { counter++; }
+
+# Go: use atomic
+var counter int64
+atomic.AddInt64(&amp;counter, 1)
+# OR: go run -race ./...  (built-in race detector)</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Detection</span><br>Go: <code>go run -race</code>. Java: ThreadSanitizer (TSAN) in native, FindBugs for JVM. Helgrind (Valgrind) for C/C++.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is a benign data race and when is it acceptable?<br>• How does the Go race detector work? (shadow memory — 4 words per memory location tracking last 4 accesses)<br>• What is the difference between a race condition and a data race?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="synchronization">
+    <span class="q-index">2</span>
+    <span class="q-text">Mutex vs condition variable</span>
+    <div class="q-tags"><span class="q-tag">mutex</span><span class="q-tag">condition-variable</span><span class="q-tag">monitor</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Mutex: mutual exclusion. CV: wait for condition (releases mutex while waiting). Together = monitor.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Cisco, VMware...</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-lld">
+  <div class="questions-header">
+    <h3>📐 LLD</h3>
+    <span class="q-count">2 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
+    <span class="q-index">1</span>
+    <span class="q-text">Design a Chess Game</span>
+    <div class="q-tags"><span class="q-tag">oop</span><span class="q-tag">strategy</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Piece hierarchy (King/Queen/Rook/Bishop/Knight/Pawn). Board, Player, Game, Move. Each piece has valid_moves().</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Apple, Adobe</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
+    <span class="q-index">2</span>
+    <span class="q-text">Design a File System</span>
+    <div class="q-tags"><span class="q-tag">composite</span><span class="q-tag">oop</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Composite pattern: FileSystemNode→File|Directory. Directory contains children. Operations: create/delete/search/size.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Apple, Dropbox, Microsoft</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-performance">
+  <div class="questions-header">
+    <h3>⚡ Performance</h3>
+    <span class="q-count">1 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="performance">
+    <span class="q-index">1</span>
+    <span class="q-text">How does CPU caching work and why does it matter for performance?</span>
+    <div class="q-tags"><span class="q-tag">cpu-cache</span><span class="q-tag">cache-line</span><span class="q-tag">false-sharing</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">74%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Memory Hierarchy</span><br><pre>L1 cache:  ~32KB per core,   ~1ns  latency
+L2 cache: ~256KB per core,   ~4ns  latency
+L3 cache:   ~8MB shared,     ~40ns latency
+RAM:        ~16-64GB,       ~100ns latency
+SSD NVMe:              ~100μs latency
+HDD:                    ~10ms latency</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache Lines</span><br>Data loaded in 64-byte cache lines. Accessing one byte loads entire 64-byte block. Sequential access (arrays) → excellent cache utilization. Random access (linked lists) → cache miss per node.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">False Sharing</span><br><pre># Two threads update different variables in same cache line:
+# Thread 1 updates counter_a, Thread 2 updates counter_b
+# If they're adjacent in memory → same cache line → cache coherence traffic
+# Core 1 invalidates Core 2's cache line on every write → performance degrades!
+
+# Fix: padding
+struct PaddedCounter {
+    alignas(64) std::atomic&lt;int64_t&gt; value;  // 64-byte aligned
+    char padding[64 - sizeof(std::atomic&lt;int64_t&gt;)];  // fill rest of cache line
+};</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Practical Impact</span><br><ul><li>Array of structs vs Struct of arrays (SOA): SOA = better cache usage for column-wise processing</li><li>Cache-oblivious algorithms (recursive divide) beat sequential for large matrices</li><li>Go: sync.Mutex padded to avoid false sharing with adjacent data</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is NUMA (Non-Uniform Memory Access) and how does it affect multi-socket servers?<br>• How does prefetching work and how can you hint the CPU to prefetch?<br>• What is the impact of cache misses on a tight loop processing 100M integers?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Databricks, Snowflake...</span>
+    </div>
+  </div>
+</div>
+</div></div>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-links">
+      <a href="../../common/top-coding.html">Top Coding</a>
+      <a href="../../common/top-system-design.html">System Design</a>
+      <a href="../../common/top-backend.html">Backend</a>
+      <a href="../../common/top-cpp.html">C++</a>
+      <a href="../../common/top-java.html">Java</a>
+      <a href="../../common/top-go.html">Go</a>
+      <a href="../../common/top-database.html">Database</a>
+      <a href="../../common/top-concurrency.html">Concurrency</a>
+      <a href="../../common/top-os.html">OS</a>
+      <a href="../../common/top-networking.html">Networking</a>
+      <a href="../../common/top-lld.html">LLD</a>
+      <a href="../../common/top-cicd.html">CI/CD</a>
+      <a href="../../common/top-security.html">Security</a>
+      <a href="../../common/top-ml.html">ML Systems</a>
+      <a href="../../common/top-perf.html">Performance</a>
+    </div>
+    <p>Built for SDE-1 &amp; SDE-2 Backend Engineers | C++ · Java · Go · Distributed Systems</p>
+    <p style="margin-top:8px;font-size:12px;opacity:.5">Data sourced from LeetCode, Glassdoor, Blind, Reddit &amp; public interview experiences</p>
+  </div>
+</footer>
+<button id="back-to-top" title="Back to top">↑</button>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

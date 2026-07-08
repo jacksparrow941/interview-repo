@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top C++ Questions | InterviewRepo — Backend SDE Interview Prep</title>
+  <meta name="description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Top C++ Questions">
+  <meta name="keywords" content="backend interview questions, SDE interview prep, system design, DSA, C++ interview, Java interview, Go interview, top c++ questions">
+  <meta name="author" content="InterviewRepo">
+  <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="InterviewRepo — Backend SDE Prep">
+  <meta property="og:title"       content="Top C++ Questions | InterviewRepo">
+  <meta property="og:description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Top C++ Questions">
+  <meta property="og:url"         content="https://devinterviewvault.netlify.app">
+  <meta property="og:image"       content="https://devinterviewvault.netlify.app/assets/og-image.png">
+  <meta name="twitter:card"       content="summary_large_image">
+  <meta name="twitter:title"      content="Top C++ Questions | InterviewRepo">
+  <meta name="twitter:description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Top C++ Questions">
+  <meta name="twitter:image"      content="https://devinterviewvault.netlify.app/assets/og-image.png">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://devinterviewvault.netlify.app">
+  <meta name="google-site-verification" content="a8bdedb3bc5f858c">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Top C++ Questions", "description": "SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design \u2014 Top C++ Questions", "url": "https://devinterviewvault.netlify.app", "publisher": {"@type": "Organization", "name": "InterviewRepo"}}</script>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+</head>
+<body>
+<nav class="navbar">
+  <a class="navbar-brand" href="../index.html">
+    <span class="logo-icon">⚡</span>
+    <span>InterviewRepo</span>
+  </a>
+  <div class="search-bar">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="search-input" placeholder="Search questions… (Ctrl+K)" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <nav class="navbar-nav">
+    <a href="../index.html">Home</a>
+    <a href="../common/top-coding.html">Top DSA</a>
+    <a href="../common/top-system-design.html">System Design</a>
+    <a href="../common/top-backend.html">Backend</a>
+    <a href="../common/top-cpp.html">C++</a>
+    <a href="../common/top-java.html">Java</a>
+    <a href="../common/top-go.html">Go</a>
+  </nav>
+</nav>
+<div class="top-list-header">
+  <div class="container">
+    <div class="breadcrumb"><a href="../index.html">Home</a><span class="breadcrumb-sep">›</span><span>Top C++ Questions</span></div>
+    <h1 style="font-size:36px;font-weight:800;margin-bottom:8px">⚙️ Top C++ Questions</h1>
+    <p style="color:var(--text-muted);font-size:16px">Deep C++ questions on memory, templates, concurrency and performance.</p>
+    <p style="color:var(--text-muted);font-size:14px;margin-top:8px">43 questions</p>
+  </div>
+</div>
+<div class="container section">
+  <div class="filters-bar"><button class="filter-btn active" data-filter="all" data-group="sub">All</button><button class="filter-btn" data-filter="concurrency" data-group="sub">Concurrency</button><button class="filter-btn" data-filter="design" data-group="sub">Design</button><button class="filter-btn" data-filter="language" data-group="sub">Language</button><button class="filter-btn" data-filter="memory" data-group="sub">Memory</button><button class="filter-btn" data-filter="oop" data-group="sub">Oop</button><button class="filter-btn" data-filter="optimization" data-group="sub">Optimization</button><button class="filter-btn" data-filter="patterns" data-group="sub">Patterns</button><button class="filter-btn" data-filter="performance" data-group="sub">Performance</button><button class="filter-btn" data-filter="stl" data-group="sub">Stl</button><button class="filter-btn" data-filter="templates" data-group="sub">Templates</button></div>
+  <div class="filters-bar"><button class="filter-btn active" data-filter="all" data-group="diff">All Difficulty</button><button class="filter-btn" data-filter="easy" data-group="diff">Easy</button><button class="filter-btn" data-filter="medium" data-group="diff">Medium</button><button class="filter-btn" data-filter="hard" data-group="diff">Hard</button></div>
+  <div class="question-list"><div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="memory">
+    <span class="q-index">1</span>
+    <span class="q-text">Smart pointers: unique_ptr, shared_ptr, weak_ptr</span>
+    <div class="q-tags"><span class="q-tag">smart-pointers</span><span class="q-tag">raii</span><span class="q-tag">memory</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">92%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Smart Pointer Types</span><br><ul><li><b>unique_ptr:</b> Exclusive ownership. Non-copyable, move-only. Zero overhead vs raw pointer. Use as default for heap objects.</li><li><b>shared_ptr:</b> Shared ownership via reference count. Thread-safe refcount (atomic). Overhead: control block allocation + atomic ops.</li><li><b>weak_ptr:</b> Non-owning observer of shared_ptr. Breaks circular references. Must <code>lock()</code> before use — returns shared_ptr (empty if object deleted).</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Code Examples</span><br><pre>auto up = std::make_unique&lt;Widget&gt;();     // unique_ptr
+auto sp = std::make_shared&lt;Widget&gt;();     // shared_ptr (single allocation)
+std::weak_ptr&lt;Widget&gt; wp = sp;             // weak_ptr
+if (auto spt = wp.lock()) { spt-&gt;use(); } // safe access
+
+// Cycle breaking:
+struct Node { std::weak_ptr&lt;Node&gt; parent; std::shared_ptr&lt;Node&gt; children; };</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Custom Deleter</span><br><code>unique_ptr&lt;FILE, decltype(&fclose)&gt; f(fopen("x","r"), fclose);</code></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Why prefer make_shared over shared_ptr(new T)? (single allocation for object+control block)<br>• What is enable_shared_from_this and when do you need it?<br>• When would you still use a raw pointer?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Snowflake, Cisco...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="design">
+    <span class="q-index">2</span>
+    <span class="q-text">Implement a thread-safe LRU Cache in C++</span>
+    <div class="q-tags"><span class="q-tag">lru</span><span class="q-tag">thread-safe</span><span class="q-tag">unordered_map</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Design</span><br><code>std::list</code> (doubly-linked list) + <code>std::unordered_map&lt;K, list::iterator&gt;</code>.<br>Most recently used at front. On access: move node to front. On eviction: remove from back.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Implementation</span><br><pre>template&lt;typename K, typename V&gt;
+class LRUCache {
+    int cap;
+    std::list&lt;std::pair&lt;K,V&gt;&gt; lst;
+    std::unordered_map&lt;K, decltype(lst.begin())&gt; mp;
+    std::mutex mu;
+public:
+    LRUCache(int cap) : cap(cap) {}
+
+    std::optional&lt;V&gt; get(const K&amp; key) {
+        std::lock_guard lock(mu);
+        auto it = mp.find(key);
+        if (it == mp.end()) return {};
+        lst.splice(lst.begin(), lst, it-&gt;second);  // move to front
+        return it-&gt;second-&gt;second;
+    }
+
+    void put(const K&amp; key, V val) {
+        std::lock_guard lock(mu);
+        if (mp.count(key)) lst.erase(mp[key]);
+        else if ((int)lst.size() == cap) {
+            mp.erase(lst.back().first);
+            lst.pop_back();
+        }
+        lst.push_front({key, val});
+        mp[key] = lst.begin();
+    }
+};</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Complexity</span><br>get/put: O(1) average. Thread-safe with a single mutex. For higher concurrency: use reader-writer lock or shard by key hash.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How would you implement LFU instead?<br>• How would you shard the cache for better concurrency?<br>• What is RCU (Read-Copy-Update) for lock-free reads?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Databricks, Snowflake, Stripe</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="patterns">
+    <span class="q-index">3</span>
+    <span class="q-text">Explain RAII</span>
+    <div class="q-tags"><span class="q-tag">raii</span><span class="q-tag">exceptions</span><span class="q-tag">resource</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">87%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">RAII — Resource Acquisition Is Initialization</span><br>Resource lifetime is bound to object lifetime. Acquire in constructor, release in destructor. Guarantees release even on exceptions (stack unwinding calls destructors).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Examples</span><br><pre>class FileGuard {
+    FILE* f;
+public:
+    explicit FileGuard(const char* path) : f(fopen(path, "r")) {
+        if (!f) throw std::runtime_error("open failed");
+    }
+    ~FileGuard() { if (f) fclose(f); }  // always runs
+    // Delete copy; use move only
+    FileGuard(const FileGuard&) = delete;
+    FileGuard& operator=(const FileGuard&) = delete;
+};
+
+// RAII wrappers: lock_guard, unique_lock, ifstream, unique_ptr, jthread</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Why it matters</span><br>Without RAII: every error path must manually release resources → leak-prone. With RAII: destructor always called → exception-safe, leak-free.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does RAII differ from finally blocks in Java/Python?<br>• What is the ScopeGuard pattern?<br>• How does RAII interact with noexcept?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Snowflake, VMware</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="language">
+    <span class="q-index">4</span>
+    <span class="q-text">Move semantics and rvalue references</span>
+    <div class="q-tags"><span class="q-tag">move-semantics</span><span class="q-tag">rvalue</span><span class="q-tag">performance</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Move Semantics</span><br>C++11 introduces rvalue references (<code>T&&</code>). Move constructor/assignment <b>steals</b> resources from temporaries instead of copying. Enables zero-cost transfer of ownership.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Rvalue References</span><br><pre>class Buffer {
+    int* data; size_t size;
+public:
+    Buffer(Buffer&& other) noexcept :  // move constructor
+        data(other.data), size(other.size) {
+        other.data = nullptr; other.size = 0;  // leave source valid but empty
+    }
+    Buffer& operator=(Buffer&& other) noexcept {
+        if (this != &other) {
+            delete[] data;          // free own resource
+            data = other.data; size = other.size;
+            other.data = nullptr; other.size = 0;
+        } return *this;
+    }
+};
+
+void process(Buffer&& b) { Buffer local = std::move(b); } // move, not copy
+Buffer create() { Buffer b(1024); return b; }  // NRVO: no copy at all!</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">std::move vs std::forward</span><br><code>std::move(x)</code>: unconditional cast to rvalue. <code>std::forward&lt;T&gt;(x)</code>: conditional — preserves lvalue/rvalue category in template (perfect forwarding).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• When should a move constructor be noexcept? (essential for vector reallocation to use moves)<br>• What is the moved-from state guarantee?<br>• What is the difference between universal reference and rvalue reference?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Snowflake, Databricks</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="stl">
+    <span class="q-index">5</span>
+    <span class="q-text">How does std::vector grow?</span>
+    <div class="q-tags"><span class="q-tag">vector</span><span class="q-tag">amortized</span><span class="q-tag">reallocation</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">std::vector Growth</span><br>When capacity is exceeded, vector allocates new buffer (typically 2× current capacity), moves all elements, then deallocates old buffer. Amortized O(1) push_back.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Internals</span><br><pre>struct vector_internals {
+    T* begin;    // pointer to first element
+    T* end;      // pointer past last element (size)
+    T* cap_end;  // pointer to end of allocation (capacity)
+};
+// size() = end - begin
+// capacity() = cap_end - begin</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Important APIs</span><br><ul><li><code>reserve(n)</code>: pre-allocate without changing size. Prevents reallocations.</li><li><code>shrink_to_fit()</code>: release excess capacity (non-binding request).</li><li><code>emplace_back(args)</code>: construct in-place, avoids extra copy/move.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Why does push_back invalidate iterators? (reallocation moves all elements)<br>• What is the growth factor trade-off (2x vs 1.5x)?<br>• How does vector differ from deque in terms of memory layout?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Microsoft, TCS...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="language">
+    <span class="q-index">6</span>
+    <span class="q-text">Move semantics — rvalue references, std::move, std::forward</span>
+    <div class="q-tags"><span class="q-tag">move-semantics</span><span class="q-tag">rvalue</span><span class="q-tag">forward</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Rvalue References</span><br><pre>int&amp;&amp; r = 42;           // rvalue reference: binds to temporaries
+void take(std::string&amp;&amp; s); // accepts rvalue (temporary)
+
+std::string s = "hello";
+take(std::move(s));    // cast to rvalue (s is now valid-but-unspecified)
+take("world");         // temporary: OK</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">std::move</span><br><b>Cast</b> to rvalue reference — enables move constructor/assignment to be called. After move, source is in valid but unspecified state. Do NOT use moved-from object except to assign or destroy.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">std::forward — Perfect Forwarding</span><br><pre>// Forward preserves value category (lvalue stays lvalue, rvalue stays rvalue)
+template&lt;typename T, typename... Args&gt;
+T* create(Args&amp;&amp;... args) {
+    return new T(std::forward&lt;Args&gt;(args)...);
+}
+// If passed lvalue → forwards as lvalue
+// If passed rvalue → forwards as rvalue</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Universal Reference</span><br><code>T&amp;&amp;</code> in a template (deduced context) is a <b>universal/forwarding reference</b>, not an rvalue reference. With <code>T=int&amp;</code>, <code>T&amp;&amp;</code> collapses to <code>int&amp;</code> (reference collapsing).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is reference collapsing? (T&amp;&amp; + T=int&amp; → int&amp;)<br>• When is a move more expensive than a copy? (std::array, trivial types)<br>• How does return value optimization (RVO/NRVO) interact with moves?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Databricks, VMware...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="patterns">
+    <span class="q-index">7</span>
+    <span class="q-text">Rule of Five</span>
+    <div class="q-tags"><span class="q-tag">rule-of-5</span><span class="q-tag">constructors</span><span class="q-tag">destructors</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Define all 5 if you define any: dtor, copy-ctor, copy-assign, move-ctor, move-assign.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Apple, Nvidia, VMware</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="oop">
+    <span class="q-index">8</span>
+    <span class="q-text">How does vtable work?</span>
+    <div class="q-tags"><span class="q-tag">vtable</span><span class="q-tag">virtual</span><span class="q-tag">polymorphism</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">vtable Mechanism</span><br>For each class with virtual functions, compiler generates a <b>vtable</b> — a static array of function pointers. Each object has a hidden <b>vptr</b> pointing to its class's vtable (set in constructor).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Virtual Dispatch</span><br><pre>class Animal {
+public:
+    virtual void sound() { printf("..."); }
+    virtual ~Animal() {}
+};
+// vtable_Animal = { &Animal::sound, &Animal::~Animal }
+
+class Dog : public Animal {
+    void sound() override { printf("Bark"); }
+};
+// vtable_Dog = { &Dog::sound, &Dog::~Dog }
+
+Animal* a = new Dog();
+a-&gt;sound();  // a-&gt;vptr -&gt; vtable_Dog[0] = Dog::sound() → "Bark"</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Costs</span><br><ul><li>Memory: 1 vptr per object (8 bytes on 64-bit)</li><li>Time: extra pointer indirection per call (cache miss possible)</li><li>No inlining: compiler can't inline virtual calls (mostly)</li><li>Final keyword: hints compiler to devirtualize</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is devirtualization and when does the compiler perform it?<br>• How does CRTP achieve static polymorphism without vtable overhead?<br>• Why is virtual destructor needed in base classes?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Apple, Nvidia, Cisco, VMware...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="oop">
+    <span class="q-index">9</span>
+    <span class="q-text">Rule of 0, Rule of 3, Rule of 5 — explain with examples</span>
+    <div class="q-tags"><span class="q-tag">rule-of-3</span><span class="q-tag">rule-of-5</span><span class="q-tag">move</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Rule of 3 (pre-C++11)</span><br>If you define any of: <b>destructor</b>, <b>copy constructor</b>, <b>copy assignment</b>, you should define all three. (Managing raw resource → need custom copy + destructor)</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Rule of 5 (C++11+)</span><br>Add <b>move constructor</b> + <b>move assignment</b>. Without them, moves fall back to copies (expensive).<br><pre>class Buffer {
+    char* data; size_t sz;
+public:
+    Buffer(size_t n) : data(new char[n]), sz(n) {}
+    ~Buffer() { delete[] data; }               // 1: destructor
+    Buffer(const Buffer&amp; o)                   // 2: copy ctor
+        : data(new char[o.sz]), sz(o.sz) { memcpy(data,o.data,sz); }
+    Buffer&amp; operator=(const Buffer&amp; o) {       // 3: copy assign
+        if(this==&amp;o) return *this;
+        delete[] data; sz=o.sz; data=new char[sz]; memcpy(data,o.data,sz); return *this;
+    }
+    Buffer(Buffer&amp;&amp; o) noexcept                // 4: move ctor
+        : data(o.data), sz(o.sz) { o.data=nullptr; o.sz=0; }
+    Buffer&amp; operator=(Buffer&amp;&amp; o) noexcept {   // 5: move assign
+        if(this==&amp;o) return *this;
+        delete[] data; data=o.data; sz=o.sz; o.data=nullptr; return *this;
+    }
+};</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Rule of 0</span><br>Best practice: design classes to own no raw resources. Use RAII wrappers (<code>unique_ptr</code>, <code>vector</code>, <code>string</code>). Then you need ZERO custom special members — compiler generates correct ones.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What does <code>=default</code> and <code>=delete</code> do?<br>• What is the copy-and-swap idiom?<br>• When is a move constructor marked noexcept important?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Databricks, VMware...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="concurrency">
+    <span class="q-index">10</span>
+    <span class="q-text">std::atomic and memory ordering</span>
+    <div class="q-tags"><span class="q-tag">atomic</span><span class="q-tag">memory-ordering</span><span class="q-tag">lock-free</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">std::atomic</span><br>Guarantees atomic read-modify-write without undefined behavior. No data races. Hardware CAS instructions.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Memory Ordering</span><br><ul><li><b>relaxed:</b> No ordering guarantees. Only atomicity. Cheapest. Use for counters.</li><li><b>acquire:</b> All subsequent reads see writes before the release on same var. (read fence)</li><li><b>release:</b> All preceding writes visible to acquire on same var. (write fence)</li><li><b>acq_rel:</b> Both acquire + release. Used for RMW operations.</li><li><b>seq_cst:</b> Total global order. Strongest guarantee. Default for atomic ops.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Usage</span><br><pre>std::atomic&lt;int&gt; counter{0};
+counter.fetch_add(1, std::memory_order_relaxed);  // fast counter
+
+std::atomic&lt;bool&gt; ready{false};
+// Thread 1:
+data = 42;
+ready.store(true, std::memory_order_release);
+// Thread 2:
+while (!ready.load(std::memory_order_acquire));  // guaranteed to see data=42</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is a data race vs a race condition?<br>• When is relaxed ordering safe?<br>• What is the ABA problem in CAS-based algorithms?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Databricks, Snowflake</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="language">
+    <span class="q-index">11</span>
+    <span class="q-text">Undefined behavior — common examples</span>
+    <div class="q-tags"><span class="q-tag">ub</span><span class="q-tag">safety</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Null deref, signed overflow, OOB access, use-after-free, strict aliasing. Compiler assumes UB never occurs.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="concurrency">
+    <span class="q-index">12</span>
+    <span class="q-text">std::condition_variable usage</span>
+    <div class="q-tags"><span class="q-tag">condition-variable</span><span class="q-tag">mutex</span><span class="q-tag">wait</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Lock mutex, wait on condition (with predicate), notify. Predicate guards against spurious wakeups.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Cisco</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="concurrency">
+    <span class="q-index">13</span>
+    <span class="q-text">std::condition_variable — producer-consumer pattern</span>
+    <div class="q-tags"><span class="q-tag">condition-variable</span><span class="q-tag">mutex</span><span class="q-tag">notify</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Full Producer-Consumer</span><br><pre>#include &lt;mutex&gt;
+#include &lt;condition_variable&gt;
+#include &lt;queue&gt;
+
+std::mutex mtx;
+std::condition_variable cv;
+std::queue&lt;int&gt; q;
+bool done = false;
+
+void producer() {
+    for(int i=0;i&lt;10;i++) {
+        std::unique_lock lock(mtx);
+        q.push(i);
+        cv.notify_one();  // wake one consumer
+    }
+    { std::lock_guard lock(mtx); done=true; }
+    cv.notify_all();
+}
+
+void consumer() {
+    while(true) {
+        std::unique_lock lock(mtx);
+        cv.wait(lock, []{ return !q.empty() || done; });  // predicate prevents spurious wakeup
+        while(!q.empty()) { process(q.front()); q.pop(); }
+        if(done) break;
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Spurious Wakeups</span><br>Always use <code>cv.wait(lock, predicate)</code> — without predicate, spurious wakeups cause bugs. Equivalent to: <code>while(!pred()) cv.wait(lock);</code></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">notify_one vs notify_all</span><br><code>notify_one</code>: wake 1 waiter (use for single-consumer or rotating consumers). <code>notify_all</code>: wake all waiters (use for broadcast events like shutdown).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is std::condition_variable_any?<br>• Why must you always hold the mutex when calling notify?<br>• How would you implement a bounded buffer (semaphore-like)?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Databricks, VMware...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="oop">
+    <span class="q-index">14</span>
+    <span class="q-text">Virtual inheritance and diamond problem</span>
+    <div class="q-tags"><span class="q-tag">virtual-inheritance</span><span class="q-tag">diamond</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">76%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Diamond: A inherited twice via B,C. virtual keyword creates single shared A subobject.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Apple, Cisco</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="concurrency">
+    <span class="q-index">15</span>
+    <span class="q-text">unique_lock vs lock_guard vs scoped_lock</span>
+    <div class="q-tags"><span class="q-tag">lock-guard</span><span class="q-tag">unique-lock</span><span class="q-tag">scoped-lock</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">76%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">lock_guard (C++11)</span><br>Simplest RAII wrapper. Locks on construction, unlocks on destruction. Cannot be unlocked/relocked. Cannot be moved. Use when you need a simple lock for a scope.<br><code>std::lock_guard&lt;std::mutex&gt; lock(m);</code></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">unique_lock (C++11)</span><br>More flexible. Can unlock/relock, deferred locking, timed locking. Required for <code>condition_variable</code>.<br><pre>std::unique_lock lock(m, std::defer_lock);  // don't lock yet
+lock.lock();        // lock later
+lock.unlock();      // unlock early
+bool got = lock.try_lock_for(100ms);  // timed</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">scoped_lock (C++17)</span><br>Locks <b>multiple mutexes atomically</b> without deadlock (uses deadlock-free algorithm). Replaces <code>std::lock(m1,m2) + lock_guard(adopt)</code> pattern.<br><code>std::scoped_lock lock(m1, m2, m3);  // all or nothing</code></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">When to use</span><br><ul><li><code>lock_guard</code>: simple scope lock, no condition_variable</li><li><code>unique_lock</code>: condition_variable, deferred/timed locking, early unlock</li><li><code>scoped_lock</code>: locking 2+ mutexes, avoiding deadlock</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does scoped_lock prevent deadlock? (std::lock uses try-lock backoff)<br>• What is std::adopt_lock and std::defer_lock?<br>• When would you use a recursive_mutex?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Databricks, VMware...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="language">
+    <span class="q-index">16</span>
+    <span class="q-text">Structured bindings (C++17) and std::tie</span>
+    <div class="q-tags"><span class="q-tag">structured-bindings</span><span class="q-tag">tuple</span><span class="q-tag">tie</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-med">76%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Structured Bindings (C++17)</span><br><pre>// Decompose pair
+auto [key, val] = std::make_pair("name", 42);
+
+// Decompose struct
+struct Point { int x, y; };
+Point p{3, 4};
+auto [x, y] = p;
+
+// Decompose map iteration
+std::map&lt;std::string,int&gt; m = {{"a",1},{"b",2}};
+for (auto&amp; [key, value] : m) {
+    std::cout &lt;&lt; key &lt;&lt; ":" &lt;&lt; value &lt;&lt; "\n";
+}
+
+// Decompose array
+int arr[3] = {1,2,3};
+auto [a,b,c] = arr;</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">std::tie (pre-C++17)</span><br>Bind to existing variables (not declarations):<br><pre>int x, y;
+std::tie(x, y) = std::make_pair(10, 20);
+
+// Ignore elements:
+std::tie(x, std::ignore) = returnPair();</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Multiple return values</span><br><pre>auto [min, max] = std::minmax({5,2,8,1});
+auto [it, inserted] = myMap.emplace("key", 99);  // map::emplace returns pair</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Can you use structured bindings with custom types? (yes, via get&lt;N&gt; specialization)<br>• What is std::get&lt;N&gt; and how does it relate to structured bindings?<br>• How do structured bindings handle by-reference vs by-value?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Databricks, VMware...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="concurrency">
+    <span class="q-index">17</span>
+    <span class="q-text">Lock-free programming and CAS</span>
+    <div class="q-tags"><span class="q-tag">lock-free</span><span class="q-tag">cas</span><span class="q-tag">aba</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">75%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">compare_exchange loops. ABA problem: use version counters or hazard pointers.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Databricks</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="templates">
+    <span class="q-index">18</span>
+    <span class="q-text">Perfect forwarding and std::forward</span>
+    <div class="q-tags"><span class="q-tag">perfect-forwarding</span><span class="q-tag">universal-ref</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">75%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Preserves value category in template functions. T&& = universal ref. forward<T>(arg).</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="templates">
+    <span class="q-index">19</span>
+    <span class="q-text">Template specialization vs partial specialization</span>
+    <div class="q-tags"><span class="q-tag">templates</span><span class="q-tag">specialization</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">75%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Full: exact type match. Partial: matches pattern. Used for type traits, enable_if.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Snowflake</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="language">
+    <span class="q-index">20</span>
+    <span class="q-text">std::string_view vs std::string — performance implications</span>
+    <div class="q-tags"><span class="q-tag">string-view</span><span class="q-tag">non-owning</span><span class="q-tag">zero-copy</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-med">75%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">std::string_view</span><br>A <b>non-owning, read-only view</b> into a character sequence. No heap allocation. Just a pointer + length. O(1) construction from any string-like object.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Performance Comparison</span><br><pre>// Bad: copies string for each call
+void log(std::string msg);
+
+// Good: zero-copy read
+void log(std::string_view msg);
+
+// Works with: string, const char*, string literals, substrings
+log("hello");         // no alloc
+log(user_string);    // no alloc
+log(str.substr(0,5)); // DANGER: substr returns string, but view is valid
+
+// Safe substring (zero-copy):
+log(std::string_view(str).substr(0, 5));</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Dangers</span><br><ul><li>Dangling reference if underlying string is destroyed</li><li>Not null-terminated (can't pass to C APIs directly)</li><li>Don't store string_view as a class member if source may outlive it</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is std::span (C++20)?<br>• When must you use std::string over string_view?<br>• How does string_view enable SSO (Small String Optimization)?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Databricks, Snowflake...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="language">
+    <span class="q-index">21</span>
+    <span class="q-text">std::variant, std::optional, std::any — when to use each</span>
+    <div class="q-tags"><span class="q-tag">variant</span><span class="q-tag">optional</span><span class="q-tag">any</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">74%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">std::optional&lt;T&gt;</span><br>Represents a value that <b>may or may not be present</b>. Replaces nullable pointers and sentinel values.<br><pre>std::optional&lt;User&gt; findUser(int id);
+auto u = findUser(42);
+if (u) { std::cout &lt;&lt; u-&gt;name; }</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">std::variant&lt;T1,T2,...&gt;</span><br>Type-safe union. Holds exactly one of a fixed set of types.<br><pre>std::variant&lt;int, double, std::string&gt; v = 42;
+std::visit(overloaded{
+    [](int i)   { cout &lt;&lt; "int: " &lt;&lt; i; },
+    [](double d){ cout &lt;&lt; "double: " &lt;&lt; d; },
+    [](auto&amp; s) { cout &lt;&lt; "str: " &lt;&lt; s; }
+}, v);</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">std::any</span><br>Holds <b>any type</b> at runtime (type-erased). Use <code>std::any_cast</code>. Performance overhead: heap allocation for large objects. Use sparingly.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">When to use</span><br><ul><li><b>optional:</b> Function may fail or return nothing</li><li><b>variant:</b> Known set of alternatives (Result type, AST nodes, event types)</li><li><b>any:</b> Truly unknown type at compile time (config maps, plugin systems)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you implement a Result&lt;T,E&gt; type using variant?<br>• What is std::expected (C++23)?<br>• Performance of variant vs virtual dispatch?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Databricks, Snowflake...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="concurrency">
+    <span class="q-index">22</span>
+    <span class="q-text">std::async — launch policies, futures, shared_future</span>
+    <div class="q-tags"><span class="q-tag">async</span><span class="q-tag">future</span><span class="q-tag">promise</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">74%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">std::async</span><br><pre>// async: launch policy = async (new thread) or deferred (lazy, same thread)
+auto fut = std::async(std::launch::async, []{
+    return heavyCompute();
+});
+// ... do other work ...
+int result = fut.get();  // blocks until ready</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Launch Policies</span><br><ul><li><code>std::launch::async</code>: spawn new thread immediately</li><li><code>std::launch::deferred</code>: run lazily when <code>.get()</code> or <code>.wait()</code> is called (same thread)</li><li><code>std::launch::async | std::launch::deferred</code> (default): implementation chooses — <b>dangerous</b>, may never run</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Promise/Future</span><br><pre>std::promise&lt;int&gt; prom;
+std::future&lt;int&gt; fut = prom.get_future();
+
+std::thread t([&amp;]{ prom.set_value(42); });
+std::cout &lt;&lt; fut.get();  // blocks until set_value
+t.join();</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">shared_future</span><br>Multiple threads can wait on the same result. <code>std::shared_future&lt;T&gt; sf = fut.share();</code> — can be copied, each can call <code>.get()</code>.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What happens if an exception is thrown in async task?<br>• How do you implement a thread pool with futures?<br>• Why is the default launch policy dangerous?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Databricks, VMware...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="optimization">
+    <span class="q-index">23</span>
+    <span class="q-text">Copy elision and RVO/NRVO</span>
+    <div class="q-tags"><span class="q-tag">rvo</span><span class="q-tag">copy-elision</span><span class="q-tag">performance</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">72%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Compiler eliminates copies; C++17 mandates RVO for prvalues. Direct construction in destination.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Snowflake</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="concurrency">
+    <span class="q-index">24</span>
+    <span class="q-text">The C++11 memory model</span>
+    <div class="q-tags"><span class="q-tag">memory-model</span><span class="q-tag">happens-before</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">72%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Defines happens-before. Data race = UB. Atomic ops provide ordering guarantees.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="language">
+    <span class="q-index">25</span>
+    <span class="q-text">Exception handling internals</span>
+    <div class="q-tags"><span class="q-tag">exceptions</span><span class="q-tag">stack-unwinding</span><span class="q-tag">noexcept</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">72%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Stack unwind calls destructors. RTTI for type matching. noexcept enables optimizations.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Apple, Nvidia</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="language">
+    <span class="q-index">26</span>
+    <span class="q-text">std::string_view</span>
+    <div class="q-tags"><span class="q-tag">string-view</span><span class="q-tag">non-owning</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-med">72%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Non-owning const string reference. Zero-copy read access. Beware dangling references.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Snowflake</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="templates">
+    <span class="q-index">27</span>
+    <span class="q-text">What is SFINAE and how is it used?</span>
+    <div class="q-tags"><span class="q-tag">sfinae</span><span class="q-tag">enable_if</span><span class="q-tag">type_traits</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">72%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Answer</span><br><b>SFINAE</b> = Substitution Failure Is Not An Error. When template argument substitution fails during overload resolution, the compiler removes that candidate instead of throwing an error.<br>Used with <code>std::enable_if</code> to conditionally enable functions.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Example</span><br><pre>template&lt;typename T,
+         typename = std::enable_if_t&lt;std::is_integral_v&lt;T&gt;&gt;&gt;
+void process(T val) { /* integers only */ }
+
+// C++20 cleaner with concepts:
+template&lt;std::integral T&gt;
+void process(T val) { }</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Use Cases</span><br><ul><li>Tag dispatch based on type properties</li><li>Selecting different implementations for trivial vs non-trivial types</li><li>Building type traits</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What replaced SFINAE in C++20? (Concepts)<br>• Explain <code>std::void_t</code> and detection idiom.<br>• What is <code>std::conditional_t</code>?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Databricks, Snowflake...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="templates">
+    <span class="q-index">28</span>
+    <span class="q-text">What are C++20 Concepts?</span>
+    <div class="q-tags"><span class="q-tag">concepts</span><span class="q-tag">constraints</span><span class="q-tag">requires</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">72%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">What are Concepts</span><br>Named sets of <b>compile-time constraints</b> on template parameters. Replaced SFINAE with readable syntax. Enable better error messages.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Syntax</span><br><pre>// Define a concept
+template&lt;typename T&gt;
+concept Addable = requires(T a, T b) { a + b; };
+
+// Use in function template
+template&lt;Addable T&gt;
+T sum(T a, T b) { return a + b; }
+
+// Or with abbreviated template:
+Auto sum(Addable auto a, Addable auto b) { return a + b; }</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Standard Library Concepts</span><br><code>std::integral</code>, <code>std::floating_point</code>, <code>std::same_as</code>, <code>std::convertible_to</code>, <code>std::ranges::range</code>, <code>std::invocable</code></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Benefits</span><br><ul><li>Readable error messages instead of template substitution walls</li><li>Enables function overloading based on concept constraints</li><li>Self-documenting templates</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the <code>requires</code> clause vs <code>requires</code> expression?<br>• How do concepts interact with overload resolution?<br>• What is a subsumption relationship between concepts?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Databricks, Snowflake</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="patterns">
+    <span class="q-index">29</span>
+    <span class="q-text">What is the PIMPL idiom and why use it?</span>
+    <div class="q-tags"><span class="q-tag">pimpl</span><span class="q-tag">compilation-firewall</span><span class="q-tag">binary-compatibility</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">72%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">PIMPL = Pointer to IMPLementation</span><br>Hide implementation details behind a pointer. Reduces compilation dependencies and enables ABI stability.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Example</span><br><pre>// widget.h (public header)
+class Widget {
+    struct Impl;  // forward declaration
+    std::unique_ptr&lt;Impl&gt; pImpl;
+public:
+    Widget();
+    ~Widget();  // must be defined where Impl is complete
+    void draw();
+};
+
+// widget.cpp
+struct Widget::Impl { /* all private data here */ int x, y; SDL_Surface* surf; };
+Widget::Widget() : pImpl(std::make_unique&lt;Impl&gt;()) {}
+void Widget::draw() { /* use pImpl-&gt;x */ }</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Benefits</span><br><ul><li><b>Compilation firewall:</b> header changes don't propagate to all users</li><li><b>ABI stability:</b> adding private members doesn't break binary compatibility</li><li><b>Encapsulation:</b> private data truly hidden</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Costs</span><br>Extra heap allocation, one level of indirection, requires explicit dtor definition.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does PIMPL affect move semantics?<br>• What is the fast PIMPL (in-place storage)?<br>• Compare to using abstract interface (pure virtual).</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Apple, Cisco, VMware</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="concurrency">
+    <span class="q-index">30</span>
+    <span class="q-text">Implement a lock-free stack using CAS</span>
+    <div class="q-tags"><span class="q-tag">lock-free</span><span class="q-tag">cas</span><span class="q-tag">atomic</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">72%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Design</span><br>Use <code>std::atomic&lt;Node*&gt;</code> for head. CAS in a loop for push/pop.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Implementation</span><br><pre>template&lt;typename T&gt;
+class LockFreeStack {
+    struct Node { T data; Node* next; };
+    std::atomic&lt;Node*&gt; head{nullptr};
+public:
+    void push(T val) {
+        Node* n = new Node{std::move(val), nullptr};
+        n-&gt;next = head.load(std::memory_order_relaxed);
+        while (!head.compare_exchange_weak(n-&gt;next, n,
+               std::memory_order_release, std::memory_order_relaxed));
+    }
+    std::optional&lt;T&gt; pop() {
+        Node* old = head.load(std::memory_order_acquire);
+        while (old &amp;&amp; !head.compare_exchange_weak(old, old-&gt;next,
+               std::memory_order_release, std::memory_order_acquire));
+        if (!old) return {};
+        T val = std::move(old-&gt;data);
+        // DANGER: delete old  ← ABA problem / use-after-free with concurrent pops
+        return val;
+    }
+};</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">ABA Problem</span><br>After loading <code>old = A</code>, another thread pops A, pushes B, pushes A back. CAS sees A and succeeds but <code>old-&gt;next</code> points to stale node. Fix: <b>tagged pointers</b> (version counter) or <b>hazard pointers</b> for safe memory reclamation.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the Michael-Scott lock-free queue?<br>• How do hazard pointers prevent use-after-free?<br>• When does lock-free actually outperform mutex? (high contention, many cores)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Databricks</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="language">
+    <span class="q-index">31</span>
+    <span class="q-text">constexpr vs consteval vs constinit (C++20)</span>
+    <div class="q-tags"><span class="q-tag">constexpr</span><span class="q-tag">consteval</span><span class="q-tag">constinit</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">72%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">constexpr</span><br>Can run at compile time OR runtime. Compiler decides.<br><pre>constexpr int square(int x) { return x*x; }
+constexpr int s = square(5);  // compile-time
+int n = 7; int r = square(n);  // runtime — also valid</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">consteval (C++20)</span><br><b>Must</b> be evaluated at compile time. Immediate function. Compile error if runtime call attempted.<br><pre>consteval int cube(int x) { return x*x*x; }
+consteval auto getCube = cube(3);  // OK: 27 at compile time
+int n=5; cube(n);                  // ERROR: n not constant</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">constinit (C++20)</span><br>Variable <b>must</b> be initialized at compile time (no static initialization order fiasco). Unlike constexpr, the variable itself can still be modified at runtime.<br><pre>constinit int counter = 0;  // initialized at compile time
+counter++;                  // runtime modification OK</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">When to use</span><br><ul><li><code>constexpr</code>: functions/variables that should work at both compile and runtime</li><li><code>consteval</code>: guaranteed compile-time (type traits, code generation, DSLs)</li><li><code>constinit</code>: global/static variables to avoid init-order issues</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the static initialization order fiasco?<br>• Can constexpr functions have loops, recursion? (Yes, since C++14)<br>• What is std::is_constant_evaluated()?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Databricks, Snowflake</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="oop">
+    <span class="q-index">32</span>
+    <span class="q-text">Virtual inheritance and the diamond problem</span>
+    <div class="q-tags"><span class="q-tag">virtual-inheritance</span><span class="q-tag">diamond</span><span class="q-tag">multiple-inheritance</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">72%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Diamond Problem</span><br><pre>struct A { int x; };
+struct B : A {};
+struct C : A {};
+struct D : B, C {};   // D has TWO copies of A!
+D d;
+d.x = 5;              // Error: ambiguous — B::A::x or C::A::x?</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Virtual Inheritance Fix</span><br><pre>struct A { int x; };
+struct B : virtual A {};
+struct C : virtual A {};
+struct D : B, C {};   // Only ONE shared A
+D d; d.x = 5;         // OK: unambiguous</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">How it works</span><br>With virtual inheritance, B and C each store a <b>virtual base pointer</b> (vbptr) pointing to the shared A subobject. D's constructor directly initializes A.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cost</span><br>Extra pointer per virtual base. More complex object layout. <code>dynamic_cast</code> needed for cross-casting. Avoid in performance-critical code.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Who initializes the virtual base in the most-derived class?<br>• What is object slicing in virtual inheritance?<br>• How does virtual inheritance affect sizeof?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, VMware, Cisco</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="templates">
+    <span class="q-index">33</span>
+    <span class="q-text">Variadic templates</span>
+    <div class="q-tags"><span class="q-tag">variadic</span><span class="q-tag">parameter-packs</span><span class="q-tag">fold</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">70%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">template<typename... Args>. Fold expressions (C++17). Used in std::tuple, logging, make_shared.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="concurrency">
+    <span class="q-index">34</span>
+    <span class="q-text">Memory model — happens-before, acquire/release semantics</span>
+    <div class="q-tags"><span class="q-tag">memory-model</span><span class="q-tag">acquire</span><span class="q-tag">release</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">70%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">C++ Memory Orderings</span><br><ul><li><code>memory_order_relaxed</code> — no synchronization, only atomicity</li><li><code>memory_order_acquire</code> — no loads/stores can move before this load</li><li><code>memory_order_release</code> — no loads/stores can move after this store</li><li><code>memory_order_acq_rel</code> — both acquire and release</li><li><code>memory_order_seq_cst</code> — total ordering (default, most expensive)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Acquire-Release Pattern</span><br><pre>// Producer
+data.store(42, relaxed);
+ready.store(true, memory_order_release);  // store is visible
+
+// Consumer
+while (!ready.load(memory_order_acquire));  // wait until acquire sees release
+use(data.load(relaxed));  // guaranteed to see 42</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Happens-before</span><br>A <b>happens-before</b> relationship guarantees that all writes before a release are visible after the corresponding acquire. Essential for lock-free programming.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Why is sequentially consistent ordering expensive on ARM?<br>• What is a data race? (concurrent access, at least one write, no sync)<br>• How does std::mutex establish happens-before?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Databricks</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="templates">
+    <span class="q-index">35</span>
+    <span class="q-text">CRTP — Curiously Recurring Template Pattern</span>
+    <div class="q-tags"><span class="q-tag">crtp</span><span class="q-tag">static-polymorphism</span><span class="q-tag">mixin</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">70%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">What is CRTP</span><br>Base class templated on its derived class. Enables <b>static polymorphism</b> (compile-time virtual dispatch) — zero vtable overhead.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Example: Static Polymorphism</span><br><pre>template&lt;typename Derived&gt;
+struct Shape {
+    double area() const {
+        return static_cast&lt;const Derived*&gt;(this)-&gt;area_impl();
+    }
+};
+struct Circle : Shape&lt;Circle&gt; {
+    double r;
+    double area_impl() const { return 3.14*r*r; }
+};
+struct Square : Shape&lt;Square&gt; {
+    double s;
+    double area_impl() const { return s*s; }
+};
+// Caller (template function, not virtual):
+template&lt;typename S&gt; void print(const Shape&lt;S&gt;&amp; s) { std::cout &lt;&lt; s.area(); }</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">CRTP for Mixins</span><br><pre>template&lt;typename T&gt;
+struct Comparable {
+    bool operator!=(const T&amp; o) const { return !(static_cast&lt;const T&amp;&gt;(*this)==o); }
+    bool operator&gt; (const T&amp; o) const { return o &lt; static_cast&lt;const T&amp;&gt;(*this); }
+    // Derived only implements operator== and operator&lt;
+};
+struct Point : Comparable&lt;Point&gt; {
+    int x,y;
+    bool operator==(const Point&amp; o) const { return x==o.x &amp;&amp; y==o.y; }
+    bool operator&lt; (const Point&amp; o) const { return x&lt;o.x || (x==o.x &amp;&amp; y&lt;o.y); }
+};</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">CRTP vs Concepts (C++20)</span><br>CRTP: complex syntax, but works pre-C++20 with zero runtime cost. C++20 Concepts: cleaner constraints but still need virtual for runtime polymorphism.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the difference between CRTP and policy-based design?<br>• How does CRTP avoid object slicing?<br>• What are the limitations of CRTP vs virtual?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Databricks</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="language">
+    <span class="q-index">36</span>
+    <span class="q-text">C++ Coroutines (C++20) — co_await, co_yield, co_return</span>
+    <div class="q-tags"><span class="q-tag">coroutines</span><span class="q-tag">co_await</span><span class="q-tag">co_yield</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">68%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">What are Coroutines</span><br>Functions that can be <b>suspended and resumed</b>. A coroutine is a function containing <code>co_await</code>, <code>co_yield</code>, or <code>co_return</code>.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Keywords</span><br><ul><li><code>co_await expr</code> — suspend until expr completes</li><li><code>co_yield val</code> — yield a value and suspend (generator pattern)</li><li><code>co_return val</code> — complete the coroutine</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Generator Example</span><br><pre>Generator&lt;int&gt; fibonacci() {
+    int a = 0, b = 1;
+    while (true) {
+        co_yield a;
+        auto c = a + b; a = b; b = c;
+    }
+}
+
+for (int x : fibonacci() | take(10)) std::cout &lt;&lt; x;</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Coroutine Frame</span><br>Coroutine state is heap-allocated (coroutine frame). Coroutine handle manages lifetime. Promise object customizes behaviour.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do coroutines compare to threads? (single-threaded cooperative vs preemptive)<br>• What is <code>std::generator</code> (C++23)?<br>• Explain symmetric vs asymmetric coroutines.</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Databricks</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="language">
+    <span class="q-index">37</span>
+    <span class="q-text">What are C++ ranges (C++20)?</span>
+    <div class="q-tags"><span class="q-tag">ranges</span><span class="q-tag">views</span><span class="q-tag">pipelines</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">68%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Ranges</span><br>C++20 Ranges provides <b>composable, lazy view pipelines</b> over sequences.<br>Key header: <code>&lt;ranges&gt;</code>, <code>&lt;algorithm&gt;</code> (constrained algorithms)</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Example</span><br><pre>#include &lt;ranges&gt;
+#include &lt;vector&gt;
+
+std::vector&lt;int&gt; v = {1,2,3,4,5,6};
+
+// Lazy pipeline: filter evens, square them, take first 3
+auto result = v
+    | std::views::filter([](int x){ return x % 2 == 0; })
+    | std::views::transform([](int x){ return x * x; })
+    | std::views::take(3);
+
+for (int x : result) std::cout &lt;&lt; x; // 4 16 36</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Views</span><br><code>views::filter</code>, <code>views::transform</code>, <code>views::take</code>, <code>views::drop</code>, <code>views::reverse</code>, <code>views::iota</code>, <code>views::split</code>, <code>views::zip</code> (C++23)</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Lazy Evaluation</span><br>Views are <b>not evaluated until iterated</b>. No intermediate containers. Composing 5 views = single pass over data.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is a range vs a view?<br>• What is std::ranges::to (C++23)?<br>• How do ranges enable better algorithm composition than iterators?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Databricks, Snowflake</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="concurrency">
+    <span class="q-index">38</span>
+    <span class="q-text">std::jthread vs std::thread (C++20)</span>
+    <div class="q-tags"><span class="q-tag">jthread</span><span class="q-tag">stop_token</span><span class="q-tag">thread</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">68%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Problem with std::thread</span><br><code>std::thread</code> must be explicitly joined or detached before destruction. Forgetting calls <code>std::terminate()</code>. No built-in cooperative cancellation.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">std::jthread</span><br>C++20 improvement: <b>automatically joins on destruction</b> (RAII). Built-in <b>cooperative cancellation</b> via <code>std::stop_token</code>.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Example</span><br><pre>std::jthread t([](std::stop_token st) {
+    while (!st.stop_requested()) {
+        do_work();
+        std::this_thread::sleep_for(100ms);
+    }
+    std::cout &lt;&lt; "Stopping cleanly\n";
+});
+
+t.request_stop();  // signal cancellation
+// t.join() called automatically in destructor</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">stop_source / stop_token</span><br><code>stop_source</code> owns the stop state. <code>stop_token</code> is a read-only handle passed to threads. Multiple tokens from one source.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does jthread compare to Golang goroutines with context?<br>• What is std::stop_callback?<br>• How do you implement a thread pool with jthread?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="templates">
+    <span class="q-index">39</span>
+    <span class="q-text">Fold expressions (C++17) and variadic templates</span>
+    <div class="q-tags"><span class="q-tag">fold-expressions</span><span class="q-tag">variadic</span><span class="q-tag">parameter-pack</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">68%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Variadic Templates</span><br><pre>template&lt;typename... Args&gt;
+void print(Args... args) {
+    (std::cout &lt;&lt; ... &lt;&lt; args) &lt;&lt; '\n';  // fold expression
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Fold Expression Syntax</span><br><ul><li><b>Unary left fold:</b> <code>(... op pack)</code> → <code>((a op b) op c)</code></li><li><b>Unary right fold:</b> <code>(pack op ...)</code> → <code>(a op (b op c))</code></li><li><b>Binary left fold:</b> <code>(init op ... op pack)</code></li></ul><pre>// Sum of any number of args:
+template&lt;typename... T&gt;
+auto sum(T... args) { return (args + ...); }
+
+// All conditions true:
+template&lt;typename... T&gt;
+bool all_true(T... vals) { return (... &amp;&amp; vals); }</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Before C++17 (recursive)</span><br>Needed base case + recursive templates. Fold expressions replace this with a single expression.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you iterate over a parameter pack without fold?<br>• What is std::apply and how does it use parameter packs?<br>• How do you get the count of pack elements? (sizeof...(pack))</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Databricks</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="performance">
+    <span class="q-index">40</span>
+    <span class="q-text">Custom allocators in C++ — std::allocator, pmr</span>
+    <div class="q-tags"><span class="q-tag">allocator</span><span class="q-tag">pmr</span><span class="q-tag">memory-pool</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">66%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Why Custom Allocators</span><br>Default <code>new</code>/<code>delete</code>: thread-safe but expensive (lock, fragmentation). Custom allocators: pool allocation, arena, stack allocation, no fragmentation, cache-friendly.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">std::pmr (C++17 — Polymorphic Memory Resources)</span><br><pre>#include &lt;memory_resource&gt;
+
+// Stack-based pool: zero heap allocation
+char buf[4096];
+std::pmr::monotonic_buffer_resource pool(buf, sizeof(buf));
+std::pmr::vector&lt;int&gt; v(&amp;pool);  // uses pool
+v.push_back(42);  // no malloc!
+// When pool exhausted → falls back to upstream allocator</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Common pmr Resources</span><br><ul><li><code>monotonic_buffer_resource</code>: bump allocator, no deallocation (free all at once)</li><li><code>synchronized_pool_resource</code>: thread-safe pool</li><li><code>unsynchronized_pool_resource</code>: fast, single-threaded</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Use Cases</span><br>Hot-path allocations, game engines, parsers, per-request arenas in servers (allocate all request data in arena, free entire arena at end of request).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you write a custom allocator that satisfies the Allocator concept?<br>• What is placement new and how is it related to custom allocators?<br>• How does jemalloc/tcmalloc differ from std::allocator?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Databricks, Snowflake</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="templates">
+    <span class="q-index">41</span>
+    <span class="q-text">CRTP (Curiously Recurring Template Pattern)</span>
+    <div class="q-tags"><span class="q-tag">crtp</span><span class="q-tag">static-polymorphism</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">65%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Base<Derived>. Compile-time polymorphism without vtable overhead.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Databricks</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="memory">
+    <span class="q-index">42</span>
+    <span class="q-text">Placement new and custom allocators</span>
+    <div class="q-tags"><span class="q-tag">placement-new</span><span class="q-tag">allocators</span><span class="q-tag">memory</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">65%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Construct in pre-allocated memory. Manually call destructor. Used in pools, embedded systems.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Databricks, Snowflake</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="optimization">
+    <span class="q-index">43</span>
+    <span class="q-text">What is EBO (Empty Base Optimization)?</span>
+    <div class="q-tags"><span class="q-tag">ebo</span><span class="q-tag">empty-base</span><span class="q-tag">sizeof</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">64%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">The Problem</span><br>C++ requires each complete object to have a unique address, so empty classes have size >= 1. But storing an empty allocator/comparator as a member wastes space:<br><pre>struct Allocator {};  // sizeof = 1
+struct MyContainer {
+    Allocator alloc;  // 1 byte (but likely padded to 8!)
+    size_t size;      // 8 bytes
+    // Total: 16 bytes instead of 8
+};</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">EBO Solution</span><br>Inherit from the empty base instead of storing as member:<br><pre>struct MyContainer : private Allocator {
+    size_t size;  // Allocator takes 0 bytes here!
+    // Total: 8 bytes
+};</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">C++20 [[no_unique_address]]</span><br>Attribute that tells compiler it's OK for member to share address:<br><pre>struct MyContainer {
+    [[no_unique_address]] Allocator alloc;
+    size_t size;  // 8 bytes total if Allocator is empty
+};</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Where it matters</span><br>std::vector, std::unique_ptr with stateless deleters, std::map with stateless comparators.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does std::tuple implement EBO?<br>• What is compressed_pair? (Boost, LLVM)<br>• What is the standard layout requirement?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Databricks</span>
+    </div>
+  </div>
+</div></div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-links">
+      <a href="../common/top-coding.html">Top Coding</a>
+      <a href="../common/top-system-design.html">System Design</a>
+      <a href="../common/top-backend.html">Backend</a>
+      <a href="../common/top-cpp.html">C++</a>
+      <a href="../common/top-java.html">Java</a>
+      <a href="../common/top-go.html">Go</a>
+      <a href="../common/top-database.html">Database</a>
+      <a href="../common/top-concurrency.html">Concurrency</a>
+      <a href="../common/top-os.html">OS</a>
+      <a href="../common/top-networking.html">Networking</a>
+      <a href="../common/top-lld.html">LLD</a>
+      <a href="../common/top-cicd.html">CI/CD</a>
+      <a href="../common/top-security.html">Security</a>
+      <a href="../common/top-ml.html">ML Systems</a>
+      <a href="../common/top-perf.html">Performance</a>
+    </div>
+    <p>Built for SDE-1 &amp; SDE-2 Backend Engineers | C++ · Java · Go · Distributed Systems</p>
+    <p style="margin-top:8px;font-size:12px;opacity:.5">Data sourced from LeetCode, Glassdoor, Blind, Reddit &amp; public interview experiences</p>
+  </div>
+</footer>
+<button id="back-to-top" title="Back to top">↑</button>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
