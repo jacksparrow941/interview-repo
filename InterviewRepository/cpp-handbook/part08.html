@@ -1,0 +1,289 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Part VIII: Compiler Internals — C++ Interview Handbook</title>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<div style="background:#0f172a;border-bottom:1px solid #334155;padding:8px 20px;
+  display:flex;align-items:center;gap:16px;font-size:13px;position:fixed;top:0;left:0;right:0;z-index:400;height:38px">
+  <a href="../index.html" style="color:#3b82f6;font-weight:600;text-decoration:none;
+     display:flex;align-items:center;gap:6px">
+    <span>⚡</span><span>InterviewRepo</span>
+  </a>
+  <span style="color:#334155">|</span>
+  <a href="index.html" style="color:#94a3b8;text-decoration:none">📘 C++ Master Handbook</a>
+  <span style="color:#334155;margin-left:auto;font-size:11px;color:#475569">
+    C++ · Multithreading · OS · Networks · AI Runtime · Embedded · 150 Problems
+  </span>
+</div>
+<nav id="sidebar"><div class="sb-head"><b>C++ Handbook</b><br><small>15 Parts · 150 Problems</small></div><a href="index.html" >🏠 Table of Contents</a>
+<a href="part01.html"><span class="badge" style="background:#1a2744">01</span>Part I: C++ Mastery</a>
+<a href="part02.html"><span class="badge" style="background:#065f46">02</span>Part II: Multithreading & Concurrency</a>
+<a href="part03.html"><span class="badge" style="background:#7c3aed">03</span>Part III: Operating Systems</a>
+<a href="part04.html"><span class="badge" style="background:#0e7490">04</span>Part IV: Computer Networks</a>
+<a href="part05.html"><span class="badge" style="background:#92400e">05</span>Part V: Linux & Performance Tools</a>
+<a href="part06.html"><span class="badge" style="background:#1e40af">06</span>Part VI: Distributed Systems</a>
+<a href="part07.html"><span class="badge" style="background:#b45309">07</span>Part VII: System Design</a>
+<a href="part08.html" class="active"><span class="badge" style="background:#be185d">08</span>Part VIII: Compiler Internals</a>
+<a href="part09.html"><span class="badge" style="background:#0f766e">09</span>Part IX: AI Runtime</a>
+<a href="part10.html"><span class="badge" style="background:#4338ca">10</span>Part X: Embedded Systems</a>
+<a href="part11.html"><span class="badge" style="background:#0369a1">11</span>Part XI: DevOps & Tools</a>
+<a href="part12.html"><span class="badge" style="background:#1e3a5f">12</span>Part XII: Coding Interviews — 150 Problems</a>
+<a href="part13.html"><span class="badge" style="background:#3f1f69">13</span>Part XIII: Behavioral & STAR</a>
+<a href="part14.html"><span class="badge" style="background:#064e3b">14</span>Part XIV: Resume Deep Dive</a>
+<a href="part15.html"><span class="badge" style="background:#7f1d1d">15</span>Part XV: Company-Specific</a>
+</nav>
+<div id="main">
+  <div id="topbar"><div class="tb-title" style="border-left:4px solid #be185d;padding-left:12px">Part VIII: Compiler Internals</div></div>
+  <div id="content">
+    <h1 class="part-title">Part VIII: Compiler Internals</h1>
+    <p class="subtitle">Part VIII</p><hr class="divider">
+    <h2 class="chap">Chapter 1 — Compiler Pipeline</h2><div class="tbl"><table><thead><tr><th>Stage</th><th>Input</th><th>Output</th><th>Key Work</th></tr></thead><tbody><tr><td>Lexing</td><td>Source chars</td><td>Tokens</td><td>Split into keywords/identifiers/literals</td></tr><tr><td>Parsing</td><td>Tokens</td><td>AST</td><td>Verify grammar, build tree structure</td></tr><tr><td>Semantic Analysis</td><td>AST</td><td>Typed AST</td><td>Type checking, scope resolution, symbol table</td></tr><tr><td>IR Generation</td><td>AST</td><td>LLVM IR (SSA form)</td><td>Lower to platform-independent IR</td></tr><tr><td>Optimization</td><td>IR</td><td>Optimized IR</td><td>Dead code, inlining, vectorization, loop opts</td></tr><tr><td>Code Generation</td><td>IR</td><td>Assembly</td><td>Instruction selection, register allocation, scheduling</td></tr><tr><td>Linking</td><td>Object files</td><td>Executable</td><td>Symbol resolution, section merging, relocation</td></tr></tbody></table></div><h2 class="chap">Chapter 2 — Lexer: Tokenization</h2><p>The lexer splits source text into tokens — the smallest meaningful units. It ignores whitespace and comments. Tokens carry type and value.</p><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// Hand-written lexer for a simple expression language
+enum class Token {
+    NUMBER, IDENT, PLUS, MINUS, STAR, SLASH,
+    LPAREN, RPAREN, ASSIGN, SEMICOLON, EOF_TK
+};
+
+struct Tok {
+    Token kind;
+    std::string value;
+    int line;
+};
+
+class Lexer {
+    std::string src_;
+    size_t pos_ = 0;
+    int    line_ = 1;
+
+    char peek()   const { return pos_ &lt; src_.size() ? src_[pos_] : '\0'; }
+    char advance() { char c = peek(); ++pos_; if(c=='\n')++line_; return c; }
+
+    Tok lex_number() {
+        std::string num;
+        while (isdigit(peek())) num += advance();
+        if (peek() == '.') {
+            num += advance();
+            while (isdigit(peek())) num += advance();
+        }
+        return {Token::NUMBER, num, line_};
+    }
+
+public:
+    std::vector&lt;Tok&gt; tokenize() {
+        std::vector&lt;Tok&gt; tokens;
+        while (pos_ &lt; src_.size()) {
+            while (isspace(peek())) advance();  // skip whitespace
+            if (!peek()) break;
+            if (isdigit(peek()))     tokens.push_back(lex_number());
+            else if (isalpha(peek())) tokens.push_back(lex_ident());
+            else switch (advance()) {
+                case '+': tokens.push_back({Token::PLUS,  "+", line_}); break;
+                case '-': tokens.push_back({Token::MINUS, "-", line_}); break;
+                case '*': tokens.push_back({Token::STAR,  "*", line_}); break;
+                case '/':
+                    if (peek() == '/') {  // line comment
+                        while (peek() != '\n') advance();
+                    } else tokens.push_back({Token::SLASH, "/", line_});
+                    break;
+            }
+        }
+        tokens.push_back({Token::EOF_TK, "", line_});
+        return tokens;
+    }
+};</code></pre><div class="ex-why">✅ Why this works: A hand-written lexer is fastest but more work. For production compilers use DFA (finite automaton) generated from regex specs. Clang uses a hand-written lexer for speed.</div></div><h2 class="chap">Chapter 3 — Parser: Building the AST</h2><p>Recursive descent parsers encode grammar rules as mutually recursive functions. The call hierarchy implicitly handles operator precedence.</p><div class="diagram">Grammar (lowest to highest precedence):
+  expr   → term (('+' | '-') term)*
+  term   → factor (('*' | '/') factor)*
+  factor → NUMBER | IDENT | '(' expr ')' | '-' factor
+
+Input: 3 + 4 * 2
+Parsing:
+  expr()
+    term() → factor() → 3
+    '+'
+    term()
+      factor() → 4
+      '*'
+      factor() → 2
+      returns 4*2=BinOp(*,4,2)
+    returns 3 + BinOp(*,4,2)
+
+AST:
+    (+)
+   /   \
+  3    (*)
+       / \
+      4   2</div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// Recursive descent parser — expression subset
+struct Expr {
+    virtual double eval() = 0;
+    virtual ~Expr() = default;
+};
+struct Number : Expr {
+    double v;
+    explicit Number(double v) : v(v) {}
+    double eval() override { return v; }
+};
+struct BinOp : Expr {
+    char op;
+    std::unique_ptr&lt;Expr&gt; lhs, rhs;
+    double eval() override {
+        switch (op) {
+            case '+': return lhs-&gt;eval() + rhs-&gt;eval();
+            case '-': return lhs-&gt;eval() - rhs-&gt;eval();
+            case '*': return lhs-&gt;eval() * rhs-&gt;eval();
+            case '/': return lhs-&gt;eval() / rhs-&gt;eval();
+        }
+        return 0;
+    }
+};
+
+class Parser {
+    std::vector&lt;Tok&gt; toks_;
+    size_t pos_ = 0;
+    Tok&amp; cur() { return toks_[pos_]; }
+    Tok&amp; consume() { return toks_[pos_++]; }
+    bool match(Token t) { return cur().kind == t; }
+
+    std::unique_ptr&lt;Expr&gt; parse_factor() {
+        if (match(Token::NUMBER)) {
+            double v = std::stod(consume().value);
+            return std::make_unique&lt;Number&gt;(v);
+        }
+        if (match(Token::LPAREN)) {
+            consume();   // '('
+            auto e = parse_expr();
+            if (!match(Token::RPAREN)) throw std::runtime_error("expected )");
+            consume();   // ')'
+            return e;
+        }
+        throw std::runtime_error("unexpected token: " + cur().value);
+    }
+    std::unique_ptr&lt;Expr&gt; parse_term() {
+        auto lhs = parse_factor();
+        while (match(Token::STAR) || match(Token::SLASH)) {
+            char op = consume().value[0];
+            lhs = std::make_unique&lt;BinOp&gt;(op, std::move(lhs), parse_factor());
+        }
+        return lhs;
+    }
+public:
+    std::unique_ptr&lt;Expr&gt; parse_expr() {
+        auto lhs = parse_term();
+        while (match(Token::PLUS) || match(Token::MINUS)) {
+            char op = consume().value[0];
+            lhs = std::make_unique&lt;BinOp&gt;(op, std::move(lhs), parse_term());
+        }
+        return lhs;
+    }
+};</code></pre><div class="ex-why">✅ Why this works: The call hierarchy encodes precedence: parse_expr calls parse_term which calls parse_factor. Lower in the call stack = higher precedence. This is why multiplication binds tighter than addition.</div></div><h2 class="chap">Chapter 4 — SSA Form and LLVM IR</h2><p>SSA (Static Single Assignment): every variable is assigned exactly once. At control flow join points, phi (φ) nodes select between different definitions. SSA makes compiler analyses and optimizations dramatically simpler.</p><div class="diagram">Source code:
+  int x = a + b;
+  if (a > 0)
+      x = x * 2;
+  return x;
+
+SSA form:
+  x1 = a + b            ; first definition
+  t1 = a > 0
+  branch t1 → L1 else L2
+L1:
+  x2 = x1 * 2           ; second definition
+  jump L2
+L2:
+  x3 = phi(x1, x2)      ; PHI: x3=x1 if came from entry, x3=x2 if from L1
+  return x3
+
+Each variable defined exactly once → use-def chain is trivial to compute</div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>; LLVM IR for add function — human-readable SSA
+; Compile from C++: clang++ -emit-llvm -S -O1 add.cpp
+define i32 @add(i32 %a, i32 %b) {
+entry:
+    %sum = add nsw i32 %a, %b    ; nsw = no signed overflow (enables more opts)
+    ret i32 %sum
+}
+
+; More complex: absolute value
+define i32 @abs_val(i32 %x) {
+entry:
+    %cmp = icmp slt i32 %x, 0    ; x &lt; 0 ?
+    br i1 %cmp, label %negative, label %positive
+negative:
+    %neg = sub i32 0, %x         ; -x
+    br label %done
+positive:
+    br label %done
+done:
+    %result = phi i32 [%neg, %negative], [%x, %positive]  ; PHI node
+    ret i32 %result
+}
+
+; To write your own LLVM pass (new pass manager):
+#include "llvm/IR/PassManager.h"
+#include "llvm/Passes/PassBuilder.h"
+
+struct PrintFunctions : llvm::PassInfoMixin&lt;PrintFunctions&gt; {
+    llvm::PreservedAnalyses run(llvm::Function&amp; F,
+                                llvm::FunctionAnalysisManager&amp;) {
+        llvm::outs() &lt;&lt; "Function: " &lt;&lt; F.getName()
+                     &lt;&lt; " (" &lt;&lt; F.arg_size() &lt;&lt; " args)\n";
+        for (auto&amp; BB : F)
+            for (auto&amp; I : BB)
+                llvm::outs() &lt;&lt; "  " &lt;&lt; I &lt;&lt; "\n";
+        return llvm::PreservedAnalyses::all();
+    }
+};</code></pre><div class="ex-why">✅ Why this works: Reading LLVM IR is a core skill for compiler engineers. clang -emit-llvm -S shows the IR for any C++ file — study how your optimizations transform IR.</div></div><h2 class="chap">Chapter 5 — Key Compiler Optimizations</h2><div class="tbl"><table><thead><tr><th>Optimization</th><th>Description</th><th>Before</th><th>After</th></tr></thead><tbody><tr><td>Constant Folding</td><td>Evaluate constants at compile time</td><td>x = 3 * 4;</td><td>x = 12;</td></tr><tr><td>Dead Code Elim</td><td>Remove unreachable/unused code</td><td>if(0){work();}</td><td>(empty)</td></tr><tr><td>Inlining</td><td>Replace call with function body</td><td>r = add(a,b);</td><td>r = a+b; (no call)</td></tr><tr><td>LICM</td><td>Hoist loop-invariant code out</td><td>for(i){x=2*M_PI*i;}</td><td>c=2*M_PI;for(i){x=c*i;}</td></tr><tr><td>Vectorization</td><td>Use SIMD for data-parallel loops</td><td>for(i)a[i]+=b[i];</td><td>vaddps ymm0,...</td></tr><tr><td>GVN</td><td>Eliminate redundant expressions</td><td>x=a+b;y=a+b;</td><td>x=a+b;y=x;</td></tr><tr><td>mem2reg</td><td>Promote alloca to SSA register</td><td>alloca → store/load</td><td>Direct register use</td></tr></tbody></table></div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// Observe optimizations via compiler explorer (godbolt.org)
+// or: g++ -O2 -S -masm=intel code.cpp -o code.s
+
+// Example: LICM (Loop Invariant Code Motion)
+// Source code:
+for (int i = 0; i &lt; N; ++i)
+    result += data[i] * sqrt(threshold);   // sqrt called N times!
+
+// After -O2: compiler hoists sqrt(threshold) out:
+double tmp = sqrt(threshold);   // computed once
+for (int i = 0; i &lt; N; ++i)
+    result += data[i] * tmp;
+
+// Help the compiler: mark const what is const
+const double factor = sqrt(threshold);   // explicit hoist = guaranteed
+
+// Vectorization with SIMD:
+// Source: for(int i=0;i&lt;N;++i) a[i] += b[i];
+// After -O3 -march=native:
+// vmovups ymm0, [b+i]    ; load 8 floats
+// vaddps  ymm1, ymm1, ymm0  ; add 8 floats
+// vmovups [a+i], ymm1    ; store 8 floats
+// 8x throughput on AVX2!</code></pre><div class="ex-why">✅ Why this works: Use -O2 -march=native in production — it enables all safe optimizations plus target-specific SIMD. -O3 enables aggressive optimizations that can occasionally break code with strict aliasing violations.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// BAD: blocking vectorization with pointer aliasing
+void bad_add(float* a, float* b, float* c, int n) {
+    for (int i = 0; i &lt; n; ++i)
+        a[i] = b[i] + c[i];   // compiler: a, b, c might alias! Can't vectorize
+}
+// Compiler must assume b and c could point into a → can't reorder loads/stores
+
+// GOOD: tell compiler pointers don't alias
+void good_add(float* __restrict__ a,
+              float* __restrict__ b,
+              float* __restrict__ c, int n) {
+    for (int i = 0; i &lt; n; ++i)
+        a[i] = b[i] + c[i];   // __restrict__: no aliasing → vectorized!
+}
+// Generates: vmovups + vaddps (8 floats at once) — 8x throughput
+
+// BAD: defeating inlining with opaque function pointers
+std::function&lt;int(int)&gt; transform = [](int x){ return x * 2; };
+for (int i = 0; i &lt; N; ++i)
+    result += transform(data[i]);  // std::function: type-erased, no inline
+// Better: use template or direct lambda (inlined by compiler)</code></pre><div class="ex-why bad-why">❌ Why this fails: Pointer aliasing is the most common reason auto-vectorization fails. __restrict__ (GCC/Clang extension) or separate input/output arrays enables vectorization. Check with -fopt-info-vec-missed.</div></div><h2 class="chap">Interview Q&A — Compiler</h2><div class="qa"><div class="question">❓ What is SSA and why does every modern compiler use it?</div><div class="answer">SSA (Static Single Assignment): every variable has exactly one definition. At control flow merges, phi (φ) nodes select among definitions from different incoming paths. Why compilers use it: (1) Use-def chains are explicit — each use points to exactly one definition. (2) Constant propagation: if x = 5 always, all uses of x can be replaced by 5 trivially. (3) Dead code elimination: if a definition is never used, remove it immediately (no transitive tracking needed). (4) Global value numbering: if two computations produce the same SSA value, they're identical — one can be eliminated. (5) Register allocation: live ranges are precise (definition to last use of each SSA variable). LLVM IR is SSA. GCC uses GIMPLE which is also SSA-based internally.</div><div class="followup"><b>Follow-up questions interviewers ask:</b><ul><li>What is a phi node? Give a concrete example.</li><li>How does SSA handle loops (back-edges)?</li><li>What is the difference between SSA construction and phi placement?</li></ul></div><div class="followup" style="background:#fef2f2;border-color:#fca5a5"><b>Common mistakes in answers:</b><ul><li>Saying SSA means no variable can be modified — SSA is about definitions, not about mutability at source level.</li><li>Confusing SSA with immutability in functional languages — different concepts.</li></ul></div></div><div class="qa"><div class="question">❓ Explain register allocation. Why is it NP-complete and how do compilers handle it?</div><div class="answer">Register allocation maps unlimited virtual registers (SSA values) to a finite set of physical registers. When there are more live values than registers, some must be 'spilled' to stack. Why NP-complete: equivalent to graph coloring. Build a live-range interference graph: nodes are virtual registers, edges between registers that are alive at the same time. Graph coloring with K colors = allocating K physical registers. Graph k-colorability is NP-complete. How compilers handle it: (1) Linear scan allocation (LLVM): scan live ranges in order, greedily assign registers. O(n) — fast, good enough for JIT compilers. (2) Graph coloring (GCC): Chaitin's algorithm — iteratively remove low-degree nodes, attempt coloring, spill if necessary. Better code quality but slower. (3) SSA-based allocation: exploit SSA structure to simplify the interference graph (most modern compilers).</div><div class="followup"><b>Follow-up questions interviewers ask:</b><ul><li>What is spill code? What is the cost of spilling?</li><li>What is a calling convention? Who defines it?</li><li>How does LLVM's regalloc decide what to spill?</li></ul></div></div>
+    <div class="pagination"><a href="part07.html">← Part 07</a><a href="part09.html">Part 09 →</a></div>
+  </div>
+</div>
+<button id="btt">↑</button>
+<script>
+document.querySelectorAll('pre').forEach(p=>{
+  const b=document.createElement('button');b.className='copy-btn';b.textContent='Copy';
+  p.appendChild(b);b.onclick=()=>{navigator.clipboard.writeText(p.innerText.replace('Copy','').trim())
+  .then(()=>{b.textContent='Copied!';setTimeout(()=>b.textContent='Copy',2000);});};});
+const btt=document.getElementById('btt');
+window.addEventListener('scroll',()=>btt&&btt.classList.toggle('show',scrollY>300));
+btt&&btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+const si=document.getElementById('search');
+if(si)si.addEventListener('input',function(){const q=this.value.toLowerCase();
+  document.querySelectorAll('.part-card').forEach(c=>c.style.display=
+    c.textContent.toLowerCase().includes(q)?'':'none');});
+</script></body></html>

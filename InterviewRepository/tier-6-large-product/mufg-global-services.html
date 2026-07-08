@@ -1,0 +1,2344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MUFG Global Services | InterviewRepo — Backend SDE Interview Prep</title>
+  <meta name="description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — MUFG Global Services">
+  <meta name="keywords" content="backend interview questions, SDE interview prep, system design, DSA, C++ interview, Java interview, Go interview, mufg global services">
+  <meta name="author" content="InterviewRepo">
+  <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="InterviewRepo — Backend SDE Prep">
+  <meta property="og:title"       content="MUFG Global Services | InterviewRepo">
+  <meta property="og:description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — MUFG Global Services">
+  <meta property="og:url"         content="https://devinterviewvault.netlify.app">
+  <meta property="og:image"       content="https://devinterviewvault.netlify.app/assets/og-image.png">
+  <meta name="twitter:card"       content="summary_large_image">
+  <meta name="twitter:title"      content="MUFG Global Services | InterviewRepo">
+  <meta name="twitter:description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — MUFG Global Services">
+  <meta name="twitter:image"      content="https://devinterviewvault.netlify.app/assets/og-image.png">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://devinterviewvault.netlify.app">
+  <meta name="google-site-verification" content="a8bdedb3bc5f858c">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "MUFG Global Services", "description": "SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design \u2014 MUFG Global Services", "url": "https://devinterviewvault.netlify.app", "publisher": {"@type": "Organization", "name": "InterviewRepo"}}</script>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+</head>
+<body>
+<nav class="navbar">
+  <a class="navbar-brand" href="../../index.html">
+    <span class="logo-icon">⚡</span>
+    <span>InterviewRepo</span>
+  </a>
+  <div class="search-bar">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="search-input" placeholder="Search questions… (Ctrl+K)" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <nav class="navbar-nav">
+    <a href="../../index.html">Home</a>
+    <a href="../../common/top-coding.html">Top DSA</a>
+    <a href="../../common/top-system-design.html">System Design</a>
+    <a href="../../common/top-backend.html">Backend</a>
+    <a href="../../common/top-cpp.html">C++</a>
+    <a href="../../common/top-java.html">Java</a>
+    <a href="../../common/top-go.html">Go</a>
+    <a href="../../mcq-quiz.html" style="background:linear-gradient(90deg,#6366f1,#8b5cf6);color:#fff;padding:.3rem .75rem;border-radius:.4rem;font-weight:600">🎯 MCQ Quiz</a>
+  </nav>
+</nav>
+<div class="company-header">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../../index.html">Home</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="../index.html">Tier 6: Large Product</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>MUFG Global Services</span>
+    </div>
+    <div class="company-header-inner">
+      <div class="company-logo-placeholder">M</div>
+      <div class="company-info">
+        <div style="margin-bottom:8px">
+          <span class="tier-badge" data-tier="6" style="--tier-color:#9B59B6">Tier 6: Large Product</span>
+          <span class="difficulty-badge diff-hard" style="margin-left:8px">Medium-Hard</span>
+        </div>
+        <h1>MUFG Global Services</h1>
+        <p style="color:var(--text-muted);margin-top:8px">Deep Java + banking domain, Kafka/IBM MQ messaging, OpenShift/Kubernetes, Veracode security</p>
+        <div class="company-info-meta">
+          <span class="info-chip"><strong>HQ:</strong> Bangalore, India (GCC of MUFG Bank, Tokyo)</span>
+          <span class="info-chip"><strong>Roles:</strong> Senior Java Developer, Java Fullstack Lead, SSE</span>
+          <span class="info-chip"><strong>Focus:</strong> Java · Spring Boot · Microservices · Angular · Banking Domain · Kafka · OpenShift</span>
+          <span class="info-chip"><strong>Interview:</strong> Screening + 2 Technical Rounds + System Design + Behavioral + HR</span>
+        </div>
+        <div class="company-stats">
+          <div class="stat-item"><div class="stat-value">43</div><div class="stat-label">Questions</div></div>
+          <div class="stat-item"><div class="stat-value">5</div><div class="stat-label">Avg Rounds</div></div>
+          <div class="stat-item"><div class="stat-value">3.4/5</div><div class="stat-label">Difficulty</div></div>
+          <div class="stat-item"><div class="stat-value">10</div><div class="stat-label">Categories</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><div class="container" style="padding:32px 24px 0">
+  <h2 style="font-size:22px;font-weight:700;margin-bottom:16px">📋 Interview Rounds</h2>
+  <div class="rounds-grid"><div class="round-card">
+  <div class="round-number">Round 1</div>
+  <div class="round-name">Online Assessment (60 min)</div>
+  <div class="round-duration">60-90 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 2</div>
+  <div class="round-name">Technical Screen</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 3</div>
+  <div class="round-name">Coding Round</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 4</div>
+  <div class="round-name">LLD / HLD</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 5</div>
+  <div class="round-name">Hiring Manager</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 6</div>
+  <div class="round-name">HR</div>
+  <div class="round-duration">30-45 min</div>
+</div></div>
+</div><div class="container" style="padding:24px 24px 0">
+  <h2 style="font-size:20px;font-weight:700;margin-bottom:14px">🔥 Most Frequently Asked</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:10px;margin-bottom:8px"><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">HashMap vs ConcurrentHashMap — thread safety and internal differences</div>
+    <div style="font-size:12px;color:var(--text-muted)">Java · Medium · 95% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">How to use a POJO as a key in HashMap — hashCode/equals contract</div>
+    <div style="font-size:12px;color:var(--text-muted)">Java · Medium · 92% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">ReactJS core — components, JSX, props vs state, lifecycle hooks</div>
+    <div style="font-size:12px;color:var(--text-muted)">Java · Medium · 92% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">API Gateway pattern — rate limiting, routing, JWT auth, circuit breaker for MUFG microservices</div>
+    <div style="font-size:12px;color:var(--text-muted)">System Design · Hard · 92% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">N+1 Query Problem — detect and fix with JPA/Hibernate in Spring Boot</div>
+    <div style="font-size:12px;color:var(--text-muted)">Database · Hard · 92% frequency</div>
+  </div>
+</div></div>
+</div><div class="tabs-bar"><div class="tabs-inner"><button class="tab-btn active" data-tab="java">☕ Java <span style="opacity:.5;font-size:11px">(17)</span></button>
+<button class="tab-btn" data-tab="backend">🔧 Backend <span style="opacity:.5;font-size:11px">(5)</span></button>
+<button class="tab-btn" data-tab="system_design">🏗️ System Design <span style="opacity:.5;font-size:11px">(5)</span></button>
+<button class="tab-btn" data-tab="database">🗄️ Database <span style="opacity:.5;font-size:11px">(4)</span></button>
+<button class="tab-btn" data-tab="cicd">🚀 CI/CD & DevOps <span style="opacity:.5;font-size:11px">(2)</span></button>
+<button class="tab-btn" data-tab="security">🔒 Security <span style="opacity:.5;font-size:11px">(3)</span></button>
+<button class="tab-btn" data-tab="coding">💻 DSA <span style="opacity:.5;font-size:11px">(3)</span></button>
+<button class="tab-btn" data-tab="spring">Spring <span style="opacity:.5;font-size:11px">(1)</span></button>
+<button class="tab-btn" data-tab="behavioral">💬 Behavioral <span style="opacity:.5;font-size:11px">(2)</span></button>
+<button class="tab-btn" data-tab="concurrency">⚡ Concurrency <span style="opacity:.5;font-size:11px">(1)</span></button></div></div>
+<div class="container"><div class="tab-panel active" id="tab-java">
+  <div class="questions-header">
+    <h3>☕ Java</h3>
+    <span class="q-count">17 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="collections">
+    <span class="q-index">1</span>
+    <span class="q-text">HashMap vs ConcurrentHashMap — thread safety and internal differences</span>
+    <div class="q-tags"><span class="q-tag">hashmap</span><span class="q-tag">concurrenthashmap</span><span class="q-tag">thread-safety</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">95%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">HashMap (Not Thread-Safe)</span><br>Array of <code>Node&lt;K,V&gt;</code> buckets. Hash → bucket via <code>(n-1)&amp;hash</code>. Collisions: linked list → red-black tree at TREEIFY_THRESHOLD=8. Resizes (doubles) at 75% load. <b>Multi-threaded writes: race on resize, data loss, infinite loop (Java 7).</b></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">ConcurrentHashMap (Thread-Safe)</span><br>Java 8+: CAS + synchronized per bucket (not the whole map). Reads are lock-free (volatile). No null keys/values (unlike HashMap). Iteration is weakly consistent — no ConcurrentModificationException.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Code</span><br><pre>Map&lt;String,Integer&gt; cmap = new ConcurrentHashMap&lt;&gt;();
+cmap.put("TXN-001", 5000);
+cmap.putIfAbsent("TXN-001", 3000);         // atomic
+cmap.compute("TXN-001", (k,v)-&gt; v+1);      // atomic increment
+// Banking: CHM used for dedup cache (idempotency key → status)</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Differences</span><br><ul><li>Null key/val: HashMap ✓, CHM ✗</li><li>Locking: none vs per-bucket CAS/sync</li><li>size(): exact vs approximate (sumCount)</li><li>CHM >> Collections.synchronizedMap() under contention</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• putIfAbsent vs computeIfAbsent — difference?<br>• Why is CopyOnWriteArrayList useful for rarely-written lists?<br>• How does CHM handle resize concurrently?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Technical Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="collections">
+    <span class="q-index">2</span>
+    <span class="q-text">How to use a POJO as a key in HashMap — hashCode/equals contract</span>
+    <div class="q-tags"><span class="q-tag">hashmap</span><span class="q-tag">pojo</span><span class="q-tag">hashcode</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">92%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">The Problem</span><br>HashMap uses <code>hashCode()</code> to find the bucket, <code>equals()</code> to match the key. Without overriding both, default Object identity is used — two logically equal POJOs go to different buckets.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Contract</span><br><ul><li>If <code>a.equals(b)</code> → <code>a.hashCode()==b.hashCode()</code> (mandatory)</li><li>Reverse not required (collision allowed)</li><li><b>Never mutate fields used in hashCode while object is a map key</b></li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Correct Implementation</span><br><pre>public final class TradeKey {          // final fields = safe as key
+    private final String tradeId;
+    private final String bookId;
+
+    @Override public boolean equals(Object o) {
+        if (!(o instanceof TradeKey)) return false;
+        TradeKey k = (TradeKey) o;
+        return Objects.equals(tradeId, k.tradeId)
+            &amp;&amp; Objects.equals(bookId, k.bookId);
+    }
+    @Override public int hashCode() {
+        return Objects.hash(tradeId, bookId);
+    }
+}
+// Map.get(new TradeKey("TXN-001","BOOK-A")) — finds the entry correctly</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What if hashCode always returns 0? (all keys in one bucket → O(n))<br>• Can an enum be a safe HashMap key? (yes — identity-based equals + stable hashCode)<br>• Lombok @Data generates hashCode/equals — pitfall with mutable fields?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Technical Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="reactjs">
+    <span class="q-index">3</span>
+    <span class="q-text">ReactJS core — components, JSX, props vs state, lifecycle hooks</span>
+    <div class="q-tags"><span class="q-tag">react</span><span class="q-tag">jsx</span><span class="q-tag">props</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">92%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Functional Components + Hooks (modern React)</span><br><pre>// Functional component with useState + useEffect
+import React, { useState, useEffect } from 'react';
+
+const TradeDashboard = () =&gt; {
+  const [trades, setTrades] = useState([]);      // state
+  const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState('');
+
+  useEffect(() =&gt; {
+    // Runs after mount (and when deps change)
+    fetch('/api/v1/trades')
+      .then(r =&gt; r.json())
+      .then(data =&gt; { setTrades(data); setLoading(false); })
+      .catch(err =&gt; console.error(err));
+
+    return () =&gt; { /* cleanup on unmount */ };
+  }, []);  // empty deps = run once on mount
+
+  const filtered = trades.filter(t =&gt;
+    t.id.toLowerCase().includes(filter.toLowerCase()));
+
+  if (loading) return &lt;div&gt;Loading...&lt;/div&gt;;
+
+  return (
+    &lt;div&gt;
+      &lt;input value={filter} onChange={e =&gt; setFilter(e.target.value)}
+             placeholder="Search trades" /&gt;
+      {filtered.map(t =&gt; (
+        &lt;TradeRow key={t.id} trade={t} /&gt;  // key required for lists!
+      ))}
+    &lt;/div&gt;
+  );
+};</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Props vs State</span><br><ul><li><b>Props:</b> Read-only data passed from parent to child. Child cannot modify props.</li><li><b>State:</b> Mutable data local to a component. Managed via <code>useState</code>.</li><li>Changing either causes a re-render. State updates are <b>asynchronous and batched</b>.</li></ul><pre>// Child receives trade as prop — read-only
+const TradeRow = ({ trade }) =&gt; (
+  &lt;tr className={trade.status === 'PENDING' ? 'pending' : ''}&gt;
+    &lt;td&gt;{trade.id}&lt;/td&gt;
+    &lt;td&gt;{new Intl.NumberFormat('en-US',{style:'currency',currency:trade.currency})
+           .format(trade.amount)}&lt;/td&gt;
+    &lt;td&gt;{trade.status}&lt;/td&gt;
+  &lt;/tr&gt;
+);</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Hooks</span><br><ul><li><code>useState(init)</code> — local state</li><li><code>useEffect(fn, deps)</code> — side effects (API calls, subscriptions, timers)</li><li><code>useCallback(fn, deps)</code> — memoize function reference (avoid child re-renders)</li><li><code>useMemo(fn, deps)</code> — memoize expensive computation</li><li><code>useRef(init)</code> — mutable ref that does NOT trigger re-render (DOM refs, timers)</li><li><code>useContext(ctx)</code> — consume React Context without prop drilling</li><li><code>useReducer(reducer, init)</code> — complex state logic, like mini-Redux</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Common Pitfalls</span><br><ul><li>Missing <code>key</code> prop in lists → React can't efficiently reconcile DOM</li><li>Stale closure in <code>useEffect</code> — capture state that never updates</li><li>Infinite loop: <code>useEffect(() =&gt; { setState(...) })</code> with no deps array</li><li>Mutating state directly: <code>trades.push(t)</code> — use <code>setTrades([...trades, t])</code></li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-Questions &amp; Follow-ups</span><br><div class="followup">• What is React reconciliation and the Virtual DOM?<br>• Class component lifecycle vs hooks equivalents (componentDidMount = useEffect([]))?<br>• When would you use useReducer over useState?<br>• How does React.memo() prevent unnecessary re-renders?<br>• What is the difference between controlled and uncontrolled components?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Technical Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="jpa">
+    <span class="q-index">4</span>
+    <span class="q-text">Multiple primary keys in Hibernate — @IdClass vs @EmbeddedId composite keys</span>
+    <div class="q-tags"><span class="q-tag">hibernate</span><span class="q-tag">composite-key</span><span class="q-tag">idclass</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">@IdClass Approach</span><br><pre>// PK class — must be Serializable, public no-arg ctor, equals, hashCode
+public class TradePK implements Serializable {
+    private String tradeId;
+    private String bookId;
+    // no-arg ctor + equals + hashCode
+}
+
+@Entity @IdClass(TradePK.class)
+public class Trade {
+    @Id private String tradeId;
+    @Id private String bookId;
+    private BigDecimal amount;
+}
+// JPQL: WHERE t.tradeId = :id   (direct field names)</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">@EmbeddedId Approach</span><br><pre>@Embeddable
+public class TradePK implements Serializable {
+    private String tradeId;
+    private String bookId;   // + equals, hashCode
+}
+
+@Entity public class Trade {
+    @EmbeddedId private TradePK id;
+    private BigDecimal amount;
+}
+// JPQL: WHERE t.id.tradeId = :id  (nested navigation)</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Which to Choose</span><br><ul><li><b>@IdClass:</b> Simpler JPQL, fields at entity level, less OO</li><li><b>@EmbeddedId:</b> Better encapsulation, PK as domain object</li><li>Both: PK class must be Serializable, have no-arg ctor, equals, hashCode</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Can you use @GeneratedValue with composite keys? (No — natural keys only)<br>• How do OneToMany relations work from an entity with @EmbeddedId?<br>• What is @MapsId?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Technical Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="javascript">
+    <span class="q-index">5</span>
+    <span class="q-text">JavaScript ES6+ — closures, promises, async/await, arrow functions, destructuring</span>
+    <div class="q-tags"><span class="q-tag">javascript</span><span class="q-tag">es6</span><span class="q-tag">closures</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Closures — Most Common Interview Topic</span><br>A closure is a function that <b>retains access to its outer scope</b> even after the outer function returns.<br><pre>function makeCounter(start = 0) {
+  let count = start;  // closed-over variable
+  return {
+    increment: () =&gt; ++count,
+    decrement: () =&gt; --count,
+    value:     () =&gt; count
+  };
+}
+const c = makeCounter(10);
+c.increment(); c.increment();
+console.log(c.value());  // 12
+// count is private — not accessible from outside
+
+// Classic closure pitfall (var in loop)
+for (var i = 0; i &lt; 3; i++) {
+  setTimeout(() =&gt; console.log(i), 100);  // prints 3, 3, 3!
+}
+// Fix: use let (block scope) or IIFE
+for (let i = 0; i &lt; 3; i++) {
+  setTimeout(() =&gt; console.log(i), 100);  // 0, 1, 2
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Promises and Async/Await</span><br><pre>// Promise chain
+fetch('/api/v1/trades')
+  .then(res =&gt; {
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return res.json();
+  })
+  .then(trades =&gt; setTrades(trades))
+  .catch(err =&gt; console.error('Fetch failed:', err))
+  .finally(() =&gt; setLoading(false));
+
+// async/await (syntactic sugar over Promises)
+async function fetchTrades() {
+  try {
+    const res = await fetch('/api/v1/trades');  // suspends, doesn't block thread
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return await res.json();
+  } catch (err) {
+    console.error(err);
+    throw err;  // re-throw for caller
+  }
+}
+
+// Parallel fetching
+const [trades, books] = await Promise.all([
+  fetchTrades(),
+  fetchBooks()
+]);
+
+// First to resolve
+const result = await Promise.race([fetchFromPrimary(), fetchFromBackup()]);</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Arrow Functions vs Regular Functions</span><br><pre>// Arrow: no own 'this', no arguments object, cannot be constructor
+const greet = name =&gt; `Hello, ${name}`;
+
+// 'this' binding difference
+class TradeService {
+  constructor() { this.base = '/api/v1/trades'; }
+
+  fetchRegular() {
+    return fetch(this.base)  // 'this' works
+      .then(function(res) {
+        console.log(this);  // undefined! (strict mode) or window
+        return res.json();
+      });
+  }
+
+  fetchArrow() {
+    return fetch(this.base)
+      .then(res =&gt; {
+        console.log(this);  // TradeService instance ✓
+        return res.json();
+      });
+  }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Destructuring, Spread, Rest</span><br><pre>// Destructuring
+const { id, amount, currency = 'USD' } = trade;  // default value
+const [first, ...rest] = trades;  // array destructuring
+
+// Spread — clone without mutation
+const updatedTrade = { ...trade, status: 'BOOKED' };
+const allTrades = [...existingTrades, newTrade];
+
+// Rest parameters
+const sum = (...nums) =&gt; nums.reduce((a, b) =&gt; a + b, 0);
+
+// Template literals
+const msg = `Trade ${id} booked for ${amount.toFixed(2)} ${currency}`;
+
+// Optional chaining + nullish coalescing
+const bookId = trade?.book?.id ?? 'UNKNOWN';</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-Questions &amp; Follow-ups</span><br><div class="followup">• What is the event loop and call stack? How does async code execute in Node.js/browser?<br>• What is the difference between == and === in JavaScript?<br>• What is hoisting? How does var vs let vs const differ?<br>• What is Promise.allSettled() and when would you use it over Promise.all()?<br>• Explain the module system: CommonJS (require/exports) vs ES Modules (import/export).</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Technical Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="concurrency">
+    <span class="q-index">6</span>
+    <span class="q-text">CompletableFuture — async parallel service calls in Java for MUFG trade enrichment</span>
+    <div class="q-tags"><span class="q-tag">completablefuture</span><span class="q-tag">async</span><span class="q-tag">parallel</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Use Case — Trade Enrichment</span><br>MUFG trade booking: fetch FX rate, counterparty details, limit check <b>in parallel</b>, then combine results. Sequential = 3 &times; 200ms = 600ms. Parallel = 200ms.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Architecture Diagram</span><br><pre>  bookTrade()
+       |
+  +----+----+----------+
+  |         |          |
+ getFxRate  getCP    checkLimit
+ (200ms)  (150ms)   (180ms)
+  |         |          |
+  +----+----+----------+
+       | allOf().join()
+       v
+  combineAndSave()
+  total: ~200ms (not 530ms)
+</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Code</span><br><pre>public TradeBookingResult bookTrade(TradeRequest req) {
+    ExecutorService pool = Executors.newFixedThreadPool(10);
+
+    CompletableFuture&lt;FxRate&gt; fxFuture =
+        CompletableFuture.supplyAsync(() -&gt; fxService.getRate(req.getCurrency()), pool)
+            .orTimeout(500, TimeUnit.MILLISECONDS)
+            .exceptionally(ex -&gt; FxRate.fallback());
+
+    CompletableFuture&lt;Counterparty&gt; cpFuture =
+        CompletableFuture.supplyAsync(() -&gt; cpService.get(req.getCounterpartyId()), pool);
+
+    CompletableFuture&lt;LimitCheck&gt; limitFuture =
+        CompletableFuture.supplyAsync(() -&gt; limitService.check(req), pool);
+
+    CompletableFuture.allOf(fxFuture, cpFuture, limitFuture).join();
+
+    if (!limitFuture.join().isApproved())
+        throw new LimitBreachException();
+
+    return tradeRepo.save(Trade.builder()
+        .amount(req.getAmount().multiply(fxFuture.join().getRate()))
+        .counterparty(cpFuture.join())
+        .build());
+}
+
+// Chain: thenCompose = flatMap (returns another CF)
+CompletableFuture&lt;EnrichedTrade&gt; enriched =
+    CompletableFuture.supplyAsync(() -&gt; tradeRepo.findById(id))
+        .thenCompose(trade -&gt; enrichmentService.enrich(trade));
+
+// Java 21: virtual threads — no pool sizing needed
+try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
+    CompletableFuture.supplyAsync(() -&gt; fxService.getRate(cur), executor);
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-Questions</span><br><div class="followup">&bull; thenApply vs thenCompose — key difference? (thenApply=map sync; thenCompose=flatMap async)<br>&bull; How does exceptionally() differ from handle()?<br>&bull; What happens to CF if thread pool is exhausted? (submit blocks or RejectedExecutionException)<br>&bull; When prefer Java 21 virtual threads over CompletableFuture?<br>&bull; How do you cancel a CompletableFuture? (cancel(true) — does NOT interrupt threads)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Technical Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="spring">
+    <span class="q-index">7</span>
+    <span class="q-text">Spring Bean lifecycle — @PostConstruct, @PreDestroy, graceful shutdown</span>
+    <div class="q-tags"><span class="q-tag">spring</span><span class="q-tag">bean-lifecycle</span><span class="q-tag">postconstruct</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Lifecycle Steps</span><br><ol><li>Instantiate (constructor)</li><li>Inject dependencies</li><li>BeanNameAware / ApplicationContextAware callbacks</li><li><b>@PostConstruct</b> — bean is ready</li><li>Bean in use</li><li>On shutdown: <b>@PreDestroy</b> — cleanup</li></ol></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Code</span><br><pre>@Component
+public class KafkaTradeConsumer {
+    @PostConstruct
+    public void init() {
+        consumer.subscribe(List.of("trades.raw"));
+    }
+
+    @PreDestroy
+    public void shutdown() {
+        accepting = false;           // stop accepting new trades
+        consumer.wakeup();           // unblock poll()
+        consumer.close(Duration.ofSeconds(5));
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Ensuring In-Flight Completion (MUFG question)</span><br>Use <code>volatile boolean accepting</code> + <code>AtomicInteger activeTrades</code>. In <code>@PreDestroy</code>: set accepting=false, wait until activeTrades==0, then close. <b>Or use Spring's SmartLifecycle</b> interface — <code>stop(Runnable callback)</code> signals Spring that shutdown can proceed only after in-flight ops finish.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• @PostConstruct vs InitializingBean.afterPropertiesSet() — difference?<br>• What is BeanPostProcessor?<br>• Spring Boot server.shutdown=graceful — what does it do?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Technical Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="reactjs">
+    <span class="q-index">8</span>
+    <span class="q-text">Redux state management — store, actions, reducers, middleware, Flux pattern</span>
+    <div class="q-tags"><span class="q-tag">redux</span><span class="q-tag">flux</span><span class="q-tag">store</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Flux vs Redux</span><br><b>Flux</b> (Facebook pattern): Unidirectional data flow. Action → Dispatcher → Store → View → Action. Multiple stores allowed.<br><b>Redux</b>: Evolution of Flux. Single store, pure reducer functions, time-travel debugging. Used in MUFG trade dashboards for shared state (auth, filters, trade list).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Core Redux Concepts</span><br><pre>// 1. Action — plain object describing what happened
+const BOOK_TRADE = 'BOOK_TRADE';
+const bookTrade = (trade) =&gt; ({ type: BOOK_TRADE, payload: trade });
+
+// 2. Reducer — pure function: (prevState, action) =&gt; newState
+const tradesReducer = (state = [], action) =&gt; {
+  switch (action.type) {
+    case BOOK_TRADE:
+      return [...state, action.payload];  // immutable update!
+    case 'CANCEL_TRADE':
+      return state.filter(t =&gt; t.id !== action.payload.id);
+    default:
+      return state;
+  }
+};
+
+// 3. Store — single source of truth
+import { createStore } from 'redux';
+const store = createStore(tradesReducer);
+
+store.dispatch(bookTrade({ id: 'TXN-001', amount: 5000 }));
+console.log(store.getState());  // [{ id: 'TXN-001', amount: 5000 }]</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Modern Redux Toolkit (RTK)</span><br><pre>import { createSlice, configureStore } from '@reduxjs/toolkit';
+
+const tradesSlice = createSlice({
+  name: 'trades',
+  initialState: { items: [], loading: false, error: null },
+  reducers: {
+    addTrade:    (state, action) =&gt; { state.items.push(action.payload); },  // Immer allows mutation!
+    cancelTrade: (state, action) =&gt; {
+      state.items = state.items.filter(t =&gt; t.id !== action.payload);
+    },
+  },
+});
+
+export const { addTrade, cancelTrade } = tradesSlice.actions;
+const store = configureStore({ reducer: { trades: tradesSlice.reducer } });
+
+// Async with createAsyncThunk
+import { createAsyncThunk } from '@reduxjs/toolkit';
+export const fetchTrades = createAsyncThunk(
+  'trades/fetchAll',
+  async () =&gt; {
+    const res = await fetch('/api/v1/trades');
+    return res.json();
+  }
+);</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Connecting to React</span><br><pre>import { useSelector, useDispatch } from 'react-redux';
+
+const TradeDashboard = () =&gt; {
+  const trades  = useSelector(state =&gt; state.trades.items);
+  const loading = useSelector(state =&gt; state.trades.loading);
+  const dispatch = useDispatch();
+
+  useEffect(() =&gt; { dispatch(fetchTrades()); }, []);
+
+  return trades.map(t =&gt; &lt;TradeRow key={t.id} trade={t} /&gt;);
+};</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Middleware — Redux Thunk vs Saga</span><br><ul><li><b>Redux Thunk:</b> Dispatch functions (for async). Built into RTK. Simple.</li><li><b>Redux Saga:</b> Generator-based side effects. More powerful for complex flows (retry, cancel, race conditions). Overkill for simple CRUD.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-Questions &amp; Follow-ups</span><br><div class="followup">• Why must reducers be pure functions? (predictable state, time-travel debugging)<br>• What is the Redux middleware chain and how does applyMiddleware work?<br>• When would you use React Context + useReducer instead of Redux?<br>• What is selector memoization (reselect library) and why does it matter for performance?<br>• How does Immer allow "mutating" state in RTK reducers safely?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Technical Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="testing">
+    <span class="q-index">9</span>
+    <span class="q-text">JUnit 5 + Mockito — unit testing Spring Boot services (MUFG CI pipeline)</span>
+    <div class="q-tags"><span class="q-tag">junit5</span><span class="q-tag">mockito</span><span class="q-tag">unit-testing</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">JUnit 5 Anatomy</span><br><pre>@ExtendWith(MockitoExtension.class)   // enables @Mock, @InjectMocks
+class TradeBookingServiceTest {
+
+    @Mock TradeRepository tradeRepo;       // auto-created mock
+    @Mock KafkaTemplate&lt;String,Trade&gt; kafka;
+    @Mock RedisTemplate&lt;String,String&gt; redis;
+
+    @InjectMocks TradeBookingService service;  // injects mocks
+
+    @Test
+    @DisplayName("Book trade: idempotent — second call returns cached result")
+    void bookTrade_idempotent() {
+        // ARRANGE
+        TradeEvent event = new TradeEvent("TXN-001", BigDecimal.valueOf(5000), "USD");
+        String cached = "{\"id\":\"TXN-001\",\"status\":\"BOOKED\"}";
+        when(redis.opsForValue().get("TXN-001")).thenReturn(cached);
+
+        // ACT
+        TradeResult result = service.bookTrade(event);
+
+        // ASSERT
+        assertNotNull(result);
+        assertEquals("BOOKED", result.getStatus());
+        verify(tradeRepo, never()).save(any());  // DB NOT hit — cached!
+        verify(redis.opsForValue()).get("TXN-001");
+    }
+
+    @Test
+    void bookTrade_newTrade_savesAndPublishes() {
+        TradeEvent event = new TradeEvent("TXN-002", BigDecimal.valueOf(10000), "GBP");
+        when(redis.opsForValue().get("TXN-002")).thenReturn(null);  // not cached
+        Trade saved = new Trade("TXN-002", BigDecimal.valueOf(10000), "GBP", "BOOKED");
+        when(tradeRepo.save(any())).thenReturn(saved);
+
+        TradeResult result = service.bookTrade(event);
+
+        assertEquals("BOOKED", result.getStatus());
+        verify(tradeRepo).save(any(Trade.class));
+        verify(kafka).send(eq("trade.booked"), eq("TXN-002"), any());
+    }
+
+    @Test
+    void bookTrade_dbFailure_throwsException() {
+        TradeEvent event = new TradeEvent("TXN-003", BigDecimal.valueOf(500), "USD");
+        when(redis.opsForValue().get(any())).thenReturn(null);
+        when(tradeRepo.save(any())).thenThrow(new DataAccessException("DB down") {});
+
+        assertThrows(TradeBookingException.class, () -&gt; service.bookTrade(event));
+        verify(kafka, never()).send(any(), any(), any()); // no publish on failure
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Mockito Methods</span><br><ul><li><code>when(mock.method()).thenReturn(val)</code> — stub a return value</li><li><code>when(mock.method()).thenThrow(ex)</code> — stub an exception</li><li><code>verify(mock).method(arg)</code> — assert the method was called</li><li><code>verify(mock, never())</code> — assert method was NEVER called</li><li><code>verify(mock, times(2))</code> — called exactly N times</li><li><code>any(), eq(), anyString()</code> — argument matchers</li><li><code>ArgumentCaptor</code> — capture the argument passed to mock</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">ArgumentCaptor Example</span><br><pre>@Test
+void bookTrade_capturesCorrectTradeToKafka() {
+    ArgumentCaptor&lt;Trade&gt; captor = ArgumentCaptor.forClass(Trade.class);
+    // ... arrange and act ...
+    verify(kafka).send(any(), any(), captor.capture());
+    Trade published = captor.getValue();
+    assertEquals("BOOKED", published.getStatus());
+    assertEquals("TXN-001", published.getId());
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">@SpringBootTest vs Unit Test</span><br><ul><li><code>@ExtendWith(MockitoExtension.class)</code> — pure unit test, no Spring context, fast</li><li><code>@SpringBootTest</code> — full Spring context, slower, for integration tests</li><li><code>@WebMvcTest(TradeController.class)</code> — slice test for controller layer only</li><li><code>@DataJpaTest</code> — slice test for repository layer with in-memory H2</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-Questions &amp; Follow-ups</span><br><div class="followup">• What is the difference between a mock and a stub? (stub: returns value; mock: also verifies calls)<br>• How do you test @Transactional behavior? (@DataJpaTest with rollback or @Transactional on test)<br>• What is @MockBean in Spring Boot tests vs @Mock in Mockito?<br>• How do you test exception paths with JUnit 5? (assertThrows)<br>• What is test coverage and what tool does Jenkins use? (JaCoCo, Cobertura)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Technical Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="java8">
+    <span class="q-index">10</span>
+    <span class="q-text">Java 8 Streams, Lambdas, Functional Interfaces — banking use cases</span>
+    <div class="q-tags"><span class="q-tag">java8</span><span class="q-tag">lambda</span><span class="q-tag">streams</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Functional Interfaces</span><br><ul><li><code>Predicate&lt;T&gt;</code> — boolean test(T t) — filtering</li><li><code>Function&lt;T,R&gt;</code> — R apply(T t) — transform</li><li><code>Consumer&lt;T&gt;</code> — void accept(T t) — side effects</li><li><code>Supplier&lt;T&gt;</code> — T get() — lazy supply</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Banking Stream Examples</span><br><pre>List&lt;Trade&gt; trades = fetchTrades();
+
+// High-value trades
+List&lt;Trade&gt; highValue = trades.stream()
+    .filter(t -&gt; t.getAmount().compareTo(ONE_MILLION) &gt; 0)
+    .collect(Collectors.toList());
+
+// Group by currency
+Map&lt;String,List&lt;Trade&gt;&gt; byCcy = trades.stream()
+    .collect(Collectors.groupingBy(Trade::getCurrency));
+
+// Sum per book
+Map&lt;String,BigDecimal&gt; totals = trades.stream()
+    .collect(Collectors.groupingBy(Trade::getBookId,
+        Collectors.reducing(ZERO, Trade::getAmount, BigDecimal::add)));
+
+// First pending or throw
+Trade p = trades.stream()
+    .filter(t-&gt;"PENDING".equals(t.getStatus()))
+    .findFirst().orElseThrow(TradeNotFoundException::new);</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• map() vs flatMap() — difference?<br>• How to handle checked exceptions inside a lambda?<br>• When does parallel stream hurt performance? (small lists, stateful ops)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Technical Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="design-patterns">
+    <span class="q-index">11</span>
+    <span class="q-text">OOP Design Patterns — Factory, Strategy, Observer, Builder in Java</span>
+    <div class="q-tags"><span class="q-tag">design-patterns</span><span class="q-tag">factory</span><span class="q-tag">strategy</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Factory Pattern — Object Creation</span><br>Creates objects without specifying the exact class. Used in banking for creating different trade types.<br><pre>// Abstract factory for trade validators
+public interface TradeValidator {
+    ValidationResult validate(Trade trade);
+}
+
+public class EquityTradeValidator implements TradeValidator {
+    public ValidationResult validate(Trade trade) {
+        // Equity-specific validation (ISIN, exchange code)
+        return validateEquityRules(trade);
+    }
+}
+
+public class BondTradeValidator implements TradeValidator {
+    public ValidationResult validate(Trade trade) {
+        // Bond-specific (coupon rate, maturity date, credit rating)
+        return validateBondRules(trade);
+    }
+}
+
+public class TradeValidatorFactory {
+    private static final Map&lt;String,TradeValidator&gt; validators = Map.of(
+        "EQUITY", new EquityTradeValidator(),
+        "BOND",   new BondTradeValidator(),
+        "FX",     new FXTradeValidator()
+    );
+
+    public static TradeValidator forType(String assetClass) {
+        return validators.computeIfAbsent(assetClass,
+            t -&gt; { throw new IllegalArgumentException("Unknown type: " + t); });
+    }
+}
+// Usage: TradeValidatorFactory.forType(trade.getAssetClass()).validate(trade);</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Strategy Pattern — Interchangeable Algorithms</span><br>Define family of algorithms, encapsulate each, make them interchangeable.<br><pre>@FunctionalInterface
+public interface FeeCalculator {
+    BigDecimal calculate(Trade trade);
+}
+
+public class TradeService {
+    private FeeCalculator feeCalculator;  // injected
+
+    public void setFeeCalculator(FeeCalculator calc) {
+        this.feeCalculator = calc;
+    }
+
+    public BigDecimal getFee(Trade trade) {
+        return feeCalculator.calculate(trade);
+    }
+}
+
+// Different fee strategies for different clients:
+FeeCalculator retail     = t -&gt; t.getAmount().multiply(new BigDecimal("0.002"));
+FeeCalculator prime      = t -&gt; t.getAmount().multiply(new BigDecimal("0.0005"));
+FeeCalculator zeroFee    = t -&gt; BigDecimal.ZERO;
+
+tradeService.setFeeCalculator(prime);</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Observer Pattern — Event-Driven</span><br>Subject notifies multiple observers when state changes. Basis for Spring Events and Kafka.<br><pre>// Spring Application Events (built-in Observer)
+@Component
+public class TradeBookingService {
+    @Autowired ApplicationEventPublisher publisher;
+
+    public Trade book(Trade trade) {
+        Trade saved = tradeRepo.save(trade);
+        publisher.publishEvent(new TradeBookedEvent(this, saved));  // notify all observers
+        return saved;
+    }
+}
+
+@Component
+public class RiskNotifier {
+    @EventListener
+    public void onTradeBooked(TradeBookedEvent event) {
+        riskService.recalculate(event.getTrade().getBookId());
+    }
+}
+
+@Component
+@Async  // non-blocking notification
+public class AuditLogger {
+    @EventListener
+    public void onTradeBooked(TradeBookedEvent event) {
+        auditRepo.log(event.getTrade());
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Builder Pattern — Complex Object Construction</span><br><pre>// Avoid telescoping constructor anti-pattern
+Trade trade = new Trade.Builder("TXN-001")
+    .amount(BigDecimal.valueOf(50000))
+    .currency("USD")
+    .assetClass("EQUITY")
+    .bookId("BOOK-EQUITY-A")
+    .tradeDate(LocalDate.now())
+    .counterparty("Goldman Sachs")
+    .build();  // validates required fields in build()
+
+// Lombok @Builder generates this automatically:
+@Builder @Getter
+public class Trade {
+    @NonNull private final String id;
+    @NonNull private final BigDecimal amount;
+    // ...
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-Questions &amp; Follow-ups</span><br><div class="followup">• What is the Decorator pattern and how does Spring AOP use it?<br>• Singleton in Spring — is every @Bean a singleton? What are other scopes?<br>• What is the Chain of Responsibility pattern? How does the Spring Filter chain use it?<br>• What is the Template Method pattern and how does JdbcTemplate use it?<br>• What is the difference between Factory Method and Abstract Factory?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Technical Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="fullstack">
+    <span class="q-index">12</span>
+    <span class="q-text">Spring Boot + React full-stack integration — API calls, CORS, JWT auth flow</span>
+    <div class="q-tags"><span class="q-tag">spring-boot</span><span class="q-tag">react</span><span class="q-tag">cors</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Full-Stack Architecture at MUFG</span><br><pre>React SPA (port 3000 in dev, Nginx in prod)
+      |
+    HTTPS + JWT Bearer token
+      |
+ Spring Boot API (port 8080) ← CORS configured
+      |
+    Oracle DB | Kafka | Redis</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">CORS Configuration in Spring Boot</span><br><pre>@Configuration
+public class CorsConfig {
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowedOrigins(List.of(
+            "https://trade-portal.mufg.com",
+            "http://localhost:3000"   // dev only
+        ));
+        config.setAllowedMethods(List.of("GET","POST","PUT","PATCH","DELETE","OPTIONS"));
+        config.setAllowedHeaders(List.of("Authorization","Content-Type","Idempotency-Key"));
+        config.setAllowCredentials(true);
+        config.setMaxAge(3600L);
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/api/**", config);
+        return source;
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">JWT Auth Flow (React → Spring Boot)</span><br><pre>// React: login and store token
+async function login(username, password) {
+  const res = await fetch('/api/auth/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ username, password })
+  });
+  const { accessToken, refreshToken } = await res.json();
+  // Store accessToken in memory (NOT localStorage - XSS risk)
+  // Store refreshToken in HttpOnly cookie (set by server)
+  tokenStore.setAccessToken(accessToken);
+}
+
+// React: Axios interceptor to attach token
+axios.interceptors.request.use(config =&gt; {
+  const token = tokenStore.getAccessToken();
+  if (token) config.headers.Authorization = `Bearer ${token}`;
+  return config;
+});
+
+// React: Refresh token on 401
+axios.interceptors.response.use(
+  res =&gt; res,
+  async err =&gt; {
+    if (err.response?.status === 401) {
+      const newToken = await refreshAccessToken();
+      err.config.headers.Authorization = `Bearer ${newToken}`;
+      return axios(err.config);  // retry original request
+    }
+    return Promise.reject(err);
+  }
+);</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">OpenAPI/Swagger for React Integration</span><br><pre>// Spring Boot: generate OpenAPI docs
+// pom.xml: springdoc-openapi-starter-webmvc-ui
+// Access: http://localhost:8080/swagger-ui.html
+
+// React: use openapi-typescript-codegen to generate typed API client
+// npx openapi-typescript-codegen --input http://localhost:8080/api-docs \
+//   --output src/api --client fetch
+// Result: type-safe TradeApiClient.bookTrade(request) — no manual fetch!</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-Questions &amp; Follow-ups</span><br><div class="followup">• What is a preflight OPTIONS request and why does it happen?<br>• How do you handle file uploads from React to Spring Boot (multipart/form-data)?<br>• What is the difference between session cookies and JWT for auth in SPAs?<br>• How do you proxy API calls in Create React App dev server? (proxy in package.json)<br>• How would you implement role-based UI rendering in React? (conditional rendering based on JWT claims)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Technical Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="concurrency">
+    <span class="q-index">13</span>
+    <span class="q-text">Java Memory Model — happens-before, volatile, synchronized in banking concurrency</span>
+    <div class="q-tags"><span class="q-tag">jmm</span><span class="q-tag">happens-before</span><span class="q-tag">volatile</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">85%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Why JMM Matters in Banking</span><br>Without JMM guarantees: Thread A writes trade status=SETTLED, Thread B reads stale PENDING from CPU cache &rarr; double settlement!</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Happens-Before Rules</span><br><pre>  Rule                      | Guarantee
+  --------------------------+-----------------------------
+  Program order             | Actions in thread are ordered
+  Monitor lock (sync block) | unlock HB next lock
+  volatile write/read       | write HB subsequent read
+  Thread.start()            | start() HB any action in thread
+  Thread.join()             | all actions HB join() return
+</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">volatile vs synchronized vs AtomicLong</span><br><pre>// volatile: visibility ONLY, no atomicity
+private volatile boolean running = true;   // safe for simple flag
+private volatile long counter = 0;          // NOT safe for i++!
+
+// synchronized: visibility + atomicity
+private long counter = 0;
+public synchronized void increment() { counter++; }  // safe
+
+// AtomicLong: lock-free CAS — best for high-contention counters
+private final AtomicLong tradeCount = new AtomicLong(0);
+tradeCount.incrementAndGet();  // CAS at CPU level
+
+// Double-checked locking — MUST use volatile
+private static volatile TradeCache instance;
+public static TradeCache getInstance() {
+    if (instance == null) {
+        synchronized (TradeCache.class) {
+            if (instance == null)
+                instance = new TradeCache();  // volatile ensures write visible
+        }
+    }
+    return instance;
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">CPU Cache Visibility Diagram</span><br><pre>  Thread-1 (Core 1)      Thread-2 (Core 2)
+  L1 Cache               L1 Cache
+  status=SETTLED         status=PENDING  &lt;-- STALE!
+       |
+  L3 Cache (shared) &lt;-- volatile/sync flushes here
+       |
+  Main Memory: SETTLED
+</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-Questions</span><br><div class="followup">&bull; What is a data race? Give a banking example.<br>&bull; Why is double-checked locking broken without volatile in Java &lt;5?<br>&bull; Difference between CAS and mutex?<br>&bull; How does StampedLock differ from ReentrantReadWriteLock?<br>&bull; How to detect thread safety issues in production? (ThreadSanitizer, async-profiler)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Technical Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="spring">
+    <span class="q-index">14</span>
+    <span class="q-text">Spring Boot REST API — validation, idempotency, global exception handling</span>
+    <div class="q-tags"><span class="q-tag">spring-boot</span><span class="q-tag">rest</span><span class="q-tag">validation</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Controller + Validation</span><br><pre>@RestController @RequestMapping("/api/v1/trades")
+public class TradeController {
+    @PostMapping
+    public ResponseEntity&lt;TradeDto&gt; book(
+            @RequestBody @Valid BookTradeRequest req,
+            @RequestHeader("Idempotency-Key") String key) {
+        return ResponseEntity.status(201).body(tradeService.book(req, key));
+    }
+    @GetMapping("/{id}")
+    public TradeDto get(@PathVariable @NotBlank String id) {
+        return tradeService.findById(id)
+            .orElseThrow(() -&gt; new TradeNotFoundException(id));
+    }
+}
+
+public class BookTradeRequest {
+    @NotBlank private String tradeId;
+    @NotNull @DecimalMin("0.01") private BigDecimal amount;
+    @Size(min=3,max=3) private String currency;
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Global Exception Handler</span><br><pre>@RestControllerAdvice
+public class GlobalExHandler {
+    @ExceptionHandler(TradeNotFoundException.class)
+    public ResponseEntity&lt;ErrorResponse&gt; notFound(TradeNotFoundException ex) {
+        return ResponseEntity.status(404)
+            .body(new ErrorResponse("TRADE_NOT_FOUND", ex.getMessage()));
+    }
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity&lt;ErrorResponse&gt; validation(MethodArgumentNotValidException ex) {
+        String msg = ex.getBindingResult().getFieldErrors().stream()
+            .map(e -&gt; e.getField()+": "+e.getDefaultMessage())
+            .collect(joining(", "));
+        return ResponseEntity.badRequest().body(new ErrorResponse("VALIDATION_FAILED",msg));
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Idempotency Key Pattern</span><br>Client sends <code>Idempotency-Key: UUID</code> header. Server stores (key → response) in Redis (TTL 24h). On retry with same key → return cached response. Prevents double booking.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• REST API versioning strategies? (URL path vs Accept header)<br>• @RequestBody vs @ModelAttribute?<br>• Spring Actuator health endpoints for K8s probes?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Technical Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="testing">
+    <span class="q-index">15</span>
+    <span class="q-text">Jest + React Testing Library — testing React components</span>
+    <div class="q-tags"><span class="q-tag">jest</span><span class="q-tag">react-testing-library</span><span class="q-tag">rtl</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Philosophy</span><br><b>React Testing Library</b> tests components as a user would interact with them — query by text, role, label, not by CSS class or implementation detail.<br><b>Jest</b> is the test runner (assertions, mocks, coverage).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Component Test Example</span><br><pre>import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { Provider } from 'react-redux';
+import { store } from '../store';
+import TradeDashboard from './TradeDashboard';
+
+// Mock the API
+global.fetch = jest.fn();
+
+describe('TradeDashboard', () =&gt; {
+  beforeEach(() =&gt; {
+    fetch.mockResolvedValueOnce({
+      ok: true,
+      json: async () =&gt; [
+        { id: 'TXN-001', amount: 5000, currency: 'USD', status: 'BOOKED' },
+        { id: 'TXN-002', amount: 10000, currency: 'GBP', status: 'PENDING' },
+      ],
+    });
+  });
+
+  test('renders trade list after loading', async () =&gt; {
+    render(&lt;Provider store={store}&gt;&lt;TradeDashboard /&gt;&lt;/Provider&gt;);
+
+    // Loading state
+    expect(screen.getByText(/loading/i)).toBeInTheDocument();
+
+    // Waits for async state update
+    await waitFor(() =&gt; {
+      expect(screen.getByText('TXN-001')).toBeInTheDocument();
+      expect(screen.getByText('TXN-002')).toBeInTheDocument();
+    });
+  });
+
+  test('filters trades by search input', async () =&gt; {
+    render(&lt;Provider store={store}&gt;&lt;TradeDashboard /&gt;&lt;/Provider&gt;);
+    await waitFor(() =&gt; screen.getByText('TXN-001'));
+
+    const input = screen.getByPlaceholderText(/search/i);
+    await userEvent.type(input, 'TXN-001');
+
+    expect(screen.getByText('TXN-001')).toBeInTheDocument();
+    expect(screen.queryByText('TXN-002')).not.toBeInTheDocument();
+  });
+
+  test('shows error when fetch fails', async () =&gt; {
+    fetch.mockRejectedValueOnce(new Error('Network error'));
+    render(&lt;Provider store={store}&gt;&lt;TradeDashboard /&gt;&lt;/Provider&gt;);
+    await waitFor(() =&gt; {
+      expect(screen.getByText(/error/i)).toBeInTheDocument();
+    });
+  });
+});</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Jest Mocking</span><br><pre>// Mock a module
+jest.mock('../api/tradeApi', () =&gt; ({
+  fetchTrades: jest.fn().mockResolvedValue([]),
+  bookTrade:   jest.fn().mockResolvedValue({ id: 'TXN-001', status: 'BOOKED' }),
+}));
+
+// Spy on existing function
+const spy = jest.spyOn(tradeApi, 'fetchTrades').mockResolvedValue([]);
+expect(spy).toHaveBeenCalledTimes(1);
+
+// Timer mocks
+jest.useFakeTimers();
+jest.advanceTimersByTime(5000);
+jest.useRealTimers();</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Queries Priority (RTL best practice)</span><br><ol><li><code>getByRole</code> — accessible role (button, textbox, heading)</li><li><code>getByLabelText</code> — form inputs with labels</li><li><code>getByText</code> — visible text content</li><li><code>getByTestId</code> — last resort (<code>data-testid</code> attr)</li></ol></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-Questions &amp; Follow-ups</span><br><div class="followup">• getByRole vs getByText vs getByTestId — when to use each?<br>• How do you test custom hooks in isolation? (renderHook from @testing-library/react)<br>• How do you handle async state in tests without hardcoded timeouts?<br>• What is snapshot testing in Jest and what are its limitations?<br>• How do you measure frontend code coverage in Jest? (--coverage flag, Istanbul)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Technical Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="javascript">
+    <span class="q-index">16</span>
+    <span class="q-text">JavaScript prototypal inheritance — prototype chain, Object.create, class syntax</span>
+    <div class="q-tags"><span class="q-tag">javascript</span><span class="q-tag">prototype</span><span class="q-tag">inheritance</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Prototype Chain</span><br>Every JavaScript object has a hidden <code>[[Prototype]]</code> link. Property lookup traverses the chain until <code>null</code> is reached (Object.prototype is the top).<br><pre>const animal = { breathe() { return 'breathing'; } };
+const dog = Object.create(animal);  // dog's [[Prototype]] = animal
+dog.bark = function() { return 'woof'; };
+
+console.log(dog.bark());     // own property
+console.log(dog.breathe());  // found on prototype chain
+console.log(dog.hasOwnProperty('bark'));    // true
+console.log(dog.hasOwnProperty('breathe')); // false</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Constructor Function (ES5 style)</span><br><pre>function Trade(id, amount) {
+  this.id = id;
+  this.amount = amount;
+}
+Trade.prototype.format = function() {
+  return `Trade ${this.id}: ${this.amount}`;
+};
+
+const t = new Trade('TXN-001', 5000);
+console.log(t.format());  // Trade TXN-001: 5000
+console.log(t instanceof Trade);  // true</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">ES6 Class — Syntactic Sugar</span><br><pre>class Trade {
+  #amount;  // private field (ES2022)
+
+  constructor(id, amount) {
+    this.id = id;
+    this.#amount = amount;
+  }
+
+  get amount() { return this.#amount; }
+
+  format() {
+    return `Trade ${this.id}: ${this.#amount}`;
+  }
+
+  static fromJSON(json) {  // factory static method
+    return new Trade(json.id, json.amount);
+  }
+}
+
+class BondTrade extends Trade {
+  constructor(id, amount, coupon) {
+    super(id, amount);      // must call super first
+    this.coupon = coupon;
+  }
+  format() {
+    return `${super.format()} coupon=${this.coupon}%`;
+  }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Java vs JavaScript OOP</span><br><ul><li>Java: class-based, compile-time, strongly typed</li><li>JS: prototype-based, dynamic, weakly typed (class is syntactic sugar)</li><li>JS has no interfaces/abstract classes natively (use duck typing or TypeScript)</li><li><b>TypeScript</b> adds compile-time type safety to JS — used with React at MUFG</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-Questions &amp; Follow-ups</span><br><div class="followup">• What is the difference between Object.create(null) and {}?<br>• How does new keyword work step by step? (creates object, sets prototype, calls constructor, returns)<br>• What is the difference between __proto__ and prototype?<br>• How does TypeScript interface differ from Java interface?<br>• What is mixin pattern in JavaScript and when is it preferred over inheritance?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Technical Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="ai-tools">
+    <span class="q-index">17</span>
+    <span class="q-text">GitHub Copilot and AI-assisted development in Java + React (MUFG JD requirement)</span>
+    <div class="q-tags"><span class="q-tag">github-copilot</span><span class="q-tag">ai-coding</span><span class="q-tag">code-generation</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">What is GitHub Copilot</span><br>AI coding assistant (OpenAI Codex / GPT-4o) integrated into VS Code, IntelliJ, Eclipse. Generates code suggestions from natural language comments and existing context. MUFG JD requires: experience using Copilot for Java, Spring Boot, and React development.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Copilot for Java / Spring Boot</span><br><pre>// 1. Code Generation — type a comment and Copilot suggests the implementation
+// Write a Spring Boot REST endpoint to book a trade with idempotency key
+@PostMapping
+public ResponseEntity&lt;TradeDto&gt; bookTrade(
+        @RequestBody @Valid BookTradeRequest req,
+        @RequestHeader("Idempotency-Key") String key) {
+    return ResponseEntity.status(201).body(tradeService.book(req, key));
+}
+
+// 2. Test Generation — Copilot generates JUnit tests
+// Write a JUnit 5 test for TradeBookingService.bookTrade with Mockito
+@Test
+void bookTrade_newTrade_savesAndPublishesToKafka() { ... }
+
+// 3. Refactoring — ask Copilot Chat
+// "Refactor this method to use Stream API instead of for-loop"
+// "Add proper error handling and logging"
+
+// 4. Documentation — auto-generate Javadoc
+/**
+ * Books a trade with idempotency guarantee.
+ * @param request Trade booking details
+ * @param idempotencyKey Unique client-generated key to prevent duplicate bookings
+ * @return Booked trade DTO
+ * @throws TradeNotFoundException if referenced entities don't exist
+ */</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Copilot for React / JavaScript</span><br><pre>// Type a comment and get full component suggestions:
+// Create a React hook to fetch trades from /api/v1/trades with loading and error states
+export const useTrades = () =&gt; {
+  const [trades, setTrades] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() =&gt; {
+    fetch('/api/v1/trades')
+      .then(r =&gt; { if(!r.ok) throw new Error(r.status); return r.json(); })
+      .then(setTrades)
+      .catch(setError)
+      .finally(() =&gt; setLoading(false));
+  }, []);
+
+  return { trades, loading, error };
+};</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Responsible AI — Security and Code Review</span><br>MUFG JD emphasizes: <b>review, secure, and optimize AI-generated code</b>.<br><ul><li>Never commit Copilot code without review — it may introduce SQL injection, XSS, weak crypto</li><li>Copilot may suggest deprecated APIs or outdated patterns</li><li>Verify generated code against Veracode SAST scan — Copilot doesn't guarantee security</li><li>PII/sensitive data must not be pasted into Copilot (data leakage risk)</li><li>IP concerns: Copilot may reproduce copyrighted code — use with caution in banking</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">AI Across the SDLC</span><br><ul><li><b>Planning:</b> Copilot Chat for story decomposition, API design discussions</li><li><b>Coding:</b> Code completion, boilerplate generation (DTOs, mappers, validators)</li><li><b>Testing:</b> JUnit/Jest test generation from method signatures</li><li><b>Debugging:</b> Explain error messages, suggest fixes</li><li><b>Documentation:</b> Generate Javadoc, API docs, README</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-Questions &amp; Follow-ups</span><br><div class="followup">• How do you evaluate the quality of Copilot-generated code before merging?<br>• What are the data privacy risks of using AI coding tools with banking code?<br>• How does Copilot differ from ChatGPT for coding tasks?<br>• What is RAG (Retrieval-Augmented Generation) and could it be used for internal MUFG code assistance?<br>• How do you ensure AI-generated tests actually test the right behavior?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Technical Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-backend">
+  <div class="questions-header">
+    <h3>🔧 Backend</h3>
+    <span class="q-count">5 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="messaging">
+    <span class="q-index">1</span>
+    <span class="q-text">Kafka trade booking — consumer groups, idempotency, exactly-once semantics</span>
+    <div class="q-tags"><span class="q-tag">kafka</span><span class="q-tag">trade-booking</span><span class="q-tag">idempotency</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Architecture</span><br><pre>Upstream Systems → Kafka [trades.raw] (partitioned by bookId)
+  → Consumer Group [trade-booker] (instances = partitions)
+  → Idempotency check (trade_id UPSERT on Oracle)
+  → REST API for downstream</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Idempotent Consumer</span><br><pre>@KafkaListener(topics="trades.raw", groupId="trade-booker")
+@Transactional
+public void onTrade(TradeEvent e) {
+    // INSERT ... ON CONFLICT DO NOTHING (PostgreSQL)
+    // or existence check before insert
+    if (!tradeRepo.existsByTradeId(e.getTradeId())) {
+        tradeRepo.save(mapToTrade(e));
+        kafkaTemplate.send("trade.booked", e.getTradeId(), booked);
+    }
+    // Offset committed after DB write (at-least-once delivery)
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Exactly-Once (EOS)</span><br><pre>spring.kafka.producer.transaction-id-prefix=booker-
+spring.kafka.consumer.isolation-level=read_committed
+
+@Transactional("kafkaTransactionManager")
+public void processEOS(ConsumerRecord&lt;String,TradeEvent&gt; r) {
+    tradeRepo.save(mapToTrade(r.value()));
+    kafkaTemplate.send("trade.booked", r.value().getId(), booked);
+    // offset + DB + produce committed atomically
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Kafka partition strategy for ordering? (partition by bookId)<br>• IBM MQ vs Kafka at MUFG? (IBM MQ for SWIFT/legacy; Kafka for internal event bus)<br>• What is the Outbox pattern and why does MUFG use it?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="microservices">
+    <span class="q-index">2</span>
+    <span class="q-text">Microservices patterns for banking — Saga, Circuit Breaker, Strangler Fig</span>
+    <div class="q-tags"><span class="q-tag">saga</span><span class="q-tag">circuit-breaker</span><span class="q-tag">strangler-fig</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">85%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Saga — Distributed Transactions</span><br>At MUFG: Trade → Position → Risk Service. 2PC too slow. Saga uses local txns + compensating actions.<br><b>Orchestration:</b> Central TradeOrchestrator calls each service step; on failure triggers rollbacks.<br><b>Choreography:</b> Each service emits events; downstream reacts and compensates on failure.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Circuit Breaker with Resilience4j</span><br><pre>@CircuitBreaker(name="riskService", fallbackMethod="cachedRisk")
+public RiskResult checkRisk(Trade t) {
+    return riskClient.evaluate(t);
+}
+public RiskResult cachedRisk(Trade t, Exception e) {
+    return RiskResult.fromCache(t.getBookId());
+}
+
+# application.yml
+resilience4j.circuitbreaker.instances.riskService:
+  slidingWindowSize: 10
+  failureRateThreshold: 50
+  waitDurationInOpenState: 10s</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Strangler Fig</span><br>Legacy COBOL/Struts systems at MUFG are replaced gradually. API Gateway routes new features to microservices; old routes stay on legacy. Over time, all routes are 'strangled' away from legacy.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Choreography vs Orchestration — when to prefer each?<br>• How do you implement idempotency in Saga compensating transactions?<br>• How does Istio replace Resilience4j circuit breaker?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="cloud">
+    <span class="q-index">3</span>
+    <span class="q-text">AWS services for banking — EC2, S3, RDS, Lambda, IAM, CloudWatch</span>
+    <div class="q-tags"><span class="q-tag">aws</span><span class="q-tag">ec2</span><span class="q-tag">s3</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Core AWS Services at MUFG</span><br><ul><li><b>EC2:</b> Virtual servers for Spring Boot microservices (or containerized via ECS/EKS)</li><li><b>S3:</b> Object storage for trade reports, audit files, BAI2/NACHA files, static assets</li><li><b>RDS:</b> Managed Oracle/PostgreSQL/MySQL for trade data</li><li><b>Lambda:</b> Serverless for event-driven processing (S3 trigger → parse NACHA file → SQS)</li><li><b>SQS:</b> Managed message queue (replace RabbitMQ for AWS-native workloads)</li><li><b>IAM:</b> Identity and access management — roles, policies, MFA</li><li><b>CloudWatch:</b> Logs, metrics, alarms — like Splunk but native AWS</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Spring Boot + AWS S3 (trade report upload)</span><br><pre>// pom.xml
+&lt;dependency&gt;
+  &lt;groupId&gt;software.amazon.awssdk&lt;/groupId&gt;
+  &lt;artifactId&gt;s3&lt;/artifactId&gt;
+  &lt;version&gt;2.21.0&lt;/version&gt;
+&lt;/dependency&gt;
+
+@Service
+public class TradeReportUploader {
+    private final S3Client s3;
+    private final String bucket = "mufg-trade-reports";
+
+    public void uploadReport(String tradeDate, byte[] pdfBytes) {
+        String key = String.format("reports/%s/trade-report.pdf", tradeDate);
+        s3.putObject(
+            PutObjectRequest.builder()
+                .bucket(bucket)
+                .key(key)
+                .contentType("application/pdf")
+                .serverSideEncryption(ServerSideEncryption.AWS_KMS)  // encrypt at rest
+                .build(),
+            RequestBody.fromBytes(pdfBytes)
+        );
+    }
+
+    public URL generatePresignedUrl(String key) {
+        S3Presigner presigner = S3Presigner.create();
+        PresignedGetObjectRequest req = presigner.presignGetObject(r -&gt;
+            r.signatureDuration(Duration.ofMinutes(15))
+             .getObjectRequest(g -&gt; g.bucket(bucket).key(key)));
+        return req.url();
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">IAM Best Practices for Banking</span><br><ul><li>Principle of Least Privilege — Lambda only has S3:PutObject on specific bucket</li><li>No hard-coded credentials — use IAM roles for EC2/Lambda, AWS Secrets Manager for DB passwords</li><li>MFA required for IAM console access</li><li>CloudTrail for audit: every API call logged</li><li>Encrypt S3 with KMS-managed keys (SSE-KMS)</li><li>VPC with private subnets for RDS — no public internet access</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Lambda + SQS for NACHA Processing</span><br><pre>// Triggered by SQS message (NACHA file landing in S3)
+exports.handler = async (event) =&gt; {
+  for (const record of event.Records) {
+    const { bucket, key } = JSON.parse(record.body);
+    const file = await s3.getObject({ Bucket: bucket, Key: key }).promise();
+    const transactions = parseNACHA(file.Body.toString());
+    for (const txn of transactions) {
+      await bookTransaction(txn);  // call Trade Booking Service
+    }
+  }
+};
+// Lambda scales automatically; no server management</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-Questions &amp; Follow-ups</span><br><div class="followup">• How does AWS SQS differ from Kafka? When would you choose each?<br>• What is VPC peering and why is it needed between MUFG on-prem and AWS?<br>• How do you use AWS Secrets Manager in a Spring Boot app? (spring-cloud-aws)<br>• What is the difference between ECS and EKS for containerized microservices?<br>• How does CloudWatch Logs compare to Splunk for MUFG banking observability?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Technical Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="messaging">
+    <span class="q-index">4</span>
+    <span class="q-text">IBM MQ vs Kafka vs RabbitMQ — messaging in banking systems</span>
+    <div class="q-tags"><span class="q-tag">ibm-mq</span><span class="q-tag">kafka</span><span class="q-tag">rabbitmq</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">IBM MQ — Legacy Banking Backbone</span><br>Used for SWIFT FIN/XML (ISO 15022/20022), mainframe integration, guaranteed delivery.<br><pre>@JmsListener(destination="TRADE.IN.QUEUE")
+@Transactional
+public void onSWIFT(TextMessage msg) throws JMSException {
+    Trade t = iso20022Parser.parse(msg.getText());
+    tradeService.book(t);
+    // ACK on tx commit
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Kafka — High-Throughput Streaming</span><br>Internal microservices event bus, replay, regulatory audit trail. Millions of events/sec. Consumer groups for horizontal scaling.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">RabbitMQ — Flexible Routing</span><br>AMQP with topic/fanout/direct exchanges. Used for async work queues (reports, notifications).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Decision Matrix</span><br><ul><li><b>IBM MQ:</b> SWIFT integration, legacy, exactly-once, moderate throughput</li><li><b>Kafka:</b> Internal events, high throughput, replay, event sourcing</li><li><b>RabbitMQ:</b> Async tasks, complex routing, moderate throughput</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Spring Integration — how does it abstract multiple messaging systems?<br>• How do you monitor Kafka consumer lag? (Burrow, Prometheus, Kafka Manager)<br>• ActiveMQ Artemis vs RabbitMQ?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="banking-domain">
+    <span class="q-index">5</span>
+    <span class="q-text">Banking data formats — ISO 20022, NACHA, BAI2 parsing in Java</span>
+    <div class="q-tags"><span class="q-tag">iso20022</span><span class="q-tag">nacha</span><span class="q-tag">bai2</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">ISO 20022 (SWIFT Replacement)</span><br>XML-based. pacs.008=credit transfer, camt.053=statement, tsmt=trade.<br><pre>// JAXB parsing
+JAXBContext ctx = JAXBContext.newInstance(Document.class);
+Document doc = (Document) ctx.createUnmarshaller().unmarshal(xmlStream);
+String msgId = doc.getFIToFICstmrCdtTrf().getGrpHdr().getMsgId();</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">NACHA — US ACH Payments</span><br>Fixed-width flat file. Record types: 1=FileHeader, 5=BatchHeader, 6=EntryDetail, 8=BatchControl, 9=FileControl.<br><pre>String line = reader.readLine();
+if (line.charAt(0)=='6') {  // Entry Detail
+    String routing = line.substring(3,11);
+    BigDecimal amt = new BigDecimal(line.substring(29,39)).movePointLeft(2);
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">BAI2 — Bank Statements</span><br>Comma-delimited balance/transaction file used in cash management and reconciliation.<br><code>03,ACC001,USD,015,1000000,,,/</code> → account ACC001, opening balance $1M.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• FIX Protocol vs SWIFT — where is each used?<br>• How would you build a reconciliation engine matching BAI2 against internal trade records?<br>• What is SWIFT gpi and why does it matter for MUFG cross-border payments?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-system_design">
+  <div class="questions-header">
+    <h3>🏗️ System Design</h3>
+    <span class="q-count">5 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="api_gateway">
+    <span class="q-index">1</span>
+    <span class="q-text">API Gateway pattern — rate limiting, routing, JWT auth, circuit breaker for MUFG microservices</span>
+    <div class="q-tags"><span class="q-tag">api-gateway</span><span class="q-tag">rate-limit</span><span class="q-tag">jwt</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">92%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Architecture Diagram (ByteByteGo style)</span><br><pre>  ReactJS / Mobile
+        |
+  +-----v-----------------------+
+  |      API GATEWAY            |
+  |  1. JWT Validation          |
+  |  2. Rate Limiter (Redis)    |
+  |  3. Circuit Breaker (R4j)   |
+  |  4. Request Routing         |
+  |  5. Load Balancer           |
+  +---+-------+--------+--------+
+      |       |        |
+   Trade   Account   Payment
+   Svc      Svc       Svc
+  (8081)   (8082)    (8083)
+      |       |        |
+    DB(P)   DB(A)    DB(P)
+</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Spring Cloud Gateway Config</span><br><pre>// application.yml
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: trade-service
+          uri: lb://TRADE-SERVICE
+          predicates:
+            - Path=/api/v1/trades/**
+          filters:
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 100
+                redis-rate-limiter.burstCapacity: 200
+                key-resolver: '#{@userKeyResolver}'
+            - name: CircuitBreaker
+              args:
+                name: tradeCircuitBreaker
+                fallbackUri: forward:/fallback/trades
+
+@Component
+public class JwtAuthFilter extends AbstractGatewayFilterFactory&lt;JwtAuthFilter.Config&gt; {
+    @Override
+    public GatewayFilter apply(Config config) {
+        return (exchange, chain) -&gt; {
+            String token = extractToken(exchange.getRequest());
+            if (!jwtService.isValid(token))
+                return unauthorized(exchange);
+            return chain.filter(exchange);
+        };
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Rate Limiting — Token Bucket (Redis)</span><br><pre>// Token bucket: replenish 100 tokens/sec, burst up to 200
+@Bean
+public KeyResolver userKeyResolver() {
+    return exchange -&gt; Mono.just(
+        exchange.getRequest().getHeaders().getFirst("X-User-Id")
+    );
+}
+// HTTP 429 Too Many Requests when limit exceeded</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-Questions</span><br><div class="followup">&bull; API Gateway vs Load Balancer — key difference?<br>&bull; How do you implement idempotency at gateway level? (Idempotency-Key header + Redis dedup)<br>&bull; What is the Strangler Fig pattern and how does gateway enable it?<br>&bull; How does service mesh (Istio) differ from API Gateway?<br>&bull; How do you handle gateway as SPOF? (Multi-region, active-active)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="fintech">
+    <span class="q-index">2</span>
+    <span class="q-text">Design a real-time transaction processing system — reliability, idempotency, scale</span>
+    <div class="q-tags"><span class="q-tag">transaction-processing</span><span class="q-tag">kafka</span><span class="q-tag">idempotency</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Requirements</span><br><b>Functional:</b> Accept trades from upstream, validate, book, expose via API. 10k trades/sec peak.<br><b>Non-functional:</b> Exactly-one booking, 99.99% uptime, &lt;50ms p99 reads, full audit trail.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Architecture</span><br><pre>Upstream (FIX/SWIFT) → Kafka [trades.raw] (partitioned by bookId)
+  → Trade Booking Pods (OpenShift, count = Kafka partitions)
+    ├── Redis (idempotency cache: tradeId → result, 24h TTL)
+    ├── Oracle RAC (trades table, audit log)
+    └── Kafka [trade.booked] (downstream: Risk, Reporting)
+  → Read API (Spring Boot + HikariCP + Redis L1 cache)</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Idempotency + Distributed Lock</span><br><pre>public TradeResult book(TradeEvent e) {
+    String cached = redis.get(e.getTradeId());
+    if (cached != null) return deserialize(cached);
+    try (Lock lock = redisLock.acquire("lock:"+e.getTradeId(), 5s)) {
+        cached = redis.get(e.getTradeId());  // double-check
+        if (cached != null) return deserialize(cached);
+        Trade t = tradeRepo.save(mapToTrade(e));
+        TradeResult res = TradeResult.booked(t);
+        redis.setex(e.getTradeId(), 86400, serialize(res));
+        return res;
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Reliability</span><br><ul><li>Kafka RF=3, min.insync.replicas=2. Offset committed after DB write.</li><li>Circuit Breaker on Risk/Notification calls (Resilience4j).</li><li>Dead Letter Queue after 3 retries.</li><li>HPA scales pods on CPU and Kafka consumer lag.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the Outbox pattern and how does it solve dual-write?<br>• How do you implement end-to-end trade reconciliation (internal vs SWIFT)?<br>• What is ISO 20022 and why is MUFG migrating to it?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="distributed_systems">
+    <span class="q-index">3</span>
+    <span class="q-text">Outbox Pattern — reliable event publishing in MUFG distributed transactions</span>
+    <div class="q-tags"><span class="q-tag">outbox-pattern</span><span class="q-tag">distributed-transactions</span><span class="q-tag">kafka</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">The Problem</span><br><b>Double-write problem:</b> Save trade to DB + publish Kafka event — what if DB commits but Kafka fails? Events lost. What if Kafka publishes but DB fails? Phantom events. <b>Solution: Transactional Outbox Pattern</b></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Architecture Diagram</span><br><pre>  Trade Service
+  +----------------------------------+
+  | BEGIN TRANSACTION                |
+  |   INSERT trades SET status=BOOKED|
+  |   INSERT outbox (event JSON)     |
+  | COMMIT  &lt;-- atomic!             |
+  +----------------------------------+
+          |
+  +-------v-----------+
+  |  Message Relay     |  (Debezium CDC)
+  |  polls outbox table|
+  +-------+-----------+
+          |
+  +-------v-----------+
+  |   Kafka Topic      |
+  |  trade.booked      |
+  +--------------------+
+</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Implementation</span><br><pre>// 1. Outbox table
+CREATE TABLE outbox (
+    id         UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    event_type VARCHAR(100) NOT NULL,
+    payload    JSONB NOT NULL,
+    published  BOOLEAN DEFAULT false
+);
+
+// 2. Service writes both atomically
+@Transactional
+public void bookTrade(TradeRequest req) {
+    Trade t = tradeRepo.save(mapToTrade(req));
+    outboxRepo.save(OutboxEvent.builder()
+        .eventType("TRADE_BOOKED")
+        .payload(objectMapper.writeValueAsString(t))
+        .build());
+}
+
+// 3. Scheduled relay
+@Scheduled(fixedDelay = 500)
+public void publishPendingEvents() {
+    List&lt;OutboxEvent&gt; events = outboxRepo.findByPublishedFalse();
+    events.forEach(e -&gt; kafkaTemplate.send(e.getEventType(), e.getPayload()));
+    events.forEach(e -&gt; e.setPublished(true));
+    outboxRepo.saveAll(events);
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-Questions</span><br><div class="followup">&bull; Outbox vs Saga pattern — when to use which?<br>&bull; How does Debezium CDC work? (WAL log tailing in PostgreSQL)<br>&bull; How do consumers handle duplicate events? (Idempotent consumers + processed_events table)<br>&bull; What is at-least-once vs exactly-once in Kafka?<br>&bull; How to handle outbox table growth? (Archive after published + TTL cleanup)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="messaging">
+    <span class="q-index">4</span>
+    <span class="q-text">Kafka Consumer Groups — partition assignment and offset management</span>
+    <div class="q-tags"><span class="q-tag">kafka</span><span class="q-tag">consumer-group</span><span class="q-tag">partition</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">87%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Consumer Group Architecture</span><br><pre>  Kafka Topic: trade.events (6 partitions)
+  +----+----+----+----+----+----+
+  | P0 | P1 | P2 | P3 | P4 | P5 |
+  +----+----+----+----+----+----+
+    |    |     |    |     |    |
+  +------+  +------+  +------+
+  | C1   |  | C2   |  | C3   |
+  | P0,P1|  | P2,P3|  | P4,P5|
+  +------+  +------+  +------+
+  Group: mufg-settlement-service
+  Max parallelism = num partitions = 6
+</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Spring Kafka — Manual Offset Commit</span><br><pre>@KafkaListener(
+    topics = "trade.events",
+    groupId = "mufg-settlement-service",
+    concurrency = "3"
+)
+public void processTradeEvent(
+        @Payload TradeEvent event,
+        Acknowledgment ack) {
+    try {
+        settlementService.process(event);
+        ack.acknowledge();  // commit AFTER processing (at-least-once)
+    } catch (FatalException e) {
+        ack.acknowledge();  // skip poison pill, send to DLT
+        kafkaTemplate.send("trade.events.DLT", event);
+    }
+}
+
+# application.yml
+spring.kafka.consumer.enable-auto-commit: false
+spring.kafka.consumer.auto-offset-reset: earliest
+spring.kafka.listener.ack-mode: manual_immediate</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Delivery Semantics</span><br><pre>  At-most-once:  commit before process (may lose on crash)
+  At-least-once: commit after process  (may duplicate) &lt;-- MUFG default
+  Exactly-once:  Kafka Transactions + idempotent consumer
+  Idempotent consumer: processed_events table with event_id dedup
+</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-Questions</span><br><div class="followup">&bull; What happens during consumer group rebalance? (partitions redistributed, brief pause)<br>&bull; How to handle poison pill messages? (Dead Letter Topic + alerting)<br>&bull; How to achieve exactly-once processing? (Kafka transactions + idempotent consumer)<br>&bull; What is consumer lag? (offset gap between latest and committed — monitor with Burrow)<br>&bull; Max consumers per topic group? (= num partitions; extras sit idle)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="cqrs">
+    <span class="q-index">5</span>
+    <span class="q-text">CQRS Pattern — separating read/write models in MUFG trade reporting</span>
+    <div class="q-tags"><span class="q-tag">cqrs</span><span class="q-tag">command-query</span><span class="q-tag">read-model</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">What Is CQRS?</span><br><b>Command Query Responsibility Segregation:</b> Separate the <b>write model</b> (commands, normalized) from the <b>read model</b> (queries, denormalized).<br><b>MUFG:</b> Write = PostgreSQL (ACID). Read = Elasticsearch (fast search/reporting).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Architecture Diagram</span><br><pre>  UI / API
+   |           |
+COMMAND      QUERY
+   |           |
+Write DB    Read DB
+(Postgres)  (Elastic)
+ ACID txn    Fast search
+   |
+ Domain Events (Kafka)
+   |
+ Event Handler
+ (updates Read DB async)
+</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Spring Boot Implementation</span><br><pre>// Command controller
+@PostMapping("/api/v1/trades")
+public ResponseEntity&lt;String&gt; bookTrade(@RequestBody BookTradeCommand cmd) {
+    Trade t = tradeCommandService.book(cmd);     // writes PostgreSQL
+    eventBus.publish(new TradeBookedEvent(t));   // publishes Kafka
+    return ResponseEntity.accepted().body(t.getId());
+}
+
+// Query controller
+@GetMapping("/api/v1/trades/search")
+public List&lt;TradeView&gt; search(@RequestParam String counterparty) {
+    return tradeQueryService.searchByCounterparty(counterparty); // reads Elasticsearch
+}
+
+// Event handler syncs to read model
+@KafkaListener(topics = "trade.booked")
+public void onTradeBooked(TradeBookedEvent event) {
+    elasticRepo.save(TradeView.from(event));  // denormalized view
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-Questions</span><br><div class="followup">&bull; CQRS vs Event Sourcing — same thing? (No, orthogonal but often combined)<br>&bull; How to handle eventual consistency? (show version/timestamp to user)<br>&bull; When NOT to use CQRS? (simple CRUD apps — adds complexity)<br>&bull; What is the read model consistency window? (typically &lt;100ms Kafka+Elastic)<br>&bull; How to rebuild read model from scratch? (replay all Kafka events from beginning)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-database">
+  <div class="questions-header">
+    <h3>🗄️ Database</h3>
+    <span class="q-count">4 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="jpa_hibernate">
+    <span class="q-index">1</span>
+    <span class="q-text">N+1 Query Problem — detect and fix with JPA/Hibernate in Spring Boot</span>
+    <div class="q-tags"><span class="q-tag">n+1-query</span><span class="q-tag">hibernate</span><span class="q-tag">jpa</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">92%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">The Problem</span><br><b>N+1 queries</b>: 1 query to load N parent records + N queries for each child = N+1 DB calls.<br>MUFG example: Load 100 trades &rarr; 1 query + 100 queries for counterparty = 101 round-trips!</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">How It Happens</span><br><pre>@Entity
+public class Trade {
+    @ManyToOne(fetch = FetchType.LAZY)  // LAZY is default
+    private Counterparty counterparty;
+}
+
+List&lt;Trade&gt; trades = tradeRepo.findAll(); // 1 SELECT
+for (Trade t : trades) {
+    t.getCounterparty().getName(); // triggers N SELECTs!
+}
+// Hibernate logs:
+// SELECT * FROM trades;
+// SELECT * FROM counterparty WHERE id=1
+// SELECT * FROM counterparty WHERE id=2  ... x100</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Fix 1 — JOIN FETCH</span><br><pre>@Query("SELECT t FROM Trade t JOIN FETCH t.counterparty")
+List&lt;Trade&gt; findAllWithCounterparty();
+// 1 SQL: SELECT t.*, c.* FROM trades t JOIN counterparty c ON t.cp_id=c.id</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Fix 2 — @EntityGraph</span><br><pre>@EntityGraph(attributePaths = {"counterparty", "instrument"})
+@Query("SELECT t FROM Trade t")
+List&lt;Trade&gt; findAllEager();
+// Best for multiple associations — cleaner than FETCH JOIN
+// Avoids Cartesian product with multiple collections</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Fix 3 — Batch Size</span><br><pre>@BatchSize(size = 25)
+@ManyToOne(fetch = FetchType.LAZY)
+private Counterparty counterparty;
+// 100 trades -&gt; 4 batch queries instead of 100
+// spring.jpa.properties.hibernate.default_batch_fetch_size=25</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Detect N+1</span><br><pre># application.properties
+spring.jpa.properties.hibernate.generate_statistics=true
+logging.level.org.hibernate.stat=DEBUG
+# See: 101 queries for 100 trades -&gt; N+1 confirmed!
+# Tools: p6spy, datasource-proxy, Hypersistence Optimizer</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-Questions</span><br><div class="followup">&bull; EAGER vs LAZY — default for @OneToMany, @ManyToOne?<br>&bull; What is the Cartesian product problem with multiple JOIN FETCHes?<br>&bull; How to fix N+1 for @OneToMany? (JOIN FETCH with DISTINCT or @BatchSize)<br>&bull; How do you page JOIN FETCH results? (use @EntityGraph — JOIN FETCH breaks pagination)<br>&bull; What is the Open Session in View anti-pattern?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Technical Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="connection_pooling">
+    <span class="q-index">2</span>
+    <span class="q-text">HikariCP Connection Pooling — optimal configuration for MUFG banking throughput</span>
+    <div class="q-tags"><span class="q-tag">hikaricp</span><span class="q-tag">connection-pool</span><span class="q-tag">jdbc</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Why Connection Pools Matter</span><br>Creating a DB connection = TCP handshake + DB auth + memory &asymp; 50-100ms. At 1000 TPS, creating new connections every time = disaster. <b>HikariCP</b> pre-creates and reuses connections &rarr; sub-millisecond acquisition.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Architecture Diagram</span><br><pre>  Spring Boot App (10 instances)
+  +---------------------------+
+  |   HikariCP Pool           |
+  |  [c1][c2][c3]...[c10]    | max-pool-size=10
+  |   idle  busy  busy        |
+  +---------------------------+
+         | JDBC
+  +------v-------+
+  |  PostgreSQL   |  max_connections=100
+  +--------------+
+  Rule: pool_per_instance = DB_max / num_instances
+        = 100 / 10 = 10
+</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Optimal Config</span><br><pre># application.properties
+spring.datasource.hikari.maximum-pool-size=10
+spring.datasource.hikari.minimum-idle=5
+spring.datasource.hikari.connection-timeout=30000
+spring.datasource.hikari.idle-timeout=600000
+spring.datasource.hikari.max-lifetime=1800000
+spring.datasource.hikari.keepalive-time=60000
+spring.datasource.hikari.pool-name=MufgTradePool
+# Leak detection: warn if connection held &gt; 2s
+spring.datasource.hikari.leak-detection-threshold=2000
+# Formula: pool_size = (cores * 2) + spindles = (4*2)+1 = 9</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-Questions</span><br><div class="followup">&bull; What happens when all pool connections are busy? (ConnectionTimeoutException)<br>&bull; HikariCP vs c3p0/DBCP — why HikariCP wins? (faster, simpler, zero-overhead)<br>&bull; How to tune pool for read replicas vs primary? (separate DataSource beans)<br>&bull; What is connection validation? (SELECT 1 ping before use)<br>&bull; How does HikariCP handle connection leaks? (leak-detection-threshold + stack trace log)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Technical Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="transactions">
+    <span class="q-index">3</span>
+    <span class="q-text">Spring @Transactional — isolation levels, propagation, ACID in banking</span>
+    <div class="q-tags"><span class="q-tag">spring</span><span class="q-tag">transactional</span><span class="q-tag">acid</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">@Transactional Usage</span><br><pre>@Transactional  // REQUIRED, isolation=DEFAULT, rollback on RuntimeException
+public Trade bookTrade(BookRequest req) {
+    Trade t = tradeRepo.save(mapToTrade(req));
+    positionService.update(t);   // same transaction
+    notify(t);
+    return t;  // COMMIT all; RuntimeException → ROLLBACK all
+}
+
+@Transactional(readOnly=true)  // DB optimization: no undo log
+public Optional&lt;Trade&gt; find(String id) { return tradeRepo.findById(id); }
+
+@Transactional(propagation=Propagation.REQUIRES_NEW,
+               isolation=Isolation.SERIALIZABLE)
+public void auditLog(Trade t) { auditRepo.save(AuditEntry.from(t)); }</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Isolation Levels</span><br><ul><li>READ_UNCOMMITTED — dirty reads possible (never in banking)</li><li>READ_COMMITTED (default) — no dirty reads, non-repeatable possible</li><li>REPEATABLE_READ — no non-repeatable reads, phantom possible</li><li>SERIALIZABLE — fully isolated, slowest (use for audit/regulatory)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Self-Invocation Pitfall</span><br><pre>// WRONG: this.auditLog() bypasses Spring proxy → @Transactional ignored!
+public void bookTrade() { this.auditLog(); }
+// FIX: inject self via @Autowired or use ApplicationContext.getBean()</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• @Version (optimistic) vs SELECT FOR UPDATE (pessimistic)?<br>• rollbackFor=Exception.class — why needed for checked exceptions?<br>• Distributed txns across Oracle + Kafka — Saga vs XA?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="sql">
+    <span class="q-index">4</span>
+    <span class="q-text">SQL optimization and JDBC for high-volume banking queries</span>
+    <div class="q-tags"><span class="q-tag">sql</span><span class="q-tag">jdbc</span><span class="q-tag">index</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Common Optimizations</span><br><pre>-- BAD: function on indexed column = full scan
+SELECT * FROM trades WHERE UPPER(currency)='USD';
+-- GOOD:
+SELECT trade_id, amount, currency FROM trades WHERE currency='USD';
+
+-- Composite index for common filter
+CREATE INDEX idx_trades_book_status ON trades(book_id, status, trade_date DESC);
+
+-- Partial index (PostgreSQL)
+CREATE INDEX idx_pending ON trades(trade_date) WHERE status='PENDING';</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">HikariCP Config</span><br><pre>spring.datasource.hikari:
+  maximum-pool-size: 20
+  connection-timeout: 3000   # fail fast
+  idle-timeout: 600000
+  leak-detection-threshold: 5000  # warn if held > 5s</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">JDBC Batch Insert</span><br><pre>conn.setAutoCommit(false);
+PreparedStatement ps = conn.prepareStatement(
+    "INSERT INTO trades(id,amount,currency,status) VALUES(?,?,?,?)");
+for (Trade t : trades) {
+    ps.setString(1,t.getId()); ps.setBigDecimal(2,t.getAmount());
+    ps.setString(3,t.getCurrency()); ps.setString(4,"BOOKED");
+    ps.addBatch();
+    if (++count%1000==0) ps.executeBatch();
+}
+ps.executeBatch(); conn.commit();</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How to read EXPLAIN ANALYZE output?<br>• Clustered vs non-clustered index?<br>• Materialized view vs regular view for regulatory reporting?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-cicd">
+  <div class="questions-header">
+    <h3>🚀 CI/CD & DevOps</h3>
+    <span class="q-count">2 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="jenkins">
+    <span class="q-index">1</span>
+    <span class="q-text">Jenkins CI/CD pipeline — Build, Test, Veracode, Docker, OpenShift deploy</span>
+    <div class="q-tags"><span class="q-tag">jenkins</span><span class="q-tag">cicd</span><span class="q-tag">openshift</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Tech Stack at MUFG</span><br>BitBucket → Jenkins → Nexus/Artifactory → Veracode → Docker Registry → OpenShift → Splunk</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Jenkinsfile</span><br><pre>pipeline {
+  agent { label 'java-agent' }
+  stages {
+    stage('Build&amp;Test') {
+      steps {
+        sh 'mvn clean verify'
+        junit 'target/surefire-reports/*.xml'
+      }
+    }
+    stage('Veracode') {
+      steps { veracode applicationName:'TradeBooking', filepath:'target/*.jar' }
+    }
+    stage('Docker') {
+      steps {
+        sh "docker build -t registry.mufg.com/trade-booking:${GIT_COMMIT} ."
+        sh "docker push registry.mufg.com/trade-booking:${GIT_COMMIT}"
+      }
+    }
+    stage('Deploy OpenShift') {
+      steps {
+        sh "oc set image deployment/trade-booking \\
+            trade-booking=registry.mufg.com/trade-booking:${GIT_COMMIT} -n mufg-prod"
+        sh 'oc rollout status deployment/trade-booking -n mufg-prod --timeout=5m'
+      }
+    }
+  }
+  post { failure { slackSend '#trade-alerts', "Build FAILED" } }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Multi-Stage Dockerfile</span><br><pre>FROM eclipse-temurin:17-jdk AS build
+WORKDIR /app
+COPY pom.xml . &amp;&amp; mvn dependency:go-offline -q
+COPY src ./src &amp;&amp; mvn package -DskipTests
+
+FROM eclipse-temurin:17-jre-alpine
+WORKDIR /app
+COPY --from=build /app/target/trade-booking-*.jar app.jar
+USER 1001
+ENTRYPOINT ["java","-XX:+UseZGC","-jar","app.jar"]</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Blue-green vs canary on OpenShift?<br>• Helm for OpenShift — what does a values.yaml look like?<br>• How to implement Jenkins pipeline rollback on failed deploy?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 CI/CD Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="kubernetes">
+    <span class="q-index">2</span>
+    <span class="q-text">Kubernetes/OpenShift — Deployment, Probes, HPA, ConfigMap for banking services</span>
+    <div class="q-tags"><span class="q-tag">kubernetes</span><span class="q-tag">openshift</span><span class="q-tag">hpa</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Deployment YAML</span><br><pre>apiVersion: apps/v1
+kind: Deployment
+metadata: { name: trade-booking, namespace: mufg-prod }
+spec:
+  replicas: 3
+  template:
+    spec:
+      containers:
+      - name: trade-booking
+        image: registry.mufg.com/trade-booking:v1.2.3
+        env:
+        - name: DB_PASSWORD
+          valueFrom: { secretKeyRef: {name: oracle-secret, key: password} }
+        resources:
+          requests: { cpu: 500m, memory: 512Mi }
+          limits:   { cpu: 2, memory: 2Gi }
+        livenessProbe:
+          httpGet: { path: /actuator/health/liveness, port: 8080 }
+          initialDelaySeconds: 30
+        readinessProbe:
+          httpGet: { path: /actuator/health/readiness, port: 8080 }
+          initialDelaySeconds: 20</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">HPA with Custom Kafka Lag Metric</span><br><pre>apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+spec:
+  scaleTargetRef: { kind: Deployment, name: trade-booking }
+  minReplicas: 3
+  maxReplicas: 20
+  metrics:
+  - type: Resource
+    resource: { name: cpu, target: { type: Utilization, averageUtilization: 70 } }
+  - type: External
+    external:
+      metric: { name: kafka_consumer_lag }
+      target: { type: AverageValue, averageValue: 1000 }</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Spring Boot Actuator for Probes</span><br><pre># application.yml
+management.endpoint.health.probes.enabled: true
+management.health.livenessState.enabled: true
+management.health.readinessState.enabled: true</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Liveness vs readiness vs startup probes — when to use each?<br>• PodDisruptionBudget — critical for banking availability?<br>• How to handle connection pool sizing with HPA?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 CI/CD Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-security">
+  <div class="questions-header">
+    <h3>🔒 Security</h3>
+    <span class="q-count">3 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="tls_mtls">
+    <span class="q-index">1</span>
+    <span class="q-text">TLS 1.3 Handshake + mTLS — securing MUFG inter-service communication</span>
+    <div class="q-tags"><span class="q-tag">tls</span><span class="q-tag">tls1.3</span><span class="q-tag">mtls</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">TLS 1.3 Handshake (1-RTT vs TLS 1.2 2-RTT)</span><br><pre>  Client                    Server
+    |--ClientHello---------->|
+    |  key_share (ECDHE)     |
+    |                        |
+    |&lt;-ServerHello+Cert------|
+    |  server key_share      |
+    |  [both derive session] |
+    |--Finished (encrypted)->|
+    |&lt;-Finished (encrypted)--|
+    |===Encrypted Data=======|
+    TLS 1.2: 2 RTT  TLS 1.3: 1 RTT (0-RTT resumption)
+</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">mTLS — Mutual Authentication</span><br><pre>  Trade-Svc              Payment-Svc
+     |--ClientHello--------->|
+     |&lt;-ServerHello+Cert-----|
+     |--Client Cert--------->|  &lt;-- mTLS: client also proves identity!
+     |&lt;-Verified-------------|
+     |===Encrypted channel===|
+  Zero-Trust: every service proves who it is
+</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Spring Boot mTLS Config</span><br><pre># application.properties
+server.ssl.key-store=classpath:trade-svc-keystore.p12
+server.ssl.key-store-password=${SSL_KEYSTORE_PASS}
+server.ssl.trust-store=classpath:mufg-truststore.p12
+server.ssl.trust-store-password=${SSL_TRUSTSTORE_PASS}
+server.ssl.client-auth=need   # require client cert (mTLS)
+server.ssl.enabled-protocols=TLSv1.3
+
+// Outgoing RestTemplate with client cert
+@Bean
+public RestTemplate secureRestTemplate() throws Exception {
+    SSLContext ssl = SSLContextBuilder.create()
+        .loadKeyMaterial(keyStore, keyPass)
+        .loadTrustMaterial(trustStore)
+        .build();
+    return new RestTemplate(new HttpComponentsClientHttpRequestFactory(
+        HttpClients.custom().setSSLContext(ssl).build()));
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Concepts</span><br><ul><li><b>ECDHE:</b> Ephemeral key exchange &rarr; Perfect Forward Secrecy (PFS)</li><li><b>PFS:</b> Each session unique key &rarr; past sessions safe if server key leaked</li><li><b>mTLS vs JWT:</b> mTLS = transport identity; JWT = application identity</li><li><b>SPIFFE/SPIRE:</b> Kubernetes auto cert rotation for mTLS (used with Istio)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-Questions</span><br><div class="followup">&bull; What is Perfect Forward Secrecy and why is it critical in banking?<br>&bull; How does certificate rotation work without downtime?<br>&bull; TLS vs HTTPS — difference? (HTTPS = HTTP over TLS)<br>&bull; What is SNI? (Server Name Indication — multiple certs on same IP)<br>&bull; How does Istio handle mTLS? (auto cert rotation via SPIFFE/SPIRE)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Technical Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="banking-security">
+    <span class="q-index">2</span>
+    <span class="q-text">Banking security — IAM, JWT RS256, OAuth2, Veracode SAST in Jenkins</span>
+    <div class="q-tags"><span class="q-tag">iam</span><span class="q-tag">jwt</span><span class="q-tag">oauth2</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">IAM at MUFG</span><br>LDAP/Active Directory for employee identity. RBAC (Trader, Risk Manager, Compliance, Admin) roles. Keycloak/Azure AD as OAuth2/OIDC Identity Provider for service-to-service auth. CyberArk for PAM — DB credential and API key rotation.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">JWT Filter (RS256)</span><br><pre>@Component
+public class JwtAuthFilter extends OncePerRequestFilter {
+    protected void doFilterInternal(HttpServletRequest req, ...) {
+        String token = extractBearer(req);
+        if (token == null) { filterChain.doFilter(req,res); return; }
+        try {
+            Claims claims = Jwts.parserBuilder()
+                .setSigningKey(rsaPublicKey)  // RS256 asymmetric
+                .build().parseClaimsJws(token).getBody();
+            SecurityContextHolder.getContext().setAuthentication(
+                new UsernamePasswordAuthenticationToken(
+                    claims.getSubject(), null,
+                    toAuthorities(claims.get("roles",List.class))));
+        } catch (JwtException e) { res.sendError(401); return; }
+        filterChain.doFilter(req, res);
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Veracode in Jenkins</span><br><pre>stage('Veracode SAST') {
+    steps {
+        withCredentials([usernamePassword(credentialsId:'veracode-api',
+                usernameVariable:'VID', passwordVariable:'VKEY')]) {
+            sh 'java -jar veracode-wrapper.jar -vid $VID -vkey $VKEY \\
+                -action UploadAndScan -appname TradeBooking \\
+                -filepath target/*.jar -scantimeout 60'
+        }
+    }
+}</pre>Detects: SQL injection, XSS, insecure deserialization, hardcoded secrets, weak crypto.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• DAST vs SAST — which finds runtime vulnerabilities?<br>• How to rotate DB secrets in K8s? (HashiCorp Vault, K8s Secrets, CyberArk)<br>• JWT localStorage vs HttpOnly cookie — security implications?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Technical Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="saml">
+    <span class="q-index">3</span>
+    <span class="q-text">SAML 2.0 authentication — SSO flow, Spring Security SAML integration</span>
+    <div class="q-tags"><span class="q-tag">saml</span><span class="q-tag">sso</span><span class="q-tag">idp</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">What is SAML 2.0</span><br><b>Security Assertion Markup Language 2.0</b> — XML-based standard for Single Sign-On (SSO). Used extensively in enterprise banking for federated identity. MUFG employees authenticate once via corporate Identity Provider (ADFS/Okta) and access multiple apps.<br><br><b>Key Actors:</b><br><ul><li><b>Identity Provider (IdP):</b> Authenticates user, issues SAML assertion (ADFS, Okta, PingFederate)</li><li><b>Service Provider (SP):</b> Your app (Spring Boot). Trusts IdP's assertions.</li><li><b>Principal:</b> The end user (MUFG employee)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">SP-Initiated SSO Flow</span><br><pre>1. User accesses https://trade-portal.mufg.com/dashboard
+2. SP (app) detects unauthenticated → generates AuthnRequest (XML, signed)
+3. SP redirects user to IdP: https://adfs.mufg.com/saml/sso?SAMLRequest=...
+4. IdP presents login page → user enters MUFG AD credentials
+5. IdP authenticates → creates SAML Assertion XML:
+   &lt;saml:Assertion&gt;
+     &lt;saml:Subject&gt;john.doe@mufg.com&lt;/saml:Subject&gt;
+     &lt;saml:AttributeStatement&gt;
+       &lt;saml:Attribute Name="groups"&gt;
+         &lt;saml:AttributeValue&gt;TRADER&lt;/saml:AttributeValue&gt;
+       &lt;/saml:Attribute&gt;
+     &lt;/saml:AttributeStatement&gt;
+     &lt;ds:Signature&gt;...XML Digital Signature...&lt;/ds:Signature&gt;
+   &lt;/saml:Assertion&gt;
+6. IdP POSTs assertion to SP ACS endpoint:
+   POST https://trade-portal.mufg.com/saml/SSO
+7. SP validates signature using IdP public certificate
+8. SP extracts user attributes, creates session → user is logged in</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Spring Security SAML (spring-security-saml2-service-provider)</span><br><pre>// application.yml
+spring.security.saml2.relyingparty:
+  registration:
+    mufg-adfs:
+      identityprovider:
+        entity-id: https://adfs.mufg.com/adfs
+        sso-url: https://adfs.mufg.com/adfs/ls/
+        verification.credentials:
+          - certificate-location: classpath:mufg-idp.crt
+      signing.credentials:
+        - private-key-location: classpath:sp-private.key
+          certificate-location: classpath:sp.crt
+
+// Security Config
+@Configuration
+public class SecurityConfig {
+  @Bean SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    return http
+        .authorizeHttpRequests(auth -&gt; auth
+            .requestMatchers("/public/**").permitAll()
+            .anyRequest().authenticated())
+        .saml2Login(saml -&gt; saml
+            .loginPage("/saml2/authenticate/mufg-adfs"))
+        .saml2Logout(Customizer.withDefaults())
+        .build();
+  }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">SAML vs OAuth2/OIDC</span><br><ul><li><b>SAML:</b> XML-based, enterprise SSO, browser redirects, no mobile-friendly</li><li><b>OAuth2/OIDC:</b> JSON/JWT-based, REST-friendly, mobile support, delegated authorization</li><li>At MUFG: SAML for internal employee SSO (ADFS/Okta); OAuth2 for API-to-API and external partners</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-Questions &amp; Follow-ups</span><br><div class="followup">• What is the difference between SAML assertion and OAuth2 access token?<br>• How do you validate a SAML assertion signature in Spring? (IdP public certificate)<br>• What is IdP-initiated vs SP-initiated SSO?<br>• How does SAML handle Single Log Out (SLO)?<br>• What is the difference between SAML 2.0 and SAML 1.1?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Technical Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-coding">
+  <div class="questions-header">
+    <h3>💻 DSA</h3>
+    <span class="q-count">3 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="data_structures">
+    <span class="q-index">1</span>
+    <span class="q-text">LRU Cache — implement O(1) get/put using HashMap + DoublyLinkedList</span>
+    <div class="q-tags"><span class="q-tag">lru-cache</span><span class="q-tag">hashmap</span><span class="q-tag">doubly-linked-list</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Problem</span><br>Design a cache that evicts the <b>Least Recently Used</b> item when full. <b>Both get() and put() must be O(1).</b><br>MUFG use case: Cache FX rates (capacity=1000, evict stale entries on overflow).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Design Diagram</span><br><pre>  HashMap&lt;key, Node&gt;              DoublyLinkedList
+  +----+--------+              HEAD &lt;-&gt; [A] &lt;-&gt; [B] &lt;-&gt; [C] &lt;-&gt; TAIL
+  | A  | Node*A |              (MRU)                           (LRU)
+  | B  | Node*B |
+  | C  | Node*C |  get(A): move A to HEAD  -- O(1)
+  +----+--------+  put(D): add D to HEAD, remove TAIL (C) -- O(1)
+</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Java Implementation</span><br><pre>class LRUCache {
+    private final int capacity;
+    private final Map&lt;Integer, Node&gt; map = new HashMap&lt;&gt;();
+    private final Node head = new Node(0,0), tail = new Node(0,0);
+
+    public LRUCache(int capacity) {
+        this.capacity = capacity;
+        head.next = tail; tail.prev = head;
+    }
+
+    public int get(int key) {
+        if (!map.containsKey(key)) return -1;
+        Node n = map.get(key);
+        moveToFront(n);
+        return n.val;
+    }
+
+    public void put(int key, int val) {
+        if (map.containsKey(key)) {
+            map.get(key).val = val;
+            moveToFront(map.get(key));
+        } else {
+            if (map.size() == capacity)
+                map.remove(removeLast());
+            Node n = new Node(key, val);
+            map.put(key, n);
+            addToFront(n);
+        }
+    }
+
+    private void addToFront(Node n) {
+        n.next = head.next; n.prev = head;
+        head.next.prev = n; head.next = n;
+    }
+    private void moveToFront(Node n) { remove(n); addToFront(n); }
+    private void remove(Node n) { n.prev.next = n.next; n.next.prev = n.prev; }
+    private int removeLast() {
+        Node lru = tail.prev; remove(lru); return lru.key;
+    }
+    static class Node { int key, val; Node prev, next; Node(int k, int v){key=k;val=v;} }
+}
+// Java shortcut: LinkedHashMap(capacity, 0.75f, true) with removeEldestEntry</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-Questions</span><br><div class="followup">&bull; How to make this thread-safe? (ConcurrentHashMap + ReentrantReadWriteLock)<br>&bull; LRU vs LFU — when to prefer LFU? (frequency-based eviction for skewed access)<br>&bull; How does LinkedHashMap implement LRU? (override removeEldestEntry)<br>&bull; Time/space complexity? (O(1) all ops, O(capacity) space)<br>&bull; Distributed LRU? (Redis with eviction policy allkeys-lru + TTL)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="algorithms">
+    <span class="q-index">2</span>
+    <span class="q-text">Sliding Window — max sum subarray and longest substring without repeating chars</span>
+    <div class="q-tags"><span class="q-tag">sliding-window</span><span class="q-tag">two-pointer</span><span class="q-tag">subarray</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">85%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Pattern Overview</span><br><b>Sliding Window</b>: Maintain a window [left, right]. Expand right, shrink left when condition violated. Avoids O(n&sup2;) nested loops &rarr; O(n).<br><b>MUFG use case:</b> Max transaction volume in any 5-minute window for anomaly detection.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Fixed Window — Max Sum of K Elements</span><br><pre>public int maxSum(int[] arr, int k) {
+    int windowSum = 0, maxSum = 0;
+    for (int i = 0; i &lt; k; i++) windowSum += arr[i];  // first window
+    maxSum = windowSum;
+    for (int i = k; i &lt; arr.length; i++) {
+        windowSum += arr[i] - arr[i - k];  // slide: add right, remove left
+        maxSum = Math.max(maxSum, windowSum);
+    }
+    return maxSum;
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Variable Window — Longest Substring No Repeats (LC-3)</span><br><pre>public int lengthOfLongestSubstring(String s) {
+    Map&lt;Character, Integer&gt; freq = new HashMap&lt;&gt;();
+    int left = 0, maxLen = 0;
+    for (int right = 0; right &lt; s.length(); right++) {
+        freq.merge(s.charAt(right), 1, Integer::sum);
+        while (freq.get(s.charAt(right)) &gt; 1) {
+            freq.merge(s.charAt(left), -1, Integer::sum);
+            if (freq.get(s.charAt(left)) == 0) freq.remove(s.charAt(left));
+            left++;
+        }
+        maxLen = Math.max(maxLen, right - left + 1);
+    }
+    return maxLen;
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-Questions</span><br><div class="followup">&bull; Sliding window vs Two Pointers — difference?<br>&bull; How to find minimum window substring? (LC-76 — track missing chars with counter)<br>&bull; How to find all anagrams in a string? (LC-438 — fixed window + freq match)<br>&bull; Time/space complexity? O(n) time, O(k) space for freq map<br>&bull; Apply to fraud detection: max transactions in rolling 1h window?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="arrays">
+    <span class="q-index">3</span>
+    <span class="q-text">Merge two sorted arrays — coding problem (actually asked at MUFG)</span>
+    <div class="q-tags"><span class="q-tag">arrays</span><span class="q-tag">merge</span><span class="q-tag">two-pointer</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Two-Pointer O(m+n)</span><br><pre>public int[] merge(int[] a, int[] b) {
+    int i=0, j=0, k=0;
+    int[] res = new int[a.length+b.length];
+    while (i&lt;a.length &amp;&amp; j&lt;b.length)
+        res[k++] = a[i]&lt;=b[j] ? a[i++] : b[j++];
+    while (i&lt;a.length) res[k++]=a[i++];
+    while (j&lt;b.length) res[k++]=b[j++];
+    return res;
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">In-Place (LeetCode 88)</span><br><pre>// nums1 has m elements, then n zeros; nums2 has n elements
+public void merge(int[] nums1, int m, int[] nums2, int n) {
+    int i=m-1, j=n-1, k=m+n-1;
+    while (i&gt;=0 &amp;&amp; j&gt;=0)
+        nums1[k--] = nums1[i]&gt;nums2[j] ? nums1[i--] : nums2[j--];
+    while (j&gt;=0) nums1[k--]=nums2[j--];
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Banking Context</span><br>Used in trade reconciliation — merging sorted trade lists from two feeds for match detection.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Merge K sorted arrays? (min-heap, O(N log K))<br>• Java Arrays.sort() internals? (dual-pivot quicksort for primitives, Timsort for objects)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Test</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-spring">
+  <div class="questions-header">
+    <h3>Spring</h3>
+    <span class="q-count">1 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="resilience">
+    <span class="q-index">1</span>
+    <span class="q-text">Resilience4j Circuit Breaker + Bulkhead — prevent cascade failures in MUFG</span>
+    <div class="q-tags"><span class="q-tag">circuit-breaker</span><span class="q-tag">resilience4j</span><span class="q-tag">fallback</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">89%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Problem — Cascade Failure</span><br>Trade service calls FX service. FX service is slow (DB overloaded). Trade service threads pile up waiting &rarr; OOM &rarr; cascade failure. <b>Fix: Circuit Breaker + Bulkhead</b></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Circuit Breaker State Machine</span><br><pre>  +--------+  failures &gt; 50%   +------+
+  | CLOSED |------------------>| OPEN |
+  | normal |                   |fail  |
+  | traffic|                   |fast  |
+  +--------+                   +--+---+
+      ^                           |
+      | success                   | after 30s
+      +------------------+HALF-OPEN+
+                         | 3 trial requests |
+</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Resilience4j Config</span><br><pre># application.yml
+resilience4j:
+  circuitbreaker:
+    instances:
+      fxService:
+        failureRateThreshold: 50
+        slowCallDurationThreshold: 2000ms
+        waitDurationInOpenState: 30s
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowSize: 20
+  retry:
+    instances:
+      fxService:
+        maxAttempts: 3
+        waitDuration: 200ms
+        exponentialBackoffMultiplier: 2
+  bulkhead:
+    instances:
+      fxService:
+        maxConcurrentCalls: 20
+
+@CircuitBreaker(name="fxService", fallbackMethod="fxFallback")
+@Retry(name="fxService")
+@Bulkhead(name="fxService")
+public FxRate getFxRate(String currency) {
+    return fxClient.getRate(currency);
+}
+
+public FxRate fxFallback(String currency, Exception ex) {
+    return rateCache.getLastKnownRate(currency);  // graceful degradation
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-Questions</span><br><div class="followup">&bull; CB vs Retry — when to use each? (CB: flapping service; Retry: transient errors)<br>&bull; What is Bulkhead? (isolate thread pools — FX failure cannot exhaust trade service)<br>&bull; Monitor CB state? (Actuator /circuitbreakers + Micrometer + Grafana)<br>&bull; Exponential backoff with jitter? (prevent thundering herd on recovery)<br>&bull; Resilience4j vs Hystrix? (Hystrix EOL; R4j is functional, lighter)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Technical Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-behavioral">
+  <div class="questions-header">
+    <h3>💬 Behavioral</h3>
+    <span class="q-count">2 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="situational">
+    <span class="q-index">1</span>
+    <span class="q-text">Behavioral — STAR format: challenging project, conflict resolution, teamwork</span>
+    <div class="q-tags"><span class="q-tag">behavioral</span><span class="q-tag">star</span><span class="q-tag">conflict</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-high">85%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Design a Real-Time Reconciliation System (Challenge STAR)</span><br><b>Situation:</b> Legacy nightly batch reconciliation took 8 hours — breaches weren't caught until next morning.<br><b>Task:</b> Redesign as near-real-time with &lt;15 min breach detection window.<br><b>Action:</b> Replaced batch SQL with Kafka consumer comparing SWIFT confirmations vs internal bookings. Used ConcurrentHashMap for in-memory position cache, Spring Batch for EOD reporting, Splunk alerting.<br><b>Result:</b> Reconciliation latency reduced from 8 hours to 12 minutes. Breach detection SLA met. Zero production incidents in 6 months post-launch.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Stakeholder Conflict (STAR)</span><br><b>Situation:</b> Business wanted a new trade amendment feature in 2 weeks; security team required Veracode scan which takes 5 days.<br><b>Task:</b> Balance delivery speed with security compliance.<br><b>Action:</b> Proposed incremental approach — baseline feature with Veracode scan done in parallel (not blocking). Set up automated Veracode in Jenkins so future features are scanned continuously, not as a gate.<br><b>Result:</b> Feature delivered in 2 weeks, security scans embedded in pipeline permanently.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Why MUFG / Banking</span><br>MUFG's mission to be the world's most trusted financial group aligns with building high-integrity systems. Banking requires the highest standards of reliability, security, and audit — challenges that drive engineering excellence in distributed systems, concurrency, and data integrity.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Tell me about a time you had to learn a new technology quickly.<br>• How do you prioritize when multiple high-priority issues come simultaneously?<br>• Describe a time you disagreed with your manager — how did you handle it?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 HR Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="agile">
+    <span class="q-index">2</span>
+    <span class="q-text">Agile/Scrum for banking delivery — sprints, ceremonies, definition of done</span>
+    <div class="q-tags"><span class="q-tag">agile</span><span class="q-tag">scrum</span><span class="q-tag">sprint</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Scrum Framework at MUFG</span><br><b>Roles:</b> Product Owner (PO), Scrum Master, Development Team (you)<br><br><b>Events (Ceremonies):</b><br><ul><li><b>Sprint Planning (start of sprint):</b> Team pulls stories from backlog into sprint. Estimates via story points (Fibonacci: 1,2,3,5,8,13). Agree on sprint goal.</li><li><b>Daily Standup (15 min):</b> What did I do? What will I do? Any blockers?</li><li><b>Sprint Review (end of sprint):</b> Demo completed features to stakeholders</li><li><b>Sprint Retrospective:</b> What went well? What to improve? Action items.</li><li><b>Backlog Refinement (mid-sprint):</b> Groom future stories, clarify ACs, estimate</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Definition of Done (DoD) in Banking</span><br>A story is DONE only when:<br><ol><li>Code complete + peer reviewed (PR approved)</li><li>Unit tests written (>80% coverage via JaCoCo)</li><li>Integration tests pass</li><li>Veracode SAST scan — no P1/P2 findings</li><li>Jenkins pipeline green (build + test + scan + deploy to UAT)</li><li>Functional testing in UAT signed off by QA</li><li>No known critical bugs</li><li>API documentation updated (Swagger/OpenAPI)</li></ol></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">User Story Format at MUFG</span><br><pre>Title: As a Trader, I want to book an equity trade via REST API
+
+Acceptance Criteria (Gherkin):
+Given: I have a valid trade payload with idempotency key
+When: I POST to /api/v1/trades
+Then: Trade is created with status=BOOKED
+And: Trade is published to Kafka trade.booked topic
+And: HTTP 201 Created is returned with trade ID
+
+Non-functional:
+- Response time &lt; 200ms p99
+- Idempotent: same key returns same result without re-processing</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Handling Banking-Specific Constraints in Agile</span><br><ul><li><b>Regulatory releases:</b> Fixed deadlines (MIFID II reporting, Volcker rule compliance)</li><li><b>Change Management:</b> All prod deployments need CAB approval — plan release windows</li><li><b>Risk gates:</b> Security review and Veracode scan mandatory before go-live</li><li><b>Audit trails:</b> Every story must generate traceable audit log entries</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-Questions &amp; Follow-ups</span><br><div class="followup">• What is velocity and how do you use it for sprint planning?<br>• How do you handle a story that won't fit in a sprint? (spike → break down)<br>• Scrum vs Kanban — when would MUFG use Kanban?<br>• How do you manage technical debt in banking systems where feature delivery pressure is high?<br>• What is a release train (SAFe) and do large banks like MUFG use it?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 HR Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-concurrency">
+  <div class="questions-header">
+    <h3>⚡ Concurrency</h3>
+    <span class="q-count">1 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="locking">
+    <span class="q-index">1</span>
+    <span class="q-text">Java concurrency — synchronized vs ReentrantLock, ExecutorService for trade processing</span>
+    <div class="q-tags"><span class="q-tag">synchronized</span><span class="q-tag">reentrantlock</span><span class="q-tag">executorservice</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">synchronized vs ReentrantLock</span><br><pre>// synchronized — simple, no tryLock
+public synchronized void updatePosition(String book, BigDecimal delta) {
+    positions.merge(book, delta, BigDecimal::add);
+}
+
+// ReentrantReadWriteLock — multiple readers OR one writer
+ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
+public void update(String book, BigDecimal d) {
+    rwl.writeLock().lock();
+    try { positions.merge(book, d, BigDecimal::add); }
+    finally { rwl.writeLock().unlock(); }
+}
+public BigDecimal get(String book) {
+    rwl.readLock().lock();
+    try { return positions.getOrDefault(book, ZERO); }
+    finally { rwl.readLock().unlock(); }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Trade Processing ThreadPool</span><br><pre>ExecutorService pool = new ThreadPoolExecutor(
+    10, 50, 60L, SECONDS,
+    new ArrayBlockingQueue&lt;&gt;(10000),   // bounded = backpressure
+    new ThreadFactoryBuilder().setNameFormat("trade-worker-%d").build(),
+    new CallerRunsPolicy());            // natural backpressure on caller
+
+pool.submit(() -&gt; tradeService.process(event));</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Avoiding Deadlock</span><br><ul><li>Always acquire locks in the same order across all threads</li><li>Use <code>tryLock(timeout)</code> to avoid indefinite blocking</li><li>Prefer <code>ConcurrentHashMap</code> + atomic ops over coarse synchronized</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Why is Executors.newFixedThreadPool() dangerous? (unbounded LinkedBlockingQueue)<br>• What is StampedLock and when is it better than RRW Lock?<br>• How do virtual threads (Java 21) change concurrency in banking services?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+</div></div>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-links">
+      <a href="../../common/top-coding.html">Top Coding</a>
+      <a href="../../common/top-system-design.html">System Design</a>
+      <a href="../../common/top-backend.html">Backend</a>
+      <a href="../../common/top-cpp.html">C++</a>
+      <a href="../../common/top-java.html">Java</a>
+      <a href="../../common/top-go.html">Go</a>
+      <a href="../../common/top-database.html">Database</a>
+      <a href="../../common/top-concurrency.html">Concurrency</a>
+      <a href="../../common/top-os.html">OS</a>
+      <a href="../../common/top-networking.html">Networking</a>
+      <a href="../../common/top-lld.html">LLD</a>
+      <a href="../../common/top-cicd.html">CI/CD</a>
+      <a href="../../common/top-security.html">Security</a>
+      <a href="../../common/top-ml.html">ML Systems</a>
+      <a href="../../common/top-perf.html">Performance</a>
+      <a href="../../mcq-quiz.html">MCQ Quiz</a>
+    </div>
+    <p>Built for SDE-1 &amp; SDE-2 Backend Engineers | C++ · Java · Go · Distributed Systems</p>
+    <p style="margin-top:8px;font-size:12px;opacity:.5">Data sourced from LeetCode, Glassdoor, Blind, Reddit &amp; public interview experiences</p>
+  </div>
+</footer>
+<button id="back-to-top" title="Back to top">↑</button>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,871 @@
+[
+  {
+    "name": "Google",
+    "slug": "google",
+    "tier": 1,
+    "tier_name": "Elite",
+    "difficulty": "Very Hard",
+    "difficulty_score": 4.8,
+    "avg_rounds": 5,
+    "hq": "Mountain View, CA",
+    "focus": [
+      "DSA",
+      "System Design",
+      "Googleyness"
+    ],
+    "question_count": 364
+  },
+  {
+    "name": "Meta",
+    "slug": "meta",
+    "tier": 1,
+    "tier_name": "Elite",
+    "difficulty": "Very Hard",
+    "difficulty_score": 4.7,
+    "avg_rounds": 5,
+    "hq": "Menlo Park, CA",
+    "focus": [
+      "DSA",
+      "System Design",
+      "Product Sense"
+    ],
+    "question_count": 284
+  },
+  {
+    "name": "OpenAI",
+    "slug": "openai",
+    "tier": 1,
+    "tier_name": "Elite",
+    "difficulty": "Very Hard",
+    "difficulty_score": 4.9,
+    "avg_rounds": 6,
+    "hq": "San Francisco, CA",
+    "focus": [
+      "ML Systems",
+      "Distributed Systems",
+      "Backend",
+      "DSA"
+    ],
+    "question_count": 1
+  },
+  {
+    "name": "Stripe",
+    "slug": "stripe",
+    "tier": 1,
+    "tier_name": "Elite",
+    "difficulty": "Very Hard",
+    "difficulty_score": 4.7,
+    "avg_rounds": 5,
+    "hq": "San Francisco, CA",
+    "focus": [
+      "Backend",
+      "API Design",
+      "Reliability",
+      "DSA"
+    ],
+    "question_count": 99
+  },
+  {
+    "name": "Databricks",
+    "slug": "databricks",
+    "tier": 1,
+    "tier_name": "Elite",
+    "difficulty": "Hard",
+    "difficulty_score": 4.5,
+    "avg_rounds": 5,
+    "hq": "San Francisco, CA",
+    "focus": [
+      "Distributed Systems",
+      "Data Engineering",
+      "Spark",
+      "Backend"
+    ],
+    "question_count": 74
+  },
+  {
+    "name": "Snowflake",
+    "slug": "snowflake",
+    "tier": 1,
+    "tier_name": "Elite",
+    "difficulty": "Hard",
+    "difficulty_score": 4.4,
+    "avg_rounds": 5,
+    "hq": "Bozeman, MT",
+    "focus": [
+      "Database Internals",
+      "Distributed Systems",
+      "Backend",
+      "C++"
+    ],
+    "question_count": 38
+  },
+  {
+    "name": "Uber",
+    "slug": "uber",
+    "tier": 2,
+    "tier_name": "Top Product",
+    "difficulty": "Hard",
+    "difficulty_score": 4.3,
+    "avg_rounds": 5,
+    "hq": "San Francisco, CA",
+    "focus": [
+      "Backend",
+      "Distributed Systems",
+      "System Design",
+      "Go"
+    ],
+    "question_count": 222
+  },
+  {
+    "name": "Airbnb",
+    "slug": "airbnb",
+    "tier": 2,
+    "tier_name": "Top Product",
+    "difficulty": "Hard",
+    "difficulty_score": 4.2,
+    "avg_rounds": 5,
+    "hq": "San Francisco, CA",
+    "focus": [
+      "Backend",
+      "System Design",
+      "DSA",
+      "Cross-functional"
+    ],
+    "question_count": 15
+  },
+  {
+    "name": "LinkedIn",
+    "slug": "linkedin",
+    "tier": 2,
+    "tier_name": "Top Product",
+    "difficulty": "Hard",
+    "difficulty_score": 4.1,
+    "avg_rounds": 5,
+    "hq": "Sunnyvale, CA",
+    "focus": [
+      "Backend",
+      "DSA",
+      "System Design",
+      "Java"
+    ],
+    "question_count": 196
+  },
+  {
+    "name": "Microsoft",
+    "slug": "microsoft",
+    "tier": 2,
+    "tier_name": "Top Product",
+    "difficulty": "Hard",
+    "difficulty_score": 4.0,
+    "avg_rounds": 4,
+    "hq": "Redmond, WA",
+    "focus": [
+      "DSA",
+      "LLD",
+      "System Design",
+      "Culture Fit"
+    ],
+    "question_count": 171
+  },
+  {
+    "name": "Apple",
+    "slug": "apple",
+    "tier": 2,
+    "tier_name": "Top Product",
+    "difficulty": "Hard",
+    "difficulty_score": 4.1,
+    "avg_rounds": 5,
+    "hq": "Cupertino, CA",
+    "focus": [
+      "DSA",
+      "System Design",
+      "Domain-specific",
+      "C++"
+    ],
+    "question_count": 41
+  },
+  {
+    "name": "Netflix",
+    "slug": "netflix",
+    "tier": 2,
+    "tier_name": "Top Product",
+    "difficulty": "Hard",
+    "difficulty_score": 4.2,
+    "avg_rounds": 4,
+    "hq": "Los Gatos, CA",
+    "focus": [
+      "System Design",
+      "Backend",
+      "Distributed Systems",
+      "Java"
+    ],
+    "question_count": 21
+  },
+  {
+    "name": "Amazon",
+    "slug": "amazon",
+    "tier": 3,
+    "tier_name": "Strong Product",
+    "difficulty": "Hard",
+    "difficulty_score": 4.0,
+    "avg_rounds": 5,
+    "hq": "Seattle, WA",
+    "focus": [
+      "DSA",
+      "LLD",
+      "HLD",
+      "Leadership Principles",
+      "Behavioral"
+    ],
+    "question_count": 281
+  },
+  {
+    "name": "Atlassian",
+    "slug": "atlassian",
+    "tier": 3,
+    "tier_name": "Strong Product",
+    "difficulty": "Medium-Hard",
+    "difficulty_score": 3.8,
+    "avg_rounds": 4,
+    "hq": "Sydney, Australia",
+    "focus": [
+      "Backend",
+      "System Design",
+      "Values",
+      "DSA"
+    ],
+    "question_count": 26
+  },
+  {
+    "name": "Adobe",
+    "slug": "adobe",
+    "tier": 3,
+    "tier_name": "Strong Product",
+    "difficulty": "Medium-Hard",
+    "difficulty_score": 3.7,
+    "avg_rounds": 4,
+    "hq": "San Jose, CA",
+    "focus": [
+      "DSA",
+      "LLD",
+      "System Design",
+      "Domain"
+    ],
+    "question_count": 21
+  },
+  {
+    "name": "Salesforce",
+    "slug": "salesforce",
+    "tier": 3,
+    "tier_name": "Strong Product",
+    "difficulty": "Medium-Hard",
+    "difficulty_score": 3.6,
+    "avg_rounds": 4,
+    "hq": "San Francisco, CA",
+    "focus": [
+      "Backend",
+      "Java",
+      "System Design",
+      "OOP"
+    ],
+    "question_count": 7
+  },
+  {
+    "name": "Coinbase",
+    "slug": "coinbase",
+    "tier": 3,
+    "tier_name": "Strong Product",
+    "difficulty": "Hard",
+    "difficulty_score": 4.0,
+    "avg_rounds": 5,
+    "hq": "San Francisco, CA",
+    "focus": [
+      "Backend",
+      "Distributed Systems",
+      "Go",
+      "Crypto/Blockchain"
+    ],
+    "question_count": 45
+  },
+  {
+    "name": "Nvidia",
+    "slug": "nvidia",
+    "tier": 3,
+    "tier_name": "Strong Product",
+    "difficulty": "Hard",
+    "difficulty_score": 4.1,
+    "avg_rounds": 5,
+    "hq": "Santa Clara, CA",
+    "focus": [
+      "Systems",
+      "C++",
+      "GPU Programming",
+      "DSA"
+    ],
+    "question_count": 59
+  },
+  {
+    "name": "Walmart Global Tech",
+    "slug": "walmart",
+    "tier": 4,
+    "tier_name": "Upper Product",
+    "difficulty": "Medium",
+    "difficulty_score": 3.4,
+    "avg_rounds": 4,
+    "hq": "Bentonville, AR",
+    "focus": [
+      "Backend",
+      "Java",
+      "System Design",
+      "DSA"
+    ],
+    "question_count": 0
+  },
+  {
+    "name": "PayPal",
+    "slug": "paypal",
+    "tier": 4,
+    "tier_name": "Upper Product",
+    "difficulty": "Medium",
+    "difficulty_score": 3.3,
+    "avg_rounds": 4,
+    "hq": "San Jose, CA",
+    "focus": [
+      "Backend",
+      "Java",
+      "Payments",
+      "DSA"
+    ],
+    "question_count": 46
+  },
+  {
+    "name": "Oracle",
+    "slug": "oracle",
+    "tier": 4,
+    "tier_name": "Upper Product",
+    "difficulty": "Medium",
+    "difficulty_score": 3.3,
+    "avg_rounds": 4,
+    "hq": "Austin, TX",
+    "focus": [
+      "Database",
+      "Java",
+      "Backend",
+      "DSA"
+    ],
+    "question_count": 35
+  },
+  {
+    "name": "Cisco",
+    "slug": "cisco",
+    "tier": 4,
+    "tier_name": "Upper Product",
+    "difficulty": "Medium",
+    "difficulty_score": 3.2,
+    "avg_rounds": 4,
+    "hq": "San Jose, CA",
+    "focus": [
+      "Networking",
+      "Backend",
+      "C++",
+      "DSA"
+    ],
+    "question_count": 28
+  },
+  {
+    "name": "VMware",
+    "slug": "vmware",
+    "tier": 4,
+    "tier_name": "Upper Product",
+    "difficulty": "Medium",
+    "difficulty_score": 3.2,
+    "avg_rounds": 4,
+    "hq": "Palo Alto, CA",
+    "focus": [
+      "Systems",
+      "C++",
+      "Virtualization",
+      "DSA"
+    ],
+    "question_count": 21
+  },
+  {
+    "name": "ServiceNow",
+    "slug": "servicenow",
+    "tier": 4,
+    "tier_name": "Upper Product",
+    "difficulty": "Medium",
+    "difficulty_score": 3.3,
+    "avg_rounds": 4,
+    "hq": "Santa Clara, CA",
+    "focus": [
+      "Backend",
+      "Java",
+      "System Design",
+      "DSA"
+    ],
+    "question_count": 0
+  },
+  {
+    "name": "Razorpay",
+    "slug": "razorpay",
+    "tier": 5,
+    "tier_name": "Indian Unicorn",
+    "difficulty": "Hard",
+    "difficulty_score": 3.8,
+    "avg_rounds": 4,
+    "hq": "Bangalore, India",
+    "focus": [
+      "Backend",
+      "Go",
+      "System Design",
+      "DSA",
+      "Payments"
+    ],
+    "question_count": 176
+  },
+  {
+    "name": "PhonePe",
+    "slug": "phonepe",
+    "tier": 5,
+    "tier_name": "Indian Unicorn",
+    "difficulty": "Hard",
+    "difficulty_score": 3.7,
+    "avg_rounds": 4,
+    "hq": "Bangalore, India",
+    "focus": [
+      "Backend",
+      "Java",
+      "System Design",
+      "DSA",
+      "Payments"
+    ],
+    "question_count": 78
+  },
+  {
+    "name": "Swiggy",
+    "slug": "swiggy",
+    "tier": 5,
+    "tier_name": "Indian Unicorn",
+    "difficulty": "Medium-Hard",
+    "difficulty_score": 3.5,
+    "avg_rounds": 4,
+    "hq": "Bangalore, India",
+    "focus": [
+      "Backend",
+      "Go",
+      "System Design",
+      "DSA"
+    ],
+    "question_count": 85
+  },
+  {
+    "name": "Zomato",
+    "slug": "zomato",
+    "tier": 5,
+    "tier_name": "Indian Unicorn",
+    "difficulty": "Medium-Hard",
+    "difficulty_score": 3.4,
+    "avg_rounds": 4,
+    "hq": "Gurugram, India",
+    "focus": [
+      "Backend",
+      "Go",
+      "System Design",
+      "DSA"
+    ],
+    "question_count": 64
+  },
+  {
+    "name": "Meesho",
+    "slug": "meesho",
+    "tier": 5,
+    "tier_name": "Indian Unicorn",
+    "difficulty": "Medium",
+    "difficulty_score": 3.3,
+    "avg_rounds": 4,
+    "hq": "Bangalore, India",
+    "focus": [
+      "Backend",
+      "Java",
+      "System Design",
+      "DSA"
+    ],
+    "question_count": 2
+  },
+  {
+    "name": "Groww",
+    "slug": "groww",
+    "tier": 5,
+    "tier_name": "Indian Unicorn",
+    "difficulty": "Medium-Hard",
+    "difficulty_score": 3.5,
+    "avg_rounds": 4,
+    "hq": "Bangalore, India",
+    "focus": [
+      "Backend",
+      "Java",
+      "System Design",
+      "DSA",
+      "Fintech"
+    ],
+    "question_count": 24
+  },
+  {
+    "name": "CRED",
+    "slug": "cred",
+    "tier": 5,
+    "tier_name": "Indian Unicorn",
+    "difficulty": "Hard",
+    "difficulty_score": 3.8,
+    "avg_rounds": 5,
+    "hq": "Bangalore, India",
+    "focus": [
+      "Backend",
+      "Go",
+      "System Design",
+      "DSA"
+    ],
+    "question_count": 115
+  },
+  {
+    "name": "Expedia",
+    "slug": "expedia",
+    "tier": 6,
+    "tier_name": "Large Product",
+    "difficulty": "Medium",
+    "difficulty_score": 3.2,
+    "avg_rounds": 4,
+    "hq": "Seattle, WA",
+    "focus": [
+      "Backend",
+      "Java",
+      "System Design",
+      "DSA"
+    ],
+    "question_count": 1
+  },
+  {
+    "name": "InMobi",
+    "slug": "inmobi",
+    "tier": 6,
+    "tier_name": "Large Product",
+    "difficulty": "Medium",
+    "difficulty_score": 3.2,
+    "avg_rounds": 4,
+    "hq": "Bangalore, India",
+    "focus": [
+      "Backend",
+      "DSA",
+      "System Design",
+      "Ad Tech"
+    ],
+    "question_count": 0
+  },
+  {
+    "name": "Freshworks",
+    "slug": "freshworks",
+    "tier": 6,
+    "tier_name": "Large Product",
+    "difficulty": "Medium",
+    "difficulty_score": 3.0,
+    "avg_rounds": 4,
+    "hq": "Chennai, India",
+    "focus": [
+      "Backend",
+      "Ruby/Java",
+      "System Design",
+      "DSA"
+    ],
+    "question_count": 0
+  },
+  {
+    "name": "Zoho",
+    "slug": "zoho",
+    "tier": 6,
+    "tier_name": "Large Product",
+    "difficulty": "Medium",
+    "difficulty_score": 2.8,
+    "avg_rounds": 3,
+    "hq": "Chennai, India",
+    "focus": [
+      "DSA",
+      "Java",
+      "Backend",
+      "Problem Solving"
+    ],
+    "question_count": 0
+  },
+  {
+    "name": "Dream11",
+    "slug": "dream11",
+    "tier": 6,
+    "tier_name": "Large Product",
+    "difficulty": "Medium-Hard",
+    "difficulty_score": 3.4,
+    "avg_rounds": 4,
+    "hq": "Mumbai, India",
+    "focus": [
+      "Backend",
+      "Go",
+      "System Design",
+      "DSA",
+      "Gaming"
+    ],
+    "question_count": 62
+  },
+  {
+    "name": "BrowserStack",
+    "slug": "browserstack",
+    "tier": 6,
+    "tier_name": "Large Product",
+    "difficulty": "Medium-Hard",
+    "difficulty_score": 3.5,
+    "avg_rounds": 4,
+    "hq": "Mumbai, India",
+    "focus": [
+      "Backend",
+      "Go/Ruby",
+      "System Design",
+      "DSA"
+    ],
+    "question_count": 12
+  },
+  {
+    "name": "MUFG Global Services",
+    "slug": "mufg-global-services",
+    "tier": 6,
+    "tier_name": "Large Product",
+    "difficulty": "Medium-Hard",
+    "difficulty_score": 3.4,
+    "avg_rounds": 5,
+    "hq": "Bangalore, India (GCC of MUFG Bank, Tokyo)",
+    "focus": [
+      "Java",
+      "Spring Boot",
+      "Microservices",
+      "Angular",
+      "Banking Domain",
+      "Kafka",
+      "OpenShift"
+    ],
+    "question_count": 43
+  },
+  {
+    "name": "Persistent Systems",
+    "slug": "persistent",
+    "tier": 7,
+    "tier_name": "Midsize Tech",
+    "difficulty": "Medium",
+    "difficulty_score": 3.0,
+    "avg_rounds": 3,
+    "hq": "Pune, India",
+    "focus": [
+      "DSA",
+      "Java/C++",
+      "OOPS",
+      "Backend"
+    ],
+    "question_count": 0
+  },
+  {
+    "name": "LTIMindtree",
+    "slug": "ltimindtree",
+    "tier": 7,
+    "tier_name": "Midsize Tech",
+    "difficulty": "Medium",
+    "difficulty_score": 2.8,
+    "avg_rounds": 3,
+    "hq": "Mumbai, India",
+    "focus": [
+      "Java",
+      "DSA",
+      "Backend",
+      "SQL"
+    ],
+    "question_count": 0
+  },
+  {
+    "name": "GlobalLogic",
+    "slug": "globallogic",
+    "tier": 7,
+    "tier_name": "Midsize Tech",
+    "difficulty": "Medium",
+    "difficulty_score": 2.9,
+    "avg_rounds": 3,
+    "hq": "San Jose, CA",
+    "focus": [
+      "DSA",
+      "Backend",
+      "C++/Java",
+      "System Design"
+    ],
+    "question_count": 0
+  },
+  {
+    "name": "EPAM Systems",
+    "slug": "epam",
+    "tier": 7,
+    "tier_name": "Midsize Tech",
+    "difficulty": "Medium",
+    "difficulty_score": 3.0,
+    "avg_rounds": 3,
+    "hq": "Newtown, PA",
+    "focus": [
+      "DSA",
+      "Java",
+      "Backend",
+      "System Design"
+    ],
+    "question_count": 0
+  },
+  {
+    "name": "Nagarro",
+    "slug": "nagarro",
+    "tier": 7,
+    "tier_name": "Midsize Tech",
+    "difficulty": "Easy-Medium",
+    "difficulty_score": 2.5,
+    "avg_rounds": 3,
+    "hq": "Gurugram, India",
+    "focus": [
+      "DSA",
+      "Java/.NET",
+      "Backend"
+    ],
+    "question_count": 0
+  },
+  {
+    "name": "TCS",
+    "slug": "tcs",
+    "tier": 8,
+    "tier_name": "Service Based",
+    "difficulty": "Easy-Medium",
+    "difficulty_score": 2.2,
+    "avg_rounds": 3,
+    "hq": "Mumbai, India",
+    "focus": [
+      "DSA Basics",
+      "Java/Python",
+      "SQL",
+      "Aptitude"
+    ],
+    "question_count": 33
+  },
+  {
+    "name": "Infosys",
+    "slug": "infosys",
+    "tier": 8,
+    "tier_name": "Service Based",
+    "difficulty": "Easy-Medium",
+    "difficulty_score": 2.3,
+    "avg_rounds": 3,
+    "hq": "Bangalore, India",
+    "focus": [
+      "DSA Basics",
+      "Java",
+      "SQL",
+      "OOP"
+    ],
+    "question_count": 33
+  },
+  {
+    "name": "Wipro",
+    "slug": "wipro",
+    "tier": 8,
+    "tier_name": "Service Based",
+    "difficulty": "Easy-Medium",
+    "difficulty_score": 2.2,
+    "avg_rounds": 3,
+    "hq": "Bangalore, India",
+    "focus": [
+      "DSA Basics",
+      "Java/Python",
+      "SQL"
+    ],
+    "question_count": 8
+  },
+  {
+    "name": "Cognizant",
+    "slug": "cognizant",
+    "tier": 8,
+    "tier_name": "Service Based",
+    "difficulty": "Easy-Medium",
+    "difficulty_score": 2.3,
+    "avg_rounds": 3,
+    "hq": "Teaneck, NJ",
+    "focus": [
+      "Java",
+      "SQL",
+      "DSA Basics",
+      "OOP"
+    ],
+    "question_count": 2
+  },
+  {
+    "name": "Accenture",
+    "slug": "accenture",
+    "tier": 8,
+    "tier_name": "Service Based",
+    "difficulty": "Easy-Medium",
+    "difficulty_score": 2.2,
+    "avg_rounds": 3,
+    "hq": "Dublin, Ireland",
+    "focus": [
+      "Java",
+      "SQL",
+      "DSA Basics"
+    ],
+    "question_count": 0
+  },
+  {
+    "name": "HCL Technologies",
+    "slug": "hcl",
+    "tier": 8,
+    "tier_name": "Service Based",
+    "difficulty": "Easy-Medium",
+    "difficulty_score": 2.2,
+    "avg_rounds": 3,
+    "hq": "Noida, India",
+    "focus": [
+      "Java/C++",
+      "SQL",
+      "DSA Basics"
+    ],
+    "question_count": 0
+  },
+  {
+    "name": "Tech Mahindra",
+    "slug": "techmahindra",
+    "tier": 8,
+    "tier_name": "Service Based",
+    "difficulty": "Easy-Medium",
+    "difficulty_score": 2.2,
+    "avg_rounds": 3,
+    "hq": "Pune, India",
+    "focus": [
+      "Java",
+      "SQL",
+      "DSA Basics",
+      "Telecom"
+    ],
+    "question_count": 0
+  },
+  {
+    "name": "Capgemini",
+    "slug": "capgemini",
+    "tier": 8,
+    "tier_name": "Service Based",
+    "difficulty": "Easy-Medium",
+    "difficulty_score": 2.2,
+    "avg_rounds": 3,
+    "hq": "Paris, France",
+    "focus": [
+      "Java",
+      "SQL",
+      "Cloud",
+      "DSA Basics"
+    ],
+    "question_count": 0
+  }
+]

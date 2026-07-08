@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coinbase | InterviewRepo — Backend SDE Interview Prep</title>
+  <meta name="description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Coinbase">
+  <meta name="keywords" content="backend interview questions, SDE interview prep, system design, DSA, C++ interview, Java interview, Go interview, coinbase">
+  <meta name="author" content="InterviewRepo">
+  <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="InterviewRepo — Backend SDE Prep">
+  <meta property="og:title"       content="Coinbase | InterviewRepo">
+  <meta property="og:description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Coinbase">
+  <meta property="og:url"         content="https://devinterviewvault.netlify.app">
+  <meta property="og:image"       content="https://devinterviewvault.netlify.app/assets/og-image.png">
+  <meta name="twitter:card"       content="summary_large_image">
+  <meta name="twitter:title"      content="Coinbase | InterviewRepo">
+  <meta name="twitter:description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Coinbase">
+  <meta name="twitter:image"      content="https://devinterviewvault.netlify.app/assets/og-image.png">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://devinterviewvault.netlify.app">
+  <meta name="google-site-verification" content="a8bdedb3bc5f858c">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Coinbase", "description": "SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design \u2014 Coinbase", "url": "https://devinterviewvault.netlify.app", "publisher": {"@type": "Organization", "name": "InterviewRepo"}}</script>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+</head>
+<body>
+<nav class="navbar">
+  <a class="navbar-brand" href="../../index.html">
+    <span class="logo-icon">⚡</span>
+    <span>InterviewRepo</span>
+  </a>
+  <div class="search-bar">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="search-input" placeholder="Search questions… (Ctrl+K)" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <nav class="navbar-nav">
+    <a href="../../index.html">Home</a>
+    <a href="../../common/top-coding.html">Top DSA</a>
+    <a href="../../common/top-system-design.html">System Design</a>
+    <a href="../../common/top-backend.html">Backend</a>
+    <a href="../../common/top-cpp.html">C++</a>
+    <a href="../../common/top-java.html">Java</a>
+    <a href="../../common/top-go.html">Go</a>
+    <a href="../../mcq-quiz.html" style="background:linear-gradient(90deg,#6366f1,#8b5cf6);color:#fff;padding:.3rem .75rem;border-radius:.4rem;font-weight:600">🎯 MCQ Quiz</a>
+  </nav>
+</nav>
+<div class="company-header">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../../index.html">Home</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="../index.html">Tier 3: Strong Product</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>Coinbase</span>
+    </div>
+    <div class="company-header-inner">
+      <div class="company-logo-placeholder">C</div>
+      <div class="company-info">
+        <div style="margin-bottom:8px">
+          <span class="tier-badge" data-tier="3" style="--tier-color:#CD7F32">Tier 3: Strong Product</span>
+          <span class="difficulty-badge diff-hard" style="margin-left:8px">Hard</span>
+        </div>
+        <h1>Coinbase</h1>
+        <p style="color:var(--text-muted);margin-top:8px">Blockchain systems, Go backend, financial transactions</p>
+        <div class="company-info-meta">
+          <span class="info-chip"><strong>HQ:</strong> San Francisco, CA</span>
+          <span class="info-chip"><strong>Roles:</strong> SDE-1, SDE-2, Senior SDE</span>
+          <span class="info-chip"><strong>Focus:</strong> Backend · Distributed Systems · Go · Crypto/Blockchain</span>
+          <span class="info-chip"><strong>Interview:</strong> Coding + System Design + Domain (crypto) + HM</span>
+        </div>
+        <div class="company-stats">
+          <div class="stat-item"><div class="stat-value">45</div><div class="stat-label">Questions</div></div>
+          <div class="stat-item"><div class="stat-value">5</div><div class="stat-label">Avg Rounds</div></div>
+          <div class="stat-item"><div class="stat-value">4.0/5</div><div class="stat-label">Difficulty</div></div>
+          <div class="stat-item"><div class="stat-value">7</div><div class="stat-label">Categories</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><div class="container" style="padding:32px 24px 0">
+  <h2 style="font-size:22px;font-weight:700;margin-bottom:16px">📋 Interview Rounds</h2>
+  <div class="rounds-grid"><div class="round-card">
+  <div class="round-number">Round 1</div>
+  <div class="round-name">Online Assessment (90 min)</div>
+  <div class="round-duration">60-90 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 2</div>
+  <div class="round-name">Technical Phone Screen</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 3</div>
+  <div class="round-name">Coding Round 1</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 4</div>
+  <div class="round-name">System Design / LLD</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 5</div>
+  <div class="round-name">Hiring Manager</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 6</div>
+  <div class="round-name">HR</div>
+  <div class="round-duration">30-45 min</div>
+</div></div>
+</div><div class="container" style="padding:24px 24px 0">
+  <h2 style="font-size:20px;font-weight:700;margin-bottom:14px">🔥 Most Frequently Asked</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:10px;margin-bottom:8px"><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">Docker container vs Virtual Machine — key differences?</div>
+    <div style="font-size:12px;color:var(--text-muted)">Cicd · Easy · 93% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">Goroutines vs OS threads</div>
+    <div style="font-size:12px;color:var(--text-muted)">Go · Medium · 92% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">TCP 3-way handshake, 4-way termination, TIME_WAIT</div>
+    <div style="font-size:12px;color:var(--text-muted)">Networking · Medium · 92% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">Design a payment system — processing, idempotency, reconciliation</div>
+    <div style="font-size:12px;color:var(--text-muted)">System Design · Hard · 92% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">Channels: buffered vs unbuffered</div>
+    <div style="font-size:12px;color:var(--text-muted)">Go · Medium · 90% frequency</div>
+  </div>
+</div></div>
+</div><div class="tabs-bar"><div class="tabs-inner"><button class="tab-btn active" data-tab="system_design">🏗️ System Design <span style="opacity:.5;font-size:11px">(2)</span></button>
+<button class="tab-btn" data-tab="go">🐹 Go <span style="opacity:.5;font-size:11px">(17)</span></button>
+<button class="tab-btn" data-tab="security">🔒 Security <span style="opacity:.5;font-size:11px">(4)</span></button>
+<button class="tab-btn" data-tab="lld">📐 LLD <span style="opacity:.5;font-size:11px">(3)</span></button>
+<button class="tab-btn" data-tab="networking">🌐 Networking <span style="opacity:.5;font-size:11px">(11)</span></button>
+<button class="tab-btn" data-tab="cicd">🚀 CI/CD & DevOps <span style="opacity:.5;font-size:11px">(6)</span></button>
+<button class="tab-btn" data-tab="ml_systems">🤖 ML Systems <span style="opacity:.5;font-size:11px">(2)</span></button></div></div>
+<div class="container"><div class="tab-panel active" id="tab-system_design">
+  <div class="questions-header">
+    <h3>🏗️ System Design</h3>
+    <span class="q-count">2 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="fintech">
+    <span class="q-index">1</span>
+    <span class="q-text">Design a payment system — processing, idempotency, reconciliation</span>
+    <div class="q-tags"><span class="q-tag">payments</span><span class="q-tag">idempotency</span><span class="q-tag">saga</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">92%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Payment Flow</span><br><pre>Customer → Payment Gateway → Razorpay/Stripe
+                              ↓
+                    Payment Processor → Card Network (Visa/Mastercard)
+                                          ↓
+                                  Issuing Bank (authorize)
+                                          ↓ (approve/decline)
+                    Settlement Service (T+1 or T+2 days)
+                    Ledger Service (double-entry bookkeeping)</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Idempotency</span><br>Critical: if client retries payment request, must not double-charge.<br><pre>Client sends: POST /payments
+              Idempotency-Key: uuid-v4-from-client
+
+Server: INSERT INTO payments (idempotency_key, ...)
+        ON CONFLICT (idempotency_key) DO NOTHING
+        RETURNING *;
+// If key exists → return stored result (no double processing)</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Saga Pattern for Distributed Payment</span><br><pre>1. Reserve inventory
+2. Debit customer account
+3. Credit merchant account
+4. Fulfill order
+On failure at step 3: compensate (refund), release inventory</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Ledger / Double-Entry</span><br>Every transaction = two entries: debit one account, credit another. Prevents money creation/destruction. Immutable append-only ledger. Balance = sum(credits) - sum(debits) from ledger.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you handle partial captures and refunds?</li><li>How does 3D Secure (3DS) work for fraud prevention?</li><li>How do you implement end-of-day reconciliation?</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is PCI-DSS and what are its key requirements?<br>• How does a payment gateway differ from a payment processor?<br>• What is the two-phase commit problem in distributed payments?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Stripe, Razorpay, PhonePe, PayPal, CRED, Coinbase...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="distributed">
+    <span class="q-index">2</span>
+    <span class="q-text">Design a distributed key-value store (like Redis/DynamoDB)</span>
+    <div class="q-tags"><span class="q-tag">distributed-kv</span><span class="q-tag">consistent-hashing</span><span class="q-tag">replication</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Architecture</span><br><pre>Client → Load Balancer → Coordinator Node
+                            ↓ (consistent hash ring)
+                        Partition 0 → Replica A, B, C
+                        Partition 1 → Replica D, E, F
+                        ...
+</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Data Distribution</span><br>Consistent hashing: keys mapped to ring. Each node owns a range. Virtual nodes (vnodes): each physical node = 100-200 vnodes for even distribution. Adding/removing node: only adjacent vnodes affected.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Replication</span><br>Each key replicated to N nodes (typically N=3, DynamoDB style). Coordinator writes to all N. Quorum: W=2 (write), R=2 (read) → W+R&gt;N = strong consistency. W=1, R=1 → eventual consistency, highest availability.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Conflict Resolution</span><br>Vector clocks track causality. On divergent versions (network partition): return both to client (DynamoDB shopping cart), or last-write-wins (LWW) for simpler cases.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Storage Engine</span><br>LSM Tree (write-optimized): MemTable → immutable SSTable → compaction. B+Tree (read-optimized): InnoDB, LMDB. LSM preferred for KV stores: fast sequential writes, compaction amortizes cost.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you handle hot keys? (request sharding, local cache)</li><li>How does gossip protocol maintain cluster membership?</li><li>How does hinted handoff handle temporary node failure?</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is sloppy quorum and hinted handoff in DynamoDB?<br>• How does Redis Cluster implement hash slots? (16384 slots)<br>• Compare DynamoDB vs Cassandra vs Redis Cluster architecture.</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-go">
+  <div class="questions-header">
+    <h3>🐹 Go</h3>
+    <span class="q-count">17 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="concurrency">
+    <span class="q-index">1</span>
+    <span class="q-text">Goroutines vs OS threads</span>
+    <div class="q-tags"><span class="q-tag">goroutines</span><span class="q-tag">threads</span><span class="q-tag">gmp</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">92%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Goroutines vs OS Threads</span><br><ul><li><b>Goroutine:</b> ~2KB initial stack (grows dynamically to hundreds of MB if needed). M:N threading — N goroutines multiplexed onto M OS threads. Scheduled by Go runtime.</li><li><b>OS Thread:</b> ~1MB stack (fixed at creation). 1:1 with kernel thread. Expensive context switch (μs).</li><li>Can run millions of goroutines. Thousands of OS threads = OOM.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">GMP Model (brief)</span><br><ul><li><b>G:</b> Goroutine (the task)</li><li><b>M:</b> OS thread (the runner)</li><li><b>P:</b> Processor/scheduler context (GOMAXPROCS Ps). Each P has local run queue.</li><li>When G blocks on syscall → M + G detach from P → P gets another M to continue work</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is goroutine stack growth mechanism? (segmented stacks → copying stacks since Go 1.4)<br>• What is GOMAXPROCS and when would you change it?<br>• How do goroutines avoid the 10K thread problem?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Uber, Razorpay, Swiggy, Zomato, CRED...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="concurrency">
+    <span class="q-index">2</span>
+    <span class="q-text">Channels: buffered vs unbuffered</span>
+    <div class="q-tags"><span class="q-tag">channels</span><span class="q-tag">buffered</span><span class="q-tag">synchronous</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Buffered vs Unbuffered Channels</span><br><ul><li><b>Unbuffered <code>make(chan T)</code>:</b> Sender blocks until receiver is ready. Receiver blocks until sender sends. Strict synchronization point (rendezvous).</li><li><b>Buffered <code>make(chan T, n)</code>:</b> Sender blocks only when buffer full. Receiver blocks only when buffer empty. Decouples send and receive timing.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Usage Patterns</span><br><pre>// Semaphore (limit concurrency to 5):
+sem := make(chan struct{}, 5)
+for _, job := range jobs {
+    sem &lt;- struct{}{}  // acquire
+    go func(j Job) {
+        defer func() { &lt;-sem }()  // release
+        process(j)
+    }(job)
+}
+
+// Signal (done channel):
+done := make(chan struct{})
+go func() { defer close(done); doWork() }()
+&lt;-done  // wait for completion</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Closing Channels</span><br>Only sender should close. Closing a closed channel panics. Reading from closed channel returns zero value + false: <code>v, ok := &lt;-ch; if !ok { // closed }</code></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What happens if you send to a nil channel? (blocks forever)<br>• How do you implement a timeout using select?<br>• What is the difference between closing a channel and sending a sentinel value?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Uber, Razorpay, Swiggy, CRED, Coinbase...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="patterns">
+    <span class="q-index">3</span>
+    <span class="q-text">context.Context — usage and best practices</span>
+    <div class="q-tags"><span class="q-tag">context</span><span class="q-tag">cancellation</span><span class="q-tag">deadline</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">context.Context Usage</span><br><pre>// HTTP server: request context already has deadline
+func handleRequest(w http.ResponseWriter, r *http.Request) {
+    ctx := r.Context()  // already has connection lifetime context
+    ctx, cancel := context.WithTimeout(ctx, 5*time.Second)
+    defer cancel()  // ALWAYS defer cancel to free resources
+    
+    result, err := db.QueryContext(ctx, query)  // cancelled if handler times out
+    ...
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">WithValue Best Practices</span><br><pre>type contextKey struct{}  // unexported type prevents collisions
+type userKey struct{}
+
+ctx = context.WithValue(ctx, userKey{}, &amp;User{ID: 42})
+
+// Retrieve:
+if user, ok := ctx.Value(userKey{}).(*User); ok {
+    // use user
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Propagation</span><br>Always pass ctx as first parameter. Never store context in struct fields. Never pass nil context (use context.TODO() or context.Background() as root).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the difference between context.Background() and context.TODO()?<br>• What happens when a parent context is cancelled? (all child contexts are also cancelled)<br>• How do you implement a context-aware sleep?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Uber, Razorpay, Swiggy, Zomato, CRED...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="patterns">
+    <span class="q-index">4</span>
+    <span class="q-text">Go context package — propagation, timeout, cancellation</span>
+    <div class="q-tags"><span class="q-tag">context</span><span class="q-tag">cancellation</span><span class="q-tag">timeout</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Context Tree</span><br><pre>// Root
+ctx := context.Background()
+
+// Cancellable
+ctx, cancel := context.WithCancel(ctx)
+defer cancel()  // always call cancel to free resources
+
+// With timeout
+ctx, cancel = context.WithTimeout(ctx, 5*time.Second)
+defer cancel()
+
+// With deadline
+ctx, cancel = context.WithDeadline(ctx, time.Now().Add(5*time.Second))
+
+// With value (carry request-scoped data)
+ctx = context.WithValue(ctx, userKey{}, user)</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Checking cancellation</span><br><pre>func doWork(ctx context.Context) error {
+    for {
+        select {
+        case &lt;-ctx.Done():
+            return ctx.Err()  // context.Canceled or DeadlineExceeded
+        case result := &lt;-workChan:
+            process(result)
+        }
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Propagation</span><br>Always pass context as <b>first parameter</b>. Context propagates cancellation to all child contexts automatically.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">context.Value best practices</span><br><ul><li>Use only for request-scoped data: traceID, userID, auth token</li><li>Use unexported key types to avoid collisions: <code>type ctxKey struct{}</code></li><li>Never store mutable data in context values</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is context.TODO() vs context.Background()?<br>• How does HTTP server set request context with timeout?<br>• What happens if you cancel a parent context?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Uber, Razorpay, Swiggy, Zomato, CRED...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="language">
+    <span class="q-index">5</span>
+    <span class="q-text">Go error handling — errors.Is, errors.As, wrapping</span>
+    <div class="q-tags"><span class="q-tag">errors</span><span class="q-tag">wrapping</span><span class="q-tag">sentinel</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Error Wrapping (Go 1.13+)</span><br>Wrap errors with context using <code>fmt.Errorf("%w", err)</code>. This creates an error chain. The original error is retrievable.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">errors.Is and errors.As</span><br><pre>var ErrNotFound = errors.New("not found")  // sentinel
+
+// Wrapping
+func getUser(id int) error {
+    return fmt.Errorf("getUser %d: %w", id, ErrNotFound)
+}
+
+err := getUser(42)
+// errors.Is: checks entire chain
+if errors.Is(err, ErrNotFound) {
+    // handles wrapped ErrNotFound
+}
+
+// errors.As: extract concrete type from chain
+var dbErr *DBError
+if errors.As(err, &amp;dbErr) {
+    fmt.Println(dbErr.Code)
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Custom Error Types</span><br><pre>type ValidationError struct {
+    Field   string
+    Message string
+}
+func (e *ValidationError) Error() string {
+    return fmt.Sprintf("validation error: %s — %s", e.Field, e.Message)
+}
+
+// Callers use errors.As to get the typed error</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Best Practices</span><br><ul><li>Always wrap with context: <code>fmt.Errorf("operation X: %w", err)</code></li><li>Use sentinel errors for known conditions (<code>io.EOF</code>, <code>sql.ErrNoRows</code>)</li><li>Use typed errors when callers need to inspect fields</li><li>At service boundary: log + translate to user-facing error</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• When would you use panic vs return error?<br>• How does errors.Join (Go 1.20) work?<br>• How does the errors package handle multiple wrapped errors?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Uber, Razorpay, Swiggy, Zomato, CRED...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="language">
+    <span class="q-index">6</span>
+    <span class="q-text">defer, panic, recover — full semantics and patterns</span>
+    <div class="q-tags"><span class="q-tag">defer</span><span class="q-tag">panic</span><span class="q-tag">recover</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">defer</span><br>Deferred call runs when surrounding function returns (normal or panic). Arguments evaluated immediately; call deferred. LIFO order.<br><pre>func processFile(path string) (err error) {
+    f, err := os.Open(path)
+    if err != nil { return }
+    defer f.Close()           // runs even on early return/panic
+    defer func() {            // named return: modify err on cleanup failure
+        if cerr := f.Close(); cerr != nil &amp;&amp; err == nil {
+            err = cerr
+        }
+    }()
+    // ... process f
+    return
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">panic / recover</span><br><pre>func safeDiv(a, b int) (result int, err error) {
+    defer func() {
+        if r := recover(); r != nil {     // recover() catches panic
+            err = fmt.Errorf("panic: %v", r)
+        }
+    }()
+    return a / b, nil  // panics if b==0
+}
+
+// recover() returns nil if no panic, or the panic value
+// ONLY works inside a deferred function</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Rules</span><br><ul><li><code>recover()</code> only stops a panic if called directly from a deferred function</li><li>Panic unwinds stack, running deferred functions</li><li>Use panic for truly unrecoverable states (programming errors), not business logic</li><li>HTTP handlers should recover panics to avoid crashing the whole server</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the difference between os.Exit and panic?<br>• Can you defer a method call? (yes)<br>• What is the defer overhead? (small but measurable in hot loops)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Uber, Razorpay, Swiggy, Zomato, CRED...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="language">
+    <span class="q-index">7</span>
+    <span class="q-text">Go interfaces and duck typing</span>
+    <div class="q-tags"><span class="q-tag">interfaces</span><span class="q-tag">duck-typing</span><span class="q-tag">implicit</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Go Interfaces</span><br>Interfaces are <b>implicitly satisfied</b> — no <code>implements</code> keyword. Any type implementing all methods of an interface satisfies it automatically.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Interface Internal Representation</span><br><pre>// Interface value = (type pointer, value pointer)
+var w io.Writer                 // nil interface: (nil, nil)
+w = os.Stdout                  // (*os.File, ptr to Stdout)
+
+// nil trap:
+var f *os.File = nil
+var r io.Reader = f            // (type=*os.File, value=nil) ← NOT nil interface!
+fmt.Println(r == nil)          // false! Type is set.
+
+// Fix:
+if f == nil { var r io.Reader = nil }  // assign nil interface explicitly</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Empty Interface</span><br><code>interface{}</code> or <code>any</code> (Go 1.18+) holds any value. Use type assertions (<code>v.(string)</code>) or type switch to extract.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the difference between nil pointer and nil interface?<br>• How does type assertion differ from type switch?<br>• What is interface pollution and how do you avoid it? (accept interfaces, return concrete types)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Uber, Razorpay, Swiggy, CRED, Coinbase</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="concurrency">
+    <span class="q-index">8</span>
+    <span class="q-text">goroutine leak — how to detect and prevent</span>
+    <div class="q-tags"><span class="q-tag">goroutine-leak</span><span class="q-tag">context</span><span class="q-tag">done-channel</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">What is a goroutine leak</span><br>Goroutines that are started but never terminate. They consume memory (~2KB initial stack, can grow), CPU for scheduling, and keep referenced objects alive.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Common Causes</span><br><ul><li>Blocked channel read/write with no one to unblock</li><li>Not passing/checking <code>context.Context</code></li><li>Infinite loops without exit condition</li><li>Forgotten goroutines in tests</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Prevention Pattern</span><br><pre>func worker(ctx context.Context, jobs &lt;-chan Job) {
+    for {
+        select {
+        case &lt;-ctx.Done():
+            return  // clean exit
+        case job, ok := &lt;-jobs:
+            if !ok { return }  // channel closed
+            process(job)
+        }
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Detection with pprof</span><br><pre>import _ "net/http/pprof"
+// curl http://localhost:6060/debug/pprof/goroutine?debug=2
+// Lists all goroutine stacks — look for blocked goroutines
+
+// In tests: goleak
+func TestWorker(t *testing.T) {
+    defer goleak.VerifyNone(t)  // fails if goroutines leak
+    ...
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the goleak library?<br>• How do you profile goroutine count over time?<br>• What happens to a goroutine blocked on a closed channel?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Uber, Razorpay, Swiggy, Zomato, CRED...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="language">
+    <span class="q-index">9</span>
+    <span class="q-text">defer, panic, recover</span>
+    <div class="q-tags"><span class="q-tag">defer</span><span class="q-tag">panic</span><span class="q-tag">recover</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">defer: LIFO on exit (even panic). panic: stack unwind with defers. recover: in defer, catches panic.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Uber, Razorpay, Swiggy, CRED, Coinbase</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="language">
+    <span class="q-index">10</span>
+    <span class="q-text">Go interfaces — nil interface trap, empty interface</span>
+    <div class="q-tags"><span class="q-tag">interface</span><span class="q-tag">nil</span><span class="q-tag">empty-interface</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Interface internals</span><br>A Go interface value has <b>two words</b>: (type, pointer). An interface is nil only when <b>both</b> type and pointer are nil.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">The Nil Trap</span><br><pre>type MyError struct{ msg string }
+func (e *MyError) Error() string { return e.msg }
+
+func getError() error {
+    var err *MyError = nil
+    return err  // TRAP: returns (type=*MyError, ptr=nil) — NOT nil interface!
+}
+
+if err := getError(); err != nil {
+    fmt.Println("This prints!")  // Bug!
+}
+
+// Fix: return nil explicitly
+func getError() error {
+    var err *MyError
+    if conditionFailed { return err }  // still buggy
+    return nil  // correct
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Type Assertions & Switches</span><br><pre>var i interface{} = "hello"
+
+// Type assertion
+s, ok := i.(string)  // ok=true, s="hello"
+
+// Type switch
+switch v := i.(type) {
+case string:  fmt.Println("string:", v)
+case int:     fmt.Println("int:", v)
+default:      fmt.Println("other")
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">any (Go 1.18)</span><br><code>any</code> is an alias for <code>interface{}</code>. Prefer <code>any</code> in new code.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does interface satisfaction work at compile time?<br>• What is the reflect package and when do you need it?<br>• How are generics better than interface{} for type safety?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Uber, Razorpay, Swiggy, Zomato, CRED...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="concurrency">
+    <span class="q-index">11</span>
+    <span class="q-text">Channel patterns — fan-out, fan-in, pipeline, done channel</span>
+    <div class="q-tags"><span class="q-tag">channels</span><span class="q-tag">pipeline</span><span class="q-tag">fan-out</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Pipeline</span><br><pre>func gen(nums ...int) &lt;-chan int {
+    out := make(chan int)
+    go func() {
+        defer close(out)
+        for _, n := range nums { out &lt;- n }
+    }()
+    return out
+}
+func sq(in &lt;-chan int) &lt;-chan int {
+    out := make(chan int)
+    go func() { defer close(out); for n := range in { out &lt;- n*n } }()
+    return out
+}
+// Usage: for v := range sq(sq(gen(2,3,4))) { fmt.Println(v) }</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Fan-Out</span><br><pre>func fanOut(in &lt;-chan int, workers int) []&lt;-chan int {
+    outs := make([]&lt;-chan int, workers)
+    for i := range outs {
+        outs[i] = sq(in)  // each worker reads from same input
+    }
+    return outs
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Fan-In (Merge)</span><br><pre>func merge(cs ...&lt;-chan int) &lt;-chan int {
+    var wg sync.WaitGroup
+    out := make(chan int)
+    output := func(c &lt;-chan int) {
+        defer wg.Done()
+        for v := range c { out &lt;- v }
+    }
+    wg.Add(len(cs))
+    for _, c := range cs { go output(c) }
+    go func() { wg.Wait(); close(out) }()
+    return out
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Done Channel (Cancellation)</span><br><pre>func sq(done &lt;-chan struct{}, in &lt;-chan int) &lt;-chan int {
+    out := make(chan int)
+    go func() {
+        defer close(out)
+        for n := range in {
+            select {
+            case out &lt;- n*n:
+            case &lt;-done: return  // cancelled
+            }
+        }
+    }()
+    return out
+}
+// Use context.Context in production instead of done channel</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does context.Context replace the done channel pattern?<br>• What is channel direction (&lt;-chan vs chan&lt;-) and why does it matter?<br>• How do you implement a timeout with select?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Google, Uber, Razorpay, Swiggy, Zomato, CRED...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="patterns">
+    <span class="q-index">12</span>
+    <span class="q-text">Graceful shutdown of Go HTTP server</span>
+    <div class="q-tags"><span class="q-tag">graceful-shutdown</span><span class="q-tag">signals</span><span class="q-tag">context</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Listen SIGTERM/SIGINT. Call server.Shutdown(ctx) with timeout. Waits active requests to complete.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Uber, Razorpay, CRED, Coinbase</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="testing">
+    <span class="q-index">13</span>
+    <span class="q-text">Go testing — table-driven tests, benchmarks, fuzz testing</span>
+    <div class="q-tags"><span class="q-tag">testing</span><span class="q-tag">benchmark</span><span class="q-tag">fuzz</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Table-Driven Tests</span><br><pre>func TestAdd(t *testing.T) {
+    tests := []struct {
+        name string; a, b, want int
+    }{
+        {"positive", 2, 3, 5},
+        {"negative", -1, 1, 0},
+        {"zeros", 0, 0, 0},
+    }
+    for _, tc := range tests {
+        t.Run(tc.name, func(t *testing.T) {
+            if got := Add(tc.a, tc.b); got != tc.want {
+                t.Errorf("Add(%d,%d)=%d, want %d", tc.a, tc.b, got, tc.want)
+            }
+        })
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Benchmarks</span><br><pre>func BenchmarkAdd(b *testing.B) {
+    for i := 0; i &lt; b.N; i++ {
+        Add(42, 58)
+    }
+}
+// go test -bench=. -benchmem -count=5</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Fuzz Testing (Go 1.18+)</span><br><pre>func FuzzReverse(f *testing.F) {
+    f.Add("hello")  // seed corpus
+    f.Fuzz(func(t *testing.T, s string) {
+        rev := Reverse(s)
+        if Reverse(rev) != s {
+            t.Errorf("double reverse != original")
+        }
+    })
+}
+// go test -fuzz=FuzzReverse -fuzztime=30s</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Useful Flags</span><br><pre>go test -run=TestName -v          # run specific test
+go test -race ./...               # race detector
+go test -coverprofile=c.out ./... # coverage
+go tool cover -html=c.out         # view coverage</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is testify and when is it useful?<br>• How do you mock dependencies in Go tests?<br>• What is httptest.NewServer for HTTP handler testing?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Uber, Razorpay, Swiggy, Zomato, CRED...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="patterns">
+    <span class="q-index">14</span>
+    <span class="q-text">HTTP server patterns in Go — graceful shutdown, middleware</span>
+    <div class="q-tags"><span class="q-tag">http-server</span><span class="q-tag">middleware</span><span class="q-tag">graceful-shutdown</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Standard HTTP Server</span><br><pre>mux := http.NewServeMux()
+mux.HandleFunc("/health", healthHandler)
+mux.Handle("/api/", apiRouter)
+
+srv := &amp;http.Server{
+    Addr:         ":8080",
+    Handler:      mux,
+    ReadTimeout:  5 * time.Second,
+    WriteTimeout: 10 * time.Second,
+    IdleTimeout:  120 * time.Second,
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Graceful Shutdown</span><br><pre>go func() { srv.ListenAndServe() }()
+
+quit := make(chan os.Signal, 1)
+signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
+&lt;-quit
+
+ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
+defer cancel()
+if err := srv.Shutdown(ctx); err != nil {
+    log.Fatal("forced shutdown:", err)
+}
+// In-flight requests complete, new requests rejected</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Middleware Pattern</span><br><pre>type Middleware func(http.Handler) http.Handler
+
+func Logger(next http.Handler) http.Handler {
+    return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+        start := time.Now()
+        next.ServeHTTP(w, r)
+        log.Printf("%s %s %v", r.Method, r.URL.Path, time.Since(start))
+    })
+}
+
+// Chain: Logger(Auth(RateLimit(mux)))</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Popular routers</span><br>chi (lightweight), gorilla/mux (feature-rich), gin (fast, opinionated), fiber (Express-like).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you implement request timeout per handler?<br>• What is http.ResponseController (Go 1.20)?<br>• How does context propagation work through HTTP handlers?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Uber, Razorpay, Swiggy, Zomato, CRED...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="patterns">
+    <span class="q-index">15</span>
+    <span class="q-text">Functional options pattern in Go</span>
+    <div class="q-tags"><span class="q-tag">functional-options</span><span class="q-tag">design-pattern</span><span class="q-tag">configuration</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Problem</span><br>How to provide optional configuration to a constructor without breaking API as options grow? Config structs are verbose; many parameters are messy.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Functional Options Pattern</span><br><pre>type Server struct {
+    host    string
+    port    int
+    timeout time.Duration
+    maxConn int
+}
+
+type Option func(*Server)
+
+func WithPort(p int) Option      { return func(s *Server) { s.port = p } }
+func WithTimeout(d time.Duration) Option { return func(s *Server) { s.timeout = d } }
+func WithMaxConn(n int) Option   { return func(s *Server) { s.maxConn = n } }
+
+func NewServer(host string, opts ...Option) *Server {
+    s := &amp;Server{host: host, port: 8080, timeout: 30*time.Second, maxConn: 100}  // defaults
+    for _, opt := range opts { opt(s) }
+    return s
+}
+
+// Usage (clean, readable, extensible):
+srv := NewServer("localhost",
+    WithPort(9090),
+    WithTimeout(5*time.Second),
+)</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Advantages</span><br><ul><li>Backward compatible — add new options without changing signature</li><li>Self-documenting call sites</li><li>Easy to set sensible defaults</li><li>Options are first-class values — can be composed, stored, passed around</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does this pattern compare to Builder pattern?<br>• What is the Rob Pike option pattern variation?<br>• How would you validate option values?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Uber, Razorpay, Swiggy, Zomato, CRED...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="language">
+    <span class="q-index">16</span>
+    <span class="q-text">Go interface composition and embedding</span>
+    <div class="q-tags"><span class="q-tag">interface</span><span class="q-tag">embedding</span><span class="q-tag">composition</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Interface Composition</span><br><pre>type Reader interface { Read(p []byte) (n int, err error) }
+type Writer interface { Write(p []byte) (n int, err error) }
+type Closer interface { Close() error }
+
+// Compose interfaces:
+type ReadWriter interface { Reader; Writer }  // embeds both
+type ReadWriteCloser interface { ReadWriter; Closer }
+
+// io.ReadWriteCloser = standard library example
+// os.File implements ReadWriteCloser</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Struct Embedding</span><br><pre>type Animal struct { Name string }
+func (a Animal) Speak() string { return a.Name + " speaks" }
+
+type Dog struct {
+    Animal          // embedded — promotes fields and methods
+    Breed string
+}
+
+d := Dog{Animal{"Rex"}, "Labrador"}
+fmt.Println(d.Speak())  // promoted method: Dog.Speak() = Animal.Speak()
+fmt.Println(d.Name)     // promoted field</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Override via Shadowing</span><br><pre>func (d Dog) Speak() string { return d.Name + " barks" }  // shadows Animal.Speak
+d.Speak()         // calls Dog.Speak
+d.Animal.Speak()  // explicitly call embedded method</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Interface Satisfaction</span><br>A type satisfies an interface if it implements all its methods. Embedding helps: if Dog embeds Animal, Dog gets Animal's methods → may satisfy interfaces automatically.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the difference between embedding and inheritance?<br>• Can you embed interfaces in structs? (yes — useful for partial mocking in tests)<br>• What happens if two embedded types have the same method name?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Uber, Razorpay, Swiggy, Zomato, CRED...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="concurrency">
+    <span class="q-index">17</span>
+    <span class="q-text">sync.Once, sync.Map — when and how to use</span>
+    <div class="q-tags"><span class="q-tag">sync-once</span><span class="q-tag">sync-map</span><span class="q-tag">concurrent</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">sync.Once</span><br>Guarantees a function runs <b>exactly once</b>, even if called concurrently. Perfect for lazy initialization.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">sync.Once Example</span><br><pre>var (
+    instance *DB
+    once     sync.Once
+)
+
+func GetDB() *DB {
+    once.Do(func() {
+        instance = connectDB()  // runs exactly once
+    })
+    return instance
+}
+// Thread-safe singleton. Once completes, all goroutines see instance.</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">sync.Map</span><br>Concurrent map without external locking. Optimized for two use cases: (1) write once, read many; (2) different goroutines write different keys.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">sync.Map Example</span><br><pre>var m sync.Map
+m.Store("key", "value")
+v, ok := m.Load("key")
+m.Delete("key")
+m.Range(func(k, v any) bool {
+    fmt.Println(k, v)
+    return true  // continue iteration
+})</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">sync.Map vs map+RWMutex</span><br><ul><li><code>sync.Map</code>: better for high-read, diverse-keys workloads</li><li><code>map+RWMutex</code>: better for small maps or when you need atomic multi-op</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Why is sync.Once better than an atomic boolean flag?<br>• What happens if the function passed to Once panics?<br>• How is sync.Map implemented internally? (dirty + read maps)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Google, Uber, Razorpay, Swiggy, Zomato, CRED...</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-security">
+  <div class="questions-header">
+    <h3>🔒 Security</h3>
+    <span class="q-count">4 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="appsec">
+    <span class="q-index">1</span>
+    <span class="q-text">JWT — structure, validation, vulnerabilities</span>
+    <div class="q-tags"><span class="q-tag">jwt</span><span class="q-tag">rs256</span><span class="q-tag">alg-none</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">JWT Structure</span><br><pre>header.payload.signature
+
+Header: {"alg": "RS256", "typ": "JWT"}
+Payload: {"sub": "user123", "role": "admin", "exp": 1700000000, "iat": 1699996400}
+Signature: RS256(base64url(header)+"."+base64url(payload), privateKey)
+
+Verification: RS256(received_header+"."+payload, publicKey) == received_signature</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Critical Vulnerabilities</span><br><ul><li><b>alg:none attack:</b> Attacker sets alg to 'none', removes signature. Old libraries accept it. Fix: whitelist allowed algorithms explicitly — NEVER accept alg from token.</li><li><b>HS256 with public key:</b> If server uses RS256, attacker changes alg to HS256 and signs with the PUBLIC key. Server uses public key to verify HS256 = accepts! Fix: separate verify logic per algorithm.</li><li><b>Weak secret (HS256):</b> Brute-force offline if secret is short. Use 256-bit+ random secrets.</li><li><b>Missing expiry check:</b> Always validate exp claim.</li><li><b>Sensitive data in payload:</b> JWT is base64 NOT encrypted. Anyone can decode it.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Best Practices</span><br><ul><li>Use RS256 (asymmetric): private key signs, public key verifies — microservices can verify without shared secret</li><li>Short access token TTL (15min) + refresh token (7-30 days in HttpOnly cookie)</li><li>Store refresh tokens server-side for revocation capability</li><li>Refresh token rotation: each use issues a new refresh token</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you revoke a JWT before it expires? (blocklist with Redis, or short TTL + refresh)<br>• What is the difference between JWS, JWE, and JWT?<br>• When would you use opaque tokens instead of JWT?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Security Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Stripe, PayPal...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="appsec">
+    <span class="q-index">2</span>
+    <span class="q-text">OWASP Top 10 — explain and how to prevent each</span>
+    <div class="q-tags"><span class="q-tag">owasp</span><span class="q-tag">sql-injection</span><span class="q-tag">xss</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Top 10 Vulnerabilities</span><br><ol><li><b>Injection (SQL/NoSQL/LDAP):</b> Use parameterized queries / prepared statements. Never concatenate user input.</li><li><b>Broken Authentication:</b> Secure sessions, MFA, bcrypt passwords, account lockout after N failures.</li><li><b>Sensitive Data Exposure:</b> TLS everywhere, encrypt PII at rest (AES-256), don't log sensitive data.</li><li><b>XXE (XML External Entity):</b> Disable DTD processing in XML parsers.</li><li><b>Broken Access Control:</b> Server-side authorization checks, deny by default, principle of least privilege.</li><li><b>Security Misconfiguration:</b> Disable default credentials, disable directory listing, update dependencies.</li><li><b>XSS (Cross-Site Scripting):</b> Escape output (HTMLEncode), Content-Security-Policy header.</li><li><b>Insecure Deserialization:</b> Validate type/integrity before deserialization. Avoid Java native serialization.</li><li><b>Vulnerable Components:</b> Dependency scanning (Snyk, Dependabot), SCA in CI pipeline.</li><li><b>Insufficient Logging:</b> Log auth events, access control failures. Alert on anomalies. Protect log integrity.</li></ol></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the difference between XSS and CSRF?<br>• How does a Content Security Policy (CSP) mitigate XSS?<br>• What is SSRF (Server-Side Request Forgery) and why is it critical in cloud environments?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Security Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Stripe, PayPal...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="appsec">
+    <span class="q-index">3</span>
+    <span class="q-text">Secrets management — best practices</span>
+    <div class="q-tags"><span class="q-tag">secrets</span><span class="q-tag">vault</span><span class="q-tag">env-vars</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Anti-patterns</span><br><ul><li>Hardcoded secrets in code → leaked to Git history forever</li><li>Secrets in environment variables → visible in process list, crash dumps, logs</li><li>Secrets in docker-compose.yml committed to repo</li><li>Secrets passed as command-line args → visible in ps output</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">HashiCorp Vault</span><br><pre># Dynamic secrets — Vault generates short-lived DB credentials per request
+vault read database/creds/my-role
+# Returns: {username: "v-app-XyZ", password: "...", lease_duration: "1h"}
+# Automatically revoked after 1h — no long-lived DB passwords!
+
+# App integration:
+VaultClient vault = new VaultClient("https://vault.internal");
+String secret = vault.read("secret/data/db-password").get("value");</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Best Practices</span><br><ul><li><b>Vault / AWS Secrets Manager / GCP Secret Manager:</b> Centralized, audit-logged, auto-rotation</li><li><b>Secret rotation:</b> Automatic rotation without app restart (blue-green credential rotation)</li><li><b>Just-in-time secrets:</b> Request credential when needed, revoke immediately after</li><li><b>Kubernetes:</b> Use external-secrets operator to sync from Vault/SM into K8s Secrets</li><li><b>Git scanning:</b> TruffleHog, GitGuardian pre-commit hooks to prevent secret commits</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is envelope encryption and how does AWS KMS implement it?<br>• How do you handle secret rotation without downtime?<br>• What is SPIFFE/SPIRE for workload identity?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Security Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Stripe, PayPal...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="appsec">
+    <span class="q-index">4</span>
+    <span class="q-text">Password hashing — bcrypt vs Argon2 vs PBKDF2</span>
+    <div class="q-tags"><span class="q-tag">bcrypt</span><span class="q-tag">argon2</span><span class="q-tag">password-hashing</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Why not MD5/SHA?</span><br>MD5/SHA are fast → GPU can try billions/sec. Rainbow table: precompute hash for common passwords.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Password Hashing Algorithms</span><br><ul><li><b>bcrypt:</b> Work factor (cost). Each increment doubles computation. Built-in 128-bit salt. Memory-light (can be GPU-accelerated). Widely supported.</li><li><b>Argon2 (winner of Password Hashing Competition 2015):</b> Memory-hard. Three variants: Argon2i (side-channel resistant), Argon2d (GPU-resistant), Argon2id (recommended — hybrid). Parameters: time, memory, parallelism.</li><li><b>PBKDF2:</b> NIST/FIPS approved. Iterations + HMAC. Less memory-hard than Argon2. Required for some compliance frameworks.</li><li><b>scrypt:</b> Memory-hard. Used by Litecoin. Harder to tune than Argon2.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Best Practices</span><br><pre># Python — Argon2
+from argon2 import PasswordHasher
+ph = PasswordHasher(time_cost=2, memory_cost=65536, parallelism=2)
+hash = ph.hash("user_password")      # store this
+ph.verify(hash, "input_password")    # True/False
+
+# Spring Security (bcrypt strength 12):
+PasswordEncoder encoder = new BCryptPasswordEncoder(12);
+String hash = encoder.encode(rawPassword);
+encoder.matches(rawPassword, hash);  // timing-safe comparison</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is a timing attack on password comparison and how does constant-time comparison prevent it?<br>• How do you handle password migration from MD5 to bcrypt? (rehash on next login)<br>• What is credential stuffing and how does rate limiting + MFA prevent it?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Security Round</span>
+      <span class="q-meta-chip">🏢 Stripe, PayPal, Razorpay, PhonePe, CRED, Groww...</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-lld">
+  <div class="questions-header">
+    <h3>📐 LLD</h3>
+    <span class="q-count">3 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
+    <span class="q-index">1</span>
+    <span class="q-text">Design a Sliding Window Rate Limiter (code-level)</span>
+    <div class="q-tags"><span class="q-tag">rate-limiter</span><span class="q-tag">sliding-window</span><span class="q-tag">redis</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Sliding Window Log Algorithm</span><br>Store timestamps of each request in a sorted set. On each request: remove old entries, count remaining, allow if below limit.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">In-Memory Thread-Safe</span><br><pre>class SlidingWindowRateLimiter {
+    private final int maxRequests;
+    private final long windowMs;
+    private final Map&lt;String, Deque&lt;Long&gt;&gt; windows = new ConcurrentHashMap&lt;&gt;();
+
+    boolean allow(String clientId) {
+        long now = System.currentTimeMillis();
+        long cutoff = now - windowMs;
+
+        Deque&lt;Long&gt; timestamps = windows.computeIfAbsent(clientId, k -&gt; new ArrayDeque&lt;&gt;());
+
+        synchronized (timestamps) {
+            // Remove expired
+            while (!timestamps.isEmpty() &amp;&amp; timestamps.peekFirst() &lt;= cutoff)
+                timestamps.pollFirst();
+            if (timestamps.size() &gt;= maxRequests) return false;
+            timestamps.addLast(now);
+            return true;
+        }
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Redis-based (Distributed)</span><br><pre>MULTI
+ZREMRANGEBYSCORE rate:user1 0 {window_start}
+ZCARD rate:user1
+ZADD rate:user1 {now} {request_uuid}
+EXPIRE rate:user1 {window_seconds}
+EXEC
+-- Check count from ZCARD result &lt; limit</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How does sliding window differ from fixed window? (fixed window: burst at boundary)</li><li>How do you implement per-route limits vs global user limits?</li><li>What is the token bucket trade-off vs sliding window? (token bucket allows bursting)</li><li>How do you handle distributed rate limiting across 10 API servers?</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the leaky bucket algorithm?<br>• How do you rate-limit by user + endpoint combination?<br>• What is cell-based rate limiting (GCRA)?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
+    <span class="q-index">2</span>
+    <span class="q-text">Design a Snowflake-style Distributed ID Generator</span>
+    <div class="q-tags"><span class="q-tag">snowflake</span><span class="q-tag">distributed-id</span><span class="q-tag">epoch</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Twitter Snowflake Structure (64-bit)</span><br><pre>| 1 bit sign | 41 bits timestamp (ms) | 10 bits machine ID | 12 bits sequence |
+
+- Timestamp: ms since custom epoch (Jan 1, 2010)
+  → supports 2^41 ms ≈ 69 years
+- Machine ID: 10 bits → 1024 machines
+- Sequence: 12 bits → 4096 IDs/ms/machine
+
+Total: ~4 million IDs/second per machine, globally unique, sortable!</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Implementation</span><br><pre>class SnowflakeIdGenerator {
+    private final long EPOCH = 1288834974657L;  // Nov 4, 2010
+    private final long MACHINE_ID;              // 0-1023
+    private long sequence = 0;
+    private long lastTs = -1;
+
+    synchronized long nextId() {
+        long ts = System.currentTimeMillis();
+        if (ts == lastTs) {
+            sequence = (sequence + 1) &amp; 0xFFF;  // 12-bit mask
+            if (sequence == 0) ts = waitNextMs(lastTs);  // sequence exhausted
+        } else { sequence = 0; }
+        lastTs = ts;
+        return ((ts - EPOCH) &lt;&lt; 22) | (MACHINE_ID &lt;&lt; 12) | sequence;
+    }
+
+    private long waitNextMs(long ts) {
+        long now = System.currentTimeMillis();
+        while (now &lt;= ts) now = System.currentTimeMillis();
+        return now;
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>What happens if system clock goes backwards? (NTP clock skew) → block until clock catches up</li><li>How do you assign machine IDs in a dynamic cloud environment? (ZooKeeper ephemeral node, Redis INCR)</li><li>How would you make it monotonic across machines? (ULIDs)</li><li>Why is UUID v4 not a good database primary key? (random → B+tree fragmentation)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is ULID and how does it improve on UUID?<br>• How does Instagram's ID generation work? (PostgreSQL function + shard ID)<br>• What is the trade-off between centralized vs decentralized ID generation?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
+    <span class="q-index">3</span>
+    <span class="q-text">Design a Bloom Filter</span>
+    <div class="q-tags"><span class="q-tag">bloom-filter</span><span class="q-tag">probabilistic</span><span class="q-tag">bitarray</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">What is a Bloom Filter</span><br>Space-efficient probabilistic data structure. Answers: 'definitely not in set' OR 'probably in set'. No false negatives, configurable false positive rate.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Implementation</span><br><pre>class BloomFilter {
+    private final BitSet bits;
+    private final int numBits;
+    private final int numHashFunctions;
+
+    BloomFilter(int expectedItems, double falsePositiveRate) {
+        // Optimal bit count: -n*ln(p) / (ln2)^2
+        numBits = (int)(-expectedItems * Math.log(falsePositiveRate) / (Math.log(2)*Math.log(2)));
+        // Optimal hash count: (m/n) * ln2
+        numHashFunctions = (int)(numBits * 1.0 / expectedItems * Math.log(2));
+        bits = new BitSet(numBits);
+    }
+
+    void add(String item) {
+        for (int i = 0; i &lt; numHashFunctions; i++)
+            bits.set(Math.abs(hash(item, i)) % numBits);
+    }
+
+    boolean mightContain(String item) {
+        for (int i = 0; i &lt; numHashFunctions; i++)
+            if (!bits.get(Math.abs(hash(item, i)) % numBits)) return false;  // Definitely not
+        return true;  // Probably yes
+    }
+
+    private int hash(String s, int seed) {
+        return Objects.hash(s, seed);
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you calculate false positive rate given n items and m bits? (1 - e^(-kn/m))^k</li><li>Can you delete from a Bloom filter? (No — use Counting Bloom Filter instead)</li><li>What is Cuckoo filter and how does it improve on Bloom? (supports deletion, better lookup perf)</li><li>How does Cassandra use Bloom filters? (before SSTable disk lookup)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is a scalable Bloom filter?<br>• How does Redis implement Bloom filter? (RedisBloom module)<br>• What is HyperLogLog and how does it differ from Bloom filter?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Stripe, Databricks...</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-networking">
+  <div class="questions-header">
+    <h3>🌐 Networking</h3>
+    <span class="q-count">11 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="tcp">
+    <span class="q-index">1</span>
+    <span class="q-text">TCP 3-way handshake, 4-way termination, TIME_WAIT</span>
+    <div class="q-tags"><span class="q-tag">tcp</span><span class="q-tag">handshake</span><span class="q-tag">syn</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">92%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">3-Way Handshake (Connection Setup)</span><br><pre>Client ----- SYN (seq=x) --------&gt; Server
+Client &lt;---- SYN-ACK (seq=y,ack=x+1)- Server
+Client ----- ACK (ack=y+1) -------&gt; Server
+[Connection ESTABLISHED]
+
+SYN_SENT → SYN_RECEIVED → ESTABLISHED</pre>Purpose: synchronize initial sequence numbers, agree on connection parameters.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">4-Way Termination</span><br><pre>Active  --- FIN ---&gt; Passive   (ACTIVE: FIN_WAIT_1)
+Active  &lt;-- ACK --- Passive   (ACTIVE: FIN_WAIT_2)
+Active  &lt;-- FIN --- Passive   (PASSIVE: sends own FIN)
+Active  --- ACK --&gt; Passive   (ACTIVE: TIME_WAIT → CLOSED after 2×MSL)
+</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">TIME_WAIT (2×MSL ≈ 60s-4min)</span><br><ul><li>Ensures last ACK reaches passive closer</li><li>Prevents old duplicate packets from confusing new connection on same port</li><li>Causes: Cannot reuse port immediately. <code>SO_REUSEADDR</code> allows reuse in server context.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Why does the client go into TIME_WAIT, not the server?<br>• What is SYN flood attack and how is SYN cookies a defense?<br>• What is TCP Fast Open (TFO)?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Networking Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="load-balancing">
+    <span class="q-index">2</span>
+    <span class="q-text">Load balancer algorithms — round-robin, least-connections, consistent hashing</span>
+    <div class="q-tags"><span class="q-tag">load-balancer</span><span class="q-tag">round-robin</span><span class="q-tag">consistent-hashing</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Algorithms</span><br><ul><li><b>Round Robin:</b> Requests distributed evenly in rotation. Simple, ignores server load.</li><li><b>Weighted Round Robin:</b> Servers with higher weight get more requests. For heterogeneous servers.</li><li><b>Least Connections:</b> Route to server with fewest active connections. Better for varying request durations.</li><li><b>Least Response Time:</b> Combines active connections + response latency.</li><li><b>IP Hash:</b> Hash client IP → fixed server. Session stickiness (but unbalanced if some IPs dominate).</li><li><b>Random with 2 Choices (Power of Two):</b> Pick 2 random servers, choose less loaded. Near-optimal, simple.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Consistent Hashing</span><br>Used for stateful routing (cache sharding, WebSocket servers).<br>Hash ring: servers placed on ring. Request hashed → clockwise to nearest server. Adding/removing server only remaps 1/N of keys (vs modulo hashing remaps all).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">L4 vs L7 Load Balancer</span><br><ul><li><b>L4 (Transport):</b> Routes by TCP/UDP (IP + port). Faster, less overhead. No content awareness.</li><li><b>L7 (Application):</b> Routes by HTTP headers, URL, cookies. Content-based routing, SSL termination, retries.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does HAProxy differ from Nginx as a load balancer?<br>• What are virtual nodes in consistent hashing and why are they needed?<br>• How does a global load balancer (Anycast, GeoDNS) work?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Networking Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="api">
+    <span class="q-index">3</span>
+    <span class="q-text">REST vs gRPC vs GraphQL vs WebSocket — when to use each</span>
+    <div class="q-tags"><span class="q-tag">rest</span><span class="q-tag">grpc</span><span class="q-tag">graphql</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">REST</span><br>HTTP/1.1 or 2, JSON/XML. Stateless, simple, widely supported. Cacheable (GET), intuitive with HTTP verbs. Cons: over-fetching/under-fetching, multiple round trips for related data. Best for: public APIs, simple CRUD, browser-to-server.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">gRPC</span><br>HTTP/2 + Protocol Buffers. Binary, strongly typed, multiplexed. 5-10x smaller payload than JSON. Bidirectional streaming, connection reuse. Generated client/server code. Cons: not human-readable, no native browser support (grpc-web workaround). Best for: internal microservice communication, real-time streaming, polyglot services.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">GraphQL</span><br>Single endpoint, client specifies exact data shape. Eliminates over-fetching. Subscriptions for real-time. Schema as contract. Cons: N+1 problem (use DataLoader), complex caching (no HTTP cache headers), schema overhead. Best for: complex UIs with diverse data needs (mobile apps, dashboards).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">WebSocket</span><br>Full-duplex, persistent TCP connection. Low-latency bidirectional. Best for: chat, live collaboration, gaming, stock tickers, notifications.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Quick Decision</span><br><ul><li>Public CRUD API → REST</li><li>Microservice-to-microservice → gRPC</li><li>Complex queries, mobile app → GraphQL</li><li>Real-time bidirectional → WebSocket</li><li>Server→client notifications → SSE</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does gRPC handle service discovery?<br>• What is the N+1 problem in GraphQL and how does DataLoader solve it?<br>• How do you version a REST API vs a GraphQL API?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="http">
+    <span class="q-index">4</span>
+    <span class="q-text">HTTP/2 vs HTTP/3 (QUIC) — feature comparison</span>
+    <div class="q-tags"><span class="q-tag">http2</span><span class="q-tag">http3</span><span class="q-tag">quic</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">HTTP/2 Features</span><br><ul><li><b>Multiplexing:</b> Multiple streams over one TCP connection. No request queuing.</li><li><b>Header compression (HPACK):</b> Reduce redundant headers (cookies, user-agent)</li><li><b>Server push:</b> Server proactively sends resources before client requests</li><li><b>Binary framing:</b> Efficient parsing vs text-based HTTP/1.1</li><li><b>Stream priority:</b> Weighted dependency tree</li><li><b>Problem:</b> TCP head-of-line blocking — one lost packet blocks ALL streams</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">HTTP/3 / QUIC</span><br><ul><li>Runs over <b>UDP</b>, not TCP. Implements reliable delivery in userspace.</li><li><b>Stream-level reliability:</b> Lost packet blocks only affected stream, not all</li><li><b>0-RTT connection setup:</b> QUIC + TLS 1.3 combined handshake (1-RTT new, 0-RTT resume)</li><li><b>Connection migration:</b> Connection ID-based, survives IP change (WiFi → 4G)</li><li><b>QPACK:</b> Header compression without HOL blocking (vs HPACK)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">When HTTP/3 helps</span><br>High latency (mobile), packet loss, many parallel requests, clients switching networks. Major adopters: Google, Meta, Cloudflare, YouTube.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is head-of-line blocking at TCP level?<br>• Why does QUIC run over UDP instead of redesigning TCP?<br>• How does server push in HTTP/2 compare to HTTP/103 Early Hints?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Networking Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="dns">
+    <span class="q-index">5</span>
+    <span class="q-text">DNS resolution — full chain from browser to authoritative server</span>
+    <div class="q-tags"><span class="q-tag">dns</span><span class="q-tag">resolver</span><span class="q-tag">authoritative</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Full Resolution Chain</span><br><pre>1. Browser cache (TTL based)
+2. OS cache / /etc/hosts
+3. Stub Resolver → Recursive Resolver (ISP or 8.8.8.8)
+4. Recursive Resolver cache
+5. Root Name Server ("." zone) → returns NS for .com
+6. TLD Name Server (.com zone) → returns NS for google.com
+7. Authoritative Name Server (google.com zone) → returns A record
+8. Recursive Resolver caches result (TTL seconds)
+9. Returns to client → browser connects</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Record Types</span><br><ul><li><b>A:</b> Domain → IPv4</li><li><b>AAAA:</b> Domain → IPv6</li><li><b>CNAME:</b> Alias → canonical name (followed recursively)</li><li><b>MX:</b> Mail exchange server</li><li><b>TXT:</b> SPF, DKIM, domain verification</li><li><b>NS:</b> Authoritative name servers for domain</li><li><b>SRV:</b> Service discovery (host + port + priority)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">DNS in Kubernetes</span><br>CoreDNS runs as a pod. Service DNS: <code>&lt;service&gt;.&lt;namespace&gt;.svc.cluster.local</code>. Pods: <code>&lt;pod-ip&gt;.&lt;namespace&gt;.pod.cluster.local</code>.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is DNSSEC and what does it protect against?<br>• How does DNS-based load balancing work? (multiple A records, low TTL)<br>• What is negative caching (NXDOMAIN) and its TTL?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Networking Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="tls">
+    <span class="q-index">6</span>
+    <span class="q-text">TLS 1.3 handshake — 1-RTT and 0-RTT</span>
+    <div class="q-tags"><span class="q-tag">tls</span><span class="q-tag">tls1.3</span><span class="q-tag">handshake</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">TLS 1.3 Full Handshake (1-RTT)</span><br><pre>Client → Server: ClientHello + key_share (ECDHE public key) + supported ciphers
+Server → Client: ServerHello + key_share (server ECDHE public key)
+                  + Certificate + CertificateVerify + Finished
+[Both derive session keys immediately from shared ECDHE secret]
+Client → Server: Finished + HTTP request
+[TLS 1.2 needed 2-RTT; TLS 1.3 = 1-RTT]</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">0-RTT Session Resumption</span><br>Client stores <b>session ticket</b> from previous connection. On reconnect, sends early data in first packet — zero round trips before HTTP request. <b>Risk:</b> replay attacks (early data not protected against replay). Mitigate: use only for idempotent requests.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Improvements over TLS 1.2</span><br><ul><li>1-RTT instead of 2-RTT for new connections</li><li>Forward secrecy mandatory: ECDHE always used (ephemeral keys)</li><li>Removed weak algorithms: RSA key exchange, RC4, SHA-1, MD5</li><li>Encrypted handshake: Certificate encrypted (hidden from observers)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Certificate Verification</span><br>Client verifies server cert chain up to trusted CA root. CT (Certificate Transparency) logs prevent mis-issuance. OCSP stapling for revocation.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is perfect forward secrecy and why does ECDHE provide it?<br>• How does mTLS (mutual TLS) work for service-to-service auth?<br>• What is certificate pinning and when is it used?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Networking Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="websockets">
+    <span class="q-index">7</span>
+    <span class="q-text">WebSocket — upgrade, framing, use cases vs SSE vs long polling</span>
+    <div class="q-tags"><span class="q-tag">websocket</span><span class="q-tag">sse</span><span class="q-tag">long-polling</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">WebSocket Upgrade</span><br><pre>Client Request:
+GET /chat HTTP/1.1
+Connection: Upgrade
+Upgrade: websocket
+Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==
+
+Server Response:
+HTTP/1.1 101 Switching Protocols
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=
+[TCP connection stays open — full duplex from now]</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">WebSocket Frame</span><br>Binary or text frames. Control frames: ping/pong/close. Low overhead: 2-14 byte header vs HTTP's ~500 byte headers per request.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Comparison</span><br><ul><li><b>WebSocket:</b> Full-duplex, persistent, binary/text. Chat, gaming, trading, collaboration.</li><li><b>SSE (Server-Sent Events):</b> Server→client only, over HTTP/1.1, auto-reconnect. Dashboards, notifications. Simpler than WS.</li><li><b>Long Polling:</b> Client holds HTTP request open until server has data. Fallback. High latency, wasteful.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Scaling WebSockets</span><br>Stateful — connection pinned to server. Use:<br><ul><li>Sticky sessions (HAProxy/Nginx)</li><li>Message broker for fan-out: Pub/Sub via Redis, Kafka, or NATS</li><li>Socket.IO: WS with fallback to long-polling</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you handle WebSocket reconnection with message replay?<br>• What is a WebSocket subprotocol?<br>• How does HTTP/2 server push compare to WebSocket for server→client messaging?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Networking Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="web-security">
+    <span class="q-index">8</span>
+    <span class="q-text">CORS — same-origin policy, preflight, headers</span>
+    <div class="q-tags"><span class="q-tag">cors</span><span class="q-tag">same-origin</span><span class="q-tag">preflight</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Same-Origin Policy</span><br>Browser blocks cross-origin requests by default. Origin = scheme + host + port. <code>https://api.com:443</code> ≠ <code>http://api.com:80</code>.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Simple vs Preflight Requests</span><br><b>Simple:</b> GET/POST/HEAD with safe headers → no preflight. Browser sends request with <code>Origin</code> header; server must return <code>Access-Control-Allow-Origin</code>.<br><br><b>Preflight (OPTIONS):</b> Triggered for: non-simple methods (PUT/DELETE/PATCH), custom headers, content-type=application/json.<br><pre>OPTIONS /api/data HTTP/1.1
+Origin: https://app.example.com
+Access-Control-Request-Method: DELETE
+Access-Control-Request-Headers: Authorization
+
+--- Server response:
+Access-Control-Allow-Origin: https://app.example.com
+Access-Control-Allow-Methods: GET, POST, DELETE
+Access-Control-Allow-Headers: Authorization
+Access-Control-Max-Age: 86400  # cache preflight for 1 day</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Credentialed Requests</span><br>Cookies/auth headers in cross-origin require:<br><code>Access-Control-Allow-Credentials: true</code> AND <code>Access-Control-Allow-Origin</code> must be specific (not *).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Does CORS prevent all cross-origin attacks? (No — doesn't protect server from CSRF)<br>• What is CSRF and how is it different from what CORS prevents?<br>• How does a wildcard origin (*) work with credentials?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Networking Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="auth">
+    <span class="q-index">9</span>
+    <span class="q-text">OAuth 2.0 flows — Authorization Code, Client Credentials, PKCE</span>
+    <div class="q-tags"><span class="q-tag">oauth2</span><span class="q-tag">authorization-code</span><span class="q-tag">pkce</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Authorization Code Flow (Web Apps)</span><br><pre>1. User clicks 'Login with Google'
+2. App redirects to Google: /auth?client_id=..&amp;redirect_uri=..&amp;scope=email&amp;state=random
+3. User logs in on Google, grants consent
+4. Google redirects to app with ?code=AUTH_CODE&amp;state=...
+5. App server exchanges code for tokens: POST /token {code, client_secret}
+6. Gets: access_token (short-lived), refresh_token (long-lived)
+7. App uses access_token to call APIs on user's behalf</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">PKCE (Proof Key for Code Exchange)</span><br>For mobile/SPA apps that can't store client_secret securely.<br><ul><li>App generates <code>code_verifier</code> (random), <code>code_challenge = SHA256(verifier)</code></li><li>Sends challenge in auth request, sends verifier in token exchange</li><li>Server verifies: SHA256(verifier) == challenge → prevents auth code interception</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Client Credentials (Machine-to-Machine)</span><br><pre>POST /token
+client_id=svc1&amp;client_secret=secret&amp;grant_type=client_credentials
+→ access_token (no user context)
+# Used for: microservice-to-microservice, background jobs</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">JWT Access Token</span><br>Access tokens are often JWTs: <code>header.payload.signature</code>. Resource servers validate signature without calling authorization server. Payload contains: sub (user), iat, exp, scope, aud.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the difference between OAuth 2.0 and OpenID Connect (OIDC)?<br>• How do you revoke an access token before expiry?<br>• What is the device authorization grant flow?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Networking Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="cdn">
+    <span class="q-index">10</span>
+    <span class="q-text">CDN architecture — how content is cached and served</span>
+    <div class="q-tags"><span class="q-tag">cdn</span><span class="q-tag">edge</span><span class="q-tag">pop</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">CDN Architecture</span><br><b>Points of Presence (PoPs):</b> Edge servers distributed globally (Cloudflare: 300+ PoPs, Akamai: 4000+). User request routed to nearest PoP via <b>Anycast</b> (same IP, BGP routes to nearest datacenter) or GeoDNS.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache Flow</span><br><pre>User → CDN Edge (PoP)
+  → Cache HIT: return immediately (&lt;5ms)
+  → Cache MISS: fetch from origin (100-300ms), cache response, serve
+
+Subsequent users at same PoP → cache HIT
+Users at different PoP → may still be cache MISS (PoP-local cache)</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache Control Headers</span><br><pre>Cache-Control: max-age=31536000, immutable     # 1 year, static assets
+Cache-Control: max-age=60, stale-while-revalidate=30  # 1min fresh, serve stale while revalidating
+Cache-Control: no-store                         # never cache (auth pages)
+Surrogate-Control: max-age=3600                 # CDN-only hint (Varnish/Fastly)
+Vary: Accept-Encoding                           # different cache per encoding</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Dynamic Content</span><br>Not all content is cacheable. Edge computing (Cloudflare Workers, Lambda@Edge) runs logic at edge. For personalized content: cache fragment (Edge Side Includes) or stream-stitch.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you purge CDN cache? (cache invalidation API, cache tags)<br>• What is cache stampede / thundering herd and how to prevent it?<br>• How does TLS termination at CDN edge work?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="tcp">
+    <span class="q-index">11</span>
+    <span class="q-text">TCP flow control (receive window) vs congestion control (CWND)</span>
+    <div class="q-tags"><span class="q-tag">tcp</span><span class="q-tag">flow-control</span><span class="q-tag">congestion</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Flow Control (Receiver-side)</span><br>Prevents sender from overwhelming receiver's buffer.<br>Receiver advertises <b>receive window (rwnd)</b> in ACK headers. Sender must not have more than rwnd unacknowledged bytes in flight.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Congestion Control (Network-side)</span><br>Prevents sender from overwhelming the network (routers/links).<br>Sender maintains <b>congestion window (cwnd)</b>. Effective window = min(cwnd, rwnd).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Congestion Control Phases</span><br><ul><li><b>Slow Start:</b> cwnd=1 MSS → doubles each RTT until ssthresh or packet loss</li><li><b>Congestion Avoidance:</b> cwnd grows +1 MSS per RTT (linear)</li><li><b>Fast Retransmit:</b> 3 duplicate ACKs → retransmit lost segment immediately (don't wait for timeout)</li><li><b>Fast Recovery (CUBIC, BBR):</b> On loss: ssthresh = cwnd/2, cwnd = ssthresh (not back to 1)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">BBR (Google)</span><br>Model-based congestion control. Estimates bottleneck bandwidth and RTT. Less reactive to loss, better for high-bandwidth long-distance links. Used in YouTube, cloud networking.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is buffer bloat and how does it cause high latency?<br>• What is ECN (Explicit Congestion Notification)?<br>• How does QUIC handle congestion control differently from TCP?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Networking Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-cicd">
+  <div class="questions-header">
+    <h3>🚀 CI/CD & DevOps</h3>
+    <span class="q-count">6 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="docker">
+    <span class="q-index">1</span>
+    <span class="q-text">Docker container vs Virtual Machine — key differences?</span>
+    <div class="q-tags"><span class="q-tag">docker</span><span class="q-tag">vm</span><span class="q-tag">container</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-high">93%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Answer</span><br><b>Virtual Machine:</b> Full OS per VM, hardware emulation via hypervisor (Type-1: bare metal, Type-2: hosted). Heavy: ~GBs, slow boot (~minutes), strong isolation.<br><b>Docker Container:</b> Shares host OS kernel, isolates via Linux namespaces (PID, NET, MNT, UTS, IPC) + cgroups for resource limits. Lightweight: ~MBs, starts in milliseconds, process-level isolation.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Differences</span><br><ul><li><b>Boot time:</b> VM ~1-2 min | Container ~100ms</li><li><b>Size:</b> VM ~GBs | Container ~MBs (shared layers)</li><li><b>Isolation:</b> VM = full kernel isolation | Container = namespace isolation (kernel shared)</li><li><b>Use case:</b> VM for multi-OS, strong isolation | Container for microservices, CI/CD</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What Linux namespaces does Docker use? (PID, NET, MNT, IPC, UTS, USER)<br>• How do cgroups limit CPU/memory in containers?<br>• What is a container runtime? (runc, containerd, CRI-O)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 CI/CD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="docker">
+    <span class="q-index">2</span>
+    <span class="q-text">How do Docker image layers work? (Union filesystem)</span>
+    <div class="q-tags"><span class="q-tag">docker</span><span class="q-tag">layers</span><span class="q-tag">overlay2</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Answer</span><br>Docker images are built as <b>read-only layers</b> stacked using a Union Filesystem (OverlayFS/AUFS). Each <code>RUN</code>, <code>COPY</code>, <code>ADD</code> instruction in a Dockerfile creates a new layer.<br><br>When a container runs, Docker adds a thin <b>read-write layer</b> on top (Copy-on-Write). Writes go to the container layer; reads search layers bottom-up.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Dockerfile Layer Example</span><br><pre>FROM ubuntu:22.04          # Layer 1: base OS
+RUN apt-get install -y java # Layer 2: java install
+COPY app.jar /app/          # Layer 3: app binary
+CMD ["java", "-jar", "/app/app.jar"]  # metadata only</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Optimization Tips</span><br><ul><li>Order layers from least to most frequently changing</li><li>Combine <code>RUN</code> commands to reduce layer count</li><li>Use <code>.dockerignore</code> to exclude build artifacts</li><li>Use multi-stage builds to discard build-time layers</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is <code>docker build --cache-from</code>?<br>• How does <code>docker squash</code> work?<br>• Difference between image and container filesystem?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 CI/CD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="pipeline">
+    <span class="q-index">3</span>
+    <span class="q-text">CI/CD pipeline stages — what should a production pipeline include?</span>
+    <div class="q-tags"><span class="q-tag">ci-cd</span><span class="q-tag">pipeline</span><span class="q-tag">stages</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Typical Pipeline</span><br><pre>1. Source  →  git push/PR triggers pipeline
+2. Build   →  compile, docker build
+3. Test    →  unit → integration → contract tests
+4. SAST    →  static analysis (SonarQube, Semgrep)
+5. Scan    →  container vulnerability scan (Trivy, Snyk)
+6. Publish →  push image to registry (ECR/GCR/DockerHub)
+7. Deploy  →  to staging (auto) → prod (gated/manual or canary)
+8. Smoke   →  health check post-deploy
+9. Notify  →  Slack/PagerDuty on failure</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">GitHub Actions Example (simplified)</span><br><pre>on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - run: docker build -t app:${{ github.sha }} .
+    - run: docker push $ECR_REPO:${{ github.sha }}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Metrics</span><br><ul><li><b>DORA:</b> Deployment Frequency, Lead Time for Changes, MTTR, Change Failure Rate</li><li>Aim: deploy multiple times/day, MTTR < 1hr</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you implement trunk-based development vs GitFlow?<br>• How do you handle database migrations in CI/CD?<br>• What is shift-left testing?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 CI/CD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="kubernetes">
+    <span class="q-index">4</span>
+    <span class="q-text">ConfigMaps vs Secrets in Kubernetes</span>
+    <div class="q-tags"><span class="q-tag">kubernetes</span><span class="q-tag">configmap</span><span class="q-tag">secrets</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">ConfigMap</span><br>Stores <b>non-sensitive</b> configuration as key-value pairs. Mounted as environment variables or volume files. Plain text in etcd.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Secret</span><br>Stores <b>sensitive data</b> (passwords, tokens, TLS certs). Base64-encoded in etcd (NOT encrypted by default). Enable encryption at rest with <code>EncryptionConfiguration</code>. Types: Opaque, kubernetes.io/tls, kubernetes.io/dockerconfigjson, etc.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Usage</span><br><pre># Mount as env
+env:
+- name: DB_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: db-secret
+      key: password
+
+# Mount as volume
+volumeMounts:
+- name: config
+  mountPath: /etc/config
+volumes:
+- name: config
+  configMap:
+    name: app-config</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Best Practices</span><br><ul><li>Use <b>external secret managers</b>: HashiCorp Vault, AWS Secrets Manager with External Secrets Operator</li><li>Never bake secrets into Docker images</li><li>RBAC: restrict Secret read access to specific ServiceAccounts</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does Vault Agent injector work?<br>• What is Sealed Secrets (Bitnami)?<br>• How do you rotate secrets without pod restart?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 CI/CD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="git">
+    <span class="q-index">5</span>
+    <span class="q-text">Git internals — rebase vs merge, when to use each</span>
+    <div class="q-tags"><span class="q-tag">git</span><span class="q-tag">rebase</span><span class="q-tag">merge</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Merge</span><br>Creates a <b>merge commit</b> that ties two branches together. Preserves full history including branch structure. Safe for shared branches — never rewrites history.<br><pre>git checkout main
+git merge feature/login
+# Creates commit: Merge branch 'feature/login'</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Rebase</span><br><b>Replays</b> commits from one branch onto another. Creates <b>linear history</b>. Rewrites commit SHAs — <b>never rebase shared/public branches</b>.<br><pre>git checkout feature/login
+git rebase main
+# Moves feature commits on top of latest main</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">When to use</span><br><ul><li><b>Merge:</b> Merging feature into main (preserves context). Shared branches.</li><li><b>Rebase:</b> Keeping feature branch up-to-date with main. Clean PR history. <code>git pull --rebase</code>.</li><li><b>Squash merge:</b> Combine all feature commits into 1 clean commit on main.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Interactive Rebase</span><br><pre>git rebase -i HEAD~3
+# Options: pick, squash, fixup, reword, drop</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is <code>git cherry-pick</code>?<br>• How do you recover from a bad rebase? (<code>git reflog</code>)<br>• What is the difference between <code>git reset</code> and <code>git revert</code>?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 CI/CD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="pipeline">
+    <span class="q-index">6</span>
+    <span class="q-text">GitHub Actions vs Jenkins vs GitLab CI — comparison</span>
+    <div class="q-tags"><span class="q-tag">github-actions</span><span class="q-tag">jenkins</span><span class="q-tag">gitlab-ci</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">GitHub Actions</span><br><ul><li>YAML workflows in <code>.github/workflows/</code></li><li>Hosted runners (GitHub-managed) or self-hosted</li><li>Marketplace: 15,000+ pre-built actions</li><li>Deep GitHub integration (PRs, issues, releases)</li><li>Pricing: free for public repos, limited minutes for private</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Jenkins</span><br><ul><li>Self-hosted, open-source. Most flexible.</li><li>Pipeline as code: <code>Jenkinsfile</code> (declarative or scripted Groovy)</li><li>Huge plugin ecosystem (1,800+ plugins)</li><li>Cons: maintenance overhead, not cloud-native</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">GitLab CI</span><br><ul><li><code>.gitlab-ci.yml</code> in repo root</li><li>Built-in: Docker registry, Kubernetes integration, security scanning</li><li>Runners: shared or self-hosted</li><li>Best for teams already on GitLab</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">When to choose</span><br><ul><li><b>GitHub Actions:</b> GitHub-hosted projects, modern cloud-native teams</li><li><b>Jenkins:</b> Legacy enterprise, complex custom pipelines</li><li><b>GitLab CI:</b> GitLab monorepo, all-in-one DevSecOps</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you cache dependencies in GitHub Actions?<br>• What is a self-hosted runner and when to use it?<br>• How does matrix strategy work for parallel jobs?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 CI/CD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-ml_systems">
+  <div class="questions-header">
+    <h3>🤖 ML Systems</h3>
+    <span class="q-count">2 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="ml_systems">
+    <span class="q-index">1</span>
+    <span class="q-text">How does a fraud detection system work?</span>
+    <div class="q-tags"><span class="q-tag">fraud-detection</span><span class="q-tag">real-time</span><span class="q-tag">rules-engine</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">87%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Layered Defense Architecture</span><br><pre>Transaction Request
+    ↓ (sync, &lt;200ms)
+1. Rules Engine (hard rules, fast)
+   - Deny if: card stolen (blocklist), impossible geography, country blocked
+   - Flag if: unusual amount, new device
+    ↓
+2. ML Model (gradient boosting / neural net, &lt;50ms)
+   - Features: velocity (5 txns in 1min), device fingerprint, merchant category,
+               user history embedding, IP reputation, network graph features
+   - Output: fraud probability score 0-1
+    ↓
+3. Decision: score &lt; 0.3 → approve | 0.3-0.7 → 3DS challenge | &gt; 0.7 → decline
+    ↓ (async, post-transaction)
+4. Chargeback feedback → retrain loop</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Features</span><br><ul><li><b>Velocity features:</b> count(txns) per user/card/device in last 1m/5m/1h/24h using Redis sliding window</li><li><b>Device fingerprinting:</b> browser/app fingerprint, cookie, canvas fingerprint</li><li><b>Network graph:</b> card linked to account linked to device → graph neural network for collusion</li><li><b>Geospatial:</b> impossible travel (transaction in Mumbai then London in 30min)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Class Imbalance</span><br>Fraud rate: 0.1-1%. Training: oversample fraud (SMOTE), undersample legitimate, or use class weights. Evaluation metric: precision@threshold, recall, AUC-ROC. NOT accuracy (99% accuracy by saying everything is legitimate).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you handle false positives? (customer friction vs loss prevention tradeoff)<br>• How do you use graph neural networks for fraud ring detection?<br>• How do you evaluate a fraud model when labels arrive weeks later via chargebacks?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Stripe, PayPal, Razorpay, PhonePe, CRED, Groww...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="ml_systems">
+    <span class="q-index">2</span>
+    <span class="q-text">Explain transformer architecture and attention mechanism</span>
+    <div class="q-tags"><span class="q-tag">transformer</span><span class="q-tag">attention</span><span class="q-tag">self-attention</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Self-Attention Mechanism</span><br><pre>Input: sequence of tokens → embeddings (d_model=768 for BERT-base)
+
+For each token, compute:
+  Q (query) = embedding × W_Q
+  K (key)   = embedding × W_K
+  V (value) = embedding × W_V
+
+Attention weights = softmax(Q × K^T / sqrt(d_k))
+Output = Attention_weights × V
+
+# Each token attends to all other tokens — captures long-range dependencies
+# Multi-head: run h parallel attention heads, concat, project</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Transformer Architecture</span><br><ul><li><b>Encoder (BERT):</b> Bidirectional. Sees full context. Used for classification, NER, embeddings.</li><li><b>Decoder (GPT):</b> Autoregressive. Each token attends only to previous tokens (causal mask). Used for generation.</li><li><b>Encoder-Decoder (T5, BART):</b> Seq2seq tasks: translation, summarization, QA.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Why Transformers replaced RNNs</span><br><ul><li>RNN: sequential computation → no parallelism. Gradient vanishing for long sequences.</li><li>Transformer: parallel over all positions. Self-attention = O(n²d) but parallelizable on GPU.</li><li>Position encoding: sinusoidal or learned — since attention is permutation-invariant, positional info must be added explicitly.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the computational complexity of self-attention and how does sparse attention solve it?<br>• What is RLHF (Reinforcement Learning from Human Feedback) and how is it used to train ChatGPT?<br>• What is the difference between fine-tuning and prompt engineering vs RAG?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 ML Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Microsoft, Amazon, OpenAI, Databricks...</span>
+    </div>
+  </div>
+</div>
+</div></div>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-links">
+      <a href="../../common/top-coding.html">Top Coding</a>
+      <a href="../../common/top-system-design.html">System Design</a>
+      <a href="../../common/top-backend.html">Backend</a>
+      <a href="../../common/top-cpp.html">C++</a>
+      <a href="../../common/top-java.html">Java</a>
+      <a href="../../common/top-go.html">Go</a>
+      <a href="../../common/top-database.html">Database</a>
+      <a href="../../common/top-concurrency.html">Concurrency</a>
+      <a href="../../common/top-os.html">OS</a>
+      <a href="../../common/top-networking.html">Networking</a>
+      <a href="../../common/top-lld.html">LLD</a>
+      <a href="../../common/top-cicd.html">CI/CD</a>
+      <a href="../../common/top-security.html">Security</a>
+      <a href="../../common/top-ml.html">ML Systems</a>
+      <a href="../../common/top-perf.html">Performance</a>
+      <a href="../../mcq-quiz.html">MCQ Quiz</a>
+    </div>
+    <p>Built for SDE-1 &amp; SDE-2 Backend Engineers | C++ · Java · Go · Distributed Systems</p>
+    <p style="margin-top:8px;font-size:12px;opacity:.5">Data sourced from LeetCode, Glassdoor, Blind, Reddit &amp; public interview experiences</p>
+  </div>
+</footer>
+<button id="back-to-top" title="Back to top">↑</button>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

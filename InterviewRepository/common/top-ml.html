@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ML Systems Questions | InterviewRepo — Backend SDE Interview Prep</title>
+  <meta name="description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — ML Systems Questions">
+  <meta name="keywords" content="backend interview questions, SDE interview prep, system design, DSA, C++ interview, Java interview, Go interview, ml systems questions">
+  <meta name="author" content="InterviewRepo">
+  <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="InterviewRepo — Backend SDE Prep">
+  <meta property="og:title"       content="ML Systems Questions | InterviewRepo">
+  <meta property="og:description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — ML Systems Questions">
+  <meta property="og:url"         content="https://devinterviewvault.netlify.app">
+  <meta property="og:image"       content="https://devinterviewvault.netlify.app/assets/og-image.png">
+  <meta name="twitter:card"       content="summary_large_image">
+  <meta name="twitter:title"      content="ML Systems Questions | InterviewRepo">
+  <meta name="twitter:description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — ML Systems Questions">
+  <meta name="twitter:image"      content="https://devinterviewvault.netlify.app/assets/og-image.png">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://devinterviewvault.netlify.app">
+  <meta name="google-site-verification" content="a8bdedb3bc5f858c">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "ML Systems Questions", "description": "SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design \u2014 ML Systems Questions", "url": "https://devinterviewvault.netlify.app", "publisher": {"@type": "Organization", "name": "InterviewRepo"}}</script>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+</head>
+<body>
+<nav class="navbar">
+  <a class="navbar-brand" href="../index.html">
+    <span class="logo-icon">⚡</span>
+    <span>InterviewRepo</span>
+  </a>
+  <div class="search-bar">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="search-input" placeholder="Search questions… (Ctrl+K)" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <nav class="navbar-nav">
+    <a href="../index.html">Home</a>
+    <a href="../common/top-coding.html">Top DSA</a>
+    <a href="../common/top-system-design.html">System Design</a>
+    <a href="../common/top-backend.html">Backend</a>
+    <a href="../common/top-cpp.html">C++</a>
+    <a href="../common/top-java.html">Java</a>
+    <a href="../common/top-go.html">Go</a>
+    <a href="../mcq-quiz.html" style="background:linear-gradient(90deg,#6366f1,#8b5cf6);color:#fff;padding:.3rem .75rem;border-radius:.4rem;font-weight:600">🎯 MCQ Quiz</a>
+  </nav>
+</nav>
+<div class="top-list-header">
+  <div class="container">
+    <div class="breadcrumb"><a href="../index.html">Home</a><span class="breadcrumb-sep">›</span><span>ML Systems Questions</span></div>
+    <h1 style="font-size:36px;font-weight:800;margin-bottom:8px">🤖 ML Systems Questions</h1>
+    <p style="color:var(--text-muted);font-size:16px">ML system design: feature stores, recommendation systems, fraud detection, A/B testing, LLMs.</p>
+    <p style="color:var(--text-muted);font-size:14px;margin-top:8px">8 questions</p>
+  </div>
+</div>
+<div class="container section">
+  <div class="filters-bar"><button class="filter-btn active" data-filter="all" data-group="sub">All</button><button class="filter-btn" data-filter="ml_systems" data-group="sub">Ml Systems</button></div>
+  <div class="filters-bar"><button class="filter-btn active" data-filter="all" data-group="diff">All Difficulty</button><button class="filter-btn" data-filter="easy" data-group="diff">Easy</button><button class="filter-btn" data-filter="medium" data-group="diff">Medium</button><button class="filter-btn" data-filter="hard" data-group="diff">Hard</button></div>
+  <div class="question-list"><div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="ml_systems">
+    <span class="q-index">1</span>
+    <span class="q-text">Design a recommendation system (Netflix/YouTube)</span>
+    <div class="q-tags"><span class="q-tag">recommendation</span><span class="q-tag">collaborative-filtering</span><span class="q-tag">embedding</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Architecture Layers</span><br><pre>Request → Candidate Generation → Scoring → Re-ranking → Response
+           (retrieval)            (ML model)   (business rules)
+           millions→hundreds      hundreds→50  50→10 (diversity, freshness, ads)</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Candidate Generation</span><br><ul><li><b>Collaborative Filtering:</b> Users who watched A also watched B. Matrix factorization (SVD). Doesn't require item features. Cold-start problem for new items.</li><li><b>Content-Based:</b> Item embeddings from metadata (genre, actors, tags). Works for new items.</li><li><b>Two-Tower Model:</b> Separate user-tower + item-tower → embeddings → ANN search (FAISS). Pre-compute item embeddings, compute user embedding at request time. YouTube's approach.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Scoring & Ranking</span><br><pre>Input: [user_embedding, item_embedding, context_features]
+Model: Deep neural network → predicted CTR / watch_time
+ANN Search: FAISS HNSW index → top-K candidates in &lt;10ms for 100M items</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">A/B Testing</span><br>Split traffic by user ID hash. Primary metric: engagement (watch time, CTR). Guard metrics: don't harm diversity, churn rate. Run for statistical significance.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you handle the explore-exploit trade-off in recommendations? (contextual bandit, epsilon-greedy)<br>• How do you prevent filter bubbles in recommendations?<br>• How does YouTube handle the position bias in training data?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, LinkedIn, Uber...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="ml_systems">
+    <span class="q-index">2</span>
+    <span class="q-text">How does a fraud detection system work?</span>
+    <div class="q-tags"><span class="q-tag">fraud-detection</span><span class="q-tag">real-time</span><span class="q-tag">rules-engine</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">87%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Layered Defense Architecture</span><br><pre>Transaction Request
+    ↓ (sync, &lt;200ms)
+1. Rules Engine (hard rules, fast)
+   - Deny if: card stolen (blocklist), impossible geography, country blocked
+   - Flag if: unusual amount, new device
+    ↓
+2. ML Model (gradient boosting / neural net, &lt;50ms)
+   - Features: velocity (5 txns in 1min), device fingerprint, merchant category,
+               user history embedding, IP reputation, network graph features
+   - Output: fraud probability score 0-1
+    ↓
+3. Decision: score &lt; 0.3 → approve | 0.3-0.7 → 3DS challenge | &gt; 0.7 → decline
+    ↓ (async, post-transaction)
+4. Chargeback feedback → retrain loop</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Features</span><br><ul><li><b>Velocity features:</b> count(txns) per user/card/device in last 1m/5m/1h/24h using Redis sliding window</li><li><b>Device fingerprinting:</b> browser/app fingerprint, cookie, canvas fingerprint</li><li><b>Network graph:</b> card linked to account linked to device → graph neural network for collusion</li><li><b>Geospatial:</b> impossible travel (transaction in Mumbai then London in 30min)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Class Imbalance</span><br>Fraud rate: 0.1-1%. Training: oversample fraud (SMOTE), undersample legitimate, or use class weights. Evaluation metric: precision@threshold, recall, AUC-ROC. NOT accuracy (99% accuracy by saying everything is legitimate).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you handle false positives? (customer friction vs loss prevention tradeoff)<br>• How do you use graph neural networks for fraud ring detection?<br>• How do you evaluate a fraud model when labels arrive weeks later via chargebacks?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Stripe, PayPal, Razorpay, PhonePe, CRED, Groww...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="ml_systems">
+    <span class="q-index">3</span>
+    <span class="q-text">Design an A/B testing platform</span>
+    <div class="q-tags"><span class="q-tag">ab-testing</span><span class="q-tag">experimentation</span><span class="q-tag">statistics</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">85%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Core Components</span><br><pre>Experiment Config Service → stores experiment definition
+  (variants, allocation %, targeting rules, metrics)
+
+Assignment Service → deterministic bucketing by user_id
+  hash(user_id + experiment_id) % 100 &lt; allocation%
+  → same user always in same bucket (sticky assignment)
+  → results cached in Redis
+
+Event Tracking → user actions logged with experiment_id + variant
+  → Kafka → Data Warehouse (Clickhouse/BigQuery)
+
+Analysis Service → daily/real-time stats computation
+  → t-test / z-test for significance
+  → dashboard with p-value, confidence interval, lift %</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Statistical Concepts</span><br><ul><li><b>p-value &lt; 0.05:</b> Less than 5% chance result is due to random variation</li><li><b>Statistical power:</b> Probability of detecting a real effect. Usually target 80%.</li><li><b>MDE (Minimum Detectable Effect):</b> Smallest effect worth detecting → determines sample size</li><li><b>Sample size calculator:</b> n = 16σ²/δ² (for 80% power, 5% significance)</li><li><b>Multiple testing problem:</b> 20 experiments at 5% significance → 1 false positive on average. Fix: Bonferroni correction or FDR.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Common Pitfalls</span><br><ul><li><b>Novelty effect:</b> New feature gets engagement just because it's new — run longer</li><li><b>Network effect:</b> Treating control and treatment users who interact with each other — cluster randomization</li><li><b>Peeking:</b> Stopping early when p &lt; 0.05 inflates false positive rate — use sequential testing</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is a holdout group and why is it important?<br>• How do you handle metric tradeoffs? (CTR increases but conversion decreases)<br>• What is Bayesian A/B testing and how does it differ from frequentist?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, LinkedIn, Uber...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="ml_systems">
+    <span class="q-index">4</span>
+    <span class="q-text">Design a search ranking system</span>
+    <div class="q-tags"><span class="q-tag">search-ranking</span><span class="q-tag">elasticsearch</span><span class="q-tag">learning-to-rank</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">85%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Search Stack</span><br><pre>User Query
+    ↓
+Query Understanding: spell check, tokenization, synonym expansion, intent classification
+    ↓
+Retrieval (Elasticsearch / Lucene):
+  BM25 score: TF-IDF with length normalization
+  → top-1000 candidates in &lt;50ms
+    ↓
+Learning-to-Rank (LTR) Model:
+  Features: BM25 score, query-doc semantic similarity,
+            user click history, item popularity, freshness, location
+  Model: LightGBM / BERT cross-encoder
+  → rerank top-1000 to top-10
+    ↓
+Business Rules: boost paid listings, filter unavailable items
+    ↓ 
+Response</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Elasticsearch Internals</span><br><ul><li><b>Inverted index:</b> term → [doc_id, positions]. Builds at index time.</li><li><b>Sharding:</b> index split into shards. Search parallelized across shards.</li><li><b>Analyzers:</b> tokenizer + filters (lowercase, stemming, stopwords) at index + query time</li><li><b>Boosting:</b> <code>title^3 body^1</code> — title matches worth 3x body matches</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Learning-to-Rank</span><br><ul><li><b>Pointwise:</b> Independent regression/classification per document</li><li><b>Pairwise (RankNet):</b> Prefer doc A over B → binary classification</li><li><b>Listwise (LambdaMART):</b> Optimize NDCG directly. Best quality.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you handle cold-start for new items with no click data?<br>• What is NDCG (Normalized Discounted Cumulative Gain) and how do you compute it?<br>• How does Airbnb use neural network for search ranking? (listing embeddings)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, LinkedIn, Uber...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="ml_systems">
+    <span class="q-index">5</span>
+    <span class="q-text">Design a ML feature store — what is it and why?</span>
+    <div class="q-tags"><span class="q-tag">feature-store</span><span class="q-tag">ml</span><span class="q-tag">feast</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">What is a Feature Store?</span><br>Centralized repository for ML features. Solves two problems:<br><ul><li><b>Training-serving skew:</b> Feature computed differently at training vs inference → model underperforms in production</li><li><b>Feature reuse:</b> Team A computes user_30d_spend, Team B recomputes it separately → wasted effort</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Architecture</span><br><pre>Data Sources (events, DB, streams)
+    ↓
+Feature Engineering (Spark/Flink job)
+    ↓ write
+┌────────────────────────────────────┐
+│ Feature Store (Feast / Tecton)     │
+│  Offline Store: S3/BigQuery/Hive   │ ← batch training data
+│  Online Store:  Redis/DynamoDB     │ ← low-latency serving
+└────────────────────────────────────┘
+    ↑ read at training time          ↑ read at inference time (&lt;10ms)
+    Training Job                     Inference Service</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Concepts</span><br><ul><li><b>Point-in-time correct joins:</b> Feature store returns the feature value as it was at prediction time (prevents data leakage)</li><li><b>Feature versioning:</b> Rollback features if model performance degrades</li><li><b>Feature monitoring:</b> Drift detection — alert if feature distribution changes significantly</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you handle feature freshness requirements? (real-time vs hourly vs daily features)<br>• What is training-serving skew and how does a feature store prevent it?<br>• How does Uber Michelangelo implement feature serving?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, LinkedIn, Uber...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="ml_systems">
+    <span class="q-index">6</span>
+    <span class="q-text">Explain transformer architecture and attention mechanism</span>
+    <div class="q-tags"><span class="q-tag">transformer</span><span class="q-tag">attention</span><span class="q-tag">self-attention</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Self-Attention Mechanism</span><br><pre>Input: sequence of tokens → embeddings (d_model=768 for BERT-base)
+
+For each token, compute:
+  Q (query) = embedding × W_Q
+  K (key)   = embedding × W_K
+  V (value) = embedding × W_V
+
+Attention weights = softmax(Q × K^T / sqrt(d_k))
+Output = Attention_weights × V
+
+# Each token attends to all other tokens — captures long-range dependencies
+# Multi-head: run h parallel attention heads, concat, project</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Transformer Architecture</span><br><ul><li><b>Encoder (BERT):</b> Bidirectional. Sees full context. Used for classification, NER, embeddings.</li><li><b>Decoder (GPT):</b> Autoregressive. Each token attends only to previous tokens (causal mask). Used for generation.</li><li><b>Encoder-Decoder (T5, BART):</b> Seq2seq tasks: translation, summarization, QA.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Why Transformers replaced RNNs</span><br><ul><li>RNN: sequential computation → no parallelism. Gradient vanishing for long sequences.</li><li>Transformer: parallel over all positions. Self-attention = O(n²d) but parallelizable on GPU.</li><li>Position encoding: sinusoidal or learned — since attention is permutation-invariant, positional info must be added explicitly.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the computational complexity of self-attention and how does sparse attention solve it?<br>• What is RLHF (Reinforcement Learning from Human Feedback) and how is it used to train ChatGPT?<br>• What is the difference between fine-tuning and prompt engineering vs RAG?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 ML Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Microsoft, Amazon, OpenAI, Databricks...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="ml_systems">
+    <span class="q-index">7</span>
+    <span class="q-text">What is the difference between batch inference and online inference?</span>
+    <div class="q-tags"><span class="q-tag">batch-inference</span><span class="q-tag">online-inference</span><span class="q-tag">real-time-ml</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Batch Inference</span><br><pre>Trigger: scheduled (hourly/daily)
+Input:   entire dataset (all users)
+Output:  precomputed predictions stored in DB/cache
+Latency: hours (acceptable)
+Use cases: email recommendations, next-day demand forecast,
+           weekly personalization, offline reporting
+
+Stack: Spark/EMR → run model → write to S3 → load to serving DB</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Online (Real-time) Inference</span><br><pre>Trigger: user action (click, search, checkout)
+Input:   single request features
+Output:  prediction within SLA (p99 &lt; 100ms)
+Latency: milliseconds
+Use cases: fraud detection, search ranking, ad bidding, chatbot
+
+Stack: REST/gRPC → Feature store (Redis, &lt;5ms) → Model server (TorchServe/TFServing) → Cache</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Hybrid Approach</span><br>Pre-compute slow features (batch) + compute fast features (online) → merge at serving time. E.g., Netflix: batch compute user long-term embeddings + online compute session context → real-time ranking.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you optimize model inference latency? (quantization, ONNX runtime, model pruning)<br>• What is model serving and how does TorchServe handle batching?<br>• When would you choose a rule-based system over a ML model?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 ML Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Netflix, Uber...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="ml_systems">
+    <span class="q-index">8</span>
+    <span class="q-text">How do you detect and handle model drift?</span>
+    <div class="q-tags"><span class="q-tag">model-drift</span><span class="q-tag">data-drift</span><span class="q-tag">monitoring</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Types of Drift</span><br><ul><li><b>Data drift (covariate shift):</b> Input feature distribution changes. User behavior changed, new user segment, seasonality. Model predictions become unreliable.</li><li><b>Concept drift:</b> Relationship between features and label changes. E.g., 'fraud' patterns evolve.</li><li><b>Label drift:</b> Output distribution changes. E.g., more fraudulent transactions in new season.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Detection Methods</span><br><ul><li><b>Statistical tests:</b> KS-test, PSI (Population Stability Index), Chi-squared for categorical features</li><li><b>Model performance metrics:</b> Track AUC, precision, recall on labeled samples in production</li><li><b>Shadow deployment:</b> Run new model in shadow, compare predictions vs current model</li><li><b>Outlier detection:</b> Flag inputs far from training distribution (z-score, isolation forest)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Response Strategy</span><br><ul><li><b>Auto-retrain trigger:</b> PSI &gt; 0.2 → trigger retraining pipeline in MLflow/SageMaker</li><li><b>Continuous training:</b> Retrain on rolling window of recent data (online learning for fast-moving data)</li><li><b>Canary deployment:</b> New model serves 5% traffic, compare metrics before full rollout</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is PSI (Population Stability Index) and what thresholds indicate drift?<br>• How do you maintain a training data pipeline that is always fresh?<br>• What is the difference between online and batch retraining?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 ML Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, LinkedIn, Uber...</span>
+    </div>
+  </div>
+</div></div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-links">
+      <a href="../common/top-coding.html">Top Coding</a>
+      <a href="../common/top-system-design.html">System Design</a>
+      <a href="../common/top-backend.html">Backend</a>
+      <a href="../common/top-cpp.html">C++</a>
+      <a href="../common/top-java.html">Java</a>
+      <a href="../common/top-go.html">Go</a>
+      <a href="../common/top-database.html">Database</a>
+      <a href="../common/top-concurrency.html">Concurrency</a>
+      <a href="../common/top-os.html">OS</a>
+      <a href="../common/top-networking.html">Networking</a>
+      <a href="../common/top-lld.html">LLD</a>
+      <a href="../common/top-cicd.html">CI/CD</a>
+      <a href="../common/top-security.html">Security</a>
+      <a href="../common/top-ml.html">ML Systems</a>
+      <a href="../common/top-perf.html">Performance</a>
+      <a href="../mcq-quiz.html">MCQ Quiz</a>
+    </div>
+    <p>Built for SDE-1 &amp; SDE-2 Backend Engineers | C++ · Java · Go · Distributed Systems</p>
+    <p style="margin-top:8px;font-size:12px;opacity:.5">Data sourced from LeetCode, Glassdoor, Blind, Reddit &amp; public interview experiences</p>
+  </div>
+</footer>
+<button id="back-to-top" title="Back to top">↑</button>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

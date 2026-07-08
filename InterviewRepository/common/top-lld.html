@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LLD / Machine Coding Questions | InterviewRepo — Backend SDE Interview Prep</title>
+  <meta name="description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — LLD / Machine Coding Questions">
+  <meta name="keywords" content="backend interview questions, SDE interview prep, system design, DSA, C++ interview, Java interview, Go interview, lld / machine coding questions">
+  <meta name="author" content="InterviewRepo">
+  <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="InterviewRepo — Backend SDE Prep">
+  <meta property="og:title"       content="LLD / Machine Coding Questions | InterviewRepo">
+  <meta property="og:description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — LLD / Machine Coding Questions">
+  <meta property="og:url"         content="https://devinterviewvault.netlify.app">
+  <meta property="og:image"       content="https://devinterviewvault.netlify.app/assets/og-image.png">
+  <meta name="twitter:card"       content="summary_large_image">
+  <meta name="twitter:title"      content="LLD / Machine Coding Questions | InterviewRepo">
+  <meta name="twitter:description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — LLD / Machine Coding Questions">
+  <meta name="twitter:image"      content="https://devinterviewvault.netlify.app/assets/og-image.png">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://devinterviewvault.netlify.app">
+  <meta name="google-site-verification" content="a8bdedb3bc5f858c">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "LLD / Machine Coding Questions", "description": "SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design \u2014 LLD / Machine Coding Questions", "url": "https://devinterviewvault.netlify.app", "publisher": {"@type": "Organization", "name": "InterviewRepo"}}</script>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+</head>
+<body>
+<nav class="navbar">
+  <a class="navbar-brand" href="../index.html">
+    <span class="logo-icon">⚡</span>
+    <span>InterviewRepo</span>
+  </a>
+  <div class="search-bar">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="search-input" placeholder="Search questions… (Ctrl+K)" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <nav class="navbar-nav">
+    <a href="../index.html">Home</a>
+    <a href="../common/top-coding.html">Top DSA</a>
+    <a href="../common/top-system-design.html">System Design</a>
+    <a href="../common/top-backend.html">Backend</a>
+    <a href="../common/top-cpp.html">C++</a>
+    <a href="../common/top-java.html">Java</a>
+    <a href="../common/top-go.html">Go</a>
+    <a href="../mcq-quiz.html" style="background:linear-gradient(90deg,#6366f1,#8b5cf6);color:#fff;padding:.3rem .75rem;border-radius:.4rem;font-weight:600">🎯 MCQ Quiz</a>
+  </nav>
+</nav>
+<div class="top-list-header">
+  <div class="container">
+    <div class="breadcrumb"><a href="../index.html">Home</a><span class="breadcrumb-sep">›</span><span>LLD / Machine Coding Questions</span></div>
+    <h1 style="font-size:36px;font-weight:800;margin-bottom:8px">📐 LLD / Machine Coding Questions</h1>
+    <p style="color:var(--text-muted);font-size:16px">Low-Level Design and Machine Coding questions: Parking Lot, ATM, BookMyShow, Chess, Elevator...</p>
+    <p style="color:var(--text-muted);font-size:14px;margin-top:8px">32 questions</p>
+  </div>
+</div>
+<div class="container section">
+  <div class="filters-bar"><button class="filter-btn active" data-filter="all" data-group="sub">All</button><button class="filter-btn" data-filter="machine_coding" data-group="sub">Machine Coding</button></div>
+  <div class="filters-bar"><button class="filter-btn active" data-filter="all" data-group="diff">All Difficulty</button><button class="filter-btn" data-filter="easy" data-group="diff">Easy</button><button class="filter-btn" data-filter="medium" data-group="diff">Medium</button><button class="filter-btn" data-filter="hard" data-group="diff">Hard</button></div>
+  <div class="question-list"><div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
+    <span class="q-index">1</span>
+    <span class="q-text">Design a Ride-Sharing App (Uber/Ola)</span>
+    <div class="q-tags"><span class="q-tag">state-machine</span><span class="q-tag">observer</span><span class="q-tag">strategy</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">State Machine</span><br><pre>TripState: REQUESTED → DRIVER_ACCEPTED → DRIVER_ARRIVED → IN_PROGRESS → COMPLETED / CANCELLED
+
+class Trip {
+    String tripId; Driver driver; Rider rider;
+    TripState state; Location pickup, dropoff;
+    double fare;
+    void accept(Driver d) { this.driver=d; state=DRIVER_ACCEPTED; notify(); }
+    void start() { state=IN_PROGRESS; startTime=now(); }
+    void complete() { state=COMPLETED; fare=calculateFare(); }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Entities</span><br><ul><li><b>Driver:</b> id, currentLocation, status (AVAILABLE/ON_TRIP/OFFLINE), rating</li><li><b>Rider:</b> id, paymentMethod, currentLocation</li><li><b>MatchingService:</b> finds nearest available driver (Strategy: nearest, highest-rated)</li><li><b>FareCalculator:</b> Strategy — base + per-km + surge multiplier</li><li><b>NotificationService:</b> Observer — alerts driver and rider on state changes</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you handle driver rejection (offer to next driver)?</li><li>How do you implement pool rides (multiple riders)?</li><li>How do you track real-time location? (polling every 5s vs WebSocket push)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How would you extend to auto-rickshaw, bikes, taxis (different vehicle types)?<br>• How does surge pricing affect driver dispatch?<br>• How do you handle split payment between riders in a pool?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Uber, Google, Swiggy, Ola, Razorpay</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
+    <span class="q-index">2</span>
+    <span class="q-text">Design a Cache (LRU / LFU)</span>
+    <div class="q-tags"><span class="q-tag">design-patterns</span><span class="q-tag">doubly-linked-list</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">LRU Cache</span><br><pre>class LRUCache&lt;K,V&gt; {
+    int capacity;
+    LinkedHashMap&lt;K,V&gt; cache;
+    LRUCache(int cap) {
+        capacity = cap;
+        cache = new LinkedHashMap&lt;&gt;(16, 0.75f, true) {  // accessOrder=true
+            protected boolean removeEldestEntry(Map.Entry&lt;K,V&gt; e) {
+                return size() &gt; capacity;
+            }
+        };
+    }
+    public synchronized V get(K key) { return cache.getOrDefault(key, null); }
+    public synchronized void put(K key, V val) { cache.put(key, val); }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">LFU Cache</span><br><pre>class LFUCache {
+    Map&lt;Integer,Integer&gt; vals = new HashMap&lt;&gt;();
+    Map&lt;Integer,Integer&gt; counts = new HashMap&lt;&gt;();
+    Map&lt;Integer, LinkedHashSet&lt;Integer&gt;&gt; freqMap = new HashMap&lt;&gt;();
+    int minFreq, cap;
+    // On get: increment freq, move to higher freq bucket
+    // On put: if cap exceeded, evict from minFreq bucket (oldest entry)
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Strategy Pattern</span><br>Pluggable eviction: <code>EvictionPolicy</code> interface with <code>LRU</code>, <code>LFU</code>, <code>FIFO</code> implementations.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you make LRU thread-safe without a global lock? (shard by key hash)</li><li>How do you implement TTL-based expiry alongside LRU eviction?</li><li>How does Redis implement LRU? (approximate LRU — sample 5 keys, evict oldest)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the time complexity of LFU vs LRU? (both O(1) with right structures)<br>• How does Caffeine (Java) implement W-TinyLFU?<br>• What is a 2Q (Two-Queue) cache?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, Razorpay...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
+    <span class="q-index">3</span>
+    <span class="q-text">Design a Sliding Window Rate Limiter (code-level)</span>
+    <div class="q-tags"><span class="q-tag">rate-limiter</span><span class="q-tag">sliding-window</span><span class="q-tag">redis</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Sliding Window Log Algorithm</span><br>Store timestamps of each request in a sorted set. On each request: remove old entries, count remaining, allow if below limit.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">In-Memory Thread-Safe</span><br><pre>class SlidingWindowRateLimiter {
+    private final int maxRequests;
+    private final long windowMs;
+    private final Map&lt;String, Deque&lt;Long&gt;&gt; windows = new ConcurrentHashMap&lt;&gt;();
+
+    boolean allow(String clientId) {
+        long now = System.currentTimeMillis();
+        long cutoff = now - windowMs;
+
+        Deque&lt;Long&gt; timestamps = windows.computeIfAbsent(clientId, k -&gt; new ArrayDeque&lt;&gt;());
+
+        synchronized (timestamps) {
+            // Remove expired
+            while (!timestamps.isEmpty() &amp;&amp; timestamps.peekFirst() &lt;= cutoff)
+                timestamps.pollFirst();
+            if (timestamps.size() &gt;= maxRequests) return false;
+            timestamps.addLast(now);
+            return true;
+        }
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Redis-based (Distributed)</span><br><pre>MULTI
+ZREMRANGEBYSCORE rate:user1 0 {window_start}
+ZCARD rate:user1
+ZADD rate:user1 {now} {request_uuid}
+EXPIRE rate:user1 {window_seconds}
+EXEC
+-- Check count from ZCARD result &lt; limit</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How does sliding window differ from fixed window? (fixed window: burst at boundary)</li><li>How do you implement per-route limits vs global user limits?</li><li>What is the token bucket trade-off vs sliding window? (token bucket allows bursting)</li><li>How do you handle distributed rate limiting across 10 API servers?</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the leaky bucket algorithm?<br>• How do you rate-limit by user + endpoint combination?<br>• What is cell-based rate limiting (GCRA)?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="machine_coding">
+    <span class="q-index">4</span>
+    <span class="q-text">Design a Parking Lot System</span>
+    <div class="q-tags"><span class="q-tag">oop</span><span class="q-tag">design-patterns</span><span class="q-tag">state-machine</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Entities & Design</span><br><ul><li><b>ParkingLot:</b> Singleton. Has multiple floors.</li><li><b>ParkingFloor:</b> Has spots of different sizes (SMALL, MEDIUM, LARGE).</li><li><b>ParkingSpot:</b> spotNumber, spotType, isAvailable, parkedVehicle.</li><li><b>Vehicle:</b> Abstract. Subtypes: Car, Bike, Truck. Has licensePlate, vehicleType.</li><li><b>Ticket:</b> ticketId, entryTime, spot. Links vehicle to spot.</li><li><b>ParkingDisplayBoard:</b> Observer — updates on spot change.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Patterns</span><br><ul><li><b>Strategy:</b> PricingStrategy — hourly, daily, per-spot-type</li><li><b>Observer:</b> DisplayBoard observes spot availability changes</li><li><b>Singleton:</b> ParkingLot instance</li><li><b>Factory:</b> VehicleFactory.create(type)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Concurrency</span><br><pre>// Thread-safe spot assignment
+public synchronized Ticket park(Vehicle v) {
+    ParkingSpot spot = findAvailableSpot(v.getType());
+    if (spot == null) throw new ParkingFullException();
+    spot.setOccupied(true);
+    return new Ticket(v, spot, LocalDateTime.now());
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you handle multiple entry/exit gates concurrently?</li><li>How do you implement reserved spots for subscribers?</li><li>How do you calculate the fee for partial hours?</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How would you add electric vehicle charging spots?<br>• How would you implement a monthly pass feature?<br>• How do you find the nearest available spot to a given entrance gate?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, Adobe...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
+    <span class="q-index">5</span>
+    <span class="q-text">Design a Movie Ticket Booking System (BookMyShow)</span>
+    <div class="q-tags"><span class="q-tag">oop</span><span class="q-tag">concurrency</span><span class="q-tag">lock</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Entities</span><br><ul><li><b>Theatre, Screen, Show, Seat, Booking:</b> core entities</li><li><b>Seat states:</b> AVAILABLE, LOCKED (temp reserved), BOOKED</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Concurrency — Seat Reservation</span><br><pre>// Optimistic locking with version field
+@Entity
+class Seat {
+    Long id; SeatStatus status; int version;  // JPA @Version
+}
+
+// Service
+@Transactional
+public Booking reserveSeats(List&lt;Long&gt; seatIds, User user) {
+    List&lt;Seat&gt; seats = seatRepo.findAllById(seatIds);
+    for (Seat s : seats) {
+        if (s.getStatus() != AVAILABLE)
+            throw new SeatNotAvailableException(s.getId());
+        s.setStatus(LOCKED);  // version bumped by JPA
+    }
+    // Confirmed after payment
+    return new Booking(seats, user, LocalDateTime.now());
+}  // On version conflict: OptimisticLockException → retry or fail</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">TTL-based Lock Release</span><br>If payment not completed in 10 minutes → scheduled job releases LOCKED → back to AVAILABLE.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you prevent two users from booking the same seat simultaneously?</li><li>How do you implement seat selection UI with real-time availability?</li><li>How do you handle partial refunds?</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• SELECT FOR UPDATE SKIP LOCKED — how does it prevent double booking at DB level?<br>• How would you design this for millions of users (BookMyShow scale)?<br>• How does the saga pattern apply to booking + payment flow?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Amazon, Swiggy, Zomato, PhonePe, Razorpay, CRED</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
+    <span class="q-index">6</span>
+    <span class="q-text">Design a Rate Limiter (code-level)</span>
+    <div class="q-tags"><span class="q-tag">token-bucket</span><span class="q-tag">sliding-window</span><span class="q-tag">concurrent</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Token Bucket Implementation</span><br><pre>class TokenBucketRateLimiter {
+    private final long capacity;
+    private final double refillRatePerMs;
+    private double tokens;
+    private long lastRefillTime;
+
+    public TokenBucketRateLimiter(long capacity, long refillPerSecond) {
+        this.capacity = capacity;
+        this.refillRatePerMs = refillPerSecond / 1000.0;
+        this.tokens = capacity;
+        this.lastRefillTime = System.currentTimeMillis();
+    }
+
+    public synchronized boolean allowRequest() {
+        refill();
+        if (tokens &gt;= 1) { tokens--; return true; }
+        return false;
+    }
+
+    private void refill() {
+        long now = System.currentTimeMillis();
+        double toAdd = (now - lastRefillTime) * refillRatePerMs;
+        tokens = Math.min(capacity, tokens + toAdd);
+        lastRefillTime = now;
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Per-Key Rate Limiter</span><br><pre>class RateLimiterService {
+    ConcurrentHashMap&lt;String, TokenBucketRateLimiter&gt; limiters = new ConcurrentHashMap&lt;&gt;();
+    boolean allow(String key) {
+        return limiters.computeIfAbsent(key,
+            k -&gt; new TokenBucketRateLimiter(100, 10)).allowRequest();
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you handle distributed rate limiting across 10 servers? (Redis Lua + ZADD sliding window)</li><li>How do you implement rate limiting by IP + endpoint combination?</li><li>How do you return the exact wait time to client? (time until next token available)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the difference between token bucket and leaky bucket?<br>• How does Guava RateLimiter implement token bucket?<br>• How do you handle burst traffic legitimately? (pre-warm tokens)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Stripe, Google, Uber, Razorpay, CRED</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
+    <span class="q-index">7</span>
+    <span class="q-text">Design a Snowflake-style Distributed ID Generator</span>
+    <div class="q-tags"><span class="q-tag">snowflake</span><span class="q-tag">distributed-id</span><span class="q-tag">epoch</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Twitter Snowflake Structure (64-bit)</span><br><pre>| 1 bit sign | 41 bits timestamp (ms) | 10 bits machine ID | 12 bits sequence |
+
+- Timestamp: ms since custom epoch (Jan 1, 2010)
+  → supports 2^41 ms ≈ 69 years
+- Machine ID: 10 bits → 1024 machines
+- Sequence: 12 bits → 4096 IDs/ms/machine
+
+Total: ~4 million IDs/second per machine, globally unique, sortable!</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Implementation</span><br><pre>class SnowflakeIdGenerator {
+    private final long EPOCH = 1288834974657L;  // Nov 4, 2010
+    private final long MACHINE_ID;              // 0-1023
+    private long sequence = 0;
+    private long lastTs = -1;
+
+    synchronized long nextId() {
+        long ts = System.currentTimeMillis();
+        if (ts == lastTs) {
+            sequence = (sequence + 1) &amp; 0xFFF;  // 12-bit mask
+            if (sequence == 0) ts = waitNextMs(lastTs);  // sequence exhausted
+        } else { sequence = 0; }
+        lastTs = ts;
+        return ((ts - EPOCH) &lt;&lt; 22) | (MACHINE_ID &lt;&lt; 12) | sequence;
+    }
+
+    private long waitNextMs(long ts) {
+        long now = System.currentTimeMillis();
+        while (now &lt;= ts) now = System.currentTimeMillis();
+        return now;
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>What happens if system clock goes backwards? (NTP clock skew) → block until clock catches up</li><li>How do you assign machine IDs in a dynamic cloud environment? (ZooKeeper ephemeral node, Redis INCR)</li><li>How would you make it monotonic across machines? (ULIDs)</li><li>Why is UUID v4 not a good database primary key? (random → B+tree fragmentation)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is ULID and how does it improve on UUID?<br>• How does Instagram's ID generation work? (PostgreSQL function + shard ID)<br>• What is the trade-off between centralized vs decentralized ID generation?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="machine_coding">
+    <span class="q-index">8</span>
+    <span class="q-text">Design a Notification System</span>
+    <div class="q-tags"><span class="q-tag">observer</span><span class="q-tag">factory</span><span class="q-tag">chain-of-responsibility</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Observer Pattern</span><br><pre>interface NotificationObserver { void update(Event event); }
+
+class EmailNotifier implements NotificationObserver {
+    public void update(Event e) { emailService.send(e.getUserEmail(), e.getMessage()); }
+}
+class SMSNotifier implements NotificationObserver { ... }
+class PushNotifier implements NotificationObserver { ... }
+
+class NotificationService {
+    Map&lt;EventType, List&lt;NotificationObserver&gt;&gt; subscribers = new HashMap&lt;&gt;();
+    void subscribe(EventType t, NotificationObserver o) { subscribers.get(t).add(o); }
+    void notify(Event e) {
+        for (NotificationObserver o : subscribers.get(e.getType()))
+            executorService.submit(() -&gt; o.update(e));  // async
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Chain of Responsibility (Fallback)</span><br>EmailHandler → SMSHandler → PushHandler. If email fails, try SMS, etc.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you handle notification templates? (Template Method pattern)</li><li>How do you add rate limiting per user per channel?</li><li>How do you ensure at-least-once delivery?</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you implement notification preferences per user?<br>• How do you handle bounced emails or undeliverable SMS?<br>• How does this extend to a distributed notification system at scale?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, Razorpay...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
+    <span class="q-index">9</span>
+    <span class="q-text">Design a Circuit Breaker</span>
+    <div class="q-tags"><span class="q-tag">circuit-breaker</span><span class="q-tag">state-machine</span><span class="q-tag">resilience</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">States</span><br><b>CLOSED</b> → calls go through. <b>OPEN</b> → calls fail-fast (no downstream). <b>HALF_OPEN</b> → probe call, if succeeds → CLOSED, else → OPEN.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Full Implementation</span><br><pre>enum State { CLOSED, OPEN, HALF_OPEN }
+
+class CircuitBreaker {
+    State state = CLOSED;
+    int failCount = 0, successCount = 0;
+    final int failThreshold = 5;
+    final int successThreshold = 2;
+    Instant openedAt;
+    final Duration timeout = Duration.ofSeconds(30);
+    final ReentrantLock lock = new ReentrantLock();
+
+    &lt;T&gt; T call(Supplier&lt;T&gt; fn) {
+        lock.lock(); try {
+            if (state == OPEN) {
+                if (Duration.between(openedAt, Instant.now()).compareTo(timeout) &gt; 0)
+                    state = HALF_OPEN;
+                else throw new CircuitOpenException();
+            }
+        } finally { lock.unlock(); }
+
+        try {
+            T result = fn.get();
+            onSuccess(); return result;
+        } catch (Exception e) { onFailure(); throw e; }
+    }
+
+    void onSuccess() {
+        lock.lock(); try {
+            if (state == HALF_OPEN &amp;&amp; ++successCount &gt;= successThreshold) {
+                state = CLOSED; failCount = 0; successCount = 0;
+            }
+        } finally { lock.unlock(); }
+    }
+
+    void onFailure() {
+        lock.lock(); try {
+            if (++failCount &gt;= failThreshold || state == HALF_OPEN) {
+                state = OPEN; openedAt = Instant.now(); successCount = 0;
+            }
+        } finally { lock.unlock(); }
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you make the thresholds configurable at runtime?</li><li>How do you implement per-endpoint circuit breakers?</li><li>How does Resilience4j implement circuit breaker differently? (sliding window: count/time based)</li><li>How do you expose circuit breaker state via metrics/health endpoint?</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the difference between circuit breaker and retry with backoff?<br>• How does Hystrix compare to Resilience4j?<br>• How would you implement bulkhead pattern alongside circuit breaker?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Stripe, Razorpay...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
+    <span class="q-index">10</span>
+    <span class="q-text">Design a Job/Task Scheduler</span>
+    <div class="q-tags"><span class="q-tag">scheduler</span><span class="q-tag">priority-queue</span><span class="q-tag">cron</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Requirements</span><br>One-time delayed jobs, recurring (cron-like) jobs, priority, retry on failure, cancellation, status tracking.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Core Design</span><br><pre>class Job {
+    String id; Runnable task; JobStatus status;
+    long scheduledAt;  // epoch ms
+    int priority, maxRetries, retryCount;
+    String cronExpr;   // null for one-time jobs
+}
+
+class Scheduler {
+    // Min-heap by scheduledAt
+    PriorityQueue&lt;Job&gt; queue = new PriorityQueue&lt;&gt;(
+        Comparator.comparingLong((Job j) -&gt; j.scheduledAt)
+                  .thenComparing(j -&gt; -j.priority));
+    ScheduledExecutorService executor = Executors.newScheduledThreadPool(4);
+    Map&lt;String, ScheduledFuture&lt;?&gt;&gt; running = new ConcurrentHashMap&lt;&gt;();
+
+    String schedule(Runnable task, long delayMs, int priority) {
+        Job job = new Job(UUID.randomUUID().toString(), task, 
+                          System.currentTimeMillis() + delayMs, priority);
+        queue.offer(job);
+        return job.id;
+    }
+
+    void processJobs() {
+        while (!Thread.currentThread().isInterrupted()) {
+            Job job = queue.peek();
+            if (job == null || job.scheduledAt &gt; System.currentTimeMillis()) {
+                Thread.sleep(10); continue;
+            }
+            queue.poll();
+            executor.submit(() -&gt; executeWithRetry(job));
+        }
+    }
+
+    void executeWithRetry(Job job) {
+        try { job.task.run(); job.status = COMPLETED; }
+        catch (Exception e) {
+            if (job.retryCount++ &lt; job.maxRetries) {
+                job.scheduledAt = System.currentTimeMillis() + backoff(job.retryCount);
+                queue.offer(job);
+            } else { job.status = FAILED; }
+        }
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you implement cron expression parsing? (Quartz CronExpression)</li><li>How do you make the scheduler distributed? (database-backed queue, leader election)</li><li>How do you prevent duplicate job execution in distributed scheduler? (pessimistic lock on job row)</li><li>How does exponential backoff work? (delay = base × 2^retryCount + jitter)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does Quartz Scheduler handle clustering?<br>• What is the difference between at-most-once and at-least-once job execution?<br>• How would you implement a workflow engine (job dependencies)?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="machine_coding">
+    <span class="q-index">11</span>
+    <span class="q-text">Design an ATM Machine</span>
+    <div class="q-tags"><span class="q-tag">state-machine</span><span class="q-tag">oop</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">85%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">State Machine</span><br><pre>States: IDLE → CARD_INSERTED → PIN_AUTHENTICATING → SELECTING → DISPENSING → EJECTING
+
+class ATM {
+    ATMState currentState;
+    void insertCard()  { currentState.insertCard(); }
+    void enterPin(int pin) { currentState.enterPin(pin); }
+    void withdraw(int amount) { currentState.withdraw(amount); }
+    void ejectCard() { currentState.ejectCard(); }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Classes</span><br><ul><li><b>ATMState (interface):</b> insertCard, enterPin, withdraw, ejectCard</li><li><b>IdleState, CardInsertedState, AuthenticatingState, DispensingState:</b> each implements ATMState</li><li><b>CashDispenser:</b> tracks cash level, notifies when low</li><li><b>BankService:</b> validates PIN, processes debit</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you handle PIN retry limit (3 attempts → card blocked)?</li><li>How do you handle network failure during transaction?</li><li>How do you implement multi-currency dispensing?</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How would you add UPI/contactless payment?<br>• How do you handle transaction timeout?<br>• How does the State pattern compare to enum-based state management?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, PayPal, Stripe, Razorpay...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="machine_coding">
+    <span class="q-index">12</span>
+    <span class="q-text">Design an Elevator System</span>
+    <div class="q-tags"><span class="q-tag">design-patterns</span><span class="q-tag">scheduler</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">85%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Scheduling Strategies</span><br><ul><li><b>SCAN (Elevator algorithm):</b> Go in one direction, serve all requests, reverse. Minimizes total travel.</li><li><b>LOOK:</b> Like SCAN but reverses when no more requests in current direction (doesn't go to end).</li><li><b>FCFS:</b> First come first served. Simple but suboptimal.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Design</span><br><pre>class Elevator {
+    int currentFloor; Direction dir; ElevatorState state;
+    List&lt;Request&gt; queue;  // sorted by floor
+    void addRequest(Request r) { queue.add(r); processNext(); }
+    void processNext() {
+        Request next = schedulingStrategy.pickNext(queue, currentFloor, dir);
+        moveTo(next.floor);
+    }
+}
+class ElevatorSystem {
+    List&lt;Elevator&gt; elevators;
+    void requestElevator(int floor, Direction d) {
+        Elevator best = findOptimalElevator(floor, d);  // least-travel heuristic
+        best.addRequest(new Request(floor, d));
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you handle emergency (fire) — all elevators to ground floor?</li><li>How do you optimize for a building with VIP floors?</li><li>How do you handle overweight detection?</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does this system scale to a 100-floor building with 20 elevators?<br>• What is the SSTF (Shortest Seek Time First) strategy and what is its starvation problem?<br>• How would you add a dispatch algorithm that minimizes average wait time?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Amazon, Adobe</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
+    <span class="q-index">13</span>
+    <span class="q-text">Design a Food Delivery System</span>
+    <div class="q-tags"><span class="q-tag">oop</span><span class="q-tag">observer</span><span class="q-tag">strategy</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">85%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Restaurant, Menu, Order, Delivery Agent, Customer. Observer for order status. Strategy for delivery assignment.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Swiggy, Zomato, Uber, Amazon, CRED</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="machine_coding">
+    <span class="q-index">14</span>
+    <span class="q-text">Design a URL Shortener (code-level)</span>
+    <div class="q-tags"><span class="q-tag">hashing</span><span class="q-tag">concurrent</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">85%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Design</span><br><pre>class URLShortener {
+    static final String CHARS = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    AtomicLong counter = new AtomicLong(1);
+    ConcurrentHashMap&lt;String, URLEntry&gt; store = new ConcurrentHashMap&lt;&gt;();
+
+    String shorten(String url, int expiryDays) {
+        long id = counter.getAndIncrement();
+        String code = toBase62(id);
+        store.put(code, new URLEntry(url, Instant.now().plusSeconds(86400L*expiryDays)));
+        return "https://sho.rt/" + code;
+    }
+
+    String expand(String code) {
+        URLEntry e = store.get(code);
+        if (e == null || e.isExpired()) throw new NotFoundException();
+        return e.originalUrl;
+    }
+
+    private String toBase62(long n) {
+        StringBuilder sb = new StringBuilder();
+        while (n &gt; 0) { sb.insert(0, CHARS.charAt((int)(n%62))); n/=62; }
+        return sb.toString();
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Distributed Design</span><br><ul><li>Counter: distributed ID generator (Snowflake or Redis INCR) instead of AtomicLong</li><li>Store: Redis (fast reads) + database (durable) with write-through cache</li><li>Custom aliases: check uniqueness, reject if taken</li><li>Analytics: Kafka event per click → ClickHouse for aggregation</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you prevent collision if counter is shared across servers?</li><li>How do you implement custom vanity URLs (/my-brand)?</li><li>How do you handle 301 vs 302 redirect? (301: browser caches, 302: server always consulted)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you design URL shortener for 100M requests/day?<br>• How do you implement link preview (OG tags)?<br>• How do you detect and block malicious URLs?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, Razorpay...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
+    <span class="q-index">15</span>
+    <span class="q-text">Design an in-memory Message Queue (pub/sub + queuing)</span>
+    <div class="q-tags"><span class="q-tag">message-queue</span><span class="q-tag">pub-sub</span><span class="q-tag">topic</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Requirements</span><br>Push/pull delivery, topic-based routing, consumer groups, at-least-once delivery, offset tracking, TTL for messages.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Design</span><br><pre>class Message { String id, topicName, payload; long timestamp; }
+
+class Topic {
+    String name;
+    List&lt;Message&gt; messages = new CopyOnWriteArrayList&lt;&gt;();
+    // Consumer group → offset
+    Map&lt;String, AtomicLong&gt; groupOffsets = new ConcurrentHashMap&lt;&gt;();
+
+    void publish(Message msg) { messages.add(msg); notifySubscribers(); }
+
+    List&lt;Message&gt; poll(String group, int maxMsgs) {
+        long offset = groupOffsets.computeIfAbsent(group, k-&gt; new AtomicLong(0)).get();
+        List&lt;Message&gt; batch = messages.subList(
+            (int)offset, Math.min((int)offset + maxMsgs, messages.size()));
+        groupOffsets.get(group).addAndGet(batch.size());
+        return batch;
+    }
+}
+
+class MessageBroker {
+    Map&lt;String, Topic&gt; topics = new ConcurrentHashMap&lt;&gt;();
+    // Subscribe with push callback:
+    void subscribe(String topic, String group, Consumer&lt;Message&gt; handler) { ... }
+    void publish(String topic, String payload) { ... }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you implement exactly-once delivery? (idempotency key + deduplication store)</li><li>How does acknowledgement work? (mark offset committed only after processing)</li><li>How do you handle slow consumers? (max lag threshold, dead-letter queue)</li><li>How would you persist messages to disk? (WAL/append-only log)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does Kafka differ from RabbitMQ in delivery semantics?<br>• What is a dead letter queue (DLQ)?<br>• How do you implement message ordering within a partition?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
+    <span class="q-index">16</span>
+    <span class="q-text">Design an Inventory Management System</span>
+    <div class="q-tags"><span class="q-tag">inventory</span><span class="q-tag">oop</span><span class="q-tag">concurrency</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Entities</span><br><pre>class Product { String id, name, category; double price; }
+
+class InventoryItem {
+    Product product; int availableQty, reservedQty, soldQty;
+    String warehouseId;
+}
+
+class Order { String id; Map&lt;String,Integer&gt; items; OrderStatus status; }
+
+class Warehouse { String id, location; Map&lt;String,InventoryItem&gt; inventory; }</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Thread-safe Reserve + Fulfill</span><br><pre>class InventoryService {
+    Map&lt;String, ReentrantLock&gt; productLocks = new ConcurrentHashMap&lt;&gt;();
+    Map&lt;String, InventoryItem&gt; inventory = new ConcurrentHashMap&lt;&gt;();
+
+    boolean reserve(String productId, int qty) {
+        ReentrantLock lock = productLocks.computeIfAbsent(productId, k -&gt; new ReentrantLock());
+        lock.lock();
+        try {
+            InventoryItem item = inventory.get(productId);
+            if (item.availableQty &lt; qty) return false;  // insufficient stock
+            item.availableQty -= qty;
+            item.reservedQty += qty;
+            return true;
+        } finally { lock.unlock(); }
+    }
+
+    void fulfill(String productId, int qty) { // on order shipped
+        // lock, reservedQty -= qty, soldQty += qty
+    }
+
+    void release(String productId, int qty) { // on order cancel
+        // lock, reservedQty -= qty, availableQty += qty
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you prevent overselling in high-concurrency flash sales? (DB-level lock with FOR UPDATE SKIP LOCKED)</li><li>How do you handle inventory across multiple warehouses? (routing strategy: nearest, FIFO)</li><li>How would you implement inventory events for audit log? (Event Sourcing pattern)</li><li>How do you handle partial reservation? (saga pattern: reserve each item, rollback all on failure)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the saga pattern and how does it apply to multi-item orders?<br>• How would you implement low-stock alerts? (observer pattern + threshold)<br>• How does Amazon handle inventory reservation at massive scale?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Amazon, Flipkart, Walmart, Meesho, CRED, Razorpay</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="machine_coding">
+    <span class="q-index">17</span>
+    <span class="q-text">Design a Hotel Booking System</span>
+    <div class="q-tags"><span class="q-tag">oop</span><span class="q-tag">decorator</span><span class="q-tag">strategy</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">83%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Entities: Hotel, Room, Booking, Guest, Payment. Strategy for pricing (seasonal). Observer for availability.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Airbnb, Amazon, LinkedIn, Expedia</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="machine_coding">
+    <span class="q-index">18</span>
+    <span class="q-text">Design an Online Shopping Cart</span>
+    <div class="q-tags"><span class="q-tag">oop</span><span class="q-tag">strategy</span><span class="q-tag">decorator</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">83%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Cart, Item, Discount (Strategy), Payment (Strategy). Decorator for promotions. Singleton CartManager.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Amazon, Flipkart, Walmart, Meesho, Razorpay</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
+    <span class="q-index">19</span>
+    <span class="q-text">Design a Key-Value Store</span>
+    <div class="q-tags"><span class="q-tag">lsm-tree</span><span class="q-tag">wal</span><span class="q-tag">concurrent</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">83%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Architecture</span><br><ul><li><b>MemTable:</b> In-memory sorted tree (TreeMap). Writes go here first.</li><li><b>WAL (Write-Ahead Log):</b> Append-only log for crash recovery.</li><li><b>SSTable:</b> Immutable sorted file flushed from MemTable when full.</li><li><b>Compaction:</b> Background merge of SSTables (remove tombstones, deduplicate).</li><li><b>Bloom Filter:</b> Per-SSTable to skip files that don't contain a key (fast miss detection).</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Core Operations</span><br><pre>class KVStore {
+    TreeMap&lt;String,String&gt; memTable = new TreeMap&lt;&gt;();
+    List&lt;SSTable&gt; ssTables = new ArrayList&lt;&gt;();
+    WriteAheadLog wal;
+    final int MEM_TABLE_LIMIT = 1_000_000;
+
+    synchronized void put(String key, String value) {
+        wal.append(key, value);
+        memTable.put(key, value);
+        if (memTable.size() &gt;= MEM_TABLE_LIMIT) flush();
+    }
+
+    String get(String key) {
+        if (memTable.containsKey(key)) return memTable.get(key);
+        for (int i = ssTables.size()-1; i &gt;= 0; i--) {
+            if (ssTables.get(i).bloomFilter.mightContain(key))
+                return ssTables.get(i).get(key);  // binary search in sorted file
+        }
+        return null;
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you implement TTL (key expiry)?</li><li>How does compaction prevent unbounded disk growth?</li><li>How do you implement range queries efficiently?</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does RocksDB differ from a simple LSM implementation?<br>• What is leveled vs size-tiered compaction strategy?<br>• How do you implement atomic multi-key transactions?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Databricks, Snowflake</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="machine_coding">
+    <span class="q-index">20</span>
+    <span class="q-text">Design a Library Management System</span>
+    <div class="q-tags"><span class="q-tag">oop</span><span class="q-tag">design-patterns</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Entities: Library, Book, Member, Librarian, Loan. Observer for due-date alerts. Factory for book types.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Adobe, Amazon...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="machine_coding">
+    <span class="q-index">21</span>
+    <span class="q-text">Design a Vending Machine</span>
+    <div class="q-tags"><span class="q-tag">state-machine</span><span class="q-tag">design-patterns</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">States: Idle→HasMoney→SelectProduct→Dispensing→GiveChange. Strategy for payment. State pattern.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Oracle, Cisco</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="machine_coding">
+    <span class="q-index">22</span>
+    <span class="q-text">Design a Logger Framework</span>
+    <div class="q-tags"><span class="q-tag">chain-of-responsibility</span><span class="q-tag">singleton</span><span class="q-tag">observer</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Log levels (DEBUG/INFO/WARN/ERROR). Chain of Responsibility for handlers. Appenders (File/Console/Remote). Async logging.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, Adobe...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="machine_coding">
+    <span class="q-index">23</span>
+    <span class="q-text">Design an Event Bus / Pub-Sub System</span>
+    <div class="q-tags"><span class="q-tag">observer</span><span class="q-tag">generics</span><span class="q-tag">concurrent</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">EventBus with topic→List<Subscriber>. Async dispatch with ExecutorService. Type-safe via generics.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, Razorpay...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
+    <span class="q-index">24</span>
+    <span class="q-text">Design a Concurrent Task Scheduler</span>
+    <div class="q-tags"><span class="q-tag">concurrent</span><span class="q-tag">priority-queue</span><span class="q-tag">thread-pool</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">PriorityQueue<Task> by schedule time. ScheduledThreadPoolExecutor. Retry logic. Task states: PENDING/RUNNING/DONE/FAILED.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Stripe, Razorpay</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="machine_coding">
+    <span class="q-index">25</span>
+    <span class="q-text">Design a Leaderboard System</span>
+    <div class="q-tags"><span class="q-tag">sorted-set</span><span class="q-tag">concurrent</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">TreeMap or Redis sorted set for O(log n) rank. ConcurrentSkipListMap for lock-free. Paginated top-K queries.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Dream11, Google, Amazon, CRED, Zomato</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
+    <span class="q-index">26</span>
+    <span class="q-text">Design a Bloom Filter</span>
+    <div class="q-tags"><span class="q-tag">bloom-filter</span><span class="q-tag">probabilistic</span><span class="q-tag">bitarray</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">What is a Bloom Filter</span><br>Space-efficient probabilistic data structure. Answers: 'definitely not in set' OR 'probably in set'. No false negatives, configurable false positive rate.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Implementation</span><br><pre>class BloomFilter {
+    private final BitSet bits;
+    private final int numBits;
+    private final int numHashFunctions;
+
+    BloomFilter(int expectedItems, double falsePositiveRate) {
+        // Optimal bit count: -n*ln(p) / (ln2)^2
+        numBits = (int)(-expectedItems * Math.log(falsePositiveRate) / (Math.log(2)*Math.log(2)));
+        // Optimal hash count: (m/n) * ln2
+        numHashFunctions = (int)(numBits * 1.0 / expectedItems * Math.log(2));
+        bits = new BitSet(numBits);
+    }
+
+    void add(String item) {
+        for (int i = 0; i &lt; numHashFunctions; i++)
+            bits.set(Math.abs(hash(item, i)) % numBits);
+    }
+
+    boolean mightContain(String item) {
+        for (int i = 0; i &lt; numHashFunctions; i++)
+            if (!bits.get(Math.abs(hash(item, i)) % numBits)) return false;  // Definitely not
+        return true;  // Probably yes
+    }
+
+    private int hash(String s, int seed) {
+        return Objects.hash(s, seed);
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you calculate false positive rate given n items and m bits? (1 - e^(-kn/m))^k</li><li>Can you delete from a Bloom filter? (No — use Counting Bloom Filter instead)</li><li>What is Cuckoo filter and how does it improve on Bloom? (supports deletion, better lookup perf)</li><li>How does Cassandra use Bloom filters? (before SSTable disk lookup)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is a scalable Bloom filter?<br>• How does Redis implement Bloom filter? (RedisBloom module)<br>• What is HyperLogLog and how does it differ from Bloom filter?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Stripe, Databricks...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
+    <span class="q-index">27</span>
+    <span class="q-text">Design a Chess Game</span>
+    <div class="q-tags"><span class="q-tag">oop</span><span class="q-tag">strategy</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Piece hierarchy (King/Queen/Rook/Bishop/Knight/Pawn). Board, Player, Game, Move. Each piece has valid_moves().</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Apple, Adobe</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
+    <span class="q-index">28</span>
+    <span class="q-text">Design a File System</span>
+    <div class="q-tags"><span class="q-tag">composite</span><span class="q-tag">oop</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Composite pattern: FileSystemNode→File|Directory. Directory contains children. Operations: create/delete/search/size.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Apple, Dropbox, Microsoft</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="machine_coding">
+    <span class="q-index">29</span>
+    <span class="q-text">Design a Cricket Score Tracker</span>
+    <div class="q-tags"><span class="q-tag">oop</span><span class="q-tag">observer</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Match, Innings, Over, Ball, Batsman, Bowler entities. Observer for scorecard updates. Strategy for DLS method.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Dream11, Amazon, Microsoft, TCS, Infosys</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
+    <span class="q-index">30</span>
+    <span class="q-text">Design a Connection Pool</span>
+    <div class="q-tags"><span class="q-tag">blocking-queue</span><span class="q-tag">semaphore</span><span class="q-tag">concurrent</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Implementation</span><br><pre>class ConnectionPool {
+    BlockingDeque&lt;Connection&gt; pool;
+    AtomicInteger totalCreated;
+    int maxSize, minIdle;
+    long acquireTimeoutMs;
+
+    Connection borrow() throws Exception {
+        Connection conn = pool.pollFirst(acquireTimeoutMs, MILLISECONDS);
+        if (conn == null) {
+            if (totalCreated.get() &lt; maxSize) {
+                conn = createConnection(); totalCreated.incrementAndGet();
+            } else throw new TimeoutException("Pool exhausted");
+        }
+        if (!conn.isValid()) { conn.close(); return borrow(); }  // retry
+        return conn;
+    }
+
+    void release(Connection conn) {
+        if (conn.isValid()) pool.offerFirst(conn);
+        else { conn.close(); totalCreated.decrementAndGet(); }
+    }
+
+    // Health check thread: periodically validate idle connections
+    void startHealthCheck() {
+        scheduler.scheduleAtFixedRate(() -&gt; {
+            pool.forEach(c -&gt; { if (!c.isValid()) { pool.remove(c); totalCreated.decrementAndGet(); } });
+            while (pool.size() &lt; minIdle) pool.add(createConnection());
+        }, 30, 30, SECONDS);
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you handle connection leaks? (track borrow time, log if not returned in N seconds)</li><li>How do you implement maximum lifetime for connections? (stale connections cause issues)</li><li>How does HikariCP achieve better performance than c3p0?</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the difference between connection pool and thread pool?<br>• How do you size a connection pool? (active_threads × avg_hold_time / avg_query_time)<br>• How do you handle connection pool exhaustion gracefully?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Stripe, Razorpay</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="machine_coding">
+    <span class="q-index">31</span>
+    <span class="q-text">Design a Snake and Ladder Game</span>
+    <div class="q-tags"><span class="q-tag">oop</span><span class="q-tag">simulation</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Board, Player, Dice, Snake, Ladder entities. Turn-based simulation. Simple to extend with special cells.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Amazon, Microsoft, Adobe, TCS, Infosys</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="machine_coding">
+    <span class="q-index">32</span>
+    <span class="q-text">Design a Traffic Light System</span>
+    <div class="q-tags"><span class="q-tag">state-machine</span><span class="q-tag">observer</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">75%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">State machine per light: Red→Green→Yellow→Red. Timer triggers transitions. Observer notifies connected intersections.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Cisco, Google, Uber, Amazon</span>
+    </div>
+  </div>
+</div></div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-links">
+      <a href="../common/top-coding.html">Top Coding</a>
+      <a href="../common/top-system-design.html">System Design</a>
+      <a href="../common/top-backend.html">Backend</a>
+      <a href="../common/top-cpp.html">C++</a>
+      <a href="../common/top-java.html">Java</a>
+      <a href="../common/top-go.html">Go</a>
+      <a href="../common/top-database.html">Database</a>
+      <a href="../common/top-concurrency.html">Concurrency</a>
+      <a href="../common/top-os.html">OS</a>
+      <a href="../common/top-networking.html">Networking</a>
+      <a href="../common/top-lld.html">LLD</a>
+      <a href="../common/top-cicd.html">CI/CD</a>
+      <a href="../common/top-security.html">Security</a>
+      <a href="../common/top-ml.html">ML Systems</a>
+      <a href="../common/top-perf.html">Performance</a>
+      <a href="../mcq-quiz.html">MCQ Quiz</a>
+    </div>
+    <p>Built for SDE-1 &amp; SDE-2 Backend Engineers | C++ · Java · Go · Distributed Systems</p>
+    <p style="margin-top:8px;font-size:12px;opacity:.5">Data sourced from LeetCode, Glassdoor, Blind, Reddit &amp; public interview experiences</p>
+  </div>
+</footer>
+<button id="back-to-top" title="Back to top">↑</button>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

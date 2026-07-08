@@ -1,0 +1,173 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Part III: Operating Systems — C++ Interview Handbook</title>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<div style="background:#0f172a;border-bottom:1px solid #334155;padding:8px 20px;
+  display:flex;align-items:center;gap:16px;font-size:13px;position:fixed;top:0;left:0;right:0;z-index:400;height:38px">
+  <a href="../index.html" style="color:#3b82f6;font-weight:600;text-decoration:none;
+     display:flex;align-items:center;gap:6px">
+    <span>⚡</span><span>InterviewRepo</span>
+  </a>
+  <span style="color:#334155">|</span>
+  <a href="index.html" style="color:#94a3b8;text-decoration:none">📘 C++ Master Handbook</a>
+  <span style="color:#334155;margin-left:auto;font-size:11px;color:#475569">
+    C++ · Multithreading · OS · Networks · AI Runtime · Embedded · 150 Problems
+  </span>
+</div>
+<nav id="sidebar"><div class="sb-head"><b>C++ Handbook</b><br><small>15 Parts · 150 Problems</small></div><a href="index.html" >🏠 Table of Contents</a>
+<a href="part01.html"><span class="badge" style="background:#1a2744">01</span>Part I: C++ Mastery</a>
+<a href="part02.html"><span class="badge" style="background:#065f46">02</span>Part II: Multithreading & Concurrency</a>
+<a href="part03.html" class="active"><span class="badge" style="background:#7c3aed">03</span>Part III: Operating Systems</a>
+<a href="part04.html"><span class="badge" style="background:#0e7490">04</span>Part IV: Computer Networks</a>
+<a href="part05.html"><span class="badge" style="background:#92400e">05</span>Part V: Linux & Performance Tools</a>
+<a href="part06.html"><span class="badge" style="background:#1e40af">06</span>Part VI: Distributed Systems</a>
+<a href="part07.html"><span class="badge" style="background:#b45309">07</span>Part VII: System Design</a>
+<a href="part08.html"><span class="badge" style="background:#be185d">08</span>Part VIII: Compiler Internals</a>
+<a href="part09.html"><span class="badge" style="background:#0f766e">09</span>Part IX: AI Runtime</a>
+<a href="part10.html"><span class="badge" style="background:#4338ca">10</span>Part X: Embedded Systems</a>
+<a href="part11.html"><span class="badge" style="background:#0369a1">11</span>Part XI: DevOps & Tools</a>
+<a href="part12.html"><span class="badge" style="background:#1e3a5f">12</span>Part XII: Coding Interviews — 150 Problems</a>
+<a href="part13.html"><span class="badge" style="background:#3f1f69">13</span>Part XIII: Behavioral & STAR</a>
+<a href="part14.html"><span class="badge" style="background:#064e3b">14</span>Part XIV: Resume Deep Dive</a>
+<a href="part15.html"><span class="badge" style="background:#7f1d1d">15</span>Part XV: Company-Specific</a>
+</nav>
+<div id="main">
+  <div id="topbar"><div class="tb-title" style="border-left:4px solid #7c3aed;padding-left:12px">Part III: Operating Systems</div></div>
+  <div id="content">
+    <h1 class="part-title">Part III: Operating Systems</h1>
+    <p class="subtitle">Part III</p><hr class="divider">
+    <h2 class="chap">Chapter 1 — Processes vs Threads</h2><div class="diagram">Process:
+┌─────────────────────────────────────────────────────┐
+│ Virtual Address Space (private, isolated by MMU)    │
+│ .text │ .data │ heap │ stack │ mmap'd regions        │
+│ File descriptors │ Signal handlers │ PID, PPID       │
+└─────────────────────────────────────────────────────┘
+   ↑ copy-on-write clone via fork()
+
+Threads (within a process):
+  Thread 1    Thread 2    Thread 3
+  [stack]     [stack]     [stack]     ← each thread's own
+  [regs]      [regs]      [regs]
+  ─────── shared: heap, .data, .text, fds ───────</div><div class="tbl"><table><thead><tr><th>Property</th><th>Process</th><th>Thread</th></tr></thead><tbody><tr><td>Memory isolation</td><td>Yes (MMU)</td><td>No (shared)</td></tr><tr><td>Creation syscall</td><td>fork() — clones page tables</td><td>clone() / pthread_create</td></tr><tr><td>Creation cost</td><td>~100µs (page table copy)</td><td>~1µs (stack allocation only)</td></tr><tr><td>Crash isolation</td><td>Yes — one process can't corrupt another</td><td>No — one thread crash = all crash</td></tr><tr><td>IPC needed?</td><td>Yes — pipes, sockets, shm, signals</td><td>No — shared memory directly</td></tr><tr><td>Context switch</td><td>~1-10µs (TLB flush required)</td><td>~0.1-1µs (same address space)</td></tr></tbody></table></div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// fork() + exec() — the shell pattern
+// Used to launch every external program from a shell
+
+pid_t pid = fork();
+if (pid &lt; 0) {
+    perror("fork failed"); exit(1);
+}
+if (pid == 0) {
+    // CHILD: replace process image with new program
+    char* args[] = {"/bin/ls", "-la", "/tmp", nullptr};
+    execv("/bin/ls", args);   // replaces code/data/stack with ls
+    perror("exec failed");    // only reached if exec() fails
+    _exit(1);                 // use _exit in child after fork (no atexit handlers)
+}
+// PARENT: continues here
+int status;
+waitpid(pid, &amp;status, 0);    // wait for child to finish
+if (WIFEXITED(status))
+    printf("child exited with %d\n", WEXITSTATUS(status));</code></pre><div class="ex-why">✅ Why this works: fork() uses Copy-on-Write (CoW): parent and child share physical pages marked read-only. Only when a page is written does the OS create a private copy. fork() is O(page table entries), not O(memory size).</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// BAD: calling fork() in a multi-threaded program
+// Only the calling thread is copied to child — other threads VANISH
+// If another thread held a mutex when fork() was called:
+//   child inherits locked mutex with no thread to release it → DEADLOCK
+
+std::mutex db_mtx;
+void thread_worker() {
+    std::lock_guard lk(db_mtx);  // holds mutex
+    // ... if fork() is called by main thread here ...
+    // child has db_mtx locked with NO thread to unlock it
+}
+
+// Rule: if you must fork() in a multi-threaded program:
+// - Call exec() immediately in child (before doing anything else)
+// - Or use pthread_atfork() handlers
+// - Or: use separate process for forking (avoid the issue entirely)</code></pre><div class="ex-why bad-why">❌ Why this fails: fork() in multi-threaded programs is a well-known trap. The POSIX specification says only async-signal-safe functions can be called between fork() and exec() in a multi-threaded program.</div></div><h2 class="chap">Chapter 2 — CPU Scheduling</h2><p>The scheduler decides which runnable thread/process runs next. Linux uses CFS (Completely Fair Scheduler) for normal tasks and SCHED_FIFO/SCHED_RR for real-time tasks.</p><div class="diagram">Linux CFS — Virtual Runtime (vruntime):
+
+  Each task has vruntime = actual_runtime / weight
+  (nice=0: weight=1024, nice=-20: weight=88761, nice=+19: weight=15)
+
+  Red-black tree, keyed by vruntime:
+  Task with SMALLEST vruntime runs next
+
+  ┌──────────────────────────────────────────────────────────┐
+  │  RB-Tree (sorted by vruntime):                           │
+  │  [TaskA:v=100]─[TaskB:v=150]─[TaskC:v=200]─[TaskD:v=300]│
+  │         ↑ runs next (min vruntime)                       │
+  └──────────────────────────────────────────────────────────┘
+  After TaskA runs for time_slice: vruntime increases → moves right</div><div class="tbl"><table><thead><tr><th>Algorithm</th><th>Policy</th><th>Starvation?</th><th>Used By</th></tr></thead><tbody><tr><td>FCFS</td><td>First-come-first-served</td><td>No</td><td>Batch systems</td></tr><tr><td>SJF</td><td>Shortest job first</td><td>Yes (long jobs)</td><td>Batch optimal avg wait</td></tr><tr><td>Round Robin</td><td>Fixed time quantum, rotate</td><td>No</td><td>Interactive systems</td></tr><tr><td>Priority (static)</td><td>Highest priority runs</td><td>Yes (lower priority)</td><td>RT systems</td></tr><tr><td>CFS (Linux)</td><td>Fair share by virtual time</td><td>No (vruntime reset)</td><td>Linux default</td></tr><tr><td>SCHED_FIFO</td><td>Fixed priority, FCFS within priority</td><td>Yes</td><td>Linux real-time</td></tr></tbody></table></div><h2 class="chap">Chapter 3 — Virtual Memory and Paging</h2><p>Virtual memory gives each process the illusion of a large, contiguous, private address space. The MMU (Memory Management Unit) hardware translates virtual to physical addresses on every access.</p><div class="diagram">4-Level Page Table Walk (x86-64, 48-bit virtual address):
+
+Virtual address: [63:48=sign ext][47:39=PGD][38:30=PUD][29:21=PMD][20:12=PT][11:0=offset]
+
+CR3 register → PGD table → PUD table → PMD table → PT table → Physical Frame
+  (physical addr)   (512 entries)  (512 entries)  (512 entries)  (512 entries)
+
+Each entry: 8 bytes = 4KB table. Full 4-level page table: 256TB virtual space
+
+TLB (Translation Lookaside Buffer):
+  Cache of recent virtual→physical translations (~64-1500 entries)
+  TLB hit: 1 cycle   TLB miss: page table walk ~100+ cycles</div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// mmap: map anonymous memory (no file backing)
+void* buf = mmap(nullptr, 64 * 1024 * 1024,   // 64MB
+                 PROT_READ | PROT_WRITE,
+                 MAP_PRIVATE | MAP_ANONYMOUS,
+                 -1, 0);
+// Pages not allocated yet — only virtual address reserved
+// First access to each page triggers a page fault → OS allocates physical page
+
+// mmap: map a file (zero-copy file I/O)
+int fd = open("model_weights.bin", O_RDWR);
+struct stat st; fstat(fd, &amp;st);
+float* weights = (float*)mmap(nullptr, st.st_size,
+                               PROT_READ,   // read-only
+                               MAP_SHARED,  // changes visible to all mappings
+                               fd, 0);
+close(fd);   // fd can be closed after mmap — mapping stays
+// weights[i] is now a direct pointer into file — no read() syscall needed
+// OS reads pages on demand via page faults (demand paging)
+// Multiple processes mapping same file share physical pages → huge RAM savings
+msync(weights, st.st_size, MS_SYNC);   // flush dirty pages to disk
+munmap(weights, st.st_size);</code></pre><div class="ex-why">✅ Why this works: mmap for model weights is used by PyTorch, TensorFlow, and most inference engines. Multiple inference server instances map the same weights file — they share the same physical RAM pages (read-only mapping).</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// BAD: reading a large file with read() into a buffer
+// Example: loading 4GB model weights
+char* buf = (char*)malloc(4ULL * 1024 * 1024 * 1024);   // 4GB malloc!
+int fd = open("model.bin", O_RDONLY);
+read(fd, buf, 4GB);   // copies 4GB from kernel page cache to user buffer
+// Problems:
+// 1. Double memory: file in page cache + your buffer = 8GB used
+// 2. Full copy upfront even if you only need part of the file
+// 3. No sharing: two processes both read() = two copies in memory
+
+// BETTER: mmap — shared, demand-paged, no upfront copy</code></pre><div class="ex-why bad-why">❌ Why this fails: mmap avoids the double-buffering problem. The file's page cache IS your buffer — no copy needed. Access patterns drive demand-paging so you only use RAM for pages actually accessed.</div></div><h2 class="chap">Chapter 4 — IPC Mechanisms</h2><div class="tbl"><table><thead><tr><th>Mechanism</th><th>Setup</th><th>Speed</th><th>Use Case</th></tr></thead><tbody><tr><td>Pipe (anon)</td><td>pipe()</td><td>Medium</td><td>Parent↔child only, one direction</td></tr><tr><td>Named Pipe (FIFO)</td><td>mkfifo()</td><td>Medium</td><td>Unrelated processes, one direction</td></tr><tr><td>Unix Socket</td><td>socketpair()/bind()</td><td>Fast</td><td>Full-duplex, any processes</td></tr><tr><td>Shared Memory</td><td>shm_open()+mmap()</td><td>Fastest</td><td>High-throughput; needs separate sync</td></tr><tr><td>Message Queue</td><td>mq_open()</td><td>Medium</td><td>Structured messages with metadata</td></tr><tr><td>Signal</td><td>kill()/sigaction()</td><td>Instant</td><td>Async notification, very limited data</td></tr></tbody></table></div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// Producer-consumer via POSIX shared memory + semaphore
+// Producer (process 1):
+const int SHM_SIZE = 4096;
+int shm_fd = shm_open("/mydata", O_CREAT | O_RDWR, 0666);
+ftruncate(shm_fd, SHM_SIZE);
+void* shm = mmap(nullptr, SHM_SIZE, PROT_READ|PROT_WRITE, MAP_SHARED, shm_fd, 0);
+
+// Use a pthread mutex/semaphore in shared memory for sync
+sem_t* sem = sem_open("/mysem", O_CREAT, 0666, 0);
+memcpy(shm, &amp;data, sizeof(data));   // write data
+sem_post(sem);   // signal consumer
+
+// Consumer (process 2):
+int shm_fd2 = shm_open("/mydata", O_RDWR, 0666);
+void* shm2 = mmap(nullptr, SHM_SIZE, PROT_READ|PROT_WRITE, MAP_SHARED, shm_fd2, 0);
+sem_t* sem2 = sem_open("/mysem", 0);
+sem_wait(sem2);   // block until data ready
+memcpy(&amp;local, shm2, sizeof(local));   // read data</code></pre><div class="ex-why">✅ Why this works: Shared memory is the fastest IPC — data doesn't need to be copied through the kernel. The kernel only needs to be involved in setup (shm_open) and synchronization (sem_post/wait).</div></div><h2 class="chap">Interview Q&amp;A — OS</h2><div class="qa"><div class="question">❓ What happens when you call malloc()?</div><div class="answer">glibc malloc (ptmalloc2) has multiple strategies: For small allocations (<128KB): maintains thread-local arenas with free lists organized by size class (bins). Returns a freed block if one of matching size exists — very fast. Otherwise uses sbrk()/mmap() to get memory from OS. For large allocations (>128KB): directly calls mmap(MAP_ANONYMOUS) — gets memory directly from OS. Each allocation has a 16-byte hidden header (on 64-bit) storing size and flags. Alignment: 16-byte aligned. Thread safety: each thread has its own arena (up to 8 arenas per CPU) to reduce lock contention. free(): returns block to bin — adjacent free blocks are coalesced to reduce fragmentation.</div><div class="followup"><b>Follow-up questions interviewers ask:</b><ul><li>What is jemalloc/tcmalloc? When would you use them?</li><li>What causes heap fragmentation?</li><li>Why does new [] require delete [] and not delete?</li></ul></div><div class="followup" style="background:#fef2f2;border-color:#fca5a5"><b>Common mistakes in answers:</b><ul><li>Saying malloc always calls sbrk — modern malloc uses mmap for large allocations.</li><li>Forgetting that malloc doesn't zero memory (use calloc for zeroed allocation).</li></ul></div></div><div class="qa"><div class="question">❓ Explain page fault handling.</div><div class="answer">A page fault occurs when the CPU tries to access a virtual address that has no valid physical mapping. The hardware raises a fault, the OS page fault handler runs: (1) Is the address in a valid VMA (Virtual Memory Area)? No → SIGSEGV (segfault). (2) Is it a permission fault (writing to read-only)? Maybe CoW: allocate new page, copy contents, remap as writable. (3) Valid but not present (demand paging): find the backing storage (file or swap), load page, update page table, resume execution. Cost: minor fault (page in RAM but not mapped) ~1µs; major fault (page on disk) ~1ms+. reduce with mlock() or mlockall() to pin pages.</div><div class="followup"><b>Follow-up questions interviewers ask:</b><ul><li>What is the difference between minor and major page fault?</li><li>What is thrashing?</li><li>How does mlock() affect performance?</li></ul></div></div>
+    <div class="pagination"><a href="part02.html">← Part 02</a><a href="part04.html">Part 04 →</a></div>
+  </div>
+</div>
+<button id="btt">↑</button>
+<script>
+document.querySelectorAll('pre').forEach(p=>{
+  const b=document.createElement('button');b.className='copy-btn';b.textContent='Copy';
+  p.appendChild(b);b.onclick=()=>{navigator.clipboard.writeText(p.innerText.replace('Copy','').trim())
+  .then(()=>{b.textContent='Copied!';setTimeout(()=>b.textContent='Copy',2000);});};});
+const btt=document.getElementById('btt');
+window.addEventListener('scroll',()=>btt&&btt.classList.toggle('show',scrollY>300));
+btt&&btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+const si=document.getElementById('search');
+if(si)si.addEventListener('input',function(){const q=this.value.toLowerCase();
+  document.querySelectorAll('.part-card').forEach(c=>c.style.display=
+    c.textContent.toLowerCase().includes(q)?'':'none');});
+</script></body></html>

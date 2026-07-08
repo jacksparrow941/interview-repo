@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infosys | InterviewRepo — Backend SDE Interview Prep</title>
+  <meta name="description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Infosys">
+  <meta name="keywords" content="backend interview questions, SDE interview prep, system design, DSA, C++ interview, Java interview, Go interview, infosys">
+  <meta name="author" content="InterviewRepo">
+  <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="InterviewRepo — Backend SDE Prep">
+  <meta property="og:title"       content="Infosys | InterviewRepo">
+  <meta property="og:description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Infosys">
+  <meta property="og:url"         content="https://devinterviewvault.netlify.app">
+  <meta property="og:image"       content="https://devinterviewvault.netlify.app/assets/og-image.png">
+  <meta name="twitter:card"       content="summary_large_image">
+  <meta name="twitter:title"      content="Infosys | InterviewRepo">
+  <meta name="twitter:description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Infosys">
+  <meta name="twitter:image"      content="https://devinterviewvault.netlify.app/assets/og-image.png">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://devinterviewvault.netlify.app">
+  <meta name="google-site-verification" content="a8bdedb3bc5f858c">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Infosys", "description": "SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design \u2014 Infosys", "url": "https://devinterviewvault.netlify.app", "publisher": {"@type": "Organization", "name": "InterviewRepo"}}</script>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+</head>
+<body>
+<nav class="navbar">
+  <a class="navbar-brand" href="../../index.html">
+    <span class="logo-icon">⚡</span>
+    <span>InterviewRepo</span>
+  </a>
+  <div class="search-bar">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="search-input" placeholder="Search questions… (Ctrl+K)" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <nav class="navbar-nav">
+    <a href="../../index.html">Home</a>
+    <a href="../../common/top-coding.html">Top DSA</a>
+    <a href="../../common/top-system-design.html">System Design</a>
+    <a href="../../common/top-backend.html">Backend</a>
+    <a href="../../common/top-cpp.html">C++</a>
+    <a href="../../common/top-java.html">Java</a>
+    <a href="../../common/top-go.html">Go</a>
+    <a href="../../mcq-quiz.html" style="background:linear-gradient(90deg,#6366f1,#8b5cf6);color:#fff;padding:.3rem .75rem;border-radius:.4rem;font-weight:600">🎯 MCQ Quiz</a>
+  </nav>
+</nav>
+<div class="company-header">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../../index.html">Home</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="../index.html">Tier 8: Service Based</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>Infosys</span>
+    </div>
+    <div class="company-header-inner">
+      <div class="company-logo-placeholder">I</div>
+      <div class="company-info">
+        <div style="margin-bottom:8px">
+          <span class="tier-badge" data-tier="8" style="--tier-color:#95A5A6">Tier 8: Service Based</span>
+          <span class="difficulty-badge diff-medium" style="margin-left:8px">Easy-Medium</span>
+        </div>
+        <h1>Infosys</h1>
+        <p style="color:var(--text-muted);margin-top:8px">Infosys Springboard, strong training program</p>
+        <div class="company-info-meta">
+          <span class="info-chip"><strong>HQ:</strong> Bangalore, India</span>
+          <span class="info-chip"><strong>Roles:</strong> SE, SSE, Technology Analyst</span>
+          <span class="info-chip"><strong>Focus:</strong> DSA Basics · Java · SQL · OOP</span>
+          <span class="info-chip"><strong>Interview:</strong> Infosys Certification + Technical + HR</span>
+        </div>
+        <div class="company-stats">
+          <div class="stat-item"><div class="stat-value">33</div><div class="stat-label">Questions</div></div>
+          <div class="stat-item"><div class="stat-value">3</div><div class="stat-label">Avg Rounds</div></div>
+          <div class="stat-item"><div class="stat-value">2.3/5</div><div class="stat-label">Difficulty</div></div>
+          <div class="stat-item"><div class="stat-value">11</div><div class="stat-label">Categories</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><div class="container" style="padding:32px 24px 0">
+  <h2 style="font-size:22px;font-weight:700;margin-bottom:16px">📋 Interview Rounds</h2>
+  <div class="rounds-grid"><div class="round-card">
+  <div class="round-number">Round 1</div>
+  <div class="round-name">Online Test</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 2</div>
+  <div class="round-name">Technical Interview</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 3</div>
+  <div class="round-name">HR Round</div>
+  <div class="round-duration">30-45 min</div>
+</div></div>
+</div><div class="container" style="padding:24px 24px 0">
+  <h2 style="font-size:20px;font-weight:700;margin-bottom:14px">🔥 Most Frequently Asked</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:10px;margin-bottom:8px"><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">Two Sum</div>
+    <div style="font-size:12px;color:var(--text-muted)">Coding · Easy · 95% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">ACID properties</div>
+    <div style="font-size:12px;color:var(--text-muted)">Database · Easy · 93% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">JVM memory model: heap, stack, metaspace</div>
+    <div style="font-size:12px;color:var(--text-muted)">Java · Medium · 92% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">Design URL Shortener (bit.ly)</div>
+    <div style="font-size:12px;color:var(--text-muted)">System Design · Medium · 92% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">Race condition — what and how to prevent</div>
+    <div style="font-size:12px;color:var(--text-muted)">Concurrency · Easy · 92% frequency</div>
+  </div>
+</div></div>
+</div><div class="tabs-bar"><div class="tabs-inner"><button class="tab-btn active" data-tab="coding">💻 DSA <span style="opacity:.5;font-size:11px">(7)</span></button>
+<button class="tab-btn" data-tab="java">☕ Java <span style="opacity:.5;font-size:11px">(9)</span></button>
+<button class="tab-btn" data-tab="database">🗄️ Database <span style="opacity:.5;font-size:11px">(1)</span></button>
+<button class="tab-btn" data-tab="security">🔒 Security <span style="opacity:.5;font-size:11px">(1)</span></button>
+<button class="tab-btn" data-tab="lld">📐 LLD <span style="opacity:.5;font-size:11px">(2)</span></button>
+<button class="tab-btn" data-tab="cpp">⚙️ C++ <span style="opacity:.5;font-size:11px">(1)</span></button>
+<button class="tab-btn" data-tab="networking">🌐 Networking <span style="opacity:.5;font-size:11px">(3)</span></button>
+<button class="tab-btn" data-tab="backend">🔧 Backend <span style="opacity:.5;font-size:11px">(1)</span></button>
+<button class="tab-btn" data-tab="os">🖥️ OS <span style="opacity:.5;font-size:11px">(4)</span></button>
+<button class="tab-btn" data-tab="system_design">🏗️ System Design <span style="opacity:.5;font-size:11px">(1)</span></button>
+<button class="tab-btn" data-tab="concurrency">⚡ Concurrency <span style="opacity:.5;font-size:11px">(3)</span></button></div></div>
+<div class="container"><div class="tab-panel active" id="tab-coding">
+  <div class="questions-header">
+    <h3>💻 DSA</h3>
+    <span class="q-count">7 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="arrays">
+    <span class="q-index">1</span>
+    <span class="q-text">Two Sum</span>
+    <div class="q-tags"><span class="q-tag">hash-map</span><span class="q-tag">arrays</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-high">95%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Approach</span><br>Use a hash map to store <code>complement = target - num</code> as you iterate. If current number exists in map → found the pair.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Solution</span><br><pre>def twoSum(nums, target):
+    seen = {}
+    for i, num in enumerate(nums):
+        if num in seen:
+            return [seen[num], i]
+        seen[target - num] = i</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Complexity</span><br>Time: O(n) | Space: O(n)</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What if the array is sorted? (two pointers, O(1) space)<br>• What if we need ALL pairs? (collect instead of return first)<br>• 4-Sum approach?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="trees">
+    <span class="q-index">2</span>
+    <span class="q-text">Maximum Depth of Binary Tree</span>
+    <div class="q-tags"><span class="q-tag">dfs</span><span class="q-tag">recursion</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">1 + max(depth(left), depth(right)).</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Meta, Google, Amazon, Microsoft, TCS, Infosys...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="strings">
+    <span class="q-index">3</span>
+    <span class="q-text">Valid Palindrome</span>
+    <div class="q-tags"><span class="q-tag">two-pointers</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Two pointers; skip non-alphanumeric characters.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Meta, Google, Amazon, Microsoft, TCS, Infosys...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="trees">
+    <span class="q-index">4</span>
+    <span class="q-text">Binary Tree Inorder Traversal (Iterative)</span>
+    <div class="q-tags"><span class="q-tag">stack</span><span class="q-tag">dfs</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Approach</span><br>Iterative inorder: use explicit stack. Go left as far as possible, process node, move right.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Solution</span><br><pre>def inorderTraversal(root):
+    res, stack, cur = [], [], root
+    while cur or stack:
+        while cur:
+            stack.append(cur); cur = cur.left
+        cur = stack.pop()
+        res.append(cur.val)
+        cur = cur.right
+    return res</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Complexity</span><br>Time: O(n) | Space: O(h) where h = tree height</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Morris traversal — O(1) space inorder? (thread right pointers temporarily)<br>• Iterative preorder and postorder?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="arrays">
+    <span class="q-index">5</span>
+    <span class="q-text">Majority Element</span>
+    <div class="q-tags"><span class="q-tag">boyer-moore</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-med">72%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Boyer-Moore voting: cancel out non-majority elements.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Amazon, Google, TCS, Infosys, Wipro</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="strings">
+    <span class="q-index">6</span>
+    <span class="q-text">String to Integer (atoi)</span>
+    <div class="q-tags"><span class="q-tag">parsing</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">68%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Handle whitespace, sign, overflow, non-digit termination.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Amazon, Microsoft, Google, TCS, Infosys</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="arrays">
+    <span class="q-index">7</span>
+    <span class="q-text">Rotate Array</span>
+    <div class="q-tags"><span class="q-tag">reversal-algorithm</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">65%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Reverse all, reverse first k, reverse rest. O(n) O(1).</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Microsoft, Amazon, TCS, Infosys, Wipro</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-java">
+  <div class="questions-header">
+    <h3>☕ Java</h3>
+    <span class="q-count">9 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="jvm">
+    <span class="q-index">1</span>
+    <span class="q-text">JVM memory model: heap, stack, metaspace</span>
+    <div class="q-tags"><span class="q-tag">jvm</span><span class="q-tag">memory</span><span class="q-tag">gc</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">92%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">JVM Memory Areas</span><br><ul><li><b>Heap:</b> All objects (new). Divided into Young (Eden + 2 Survivors) + Old/Tenured. GC managed.</li><li><b>Stack:</b> Per-thread. Holds stack frames: local variables, operand stack, method calls. Fixed size (typically 512KB-1MB). StackOverflowError if exceeded.</li><li><b>Metaspace (Java 8+):</b> Class metadata (class bytecode, method data). Native memory, grows dynamically. Replaced PermGen which had fixed max size.</li><li><b>Code Cache:</b> JIT-compiled native code.</li><li><b>Direct Memory:</b> Off-heap via NIO ByteBuffer.allocateDirect(). Not GC'd, must be freed explicitly.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Tuning Flags</span><br><pre>-Xms512m -Xmx4g       # initial and max heap
+-XX:MetaspaceSize=256m # initial metaspace
+-XX:MaxMetaspaceSize=512m
+-Xss512k               # thread stack size</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What causes OutOfMemoryError in heap vs metaspace vs direct memory?<br>• What is object header size in JVM? (12-16 bytes: mark word + klass pointer)<br>• How does compressed OOPs affect memory usage?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, LinkedIn, Microsoft, PayPal, Oracle...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="collections">
+    <span class="q-index">2</span>
+    <span class="q-text">HashMap internals in Java 8+</span>
+    <div class="q-tags"><span class="q-tag">hashmap</span><span class="q-tag">treeify</span><span class="q-tag">collision</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">HashMap Internals</span><br><pre>// Java 8+ structure:
+// Node&lt;K,V&gt;[] table  (array of buckets, power of 2 size)
+// Each bucket: null | Node (linked list) | TreeNode (red-black tree)
+
+// Hash calculation:
+static int hash(Object key) {
+    int h;
+    return (key == null) ? 0 : (h = key.hashCode()) ^ (h &gt;&gt;&gt; 16);
+    // XOR high bits into low bits — better distribution
+}
+// Bucket index: (n-1) &amp; hash  (n = table length, power of 2)</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Thresholds</span><br><ul><li><b>TREEIFY_THRESHOLD = 8:</b> Bucket with &gt;8 nodes → convert to red-black tree (O(log n) per op)</li><li><b>UNTREEIFY_THRESHOLD = 6:</b> Tree shrinks back to list on removal</li><li><b>LOAD_FACTOR = 0.75:</b> Resize (double) when size/capacity &gt; 0.75</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Thread Safety</span><br>HashMap is NOT thread-safe. Use ConcurrentHashMap (lock-striping, CAS) or Collections.synchronizedMap() (coarse lock).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the time complexity of get() in worst case? O(log n) with tree buckets<br>• Why XOR high bits into low bits in hash()? (prevents collision when table size is small)<br>• What is the difference between HashMap.keySet() and EntrySet iteration performance?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, LinkedIn, Microsoft, Meta, PayPal...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="concurrency">
+    <span class="q-index">3</span>
+    <span class="q-text">volatile keyword in Java</span>
+    <div class="q-tags"><span class="q-tag">volatile</span><span class="q-tag">visibility</span><span class="q-tag">reordering</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Guarantees visibility and prevents reordering. Does NOT guarantee atomicity. Use for flags.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, LinkedIn, Meta, Microsoft, TCS...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="java8">
+    <span class="q-index">4</span>
+    <span class="q-text">Java Streams and lazy evaluation</span>
+    <div class="q-tags"><span class="q-tag">streams</span><span class="q-tag">lambda</span><span class="q-tag">functional</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Lazy pipeline; intermediate ops don't execute until terminal op. Enables fusion, short-circuit.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, LinkedIn, Microsoft, Meta, TCS...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="collections">
+    <span class="q-index">5</span>
+    <span class="q-text">HashMap vs LinkedHashMap vs TreeMap internals</span>
+    <div class="q-tags"><span class="q-tag">hashmap</span><span class="q-tag">linkedhashmap</span><span class="q-tag">treemap</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">HashMap</span><br>Array of Node&lt;K,V&gt; buckets. Hash → index via <code>(n-1) &amp; hash</code>. Collision: linked list, then treeify at threshold 8 (TREEIFY_THRESHOLD). Resize (double) at 75% load factor. Java 8: balanced BST (TreeNode) for long chains.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">LinkedHashMap</span><br>Extends HashMap. Adds doubly-linked list through all entries maintaining <b>insertion order</b>. Can be configured for <b>access order</b> (LRU behaviour) with constructor parameter.<br><pre>// LRU Cache using LinkedHashMap
+Map&lt;K,V&gt; lru = new LinkedHashMap&lt;&gt;(16, 0.75f, true) {  // accessOrder=true
+    protected boolean removeEldestEntry(Map.Entry&lt;K,V&gt; e) {
+        return size() &gt; capacity;
+    }
+};</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">TreeMap</span><br>Red-Black tree. Keys always <b>sorted</b> (natural order or Comparator). O(log n) get/put/remove. Extra operations: <code>floorKey</code>, <code>ceilingKey</code>, <code>headMap</code>, <code>tailMap</code>, <code>subMap</code>.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Quick Comparison</span><br><ul><li><b>HashMap:</b> O(1) avg, unordered, null key/values allowed</li><li><b>LinkedHashMap:</b> O(1) avg, insertion/access ordered, LRU capable</li><li><b>TreeMap:</b> O(log n), sorted, no null key</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is HashMap's initial capacity and load factor trade-off?<br>• Why is String a good HashMap key? (immutable, cached hashCode)<br>• What causes ConcurrentModificationException?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Amazon, Google, LinkedIn, Microsoft, TCS, Infosys...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="jpa">
+    <span class="q-index">6</span>
+    <span class="q-text">JPA N+1 problem and solutions</span>
+    <div class="q-tags"><span class="q-tag">hibernate</span><span class="q-tag">n+1</span><span class="q-tag">join-fetch</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">1 query for parent + N for children. Fix: JOIN FETCH, @EntityGraph, batch size.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 Amazon, LinkedIn, PayPal, Oracle, Salesforce, Infosys</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="jvm">
+    <span class="q-index">7</span>
+    <span class="q-text">Java Memory Leaks — common causes and detection</span>
+    <div class="q-tags"><span class="q-tag">memory-leak</span><span class="q-tag">heap</span><span class="q-tag">jvm</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Common Causes</span><br><ul><li><b>Static references:</b> Static fields holding large objects or collections never GC'd</li><li><b>ThreadLocal leak:</b> In thread pools, ThreadLocal not removed → memory leak per thread</li><li><b>Listeners/callbacks:</b> Registered but never removed (event listeners, MBean)</li><li><b>Unclosed resources:</b> Connection pools, file handles (use try-with-resources)</li><li><b>Cache without eviction:</b> Unbounded HashMap growing forever</li><li><b>ClassLoader leak:</b> Hot deployment in app servers — classloader + all loaded classes retained</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Detection Tools</span><br><ul><li><b>jmap -histo &lt;pid&gt;</b> — histogram of heap objects</li><li><b>jmap -dump:format=b,file=heap.hprof &lt;pid&gt;</b> — heap dump</li><li><b>Eclipse MAT / VisualVM</b> — analyze heap dump, find GC roots</li><li><b>Java Flight Recorder (JFR) + JMC</b> — low-overhead production profiling</li><li><b>async-profiler</b> — CPU and allocation profiling</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">ThreadLocal Fix</span><br><pre>private static final ThreadLocal&lt;Context&gt; ctx = new ThreadLocal&lt;&gt;();
+
+try {
+    ctx.set(new Context());
+    doWork();
+} finally {
+    ctx.remove();  // CRITICAL in thread pools!
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is a WeakHashMap and when does it help?<br>• How do you find the GC root of a retained object in MAT?<br>• What is heap fragmentation in old generation?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Amazon, Google, LinkedIn, Microsoft, Meta, TCS...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="jpa">
+    <span class="q-index">8</span>
+    <span class="q-text">Hibernate L1 and L2 cache — how they work</span>
+    <div class="q-tags"><span class="q-tag">hibernate</span><span class="q-tag">cache</span><span class="q-tag">l1</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">76%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">L1 Cache (Session Cache)</span><br><b>Default, always on.</b> Scoped to a single <code>Session</code> (transaction). Within a session, the same entity loaded twice returns the same object (identity map). Cleared on <code>session.close()</code> or <code>session.clear()</code>.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">L2 Cache (Shared Cache)</span><br><b>Optional, cross-session.</b> Shared across all sessions in a SessionFactory. Must be explicitly configured. Providers: <b>Ehcache, Caffeine, Infinispan, Redis</b>.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">L2 Setup</span><br><pre># application.properties
+spring.jpa.properties.hibernate.cache.use_second_level_cache=true
+spring.jpa.properties.hibernate.cache.region.factory_class=\
+    org.hibernate.cache.jcache.JCacheRegionFactory
+
+# Entity
+@Entity
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+public class Product { ... }</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Query Cache</span><br>Cache for JPQL/HQL query results. Must also have L2 enabled. Stores primary keys, not entities. Invalidated when any entity in result changes.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache Strategies</span><br>READ_ONLY, NONSTRICT_READ_WRITE, READ_WRITE, TRANSACTIONAL</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• When should you NOT use L2 cache?<br>• How does L2 cache handle cluster environments?<br>• What is the N+1 problem and how does @EntityGraph solve it?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 Amazon, LinkedIn, PayPal, Oracle, Salesforce, Infosys</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="jvm">
+    <span class="q-index">9</span>
+    <span class="q-text">Java ClassLoader hierarchy and how class loading works</span>
+    <div class="q-tags"><span class="q-tag">classloader</span><span class="q-tag">bootstrap</span><span class="q-tag">delegation</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">76%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">ClassLoader Hierarchy</span><br><ul><li><b>Bootstrap ClassLoader:</b> Loads JDK core classes (java.lang, java.util) from rt.jar/modules. C++ code, no Java object.</li><li><b>Platform ClassLoader (was Extension):</b> Loads java.se, java.xml etc.</li><li><b>Application ClassLoader:</b> Loads from classpath (your app + third-party JARs).</li><li>Custom ClassLoaders: hot-deploy, OSGi, isolation (one classloader per plugin).</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Delegation Model</span><br>When loading class X: check cache → delegate to parent → parent delegates to its parent → reach Bootstrap → if not found, child tries to load itself → ClassNotFoundException if all fail.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Class Identity</span><br>Same class name loaded by different ClassLoaders = <b>different classes</b>. ClassCastException when assigning across loaders. Root of hot-deploy complexity.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Custom ClassLoader</span><br><pre>class HotLoader extends ClassLoader {
+    @Override
+    protected Class&lt;?&gt; findClass(String name) throws ClassNotFoundException {
+        byte[] bytes = readBytesFromFile(name);
+        return defineClass(name, bytes, 0, bytes.length);
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the ClassLoader leak in application servers?<br>• How does OSGi use ClassLoaders for module isolation?<br>• What is --add-opens in Java 9+ and why is it needed?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Amazon, Google, Oracle, LinkedIn, TCS, Infosys</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-database">
+  <div class="questions-header">
+    <h3>🗄️ Database</h3>
+    <span class="q-count">1 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="fundamentals">
+    <span class="q-index">1</span>
+    <span class="q-text">ACID properties</span>
+    <div class="q-tags"><span class="q-tag">acid</span><span class="q-tag">transactions</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-high">93%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Indexes — Types and Internals</span><br><ul><li><b>B+ Tree:</b> Default in PostgreSQL/MySQL. O(log n) for equality and range queries. Leaf nodes form linked list for range scans.</li><li><b>Hash Index:</b> O(1) for equality only. No range queries. Used in memory engines (MEMORY in MySQL).</li><li><b>GiST/GIN:</b> PostgreSQL generalized indexes for full-text search, JSONB, arrays.</li><li><b>Bitmap Index:</b> Low-cardinality columns. Efficient AND/OR on multiple conditions.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Clustered vs Secondary</span><br><ul><li><b>Clustered (InnoDB Primary Key):</b> Data physically stored in index order. Range scans very fast. Only 1 per table.</li><li><b>Secondary:</b> Leaf stores primary key value → extra lookup for full row. Covering index eliminates this lookup.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Index Design Tips</span><br><ul><li>Composite index: equality columns first, range columns last, ORDER BY columns last</li><li>Cover frequently queried columns with INCLUDE</li><li>Partial index for low-cardinality: <code>WHERE status='PENDING'</code></li><li>Avoid index on frequently updated columns (write overhead)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is an index scan vs bitmap heap scan in PostgreSQL?<br>• How does an index affect INSERT/UPDATE/DELETE performance?<br>• When would you use a partial index?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, Meta, Microsoft, LinkedIn, Oracle...</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-security">
+  <div class="questions-header">
+    <h3>🔒 Security</h3>
+    <span class="q-count">1 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="appsec">
+    <span class="q-index">1</span>
+    <span class="q-text">SQL Injection — how it works and prevention</span>
+    <div class="q-tags"><span class="q-tag">sql-injection</span><span class="q-tag">prepared-statements</span><span class="q-tag">parameterized</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-high">92%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">How it works</span><br><pre># Vulnerable code:
+query = "SELECT * FROM users WHERE name='" + username + "' AND pwd='" + password + "'";
+
+# Attacker input: username = admin' --
+# Resulting query:
+SELECT * FROM users WHERE name='admin' --' AND pwd='anything'
+# -- comments out the password check → logged in as admin!
+
+# Even worse:
+username = "'; DROP TABLE users; --"
+# Drops the entire users table!</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Prevention</span><br><pre># Java PreparedStatement:
+PreparedStatement stmt = conn.prepareStatement(
+    "SELECT * FROM users WHERE name=? AND pwd=?");
+stmt.setString(1, username);
+stmt.setString(2, hashedPassword);
+
+# Python SQLAlchemy:
+result = db.execute("SELECT * FROM users WHERE name=:n", {"n": username})
+
+# ORM (Hibernate/JPA): inherently parameterized
+User user = em.createQuery("FROM User WHERE name=:n", User.class)
+    .setParameter("n", username).getSingleResult();</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Defense in depth</span><br><ul><li>Least privilege DB user (SELECT only for read, no DROP)</li><li>WAF (Web Application Firewall) to detect patterns</li><li>Input validation (whitelist expected characters)</li><li>Error messages: never expose DB error details to client</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is second-order SQL injection?<br>• How does NoSQL injection work in MongoDB? ($where, $regex)<br>• What is blind SQL injection and how do time-based blind attacks work?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Security Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Stripe, PayPal...</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-lld">
+  <div class="questions-header">
+    <h3>📐 LLD</h3>
+    <span class="q-count">2 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="machine_coding">
+    <span class="q-index">1</span>
+    <span class="q-text">Design a Cricket Score Tracker</span>
+    <div class="q-tags"><span class="q-tag">oop</span><span class="q-tag">observer</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Match, Innings, Over, Ball, Batsman, Bowler entities. Observer for scorecard updates. Strategy for DLS method.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Dream11, Amazon, Microsoft, TCS, Infosys</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="machine_coding">
+    <span class="q-index">2</span>
+    <span class="q-text">Design a Snake and Ladder Game</span>
+    <div class="q-tags"><span class="q-tag">oop</span><span class="q-tag">simulation</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Board, Player, Dice, Snake, Ladder entities. Turn-based simulation. Simple to extend with special cells.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Amazon, Microsoft, Adobe, TCS, Infosys</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-cpp">
+  <div class="questions-header">
+    <h3>⚙️ C++</h3>
+    <span class="q-count">1 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="stl">
+    <span class="q-index">1</span>
+    <span class="q-text">How does std::vector grow?</span>
+    <div class="q-tags"><span class="q-tag">vector</span><span class="q-tag">amortized</span><span class="q-tag">reallocation</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">std::vector Growth</span><br>When capacity is exceeded, vector allocates new buffer (typically 2× current capacity), moves all elements, then deallocates old buffer. Amortized O(1) push_back.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Internals</span><br><pre>struct vector_internals {
+    T* begin;    // pointer to first element
+    T* end;      // pointer past last element (size)
+    T* cap_end;  // pointer to end of allocation (capacity)
+};
+// size() = end - begin
+// capacity() = cap_end - begin</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Important APIs</span><br><ul><li><code>reserve(n)</code>: pre-allocate without changing size. Prevents reallocations.</li><li><code>shrink_to_fit()</code>: release excess capacity (non-binding request).</li><li><code>emplace_back(args)</code>: construct in-place, avoids extra copy/move.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Why does push_back invalidate iterators? (reallocation moves all elements)<br>• What is the growth factor trade-off (2x vs 1.5x)?<br>• How does vector differ from deque in terms of memory layout?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Microsoft, TCS...</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-networking">
+  <div class="questions-header">
+    <h3>🌐 Networking</h3>
+    <span class="q-count">3 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="protocols">
+    <span class="q-index">1</span>
+    <span class="q-text">TCP vs UDP — when to use each?</span>
+    <div class="q-tags"><span class="q-tag">tcp</span><span class="q-tag">udp</span><span class="q-tag">reliability</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">TCP vs UDP</span><br><ul><li><b>TCP:</b> Connection-oriented (3-way handshake). Reliable (ACKs, retransmit). Ordered. Flow + congestion control. ~20-60byte headers. Higher latency.</li><li><b>UDP:</b> Connectionless. No guarantees. No ordering. No congestion control. ~8byte header. Lower latency. Can multicast.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">When to use UDP</span><br><ul><li><b>Gaming / VoIP / video calls:</b> stale data worse than loss. TCP retransmit would cause jitter.</li><li><b>DNS:</b> single request-response, small payload. Retry at app layer if timeout.</li><li><b>DHCP, TFTP, SNMP:</b> simple protocols where TCP overhead isn't worth it.</li><li><b>HTTP/3 (QUIC):</b> UDP + built-in reliability at QUIC layer — gets benefits of both.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is QUIC and why does it use UDP?<br>• How do game engines handle packet loss with UDP? (delta compression, interpolation)<br>• What is the difference between TCP TIME_WAIT and CLOSE_WAIT?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Networking Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="protocols">
+    <span class="q-index">2</span>
+    <span class="q-text">TCP three-way handshake</span>
+    <div class="q-tags"><span class="q-tag">tcp</span><span class="q-tag">syn</span><span class="q-tag">ack</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">TCP Handshake</span><br><pre>Client          Server
+  |---SYN(seq=x)----&gt;|  Client: CLOSED→SYN_SENT
+  |&lt;--SYN-ACK(seq=y,ack=x+1)---|
+  |---ACK(ack=y+1)--&gt;|  Both: ESTABLISHED
+
+Teardown (4-way):
+  |---FIN-----------&gt;|  Client: ESTABLISHED→FIN_WAIT_1
+  |&lt;--ACK-----------|
+  |&lt;--FIN-----------|
+  |---ACK-----------&gt;|  Client: TIME_WAIT (2×MSL = 60-120s)
+                       Server: CLOSED</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">TIME_WAIT purpose</span><br>Ensures delayed packets from old connection don't confuse new connection on same 4-tuple. 2×MSL (Maximum Segment Lifetime). Can cause port exhaustion on high-traffic servers. Fix: SO_REUSEADDR, SO_REUSEPORT, or increase local port range.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">SYN Flood</span><br>Attacker sends many SYN packets, never completes handshake. Server holds half-open connections (SYN_RCVD state). Defense: SYN cookies — encode state in ISN, allocate resources only after ACK.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• Why is teardown 4-way but handshake is 3-way?<br>• What is TCP Fast Open (TFO) and how does it reduce latency?<br>• What is the maximum number of connections per IP:port pair?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Networking Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Cisco, TCS...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="infrastructure">
+    <span class="q-index">3</span>
+    <span class="q-text">DNS resolution process</span>
+    <div class="q-tags"><span class="q-tag">dns</span><span class="q-tag">resolver</span><span class="q-tag">recursive</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">DNS Resolution Chain</span><br><pre>Browser → Check browser cache (TTL)
+       → Check OS resolver cache (/etc/hosts, nscd)
+       → Recursive Resolver (ISP or 8.8.8.8)
+             → Root Name Server (.) → returns TLD server
+             → TLD Server (.com) → returns authoritative NS
+             → Authoritative NS (ns1.example.com) → returns IP
+       → Cache at each level with TTL
+       → Return IP to browser</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Record Types</span><br><ul><li><b>A:</b> hostname → IPv4</li><li><b>AAAA:</b> hostname → IPv6</li><li><b>CNAME:</b> alias → canonical name (CDN, subdomains)</li><li><b>MX:</b> mail exchange server</li><li><b>TXT:</b> arbitrary text (SPF, DKIM, DMARC, domain verification)</li><li><b>NS:</b> name server for domain</li><li><b>SOA:</b> Start of Authority (zone info, serial number)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is DNS propagation delay and how does TTL control it?<br>• How does DNS-based load balancing work? (round-robin A records)<br>• What is DNSSEC and what attack does it prevent? (cache poisoning)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Networking Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Cisco, TCS...</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-backend">
+  <div class="questions-header">
+    <h3>🔧 Backend</h3>
+    <span class="q-count">1 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="infrastructure">
+    <span class="q-index">1</span>
+    <span class="q-text">How does a load balancer work? Types?</span>
+    <div class="q-tags"><span class="q-tag">load-balancing</span><span class="q-tag">l4</span><span class="q-tag">l7</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">L4: TCP/IP. L7: HTTP URL/header routing. Algorithms: Round Robin, Least Conn, Consistent Hash.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 HLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-os">
+  <div class="questions-header">
+    <h3>🖥️ OS</h3>
+    <span class="q-count">4 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="fundamentals">
+    <span class="q-index">1</span>
+    <span class="q-text">Process vs Thread vs Goroutine</span>
+    <div class="q-tags"><span class="q-tag">process</span><span class="q-tag">thread</span><span class="q-tag">goroutine</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Processes vs Threads</span><br><ul><li><b>Process:</b> Independent address space, separate heap/stack/code/data. Isolated — one process crash doesn't affect others. IPC needed (pipes, sockets, shared memory).</li><li><b>Thread:</b> Shares address space (heap, code, global data) with other threads in same process. Has own stack + registers. Cheaper to create/switch than process. Direct memory sharing.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Context Switch Cost</span><br><ul><li>Process switch: save/restore full CPU state + page table switch (TLB flush) → ~100μs</li><li>Thread switch (same process): save/restore registers, stack pointer. No TLB flush → ~1-10μs</li><li>Goroutine/fiber switch: userspace, ~100ns</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Linux Internals</span><br>Both processes and threads are <code>task_struct</code> in Linux kernel. Threads created with <code>CLONE_VM</code> flag — share address space. <code>fork()</code> creates new address space.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is a zombie process?<br>• What is the difference between fork() and vfork()?<br>• How do Python GIL and threads interact?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 OS Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="concurrency">
+    <span class="q-index">2</span>
+    <span class="q-text">Deadlock conditions (Coffman)</span>
+    <div class="q-tags"><span class="q-tag">deadlock</span><span class="q-tag">mutual-exclusion</span><span class="q-tag">hold-wait</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Coffman Conditions for Deadlock</span><br>ALL 4 must hold simultaneously for deadlock:<br><ul><li><b>Mutual Exclusion:</b> Resource can only be held by one process</li><li><b>Hold and Wait:</b> Process holds resources while waiting for more</li><li><b>No Preemption:</b> Resources can't be forcibly taken away</li><li><b>Circular Wait:</b> Chain of processes each waiting for next in chain</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Prevention Strategies</span><br><ul><li>Break <b>Hold and Wait</b>: request all resources at once (but reduces concurrency)</li><li>Break <b>Circular Wait</b>: impose total ordering on lock acquisition (always lock A before B)</li><li>Allow <b>Preemption</b>: rollback and retry (used in databases)</li><li><b>Detection + Recovery:</b> build wait-for graph, detect cycles, kill one process</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Banker's Algorithm</span><br>Safe state check: simulate allocation, see if all processes can eventually complete. Grant request only if system remains in safe state. O(n²×m) too slow for real OS but used in theory.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does MySQL InnoDB detect deadlocks? (wait-for graph, automatic rollback of youngest txn)<br>• What is the difference between deadlock avoidance and deadlock prevention?<br>• What is a safe state in the Banker's Algorithm?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 OS Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="concurrency">
+    <span class="q-index">3</span>
+    <span class="q-text">Mutex vs Semaphore vs Spinlock</span>
+    <div class="q-tags"><span class="q-tag">mutex</span><span class="q-tag">semaphore</span><span class="q-tag">spinlock</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Synchronization Primitives</span><br><ul><li><b>Mutex (Mutual Exclusion):</b> Binary lock. Owner must release. Sleeping lock — blocked thread sleeps, woken by OS. Priority inversion risk.</li><li><b>Semaphore:</b> Counter (0..N). Binary semaphore ≈ mutex but no ownership. Counting semaphore for resource pools (N available resources).</li><li><b>Spinlock:</b> Busy-wait loop checking flag. No context switch. Great for very short critical sections (kernel code). Wastes CPU if held long.</li><li><b>Condition Variable:</b> Wait + signal pattern. Used WITH mutex (monitor). Always use predicate loop (spurious wakeups).</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Futex (Linux)</span><br>Fast Userspace muTEX. Fast path: atomic CAS in userspace (no syscall). Slow path (contended): syscall to sleep. Basis for pthreads mutex and Java's synchronized.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is priority inversion and how does Mars Pathfinder demonstrate it?<br>• What is a recursive mutex and when do you need it?<br>• How does Go sync.Mutex use futex internally?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 OS Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Nvidia, Apple, Cisco, VMware...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="scheduling">
+    <span class="q-index">4</span>
+    <span class="q-text">CPU scheduling algorithms</span>
+    <div class="q-tags"><span class="q-tag">fcfs</span><span class="q-tag">sjf</span><span class="q-tag">round-robin</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">FCFS, SJF, Round Robin (preemptive), Priority, MLFQ. OS uses MLFQ. Real-time: EDF.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 OS Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Apple, Nvidia, TCS, Infosys</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-system_design">
+  <div class="questions-header">
+    <h3>🏗️ System Design</h3>
+    <span class="q-count">1 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="design_problems">
+    <span class="q-index">1</span>
+    <span class="q-text">Design URL Shortener (bit.ly)</span>
+    <div class="q-tags"><span class="q-tag">encoding</span><span class="q-tag">hashing</span><span class="q-tag">cache</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">92%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Design URL Shortener — Architecture</span><br><pre>Client → Load Balancer → App Server (stateless) → Cache (Redis) → Database
+                                                     ↓ on miss
+                                               Consistent Hash ID Gen</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Core Components</span><br><ul><li><b>ID Generation:</b> Snowflake ID → Base62 encode → 7-char short code</li><li><b>Storage:</b> MySQL/PostgreSQL for persistence; Redis for read cache (TTL = URL TTL)</li><li><b>Redirect:</b> 301 (browser caches) vs 302 (always hits server — better for analytics)</li><li><b>Scale:</b> 100M URLs/day = ~1160 URLs/sec write, 10× reads → cache hit rate 99%</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">DB Schema</span><br><pre>CREATE TABLE urls (
+    id BIGINT PRIMARY KEY,           -- Snowflake ID
+    short_code VARCHAR(8) UNIQUE,
+    long_url TEXT NOT NULL,
+    user_id BIGINT,
+    created_at TIMESTAMP,
+    expires_at TIMESTAMP,
+    click_count BIGINT DEFAULT 0
+);</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you prevent abuse (phishing URLs)? (URL reputation API, blacklist)<br>• How do you implement analytics? (Kafka + ClickHouse for click stream)<br>• How would you support custom vanity URLs?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, Meta, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-concurrency">
+  <div class="questions-header">
+    <h3>⚡ Concurrency</h3>
+    <span class="q-count">3 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="fundamentals">
+    <span class="q-index">1</span>
+    <span class="q-text">Race condition — what and how to prevent</span>
+    <div class="q-tags"><span class="q-tag">race-condition</span><span class="q-tag">mutex</span><span class="q-tag">atomic</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-high">92%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Race Condition</span><br>Two or more threads access shared mutable state without synchronization. Result depends on thread scheduling (timing). Non-deterministic bugs.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Examples and Fixes</span><br><pre># Python — unsafe counter (GIL helps here but not in C/Java)
+counter = 0
+def increment():
+    global counter
+    counter += 1  # NOT atomic in Java/C: read, add, write — 3 ops
+
+# Java fix:
+AtomicInteger counter = new AtomicInteger(0);
+counter.incrementAndGet();  // single atomic CAS instruction
+
+# OR use synchronized:
+synchronized void increment() { counter++; }
+
+# Go: use atomic
+var counter int64
+atomic.AddInt64(&amp;counter, 1)
+# OR: go run -race ./...  (built-in race detector)</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Detection</span><br>Go: <code>go run -race</code>. Java: ThreadSanitizer (TSAN) in native, FindBugs for JVM. Helgrind (Valgrind) for C/C++.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is a benign data race and when is it acceptable?<br>• How does the Go race detector work? (shadow memory — 4 words per memory location tracking last 4 accesses)<br>• What is the difference between a race condition and a data race?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="fundamentals">
+    <span class="q-index">2</span>
+    <span class="q-text">Deadlock vs livelock vs starvation</span>
+    <div class="q-tags"><span class="q-tag">deadlock</span><span class="q-tag">livelock</span><span class="q-tag">starvation</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Deadlock: circular wait. Livelock: active but no progress. Starvation: indefinitely low priority.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="patterns">
+    <span class="q-index">3</span>
+    <span class="q-text">Producer-consumer problem</span>
+    <div class="q-tags"><span class="q-tag">producer-consumer</span><span class="q-tag">semaphore</span><span class="q-tag">queue</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Bounded buffer. Semaphores: empty+full+mutex. Or BlockingQueue in Java. Channel in Go.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Concurrency Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, TCS...</span>
+    </div>
+  </div>
+</div>
+</div></div>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-links">
+      <a href="../../common/top-coding.html">Top Coding</a>
+      <a href="../../common/top-system-design.html">System Design</a>
+      <a href="../../common/top-backend.html">Backend</a>
+      <a href="../../common/top-cpp.html">C++</a>
+      <a href="../../common/top-java.html">Java</a>
+      <a href="../../common/top-go.html">Go</a>
+      <a href="../../common/top-database.html">Database</a>
+      <a href="../../common/top-concurrency.html">Concurrency</a>
+      <a href="../../common/top-os.html">OS</a>
+      <a href="../../common/top-networking.html">Networking</a>
+      <a href="../../common/top-lld.html">LLD</a>
+      <a href="../../common/top-cicd.html">CI/CD</a>
+      <a href="../../common/top-security.html">Security</a>
+      <a href="../../common/top-ml.html">ML Systems</a>
+      <a href="../../common/top-perf.html">Performance</a>
+      <a href="../../mcq-quiz.html">MCQ Quiz</a>
+    </div>
+    <p>Built for SDE-1 &amp; SDE-2 Backend Engineers | C++ · Java · Go · Distributed Systems</p>
+    <p style="margin-top:8px;font-size:12px;opacity:.5">Data sourced from LeetCode, Glassdoor, Blind, Reddit &amp; public interview experiences</p>
+  </div>
+</footer>
+<button id="back-to-top" title="Back to top">↑</button>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

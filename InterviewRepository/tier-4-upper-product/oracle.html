@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oracle | InterviewRepo — Backend SDE Interview Prep</title>
+  <meta name="description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Oracle">
+  <meta name="keywords" content="backend interview questions, SDE interview prep, system design, DSA, C++ interview, Java interview, Go interview, oracle">
+  <meta name="author" content="InterviewRepo">
+  <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="InterviewRepo — Backend SDE Prep">
+  <meta property="og:title"       content="Oracle | InterviewRepo">
+  <meta property="og:description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Oracle">
+  <meta property="og:url"         content="https://devinterviewvault.netlify.app">
+  <meta property="og:image"       content="https://devinterviewvault.netlify.app/assets/og-image.png">
+  <meta name="twitter:card"       content="summary_large_image">
+  <meta name="twitter:title"      content="Oracle | InterviewRepo">
+  <meta name="twitter:description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Oracle">
+  <meta name="twitter:image"      content="https://devinterviewvault.netlify.app/assets/og-image.png">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://devinterviewvault.netlify.app">
+  <meta name="google-site-verification" content="a8bdedb3bc5f858c">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Oracle", "description": "SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design \u2014 Oracle", "url": "https://devinterviewvault.netlify.app", "publisher": {"@type": "Organization", "name": "InterviewRepo"}}</script>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+</head>
+<body>
+<nav class="navbar">
+  <a class="navbar-brand" href="../../index.html">
+    <span class="logo-icon">⚡</span>
+    <span>InterviewRepo</span>
+  </a>
+  <div class="search-bar">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="search-input" placeholder="Search questions… (Ctrl+K)" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <nav class="navbar-nav">
+    <a href="../../index.html">Home</a>
+    <a href="../../common/top-coding.html">Top DSA</a>
+    <a href="../../common/top-system-design.html">System Design</a>
+    <a href="../../common/top-backend.html">Backend</a>
+    <a href="../../common/top-cpp.html">C++</a>
+    <a href="../../common/top-java.html">Java</a>
+    <a href="../../common/top-go.html">Go</a>
+    <a href="../../mcq-quiz.html" style="background:linear-gradient(90deg,#6366f1,#8b5cf6);color:#fff;padding:.3rem .75rem;border-radius:.4rem;font-weight:600">🎯 MCQ Quiz</a>
+  </nav>
+</nav>
+<div class="company-header">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../../index.html">Home</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="../index.html">Tier 4: Upper Product</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>Oracle</span>
+    </div>
+    <div class="company-header-inner">
+      <div class="company-logo-placeholder">O</div>
+      <div class="company-info">
+        <div style="margin-bottom:8px">
+          <span class="tier-badge" data-tier="4" style="--tier-color:#4169E1">Tier 4: Upper Product</span>
+          <span class="difficulty-badge diff-medium" style="margin-left:8px">Medium</span>
+        </div>
+        <h1>Oracle</h1>
+        <p style="color:var(--text-muted);margin-top:8px">Database internals, Java, cloud infrastructure (OCI)</p>
+        <div class="company-info-meta">
+          <span class="info-chip"><strong>HQ:</strong> Austin, TX</span>
+          <span class="info-chip"><strong>Roles:</strong> IC2 (SDE-1), IC3 (SDE-2), IC4 (Senior)</span>
+          <span class="info-chip"><strong>Focus:</strong> Database · Java · Backend · DSA</span>
+          <span class="info-chip"><strong>Interview:</strong> Phone Screen + Coding + Technical + HR</span>
+        </div>
+        <div class="company-stats">
+          <div class="stat-item"><div class="stat-value">35</div><div class="stat-label">Questions</div></div>
+          <div class="stat-item"><div class="stat-value">4</div><div class="stat-label">Avg Rounds</div></div>
+          <div class="stat-item"><div class="stat-value">3.3/5</div><div class="stat-label">Difficulty</div></div>
+          <div class="stat-item"><div class="stat-value">5</div><div class="stat-label">Categories</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><div class="container" style="padding:32px 24px 0">
+  <h2 style="font-size:22px;font-weight:700;margin-bottom:16px">📋 Interview Rounds</h2>
+  <div class="rounds-grid"><div class="round-card">
+  <div class="round-number">Round 1</div>
+  <div class="round-name">Online Assessment</div>
+  <div class="round-duration">60-90 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 2</div>
+  <div class="round-name">Technical Screen</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 3</div>
+  <div class="round-name">Coding Round</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 4</div>
+  <div class="round-name">System Design</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 5</div>
+  <div class="round-name">HR</div>
+  <div class="round-duration">30-45 min</div>
+</div></div>
+</div><div class="container" style="padding:24px 24px 0">
+  <h2 style="font-size:20px;font-weight:700;margin-bottom:14px">🔥 Most Frequently Asked</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:10px;margin-bottom:8px"><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">ACID properties</div>
+    <div style="font-size:12px;color:var(--text-muted)">Database · Easy · 93% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">JVM memory model: heap, stack, metaspace</div>
+    <div style="font-size:12px;color:var(--text-muted)">Java · Medium · 92% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">Java GC: types and how they work</div>
+    <div style="font-size:12px;color:var(--text-muted)">Java · Hard · 90% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">HashMap internals in Java 8+</div>
+    <div style="font-size:12px;color:var(--text-muted)">Java · Medium · 90% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">Redis data structures — use each for the right job</div>
+    <div style="font-size:12px;color:var(--text-muted)">Database · Medium · 90% frequency</div>
+  </div>
+</div></div>
+</div><div class="tabs-bar"><div class="tabs-inner"><button class="tab-btn active" data-tab="coding">💻 DSA <span style="opacity:.5;font-size:11px">(1)</span></button>
+<button class="tab-btn" data-tab="database">🗄️ Database <span style="opacity:.5;font-size:11px">(17)</span></button>
+<button class="tab-btn" data-tab="java">☕ Java <span style="opacity:.5;font-size:11px">(15)</span></button>
+<button class="tab-btn" data-tab="security">🔒 Security <span style="opacity:.5;font-size:11px">(1)</span></button>
+<button class="tab-btn" data-tab="lld">📐 LLD <span style="opacity:.5;font-size:11px">(1)</span></button></div></div>
+<div class="container"><div class="tab-panel active" id="tab-coding">
+  <div class="questions-header">
+    <h3>💻 DSA</h3>
+    <span class="q-count">1 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="strings">
+    <span class="q-index">1</span>
+    <span class="q-text">Longest Palindromic Substring</span>
+    <div class="q-tags"><span class="q-tag">expand-center</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">75%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Expand around center for each char and each pair. O(n²).</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Amazon, Microsoft, Google, Meta, Oracle</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-database">
+  <div class="questions-header">
+    <h3>🗄️ Database</h3>
+    <span class="q-count">17 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="fundamentals">
+    <span class="q-index">1</span>
+    <span class="q-text">ACID properties</span>
+    <div class="q-tags"><span class="q-tag">acid</span><span class="q-tag">transactions</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-high">93%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Indexes — Types and Internals</span><br><ul><li><b>B+ Tree:</b> Default in PostgreSQL/MySQL. O(log n) for equality and range queries. Leaf nodes form linked list for range scans.</li><li><b>Hash Index:</b> O(1) for equality only. No range queries. Used in memory engines (MEMORY in MySQL).</li><li><b>GiST/GIN:</b> PostgreSQL generalized indexes for full-text search, JSONB, arrays.</li><li><b>Bitmap Index:</b> Low-cardinality columns. Efficient AND/OR on multiple conditions.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Clustered vs Secondary</span><br><ul><li><b>Clustered (InnoDB Primary Key):</b> Data physically stored in index order. Range scans very fast. Only 1 per table.</li><li><b>Secondary:</b> Leaf stores primary key value → extra lookup for full row. Covering index eliminates this lookup.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Index Design Tips</span><br><ul><li>Composite index: equality columns first, range columns last, ORDER BY columns last</li><li>Cover frequently queried columns with INCLUDE</li><li>Partial index for low-cardinality: <code>WHERE status='PENDING'</code></li><li>Avoid index on frequently updated columns (write overhead)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is an index scan vs bitmap heap scan in PostgreSQL?<br>• How does an index affect INSERT/UPDATE/DELETE performance?<br>• When would you use a partial index?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, Meta, Microsoft, LinkedIn, Oracle...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="redis">
+    <span class="q-index">2</span>
+    <span class="q-text">Redis data structures — use each for the right job</span>
+    <div class="q-tags"><span class="q-tag">redis</span><span class="q-tag">string</span><span class="q-tag">hash</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Data Structures</span><br><ul><li><b>String:</b> Simple KV, counters, JSON blobs, session tokens. <code>SET/GET/INCR/EXPIRE</code></li><li><b>Hash:</b> Object fields. Better than JSON for partial updates. <code>HSET user:1 name Bob age 30</code></li><li><b>List:</b> Task queue (LPUSH/RPOP), activity feed, bounded log. <code>LPUSH/RPOP/BRPOP</code></li><li><b>Set:</b> Unique members, tags, online users. <code>SADD/SISMEMBER/SUNION/SINTER</code></li><li><b>Sorted Set (ZSet):</b> Leaderboard, priority queue, rate limiting. Score-ordered. <code>ZADD/ZRANGE/ZRANK</code></li><li><b>HyperLogLog:</b> Approximate cardinality counting (unique visitors). ~12KB, 0.8% error. <code>PFADD/PFCOUNT</code></li><li><b>Streams:</b> Persistent append-only log. Consumer groups. Like Kafka in Redis.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Common Patterns</span><br><pre># Rate limiter with sliding window
+ZADD ratelimit:user1 {now_ms} {request_id}
+ZREMRANGEBYSCORE ratelimit:user1 0 {window_start}
+count = ZCARD ratelimit:user1
+
+# Leaderboard
+ZADD leaderboard {score} {user}
+ZREVRANGE leaderboard 0 9 WITHSCORES  # top 10
+ZRANK leaderboard {user}               # rank</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is Redis Cluster and how does slot sharding work?<br>• How does Redis WAIT command help with consistency?<br>• What is the difference between Redis persistence AOF vs RDB?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="indexing">
+    <span class="q-index">3</span>
+    <span class="q-text">B+ Tree index internals — structure, splits, range queries</span>
+    <div class="q-tags"><span class="q-tag">b-plus-tree</span><span class="q-tag">index</span><span class="q-tag">range-query</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Structure</span><br><ul><li><b>Internal nodes:</b> keys only, no data. Fan-out typically 100-200 keys per node.</li><li><b>Leaf nodes:</b> keys + actual row pointers (or clustered data). Linked list for range scans.</li><li><b>Height:</b> ~3-4 levels for millions of rows (log_200(1M) ≈ 3). Fits in memory.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Why B+ over B-Tree</span><br>All data in leaves → range queries traverse leaf linked list without backtracking. Internal nodes store more keys (no data) → wider fan-out → shallower tree.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Operations</span><br><ul><li><b>Search:</b> O(log_t n) — traverse from root to leaf</li><li><b>Insert:</b> find leaf, insert, split if overflow (cascade up)</li><li><b>Delete:</b> find leaf, remove, merge or redistribute if underflow</li><li><b>Range scan:</b> find start leaf, traverse linked list → sequential I/O (fast)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Clustered vs Secondary</span><br><b>Clustered:</b> Data rows stored in leaf nodes in index order (InnoDB primary key). One per table.<br><b>Secondary:</b> Leaf stores PK value → extra lookup for row data. Multiple allowed.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is index selectivity and why does it matter?<br>• How does a covering index eliminate table lookups?<br>• Why is UUID a bad primary key for InnoDB? (random inserts → page splits)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="replication">
+    <span class="q-index">4</span>
+    <span class="q-text">Read replicas — replication lag, use cases, consistency</span>
+    <div class="q-tags"><span class="q-tag">replication</span><span class="q-tag">replica-lag</span><span class="q-tag">read-replica</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Replication Mechanics (MySQL binlog / PostgreSQL WAL)</span><br>Primary records every write as binary log events. Replica connects, streams binlog, applies changes. Replication can be:<br><ul><li><b>Async (default):</b> Primary doesn't wait for replica. Replica may lag.</li><li><b>Semi-sync:</b> Primary waits for at least 1 replica to acknowledge before committing.</li><li><b>Sync (PostgreSQL synchronous_commit=on):</b> All replicas acknowledge. Highest durability, slowest.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Replication Lag Causes</span><br><ul><li>Large transactions (long to replay)</li><li>High write throughput on primary</li><li>Network latency between primary and replica</li><li>Single-threaded replay (older MySQL — use parallel replication)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Handling Lag in Applications</span><br><ul><li>Read-your-own-writes: route reads after writes to primary for 1s, or use session stickiness</li><li>For stale-tolerant reads (reports, analytics): use replica</li><li>Monitor lag: <code>SHOW REPLICA STATUS</code> → Seconds_Behind_Source</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is GTID-based replication?<br>• How does logical replication differ from physical replication?<br>• What is PgBouncer and what problem does it solve?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="query-optimization">
+    <span class="q-index">5</span>
+    <span class="q-text">SQL query optimization — indexes, covering indexes, composite indexes</span>
+    <div class="q-tags"><span class="q-tag">index</span><span class="q-tag">covering-index</span><span class="q-tag">composite</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Composite Index Column Order</span><br><pre>-- Query: WHERE a = 1 AND b &gt; 5 ORDER BY c
+-- Best index: (a, b, c) — leftmost prefix rule
+-- a → equality filter (most selective first)
+-- b → range filter
+-- c → ORDER BY (eliminates sort)
+
+-- Index (b, a) won't use b for range + a for equality efficiently</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Covering Index</span><br>Index includes all columns needed by query — no heap lookup.<br><pre>-- Query:
+SELECT email FROM users WHERE user_id = 42;
+
+-- If index is (user_id, email): Index Only Scan — never touches table!
+CREATE INDEX idx_user_email ON users(user_id) INCLUDE (email);  -- PostgreSQL</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Index Selectivity</span><br>High selectivity (few rows per value) = good for index. Low selectivity (boolean, gender) = index often not used. <code>n_distinct</code> in pg_stats shows estimate. Use partial index for low-selectivity cases:<br><code>CREATE INDEX ON orders(status) WHERE status = 'PENDING';</code></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Anti-patterns</span><br><ul><li><code>SELECT *</code> prevents covering index</li><li>Function on indexed column: <code>WHERE LOWER(email) = ...</code> → can't use index. Use functional index.</li><li>Leading % in LIKE: <code>WHERE name LIKE '%Smith'</code> → full scan. Use full-text search or reverse index.</li><li>Implicit type cast: <code>WHERE varchar_col = 123</code> → type mismatch → seq scan</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is an index bloat and how do you fix it?<br>• When does PostgreSQL ignore an index? (planner cost estimate)<br>• What is a filtered/partial index?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="transactions">
+    <span class="q-index">6</span>
+    <span class="q-text">Database isolation levels</span>
+    <div class="q-tags"><span class="q-tag">isolation</span><span class="q-tag">mvcc</span><span class="q-tag">phantom</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">87%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">ACID Properties</span><br><ul><li><b>Atomicity:</b> All operations in transaction succeed or all are rolled back. No partial updates.</li><li><b>Consistency:</b> Transaction brings DB from one valid state to another. Constraints never violated.</li><li><b>Isolation:</b> Concurrent transactions behave as if sequential. Anomalies depend on isolation level.</li><li><b>Durability:</b> Committed transactions survive crashes. Guaranteed by WAL.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Isolation Levels & Anomalies</span><br><pre>READ UNCOMMITTED: dirty read allowed (see uncommitted data)
+READ COMMITTED:  no dirty read | phantom read possible
+REPEATABLE READ: no dirty/non-repeatable read | phantom possible (MySQL: solved by gap locks)
+SERIALIZABLE:   full isolation, slowest — SSI (PostgreSQL) or locking (MySQL)</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">How Implemented</span><br>PostgreSQL: MVCC for Repeatable Read and below. Serializable: SSI (Serializable Snapshot Isolation). MySQL InnoDB: row-level locking + MVCC + gap locks for Repeatable Read.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is a phantom read and how do gap locks prevent it?<br>• What is lost update anomaly?<br>• How does SELECT FOR UPDATE work and what lock does it take?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, LinkedIn, Meta, Oracle, PayPal...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="query-optimization">
+    <span class="q-index">7</span>
+    <span class="q-text">EXPLAIN ANALYZE — reading query execution plans</span>
+    <div class="q-tags"><span class="q-tag">explain</span><span class="q-tag">query-plan</span><span class="q-tag">seq-scan</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Key Operations</span><br><ul><li><b>Seq Scan:</b> Full table scan. Fast for small tables / low selectivity.</li><li><b>Index Scan:</b> Uses B+ tree index. Best for high selectivity (&lt;10% rows).</li><li><b>Index Only Scan:</b> All needed columns in index (covering index). Fastest.</li><li><b>Bitmap Heap Scan:</b> Index scan → bitmap of pages → sorted page access. Good for 5-20% rows.</li><li><b>Nested Loop:</b> Join — for each outer row, find matching inner. Good for small outer result.</li><li><b>Hash Join:</b> Build hash table from smaller table → probe with larger. Good for large unsorted.</li><li><b>Merge Join:</b> Both sides sorted. Fast but needs sort step.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Reading EXPLAIN</span><br><pre>EXPLAIN ANALYZE SELECT * FROM orders WHERE user_id = 42;
+
+-&gt; Index Scan using idx_orders_user on orders
+   Index Cond: (user_id = 42)
+   rows=150 (estimated)  rows=143 (actual)
+   Buffers: shared hit=12  (pages from cache)
+   Planning: 0.3ms  Execution: 2.1ms</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Tuning Signals</span><br><ul><li>Seq scan on large table with high selectivity → missing index</li><li>Estimated rows ≫ actual → stale statistics → run ANALYZE</li><li>Sort in plan → add index with ORDER BY columns</li><li>Hash join with large table → may need work_mem increase</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the difference between cost and actual time in EXPLAIN?<br>• How does pg_stat_statements help identify slow queries?<br>• What is partial index and when does it help?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="replication">
+    <span class="q-index">8</span>
+    <span class="q-text">Database replication types</span>
+    <div class="q-tags"><span class="q-tag">replication</span><span class="q-tag">master-slave</span><span class="q-tag">sync</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Master-slave: read scale. Master-master: write anywhere. Sync: strong consistency. Async: better perf.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, Meta, LinkedIn, Oracle, Databricks</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="scalability">
+    <span class="q-index">9</span>
+    <span class="q-text">Database partitioning strategies — range, hash, list</span>
+    <div class="q-tags"><span class="q-tag">partitioning</span><span class="q-tag">range</span><span class="q-tag">hash</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Range Partitioning</span><br>Divide by value range. Common for time-series data.<br><pre>CREATE TABLE orders (id bigint, created_at date, ...)
+PARTITION BY RANGE (created_at);
+
+CREATE TABLE orders_2023 PARTITION OF orders
+    FOR VALUES FROM ('2023-01-01') TO ('2024-01-01');
+CREATE TABLE orders_2024 PARTITION OF orders
+    FOR VALUES FROM ('2024-01-01') TO ('2025-01-01');</pre>Pruning: <code>WHERE created_at &gt;= '2024-01-01'</code> → only scans 2024 partition.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Hash Partitioning</span><br>Distribute evenly by hash of key. Good for write distribution.<br><pre>PARTITION BY HASH (user_id);
+-- Partition 0: user_id % 4 = 0
+-- Partition 1: user_id % 4 = 1 ...</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">List Partitioning</span><br>By enumerated values. Good for geographic/categorical data.<br><pre>PARTITION BY LIST (region);
+-- India: ('IN'), US: ('US','CA')</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Benefits</span><br><ul><li>Partition pruning: query only relevant partition</li><li>Faster VACUUM, index maintenance (smaller partitions)</li><li>Easy archival: <code>DETACH PARTITION orders_2022</code></li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Partitioning vs Sharding</span><br>Partitioning: single database, multiple internal tables. Sharding: multiple databases, data split across machines. Sharding requires application-level routing.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is sub-partitioning?<br>• How does partition pruning work? (planner checks constraint exclusion)<br>• What are the limitations of cross-partition queries?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="performance">
+    <span class="q-index">10</span>
+    <span class="q-text">Connection pooling — PgBouncer, HikariCP, patterns</span>
+    <div class="q-tags"><span class="q-tag">connection-pool</span><span class="q-tag">pgbouncer</span><span class="q-tag">hikaricp</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Why Pool Connections</span><br>PostgreSQL creates a new OS process per connection (~5-10MB RAM). Opening connection takes ~30-100ms. 1000 connections = 5-10GB RAM, GC overhead, scheduler pressure.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">PgBouncer</span><br>Lightweight connection pooler for PostgreSQL. Sits between app and DB.<br><ul><li><b>Session mode:</b> App gets same DB connection for session duration. All features work.</li><li><b>Transaction mode:</b> Connection returned to pool after each transaction. Supports many more app connections (1000s) with few DB connections (50). Restrictions: no SET, no prepared statements per session.</li><li><b>Statement mode:</b> Return after each statement. Most restrictive.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">HikariCP (Java)</span><br>Fast JDBC connection pool.<br><pre>HikariConfig cfg = new HikariConfig();
+cfg.setJdbcUrl("jdbc:postgresql://host/db");
+cfg.setMaximumPoolSize(10);
+cfg.setConnectionTimeout(30000);
+cfg.setIdleTimeout(600000);
+cfg.setMaxLifetime(1800000);  // 30min to prevent stale conns
+DataSource ds = new HikariDataSource(cfg);</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Sizing</span><br>Pool size = (core_count × 2) + effective_spindle_count. Smaller than you think — more connections ≠ more throughput.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the difference between PgBouncer and pgpool-II?<br>• How do you handle connection leaks? (maxLifetime, leak detection)<br>• What is prepared statement caching and how does it interact with pooling?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="indexing">
+    <span class="q-index">11</span>
+    <span class="q-text">B-Tree vs B+Tree indexing</span>
+    <div class="q-tags"><span class="q-tag">btree</span><span class="q-tag">index</span><span class="q-tag">leaf-nodes</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">83%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">SQL vs NoSQL Trade-offs</span><br><ul><li><b>SQL:</b> ACID, relational, structured schema, powerful joins, vertical scaling + read replicas. Best for: financial data, complex queries, strong consistency.</li><li><b>NoSQL:</b> BASE, flexible schema, horizontal scaling. Different models:<br>&nbsp;&nbsp;• Document (MongoDB): JSON-like docs, rich queries<br>&nbsp;&nbsp;• Key-Value (Redis, DynamoDB): O(1) lookup<br>&nbsp;&nbsp;• Wide-Column (Cassandra, HBase): write-optimized, time-series<br>&nbsp;&nbsp;• Graph (Neo4j): relationship-heavy queries</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">When to choose</span><br><ul><li>Complex joins + transactions → SQL</li><li>Massive write throughput, unstructured data → Cassandra</li><li>Fast KV lookup, caching → Redis/DynamoDB</li><li>Flexible schema, document queries → MongoDB</li><li>Social graph, recommendations → Neo4j</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• When is PostgreSQL JSONB a good alternative to MongoDB?<br>• What is NewSQL (CockroachDB, Spanner) and when does it make sense?<br>• How do you handle schema migrations in NoSQL?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, Oracle, Databricks, Snowflake, LinkedIn</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="internals">
+    <span class="q-index">12</span>
+    <span class="q-text">PostgreSQL MVCC — how it achieves non-blocking reads</span>
+    <div class="q-tags"><span class="q-tag">mvcc</span><span class="q-tag">postgresql</span><span class="q-tag">snapshot</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">MVCC = Multi-Version Concurrency Control</span><br>Each row has hidden columns:<br><ul><li><code>xmin</code>: transaction ID that inserted this version</li><li><code>xmax</code>: transaction ID that deleted/updated this version (0 = still live)</li></ul>Reads see a <b>snapshot</b>: only versions where xmin ≤ snapshot_xid &lt; xmax.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">How it works</span><br><pre>T1 (xid=100): UPDATE users SET name='Bob' WHERE id=1
+→ Old row: xmin=50, xmax=100  (now dead to T1)
+→ New row: xmin=100, xmax=0   (live)
+
+T2 (xid=99, started before T1):
+→ Sees old row (xmin=50 &lt;= 99 &lt; xmax=100) ✓
+→ Sees 'Alice' — no blocking!
+
+T3 (xid=101, started after T1 commits):
+→ Old row: xmax=100 &lt;= 101 → dead, skip
+→ New row: xmin=100 &lt;= 101, xmax=0 → live, sees 'Bob' ✓</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">VACUUM</span><br>Dead rows (old versions) accumulate. <b>VACUUM</b> reclaims space. <b>AUTOVACUUM</b> runs automatically. Transaction ID wraparound prevented by freezing old rows.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is HOT (Heap-Only Tuple) update in PostgreSQL?<br>• How does MVCC differ between PostgreSQL and MySQL InnoDB?<br>• What is transaction ID wraparound and why is it catastrophic?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="concurrency">
+    <span class="q-index">13</span>
+    <span class="q-text">Database deadlocks — detection, prevention, resolution</span>
+    <div class="q-tags"><span class="q-tag">deadlock</span><span class="q-tag">lock</span><span class="q-tag">wait-for-graph</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">What is a Deadlock</span><br>Two or more transactions each hold a lock the other needs.<br><pre>T1: LOCK A → wait for B
+T2: LOCK B → wait for A
+→ Circular wait = deadlock</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Deadlock Detection</span><br>Most DBs run a background detector (PostgreSQL, MySQL InnoDB).<br>Builds a <b>wait-for graph</b>: node = transaction, edge = T1 waits for lock held by T2. Cycle = deadlock → kill victim transaction (least expensive to rollback).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Prevention Strategies</span><br><ul><li><b>Lock ordering:</b> Always acquire locks in the same global order (e.g., lower ID first)</li><li><b>Timeout:</b> <code>SET lock_timeout = '1s'</code> — transaction aborts if wait too long</li><li><b>SELECT FOR UPDATE SKIP LOCKED:</b> Skip locked rows instead of waiting (job queues)</li><li><b>Reduce transaction scope:</b> Short transactions hold locks briefly</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Application-Level Fix</span><br><pre>-- Instead of long transaction:
+BEGIN;
+  UPDATE account SET bal = bal - 100 WHERE id = 1;  -- locks row
+  -- ... complex computation (seconds) ...
+  UPDATE account SET bal = bal + 100 WHERE id = 2;  -- deadlock risk!
+COMMIT;
+
+-- Better: do computation outside transaction, then short UPDATE</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the difference between a deadlock and a livelock?<br>• How does SELECT FOR UPDATE NOWAIT differ from SKIP LOCKED?<br>• What is intention locking (IS, IX, S, X)?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="consistency">
+    <span class="q-index">14</span>
+    <span class="q-text">Eventual consistency models — BASE, read-your-writes, monotonic reads</span>
+    <div class="q-tags"><span class="q-tag">eventual-consistency</span><span class="q-tag">base</span><span class="q-tag">causal</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">CAP Theorem Recap</span><br>In presence of network partition (P), choose between Consistency (C) or Availability (A). Most distributed systems choose AP → eventual consistency.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">BASE (Basically Available, Soft state, Eventually consistent)</span><br>Contrast to ACID. <ul><li><b>Basically Available:</b> System works, even during partial failure (stale data OK)</li><li><b>Soft State:</b> State may change without input (replication catching up)</li><li><b>Eventually Consistent:</b> Given no new updates, all replicas converge to same state</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Consistency Models (weakest to strongest)</span><br><ul><li><b>Eventual:</b> Converges eventually. DNS, S3.</li><li><b>Monotonic Read:</b> Once you read version V, you never see older version. (client stickiness)</li><li><b>Read-Your-Writes:</b> You always see your own writes immediately. (session token pinning)</li><li><b>Causal:</b> If A caused B, everyone sees A before B. (vector clocks)</li><li><b>Sequential:</b> All operations appear in a global order consistent with program order.</li><li><b>Linearizable (Strict):</b> Strongest. Operations appear instantaneous. ZooKeeper, etcd.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does DynamoDB implement eventual consistency vs strong consistency?<br>• What is quorum read/write (R + W &gt; N)?<br>• What are vector clocks and how do they enable causal consistency?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="optimization">
+    <span class="q-index">15</span>
+    <span class="q-text">Query optimization and EXPLAIN ANALYZE</span>
+    <div class="q-tags"><span class="q-tag">explain</span><span class="q-tag">query-plan</span><span class="q-tag">index</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">EXPLAIN ANALYZE Output</span><br><pre>EXPLAIN ANALYZE SELECT * FROM orders WHERE user_id = 42 AND status = 'PENDING';
+
+Seq Scan on orders (cost=0.00..18240.00 rows=1 width=128) (actual time=0.15..234.52 rows=47 loops=1)
+  Filter: ((user_id = 42) AND (status = 'PENDING'::text))
+  Rows Removed by Filter: 1200000
+Planning Time: 0.3ms
+Execution Time: 234.6ms
+
+-- FIX: create composite index
+CREATE INDEX idx_orders_user_status ON orders(user_id, status);
+
+Index Scan using idx_orders_user_status on orders (cost=0.43..8.45 rows=47 width=128)
+  (actual time=0.05..0.12 rows=47 loops=1)
+Execution Time: 0.2ms  -- 1000x faster!</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Join Algorithms</span><br><ul><li><b>Nested Loop:</b> For small outer table + indexed inner. O(n*log m)</li><li><b>Hash Join:</b> Build hash table on smaller relation. O(n+m). Default for large joins.</li><li><b>Merge Join:</b> Requires sorted inputs. O(n+m). Fast for already-sorted data.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What does a Bitmap Heap Scan mean in EXPLAIN output?<br>• How do you force an index when the planner chooses a seq scan? (SET enable_seqscan=off — for testing only)<br>• What is the difference between EXPLAIN and EXPLAIN ANALYZE?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 Amazon, Google, LinkedIn, Oracle, PayPal, Razorpay</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="internals">
+    <span class="q-index">16</span>
+    <span class="q-text">Write-Ahead Logging (WAL) — how databases ensure durability</span>
+    <div class="q-tags"><span class="q-tag">wal</span><span class="q-tag">durability</span><span class="q-tag">redo-log</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">What is WAL</span><br>Before modifying data pages in memory (buffer pool), the change is written to the WAL log first. On crash: replay WAL from last checkpoint to recover committed transactions. <b>Guarantee:</b> committed data never lost, even on sudden crash.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Write Flow</span><br><pre>1. Transaction modifies data in buffer pool (in-memory dirty page)
+2. WAL record written to WAL buffer → flushed to disk (fsync)
+   [WAL written BEFORE data page written — Write-Ahead!]
+3. Transaction commits: commit WAL record flushed
+4. Background: dirty pages periodically checkpointed to data files
+5. WAL records before checkpoint can be deleted</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">PostgreSQL WAL</span><br>WAL files in <code>pg_wal/</code>. Controls: <code>fsync=on</code> (durability), <code>synchronous_commit=on/off</code>. Turning off synchronous_commit: ~10% faster writes, risk of last 100ms of data on crash.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Uses beyond recovery</span><br><ul><li>Streaming replication: replicas stream WAL from primary</li><li>Point-in-time recovery (PITR): replay WAL to any past state</li><li>Logical replication: parse WAL for row-level changes (Debezium/CDC)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is a checkpoint and why is checkpoint distance important?<br>• How does InnoDB redo log differ from PostgreSQL WAL?<br>• What is CDC (Change Data Capture) and how does it use WAL?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="internals">
+    <span class="q-index">17</span>
+    <span class="q-text">Write-Ahead Logging (WAL)</span>
+    <div class="q-tags"><span class="q-tag">wal</span><span class="q-tag">crash-recovery</span><span class="q-tag">durability</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">74%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Log before applying to data pages. Replay from last checkpoint on crash. Enables replication.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 Amazon, Google, Databricks, Snowflake, Oracle</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-java">
+  <div class="questions-header">
+    <h3>☕ Java</h3>
+    <span class="q-count">15 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="jvm">
+    <span class="q-index">1</span>
+    <span class="q-text">JVM memory model: heap, stack, metaspace</span>
+    <div class="q-tags"><span class="q-tag">jvm</span><span class="q-tag">memory</span><span class="q-tag">gc</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">92%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">JVM Memory Areas</span><br><ul><li><b>Heap:</b> All objects (new). Divided into Young (Eden + 2 Survivors) + Old/Tenured. GC managed.</li><li><b>Stack:</b> Per-thread. Holds stack frames: local variables, operand stack, method calls. Fixed size (typically 512KB-1MB). StackOverflowError if exceeded.</li><li><b>Metaspace (Java 8+):</b> Class metadata (class bytecode, method data). Native memory, grows dynamically. Replaced PermGen which had fixed max size.</li><li><b>Code Cache:</b> JIT-compiled native code.</li><li><b>Direct Memory:</b> Off-heap via NIO ByteBuffer.allocateDirect(). Not GC'd, must be freed explicitly.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Tuning Flags</span><br><pre>-Xms512m -Xmx4g       # initial and max heap
+-XX:MetaspaceSize=256m # initial metaspace
+-XX:MaxMetaspaceSize=512m
+-Xss512k               # thread stack size</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What causes OutOfMemoryError in heap vs metaspace vs direct memory?<br>• What is object header size in JVM? (12-16 bytes: mark word + klass pointer)<br>• How does compressed OOPs affect memory usage?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, LinkedIn, Microsoft, PayPal, Oracle...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="jvm">
+    <span class="q-index">2</span>
+    <span class="q-text">Java GC: types and how they work</span>
+    <div class="q-tags"><span class="q-tag">gc</span><span class="q-tag">g1</span><span class="q-tag">zgc</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Generational mark-sweep-compact. G1: region-based. ZGC/Shenandoah: low-latency <1ms STW.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, LinkedIn, Microsoft, PayPal, Oracle</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="collections">
+    <span class="q-index">3</span>
+    <span class="q-text">HashMap internals in Java 8+</span>
+    <div class="q-tags"><span class="q-tag">hashmap</span><span class="q-tag">treeify</span><span class="q-tag">collision</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">HashMap Internals</span><br><pre>// Java 8+ structure:
+// Node&lt;K,V&gt;[] table  (array of buckets, power of 2 size)
+// Each bucket: null | Node (linked list) | TreeNode (red-black tree)
+
+// Hash calculation:
+static int hash(Object key) {
+    int h;
+    return (key == null) ? 0 : (h = key.hashCode()) ^ (h &gt;&gt;&gt; 16);
+    // XOR high bits into low bits — better distribution
+}
+// Bucket index: (n-1) &amp; hash  (n = table length, power of 2)</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Thresholds</span><br><ul><li><b>TREEIFY_THRESHOLD = 8:</b> Bucket with &gt;8 nodes → convert to red-black tree (O(log n) per op)</li><li><b>UNTREEIFY_THRESHOLD = 6:</b> Tree shrinks back to list on removal</li><li><b>LOAD_FACTOR = 0.75:</b> Resize (double) when size/capacity &gt; 0.75</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Thread Safety</span><br>HashMap is NOT thread-safe. Use ConcurrentHashMap (lock-striping, CAS) or Collections.synchronizedMap() (coarse lock).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the time complexity of get() in worst case? O(log n) with tree buckets<br>• Why XOR high bits into low bits in hash()? (prevents collision when table size is small)<br>• What is the difference between HashMap.keySet() and EntrySet iteration performance?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, LinkedIn, Microsoft, Meta, PayPal...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="collections">
+    <span class="q-index">4</span>
+    <span class="q-text">HashMap vs LinkedHashMap vs TreeMap internals</span>
+    <div class="q-tags"><span class="q-tag">hashmap</span><span class="q-tag">linkedhashmap</span><span class="q-tag">treemap</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">HashMap</span><br>Array of Node&lt;K,V&gt; buckets. Hash → index via <code>(n-1) &amp; hash</code>. Collision: linked list, then treeify at threshold 8 (TREEIFY_THRESHOLD). Resize (double) at 75% load factor. Java 8: balanced BST (TreeNode) for long chains.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">LinkedHashMap</span><br>Extends HashMap. Adds doubly-linked list through all entries maintaining <b>insertion order</b>. Can be configured for <b>access order</b> (LRU behaviour) with constructor parameter.<br><pre>// LRU Cache using LinkedHashMap
+Map&lt;K,V&gt; lru = new LinkedHashMap&lt;&gt;(16, 0.75f, true) {  // accessOrder=true
+    protected boolean removeEldestEntry(Map.Entry&lt;K,V&gt; e) {
+        return size() &gt; capacity;
+    }
+};</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">TreeMap</span><br>Red-Black tree. Keys always <b>sorted</b> (natural order or Comparator). O(log n) get/put/remove. Extra operations: <code>floorKey</code>, <code>ceilingKey</code>, <code>headMap</code>, <code>tailMap</code>, <code>subMap</code>.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Quick Comparison</span><br><ul><li><b>HashMap:</b> O(1) avg, unordered, null key/values allowed</li><li><b>LinkedHashMap:</b> O(1) avg, insertion/access ordered, LRU capable</li><li><b>TreeMap:</b> O(log n), sorted, no null key</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is HashMap's initial capacity and load factor trade-off?<br>• Why is String a good HashMap key? (immutable, cached hashCode)<br>• What causes ConcurrentModificationException?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Amazon, Google, LinkedIn, Microsoft, TCS, Infosys...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="spring">
+    <span class="q-index">5</span>
+    <span class="q-text">Spring Boot auto-configuration</span>
+    <div class="q-tags"><span class="q-tag">spring-boot</span><span class="q-tag">auto-config</span><span class="q-tag">conditional</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">@EnableAutoConfiguration reads spring.factories. Conditionals (@ConditionalOnClass) enable beans.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Amazon, LinkedIn, Microsoft, PayPal, Oracle, Salesforce</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="jpa">
+    <span class="q-index">6</span>
+    <span class="q-text">JPA N+1 problem and solutions</span>
+    <div class="q-tags"><span class="q-tag">hibernate</span><span class="q-tag">n+1</span><span class="q-tag">join-fetch</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">1 query for parent + N for children. Fix: JOIN FETCH, @EntityGraph, batch size.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 Amazon, LinkedIn, PayPal, Oracle, Salesforce, Infosys</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="jpa">
+    <span class="q-index">7</span>
+    <span class="q-text">Hibernate L1 and L2 cache — how they work</span>
+    <div class="q-tags"><span class="q-tag">hibernate</span><span class="q-tag">cache</span><span class="q-tag">l1</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">76%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">L1 Cache (Session Cache)</span><br><b>Default, always on.</b> Scoped to a single <code>Session</code> (transaction). Within a session, the same entity loaded twice returns the same object (identity map). Cleared on <code>session.close()</code> or <code>session.clear()</code>.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">L2 Cache (Shared Cache)</span><br><b>Optional, cross-session.</b> Shared across all sessions in a SessionFactory. Must be explicitly configured. Providers: <b>Ehcache, Caffeine, Infinispan, Redis</b>.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">L2 Setup</span><br><pre># application.properties
+spring.jpa.properties.hibernate.cache.use_second_level_cache=true
+spring.jpa.properties.hibernate.cache.region.factory_class=\
+    org.hibernate.cache.jcache.JCacheRegionFactory
+
+# Entity
+@Entity
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+public class Product { ... }</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Query Cache</span><br>Cache for JPQL/HQL query results. Must also have L2 enabled. Stores primary keys, not entities. Invalidated when any entity in result changes.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache Strategies</span><br>READ_ONLY, NONSTRICT_READ_WRITE, READ_WRITE, TRANSACTIONAL</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• When should you NOT use L2 cache?<br>• How does L2 cache handle cluster environments?<br>• What is the N+1 problem and how does @EntityGraph solve it?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 Amazon, LinkedIn, PayPal, Oracle, Salesforce, Infosys</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="spring">
+    <span class="q-index">8</span>
+    <span class="q-text">Spring Boot auto-configuration internals deep dive</span>
+    <div class="q-tags"><span class="q-tag">spring-boot</span><span class="q-tag">auto-config</span><span class="q-tag">conditional</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">76%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">How it works</span><br><code>@SpringBootApplication</code> includes <code>@EnableAutoConfiguration</code>.<br>Spring Boot reads <code>META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports</code> (or legacy <code>spring.factories</code>) to find all <code>@AutoConfiguration</code> classes.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Conditional Annotations</span><br><ul><li><code>@ConditionalOnClass(DataSource.class)</code> — only if DataSource on classpath</li><li><code>@ConditionalOnMissingBean</code> — only if no user-defined bean of that type</li><li><code>@ConditionalOnProperty("spring.datasource.url")</code> — only if property set</li><li><code>@ConditionalOnWebApplication</code> — only in web context</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Example: DataSource auto-config</span><br><pre>@AutoConfiguration
+@ConditionalOnClass(DataSource.class)
+@ConditionalOnMissingBean(DataSource.class)
+public class DataSourceAutoConfiguration {
+    @Bean
+    @ConditionalOnProperty("spring.datasource.url")
+    public DataSource dataSource(DataSourceProperties props) {
+        return props.initializeDataSourceBuilder().build();
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Debugging</span><br><code>--debug</code> flag prints auto-config report: POSITIVE (matched) and NEGATIVE (not matched) conditions.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you exclude an auto-configuration?<br>• What is @ConfigurationProperties vs @Value?<br>• How does Spring Boot 3 change auto-configuration imports?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Amazon, LinkedIn, PayPal, Oracle, Salesforce</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="jvm">
+    <span class="q-index">9</span>
+    <span class="q-text">Java ClassLoader hierarchy and how class loading works</span>
+    <div class="q-tags"><span class="q-tag">classloader</span><span class="q-tag">bootstrap</span><span class="q-tag">delegation</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">76%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">ClassLoader Hierarchy</span><br><ul><li><b>Bootstrap ClassLoader:</b> Loads JDK core classes (java.lang, java.util) from rt.jar/modules. C++ code, no Java object.</li><li><b>Platform ClassLoader (was Extension):</b> Loads java.se, java.xml etc.</li><li><b>Application ClassLoader:</b> Loads from classpath (your app + third-party JARs).</li><li>Custom ClassLoaders: hot-deploy, OSGi, isolation (one classloader per plugin).</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Delegation Model</span><br>When loading class X: check cache → delegate to parent → parent delegates to its parent → reach Bootstrap → if not found, child tries to load itself → ClassNotFoundException if all fail.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Class Identity</span><br>Same class name loaded by different ClassLoaders = <b>different classes</b>. ClassCastException when assigning across loaders. Root of hot-deploy complexity.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Custom ClassLoader</span><br><pre>class HotLoader extends ClassLoader {
+    @Override
+    protected Class&lt;?&gt; findClass(String name) throws ClassNotFoundException {
+        byte[] bytes = readBytesFromFile(name);
+        return defineClass(name, bytes, 0, bytes.length);
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the ClassLoader leak in application servers?<br>• How does OSGi use ClassLoaders for module isolation?<br>• What is --add-opens in Java 9+ and why is it needed?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Amazon, Google, Oracle, LinkedIn, TCS, Infosys</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="jvm">
+    <span class="q-index">10</span>
+    <span class="q-text">Java GC algorithms — Mark-Sweep, Mark-Compact, Copying, Generational</span>
+    <div class="q-tags"><span class="q-tag">gc-algorithms</span><span class="q-tag">mark-sweep</span><span class="q-tag">generational</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">76%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Mark-Sweep</span><br><b>Mark:</b> traverse GC roots, mark all reachable objects. <b>Sweep:</b> scan heap, free unmarked objects. Problem: <b>fragmentation</b> — free spaces scattered.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Mark-Compact</span><br>Mark phase same. Compact phase: slide all live objects to one end. No fragmentation. Slower than sweep (extra copy). G1GC uses this for selected regions.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Copying Collection</span><br>Divide heap into From/To spaces. Copy live objects to To, flip spaces. No fragmentation, fast allocation (bump pointer). Wastes 50% of heap. Used for young generation.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Generational Hypothesis</span><br>Most objects die young. Java heap split:<br><ul><li><b>Young (Eden + 2 Survivors):</b> Minor GC — fast, copying collector</li><li><b>Old (Tenured):</b> Major/Full GC — mark-compact or concurrent marking</li></ul>Promotion: object surviving N minor GCs (default 15) moves to Old gen.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">G1GC</span><br>Divides heap into equal regions (~1-32MB). Marks concurrently. Selects regions with most garbage (Garbage-First) for collection. Pause target: <code>-XX:MaxGCPauseMillis=200</code>.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What triggers a Full GC and why is it bad?<br>• How does G1GC concurrent marking work alongside application threads?<br>• What is humongous object in G1GC?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, Oracle, LinkedIn, Meta</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="spring">
+    <span class="q-index">11</span>
+    <span class="q-text">Spring WebFlux and Project Reactor — reactive programming</span>
+    <div class="q-tags"><span class="q-tag">webflux</span><span class="q-tag">reactor</span><span class="q-tag">mono</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">74%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">What is Reactive Programming</span><br>Non-blocking, event-driven programming with <b>backpressure</b>. Publisher emits data only as fast as subscriber can consume.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Project Reactor Types</span><br><ul><li><code>Mono&lt;T&gt;</code> — 0 or 1 element (like CompletableFuture)</li><li><code>Flux&lt;T&gt;</code> — 0 to N elements (stream)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Example</span><br><pre>// Blocking (Spring MVC)
+@GetMapping("/user/{id}")
+public User getUser(@PathVariable Long id) {
+    return userService.findById(id);  // blocks thread!
+}
+
+// Reactive (Spring WebFlux)
+@GetMapping("/user/{id}")
+public Mono&lt;User&gt; getUser(@PathVariable Long id) {
+    return userService.findById(id)  // non-blocking Mono
+        .map(UserDto::from)
+        .switchIfEmpty(Mono.error(new NotFoundException()));
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">When to use WebFlux</span><br><ul><li>High-concurrency I/O bound workloads (thousands of concurrent connections)</li><li>Streaming data (SSE, WebSocket)</li><li>Avoid: CPU-bound work, blocking libraries (use bounded elastic scheduler)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the difference between publishOn and subscribeOn?<br>• How do you handle backpressure in Flux?<br>• When would you choose WebFlux over virtual threads (Java 21)?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Amazon, LinkedIn, PayPal, Oracle, Salesforce</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="jvm">
+    <span class="q-index">12</span>
+    <span class="q-text">Java GC tuning — G1GC flags and when to use ZGC/Shenandoah</span>
+    <div class="q-tags"><span class="q-tag">gc</span><span class="q-tag">g1gc</span><span class="q-tag">zgc</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">74%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">G1GC (Default Java 9+)</span><br>Region-based collector. Divides heap into equal regions (~1-32MB). Concurrent marking + stop-the-world compaction of selected regions. Target: balance throughput with pause goals.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key G1GC Flags</span><br><pre>-XX:+UseG1GC
+-Xms4g -Xmx4g              # fix heap size
+-XX:MaxGCPauseMillis=200   # target pause (default 200ms)
+-XX:G1HeapRegionSize=16m   # region size
+-XX:G1NewSizePercent=20    # young gen min %
+-XX:G1MaxNewSizePercent=40 # young gen max %
+-Xlog:gc*:file=gc.log      # GC logging</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">ZGC (Java 21 — production ready)</span><br>Concurrent, scalable, <b>&lt;1ms pauses</b> regardless of heap size (even TBs). Uses colored pointers + load barriers. Ideal for latency-sensitive workloads.<br><code>-XX:+UseZGC -XX:SoftMaxHeapSize=8g</code></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Shenandoah</span><br>Similar to ZGC. Concurrent compaction. Used in OpenJDK builds.<br><code>-XX:+UseShenandoahGC</code></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">When to choose</span><br><ul><li><b>G1GC:</b> Default, good balance, 100-200ms pauses acceptable</li><li><b>ZGC/Shenandoah:</b> Latency-critical services (trading, real-time), &lt;10ms p99</li><li><b>ParallelGC:</b> Batch processing, maximize throughput, pauses OK</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you identify GC pressure? (GC logs, JVM metrics)<br>• What is heap fragmentation and how does G1 handle it?<br>• What is GraalVM native image and how does it change GC?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, LinkedIn, Meta, Oracle</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="nio">
+    <span class="q-index">13</span>
+    <span class="q-text">Java NIO — Channels, Buffers, Selectors (non-blocking I/O)</span>
+    <div class="q-tags"><span class="q-tag">nio</span><span class="q-tag">channel</span><span class="q-tag">buffer</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">74%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">NIO vs Old IO</span><br><ul><li><b>Old IO (java.io):</b> Stream-based, blocking, thread-per-connection</li><li><b>NIO (java.nio):</b> Buffer-based, non-blocking, multiplexed via Selector</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Components</span><br><ul><li><b>Buffer:</b> Fixed-size data container (ByteBuffer, IntBuffer). Has position, limit, capacity.</li><li><b>Channel:</b> Bidirectional, non-blocking I/O endpoint (SocketChannel, FileChannel, ServerSocketChannel)</li><li><b>Selector:</b> Monitors multiple channels on one thread. OS epoll/kqueue underneath.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Non-blocking Server Skeleton</span><br><pre>Selector selector = Selector.open();
+ServerSocketChannel ssc = ServerSocketChannel.open();
+ssc.configureBlocking(false);
+ssc.bind(new InetSocketAddress(8080));
+ssc.register(selector, SelectionKey.OP_ACCEPT);
+
+while (true) {
+    selector.select();  // blocks until event
+    Set&lt;SelectionKey&gt; keys = selector.selectedKeys();
+    for (SelectionKey key : keys) {
+        if (key.isAcceptable()) { accept(key); }
+        else if (key.isReadable()) { read(key); }
+    }
+    keys.clear();
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">ByteBuffer</span><br><code>flip()</code> switches from write to read mode. <code>clear()</code> resets for writing. <code>compact()</code> keeps unread bytes, moves to front.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is NIO.2 (java.nio.file)? (Path, Files, WatchService)<br>• How does Netty build on NIO? (EventLoop, ChannelPipeline)<br>• When would you choose NIO over virtual threads?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Amazon, Google, LinkedIn, Oracle</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="spring">
+    <span class="q-index">14</span>
+    <span class="q-text">Spring @Transactional propagation types</span>
+    <div class="q-tags"><span class="q-tag">transactional</span><span class="q-tag">propagation</span><span class="q-tag">spring</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">72%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">REQUIRED(default)/REQUIRES_NEW/NESTED/SUPPORTS/MANDATORY. REQUIRES_NEW suspends outer txn.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 Amazon, LinkedIn, PayPal, Oracle</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="jvm">
+    <span class="q-index">15</span>
+    <span class="q-text">Java modules system (JPMS — Java 9+)</span>
+    <div class="q-tags"><span class="q-tag">jpms</span><span class="q-tag">modules</span><span class="q-tag">module-info</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">68%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">What is JPMS</span><br>Java Platform Module System (Java 9). Introduces strong encapsulation at the package level. Replaces classpath with modulepath. Eliminates split packages, illegal access.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">module-info.java</span><br><pre>// com.myapp.service module
+module com.myapp.service {
+    requires java.net.http;       // depend on module
+    requires com.myapp.model;
+    exports com.myapp.service.api; // expose this package
+    exports com.myapp.service.impl to com.myapp.web; // targeted export
+    provides com.myapp.spi.Parser  // service provider
+        with com.myapp.service.impl.JsonParser;
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Benefits</span><br><ul><li>Strong encapsulation: internal packages hidden by default</li><li>Reliable configuration: missing dependencies fail at startup, not runtime</li><li>Smaller JVM images with <code>jlink</code></li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Classpath vs Modulepath</span><br>Classpath: no encapsulation, all public APIs accessible. Modulepath: only exported packages visible. Automatic modules for legacy JARs.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is <code>--add-opens</code> and when is it needed?<br>• How does jlink create a custom JRE?<br>• How do Spring Boot apps handle JPMS?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Coding Round</span>
+      <span class="q-meta-chip">🏢 Google, Oracle, Amazon, LinkedIn</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-security">
+  <div class="questions-header">
+    <h3>🔒 Security</h3>
+    <span class="q-count">1 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="appsec">
+    <span class="q-index">1</span>
+    <span class="q-text">Role-based (RBAC) vs Attribute-based (ABAC) access control</span>
+    <div class="q-tags"><span class="q-tag">rbac</span><span class="q-tag">abac</span><span class="q-tag">authorization</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">RBAC — Role-Based Access Control</span><br><pre>User → assigned Roles → Roles have Permissions
+
+Roles: ADMIN, EDITOR, VIEWER, BILLING
+Permissions: read:posts, write:posts, delete:posts, view:billing
+
+User Alice: [EDITOR] → can read:posts + write:posts
+User Bob:   [VIEWER] → can only read:posts
+
+Simple, performant, easy to audit. Rigid: can't express context-based rules.</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">ABAC — Attribute-Based Access Control</span><br><pre>Policy: user.department == resource.department AND resource.classification &lt;= user.clearance
+
+Request evaluated at runtime against policy engine (OPA — Open Policy Agent)
+
+Attributes:
+  Subject: {role, department, clearance, location}
+  Resource: {classification, owner, department, sensitivity}
+  Action: {read, write, delete}
+  Environment: {time, IP, MFA_verified}
+
+More expressive but complex. Used in enterprise, healthcare, government.</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Implementation with OPA</span><br><pre># Rego policy (OPA):
+allow { input.user.role == "admin" }
+allow {
+    input.action == "read"
+    input.resource.owner == input.user.id
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is ReBAC (Relationship-Based Access Control) — Google Zanzibar?<br>• How do you implement row-level security in PostgreSQL?<br>• What is the principle of least privilege and how do you enforce it?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Security Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, LinkedIn, Stripe...</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-lld">
+  <div class="questions-header">
+    <h3>📐 LLD</h3>
+    <span class="q-count">1 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="machine_coding">
+    <span class="q-index">1</span>
+    <span class="q-text">Design a Vending Machine</span>
+    <div class="q-tags"><span class="q-tag">state-machine</span><span class="q-tag">design-patterns</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">States: Idle→HasMoney→SelectProduct→Dispensing→GiveChange. Strategy for payment. State pattern.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Oracle, Cisco</span>
+    </div>
+  </div>
+</div>
+</div></div>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-links">
+      <a href="../../common/top-coding.html">Top Coding</a>
+      <a href="../../common/top-system-design.html">System Design</a>
+      <a href="../../common/top-backend.html">Backend</a>
+      <a href="../../common/top-cpp.html">C++</a>
+      <a href="../../common/top-java.html">Java</a>
+      <a href="../../common/top-go.html">Go</a>
+      <a href="../../common/top-database.html">Database</a>
+      <a href="../../common/top-concurrency.html">Concurrency</a>
+      <a href="../../common/top-os.html">OS</a>
+      <a href="../../common/top-networking.html">Networking</a>
+      <a href="../../common/top-lld.html">LLD</a>
+      <a href="../../common/top-cicd.html">CI/CD</a>
+      <a href="../../common/top-security.html">Security</a>
+      <a href="../../common/top-ml.html">ML Systems</a>
+      <a href="../../common/top-perf.html">Performance</a>
+      <a href="../../mcq-quiz.html">MCQ Quiz</a>
+    </div>
+    <p>Built for SDE-1 &amp; SDE-2 Backend Engineers | C++ · Java · Go · Distributed Systems</p>
+    <p style="margin-top:8px;font-size:12px;opacity:.5">Data sourced from LeetCode, Glassdoor, Blind, Reddit &amp; public interview experiences</p>
+  </div>
+</footer>
+<button id="back-to-top" title="Back to top">↑</button>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

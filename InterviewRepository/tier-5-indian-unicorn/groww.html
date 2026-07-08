@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Groww | InterviewRepo — Backend SDE Interview Prep</title>
+  <meta name="description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Groww">
+  <meta name="keywords" content="backend interview questions, SDE interview prep, system design, DSA, C++ interview, Java interview, Go interview, groww">
+  <meta name="author" content="InterviewRepo">
+  <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="InterviewRepo — Backend SDE Prep">
+  <meta property="og:title"       content="Groww | InterviewRepo">
+  <meta property="og:description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Groww">
+  <meta property="og:url"         content="https://devinterviewvault.netlify.app">
+  <meta property="og:image"       content="https://devinterviewvault.netlify.app/assets/og-image.png">
+  <meta name="twitter:card"       content="summary_large_image">
+  <meta name="twitter:title"      content="Groww | InterviewRepo">
+  <meta name="twitter:description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Groww">
+  <meta name="twitter:image"      content="https://devinterviewvault.netlify.app/assets/og-image.png">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://devinterviewvault.netlify.app">
+  <meta name="google-site-verification" content="a8bdedb3bc5f858c">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Groww", "description": "SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design \u2014 Groww", "url": "https://devinterviewvault.netlify.app", "publisher": {"@type": "Organization", "name": "InterviewRepo"}}</script>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+</head>
+<body>
+<nav class="navbar">
+  <a class="navbar-brand" href="../../index.html">
+    <span class="logo-icon">⚡</span>
+    <span>InterviewRepo</span>
+  </a>
+  <div class="search-bar">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="search-input" placeholder="Search questions… (Ctrl+K)" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <nav class="navbar-nav">
+    <a href="../../index.html">Home</a>
+    <a href="../../common/top-coding.html">Top DSA</a>
+    <a href="../../common/top-system-design.html">System Design</a>
+    <a href="../../common/top-backend.html">Backend</a>
+    <a href="../../common/top-cpp.html">C++</a>
+    <a href="../../common/top-java.html">Java</a>
+    <a href="../../common/top-go.html">Go</a>
+    <a href="../../mcq-quiz.html" style="background:linear-gradient(90deg,#6366f1,#8b5cf6);color:#fff;padding:.3rem .75rem;border-radius:.4rem;font-weight:600">🎯 MCQ Quiz</a>
+  </nav>
+</nav>
+<div class="company-header">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../../index.html">Home</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="../index.html">Tier 5: Indian Unicorn</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>Groww</span>
+    </div>
+    <div class="company-header-inner">
+      <div class="company-logo-placeholder">G</div>
+      <div class="company-info">
+        <div style="margin-bottom:8px">
+          <span class="tier-badge" data-tier="5" style="--tier-color:#FF6B35">Tier 5: Indian Unicorn</span>
+          <span class="difficulty-badge diff-hard" style="margin-left:8px">Medium-Hard</span>
+        </div>
+        <h1>Groww</h1>
+        <p style="color:var(--text-muted);margin-top:8px">Fintech systems, Java backend, high consistency requirements</p>
+        <div class="company-info-meta">
+          <span class="info-chip"><strong>HQ:</strong> Bangalore, India</span>
+          <span class="info-chip"><strong>Roles:</strong> SDE-1, SDE-2, Senior SDE</span>
+          <span class="info-chip"><strong>Focus:</strong> Backend · Java · System Design · DSA · Fintech</span>
+          <span class="info-chip"><strong>Interview:</strong> Online Assessment + Coding + LLD + HLD + HR</span>
+        </div>
+        <div class="company-stats">
+          <div class="stat-item"><div class="stat-value">24</div><div class="stat-label">Questions</div></div>
+          <div class="stat-item"><div class="stat-value">4</div><div class="stat-label">Avg Rounds</div></div>
+          <div class="stat-item"><div class="stat-value">3.5/5</div><div class="stat-label">Difficulty</div></div>
+          <div class="stat-item"><div class="stat-value">7</div><div class="stat-label">Categories</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><div class="container" style="padding:32px 24px 0">
+  <h2 style="font-size:22px;font-weight:700;margin-bottom:16px">📋 Interview Rounds</h2>
+  <div class="rounds-grid"><div class="round-card">
+  <div class="round-number">Round 1</div>
+  <div class="round-name">Online Assessment (60 min)</div>
+  <div class="round-duration">60-90 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 2</div>
+  <div class="round-name">Technical Screen</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 3</div>
+  <div class="round-name">Coding Round</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 4</div>
+  <div class="round-name">LLD / HLD</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 5</div>
+  <div class="round-name">Hiring Manager</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 6</div>
+  <div class="round-name">HR</div>
+  <div class="round-duration">30-45 min</div>
+</div></div>
+</div><div class="container" style="padding:24px 24px 0">
+  <h2 style="font-size:20px;font-weight:700;margin-bottom:14px">🔥 Most Frequently Asked</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:10px;margin-bottom:8px"><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">Pod vs ReplicaSet vs Deployment vs StatefulSet</div>
+    <div style="font-size:12px;color:var(--text-muted)">Cicd · Medium · 90% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">Redis data structures — use each for the right job</div>
+    <div style="font-size:12px;color:var(--text-muted)">Database · Medium · 90% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">Design a Sliding Window Rate Limiter (code-level)</div>
+    <div style="font-size:12px;color:var(--text-muted)">Lld · Hard · 90% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">Kubernetes Services — ClusterIP, NodePort, LoadBalancer, ExternalName</div>
+    <div style="font-size:12px;color:var(--text-muted)">Cicd · Medium · 88% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">Read replicas — replication lag, use cases, consistency</div>
+    <div style="font-size:12px;color:var(--text-muted)">Database · Hard · 88% frequency</div>
+  </div>
+</div></div>
+</div><div class="tabs-bar"><div class="tabs-inner"><button class="tab-btn active" data-tab="system_design">🏗️ System Design <span style="opacity:.5;font-size:11px">(1)</span></button>
+<button class="tab-btn" data-tab="database">🗄️ Database <span style="opacity:.5;font-size:11px">(9)</span></button>
+<button class="tab-btn" data-tab="security">🔒 Security <span style="opacity:.5;font-size:11px">(1)</span></button>
+<button class="tab-btn" data-tab="lld">📐 LLD <span style="opacity:.5;font-size:11px">(2)</span></button>
+<button class="tab-btn" data-tab="cicd">🚀 CI/CD & DevOps <span style="opacity:.5;font-size:11px">(6)</span></button>
+<button class="tab-btn" data-tab="ml_systems">🤖 ML Systems <span style="opacity:.5;font-size:11px">(1)</span></button>
+<button class="tab-btn" data-tab="behavioral">💬 Behavioral <span style="opacity:.5;font-size:11px">(4)</span></button></div></div>
+<div class="container"><div class="tab-panel active" id="tab-system_design">
+  <div class="questions-header">
+    <h3>🏗️ System Design</h3>
+    <span class="q-count">1 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="design_problems">
+    <span class="q-index">1</span>
+    <span class="q-text">Design Payment Gateway</span>
+    <div class="q-tags"><span class="q-tag">idempotency</span><span class="q-tag">saga</span><span class="q-tag">pci-dss</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Idempotency keys. Saga for distributed txns. Tokenization. Webhook async status. PCI DSS compliance.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design</span>
+      <span class="q-meta-chip">🏢 Stripe, PayPal, Razorpay, PhonePe, Amazon, Google...</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-database">
+  <div class="questions-header">
+    <h3>🗄️ Database</h3>
+    <span class="q-count">9 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="redis">
+    <span class="q-index">1</span>
+    <span class="q-text">Redis data structures — use each for the right job</span>
+    <div class="q-tags"><span class="q-tag">redis</span><span class="q-tag">string</span><span class="q-tag">hash</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Data Structures</span><br><ul><li><b>String:</b> Simple KV, counters, JSON blobs, session tokens. <code>SET/GET/INCR/EXPIRE</code></li><li><b>Hash:</b> Object fields. Better than JSON for partial updates. <code>HSET user:1 name Bob age 30</code></li><li><b>List:</b> Task queue (LPUSH/RPOP), activity feed, bounded log. <code>LPUSH/RPOP/BRPOP</code></li><li><b>Set:</b> Unique members, tags, online users. <code>SADD/SISMEMBER/SUNION/SINTER</code></li><li><b>Sorted Set (ZSet):</b> Leaderboard, priority queue, rate limiting. Score-ordered. <code>ZADD/ZRANGE/ZRANK</code></li><li><b>HyperLogLog:</b> Approximate cardinality counting (unique visitors). ~12KB, 0.8% error. <code>PFADD/PFCOUNT</code></li><li><b>Streams:</b> Persistent append-only log. Consumer groups. Like Kafka in Redis.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Common Patterns</span><br><pre># Rate limiter with sliding window
+ZADD ratelimit:user1 {now_ms} {request_id}
+ZREMRANGEBYSCORE ratelimit:user1 0 {window_start}
+count = ZCARD ratelimit:user1
+
+# Leaderboard
+ZADD leaderboard {score} {user}
+ZREVRANGE leaderboard 0 9 WITHSCORES  # top 10
+ZRANK leaderboard {user}               # rank</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is Redis Cluster and how does slot sharding work?<br>• How does Redis WAIT command help with consistency?<br>• What is the difference between Redis persistence AOF vs RDB?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="replication">
+    <span class="q-index">2</span>
+    <span class="q-text">Read replicas — replication lag, use cases, consistency</span>
+    <div class="q-tags"><span class="q-tag">replication</span><span class="q-tag">replica-lag</span><span class="q-tag">read-replica</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Replication Mechanics (MySQL binlog / PostgreSQL WAL)</span><br>Primary records every write as binary log events. Replica connects, streams binlog, applies changes. Replication can be:<br><ul><li><b>Async (default):</b> Primary doesn't wait for replica. Replica may lag.</li><li><b>Semi-sync:</b> Primary waits for at least 1 replica to acknowledge before committing.</li><li><b>Sync (PostgreSQL synchronous_commit=on):</b> All replicas acknowledge. Highest durability, slowest.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Replication Lag Causes</span><br><ul><li>Large transactions (long to replay)</li><li>High write throughput on primary</li><li>Network latency between primary and replica</li><li>Single-threaded replay (older MySQL — use parallel replication)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Handling Lag in Applications</span><br><ul><li>Read-your-own-writes: route reads after writes to primary for 1s, or use session stickiness</li><li>For stale-tolerant reads (reports, analytics): use replica</li><li>Monitor lag: <code>SHOW REPLICA STATUS</code> → Seconds_Behind_Source</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is GTID-based replication?<br>• How does logical replication differ from physical replication?<br>• What is PgBouncer and what problem does it solve?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="query-optimization">
+    <span class="q-index">3</span>
+    <span class="q-text">SQL query optimization — indexes, covering indexes, composite indexes</span>
+    <div class="q-tags"><span class="q-tag">index</span><span class="q-tag">covering-index</span><span class="q-tag">composite</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Composite Index Column Order</span><br><pre>-- Query: WHERE a = 1 AND b &gt; 5 ORDER BY c
+-- Best index: (a, b, c) — leftmost prefix rule
+-- a → equality filter (most selective first)
+-- b → range filter
+-- c → ORDER BY (eliminates sort)
+
+-- Index (b, a) won't use b for range + a for equality efficiently</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Covering Index</span><br>Index includes all columns needed by query — no heap lookup.<br><pre>-- Query:
+SELECT email FROM users WHERE user_id = 42;
+
+-- If index is (user_id, email): Index Only Scan — never touches table!
+CREATE INDEX idx_user_email ON users(user_id) INCLUDE (email);  -- PostgreSQL</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Index Selectivity</span><br>High selectivity (few rows per value) = good for index. Low selectivity (boolean, gender) = index often not used. <code>n_distinct</code> in pg_stats shows estimate. Use partial index for low-selectivity cases:<br><code>CREATE INDEX ON orders(status) WHERE status = 'PENDING';</code></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Anti-patterns</span><br><ul><li><code>SELECT *</code> prevents covering index</li><li>Function on indexed column: <code>WHERE LOWER(email) = ...</code> → can't use index. Use functional index.</li><li>Leading % in LIKE: <code>WHERE name LIKE '%Smith'</code> → full scan. Use full-text search or reverse index.</li><li>Implicit type cast: <code>WHERE varchar_col = 123</code> → type mismatch → seq scan</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is an index bloat and how do you fix it?<br>• When does PostgreSQL ignore an index? (planner cost estimate)<br>• What is a filtered/partial index?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="query-optimization">
+    <span class="q-index">4</span>
+    <span class="q-text">EXPLAIN ANALYZE — reading query execution plans</span>
+    <div class="q-tags"><span class="q-tag">explain</span><span class="q-tag">query-plan</span><span class="q-tag">seq-scan</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Key Operations</span><br><ul><li><b>Seq Scan:</b> Full table scan. Fast for small tables / low selectivity.</li><li><b>Index Scan:</b> Uses B+ tree index. Best for high selectivity (&lt;10% rows).</li><li><b>Index Only Scan:</b> All needed columns in index (covering index). Fastest.</li><li><b>Bitmap Heap Scan:</b> Index scan → bitmap of pages → sorted page access. Good for 5-20% rows.</li><li><b>Nested Loop:</b> Join — for each outer row, find matching inner. Good for small outer result.</li><li><b>Hash Join:</b> Build hash table from smaller table → probe with larger. Good for large unsorted.</li><li><b>Merge Join:</b> Both sides sorted. Fast but needs sort step.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Reading EXPLAIN</span><br><pre>EXPLAIN ANALYZE SELECT * FROM orders WHERE user_id = 42;
+
+-&gt; Index Scan using idx_orders_user on orders
+   Index Cond: (user_id = 42)
+   rows=150 (estimated)  rows=143 (actual)
+   Buffers: shared hit=12  (pages from cache)
+   Planning: 0.3ms  Execution: 2.1ms</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Tuning Signals</span><br><ul><li>Seq scan on large table with high selectivity → missing index</li><li>Estimated rows ≫ actual → stale statistics → run ANALYZE</li><li>Sort in plan → add index with ORDER BY columns</li><li>Hash join with large table → may need work_mem increase</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the difference between cost and actual time in EXPLAIN?<br>• How does pg_stat_statements help identify slow queries?<br>• What is partial index and when does it help?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="scalability">
+    <span class="q-index">5</span>
+    <span class="q-text">Database partitioning strategies — range, hash, list</span>
+    <div class="q-tags"><span class="q-tag">partitioning</span><span class="q-tag">range</span><span class="q-tag">hash</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Range Partitioning</span><br>Divide by value range. Common for time-series data.<br><pre>CREATE TABLE orders (id bigint, created_at date, ...)
+PARTITION BY RANGE (created_at);
+
+CREATE TABLE orders_2023 PARTITION OF orders
+    FOR VALUES FROM ('2023-01-01') TO ('2024-01-01');
+CREATE TABLE orders_2024 PARTITION OF orders
+    FOR VALUES FROM ('2024-01-01') TO ('2025-01-01');</pre>Pruning: <code>WHERE created_at &gt;= '2024-01-01'</code> → only scans 2024 partition.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Hash Partitioning</span><br>Distribute evenly by hash of key. Good for write distribution.<br><pre>PARTITION BY HASH (user_id);
+-- Partition 0: user_id % 4 = 0
+-- Partition 1: user_id % 4 = 1 ...</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">List Partitioning</span><br>By enumerated values. Good for geographic/categorical data.<br><pre>PARTITION BY LIST (region);
+-- India: ('IN'), US: ('US','CA')</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Benefits</span><br><ul><li>Partition pruning: query only relevant partition</li><li>Faster VACUUM, index maintenance (smaller partitions)</li><li>Easy archival: <code>DETACH PARTITION orders_2022</code></li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Partitioning vs Sharding</span><br>Partitioning: single database, multiple internal tables. Sharding: multiple databases, data split across machines. Sharding requires application-level routing.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is sub-partitioning?<br>• How does partition pruning work? (planner checks constraint exclusion)<br>• What are the limitations of cross-partition queries?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="performance">
+    <span class="q-index">6</span>
+    <span class="q-text">Connection pooling — PgBouncer, HikariCP, patterns</span>
+    <div class="q-tags"><span class="q-tag">connection-pool</span><span class="q-tag">pgbouncer</span><span class="q-tag">hikaricp</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Why Pool Connections</span><br>PostgreSQL creates a new OS process per connection (~5-10MB RAM). Opening connection takes ~30-100ms. 1000 connections = 5-10GB RAM, GC overhead, scheduler pressure.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">PgBouncer</span><br>Lightweight connection pooler for PostgreSQL. Sits between app and DB.<br><ul><li><b>Session mode:</b> App gets same DB connection for session duration. All features work.</li><li><b>Transaction mode:</b> Connection returned to pool after each transaction. Supports many more app connections (1000s) with few DB connections (50). Restrictions: no SET, no prepared statements per session.</li><li><b>Statement mode:</b> Return after each statement. Most restrictive.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">HikariCP (Java)</span><br>Fast JDBC connection pool.<br><pre>HikariConfig cfg = new HikariConfig();
+cfg.setJdbcUrl("jdbc:postgresql://host/db");
+cfg.setMaximumPoolSize(10);
+cfg.setConnectionTimeout(30000);
+cfg.setIdleTimeout(600000);
+cfg.setMaxLifetime(1800000);  // 30min to prevent stale conns
+DataSource ds = new HikariDataSource(cfg);</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Sizing</span><br>Pool size = (core_count × 2) + effective_spindle_count. Smaller than you think — more connections ≠ more throughput.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the difference between PgBouncer and pgpool-II?<br>• How do you handle connection leaks? (maxLifetime, leak detection)<br>• What is prepared statement caching and how does it interact with pooling?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="internals">
+    <span class="q-index">7</span>
+    <span class="q-text">PostgreSQL MVCC — how it achieves non-blocking reads</span>
+    <div class="q-tags"><span class="q-tag">mvcc</span><span class="q-tag">postgresql</span><span class="q-tag">snapshot</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">MVCC = Multi-Version Concurrency Control</span><br>Each row has hidden columns:<br><ul><li><code>xmin</code>: transaction ID that inserted this version</li><li><code>xmax</code>: transaction ID that deleted/updated this version (0 = still live)</li></ul>Reads see a <b>snapshot</b>: only versions where xmin ≤ snapshot_xid &lt; xmax.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">How it works</span><br><pre>T1 (xid=100): UPDATE users SET name='Bob' WHERE id=1
+→ Old row: xmin=50, xmax=100  (now dead to T1)
+→ New row: xmin=100, xmax=0   (live)
+
+T2 (xid=99, started before T1):
+→ Sees old row (xmin=50 &lt;= 99 &lt; xmax=100) ✓
+→ Sees 'Alice' — no blocking!
+
+T3 (xid=101, started after T1 commits):
+→ Old row: xmax=100 &lt;= 101 → dead, skip
+→ New row: xmin=100 &lt;= 101, xmax=0 → live, sees 'Bob' ✓</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">VACUUM</span><br>Dead rows (old versions) accumulate. <b>VACUUM</b> reclaims space. <b>AUTOVACUUM</b> runs automatically. Transaction ID wraparound prevented by freezing old rows.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is HOT (Heap-Only Tuple) update in PostgreSQL?<br>• How does MVCC differ between PostgreSQL and MySQL InnoDB?<br>• What is transaction ID wraparound and why is it catastrophic?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="concurrency">
+    <span class="q-index">8</span>
+    <span class="q-text">Database deadlocks — detection, prevention, resolution</span>
+    <div class="q-tags"><span class="q-tag">deadlock</span><span class="q-tag">lock</span><span class="q-tag">wait-for-graph</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">What is a Deadlock</span><br>Two or more transactions each hold a lock the other needs.<br><pre>T1: LOCK A → wait for B
+T2: LOCK B → wait for A
+→ Circular wait = deadlock</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Deadlock Detection</span><br>Most DBs run a background detector (PostgreSQL, MySQL InnoDB).<br>Builds a <b>wait-for graph</b>: node = transaction, edge = T1 waits for lock held by T2. Cycle = deadlock → kill victim transaction (least expensive to rollback).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Prevention Strategies</span><br><ul><li><b>Lock ordering:</b> Always acquire locks in the same global order (e.g., lower ID first)</li><li><b>Timeout:</b> <code>SET lock_timeout = '1s'</code> — transaction aborts if wait too long</li><li><b>SELECT FOR UPDATE SKIP LOCKED:</b> Skip locked rows instead of waiting (job queues)</li><li><b>Reduce transaction scope:</b> Short transactions hold locks briefly</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Application-Level Fix</span><br><pre>-- Instead of long transaction:
+BEGIN;
+  UPDATE account SET bal = bal - 100 WHERE id = 1;  -- locks row
+  -- ... complex computation (seconds) ...
+  UPDATE account SET bal = bal + 100 WHERE id = 2;  -- deadlock risk!
+COMMIT;
+
+-- Better: do computation outside transaction, then short UPDATE</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the difference between a deadlock and a livelock?<br>• How does SELECT FOR UPDATE NOWAIT differ from SKIP LOCKED?<br>• What is intention locking (IS, IX, S, X)?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="consistency">
+    <span class="q-index">9</span>
+    <span class="q-text">Eventual consistency models — BASE, read-your-writes, monotonic reads</span>
+    <div class="q-tags"><span class="q-tag">eventual-consistency</span><span class="q-tag">base</span><span class="q-tag">causal</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">CAP Theorem Recap</span><br>In presence of network partition (P), choose between Consistency (C) or Availability (A). Most distributed systems choose AP → eventual consistency.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">BASE (Basically Available, Soft state, Eventually consistent)</span><br>Contrast to ACID. <ul><li><b>Basically Available:</b> System works, even during partial failure (stale data OK)</li><li><b>Soft State:</b> State may change without input (replication catching up)</li><li><b>Eventually Consistent:</b> Given no new updates, all replicas converge to same state</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Consistency Models (weakest to strongest)</span><br><ul><li><b>Eventual:</b> Converges eventually. DNS, S3.</li><li><b>Monotonic Read:</b> Once you read version V, you never see older version. (client stickiness)</li><li><b>Read-Your-Writes:</b> You always see your own writes immediately. (session token pinning)</li><li><b>Causal:</b> If A caused B, everyone sees A before B. (vector clocks)</li><li><b>Sequential:</b> All operations appear in a global order consistent with program order.</li><li><b>Linearizable (Strict):</b> Strongest. Operations appear instantaneous. ZooKeeper, etcd.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does DynamoDB implement eventual consistency vs strong consistency?<br>• What is quorum read/write (R + W &gt; N)?<br>• What are vector clocks and how do they enable causal consistency?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Database Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-security">
+  <div class="questions-header">
+    <h3>🔒 Security</h3>
+    <span class="q-count">1 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="appsec">
+    <span class="q-index">1</span>
+    <span class="q-text">Password hashing — bcrypt vs Argon2 vs PBKDF2</span>
+    <div class="q-tags"><span class="q-tag">bcrypt</span><span class="q-tag">argon2</span><span class="q-tag">password-hashing</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Why not MD5/SHA?</span><br>MD5/SHA are fast → GPU can try billions/sec. Rainbow table: precompute hash for common passwords.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Password Hashing Algorithms</span><br><ul><li><b>bcrypt:</b> Work factor (cost). Each increment doubles computation. Built-in 128-bit salt. Memory-light (can be GPU-accelerated). Widely supported.</li><li><b>Argon2 (winner of Password Hashing Competition 2015):</b> Memory-hard. Three variants: Argon2i (side-channel resistant), Argon2d (GPU-resistant), Argon2id (recommended — hybrid). Parameters: time, memory, parallelism.</li><li><b>PBKDF2:</b> NIST/FIPS approved. Iterations + HMAC. Less memory-hard than Argon2. Required for some compliance frameworks.</li><li><b>scrypt:</b> Memory-hard. Used by Litecoin. Harder to tune than Argon2.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Best Practices</span><br><pre># Python — Argon2
+from argon2 import PasswordHasher
+ph = PasswordHasher(time_cost=2, memory_cost=65536, parallelism=2)
+hash = ph.hash("user_password")      # store this
+ph.verify(hash, "input_password")    # True/False
+
+# Spring Security (bcrypt strength 12):
+PasswordEncoder encoder = new BCryptPasswordEncoder(12);
+String hash = encoder.encode(rawPassword);
+encoder.matches(rawPassword, hash);  // timing-safe comparison</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is a timing attack on password comparison and how does constant-time comparison prevent it?<br>• How do you handle password migration from MD5 to bcrypt? (rehash on next login)<br>• What is credential stuffing and how does rate limiting + MFA prevent it?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Security Round</span>
+      <span class="q-meta-chip">🏢 Stripe, PayPal, Razorpay, PhonePe, CRED, Groww...</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-lld">
+  <div class="questions-header">
+    <h3>📐 LLD</h3>
+    <span class="q-count">2 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
+    <span class="q-index">1</span>
+    <span class="q-text">Design a Sliding Window Rate Limiter (code-level)</span>
+    <div class="q-tags"><span class="q-tag">rate-limiter</span><span class="q-tag">sliding-window</span><span class="q-tag">redis</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Sliding Window Log Algorithm</span><br>Store timestamps of each request in a sorted set. On each request: remove old entries, count remaining, allow if below limit.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">In-Memory Thread-Safe</span><br><pre>class SlidingWindowRateLimiter {
+    private final int maxRequests;
+    private final long windowMs;
+    private final Map&lt;String, Deque&lt;Long&gt;&gt; windows = new ConcurrentHashMap&lt;&gt;();
+
+    boolean allow(String clientId) {
+        long now = System.currentTimeMillis();
+        long cutoff = now - windowMs;
+
+        Deque&lt;Long&gt; timestamps = windows.computeIfAbsent(clientId, k -&gt; new ArrayDeque&lt;&gt;());
+
+        synchronized (timestamps) {
+            // Remove expired
+            while (!timestamps.isEmpty() &amp;&amp; timestamps.peekFirst() &lt;= cutoff)
+                timestamps.pollFirst();
+            if (timestamps.size() &gt;= maxRequests) return false;
+            timestamps.addLast(now);
+            return true;
+        }
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Redis-based (Distributed)</span><br><pre>MULTI
+ZREMRANGEBYSCORE rate:user1 0 {window_start}
+ZCARD rate:user1
+ZADD rate:user1 {now} {request_uuid}
+EXPIRE rate:user1 {window_seconds}
+EXEC
+-- Check count from ZCARD result &lt; limit</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How does sliding window differ from fixed window? (fixed window: burst at boundary)</li><li>How do you implement per-route limits vs global user limits?</li><li>What is the token bucket trade-off vs sliding window? (token bucket allows bursting)</li><li>How do you handle distributed rate limiting across 10 API servers?</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the leaky bucket algorithm?<br>• How do you rate-limit by user + endpoint combination?<br>• What is cell-based rate limiting (GCRA)?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="machine_coding">
+    <span class="q-index">2</span>
+    <span class="q-text">Design a Snowflake-style Distributed ID Generator</span>
+    <div class="q-tags"><span class="q-tag">snowflake</span><span class="q-tag">distributed-id</span><span class="q-tag">epoch</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Twitter Snowflake Structure (64-bit)</span><br><pre>| 1 bit sign | 41 bits timestamp (ms) | 10 bits machine ID | 12 bits sequence |
+
+- Timestamp: ms since custom epoch (Jan 1, 2010)
+  → supports 2^41 ms ≈ 69 years
+- Machine ID: 10 bits → 1024 machines
+- Sequence: 12 bits → 4096 IDs/ms/machine
+
+Total: ~4 million IDs/second per machine, globally unique, sortable!</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Implementation</span><br><pre>class SnowflakeIdGenerator {
+    private final long EPOCH = 1288834974657L;  // Nov 4, 2010
+    private final long MACHINE_ID;              // 0-1023
+    private long sequence = 0;
+    private long lastTs = -1;
+
+    synchronized long nextId() {
+        long ts = System.currentTimeMillis();
+        if (ts == lastTs) {
+            sequence = (sequence + 1) &amp; 0xFFF;  // 12-bit mask
+            if (sequence == 0) ts = waitNextMs(lastTs);  // sequence exhausted
+        } else { sequence = 0; }
+        lastTs = ts;
+        return ((ts - EPOCH) &lt;&lt; 22) | (MACHINE_ID &lt;&lt; 12) | sequence;
+    }
+
+    private long waitNextMs(long ts) {
+        long now = System.currentTimeMillis();
+        while (now &lt;= ts) now = System.currentTimeMillis();
+        return now;
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>What happens if system clock goes backwards? (NTP clock skew) → block until clock catches up</li><li>How do you assign machine IDs in a dynamic cloud environment? (ZooKeeper ephemeral node, Redis INCR)</li><li>How would you make it monotonic across machines? (ULIDs)</li><li>Why is UUID v4 not a good database primary key? (random → B+tree fragmentation)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is ULID and how does it improve on UUID?<br>• How does Instagram's ID generation work? (PostgreSQL function + shard ID)<br>• What is the trade-off between centralized vs decentralized ID generation?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 LLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-cicd">
+  <div class="questions-header">
+    <h3>🚀 CI/CD & DevOps</h3>
+    <span class="q-count">6 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="kubernetes">
+    <span class="q-index">1</span>
+    <span class="q-text">Pod vs ReplicaSet vs Deployment vs StatefulSet</span>
+    <div class="q-tags"><span class="q-tag">kubernetes</span><span class="q-tag">pod</span><span class="q-tag">deployment</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Pod</span><br>Smallest deployable unit. 1+ containers sharing network namespace and volumes. <b>Ephemeral</b> — deleted pods don't restart.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">ReplicaSet</span><br>Ensures N pod replicas are always running. Uses label selectors. <b>Rarely used directly</b> — Deployments manage them.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Deployment</span><br>Manages ReplicaSets for <b>stateless apps</b>. Provides: rolling updates, rollback, pause/resume. <code>kubectl rollout undo deployment/app</code> for rollback.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">StatefulSet</span><br>For <b>stateful apps</b> (databases, Kafka, ZooKeeper). Provides: stable pod names (<code>pod-0, pod-1</code>), stable DNS, ordered start/stop, per-pod PersistentVolumeClaims.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">When to use what</span><br><ul><li>Stateless API service → <b>Deployment</b></li><li>Database (MySQL, Redis) → <b>StatefulSet</b></li><li>One pod per node → <b>DaemonSet</b></li><li>One-off batch job → <b>Job/CronJob</b></li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does rolling update work in a Deployment?<br>• What is a headless Service and when is it used with StatefulSets?<br>• How do you do a canary deployment in K8s?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 CI/CD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="kubernetes">
+    <span class="q-index">2</span>
+    <span class="q-text">Kubernetes Services — ClusterIP, NodePort, LoadBalancer, ExternalName</span>
+    <div class="q-tags"><span class="q-tag">kubernetes</span><span class="q-tag">service</span><span class="q-tag">clusterip</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">ClusterIP (default)</span><br>Exposes service on a <b>cluster-internal IP</b>. Only reachable within the cluster. kube-proxy creates iptables rules to load-balance across matching pods. Used for inter-service communication.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">NodePort</span><br>Exposes service on each node's IP at a static port (30000-32767). <code>nodeIP:nodePort</code> routes to ClusterIP then to pods. OK for dev/testing, not production.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">LoadBalancer</span><br>Provisions a <b>cloud load balancer</b> (AWS ALB/NLB, GCP LB) and assigns an external IP. Each service gets its own LB — expensive. Use Ingress for shared LB.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Ingress</span><br>Not a Service type but routes external HTTP(S) to ClusterIP services. L7 routing by host/path. One LB for many services. Needs an Ingress Controller (nginx, traefik, AWS ALB).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is a headless Service (<code>clusterIP: None</code>)?<br>• How does kube-proxy implement service routing (iptables vs IPVS)?<br>• What is EndpointSlice?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 CI/CD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="docker">
+    <span class="q-index">3</span>
+    <span class="q-text">Explain multi-stage Docker builds and why they matter</span>
+    <div class="q-tags"><span class="q-tag">docker</span><span class="q-tag">multi-stage</span><span class="q-tag">build</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">87%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Answer</span><br>Multi-stage builds use multiple <code>FROM</code> statements in one Dockerfile. Build artifacts are copied from one stage to another, <b>discarding build-time dependencies</b> from the final image.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Example: Go Application</span><br><pre># Stage 1: Build
+FROM golang:1.22 AS builder
+WORKDIR /app
+COPY . .
+RUN CGO_ENABLED=0 go build -o server .
+
+# Stage 2: Minimal runtime (5MB vs 800MB!)
+FROM scratch
+COPY --from=builder /app/server /server
+CMD ["/server"]</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Benefits</span><br><ul><li>Final image contains <b>only runtime artifacts</b>, no compiler/SDK</li><li>Security: smaller attack surface</li><li>Faster pulls and deployments</li><li>Build cache is still leveraged per stage</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you pass build args between stages?<br>• What is <code>docker build --target builder</code> for?<br>• Distroless vs scratch images?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 CI/CD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="helm">
+    <span class="q-index">4</span>
+    <span class="q-text">What is Helm and what problem does it solve?</span>
+    <div class="q-tags"><span class="q-tag">helm</span><span class="q-tag">chart</span><span class="q-tag">release</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">What is Helm</span><br>Helm is the <b>package manager for Kubernetes</b>. It bundles K8s manifests into a <b>Chart</b> (a directory of YAML templates + <code>values.yaml</code>). Manages versioned releases, upgrades, and rollbacks.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Concepts</span><br><ul><li><b>Chart:</b> Package of K8s manifests (Deployment, Service, Ingress, etc.)</li><li><b>Release:</b> A running instance of a chart in a cluster</li><li><b>Values:</b> Configuration injected into templates at render time</li><li><b>Repository:</b> Collection of charts (like npm/pip registry)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Common Commands</span><br><pre>helm install myapp ./chart -f values.prod.yaml
+helm upgrade myapp ./chart --set image.tag=v2.0
+helm rollback myapp 1
+helm template ./chart  # render YAML without installing</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Helm vs Kustomize</span><br><ul><li><b>Helm:</b> Templating + packaging + release management. Better for distributing software.</li><li><b>Kustomize:</b> Overlay-based patching, no templating. Better for environment-specific customization.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is a Helm hook?<br>• How do you test a Helm chart?<br>• What are Helm library charts?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 CI/CD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="docker">
+    <span class="q-index">5</span>
+    <span class="q-text">Docker networking modes explained</span>
+    <div class="q-tags"><span class="q-tag">docker</span><span class="q-tag">networking</span><span class="q-tag">bridge</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Bridge (default)</span><br>Docker creates a virtual <code>docker0</code> bridge. Containers get their own IP on <code>172.17.0.0/16</code>. Containers communicate by container name (with <code>--network</code>). NAT for outbound traffic.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Host</span><br>Container shares the host's network namespace. No isolation, best performance. <code>docker run --network=host nginx</code> — port 80 on container is port 80 on host.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Overlay</span><br>Multi-host networking (Docker Swarm / Kubernetes). VXLAN encapsulation for container-to-container traffic across nodes.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">None</span><br>No network interface. Maximum isolation. Used for batch processing with no network needs.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Kubernetes CNI</span><br>K8s uses CNI plugins (Calico, Flannel, Cilium) to implement pod networking. Cilium uses eBPF for high-performance, policy-aware networking.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you expose a container port? (<code>-p host:container</code>)<br>• What is CNI (Container Network Interface)?<br>• How does Kubernetes pod-to-pod networking work?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 CI/CD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="monitoring">
+    <span class="q-index">6</span>
+    <span class="q-text">ELK / EFK stack — log aggregation pipeline</span>
+    <div class="q-tags"><span class="q-tag">elasticsearch</span><span class="q-tag">kibana</span><span class="q-tag">fluentd</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">ELK Stack</span><br><ul><li><b>Elasticsearch:</b> Distributed search + analytics engine. Stores logs as JSON documents.</li><li><b>Logstash:</b> Log ingestion pipeline: collect → filter (parse/transform) → output to ES</li><li><b>Kibana:</b> Visualization: dashboards, Discover (search), Lens, Alerting</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">EFK (Kubernetes preferred)</span><br><ul><li><b>Fluentd / Fluent Bit:</b> Lightweight log forwarder. DaemonSet on each node collects container logs from <code>/var/log/containers/</code> → Elasticsearch</li></ul><pre>Container stdout → /var/log/containers/*.log
+→ Fluent Bit (parse JSON) → Elasticsearch → Kibana</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Structured Logging</span><br>Always log in <b>JSON format</b>: <code>{"level":"error","traceId":"abc","msg":"DB timeout","ts":"..."}</code><br>Correlate with traceID from distributed tracing.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is Loki (Grafana) vs Elasticsearch?<br>• How do you handle log sampling at high throughput?<br>• What is Vector (log aggregator)?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 CI/CD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-ml_systems">
+  <div class="questions-header">
+    <h3>🤖 ML Systems</h3>
+    <span class="q-count">1 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="ml_systems">
+    <span class="q-index">1</span>
+    <span class="q-text">How does a fraud detection system work?</span>
+    <div class="q-tags"><span class="q-tag">fraud-detection</span><span class="q-tag">real-time</span><span class="q-tag">rules-engine</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">87%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Layered Defense Architecture</span><br><pre>Transaction Request
+    ↓ (sync, &lt;200ms)
+1. Rules Engine (hard rules, fast)
+   - Deny if: card stolen (blocklist), impossible geography, country blocked
+   - Flag if: unusual amount, new device
+    ↓
+2. ML Model (gradient boosting / neural net, &lt;50ms)
+   - Features: velocity (5 txns in 1min), device fingerprint, merchant category,
+               user history embedding, IP reputation, network graph features
+   - Output: fraud probability score 0-1
+    ↓
+3. Decision: score &lt; 0.3 → approve | 0.3-0.7 → 3DS challenge | &gt; 0.7 → decline
+    ↓ (async, post-transaction)
+4. Chargeback feedback → retrain loop</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Features</span><br><ul><li><b>Velocity features:</b> count(txns) per user/card/device in last 1m/5m/1h/24h using Redis sliding window</li><li><b>Device fingerprinting:</b> browser/app fingerprint, cookie, canvas fingerprint</li><li><b>Network graph:</b> card linked to account linked to device → graph neural network for collusion</li><li><b>Geospatial:</b> impossible travel (transaction in Mumbai then London in 30min)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Class Imbalance</span><br>Fraud rate: 0.1-1%. Training: oversample fraud (SMOTE), undersample legitimate, or use class weights. Evaluation metric: precision@threshold, recall, AUC-ROC. NOT accuracy (99% accuracy by saying everything is legitimate).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you handle false positives? (customer friction vs loss prevention tradeoff)<br>• How do you use graph neural networks for fraud ring detection?<br>• How do you evaluate a fraud model when labels arrive weeks later via chargebacks?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Stripe, PayPal, Razorpay, PhonePe, CRED, Groww...</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-behavioral">
+  <div class="questions-header">
+    <h3>💬 Behavioral</h3>
+    <span class="q-count">4 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="design">
+    <span class="q-index">1</span>
+    <span class="q-text">Tell me about the most complex system you designed</span>
+    <div class="q-tags"><span class="q-tag">system-design</span><span class="q-tag">complexity</span><span class="q-tag">scale</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Use STAR. Focus on scale challenges, trade-offs made, alternatives considered, outcome metrics.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Behavioral Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="failure">
+    <span class="q-index">2</span>
+    <span class="q-text">Describe your biggest technical failure and what you learned</span>
+    <div class="q-tags"><span class="q-tag">ownership</span><span class="q-tag">learning</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">85%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">How to Answer a Failure Question</span><br>Interviewers want to see: <b>genuine reflection</b>, not a humble-brag. Choose a real technical failure with real impact. Do NOT say 'I work too hard' or choose trivial failures.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Strong Answer Framework</span><br><pre>1. Context: What was the failure? (missed deadline, data loss, wrong architecture choice)
+2. My specific contribution to the failure
+3. What happened when it went wrong (measurable impact)
+4. How I responded (owned it, fixed it)
+5. What I CONCRETELY changed afterward (new process, test added, design review)
+6. What I would do differently today</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Example Angles</span><br><ul><li>Chose wrong tech stack → had to migrate → cost N weeks. Learned: POC + load test before committing.</li><li>Missed an edge case in prod → data corruption for 500 users. Learned: chaos testing, invariant checks.</li><li>Ignored a code reviewer's concern → led to security issue. Learned: never dismiss security feedback without data.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How have you changed your approach to prevent similar failures?<br>• How did your team react to the failure?<br>• What would you tell a junior engineer who just made the same mistake?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Behavioral Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="growth">
+    <span class="q-index">3</span>
+    <span class="q-text">Describe a time you had to learn a new technology quickly</span>
+    <div class="q-tags"><span class="q-tag">learning</span><span class="q-tag">adaptability</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Show initiative, structured learning approach, how you applied it, and what you'd do differently.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Behavioral Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="leadership">
+    <span class="q-index">4</span>
+    <span class="q-text">Tell me about a time you improved a team's engineering process</span>
+    <div class="q-tags"><span class="q-tag">leadership</span><span class="q-tag">process-improvement</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Show initiative. Metrics before/after. Got buy-in. Made it stick with documentation and ownership.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Behavioral Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+</div></div>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-links">
+      <a href="../../common/top-coding.html">Top Coding</a>
+      <a href="../../common/top-system-design.html">System Design</a>
+      <a href="../../common/top-backend.html">Backend</a>
+      <a href="../../common/top-cpp.html">C++</a>
+      <a href="../../common/top-java.html">Java</a>
+      <a href="../../common/top-go.html">Go</a>
+      <a href="../../common/top-database.html">Database</a>
+      <a href="../../common/top-concurrency.html">Concurrency</a>
+      <a href="../../common/top-os.html">OS</a>
+      <a href="../../common/top-networking.html">Networking</a>
+      <a href="../../common/top-lld.html">LLD</a>
+      <a href="../../common/top-cicd.html">CI/CD</a>
+      <a href="../../common/top-security.html">Security</a>
+      <a href="../../common/top-ml.html">ML Systems</a>
+      <a href="../../common/top-perf.html">Performance</a>
+      <a href="../../mcq-quiz.html">MCQ Quiz</a>
+    </div>
+    <p>Built for SDE-1 &amp; SDE-2 Backend Engineers | C++ · Java · Go · Distributed Systems</p>
+    <p style="margin-top:8px;font-size:12px;opacity:.5">Data sourced from LeetCode, Glassdoor, Blind, Reddit &amp; public interview experiences</p>
+  </div>
+</footer>
+<button id="back-to-top" title="Back to top">↑</button>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

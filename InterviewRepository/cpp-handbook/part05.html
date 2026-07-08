@@ -1,0 +1,226 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Part V: Linux & Performance Tools — C++ Interview Handbook</title>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<div style="background:#0f172a;border-bottom:1px solid #334155;padding:8px 20px;
+  display:flex;align-items:center;gap:16px;font-size:13px;position:fixed;top:0;left:0;right:0;z-index:400;height:38px">
+  <a href="../index.html" style="color:#3b82f6;font-weight:600;text-decoration:none;
+     display:flex;align-items:center;gap:6px">
+    <span>⚡</span><span>InterviewRepo</span>
+  </a>
+  <span style="color:#334155">|</span>
+  <a href="index.html" style="color:#94a3b8;text-decoration:none">📘 C++ Master Handbook</a>
+  <span style="color:#334155;margin-left:auto;font-size:11px;color:#475569">
+    C++ · Multithreading · OS · Networks · AI Runtime · Embedded · 150 Problems
+  </span>
+</div>
+<nav id="sidebar"><div class="sb-head"><b>C++ Handbook</b><br><small>15 Parts · 150 Problems</small></div><a href="index.html" >🏠 Table of Contents</a>
+<a href="part01.html"><span class="badge" style="background:#1a2744">01</span>Part I: C++ Mastery</a>
+<a href="part02.html"><span class="badge" style="background:#065f46">02</span>Part II: Multithreading & Concurrency</a>
+<a href="part03.html"><span class="badge" style="background:#7c3aed">03</span>Part III: Operating Systems</a>
+<a href="part04.html"><span class="badge" style="background:#0e7490">04</span>Part IV: Computer Networks</a>
+<a href="part05.html" class="active"><span class="badge" style="background:#92400e">05</span>Part V: Linux & Performance Tools</a>
+<a href="part06.html"><span class="badge" style="background:#1e40af">06</span>Part VI: Distributed Systems</a>
+<a href="part07.html"><span class="badge" style="background:#b45309">07</span>Part VII: System Design</a>
+<a href="part08.html"><span class="badge" style="background:#be185d">08</span>Part VIII: Compiler Internals</a>
+<a href="part09.html"><span class="badge" style="background:#0f766e">09</span>Part IX: AI Runtime</a>
+<a href="part10.html"><span class="badge" style="background:#4338ca">10</span>Part X: Embedded Systems</a>
+<a href="part11.html"><span class="badge" style="background:#0369a1">11</span>Part XI: DevOps & Tools</a>
+<a href="part12.html"><span class="badge" style="background:#1e3a5f">12</span>Part XII: Coding Interviews — 150 Problems</a>
+<a href="part13.html"><span class="badge" style="background:#3f1f69">13</span>Part XIII: Behavioral & STAR</a>
+<a href="part14.html"><span class="badge" style="background:#064e3b">14</span>Part XIV: Resume Deep Dive</a>
+<a href="part15.html"><span class="badge" style="background:#7f1d1d">15</span>Part XV: Company-Specific</a>
+</nav>
+<div id="main">
+  <div id="topbar"><div class="tb-title" style="border-left:4px solid #92400e;padding-left:12px">Part V: Linux & Performance Tools</div></div>
+  <div id="content">
+    <h1 class="part-title">Part V: Linux & Performance Tools</h1>
+    <p class="subtitle">Part V</p><hr class="divider">
+    <h2 class="chap">Chapter 1 — GDB: From Basics to Expert Debugging</h2><p>GDB (GNU Debugger) is the standard debugger for C/C++ on Linux. Understanding it deeply is what separates engineers who fix bugs in minutes from those who spend hours with printf debugging.</p><div class="tbl"><table><thead><tr><th>Command</th><th>What It Does</th><th>When to Use</th></tr></thead><tbody><tr><td>gdb ./bin core.PID</td><td>Debug a core dump (crash analysis)</td><td>Production crashes, segfaults</td></tr><tr><td>gdb -p PID</td><td>Attach to running process</td><td>Hung process, performance issue</td></tr><tr><td>break class::method</td><td>Set breakpoint on method</td><td>Debugging specific code path</td></tr><tr><td>watch expr</td><td>Break when expression changes value</td><td>Find what's modifying a variable</td></tr><tr><td>rwatch expr</td><td>Break on READ of expression</td><td>Find who's reading incorrect data</td></tr><tr><td>backtrace full / bt</td><td>Full stack with locals</td><td>Crash analysis — where and why</td></tr><tr><td>thread apply all bt</td><td>All thread backtraces</td><td>Deadlock analysis</td></tr><tr><td>info threads</td><td>List all threads</td><td>Multi-threaded debugging</td></tr><tr><td>frame N</td><td>Switch to stack frame N</td><td>Inspect local variables in that frame</td></tr><tr><td>x/20xg addr</td><td>Examine 20 hex 64-bit words at addr</td><td>Raw memory inspection</td></tr><tr><td>set print pretty on</td><td>Pretty-print structs</td><td>Readable struct output</td></tr><tr><td>catch throw</td><td>Break when exception is thrown</td><td>Track exception origin</td></tr><tr><td>finish</td><td>Run until current function returns</td><td>Step out of unwanted function</td></tr><tr><td>condition 3 x>5</td><td>Break at bp#3 only if x>5</td><td>Conditional breakpoints</td></tr></tbody></table></div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code># Practical debugging session for a segfault:
+
+# 1. Compile with debug info (always use -g, even for release builds ideally)
+g++ -g -O1 -fsanitize=address server.cpp -o server
+
+# 2. Enable core dumps
+ulimit -c unlimited
+echo "core.%e.%p" | sudo tee /proc/sys/kernel/core_pattern
+
+# 3. Reproduce crash
+./server  # crashes, creates core.server.12345
+
+# 4. Analyze core dump
+gdb ./server core.server.12345
+(gdb) bt full           # full backtrace with local variables
+(gdb) frame 3           # jump to frame where crash originated
+(gdb) info locals       # see local variables in that frame
+(gdb) print *ptr        # inspect the pointer that was dereferenced
+(gdb) x/4xb ptr         # examine 4 bytes at ptr's address
+
+# 5. Find deadlock
+gdb -p $(pgrep server)  # attach to hung server
+(gdb) thread apply all bt   # all thread stacks — look for futex_wait
+(gdb) info threads           # find threads in "futex_wait" state</code></pre><div class="ex-why">✅ Why this works: Always compile production binaries with -g (debug symbols) AND store the binary alongside the core dump. Without matching symbols, GDB shows only hex addresses.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code># BAD: debugging with -O2 optimized code only
+g++ -O2 main.cpp -o app   # no -g flag
+gdb ./app core
+(gdb) bt
+# Output: ??() at 0x401234   ← useless! No symbols, no function names
+# Variables: &lt;optimized out&gt;  ← compiler removed them
+
+# BAD: no core dump configured → crash is undebuggable
+# Default: ulimit -c 0 → no core dump generated
+./server  # crashes with "Segmentation fault" — that's all you know
+# You have to reproduce the crash under GDB interactively
+
+# BAD: attaching GDB to production without being careful
+gdb -p $PRODUCTION_PID   # attaches, pauses the process!
+# Production server is now PAUSED — all requests timeout
+# Use: gdb --batch -ex 'bt' -ex 'detach' -ex 'quit' -p $PID
+# Or: eu-stack or bpftrace for non-pausing stack capture</code></pre><div class="ex-why bad-why">❌ Why this fails: Attaching GDB to production pauses the process. Use bpftrace, perf, or eu-stack for non-intrusive production debugging.</div></div><h2 class="chap">Chapter 2 — perf: CPU Performance Analysis</h2><p>perf is the Linux kernel's performance tool. It uses hardware performance counters (PMU) and software events to profile without instrumentation overhead.</p><div class="diagram">perf workflow:
+
+perf stat   → count events (cycles, instructions, cache misses, branch misses)
+                IPC = instructions/cycles
+                cache miss rate < 1% is good
+                branch miss rate < 1% is good
+
+perf record → sample execution at N Hz, record call stack at each sample
+perf report → interactive TUI showing % CPU per function
+perf script → raw samples for flamegraph generation
+
+Key insight: a sample doesn't mean that exact instruction is slow
+  — it means the CPU was THERE when sampled. High count = hot code.</div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code># Step 1: Quick health check
+perf stat -e cycles,instructions,cache-misses,cache-references,           branch-misses,branches,LLC-load-misses ./app
+# Interpret:
+# IPC (instructions/cycles) &lt; 1.0 → memory bound
+# IPC &gt; 3.0                       → compute bound
+# cache-miss rate &gt; 5%            → cache optimization needed
+# branch-miss rate &gt; 1%           → branch prediction problem
+
+# Step 2: Find hot functions
+perf record -g --call-graph=dwarf -F 99 ./app
+perf report   # interactive TUI, navigate with arrows
+
+# Step 3: Generate flamegraph (best visualization)
+perf script &gt; perf.script
+git clone https://github.com/brendangregg/FlameGraph
+./FlameGraph/stackcollapse-perf.pl perf.script |   ./FlameGraph/flamegraph.pl &gt; flamegraph.svg
+# Open flamegraph.svg in browser — click to zoom into call trees
+
+# Step 4: Detect false sharing (cache-to-cache contention)
+perf c2c record -g ./app   # records cache line events
+perf c2c report            # shows lines with high HITM (Hit Modified)
+# High HITM on a cache line = two cores writing to same cache line
+
+# Step 5: Memory bandwidth and latency
+perf stat -e mem-loads,mem-stores,           cpu/mem-loads-aux/,cpu/mem-stores-aux/ ./app</code></pre><div class="ex-why">✅ Why this works: Flamegraphs are the most actionable output from perf. The width of a frame shows time spent — wide frames at the top are your optimization targets.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code># BAD: profiling debug build
+g++ -O0 -g app.cpp -o app   # debug build
+perf record ./app            # profiling debug build
+# Results are misleading: debug build has function call overhead
+# for inlined functions, extra stack frames, no vectorization
+# Profile your release build (-O2 or -O3), with -g for symbols
+
+# BAD: interpreting perf on a single run with short duration
+perf stat ./app  # runs for 0.01 seconds
+# Statistical noise dominates — cache is cold, startup dominates
+# Warm up first, then profile steady state:
+./app --warmup-rounds 5 &amp;&amp; perf record ./app --benchmark-rounds 100
+
+# BAD: optimizing based on function names without line-level info
+# perf report shows "compute_hash" is 40% CPU
+# But which line IN compute_hash?
+# Fix: perf annotate compute_hash   ← assembly-level annotation
+#   or: perf report --sort=srcline  ← source line attribution</code></pre><div class="ex-why bad-why">❌ Why this fails: Always profile with representative workloads at steady state. Cold-start profiling shows initialization costs, not hot-path performance.</div></div><h2 class="chap">Chapter 3 — Sanitizers: Catch Bugs Before Production</h2><div class="tbl"><table><thead><tr><th>Sanitizer</th><th>Flag</th><th>What It Catches</th><th>Overhead</th></tr></thead><tbody><tr><td>AddressSanitizer (ASan)</td><td>fsanitize=address</td><td>Heap/stack/global overflow, UAF, double-free, leaks</td><td>2x slowdown</td></tr><tr><td>ThreadSanitizer (TSan)</td><td>fsanitize=thread</td><td>Data races between threads</td><td>5-15x slowdown</td></tr><tr><td>UndefinedBehaviorSan (UBSan)</td><td>fsanitize=undefined</td><td>Integer overflow, null deref, bad shift, OOB</td><td><2x slowdown</td></tr><tr><td>MemorySanitizer (MSan)</td><td>fsanitize=memory</td><td>Reads of uninitialised memory (clang only)</td><td>3x slowdown</td></tr><tr><td>Valgrind Memcheck</td><td>No recompile needed</td><td>All of ASan + uninit reads</td><td>50x slowdown</td></tr></tbody></table></div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code># Compile with multiple sanitizers
+g++ -fsanitize=address,undefined     -fno-sanitize-recover=all   \   # abort on first error (not just warn)
+    -g -O1                      \   # O1: some optimizations, still readable
+    app.cpp -o app_san
+
+# Run — errors printed to stderr with full stack trace
+./app_san input.txt
+
+# ASan output example:
+# ==1234==ERROR: AddressSanitizer: heap-buffer-overflow
+# WRITE of size 4 at 0x602000000030 thread T0
+#     #0 0x401234 in process_data app.cpp:42
+#     #1 0x401567 in main app.cpp:87
+# SUMMARY: heap-buffer-overflow
+# Shadow bytes around the buggy address:
+#   0x0c047fff8000: fa fa fd fd fa fa fd fa
+# (fa=heap-right-redzone, fd=freed)
+
+# ThreadSanitizer (separate build — incompatible with ASan)
+g++ -fsanitize=thread -g -O1 app.cpp -o app_tsan
+./app_tsan
+# TSan output: data race between read in thread #2 and write in thread #1
+# Shows exact locations of both the read and write</code></pre><div class="ex-why">✅ Why this works: Run both ASan and TSan builds in CI. They catch different classes of bugs and can't be combined. ASan has 2x overhead — acceptable for test runs; not for production.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// BAD: not running sanitizers in CI → bugs reach production
+// Real scenario: heap-buffer-overflow due to off-by-one
+void process_array(int* arr, int n) {
+    for (int i = 0; i &lt;= n; ++i)   // BUG: should be &lt; n, not &lt;= n
+        arr[i] = compute(i);
+    // With ASan: immediate error at line pointing to arr[i] = compute(i)
+    // Without ASan: corrupts adjacent heap memory silently
+    //   → random crash hours later in a completely different function
+    //   → 6 hours debugging the symptom, not the cause
+}
+
+// BAD: ignoring TSan output in CI because "it's slow"
+// TSan 5-15x slowdown is real, but data races cause:
+// - Occasional wrong results (hard to reproduce)
+// - Crashes under load only (hard to reproduce)
+// - Crashes only on NUMA systems (very hard to reproduce)
+// TSan in CI pays for itself in the first race it catches</code></pre><div class="ex-why bad-why">❌ Why this fails: Data races are the hardest bugs to reproduce and debug without TSan. They manifest non-deterministically, often only under high load or specific hardware configurations.</div></div><h2 class="chap">Chapter 4 — strace and System Call Tracing</h2><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code># See every syscall with timing
+strace -T ./app 2&gt;&amp;1 | head -50
+
+# Count syscalls and find expensive ones
+strace -c ./app
+# Output:
+# % time  seconds   calls  errors syscall
+# 55.23   0.001234   5000    0    futex        ← lots of mutex contention
+# 22.14   0.000498    100    0    mmap
+# 11.05   0.000248  10000    0    read
+# Insight: 5000 futex calls means lots of lock contention
+
+# Trace specific syscalls relevant to your issue
+strace -e trace=network,ipc ./server   # network + IPC calls only
+strace -e trace=openat,read,write ./app   # file I/O only
+strace -f ./app   # trace child processes too (follow forks)
+
+# Attach to running process
+strace -p $(pgrep server) -T -e trace=futex 2&gt;&amp;1 | head -20
+# Immediately see if it's blocking on futex (mutex/condvar)</code></pre><div class="ex-why">✅ Why this works: strace -c is the fastest way to see if your program is syscall-bound. Too many futex calls = lock contention. Too many mmap calls = excessive allocations. Too many read/write = unbuffered I/O.</div></div><h2 class="chap">Chapter 5 — vmstat and iostat</h2><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code># vmstat: memory, swap, CPU, and block I/O summary
+vmstat 1 10   # 1 second intervals, 10 samples
+# Fields:
+# r: runnable processes (&gt; num_cpus = overloaded)
+# b: blocked processes (waiting for I/O — bad if nonzero)
+# swpd: swap used (nonzero = RAM pressure)
+# si/so: swap in/out per second (nonzero = swapping = severe RAM shortage)
+# us: user-space CPU %, sy: kernel CPU %, id: idle %, wa: I/O wait %
+# I/O wait &gt; 10%: disk is bottleneck
+
+# iostat: per-disk statistics
+iostat -xz 1   # -x extended, -z skip zero devices
+# Fields:
+# %util: disk busy percentage (&gt;80% = saturated)
+# await: average I/O wait time in ms (&gt;10ms = high latency)
+# r/s, w/s: reads and writes per second
+# rMB/s, wMB/s: throughput
+
+# free: memory breakdown
+free -h
+# important: 'available' not 'free' — available includes reclaimable cache</code></pre><div class="ex-why">✅ Why this works: I/O wait (wa) in vmstat tells you if disk is the bottleneck. 20% wa means 20% of CPU time is wasted waiting for disk. Solution: SSD, io_uring, or reducing I/O.</div></div><h2 class="chap">Interview Q&amp;A — Linux & Performance</h2><div class="qa"><div class="question">❓ Walk me through how you'd diagnose a production performance regression.</div><div class="answer">(1) top / htop: Is it CPU-bound (high %us), I/O-bound (high %wa), or lock-bound (high %sy from futex)? (2) If CPU-bound: perf record -g + flamegraph. Identify hot function. perf annotate for line-level. (3) If memory-bound: perf stat -e cache-misses,LLC-load-misses. High LLC misses = working set too large for LLC. Optimize data layout (SoA, cache blocking). (4) If lock-bound: strace -c -e trace=futex. Too many futex calls. Look for lock contention: perf lock record/report. (5) If I/O-bound: iostat -x. Check await (latency) and %util (saturation). Profile with blktrace for per-I/O details. (6) Always compare against a baseline — run both old and new binary with identical workload and compare perf stat output.</div><div class="followup"><b>Follow-up questions interviewers ask:</b><ul><li>What if the regression only appears under load?</li><li>How do you profile without impacting production?</li><li>What is a flamegraph and how do you read it?</li></ul></div><div class="followup" style="background:#fef2f2;border-color:#fca5a5"><b>Common mistakes in answers:</b><ul><li>Starting with code changes before profiling — always measure first.</li><li>Profiling debug builds — they're not representative of production.</li></ul></div></div><div class="qa"><div class="question">❓ What is a cache miss? How do you detect and fix it?</div><div class="answer">A cache miss occurs when the CPU requests data not in L1/L2/L3 cache — requires DRAM access (~100ns, ~300 cycles penalty vs ~1 cycle for L1 hit). Types: Cold miss (first access — unavoidable), Capacity miss (working set > cache size — fix: reduce data size or process in blocks), Conflict miss (cache associativity — fix: change data layout). Detection: perf stat -e L1-dcache-load-misses,LLC-load-misses. Fixes: (1) Sequential access — hardware prefetcher handles stride-1 patterns automatically. (2) SoA (Structure of Arrays) instead of AoS — process each field of all objects together. (3) Cache blocking (tiling) for matrix ops — process NxN blocks that fit in L1. (4) Pack data smaller — int16 instead of float32 where precision allows. (5) Prefetch with __builtin_prefetch(addr, rw, locality).</div><div class="followup"><b>Follow-up questions interviewers ask:</b><ul><li>What is cache line size and why does alignment matter?</li><li>Explain false sharing with an example.</li><li>What is NUMA and how does it affect cache performance?</li></ul></div></div>
+    <div class="pagination"><a href="part04.html">← Part 04</a><a href="part06.html">Part 06 →</a></div>
+  </div>
+</div>
+<button id="btt">↑</button>
+<script>
+document.querySelectorAll('pre').forEach(p=>{
+  const b=document.createElement('button');b.className='copy-btn';b.textContent='Copy';
+  p.appendChild(b);b.onclick=()=>{navigator.clipboard.writeText(p.innerText.replace('Copy','').trim())
+  .then(()=>{b.textContent='Copied!';setTimeout(()=>b.textContent='Copy',2000);});};});
+const btt=document.getElementById('btt');
+window.addEventListener('scroll',()=>btt&&btt.classList.toggle('show',scrollY>300));
+btt&&btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+const si=document.getElementById('search');
+if(si)si.addEventListener('input',function(){const q=this.value.toLowerCase();
+  document.querySelectorAll('.part-card').forEach(c=>c.style.display=
+    c.textContent.toLowerCase().includes(q)?'':'none');});
+</script></body></html>

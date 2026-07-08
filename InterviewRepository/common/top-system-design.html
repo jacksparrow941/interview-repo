@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top System Design Questions | InterviewRepo — Backend SDE Interview Prep</title>
+  <meta name="description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Top System Design Questions">
+  <meta name="keywords" content="backend interview questions, SDE interview prep, system design, DSA, C++ interview, Java interview, Go interview, top system design questions">
+  <meta name="author" content="InterviewRepo">
+  <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="InterviewRepo — Backend SDE Prep">
+  <meta property="og:title"       content="Top System Design Questions | InterviewRepo">
+  <meta property="og:description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Top System Design Questions">
+  <meta property="og:url"         content="https://devinterviewvault.netlify.app">
+  <meta property="og:image"       content="https://devinterviewvault.netlify.app/assets/og-image.png">
+  <meta name="twitter:card"       content="summary_large_image">
+  <meta name="twitter:title"      content="Top System Design Questions | InterviewRepo">
+  <meta name="twitter:description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Top System Design Questions">
+  <meta name="twitter:image"      content="https://devinterviewvault.netlify.app/assets/og-image.png">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://devinterviewvault.netlify.app">
+  <meta name="google-site-verification" content="a8bdedb3bc5f858c">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Top System Design Questions", "description": "SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design \u2014 Top System Design Questions", "url": "https://devinterviewvault.netlify.app", "publisher": {"@type": "Organization", "name": "InterviewRepo"}}</script>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+</head>
+<body>
+<nav class="navbar">
+  <a class="navbar-brand" href="../index.html">
+    <span class="logo-icon">⚡</span>
+    <span>InterviewRepo</span>
+  </a>
+  <div class="search-bar">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="search-input" placeholder="Search questions… (Ctrl+K)" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <nav class="navbar-nav">
+    <a href="../index.html">Home</a>
+    <a href="../common/top-coding.html">Top DSA</a>
+    <a href="../common/top-system-design.html">System Design</a>
+    <a href="../common/top-backend.html">Backend</a>
+    <a href="../common/top-cpp.html">C++</a>
+    <a href="../common/top-java.html">Java</a>
+    <a href="../common/top-go.html">Go</a>
+    <a href="../mcq-quiz.html" style="background:linear-gradient(90deg,#6366f1,#8b5cf6);color:#fff;padding:.3rem .75rem;border-radius:.4rem;font-weight:600">🎯 MCQ Quiz</a>
+  </nav>
+</nav>
+<div class="top-list-header">
+  <div class="container">
+    <div class="breadcrumb"><a href="../index.html">Home</a><span class="breadcrumb-sep">›</span><span>Top System Design Questions</span></div>
+    <h1 style="font-size:36px;font-weight:800;margin-bottom:8px">🏗️ Top System Design Questions</h1>
+    <p style="color:var(--text-muted);font-size:16px">Most frequently asked System Design questions for senior backend roles.</p>
+    <p style="color:var(--text-muted);font-size:14px;margin-top:8px">28 questions</p>
+  </div>
+</div>
+<div class="container section">
+  <div class="filters-bar"><button class="filter-btn active" data-filter="all" data-group="sub">All</button><button class="filter-btn" data-filter="api_gateway" data-group="sub">Api Gateway</button><button class="filter-btn" data-filter="cqrs" data-group="sub">Cqrs</button><button class="filter-btn" data-filter="design_problems" data-group="sub">Design Problems</button><button class="filter-btn" data-filter="distributed" data-group="sub">Distributed</button><button class="filter-btn" data-filter="distributed_systems" data-group="sub">Distributed Systems</button><button class="filter-btn" data-filter="fintech" data-group="sub">Fintech</button><button class="filter-btn" data-filter="geospatial" data-group="sub">Geospatial</button><button class="filter-btn" data-filter="infrastructure" data-group="sub">Infrastructure</button><button class="filter-btn" data-filter="messaging" data-group="sub">Messaging</button><button class="filter-btn" data-filter="search" data-group="sub">Search</button><button class="filter-btn" data-filter="social" data-group="sub">Social</button><button class="filter-btn" data-filter="streaming" data-group="sub">Streaming</button></div>
+  <div class="filters-bar"><button class="filter-btn active" data-filter="all" data-group="diff">All Difficulty</button><button class="filter-btn" data-filter="easy" data-group="diff">Easy</button><button class="filter-btn" data-filter="medium" data-group="diff">Medium</button><button class="filter-btn" data-filter="hard" data-group="diff">Hard</button></div>
+  <div class="question-list"><div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="design_problems">
+    <span class="q-index">1</span>
+    <span class="q-text">Design URL Shortener (bit.ly)</span>
+    <div class="q-tags"><span class="q-tag">encoding</span><span class="q-tag">hashing</span><span class="q-tag">cache</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">92%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Design URL Shortener — Architecture</span><br><pre>Client → Load Balancer → App Server (stateless) → Cache (Redis) → Database
+                                                     ↓ on miss
+                                               Consistent Hash ID Gen</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Core Components</span><br><ul><li><b>ID Generation:</b> Snowflake ID → Base62 encode → 7-char short code</li><li><b>Storage:</b> MySQL/PostgreSQL for persistence; Redis for read cache (TTL = URL TTL)</li><li><b>Redirect:</b> 301 (browser caches) vs 302 (always hits server — better for analytics)</li><li><b>Scale:</b> 100M URLs/day = ~1160 URLs/sec write, 10× reads → cache hit rate 99%</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">DB Schema</span><br><pre>CREATE TABLE urls (
+    id BIGINT PRIMARY KEY,           -- Snowflake ID
+    short_code VARCHAR(8) UNIQUE,
+    long_url TEXT NOT NULL,
+    user_id BIGINT,
+    created_at TIMESTAMP,
+    expires_at TIMESTAMP,
+    click_count BIGINT DEFAULT 0
+);</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you prevent abuse (phishing URLs)? (URL reputation API, blacklist)<br>• How do you implement analytics? (Kafka + ClickHouse for click stream)<br>• How would you support custom vanity URLs?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, Meta, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="social">
+    <span class="q-index">2</span>
+    <span class="q-text">Design Twitter/X timeline — fan-out on write vs fan-out on read</span>
+    <div class="q-tags"><span class="q-tag">twitter</span><span class="q-tag">timeline</span><span class="q-tag">fan-out</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">92%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Approaches</span><br><ul><li><b>Fan-out on Write (Push):</b> When user tweets, push tweet ID to all followers' home timeline caches (Redis sorted sets). Read is fast (O(1) from cache). Write is expensive for users with millions of followers (celebrities).</li><li><b>Fan-out on Read (Pull):</b> On timeline load, fetch tweets from all followed users, merge, sort. Write is O(1). Read is expensive (100 follows = 100 DB queries).</li><li><b>Hybrid (Twitter's actual approach):</b> Fan-out on write for users with &lt;10K followers. Fan-out on read for celebrities (Lady Gaga: 100M followers — can't write to 100M caches per tweet).</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Storage Architecture</span><br><pre>Tweet Service:
+  - MySQL: tweet metadata (id, user_id, text, created_at)
+  - Blob store (S3): media files
+  - Redis: home timeline cache per user (sorted set by tweet_id)
+
+Timeline Service:
+  - Read from Redis cache
+  - For celebrities: merge from DB query on read
+  - Ranked feed: ML model scores tweets, inserted in order</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Design Decisions</span><br><ul><li>Tweet ID as Snowflake (time-sortable → no ORDER BY timestamp needed)</li><li>Timeline cache: Redis ZSET with tweet_id as score, cap at 800 entries</li><li>Notifications: Kafka topics per user for async fan-out workers</li><li>Search: Elasticsearch for full-text search, Earlybird for real-time tweet index</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you handle a celebrity tweet without overloading fan-out workers?</li><li>How do you implement the ranking algorithm without recomputing for every read?</li><li>How does Twitter handle timeline when you follow 5000 accounts?</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does Instagram feed differ from Twitter feed architecture?<br>• What is the Thundering Herd problem in feed generation?<br>• How do you implement "who to follow" recommendations?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="geospatial">
+    <span class="q-index">3</span>
+    <span class="q-text">Design Uber dispatch system — matching drivers to riders</span>
+    <div class="q-tags"><span class="q-tag">uber</span><span class="q-tag">dispatch</span><span class="q-tag">geospatial</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">92%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Components</span><br><pre>Rider App → API Gateway → Ride Request Service
+                             ↓
+                    Location Service (driver positions)
+                    Matching Service (find nearest drivers)
+                    ETA Service (maps API)
+                    Surge Pricing Service
+                    Notification Service (WebSocket/FCM)
+</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Location Service</span><br>Driver apps send GPS every 4-5 seconds. Store in Redis geospatial index (<code>GEOADD</code>). Query: <code>GEORADIUS 37.7749 -122.4194 1 km ASC COUNT 5</code> → nearest 5 drivers within 1km. Google S2 geometry library for complex polygon queries.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Matching Algorithm</span><br><pre>On ride request:
+1. GEORADIUS → candidate drivers in 500m-2km
+2. Filter: available (not on trip), accepts request type, car type matches
+3. Score each: ETA + acceptance rate + rating
+4. Offer to top driver (timeout 10s) → if rejected, next driver
+5. On accept: create trip in DB, notify rider</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Surge Pricing</span><br>Supply (available drivers) vs demand (open requests) per H3 hexagon. If demand/supply &gt; threshold → surge multiplier. Displayed to rider before booking.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you handle the case where no drivers are nearby?</li><li>How does ETA get calculated accurately? (ML model on historical trip data)</li><li>How do you prevent double-booking a driver?</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does Uber handle driver location at city scale? (1M drivers = 1M location updates/5s)<br>• What is H3 hexagonal grid and why does Uber use it?<br>• How do you design the driver earnings and settlement system?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Uber, Swiggy, Zomato, CRED, Ola</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="fintech">
+    <span class="q-index">4</span>
+    <span class="q-text">Design a payment system — processing, idempotency, reconciliation</span>
+    <div class="q-tags"><span class="q-tag">payments</span><span class="q-tag">idempotency</span><span class="q-tag">saga</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">92%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Payment Flow</span><br><pre>Customer → Payment Gateway → Razorpay/Stripe
+                              ↓
+                    Payment Processor → Card Network (Visa/Mastercard)
+                                          ↓
+                                  Issuing Bank (authorize)
+                                          ↓ (approve/decline)
+                    Settlement Service (T+1 or T+2 days)
+                    Ledger Service (double-entry bookkeeping)</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Idempotency</span><br>Critical: if client retries payment request, must not double-charge.<br><pre>Client sends: POST /payments
+              Idempotency-Key: uuid-v4-from-client
+
+Server: INSERT INTO payments (idempotency_key, ...)
+        ON CONFLICT (idempotency_key) DO NOTHING
+        RETURNING *;
+// If key exists → return stored result (no double processing)</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Saga Pattern for Distributed Payment</span><br><pre>1. Reserve inventory
+2. Debit customer account
+3. Credit merchant account
+4. Fulfill order
+On failure at step 3: compensate (refund), release inventory</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Ledger / Double-Entry</span><br>Every transaction = two entries: debit one account, credit another. Prevents money creation/destruction. Immutable append-only ledger. Balance = sum(credits) - sum(debits) from ledger.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you handle partial captures and refunds?</li><li>How does 3D Secure (3DS) work for fraud prevention?</li><li>How do you implement end-of-day reconciliation?</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is PCI-DSS and what are its key requirements?<br>• How does a payment gateway differ from a payment processor?<br>• What is the two-phase commit problem in distributed payments?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Stripe, Razorpay, PhonePe, PayPal, CRED, Coinbase...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="api_gateway">
+    <span class="q-index">5</span>
+    <span class="q-text">API Gateway pattern — rate limiting, routing, JWT auth, circuit breaker for MUFG microservices</span>
+    <div class="q-tags"><span class="q-tag">api-gateway</span><span class="q-tag">rate-limit</span><span class="q-tag">jwt</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">92%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Architecture Diagram (ByteByteGo style)</span><br><pre>  ReactJS / Mobile
+        |
+  +-----v-----------------------+
+  |      API GATEWAY            |
+  |  1. JWT Validation          |
+  |  2. Rate Limiter (Redis)    |
+  |  3. Circuit Breaker (R4j)   |
+  |  4. Request Routing         |
+  |  5. Load Balancer           |
+  +---+-------+--------+--------+
+      |       |        |
+   Trade   Account   Payment
+   Svc      Svc       Svc
+  (8081)   (8082)    (8083)
+      |       |        |
+    DB(P)   DB(A)    DB(P)
+</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Spring Cloud Gateway Config</span><br><pre>// application.yml
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: trade-service
+          uri: lb://TRADE-SERVICE
+          predicates:
+            - Path=/api/v1/trades/**
+          filters:
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 100
+                redis-rate-limiter.burstCapacity: 200
+                key-resolver: '#{@userKeyResolver}'
+            - name: CircuitBreaker
+              args:
+                name: tradeCircuitBreaker
+                fallbackUri: forward:/fallback/trades
+
+@Component
+public class JwtAuthFilter extends AbstractGatewayFilterFactory&lt;JwtAuthFilter.Config&gt; {
+    @Override
+    public GatewayFilter apply(Config config) {
+        return (exchange, chain) -&gt; {
+            String token = extractToken(exchange.getRequest());
+            if (!jwtService.isValid(token))
+                return unauthorized(exchange);
+            return chain.filter(exchange);
+        };
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Rate Limiting — Token Bucket (Redis)</span><br><pre>// Token bucket: replenish 100 tokens/sec, burst up to 200
+@Bean
+public KeyResolver userKeyResolver() {
+    return exchange -&gt; Mono.just(
+        exchange.getRequest().getHeaders().getFirst("X-User-Id")
+    );
+}
+// HTTP 429 Too Many Requests when limit exceeded</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-Questions</span><br><div class="followup">&bull; API Gateway vs Load Balancer — key difference?<br>&bull; How do you implement idempotency at gateway level? (Idempotency-Key header + Redis dedup)<br>&bull; What is the Strangler Fig pattern and how does gateway enable it?<br>&bull; How does service mesh (Istio) differ from API Gateway?<br>&bull; How do you handle gateway as SPOF? (Multi-region, active-active)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="messaging">
+    <span class="q-index">6</span>
+    <span class="q-text">Design WhatsApp — messaging, delivery receipts, group chat</span>
+    <div class="q-tags"><span class="q-tag">whatsapp</span><span class="q-tag">messaging</span><span class="q-tag">websocket</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Core Architecture</span><br><pre>Client ←→ WebSocket/XMPP ←→ Chat Server → Message Queue (Kafka)
+                                        ↓
+                              Message Store (Cassandra)
+                              Delivery Service → Notification (FCM/APNs)
+</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Message Flow</span><br><pre>1. Sender connects via WebSocket to Chat Server (sticky session)
+2. Sends message → Chat Server stores in Cassandra:
+   (conversation_id, message_id [Snowflake], sender, content, ts, status=SENT)
+3. Delivery: if recipient online (same/different server)
+   → Use presence service / Redis pub-sub for server routing
+   → Forward via WebSocket → recipient sends ACK → status=DELIVERED
+4. Read receipt: recipient opens chat → status=READ
+5. Offline: store message in Cassandra, push via FCM/APNs on reconnect sync</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Group Chat (256 members)</span><br><ul><li>Small groups (&lt;256): Fan-out message to all member connections. Store once, deliver to all.</li><li>Very large groups: Store one copy, each member fetches on demand (cursor-based pagination)</li><li>Last-seen / delivery tracking: Redis set per message_id of delivered user_ids</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">End-to-End Encryption</span><br>Signal Protocol: each message encrypted with recipient's public key. Server stores only encrypted blobs. Key exchange via identity/one-time prekeys.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you scale to 2 billion users? (horizontal sharding by user_id)</li><li>How does WhatsApp handle message ordering? (Snowflake IDs, logical clocks)</li><li>How do you implement message deletion for everyone?</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does the Signal protocol handle forward secrecy?<br>• How does WhatsApp implement efficient status delivery at scale?<br>• How would you design an unread message count feature?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="fintech">
+    <span class="q-index">7</span>
+    <span class="q-text">Design a real-time transaction processing system — reliability, idempotency, scale</span>
+    <div class="q-tags"><span class="q-tag">transaction-processing</span><span class="q-tag">kafka</span><span class="q-tag">idempotency</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Requirements</span><br><b>Functional:</b> Accept trades from upstream, validate, book, expose via API. 10k trades/sec peak.<br><b>Non-functional:</b> Exactly-one booking, 99.99% uptime, &lt;50ms p99 reads, full audit trail.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Architecture</span><br><pre>Upstream (FIX/SWIFT) → Kafka [trades.raw] (partitioned by bookId)
+  → Trade Booking Pods (OpenShift, count = Kafka partitions)
+    ├── Redis (idempotency cache: tradeId → result, 24h TTL)
+    ├── Oracle RAC (trades table, audit log)
+    └── Kafka [trade.booked] (downstream: Risk, Reporting)
+  → Read API (Spring Boot + HikariCP + Redis L1 cache)</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Idempotency + Distributed Lock</span><br><pre>public TradeResult book(TradeEvent e) {
+    String cached = redis.get(e.getTradeId());
+    if (cached != null) return deserialize(cached);
+    try (Lock lock = redisLock.acquire("lock:"+e.getTradeId(), 5s)) {
+        cached = redis.get(e.getTradeId());  // double-check
+        if (cached != null) return deserialize(cached);
+        Trade t = tradeRepo.save(mapToTrade(e));
+        TradeResult res = TradeResult.booked(t);
+        redis.setex(e.getTradeId(), 86400, serialize(res));
+        return res;
+    }
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Reliability</span><br><ul><li>Kafka RF=3, min.insync.replicas=2. Offset committed after DB write.</li><li>Circuit Breaker on Risk/Notification calls (Resilience4j).</li><li>Dead Letter Queue after 3 retries.</li><li>HPA scales pods on CPU and Kafka consumer lag.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the Outbox pattern and how does it solve dual-write?<br>• How do you implement end-to-end trade reconciliation (internal vs SWIFT)?<br>• What is ISO 20022 and why is MUFG migrating to it?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="design_problems">
+    <span class="q-index">8</span>
+    <span class="q-text">Design Twitter/Feed System</span>
+    <div class="q-tags"><span class="q-tag">fanout</span><span class="q-tag">push-pull</span><span class="q-tag">redis-sorted-set</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Design a Scalable Key-Value Store</span><br>Like DynamoDB/Redis Cluster. Key decisions: partitioning, replication, consistency.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Architecture</span><br><ul><li><b>Consistent hashing ring</b> with virtual nodes for partitioning</li><li><b>Replication:</b> N=3. Coordinator writes to 3 nodes.</li><li><b>Quorum:</b> W=2, R=2. W+R&gt;N → strong consistency. W=1,R=1 → eventual.</li><li><b>Storage engine:</b> LSM-tree (RocksDB) for write optimization</li><li><b>Gossip protocol</b> for cluster membership/failure detection</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Data Flow</span><br><pre>PUT key=A value=X:
+  1. Client → any node (coordinator)
+  2. Hash(A) → ring position → 3 responsible nodes
+  3. Coordinator writes to all 3, waits for W=2 acks
+  4. Returns success
+
+GET key=A:
+  1. Coordinator queries R=2 nodes
+  2. Returns latest version (by timestamp or vector clock)
+  3. Read repair: update stale replica asynchronously</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does hinted handoff handle temporarily unavailable nodes?<br>• What is sloppy quorum vs strict quorum?<br>• How do you handle hot keys? (request sharding, local cache)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, LinkedIn, Uber, Airbnb</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="design_problems">
+    <span class="q-index">9</span>
+    <span class="q-text">Design API Rate Limiter</span>
+    <div class="q-tags"><span class="q-tag">token-bucket</span><span class="q-tag">redis</span><span class="q-tag">sliding-window</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Token bucket via Redis+Lua. Sliding window log/counter. Per API-key/user/IP limits. Return Retry-After.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design</span>
+      <span class="q-meta-chip">🏢 Stripe, Google, Uber, Amazon, Razorpay, PhonePe...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="streaming">
+    <span class="q-index">10</span>
+    <span class="q-text">Design Netflix video streaming — upload, encoding, CDN delivery</span>
+    <div class="q-tags"><span class="q-tag">netflix</span><span class="q-tag">video-streaming</span><span class="q-tag">cdn</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Upload & Processing Pipeline</span><br><pre>Studio → S3 (raw video)
+       → Encoding Service (transcoding workers):
+           - Multiple resolutions: 480p, 720p, 1080p, 4K
+           - Multiple formats: H.264, H.265/HEVC, AV1
+           - Audio tracks, subtitles
+       → Split into 2-10 second chunks (MPEG-DASH or HLS)
+       → CDN origin (S3) → global CDN edge nodes (Open Connect)</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Adaptive Bitrate (ABR)</span><br>Client player monitors bandwidth continuously. Switches between quality levels per chunk. If bandwidth drops: serve lower quality chunk seamlessly. Protocols: HLS (Apple), MPEG-DASH (Netflix/YouTube). Manifest file (.m3u8 / .mpd) lists all variants.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Netflix Open Connect</span><br>Netflix's own CDN. ISP-embedded appliances. Popular content pre-positioned to edge during off-peak hours. 95%+ of traffic served from edge. Remaining 5%: pull from Netflix cloud on cache miss.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Recommendation Engine</span><br>Two-phase: (1) Candidate generation (matrix factorization, collaborative filtering), (2) Ranking (DNN on user features + item features). A/B test artwork/thumbnails per user.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How does Netflix handle the long tail of content? (CDN eviction, tiered storage)</li><li>How do you measure streaming quality? (rebuffering ratio, start-play time, bitrate)</li><li>How does DRM (Widevine, FairPlay) work?</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does YouTube differ from Netflix in delivery? (user-generated, live streaming)<br>• What is the DASH manifest and how does the player use it?<br>• How do you implement resume-play across devices?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="distributed">
+    <span class="q-index">11</span>
+    <span class="q-text">Design a distributed key-value store (like Redis/DynamoDB)</span>
+    <div class="q-tags"><span class="q-tag">distributed-kv</span><span class="q-tag">consistent-hashing</span><span class="q-tag">replication</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Architecture</span><br><pre>Client → Load Balancer → Coordinator Node
+                            ↓ (consistent hash ring)
+                        Partition 0 → Replica A, B, C
+                        Partition 1 → Replica D, E, F
+                        ...
+</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Data Distribution</span><br>Consistent hashing: keys mapped to ring. Each node owns a range. Virtual nodes (vnodes): each physical node = 100-200 vnodes for even distribution. Adding/removing node: only adjacent vnodes affected.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Replication</span><br>Each key replicated to N nodes (typically N=3, DynamoDB style). Coordinator writes to all N. Quorum: W=2 (write), R=2 (read) → W+R&gt;N = strong consistency. W=1, R=1 → eventual consistency, highest availability.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Conflict Resolution</span><br>Vector clocks track causality. On divergent versions (network partition): return both to client (DynamoDB shopping cart), or last-write-wins (LWW) for simpler cases.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Storage Engine</span><br>LSM Tree (write-optimized): MemTable → immutable SSTable → compaction. B+Tree (read-optimized): InnoDB, LMDB. LSM preferred for KV stores: fast sequential writes, compaction amortizes cost.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you handle hot keys? (request sharding, local cache)</li><li>How does gossip protocol maintain cluster membership?</li><li>How does hinted handoff handle temporary node failure?</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is sloppy quorum and hinted handoff in DynamoDB?<br>• How does Redis Cluster implement hash slots? (16384 slots)<br>• Compare DynamoDB vs Cassandra vs Redis Cluster architecture.</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="distributed_systems">
+    <span class="q-index">12</span>
+    <span class="q-text">Outbox Pattern — reliable event publishing in MUFG distributed transactions</span>
+    <div class="q-tags"><span class="q-tag">outbox-pattern</span><span class="q-tag">distributed-transactions</span><span class="q-tag">kafka</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">The Problem</span><br><b>Double-write problem:</b> Save trade to DB + publish Kafka event — what if DB commits but Kafka fails? Events lost. What if Kafka publishes but DB fails? Phantom events. <b>Solution: Transactional Outbox Pattern</b></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Architecture Diagram</span><br><pre>  Trade Service
+  +----------------------------------+
+  | BEGIN TRANSACTION                |
+  |   INSERT trades SET status=BOOKED|
+  |   INSERT outbox (event JSON)     |
+  | COMMIT  &lt;-- atomic!             |
+  +----------------------------------+
+          |
+  +-------v-----------+
+  |  Message Relay     |  (Debezium CDC)
+  |  polls outbox table|
+  +-------+-----------+
+          |
+  +-------v-----------+
+  |   Kafka Topic      |
+  |  trade.booked      |
+  +--------------------+
+</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Implementation</span><br><pre>// 1. Outbox table
+CREATE TABLE outbox (
+    id         UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    event_type VARCHAR(100) NOT NULL,
+    payload    JSONB NOT NULL,
+    published  BOOLEAN DEFAULT false
+);
+
+// 2. Service writes both atomically
+@Transactional
+public void bookTrade(TradeRequest req) {
+    Trade t = tradeRepo.save(mapToTrade(req));
+    outboxRepo.save(OutboxEvent.builder()
+        .eventType("TRADE_BOOKED")
+        .payload(objectMapper.writeValueAsString(t))
+        .build());
+}
+
+// 3. Scheduled relay
+@Scheduled(fixedDelay = 500)
+public void publishPendingEvents() {
+    List&lt;OutboxEvent&gt; events = outboxRepo.findByPublishedFalse();
+    events.forEach(e -&gt; kafkaTemplate.send(e.getEventType(), e.getPayload()));
+    events.forEach(e -&gt; e.setPublished(true));
+    outboxRepo.saveAll(events);
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-Questions</span><br><div class="followup">&bull; Outbox vs Saga pattern — when to use which?<br>&bull; How does Debezium CDC work? (WAL log tailing in PostgreSQL)<br>&bull; How do consumers handle duplicate events? (Idempotent consumers + processed_events table)<br>&bull; What is at-least-once vs exactly-once in Kafka?<br>&bull; How to handle outbox table growth? (Archive after published + TTL cleanup)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="design_problems">
+    <span class="q-index">13</span>
+    <span class="q-text">Design Notification System</span>
+    <div class="q-tags"><span class="q-tag">kafka</span><span class="q-tag">fcm</span><span class="q-tag">apns</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">87%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Architecture</span><br><pre>Client → API Gateway → Notification Service
+                              ↓
+                      User Preferences → filter by opt-in/out
+                              ↓
+                      Kafka Topics (push / email / sms)
+                              ↓
+                      Workers → FCM(Android) / APNs(iOS) / SES / Twilio</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Reliability Patterns</span><br><ul><li><b>Idempotency:</b> notification_id deduplicates retries</li><li><b>Dead Letter Queue:</b> permanently failed → DLQ → alert + manual review</li><li><b>Exponential backoff:</b> retry after 1s, 2s, 4s, 8s, 16s</li><li><b>Rate limiting:</b> max 5 SMS / 10 push per user per hour</li><li><b>Priority queues:</b> transactional (OTP) &gt; activity &gt; marketing</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you implement quiet hours (no marketing notifications at night)?<br>• How do you track notification open rates?<br>• How do you handle failed FCM tokens? (device changed, app uninstalled)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design</span>
+      <span class="q-meta-chip">🏢 Amazon, Google, Meta, Uber, LinkedIn, Swiggy...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="messaging">
+    <span class="q-index">14</span>
+    <span class="q-text">Kafka Consumer Groups — partition assignment and offset management</span>
+    <div class="q-tags"><span class="q-tag">kafka</span><span class="q-tag">consumer-group</span><span class="q-tag">partition</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">87%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Consumer Group Architecture</span><br><pre>  Kafka Topic: trade.events (6 partitions)
+  +----+----+----+----+----+----+
+  | P0 | P1 | P2 | P3 | P4 | P5 |
+  +----+----+----+----+----+----+
+    |    |     |    |     |    |
+  +------+  +------+  +------+
+  | C1   |  | C2   |  | C3   |
+  | P0,P1|  | P2,P3|  | P4,P5|
+  +------+  +------+  +------+
+  Group: mufg-settlement-service
+  Max parallelism = num partitions = 6
+</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Spring Kafka — Manual Offset Commit</span><br><pre>@KafkaListener(
+    topics = "trade.events",
+    groupId = "mufg-settlement-service",
+    concurrency = "3"
+)
+public void processTradeEvent(
+        @Payload TradeEvent event,
+        Acknowledgment ack) {
+    try {
+        settlementService.process(event);
+        ack.acknowledge();  // commit AFTER processing (at-least-once)
+    } catch (FatalException e) {
+        ack.acknowledge();  // skip poison pill, send to DLT
+        kafkaTemplate.send("trade.events.DLT", event);
+    }
+}
+
+# application.yml
+spring.kafka.consumer.enable-auto-commit: false
+spring.kafka.consumer.auto-offset-reset: earliest
+spring.kafka.listener.ack-mode: manual_immediate</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Delivery Semantics</span><br><pre>  At-most-once:  commit before process (may lose on crash)
+  At-least-once: commit after process  (may duplicate) &lt;-- MUFG default
+  Exactly-once:  Kafka Transactions + idempotent consumer
+  Idempotent consumer: processed_events table with event_id dedup
+</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-Questions</span><br><div class="followup">&bull; What happens during consumer group rebalance? (partitions redistributed, brief pause)<br>&bull; How to handle poison pill messages? (Dead Letter Topic + alerting)<br>&bull; How to achieve exactly-once processing? (Kafka transactions + idempotent consumer)<br>&bull; What is consumer lag? (offset gap between latest and committed — monitor with Burrow)<br>&bull; Max consumers per topic group? (= num partitions; extras sit idle)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="design_problems">
+    <span class="q-index">15</span>
+    <span class="q-text">Design WhatsApp/Chat System</span>
+    <div class="q-tags"><span class="q-tag">websocket</span><span class="q-tag">kafka</span><span class="q-tag">cassandra</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Design a Search Autocomplete System</span><br>Target: &lt;100ms response for top-10 suggestions as user types.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Trie + Top-K</span><br><pre>TrieNode:
+    children: Map&lt;char, TrieNode&gt;
+    topK: List&lt;String&gt;  // cached top-10 completions at each node
+
+Search(prefix):
+    traverse to prefix node → return node.topK (O(p) where p=prefix length)
+
+Update:
+    insert/increment frequency → update topK at each ancestor node</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">At Scale</span><br><ul><li><b>Data collection:</b> Log all searches → Kafka → aggregation job → frequency table</li><li><b>Trie storage:</b> Serialize trie → Redis (sorted sets per prefix: ZADD prefix:ca 100 'cat' 95 'cafe')</li><li><b>Updates:</b> Weekly trie rebuild from aggregated frequencies; hot data cache TTL=1h</li><li><b>Read:</b> API → Redis ZREVRANGE prefix:ca 0 9 → top 10 suggestions</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you handle personalized suggestions? (user history weighted blend)<br>• How do you handle multiple languages and Unicode?<br>• How do you prevent malicious/offensive suggestions?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Uber, Amazon, LinkedIn, Razorpay...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="design_problems">
+    <span class="q-index">16</span>
+    <span class="q-text">Design Payment Gateway</span>
+    <div class="q-tags"><span class="q-tag">idempotency</span><span class="q-tag">saga</span><span class="q-tag">pci-dss</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Idempotency keys. Saga for distributed txns. Tokenization. Webhook async status. PCI DSS compliance.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design</span>
+      <span class="q-meta-chip">🏢 Stripe, PayPal, Razorpay, PhonePe, Amazon, Google...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="design_problems">
+    <span class="q-index">17</span>
+    <span class="q-text">Design Uber/Ride-Sharing</span>
+    <div class="q-tags"><span class="q-tag">geospatial</span><span class="q-tag">geohash</span><span class="q-tag">matching</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">85%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Uber-like Ride Sharing Design</span><br><pre>Driver App → Location Service (WebSocket) → Location DB (Redis GeoHash)
+                    ↓ every 5s
+               Geospatial Index (H3 hexagons)
+
+Rider App → Trip Request → Matching Service
+                               ↓
+                    Query nearby drivers (H3 ring search)
+                               ↓
+                    ETA estimation (ML model on road graph)
+                               ↓
+                    Offer to best driver → accept/reject
+                               ↓ 
+                    Trip State Machine (via Kafka + Trip Service)</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Geospatial Indexing</span><br><ul><li>H3 (Uber's hexagonal grid): each driver hashed to H3 cell. Ring search expands rings until N drivers found.</li><li>Redis GEOADD / GEORADIUS for simple cases</li><li>Quadtree: divide space into quads, query bounding box</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Surge Pricing</span><br>Real-time supply/demand ratio per H3 cell. Demand &gt; Supply × threshold → surge multiplier. Event-driven: Kafka → surge calculator → price service → show to rider before booking.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you handle driver location updates at scale? (100K drivers, 5s updates = 20K writes/sec)<br>• How does Uber match multiple riders for pool rides?<br>• How do you estimate ETA accurately? (historical + real-time road graph)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design</span>
+      <span class="q-meta-chip">🏢 Uber, Google, Amazon, Swiggy, Zomato</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="design_problems">
+    <span class="q-index">18</span>
+    <span class="q-text">Design Distributed Message Queue</span>
+    <div class="q-tags"><span class="q-tag">kafka</span><span class="q-tag">partitions</span><span class="q-tag">isr</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">85%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Topics→partitions (ordered log). ISR replication. Consumer groups. Offset management. Retention policy.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design</span>
+      <span class="q-meta-chip">🏢 Amazon, LinkedIn, Uber, Databricks, Razorpay, Google</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="design_problems">
+    <span class="q-index">19</span>
+    <span class="q-text">Design Distributed Cache (Redis)</span>
+    <div class="q-tags"><span class="q-tag">consistent-hashing</span><span class="q-tag">eviction</span><span class="q-tag">replication</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Design a Notification System</span><br>Send Email/SMS/Push notifications reliably at scale (millions/day).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Architecture</span><br><pre>API Server → Notification Service → Priority Queue (Kafka) → Workers per channel
+                                                                  → Email (SES/SendGrid)
+                                                                  → SMS (Twilio)
+                                                                  → Push (FCM/APNs)
+                                        ↓
+                              User Preferences Service → filter by opt-in
+                              Rate Limiter → throttle per user</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Reliability</span><br><ul><li><b>At-least-once:</b> Kafka with manual offset commit after successful send</li><li><b>Idempotency:</b> Deduplicate on notification_id to prevent duplicates on retry</li><li><b>Dead Letter Queue:</b> Failed after N retries → DLQ → alert, manual review</li><li><b>Template Engine:</b> Handlebars/Mustache for personalized content; stored in DB</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you implement priority queues? (push notifications &gt; email newsletters)<br>• How do you handle notification preferences and quiet hours?<br>• How do you track open rates and click-through rates?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, Uber, LinkedIn, Meta, Databricks...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="search">
+    <span class="q-index">20</span>
+    <span class="q-text">Design a Search Engine (web-scale)</span>
+    <div class="q-tags"><span class="q-tag">search-engine</span><span class="q-tag">inverted-index</span><span class="q-tag">crawling</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Components</span><br><pre>1. Crawler: Fetch web pages (BFS from seed URLs)
+2. Parser: Extract text, links, metadata
+3. Indexer: Build inverted index
+4. Ranker: Score results (TF-IDF, PageRank, ML)
+5. Searcher: Query processing, retrieve, rank, return
+6. Cache: Query result cache, bloom filter for crawled URLs</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Inverted Index</span><br>Maps term → list of (document_id, positions, frequency). Query 'distributed systems' → intersect posting lists → ranked by TF-IDF × PageRank.<br><pre>Index: { 'distributed': [(doc1, [3,7], 2), (doc4, [1], 1)],
+         'systems':     [(doc1, [4,8], 2), (doc2, [5], 1)] }
+Query 'distributed systems': doc1 (both terms, high freq) ranks highest</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Elasticsearch</span><br>Distributed search based on Lucene. Shard data across nodes. Each shard = independent Lucene index. Replicas for read scaling + fault tolerance. Inverted index + doc_values (column store for aggregations) + BKD trees (numeric/geo ranges).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">PageRank</span><br>Iterative algorithm: rank(A) = (1-d) + d × Σ(rank(B)/outlinks(B)) for all B→A. Pages with many quality inbound links rank higher.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you handle indexing 100B web pages? (MapReduce / Spark, distributed inverted index)</li><li>How do you update the index for real-time news? (incremental indexing, Kafka → Elasticsearch)</li><li>How do you implement spell correction? (n-gram index, edit distance)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is BM25 and how does it improve on TF-IDF?<br>• How does vector search (ANN) work for semantic search? (FAISS, HNSW)<br>• How does Google handle query expansion and synonyms?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="cqrs">
+    <span class="q-index">21</span>
+    <span class="q-text">CQRS Pattern — separating read/write models in MUFG trade reporting</span>
+    <div class="q-tags"><span class="q-tag">cqrs</span><span class="q-tag">command-query</span><span class="q-tag">read-model</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">What Is CQRS?</span><br><b>Command Query Responsibility Segregation:</b> Separate the <b>write model</b> (commands, normalized) from the <b>read model</b> (queries, denormalized).<br><b>MUFG:</b> Write = PostgreSQL (ACID). Read = Elasticsearch (fast search/reporting).</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Architecture Diagram</span><br><pre>  UI / API
+   |           |
+COMMAND      QUERY
+   |           |
+Write DB    Read DB
+(Postgres)  (Elastic)
+ ACID txn    Fast search
+   |
+ Domain Events (Kafka)
+   |
+ Event Handler
+ (updates Read DB async)
+</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Spring Boot Implementation</span><br><pre>// Command controller
+@PostMapping("/api/v1/trades")
+public ResponseEntity&lt;String&gt; bookTrade(@RequestBody BookTradeCommand cmd) {
+    Trade t = tradeCommandService.book(cmd);     // writes PostgreSQL
+    eventBus.publish(new TradeBookedEvent(t));   // publishes Kafka
+    return ResponseEntity.accepted().body(t.getId());
+}
+
+// Query controller
+@GetMapping("/api/v1/trades/search")
+public List&lt;TradeView&gt; search(@RequestParam String counterparty) {
+    return tradeQueryService.searchByCounterparty(counterparty); // reads Elasticsearch
+}
+
+// Event handler syncs to read model
+@KafkaListener(topics = "trade.booked")
+public void onTradeBooked(TradeBookedEvent event) {
+    elasticRepo.save(TradeView.from(event));  // denormalized view
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-Questions</span><br><div class="followup">&bull; CQRS vs Event Sourcing — same thing? (No, orthogonal but often combined)<br>&bull; How to handle eventual consistency? (show version/timestamp to user)<br>&bull; When NOT to use CQRS? (simple CRUD apps — adds complexity)<br>&bull; What is the read model consistency window? (typically &lt;100ms Kafka+Elastic)<br>&bull; How to rebuild read model from scratch? (replay all Kafka events from beginning)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 MUFG Global Services</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="design_problems">
+    <span class="q-index">22</span>
+    <span class="q-text">Design YouTube/Video Streaming</span>
+    <div class="q-tags"><span class="q-tag">transcoding</span><span class="q-tag">cdn</span><span class="q-tag">hls</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Upload→transcode (multi-res). S3 chunks. CDN delivery. Adaptive bitrate (HLS/DASH). Recommendation.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Netflix, Amazon</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="design_problems">
+    <span class="q-index">23</span>
+    <span class="q-text">Design Google Drive/Dropbox</span>
+    <div class="q-tags"><span class="q-tag">chunking</span><span class="q-tag">delta-sync</span><span class="q-tag">s3</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Chunk files; dedup by content hash. S3 storage. Delta sync. Vector clock conflict resolution.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, Microsoft, Meta</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="design_problems">
+    <span class="q-index">24</span>
+    <span class="q-text">Design Consistent Hashing</span>
+    <div class="q-tags"><span class="q-tag">hash-ring</span><span class="q-tag">virtual-nodes</span><span class="q-tag">remapping</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Hash ring + virtual nodes for even distribution. Minimal remapping on node add/remove.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design</span>
+      <span class="q-meta-chip">🏢 Amazon, Google, Uber, LinkedIn, Databricks, Snowflake</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="infrastructure">
+    <span class="q-index">25</span>
+    <span class="q-text">Design a CDN from scratch</span>
+    <div class="q-tags"><span class="q-tag">cdn</span><span class="q-tag">edge</span><span class="q-tag">pop</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Global Architecture</span><br><pre>Origin Server (S3 / API)
+    ↑ Cache Miss (Origin Pull)
+Edge PoPs (Points of Presence):
+  - 200+ cities globally
+  - Each: SSD cache (hot), object store (warm), scrubber
+  - Anycast BGP routing → client reaches nearest PoP
+  - PoP cache miss → Regional cache (shield) → origin</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Routing</span><br><b>Anycast:</b> Multiple PoPs announce same IP via BGP. Client's ISP routes to nearest by BGP path. Latency: 20-30ms to nearest edge vs 150-300ms to origin.<br><b>GeoDNS fallback:</b> Different IP per region when anycast not available.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache Hierarchy</span><br><pre>Client → L1 Edge (city) → L2 Shield (regional aggregator) → Origin
+         Hot: SSD 1-2TB      Warm: NVMe 50-100TB       Cold: S3
+         Miss rate: 5-15%    Miss rate: 0.1-2%</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache Invalidation</span><br><ul><li>URL-based purge: <code>CDN.purge('https://example.com/logo.png')</code></li><li>Tag-based purge: tag all product page assets with product_id → invalidate on update</li><li>Surrogate-Control: <code>s-maxage=3600</code> (CDN TTL separate from browser)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Security at Edge</span><br><ul><li>TLS termination at edge (no TLS to origin for static assets)</li><li>DDoS mitigation: rate limiting, IP reputation, challenge page</li><li>WAF (Web Application Firewall): block OWASP top 10, SQL injection, XSS</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cross-questions</span><br><ul><li>How do you handle cache stampede on popular content expiry?</li><li>How does Cloudflare Tiered Cache reduce origin load?</li><li>How would you implement edge computing (Cloudflare Workers)?</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does a CDN handle HTTPS and certificate management at scale?<br>• What is BGP anycast and how does it differ from GeoDNS?<br>• How do you handle dynamic personalized content at the edge?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="design_problems">
+    <span class="q-index">26</span>
+    <span class="q-text">Design Search Autocomplete</span>
+    <div class="q-tags"><span class="q-tag">trie</span><span class="q-tag">redis-sorted-set</span><span class="q-tag">cdn</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Trie with top-K at each node. Redis sorted set per prefix. CDN cache. Client debouncing.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, LinkedIn, Uber, Meta, Razorpay</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="design_problems">
+    <span class="q-index">27</span>
+    <span class="q-text">Design Logging & Monitoring System</span>
+    <div class="q-tags"><span class="q-tag">elk</span><span class="q-tag">kafka</span><span class="q-tag">opentelemetry</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Collect(Fluentd)→Buffer(Kafka)→Process(Flink)→Store(ES/S3). Distributed tracing. Alert on metrics.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design</span>
+      <span class="q-meta-chip">🏢 Amazon, Google, Uber, LinkedIn, Databricks, Netflix</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="design_problems">
+    <span class="q-index">28</span>
+    <span class="q-text">Design Distributed ID Generator (Snowflake)</span>
+    <div class="q-tags"><span class="q-tag">snowflake</span><span class="q-tag">timestamp</span><span class="q-tag">monotonic</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Snowflake ID — 64-bit Layout</span><br><pre>0 | 41 bits timestamp (ms) | 10 bits worker ID | 12 bits sequence
+↑ unused                    ↑ datacenter(5)+machine(5)
+
+Timestamp: ms since custom epoch (e.g., Jan 1 2015)
+Worker ID: unique per service instance (assigned from ZK or env var)
+Sequence:  0-4095 per millisecond per worker; resets each ms</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Clock Skew Handling</span><br><pre>if currentTime &lt; lastTimestamp:
+    # clock moved backwards!
+    wait until currentTime >= lastTimestamp  # wait up to a few ms
+    # OR: raise error and fail fast
+    # OR: use sequence from future slots of last timestamp</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Monotonicity</span><br>IDs are roughly time-sortable (within clock skew tolerance). No sort needed for recent data. Avoids random B-tree page writes = better index write performance.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the maximum QPS per worker? (4096/ms = ~4M/s per machine)<br>• How does Twitter Snowflake differ from Instagram ID generation?<br>• How do you handle the epoch overflow in 2079?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design</span>
+      <span class="q-meta-chip">🏢 Twitter, Uber, LinkedIn, Amazon, Google, Razorpay</span>
+    </div>
+  </div>
+</div></div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-links">
+      <a href="../common/top-coding.html">Top Coding</a>
+      <a href="../common/top-system-design.html">System Design</a>
+      <a href="../common/top-backend.html">Backend</a>
+      <a href="../common/top-cpp.html">C++</a>
+      <a href="../common/top-java.html">Java</a>
+      <a href="../common/top-go.html">Go</a>
+      <a href="../common/top-database.html">Database</a>
+      <a href="../common/top-concurrency.html">Concurrency</a>
+      <a href="../common/top-os.html">OS</a>
+      <a href="../common/top-networking.html">Networking</a>
+      <a href="../common/top-lld.html">LLD</a>
+      <a href="../common/top-cicd.html">CI/CD</a>
+      <a href="../common/top-security.html">Security</a>
+      <a href="../common/top-ml.html">ML Systems</a>
+      <a href="../common/top-perf.html">Performance</a>
+      <a href="../mcq-quiz.html">MCQ Quiz</a>
+    </div>
+    <p>Built for SDE-1 &amp; SDE-2 Backend Engineers | C++ · Java · Go · Distributed Systems</p>
+    <p style="margin-top:8px;font-size:12px;opacity:.5">Data sourced from LeetCode, Glassdoor, Blind, Reddit &amp; public interview experiences</p>
+  </div>
+</footer>
+<button id="back-to-top" title="Back to top">↑</button>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Netflix | InterviewRepo — Backend SDE Interview Prep</title>
+  <meta name="description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Netflix">
+  <meta name="keywords" content="backend interview questions, SDE interview prep, system design, DSA, C++ interview, Java interview, Go interview, netflix">
+  <meta name="author" content="InterviewRepo">
+  <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="InterviewRepo — Backend SDE Prep">
+  <meta property="og:title"       content="Netflix | InterviewRepo">
+  <meta property="og:description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Netflix">
+  <meta property="og:url"         content="https://devinterviewvault.netlify.app">
+  <meta property="og:image"       content="https://devinterviewvault.netlify.app/assets/og-image.png">
+  <meta name="twitter:card"       content="summary_large_image">
+  <meta name="twitter:title"      content="Netflix | InterviewRepo">
+  <meta name="twitter:description" content="SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design — Netflix">
+  <meta name="twitter:image"      content="https://devinterviewvault.netlify.app/assets/og-image.png">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://devinterviewvault.netlify.app">
+  <meta name="google-site-verification" content="a8bdedb3bc5f858c">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Netflix", "description": "SDE-1/2 Backend Interview Questions for C++, Java, Go, System Design \u2014 Netflix", "url": "https://devinterviewvault.netlify.app", "publisher": {"@type": "Organization", "name": "InterviewRepo"}}</script>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+</head>
+<body>
+<nav class="navbar">
+  <a class="navbar-brand" href="../../index.html">
+    <span class="logo-icon">⚡</span>
+    <span>InterviewRepo</span>
+  </a>
+  <div class="search-bar">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="search-input" placeholder="Search questions… (Ctrl+K)" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <nav class="navbar-nav">
+    <a href="../../index.html">Home</a>
+    <a href="../../common/top-coding.html">Top DSA</a>
+    <a href="../../common/top-system-design.html">System Design</a>
+    <a href="../../common/top-backend.html">Backend</a>
+    <a href="../../common/top-cpp.html">C++</a>
+    <a href="../../common/top-java.html">Java</a>
+    <a href="../../common/top-go.html">Go</a>
+    <a href="../../mcq-quiz.html" style="background:linear-gradient(90deg,#6366f1,#8b5cf6);color:#fff;padding:.3rem .75rem;border-radius:.4rem;font-weight:600">🎯 MCQ Quiz</a>
+  </nav>
+</nav>
+<div class="company-header">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../../index.html">Home</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="../index.html">Tier 2: Top Product</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>Netflix</span>
+    </div>
+    <div class="company-header-inner">
+      <div class="company-logo-placeholder">N</div>
+      <div class="company-info">
+        <div style="margin-bottom:8px">
+          <span class="tier-badge" data-tier="2" style="--tier-color:#C0C0C0">Tier 2: Top Product</span>
+          <span class="difficulty-badge diff-hard" style="margin-left:8px">Hard</span>
+        </div>
+        <h1>Netflix</h1>
+        <p style="color:var(--text-muted);margin-top:8px">Freedom & Responsibility culture, senior engineers only, chaos engineering</p>
+        <div class="company-info-meta">
+          <span class="info-chip"><strong>HQ:</strong> Los Gatos, CA</span>
+          <span class="info-chip"><strong>Roles:</strong> Senior SDE, Staff SDE</span>
+          <span class="info-chip"><strong>Focus:</strong> System Design · Backend · Distributed Systems · Java</span>
+          <span class="info-chip"><strong>Interview:</strong> Very senior-focused, minimal coding, mostly design + culture</span>
+        </div>
+        <div class="company-stats">
+          <div class="stat-item"><div class="stat-value">21</div><div class="stat-label">Questions</div></div>
+          <div class="stat-item"><div class="stat-value">4</div><div class="stat-label">Avg Rounds</div></div>
+          <div class="stat-item"><div class="stat-value">4.2/5</div><div class="stat-label">Difficulty</div></div>
+          <div class="stat-item"><div class="stat-value">5</div><div class="stat-label">Categories</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><div class="container" style="padding:32px 24px 0">
+  <h2 style="font-size:22px;font-weight:700;margin-bottom:16px">📋 Interview Rounds</h2>
+  <div class="rounds-grid"><div class="round-card">
+  <div class="round-number">Round 1</div>
+  <div class="round-name">Online Assessment (90 min)</div>
+  <div class="round-duration">60-90 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 2</div>
+  <div class="round-name">Technical Phone Screen</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 3</div>
+  <div class="round-name">Coding Round 1</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 4</div>
+  <div class="round-name">System Design / LLD</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 5</div>
+  <div class="round-name">Hiring Manager</div>
+  <div class="round-duration">45-60 min</div>
+</div><div class="round-card">
+  <div class="round-number">Round 6</div>
+  <div class="round-name">HR</div>
+  <div class="round-duration">30-45 min</div>
+</div></div>
+</div><div class="container" style="padding:24px 24px 0">
+  <h2 style="font-size:20px;font-weight:700;margin-bottom:14px">🔥 Most Frequently Asked</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:10px;margin-bottom:8px"><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">Docker container vs Virtual Machine — key differences?</div>
+    <div style="font-size:12px;color:var(--text-muted)">Cicd · Easy · 93% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">How do you diagnose and fix high API latency?</div>
+    <div style="font-size:12px;color:var(--text-muted)">Performance · Hard · 92% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">How do Docker image layers work? (Union filesystem)</div>
+    <div style="font-size:12px;color:var(--text-muted)">Cicd · Medium · 90% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">CI/CD pipeline stages — what should a production pipeline include?</div>
+    <div style="font-size:12px;color:var(--text-muted)">Cicd · Medium · 90% frequency</div>
+  </div>
+</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+  <span style="font-size:20px;flex-shrink:0">🔥</span>
+  <div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:4px">ConfigMaps vs Secrets in Kubernetes</div>
+    <div style="font-size:12px;color:var(--text-muted)">Cicd · Easy · 88% frequency</div>
+  </div>
+</div></div>
+</div><div class="tabs-bar"><div class="tabs-inner"><button class="tab-btn active" data-tab="system_design">🏗️ System Design <span style="opacity:.5;font-size:11px">(2)</span></button>
+<button class="tab-btn" data-tab="backend">🔧 Backend <span style="opacity:.5;font-size:11px">(3)</span></button>
+<button class="tab-btn" data-tab="performance">⚡ Performance <span style="opacity:.5;font-size:11px">(5)</span></button>
+<button class="tab-btn" data-tab="cicd">🚀 CI/CD & DevOps <span style="opacity:.5;font-size:11px">(6)</span></button>
+<button class="tab-btn" data-tab="ml_systems">🤖 ML Systems <span style="opacity:.5;font-size:11px">(5)</span></button></div></div>
+<div class="container"><div class="tab-panel active" id="tab-system_design">
+  <div class="questions-header">
+    <h3>🏗️ System Design</h3>
+    <span class="q-count">2 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="design_problems">
+    <span class="q-index">1</span>
+    <span class="q-text">Design YouTube/Video Streaming</span>
+    <div class="q-tags"><span class="q-tag">transcoding</span><span class="q-tag">cdn</span><span class="q-tag">hls</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Upload→transcode (multi-res). S3 chunks. CDN delivery. Adaptive bitrate (HLS/DASH). Recommendation.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Netflix, Amazon</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="design_problems">
+    <span class="q-index">2</span>
+    <span class="q-text">Design Logging & Monitoring System</span>
+    <div class="q-tags"><span class="q-tag">elk</span><span class="q-tag">kafka</span><span class="q-tag">opentelemetry</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Collect(Fluentd)→Buffer(Kafka)→Process(Flink)→Store(ES/S3). Distributed tracing. Alert on metrics.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design</span>
+      <span class="q-meta-chip">🏢 Amazon, Google, Uber, LinkedIn, Databricks, Netflix</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-backend">
+  <div class="questions-header">
+    <h3>🔧 Backend</h3>
+    <span class="q-count">3 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="resilience">
+    <span class="q-index">1</span>
+    <span class="q-text">Explain the circuit breaker pattern</span>
+    <div class="q-tags"><span class="q-tag">circuit-breaker</span><span class="q-tag">hystrix</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Circuit Breaker States</span><br><ul><li><b>CLOSED:</b> Normal operation. Failure counter tracks errors. If failures &gt; threshold → OPEN.</li><li><b>OPEN:</b> All calls fail immediately (fail-fast). No downstream load. After timeout → HALF_OPEN.</li><li><b>HALF_OPEN:</b> Allow one probe request. If succeeds → CLOSED. If fails → OPEN again.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Why it matters</span><br>Without circuit breaker: one slow service causes thread pool exhaustion in caller → cascading failure across the system. Circuit breaker prevents this by failing fast and giving downstream service recovery time.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Libraries</span><br><ul><li>Resilience4j (Java): sliding window (count/time based), bulkhead pattern</li><li>Hystrix (deprecated): used at Netflix, pioneered the pattern</li><li>Go: sony/gobreaker, mercadolibre/go-breakers</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the bulkhead pattern and how does it complement circuit breaker?<br>• How do you set the right failure threshold to avoid flapping?<br>• What is the difference between circuit breaker and retry with exponential backoff?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Backend Design</span>
+      <span class="q-meta-chip">🏢 Uber, Netflix, Stripe, Amazon, LinkedIn, Swiggy...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="devops">
+    <span class="q-index">2</span>
+    <span class="q-text">Blue-green vs Canary vs Rolling deployments</span>
+    <div class="q-tags"><span class="q-tag">deployment</span><span class="q-tag">canary</span><span class="q-tag">zero-downtime</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">74%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Deployment Strategies</span><br><ul><li><b>Blue-Green:</b> Two identical environments. New version deployed to 'green'. Switch traffic instantly. Easy rollback: flip back to 'blue'. Requires 2x infrastructure.</li><li><b>Canary:</b> Route small % of traffic (1-5%) to new version. Monitor error rates / latency. Gradually increase if healthy. Slow, but minimizes blast radius.</li><li><b>Rolling:</b> Replace instances one at a time (or in batches). Both versions run simultaneously. No extra infrastructure. Standard Kubernetes Deployment behavior.</li><li><b>Feature Flags:</b> Deploy code disabled; enable per-user/segment at runtime. Decouple deploy from release.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">In Kubernetes</span><br><pre># Canary with Argo Rollouts:
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+spec:
+  strategy:
+    canary:
+      steps:
+      - setWeight: 5    # 5% traffic to new
+      - pause: {duration: 10m}
+      - setWeight: 50
+      - pause: {duration: 10m}
+      - setWeight: 100</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you implement A/B testing alongside a canary deployment?<br>• How does shadow deployment (dark launch) work?<br>• What metrics determine if a canary should be promoted vs rolled back?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 HLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Amazon, Meta, Netflix, Uber, LinkedIn</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="infrastructure">
+    <span class="q-index">3</span>
+    <span class="q-text">How does a service mesh (Istio) work?</span>
+    <div class="q-tags"><span class="q-tag">istio</span><span class="q-tag">envoy</span><span class="q-tag">sidecar</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">68%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer">Sidecar proxy (Envoy) handles mTLS, retry, circuit break, tracing. Istiod = control plane.</div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 HLD Round</span>
+      <span class="q-meta-chip">🏢 Google, Uber, Netflix, LinkedIn</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-performance">
+  <div class="questions-header">
+    <h3>⚡ Performance</h3>
+    <span class="q-count">5 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="performance">
+    <span class="q-index">1</span>
+    <span class="q-text">How do you diagnose and fix high API latency?</span>
+    <div class="q-tags"><span class="q-tag">latency</span><span class="q-tag">profiling</span><span class="q-tag">p99</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">92%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Systematic Approach</span><br><pre>1. MEASURE: Where is the time going?
+   - Add distributed tracing (Jaeger/Zipkin): see each span's duration
+   - p50/p95/p99 latency (NOT just average — outliers matter)
+   - Breakdown: network + serialization + DB queries + external API + CPU
+
+2. IDENTIFY bottleneck:
+   Common causes:
+   - N+1 queries (add JOIN FETCH or batch)
+   - Missing DB index (check EXPLAIN ANALYZE → seq scan)
+   - Synchronous external API call in critical path (make async / cache)
+   - Lock contention (connection pool exhausted, mutex hotspot)
+   - GC pauses (Java: -XX:+PrintGCDetails, G1/ZGC tuning)
+   - Memory pressure (swap, cache thrashing)
+
+3. FIX:
+   - Caching: Redis in front of slow DB queries
+   - Async: move non-critical work off request path (Kafka)
+   - Parallelism: concurrent DB queries (CompletableFuture/goroutines)
+   - Index: add composite index for slow query
+   - Connection pooling: tune min/max pool size</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Metrics</span><br><ul><li><b>Latency percentiles:</b> p50=100ms is fine; p99=5s means 1% users wait 5 seconds</li><li><b>Throughput:</b> RPS the service can handle without degrading</li><li><b>Error rate:</b> 5xx rate as % of total requests</li><li><b>Saturation:</b> CPU%, memory%, connection pool utilization, queue depth</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">USE Method</span><br>For every resource: <b>Utilization</b> (how busy), <b>Saturation</b> (how much queuing), <b>Errors</b> (error count). Invented by Brendan Gregg.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you use flame graphs to identify CPU hotspots?<br>• What is the difference between tail latency and average latency?<br>• How do you implement circuit breakers to protect against latency cascades?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="caching">
+    <span class="q-index">2</span>
+    <span class="q-text">Cache strategies — cache-aside, read-through, write-through, write-back</span>
+    <div class="q-tags"><span class="q-tag">caching</span><span class="q-tag">redis</span><span class="q-tag">cache-aside</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Cache Strategies</span><br><ul><li><b>Cache-Aside (Lazy loading):</b> App checks cache first; on miss, reads DB, populates cache. Cache only stores what's actually requested. Risk: thundering herd on cold start.</li><li><b>Read-Through:</b> Cache reads from DB automatically on miss (library handles it). App always reads from cache. DB not directly accessed by app.</li><li><b>Write-Through:</b> Write to cache AND DB synchronously. Cache never stale. High write latency (must wait for both). Good for read-heavy.</li><li><b>Write-Back (Write-Behind):</b> Write to cache, return immediately. Write to DB asynchronously. Fast writes. Risk: data loss if cache crashes before flush.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache-Aside Pattern (most common)</span><br><pre>def get_user(user_id):
+    # Try cache first
+    user = redis.get(f"user:{user_id}")
+    if user:
+        return deserialize(user)  # cache hit
+    
+    # Cache miss — read from DB
+    user = db.query("SELECT * FROM users WHERE id=%s", user_id)
+    
+    # Populate cache with TTL
+    redis.setex(f"user:{user_id}", ttl=3600, value=serialize(user))
+    return user
+
+def update_user(user_id, data):
+    db.execute("UPDATE users SET ... WHERE id=%s", user_id)
+    redis.delete(f"user:{user_id}")  # invalidate — don't update!</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Cache Eviction Policies</span><br><ul><li><b>LRU:</b> Evict least recently used. Good general-purpose.</li><li><b>LFU:</b> Evict least frequently used. Better for skewed access patterns.</li><li><b>TTL:</b> Time-based expiry. Always stale by at most TTL seconds.</li><li><b>Allkeys-lru (Redis):</b> Apply LRU across all keys when memory full.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the thundering herd problem and how do you prevent it? (mutex/lock on cache miss, staggered TTLs)<br>• How do you handle cache warming after a cold restart?<br>• What is probabilistic early expiration (PER) and how does it prevent dogpile?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 Backend Design</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="observability">
+    <span class="q-index">3</span>
+    <span class="q-text">Observability — metrics, logs, traces — the three pillars</span>
+    <div class="q-tags"><span class="q-tag">observability</span><span class="q-tag">prometheus</span><span class="q-tag">grafana</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">86%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Three Pillars</span><br><ul><li><b>Metrics:</b> Numeric aggregations over time. Low cardinality. Cheap to store. Tool: Prometheus (pull-based scraping) + Grafana. Counter, Gauge, Histogram, Summary.</li><li><b>Logs:</b> Discrete events with context. High volume. Searchable. Tool: ELK stack (Elasticsearch+Logstash+Kibana) or Loki+Grafana. Structured JSON logs with trace_id for correlation.</li><li><b>Traces:</b> Request journey across services. Tool: Jaeger, Zipkin, Tempo. Essential for microservices debugging.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">SLI / SLO / SLA / Error Budget</span><br><pre>SLI (Service Level Indicator): the metric you measure
+  e.g., "% of requests with latency &lt; 200ms"
+
+SLO (Service Level Objective): your internal target
+  e.g., "99.9% of requests &lt; 200ms over rolling 30 days"
+
+SLA (Service Level Agreement): contractual with customer
+  e.g., "99.5% uptime or credit applied"
+
+Error Budget: 1 - SLO = allowed unreliability
+  99.9% SLO = 0.1% error budget = 43.8 min downtime/month
+  If budget exhausted: freeze feature work, focus on reliability</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">RED Method (for services)</span><br><b>R</b>ate (requests/sec), <b>E</b>rror rate (errors/sec), <b>D</b>uration (latency). Apply to every microservice for quick health check.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you implement alerting without alert fatigue? (symptom-based not cause-based alerts)<br>• What is the difference between blackbox and whitebox monitoring?<br>• How does OpenTelemetry unify metrics, logs, and traces?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="observability">
+    <span class="q-index">4</span>
+    <span class="q-text">Explain distributed tracing — how it works</span>
+    <div class="q-tags"><span class="q-tag">distributed-tracing</span><span class="q-tag">opentelemetry</span><span class="q-tag">jaeger</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">84%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">How it works</span><br><pre>Request enters Service A → Tracer generates trace_id (128-bit)
+Service A calls Service B → propagates trace_id + span_id in HTTP header:
+  traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01
+               version  traceId                    parentSpanId   flags
+
+Each service creates a span:
+  span = {traceId, spanId, parentSpanId, name, startTime, duration,
+          tags: {"db.type":"postgresql", "http.status":200},
+          logs: [{"event":"query", "sql":"..."}]}
+
+Spans sent async to collector (Jaeger/Zipkin) → assembled into trace tree</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">OpenTelemetry (OTel)</span><br><ul><li>Vendor-neutral standard for traces, metrics, logs</li><li>SDK instruments your code (auto-instrumentation for popular frameworks)</li><li>Exporter sends to Jaeger, Zipkin, Tempo, AWS X-Ray, Datadog</li><li><code>OTEL_TRACES_EXPORTER=jaeger OTEL_EXPORTER_JAEGER_ENDPOINT=http://jaeger:14268/api/traces</code></li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Sampling</span><br><ul><li><b>Head sampling:</b> Decision at trace start (before outcome known). Simple. Loses tail errors.</li><li><b>Tail sampling:</b> Buffer traces, decide after seeing all spans. Can keep errored/slow traces.</li><li><b>Rate:</b> 1% for healthy services, 100% for errors, 10% for slow (p99 &gt; 1s)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is the W3C Trace Context specification?<br>• How does continuous profiling (Pyroscope, Parca) complement distributed tracing?<br>• How do you correlate traces with logs and metrics? (structured logging with trace_id)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="performance">
+    <span class="q-index">5</span>
+    <span class="q-text">Load testing — how to approach and what tools to use</span>
+    <div class="q-tags"><span class="q-tag">load-testing</span><span class="q-tag">k6</span><span class="q-tag">gatling</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Test Types</span><br><ul><li><b>Load test:</b> Expected normal + peak load. Validate SLAs. Measure p99 latency, throughput, error rate.</li><li><b>Stress test:</b> Push beyond expected load until system breaks. Find breaking point. Test recovery.</li><li><b>Soak/endurance test:</b> Normal load for extended time (hours/days). Find memory leaks, connection exhaustion, log rotation issues.</li><li><b>Spike test:</b> Sudden large traffic burst. Test autoscaling, circuit breakers.</li><li><b>Chaos test:</b> Kill instances, inject latency, corrupt network. Test resilience.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">k6 Example</span><br><pre>import http from 'k6/http';
+import { check, sleep } from 'k6';
+
+export const options = {
+  stages: [
+    { duration: '2m', target: 100 },   // ramp up to 100 VUs
+    { duration: '5m', target: 100 },   // hold at 100 VUs
+    { duration: '2m', target: 0 },     // ramp down
+  ],
+  thresholds: {
+    'http_req_duration': ['p(99)&lt;500'],  // 99% requests &lt; 500ms
+    'http_req_failed': ['rate&lt;0.01'],   // &lt;1% error rate
+  },
+};
+
+export default function() {
+  const r = http.get('https://api.example.com/users');
+  check(r, { 'status 200': (r) =&gt; r.status === 200 });
+  sleep(1);
+}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">What to measure</span><br><ul><li>Throughput: requests/sec at saturation</li><li>Latency: p50, p95, p99, p999 as load increases</li><li>Error rate: 5xx rate, timeout rate</li><li>Resource utilization: CPU, memory, disk I/O, network on each tier</li><li>Database: connection pool saturation, query latency at load</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you load test a WebSocket-based chat system?<br>• What is the difference between vertical and horizontal scaling in response to load tests?<br>• How do you profile a Java application under production load? (async-profiler, JFR)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-cicd">
+  <div class="questions-header">
+    <h3>🚀 CI/CD & DevOps</h3>
+    <span class="q-count">6 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="docker">
+    <span class="q-index">1</span>
+    <span class="q-text">Docker container vs Virtual Machine — key differences?</span>
+    <div class="q-tags"><span class="q-tag">docker</span><span class="q-tag">vm</span><span class="q-tag">container</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-high">93%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Answer</span><br><b>Virtual Machine:</b> Full OS per VM, hardware emulation via hypervisor (Type-1: bare metal, Type-2: hosted). Heavy: ~GBs, slow boot (~minutes), strong isolation.<br><b>Docker Container:</b> Shares host OS kernel, isolates via Linux namespaces (PID, NET, MNT, UTS, IPC) + cgroups for resource limits. Lightweight: ~MBs, starts in milliseconds, process-level isolation.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Differences</span><br><ul><li><b>Boot time:</b> VM ~1-2 min | Container ~100ms</li><li><b>Size:</b> VM ~GBs | Container ~MBs (shared layers)</li><li><b>Isolation:</b> VM = full kernel isolation | Container = namespace isolation (kernel shared)</li><li><b>Use case:</b> VM for multi-OS, strong isolation | Container for microservices, CI/CD</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What Linux namespaces does Docker use? (PID, NET, MNT, IPC, UTS, USER)<br>• How do cgroups limit CPU/memory in containers?<br>• What is a container runtime? (runc, containerd, CRI-O)</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 CI/CD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="docker">
+    <span class="q-index">2</span>
+    <span class="q-text">How do Docker image layers work? (Union filesystem)</span>
+    <div class="q-tags"><span class="q-tag">docker</span><span class="q-tag">layers</span><span class="q-tag">overlay2</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Answer</span><br>Docker images are built as <b>read-only layers</b> stacked using a Union Filesystem (OverlayFS/AUFS). Each <code>RUN</code>, <code>COPY</code>, <code>ADD</code> instruction in a Dockerfile creates a new layer.<br><br>When a container runs, Docker adds a thin <b>read-write layer</b> on top (Copy-on-Write). Writes go to the container layer; reads search layers bottom-up.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Dockerfile Layer Example</span><br><pre>FROM ubuntu:22.04          # Layer 1: base OS
+RUN apt-get install -y java # Layer 2: java install
+COPY app.jar /app/          # Layer 3: app binary
+CMD ["java", "-jar", "/app/app.jar"]  # metadata only</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Optimization Tips</span><br><ul><li>Order layers from least to most frequently changing</li><li>Combine <code>RUN</code> commands to reduce layer count</li><li>Use <code>.dockerignore</code> to exclude build artifacts</li><li>Use multi-stage builds to discard build-time layers</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is <code>docker build --cache-from</code>?<br>• How does <code>docker squash</code> work?<br>• Difference between image and container filesystem?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 CI/CD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="pipeline">
+    <span class="q-index">3</span>
+    <span class="q-text">CI/CD pipeline stages — what should a production pipeline include?</span>
+    <div class="q-tags"><span class="q-tag">ci-cd</span><span class="q-tag">pipeline</span><span class="q-tag">stages</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">90%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Typical Pipeline</span><br><pre>1. Source  →  git push/PR triggers pipeline
+2. Build   →  compile, docker build
+3. Test    →  unit → integration → contract tests
+4. SAST    →  static analysis (SonarQube, Semgrep)
+5. Scan    →  container vulnerability scan (Trivy, Snyk)
+6. Publish →  push image to registry (ECR/GCR/DockerHub)
+7. Deploy  →  to staging (auto) → prod (gated/manual or canary)
+8. Smoke   →  health check post-deploy
+9. Notify  →  Slack/PagerDuty on failure</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">GitHub Actions Example (simplified)</span><br><pre>on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - run: docker build -t app:${{ github.sha }} .
+    - run: docker push $ECR_REPO:${{ github.sha }}</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Metrics</span><br><ul><li><b>DORA:</b> Deployment Frequency, Lead Time for Changes, MTTR, Change Failure Rate</li><li>Aim: deploy multiple times/day, MTTR < 1hr</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you implement trunk-based development vs GitFlow?<br>• How do you handle database migrations in CI/CD?<br>• What is shift-left testing?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 CI/CD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="easy" data-subcategory="kubernetes">
+    <span class="q-index">4</span>
+    <span class="q-text">ConfigMaps vs Secrets in Kubernetes</span>
+    <div class="q-tags"><span class="q-tag">kubernetes</span><span class="q-tag">configmap</span><span class="q-tag">secrets</span></div>
+    <span class="difficulty-badge diff-easy" style="font-size:11px">Easy</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">ConfigMap</span><br>Stores <b>non-sensitive</b> configuration as key-value pairs. Mounted as environment variables or volume files. Plain text in etcd.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Secret</span><br>Stores <b>sensitive data</b> (passwords, tokens, TLS certs). Base64-encoded in etcd (NOT encrypted by default). Enable encryption at rest with <code>EncryptionConfiguration</code>. Types: Opaque, kubernetes.io/tls, kubernetes.io/dockerconfigjson, etc.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Usage</span><br><pre># Mount as env
+env:
+- name: DB_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: db-secret
+      key: password
+
+# Mount as volume
+volumeMounts:
+- name: config
+  mountPath: /etc/config
+volumes:
+- name: config
+  configMap:
+    name: app-config</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Best Practices</span><br><ul><li>Use <b>external secret managers</b>: HashiCorp Vault, AWS Secrets Manager with External Secrets Operator</li><li>Never bake secrets into Docker images</li><li>RBAC: restrict Secret read access to specific ServiceAccounts</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How does Vault Agent injector work?<br>• What is Sealed Secrets (Bitnami)?<br>• How do you rotate secrets without pod restart?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 CI/CD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="git">
+    <span class="q-index">5</span>
+    <span class="q-text">Git internals — rebase vs merge, when to use each</span>
+    <div class="q-tags"><span class="q-tag">git</span><span class="q-tag">rebase</span><span class="q-tag">merge</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Merge</span><br>Creates a <b>merge commit</b> that ties two branches together. Preserves full history including branch structure. Safe for shared branches — never rewrites history.<br><pre>git checkout main
+git merge feature/login
+# Creates commit: Merge branch 'feature/login'</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Rebase</span><br><b>Replays</b> commits from one branch onto another. Creates <b>linear history</b>. Rewrites commit SHAs — <b>never rebase shared/public branches</b>.<br><pre>git checkout feature/login
+git rebase main
+# Moves feature commits on top of latest main</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">When to use</span><br><ul><li><b>Merge:</b> Merging feature into main (preserves context). Shared branches.</li><li><b>Rebase:</b> Keeping feature branch up-to-date with main. Clean PR history. <code>git pull --rebase</code>.</li><li><b>Squash merge:</b> Combine all feature commits into 1 clean commit on main.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Interactive Rebase</span><br><pre>git rebase -i HEAD~3
+# Options: pick, squash, fixup, reword, drop</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is <code>git cherry-pick</code>?<br>• How do you recover from a bad rebase? (<code>git reflog</code>)<br>• What is the difference between <code>git reset</code> and <code>git revert</code>?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 CI/CD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="pipeline">
+    <span class="q-index">6</span>
+    <span class="q-text">GitHub Actions vs Jenkins vs GitLab CI — comparison</span>
+    <div class="q-tags"><span class="q-tag">github-actions</span><span class="q-tag">jenkins</span><span class="q-tag">gitlab-ci</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">GitHub Actions</span><br><ul><li>YAML workflows in <code>.github/workflows/</code></li><li>Hosted runners (GitHub-managed) or self-hosted</li><li>Marketplace: 15,000+ pre-built actions</li><li>Deep GitHub integration (PRs, issues, releases)</li><li>Pricing: free for public repos, limited minutes for private</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Jenkins</span><br><ul><li>Self-hosted, open-source. Most flexible.</li><li>Pipeline as code: <code>Jenkinsfile</code> (declarative or scripted Groovy)</li><li>Huge plugin ecosystem (1,800+ plugins)</li><li>Cons: maintenance overhead, not cloud-native</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">GitLab CI</span><br><ul><li><code>.gitlab-ci.yml</code> in repo root</li><li>Built-in: Docker registry, Kubernetes integration, security scanning</li><li>Runners: shared or self-hosted</li><li>Best for teams already on GitLab</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">When to choose</span><br><ul><li><b>GitHub Actions:</b> GitHub-hosted projects, modern cloud-native teams</li><li><b>Jenkins:</b> Legacy enterprise, complex custom pipelines</li><li><b>GitLab CI:</b> GitLab monorepo, all-in-one DevSecOps</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you cache dependencies in GitHub Actions?<br>• What is a self-hosted runner and when to use it?<br>• How does matrix strategy work for parallel jobs?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 CI/CD Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Uber, LinkedIn...</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-ml_systems">
+  <div class="questions-header">
+    <h3>🤖 ML Systems</h3>
+    <span class="q-count">5 questions</span>
+  </div>
+  <div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="ml_systems">
+    <span class="q-index">1</span>
+    <span class="q-text">Design a recommendation system (Netflix/YouTube)</span>
+    <div class="q-tags"><span class="q-tag">recommendation</span><span class="q-tag">collaborative-filtering</span><span class="q-tag">embedding</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">88%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Architecture Layers</span><br><pre>Request → Candidate Generation → Scoring → Re-ranking → Response
+           (retrieval)            (ML model)   (business rules)
+           millions→hundreds      hundreds→50  50→10 (diversity, freshness, ads)</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Candidate Generation</span><br><ul><li><b>Collaborative Filtering:</b> Users who watched A also watched B. Matrix factorization (SVD). Doesn't require item features. Cold-start problem for new items.</li><li><b>Content-Based:</b> Item embeddings from metadata (genre, actors, tags). Works for new items.</li><li><b>Two-Tower Model:</b> Separate user-tower + item-tower → embeddings → ANN search (FAISS). Pre-compute item embeddings, compute user embedding at request time. YouTube's approach.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Scoring & Ranking</span><br><pre>Input: [user_embedding, item_embedding, context_features]
+Model: Deep neural network → predicted CTR / watch_time
+ANN Search: FAISS HNSW index → top-K candidates in &lt;10ms for 100M items</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">A/B Testing</span><br>Split traffic by user ID hash. Primary metric: engagement (watch time, CTR). Guard metrics: don't harm diversity, churn rate. Run for statistical significance.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you handle the explore-exploit trade-off in recommendations? (contextual bandit, epsilon-greedy)<br>• How do you prevent filter bubbles in recommendations?<br>• How does YouTube handle the position bias in training data?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, LinkedIn, Uber...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="ml_systems">
+    <span class="q-index">2</span>
+    <span class="q-text">Design an A/B testing platform</span>
+    <div class="q-tags"><span class="q-tag">ab-testing</span><span class="q-tag">experimentation</span><span class="q-tag">statistics</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">85%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Core Components</span><br><pre>Experiment Config Service → stores experiment definition
+  (variants, allocation %, targeting rules, metrics)
+
+Assignment Service → deterministic bucketing by user_id
+  hash(user_id + experiment_id) % 100 &lt; allocation%
+  → same user always in same bucket (sticky assignment)
+  → results cached in Redis
+
+Event Tracking → user actions logged with experiment_id + variant
+  → Kafka → Data Warehouse (Clickhouse/BigQuery)
+
+Analysis Service → daily/real-time stats computation
+  → t-test / z-test for significance
+  → dashboard with p-value, confidence interval, lift %</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Statistical Concepts</span><br><ul><li><b>p-value &lt; 0.05:</b> Less than 5% chance result is due to random variation</li><li><b>Statistical power:</b> Probability of detecting a real effect. Usually target 80%.</li><li><b>MDE (Minimum Detectable Effect):</b> Smallest effect worth detecting → determines sample size</li><li><b>Sample size calculator:</b> n = 16σ²/δ² (for 80% power, 5% significance)</li><li><b>Multiple testing problem:</b> 20 experiments at 5% significance → 1 false positive on average. Fix: Bonferroni correction or FDR.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Common Pitfalls</span><br><ul><li><b>Novelty effect:</b> New feature gets engagement just because it's new — run longer</li><li><b>Network effect:</b> Treating control and treatment users who interact with each other — cluster randomization</li><li><b>Peeking:</b> Stopping early when p &lt; 0.05 inflates false positive rate — use sequential testing</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is a holdout group and why is it important?<br>• How do you handle metric tradeoffs? (CTR increases but conversion decreases)<br>• What is Bayesian A/B testing and how does it differ from frequentist?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, LinkedIn, Uber...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="ml_systems">
+    <span class="q-index">3</span>
+    <span class="q-text">Design a ML feature store — what is it and why?</span>
+    <div class="q-tags"><span class="q-tag">feature-store</span><span class="q-tag">ml</span><span class="q-tag">feast</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-high">82%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">What is a Feature Store?</span><br>Centralized repository for ML features. Solves two problems:<br><ul><li><b>Training-serving skew:</b> Feature computed differently at training vs inference → model underperforms in production</li><li><b>Feature reuse:</b> Team A computes user_30d_spend, Team B recomputes it separately → wasted effort</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Architecture</span><br><pre>Data Sources (events, DB, streams)
+    ↓
+Feature Engineering (Spark/Flink job)
+    ↓ write
+┌────────────────────────────────────┐
+│ Feature Store (Feast / Tecton)     │
+│  Offline Store: S3/BigQuery/Hive   │ ← batch training data
+│  Online Store:  Redis/DynamoDB     │ ← low-latency serving
+└────────────────────────────────────┘
+    ↑ read at training time          ↑ read at inference time (&lt;10ms)
+    Training Job                     Inference Service</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Key Concepts</span><br><ul><li><b>Point-in-time correct joins:</b> Feature store returns the feature value as it was at prediction time (prevents data leakage)</li><li><b>Feature versioning:</b> Rollback features if model performance degrades</li><li><b>Feature monitoring:</b> Drift detection — alert if feature distribution changes significantly</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you handle feature freshness requirements? (real-time vs hourly vs daily features)<br>• What is training-serving skew and how does a feature store prevent it?<br>• How does Uber Michelangelo implement feature serving?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 System Design Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, LinkedIn, Uber...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="medium" data-subcategory="ml_systems">
+    <span class="q-index">4</span>
+    <span class="q-text">What is the difference between batch inference and online inference?</span>
+    <div class="q-tags"><span class="q-tag">batch-inference</span><span class="q-tag">online-inference</span><span class="q-tag">real-time-ml</span></div>
+    <span class="difficulty-badge diff-medium" style="font-size:11px">Medium</span>
+    <span class="q-freq freq-high">80%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Batch Inference</span><br><pre>Trigger: scheduled (hourly/daily)
+Input:   entire dataset (all users)
+Output:  precomputed predictions stored in DB/cache
+Latency: hours (acceptable)
+Use cases: email recommendations, next-day demand forecast,
+           weekly personalization, offline reporting
+
+Stack: Spark/EMR → run model → write to S3 → load to serving DB</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Online (Real-time) Inference</span><br><pre>Trigger: user action (click, search, checkout)
+Input:   single request features
+Output:  prediction within SLA (p99 &lt; 100ms)
+Latency: milliseconds
+Use cases: fraud detection, search ranking, ad bidding, chatbot
+
+Stack: REST/gRPC → Feature store (Redis, &lt;5ms) → Model server (TorchServe/TFServing) → Cache</pre></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Hybrid Approach</span><br>Pre-compute slow features (batch) + compute fast features (online) → merge at serving time. E.g., Netflix: batch compute user long-term embeddings + online compute session context → real-time ranking.</div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• How do you optimize model inference latency? (quantization, ONNX runtime, model pruning)<br>• What is model serving and how does TorchServe handle batching?<br>• When would you choose a rule-based system over a ML model?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 ML Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, Netflix, Uber...</span>
+    </div>
+  </div>
+</div>
+<div class="q-wrapper">
+  <div class="question-item" data-difficulty="hard" data-subcategory="ml_systems">
+    <span class="q-index">5</span>
+    <span class="q-text">How do you detect and handle model drift?</span>
+    <div class="q-tags"><span class="q-tag">model-drift</span><span class="q-tag">data-drift</span><span class="q-tag">monitoring</span></div>
+    <span class="difficulty-badge diff-hard" style="font-size:11px">Hard</span>
+    <span class="q-freq freq-med">78%</span>
+  </div>
+  <div class="question-expand">
+    <div class="q-answer"><div class="answer-section"><span class="answer-label">Types of Drift</span><br><ul><li><b>Data drift (covariate shift):</b> Input feature distribution changes. User behavior changed, new user segment, seasonality. Model predictions become unreliable.</li><li><b>Concept drift:</b> Relationship between features and label changes. E.g., 'fraud' patterns evolve.</li><li><b>Label drift:</b> Output distribution changes. E.g., more fraudulent transactions in new season.</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Detection Methods</span><br><ul><li><b>Statistical tests:</b> KS-test, PSI (Population Stability Index), Chi-squared for categorical features</li><li><b>Model performance metrics:</b> Track AUC, precision, recall on labeled samples in production</li><li><b>Shadow deployment:</b> Run new model in shadow, compare predictions vs current model</li><li><b>Outlier detection:</b> Flag inputs far from training distribution (z-score, isolation forest)</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Response Strategy</span><br><ul><li><b>Auto-retrain trigger:</b> PSI &gt; 0.2 → trigger retraining pipeline in MLflow/SageMaker</li><li><b>Continuous training:</b> Retrain on rolling window of recent data (online learning for fast-moving data)</li><li><b>Canary deployment:</b> New model serves 5% traffic, compare metrics before full rollout</li></ul></div><div class="answer-section" style="margin-top:10px"><span class="answer-label">Follow-ups</span><br><div class="followup">• What is PSI (Population Stability Index) and what thresholds indicate drift?<br>• How do you maintain a training data pipeline that is always fresh?<br>• What is the difference between online and batch retraining?</div></div></div>
+    <div class="q-meta-row">
+      <span class="q-meta-chip">🗓 ML Round</span>
+      <span class="q-meta-chip">🏢 Google, Meta, Amazon, Microsoft, LinkedIn, Uber...</span>
+    </div>
+  </div>
+</div>
+</div></div>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-links">
+      <a href="../../common/top-coding.html">Top Coding</a>
+      <a href="../../common/top-system-design.html">System Design</a>
+      <a href="../../common/top-backend.html">Backend</a>
+      <a href="../../common/top-cpp.html">C++</a>
+      <a href="../../common/top-java.html">Java</a>
+      <a href="../../common/top-go.html">Go</a>
+      <a href="../../common/top-database.html">Database</a>
+      <a href="../../common/top-concurrency.html">Concurrency</a>
+      <a href="../../common/top-os.html">OS</a>
+      <a href="../../common/top-networking.html">Networking</a>
+      <a href="../../common/top-lld.html">LLD</a>
+      <a href="../../common/top-cicd.html">CI/CD</a>
+      <a href="../../common/top-security.html">Security</a>
+      <a href="../../common/top-ml.html">ML Systems</a>
+      <a href="../../common/top-perf.html">Performance</a>
+      <a href="../../mcq-quiz.html">MCQ Quiz</a>
+    </div>
+    <p>Built for SDE-1 &amp; SDE-2 Backend Engineers | C++ · Java · Go · Distributed Systems</p>
+    <p style="margin-top:8px;font-size:12px;opacity:.5">Data sourced from LeetCode, Glassdoor, Blind, Reddit &amp; public interview experiences</p>
+  </div>
+</footer>
+<button id="back-to-top" title="Back to top">↑</button>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

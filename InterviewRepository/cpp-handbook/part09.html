@@ -1,0 +1,291 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Part IX: AI Runtime — C++ Interview Handbook</title>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<div style="background:#0f172a;border-bottom:1px solid #334155;padding:8px 20px;
+  display:flex;align-items:center;gap:16px;font-size:13px;position:fixed;top:0;left:0;right:0;z-index:400;height:38px">
+  <a href="../index.html" style="color:#3b82f6;font-weight:600;text-decoration:none;
+     display:flex;align-items:center;gap:6px">
+    <span>⚡</span><span>InterviewRepo</span>
+  </a>
+  <span style="color:#334155">|</span>
+  <a href="index.html" style="color:#94a3b8;text-decoration:none">📘 C++ Master Handbook</a>
+  <span style="color:#334155;margin-left:auto;font-size:11px;color:#475569">
+    C++ · Multithreading · OS · Networks · AI Runtime · Embedded · 150 Problems
+  </span>
+</div>
+<nav id="sidebar"><div class="sb-head"><b>C++ Handbook</b><br><small>15 Parts · 150 Problems</small></div><a href="index.html" >🏠 Table of Contents</a>
+<a href="part01.html"><span class="badge" style="background:#1a2744">01</span>Part I: C++ Mastery</a>
+<a href="part02.html"><span class="badge" style="background:#065f46">02</span>Part II: Multithreading & Concurrency</a>
+<a href="part03.html"><span class="badge" style="background:#7c3aed">03</span>Part III: Operating Systems</a>
+<a href="part04.html"><span class="badge" style="background:#0e7490">04</span>Part IV: Computer Networks</a>
+<a href="part05.html"><span class="badge" style="background:#92400e">05</span>Part V: Linux & Performance Tools</a>
+<a href="part06.html"><span class="badge" style="background:#1e40af">06</span>Part VI: Distributed Systems</a>
+<a href="part07.html"><span class="badge" style="background:#b45309">07</span>Part VII: System Design</a>
+<a href="part08.html"><span class="badge" style="background:#be185d">08</span>Part VIII: Compiler Internals</a>
+<a href="part09.html" class="active"><span class="badge" style="background:#0f766e">09</span>Part IX: AI Runtime</a>
+<a href="part10.html"><span class="badge" style="background:#4338ca">10</span>Part X: Embedded Systems</a>
+<a href="part11.html"><span class="badge" style="background:#0369a1">11</span>Part XI: DevOps & Tools</a>
+<a href="part12.html"><span class="badge" style="background:#1e3a5f">12</span>Part XII: Coding Interviews — 150 Problems</a>
+<a href="part13.html"><span class="badge" style="background:#3f1f69">13</span>Part XIII: Behavioral & STAR</a>
+<a href="part14.html"><span class="badge" style="background:#064e3b">14</span>Part XIV: Resume Deep Dive</a>
+<a href="part15.html"><span class="badge" style="background:#7f1d1d">15</span>Part XV: Company-Specific</a>
+</nav>
+<div id="main">
+  <div id="topbar"><div class="tb-title" style="border-left:4px solid #0f766e;padding-left:12px">Part IX: AI Runtime</div></div>
+  <div id="content">
+    <h1 class="part-title">Part IX: AI Runtime</h1>
+    <p class="subtitle">Part IX</p><hr class="divider">
+    <h2 class="chap">Chapter 1 — AI Runtime Architecture</h2><p>An AI runtime is the software stack that takes a trained model and executes it efficiently on target hardware (GPU, NPU, CPU). Understanding internals is essential for roles at Kinara, NVIDIA, Qualcomm, and AMD.</p><div class="diagram">Full AI Runtime Pipeline:
+
+Model File (ONNX / TensorFlow / PyTorch)
+   │
+   ▼  Loader & Parser
+Computation Graph (DAG of operators)
+   │  nodes: Conv2D, BatchNorm, ReLU, MatMul, Reshape...
+   │  edges: tensors (name, dtype, shape)
+   │
+   ▼  Graph Optimizer
+Optimized Graph
+   │  - Constant folding: eval ops with constant inputs
+   │  - Dead node elimination: remove unused outputs
+   │  - Operator fusion: Conv+BN+ReLU → single fused op
+   │  - Layout optimization: NCHW ↔ NHWC per device
+   │
+   ▼  Memory Planner
+Buffer Assignments
+   │  - Liveness analysis: per-tensor lifetime [first_use, last_use]
+   │  - Buffer reuse: tensors with non-overlapping lifetimes share memory
+   │
+   ▼  Kernel Dispatcher
+Execution Schedule
+   │  - Maps each op to best kernel (cuDNN, custom CUDA, etc.)
+   │  - Handles CPU↔GPU data movement
+   │
+   ▼  Execute (async GPU / NPU / CPU)
+Output Tensor</div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// ONNX graph traversal in C++ (using ONNX Runtime C++ API)
+#include "onnxruntime/core/session/onnxruntime_cxx_api.h"
+
+Ort::Env env(ORT_LOGGING_LEVEL_WARNING, "inference");
+Ort::SessionOptions opts;
+opts.SetIntraOpNumThreads(4);
+opts.SetGraphOptimizationLevel(GraphOptimizationLevel::ORT_ENABLE_ALL);
+// Add GPU execution provider
+OrtCUDAProviderOptions cuda_opts; cuda_opts.device_id = 0;
+opts.AppendExecutionProvider_CUDA(cuda_opts);
+
+Ort::Session session(env, L"model.onnx", opts);
+
+// Get input/output metadata
+auto mem_info = Ort::MemoryInfo::CreateCpu(OrtArenaAllocator, OrtMemTypeDefault);
+std::vector&lt;float&gt; input_data(1 * 3 * 224 * 224);   // NCHW batch=1
+std::vector&lt;int64_t&gt; input_shape = {1, 3, 224, 224};
+
+Ort::Value input_tensor = Ort::Value::CreateTensor&lt;float&gt;(
+    mem_info, input_data.data(), input_data.size(),
+    input_shape.data(), input_shape.size());
+
+const char* input_names[]  = {"input"};
+const char* output_names[] = {"output"};
+
+auto outputs = session.Run(
+    Ort::RunOptions{nullptr},
+    input_names, &amp;input_tensor, 1,
+    output_names, 1);
+
+float* result = outputs[0].GetTensorMutableData&lt;float&gt;();</code></pre><div class="ex-why">✅ Why this works: ONNX Runtime's C++ API is zero-copy when possible — tensors backed by user memory avoid allocation. Always set GraphOptimizationLevel::ORT_ENABLE_ALL for production inference.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// BAD: re-creating Ort::Session for every request
+void handle_request(const Request&amp; req) {
+    Ort::Session session(env, L"model.onnx", opts);  // loads model, JIT compiles kernels!
+    // Session creation: ~500ms for a ResNet-50 (loading weights + engine build)
+    auto result = session.Run(...);
+    // Session destroyed — all setup work wasted
+}
+// 500ms overhead for a request that should take 10ms
+// FIX: create Session once at startup, reuse for all requests
+
+// BAD: ignoring batch dimension — one request at a time
+std::vector&lt;float&gt; input(3 * 224 * 224);  // single image, no batch
+// GPU has 1000s of cores — running one image uses ~1% of compute
+// FIX: batch multiple requests (dynamic batching covers this)</code></pre><div class="ex-why bad-why">❌ Why this fails: Session creation is expensive (weight loading + kernel compilation). Create once at startup, use thread-safe Run() for concurrent requests — ONNX Runtime's session is thread-safe.</div></div><h2 class="chap">Chapter 2 — TensorRT: Maximum GPU Inference</h2><p>TensorRT is NVIDIA's inference optimizer and runtime. It builds an optimized engine for a specific GPU by profiling multiple kernel implementations and selecting the fastest for each layer.</p><div class="diagram">TensorRT Build Phase (offline, done once):
+
+  ONNX Model
+    │
+    ▼  Parse
+  TRT Network Definition
+    │
+    ▼  Optimization
+    │   1. Layer fusion: Conv+BN+ReLU → CBA (single kernel)
+    │   2. Precision calibration: FP32 → FP16 or INT8
+    │   3. Kernel autotuning: profile 100s of cuDNN algos per layer
+    │   4. Memory planning: minimize peak GPU memory
+    │   5. CUDA graph capture: reduce kernel launch overhead
+    ▼
+  Serialized Engine (.trt file, GPU-specific!)
+
+TensorRT Runtime Phase (fast, repeated):
+  Load serialized engine → ExecutionContext → enqueueV3() → GPU async execute</div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// TensorRT Build (Python — typically done offline, serialize to disk)
+import tensorrt as trt
+logger = trt.Logger(trt.Logger.WARNING)
+builder = trt.Builder(logger)
+network = builder.create_network(
+    1 &lt;&lt; int(trt.NetworkDefinitionCreationFlag.EXPLICIT_BATCH))
+parser = trt.OnnxParser(network, logger)
+with open("resnet50.onnx", "rb") as f:
+    parser.parse(f.read())
+
+config = builder.create_builder_config()
+config.set_memory_pool_limit(trt.MemoryPoolType.WORKSPACE, 2 &lt;&lt; 30)  # 2GB
+config.set_flag(trt.BuilderFlag.FP16)        # enable FP16
+config.set_flag(trt.BuilderFlag.PREFER_PRECISION_CONSTRAINTS)
+
+# Dynamic shapes — batch size 1 to 32
+profile = builder.create_optimization_profile()
+profile.set_shape("input", (1,3,224,224), (16,3,224,224), (32,3,224,224))
+config.add_optimization_profile(profile)
+
+engine = builder.build_serialized_network(network, config)
+with open("resnet50.trt", "wb") as f:
+    f.write(engine)  # save for reuse — build takes ~60 seconds</code></pre><div class="ex-why">✅ Why this works: TensorRT engines are GPU-specific (SM version) and precision-specific. Build once per GPU model, serialize, distribute alongside your application. Don't rebuild at startup.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// BAD: building TensorRT engine at service startup
+void init_inference_server() {
+    // Building engine takes 60-300 seconds depending on model + GPU
+    engine_ = build_trt_engine("model.onnx");   // blocks startup for 5 minutes!
+    // Service doesn't respond until engine is built
+}
+// FIX: pre-build engines offline, load serialized engine at startup (~1 second)
+
+// BAD: INT8 without calibration → accuracy degradation
+config.set_flag(trt.BuilderFlag.INT8);  // INT8 enabled
+// WITHOUT providing a calibrator:
+// TensorRT uses default scale = 1.0 for all layers
+// Most layers will overflow or underflow → wrong results
+
+// FIX: provide INT8 calibration dataset
+class MyCalibrator(trt.IInt8EntropyCalibrator2):
+    def get_batch(self, names):
+        return [self.load_next_batch()]  # return ~500 representative images
+config.int8_calibrator = MyCalibrator()</code></pre><div class="ex-why bad-why">❌ Why this fails: INT8 without calibration gives up to 5% accuracy loss vs 0.1-0.5% with proper PTQ calibration. Always calibrate with at least 500 representative samples from your deployment distribution.</div></div><h2 class="chap">Chapter 3 — Quantization Deep Dive</h2><p>Quantization maps FP32 values to lower-precision integers (INT8, INT4, FP16). Reduces model size (4x for INT8 vs FP32) and enables faster integer MAC units on NPUs and Tensor Cores on NVIDIA GPUs.</p><div class="diagram">INT8 Quantization Math:
+
+  FP32 tensor values: [-2.4, 0.0, 1.8, 3.2, -0.9]
+  min = -2.4, max = 3.2
+
+  scale      = (max - min) / (2^8 - 1)
+             = (3.2 - (-2.4)) / 255 = 5.6 / 255 = 0.02196
+
+  zero_point = round(-min / scale)
+             = round(2.4 / 0.02196) = round(109.3) = 109
+
+  Quantize:  q = clamp(round(x / scale) + zero_point, 0, 255)
+    -2.4 → clamp(round(-109.3) + 109, 0, 255) = clamp(0, 0, 255) = 0
+     0.0 → clamp(round(0) + 109, 0, 255)       = 109
+     3.2 → clamp(round(145.7) + 109, 0, 255)   = 255
+
+  Dequantize: x_approx = (q - zero_point) * scale
+    q=0   → (0-109)*0.02196   = -2.394  (vs -2.4, error=0.006)
+    q=109 → (109-109)*0.02196 = 0.000   (exact)
+    q=255 → (255-109)*0.02196 = 3.206   (vs 3.2, error=0.006)</div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// PTQ (Post-Training Quantization) — calibrate with representative data
+// Step 1: Collect activation statistics on calibration dataset
+void calibrate(const std::vector&lt;cv::Mat&gt;&amp; cal_data, Model&amp; model) {
+    std::map&lt;std::string, TensorStats&gt; stats;
+    for (const auto&amp; img : cal_data) {
+        auto outputs = model.run_fp32(img);
+        for (auto&amp; [name, tensor] : outputs) {
+            auto&amp; s = stats[name];
+            s.min = std::min(s.min, tensor.min());
+            s.max = std::max(s.max, tensor.max());
+        }
+    }
+    // Compute per-tensor scale/zero_point from statistics
+    for (auto&amp; [name, s] : stats) {
+        s.scale = (s.max - s.min) / 255.0f;
+        s.zero_point = std::round(-s.min / s.scale);
+    }
+    model.set_quantization_params(stats);
+}
+
+// QAT (Quantization-Aware Training) — simulates quantization during training
+// Inserts fake-quantize nodes that simulate INT8 rounding
+// Gradients flow through via straight-through estimator
+// Result: model learns to be robust to quantization error
+// → 0.1-0.3% accuracy loss vs 0.5-2% for PTQ</code></pre><div class="ex-why">✅ Why this works: Per-channel quantization (separate scale per output channel) is critical for weight quantization accuracy. Use per-tensor for activations (faster), per-channel for weights (more accurate).</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// BAD: using single scale for all weights in a layer (per-tensor)
+// Conv layer weights: channel 0 range [0, 0.1]; channel 7 range [0, 10]
+// Per-tensor scale = 10 / 255 = 0.039
+// Channel 0 quantized: range [0, 0.1] → only 2-3 distinct INT8 values!
+// → massive quantization error for small-range channels
+
+// FIX: per-channel quantization
+// Channel 0: scale = 0.1/255 = 0.00039 → 255 distinct values → good accuracy
+// Channel 7: scale = 10/255  = 0.039   → 255 distinct values → good accuracy
+
+// BAD: not verifying accuracy after quantization
+// Applying INT8 quantization and shipping without testing:
+// - Some models degrade 5-10% mAP with naive PTQ
+// - Vision transformers (ViT) are particularly sensitive
+// Always: quantize → run validation set → compare to FP32 baseline</code></pre><div class="ex-why bad-why">❌ Why this fails: Never ship a quantized model without validating accuracy on a held-out test set. Batch normalization layers before quantization: fold BN into Conv weights first (TensorRT does this automatically).</div></div><h2 class="chap">Chapter 4 — Operator Fusion: Why It Matters</h2><p>Modern NN inference is memory-bandwidth-bound, not compute-bound, for most layers. Fusing operators reduces memory traffic — the single most impactful optimization.</p><div class="diagram">Without Fusion — 3 kernel launches, 3 DRAM read-write cycles:
+
+  Conv2D kernel:   read input from DRAM (128MB) → write output to DRAM (128MB)
+  BatchNorm kernel: read from DRAM (128MB)       → write to DRAM (128MB)
+  ReLU kernel:     read from DRAM (128MB)         → write to DRAM (128MB)
+  Total DRAM traffic: 6 × 128MB = 768MB for 1 layer forward pass
+
+With Fusion — 1 kernel launch, 2 DRAM accesses:
+  Conv+BN+ReLU fused:
+    read input from DRAM (128MB)
+    compute conv → compute BN → apply ReLU  (all in GPU registers/shared memory)
+    write final output to DRAM (128MB)
+  Total DRAM traffic: 2 × 128MB = 256MB  ← 3x reduction!
+  Speedup: 2-4x for bandwidth-bound layers (typical for conv layers)</div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// Implement a graph-level fusion pass
+struct FusionPattern {
+    std::string first_op;    // e.g., "Conv"
+    std::string second_op;   // e.g., "BatchNormalization"
+    std::string fused_name;  // e.g., "ConvBN"
+};
+
+// Topological sort + pattern matching
+void apply_conv_bn_relu_fusion(Graph&amp; graph) {
+    for (auto&amp; node : graph.topological_order()) {
+        if (node.op_type != "Conv") continue;
+        // Check: single consumer, no side effects
+        auto consumers = graph.get_consumers(node.output[0]);
+        if (consumers.size() != 1) continue;
+
+        auto* bn = consumers[0];
+        if (bn-&gt;op_type != "BatchNormalization") continue;
+
+        auto bn_consumers = graph.get_consumers(bn-&gt;output[0]);
+        if (bn_consumers.size() == 1 &amp;&amp; bn_consumers[0]-&gt;op_type == "Relu") {
+            // Fuse Conv + BN + ReLU into one node
+            auto* relu = bn_consumers[0];
+            graph.replace_with_fused(
+                {&amp;node, bn, relu},
+                "ConvBNReLU",
+                node.inputs,  // conv inputs
+                {relu-&gt;output[0]},
+                merge_attributes(node, *bn)
+            );
+        }
+    }
+}
+
+// Fold BatchNorm into Conv weights (reduces BN to just scale + bias):
+// BN: y = gamma * (x - mean) / sqrt(var + eps) + beta
+// After folding into Conv:
+// new_weight[i] = weight[i] * gamma[i] / sqrt(var[i] + eps)
+// new_bias[i]   = -mean[i] * gamma[i] / sqrt(var[i] + eps) + beta[i]</code></pre><div class="ex-why">✅ Why this works: BN folding into Conv is a prerequisite for INT8 quantization — it eliminates the normalization operation entirely, making the Conv output directly quantizable.</div></div><h2 class="chap">Interview Q&A — AI Runtime</h2><div class="qa"><div class="question">❓ How does TensorRT achieve speedup over standard PyTorch inference?</div><div class="answer">(1) Operator fusion: Conv+BN+ReLU → single CUDA kernel, 3x less DRAM traffic. (2) Precision reduction: FP16 Tensor Cores give 2x-8x throughput vs FP32 CUDA cores on A100. INT8 gives another 2x. (3) Kernel auto-tuning: TRT profiles 100+ cuDNN algorithm implementations per layer and picks the fastest for your specific GPU, input size, and precision. (4) Memory optimization: tensor buffer reuse based on liveness analysis — peak GPU memory minimized. (5) CUDA Graph capture: reduces kernel launch overhead from ~50µs per layer to ~5µs total for the entire network. (6) Layer-specific optimizations: implicit GEMM for depthwise conv, Winograd for 3x3 conv. Typical end-to-end speedup vs FP32 PyTorch: 2-8x depending on model and GPU.</div><div class="followup"><b>Follow-up questions interviewers ask:</b><ul><li>What is kernel auto-tuning? How many algorithms does it try?</li><li>What is a CUDA graph? What overhead does it eliminate?</li><li>How does TRT handle dynamic input shapes (variable batch size)?</li></ul></div><div class="followup" style="background:#fef2f2;border-color:#fca5a5"><b>Common mistakes in answers:</b><ul><li>Saying TRT is always faster — for dynamic shapes or unsupported ops, TRT may fall back to generic implementations that are slower than PyTorch.</li><li>Forgetting that TRT engines are tied to a specific GPU architecture — a Turing-built engine won't work on Ampere (or will be suboptimal).</li></ul></div></div><div class="qa"><div class="question">❓ Explain how memory planning works in an inference runtime.</div><div class="answer">Memory planning minimizes peak GPU memory by reusing buffers for tensors whose lifetimes don't overlap. Steps: (1) Liveness analysis: for each tensor, compute [first_op_idx, last_op_idx] — the range of operations where the tensor is alive. (2) Build interference graph: two tensors interfere if their live ranges overlap — they cannot share memory. (3) Graph coloring / greedy assignment: assign buffers greedily — if an existing free buffer is large enough for a new tensor and their ranges don't overlap, reuse it. Otherwise, allocate a new buffer. (4) Alignment: ensure all buffers meet hardware alignment requirements (e.g., 256-byte for CUDA). Example: ResNet-50 without memory planning: 400MB peak. With memory planning: 150MB peak (tensors for skip connections reuse memory from early layers that have finished). This is the difference between fitting on a 4GB GPU vs not.</div><div class="followup"><b>Follow-up questions interviewers ask:</b><ul><li>How does memory planning handle skip connections (residual paths)?</li><li>What is the difference between static and dynamic memory planning?</li><li>How does gradient checkpointing apply the same idea to training?</li></ul></div></div>
+    <div class="pagination"><a href="part08.html">← Part 08</a><a href="part10.html">Part 10 →</a></div>
+  </div>
+</div>
+<button id="btt">↑</button>
+<script>
+document.querySelectorAll('pre').forEach(p=>{
+  const b=document.createElement('button');b.className='copy-btn';b.textContent='Copy';
+  p.appendChild(b);b.onclick=()=>{navigator.clipboard.writeText(p.innerText.replace('Copy','').trim())
+  .then(()=>{b.textContent='Copied!';setTimeout(()=>b.textContent='Copy',2000);});};});
+const btt=document.getElementById('btt');
+window.addEventListener('scroll',()=>btt&&btt.classList.toggle('show',scrollY>300));
+btt&&btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+const si=document.getElementById('search');
+if(si)si.addEventListener('input',function(){const q=this.value.toLowerCase();
+  document.querySelectorAll('.part-card').forEach(c=>c.style.display=
+    c.textContent.toLowerCase().includes(q)?'':'none');});
+</script></body></html>

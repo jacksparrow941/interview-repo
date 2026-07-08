@@ -1,0 +1,781 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Part I: C++ Mastery — C++ Interview Handbook</title>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<div style="background:#0f172a;border-bottom:1px solid #334155;padding:8px 20px;
+  display:flex;align-items:center;gap:16px;font-size:13px;position:fixed;top:0;left:0;right:0;z-index:400;height:38px">
+  <a href="../index.html" style="color:#3b82f6;font-weight:600;text-decoration:none;
+     display:flex;align-items:center;gap:6px">
+    <span>⚡</span><span>InterviewRepo</span>
+  </a>
+  <span style="color:#334155">|</span>
+  <a href="index.html" style="color:#94a3b8;text-decoration:none">📘 C++ Master Handbook</a>
+  <span style="color:#334155;margin-left:auto;font-size:11px;color:#475569">
+    C++ · Multithreading · OS · Networks · AI Runtime · Embedded · 150 Problems
+  </span>
+</div>
+<nav id="sidebar"><div class="sb-head"><b>C++ Handbook</b><br><small>15 Parts · 150 Problems</small></div><a href="index.html" >🏠 Table of Contents</a>
+<a href="part01.html" class="active"><span class="badge" style="background:#1a2744">01</span>Part I: C++ Mastery</a>
+<a href="part02.html"><span class="badge" style="background:#065f46">02</span>Part II: Multithreading & Concurrency</a>
+<a href="part03.html"><span class="badge" style="background:#7c3aed">03</span>Part III: Operating Systems</a>
+<a href="part04.html"><span class="badge" style="background:#0e7490">04</span>Part IV: Computer Networks</a>
+<a href="part05.html"><span class="badge" style="background:#92400e">05</span>Part V: Linux & Performance Tools</a>
+<a href="part06.html"><span class="badge" style="background:#1e40af">06</span>Part VI: Distributed Systems</a>
+<a href="part07.html"><span class="badge" style="background:#b45309">07</span>Part VII: System Design</a>
+<a href="part08.html"><span class="badge" style="background:#be185d">08</span>Part VIII: Compiler Internals</a>
+<a href="part09.html"><span class="badge" style="background:#0f766e">09</span>Part IX: AI Runtime</a>
+<a href="part10.html"><span class="badge" style="background:#4338ca">10</span>Part X: Embedded Systems</a>
+<a href="part11.html"><span class="badge" style="background:#0369a1">11</span>Part XI: DevOps & Tools</a>
+<a href="part12.html"><span class="badge" style="background:#1e3a5f">12</span>Part XII: Coding Interviews — 150 Problems</a>
+<a href="part13.html"><span class="badge" style="background:#3f1f69">13</span>Part XIII: Behavioral & STAR</a>
+<a href="part14.html"><span class="badge" style="background:#064e3b">14</span>Part XIV: Resume Deep Dive</a>
+<a href="part15.html"><span class="badge" style="background:#7f1d1d">15</span>Part XV: Company-Specific</a>
+</nav>
+<div id="main">
+  <div id="topbar"><div class="tb-title" style="border-left:4px solid #1a2744;padding-left:12px">Part I: C++ Mastery</div></div>
+  <div id="content">
+    <h1 class="part-title">Part I: C++ Mastery</h1>
+    <p class="subtitle">Part I</p><hr class="divider">
+    <h2 class="chap">Chapter 1 — C++ Fundamentals</h2><p>C++ is a statically typed, compiled, multi-paradigm language. Every C++ program goes through the same deterministic pipeline before a single instruction executes.</p><h3 class="sec">1.1 Compilation Pipeline</h3><div class="diagram">Source.cpp
+   │ cpp (Preprocessor)  — #include, #define, macros, conditional compilation
+   │
+Expanded Source
+   │ cc1 (Compiler)      — Lexing → Parsing → Semantic → IR → Assembly
+   │
+Assembly (.s)
+   │ as  (Assembler)     — .s → relocatable object (.o)
+   │
+Object (.o)
+   │ ld  (Linker)        — resolve symbols, merge .text/.data, emit ELF/PE
+   │
+Executable / .so / .a</div><div class="note">📌 <b>Note:</b> Each .cpp file is compiled independently into one .o — this is why you can't use a type defined only in another .cpp without a header declaration.</div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// Always compile with warnings and debug info during development
+g++ -std=c++17 -Wall -Wextra -Wpedantic -Werror -g -O2 main.cpp -o app
+
+// Check preprocessed output when macros misbehave
+g++ -E main.cpp | grep -A5 'my_macro'
+
+// See what the linker does
+g++ -v main.cpp -o app   // shows every sub-command
+nm app | grep " U "      // show undefined (unresolved) symbols</code></pre><div class="ex-why">✅ Why this works: Treating warnings as errors catches bugs at compile time, not at runtime. -g embeds debug info without hurting release performance at -O2.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// Compiling without warnings — silent bugs slip through
+g++ main.cpp -o app
+
+// Then spending 3 hours debugging a signed/unsigned comparison bug
+// that -Wsign-compare would have caught instantly</code></pre><div class="ex-why bad-why">❌ Why this fails: Without -Wall -Wextra you miss: signed/unsigned comparison, unused variables, shadowed variables, uninitialized use — all common interview bug sources.</div></div><h3 class="sec">1.2 Memory Segments</h3><div class="diagram">High address
+┌─────────────────────────────────────────┐
+│  Stack   │ Local vars, return addr, frame ptr. LIFO. Fast.  │
+│          │ Default 8MB on Linux. Stack overflow = SIGSEGV.  │
+├──────────┼─────────────────────────────────────────────────┤
+│  (gap)   │ Grows toward each other. OS catches collision.   │
+├──────────┼─────────────────────────────────────────────────┤
+│  Heap    │ new/malloc. Grows upward. Manual or RAII mgmt.  │
+├──────────┼─────────────────────────────────────────────────┤
+│  .BSS    │ Uninitialised globals/statics — zeroed by OS.   │
+├──────────┼─────────────────────────────────────────────────┤
+│  .Data   │ Initialised globals/statics — loaded from ELF.  │
+├──────────┼─────────────────────────────────────────────────┤
+│  .Text   │ Executable code. Read-only, shared between PIDs.│
+└─────────────────────────────────────────────────────────────┘
+Low address</div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// Stack: automatic, fast, safe — prefer for small local data
+void process(const std::vector&lt;int&gt;&amp; data) {
+    int count = 0;            // stack: 4 bytes
+    double average = 0.0;     // stack: 8 bytes
+    for (int x : data) { average += x; ++count; }
+    return average / count;   // automatic cleanup on return
+}
+
+// Heap: needed for dynamic size or long-lived data
+std::vector&lt;Widget&gt; load_from_db() {
+    std::vector&lt;Widget&gt; result;       // heap internally managed by vector
+    result.reserve(expected_count);   // one allocation
+    for (auto&amp; row : db_query()) result.emplace_back(row);
+    return result;   // NRVO: no copy, moves heap buffer out
+}</code></pre><div class="ex-why">✅ Why this works: Stack allocation is O(1) — just decrement stack pointer. Heap allocation searches free lists. Default to stack; use heap only when size is unknown or lifetime exceeds scope.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// BAD: allocating large array on stack → stack overflow
+void bad_function() {
+    int huge_array[10'000'000];  // 40MB on stack! Default stack is 8MB.
+    // SIGSEGV — stack overflow at runtime, hard to debug
+}
+
+// BAD: using raw pointer for heap — manual responsibility
+Widget* create() {
+    Widget* w = new Widget();
+    // ...if exception thrown here...
+    delete w;        // ← never reached → LEAK
+    return nullptr;
+}</code></pre><div class="ex-why bad-why">❌ Why this fails: Large stack allocations cause silent crashes. Raw new/delete requires you to track every exit path — exceptions make this nearly impossible without RAII.</div></div><h3 class="sec">1.3 References vs Pointers — When to Use Which</h3><div class="tbl"><table><thead><tr><th>Property</th><th>Reference (int& r)</th><th>Pointer (int* p)</th></tr></thead><tbody><tr><td>Can be null?</td><td>No — always bound to a valid object</td><td>Yes — nullptr is valid</td></tr><tr><td>Can be rebound?</td><td>No — bound at init forever</td><td>Yes — p = &y; any time</td></tr><tr><td>Pointer arithmetic?</td><td>No</td><td>Yes — p++ moves to next element</td></tr><tr><td>Syntax to use</td><td>x directly (no dereference)</td><td>*p or p->member</td></tr><tr><td>Use case</td><td>Function parameters, aliases, range-for</td><td>Optional values, arrays, polymorphism</td></tr></tbody></table></div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// Use reference when:
+// 1. Parameter is always required (non-optional)
+void print_sorted(std::vector&lt;int&gt;&amp; v) {
+    std::sort(v.begin(), v.end());   // modifies caller's vector
+    for (int x : v) std::cout &lt;&lt; x &lt;&lt; ' ';
+}
+
+// 2. Output parameter (prefer return value in C++17, but reference works)
+bool find_user(int id, User&amp; out) {   // out: valid only if returns true
+    auto it = db_.find(id);
+    if (it == db_.end()) return false;
+    out = it-&gt;second;
+    return true;
+}
+
+// Use const ref to avoid copy for large types
+void log(const std::string&amp; msg) { ... }   // no copy of string</code></pre><div class="ex-why">✅ Why this works: Reference communicates 'this is required, not optional'. const& communicates 'read-only, no copy'.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// BAD: returning reference to local variable — dangling reference
+const int&amp; bad_ref() {
+    int local = 42;
+    return local;   // local destroyed at }, reference is dangling
+}   // UB: reading the returned reference is undefined behavior
+
+// BAD: using pointer when object is always present
+void print_value(int* p) {   // caller has to wonder: can p be null?
+    if (!p) return;          // unnecessary null check every call
+    std::cout &lt;&lt; *p;
+}
+// Better: void print_value(int v) or void print_value(const int&amp; v)</code></pre><div class="ex-why bad-why">❌ Why this fails: Dangling references are the #1 source of segfaults. Use reference when the object IS guaranteed to exist — use pointer (or optional) when it might not.</div></div><h2 class="chap">Chapter 2 — Object-Oriented Programming</h2><h3 class="sec">2.1 The Rule of Five — Why Every Piece Matters</h3><p>When a class manages a resource (heap memory, file handle, socket, mutex), the compiler-generated special members do <em>shallow copies</em>. You must implement all five: destructor, copy constructor, copy assignment, move constructor, move assignment.</p><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>class Buffer {
+    int*   data_;
+    size_t size_;
+public:
+    // 1. Constructor
+    explicit Buffer(size_t n) : data_(new int[n]), size_(n) {
+        std::fill(data_, data_ + n, 0);
+    }
+
+    // 2. Destructor — releases the resource
+    ~Buffer() { delete[] data_; }
+
+    // 3. Copy constructor — deep copy (independent copy of data)
+    Buffer(const Buffer&amp; o)
+        : data_(new int[o.size_]), size_(o.size_) {
+        std::copy(o.data_, o.data_ + size_, data_);
+    }
+
+    // 4. Copy assignment — copy-and-swap (strong exception guarantee)
+    Buffer&amp; operator=(Buffer o) {   // takes by value → invokes copy ctor
+        std::swap(data_, o.data_);
+        std::swap(size_, o.size_);
+        return *this;               // o's destructor frees old data
+    }
+
+    // 5. Move constructor — steal: O(1), no allocation
+    Buffer(Buffer&amp;&amp; o) noexcept
+        : data_(o.data_), size_(o.size_) {
+        o.data_ = nullptr;   // leave source in valid-but-empty state
+        o.size_ = 0;
+    }
+
+    // Move assignment — covered by copy assignment (value param uses move)
+};</code></pre><div class="ex-why">✅ Why this works: Copy-and-swap gives strong exception guarantee and eliminates code duplication. Move is O(1) — critical for performance when inserting into containers.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// BAD: compiler-generated copy → shallow copy → double-free
+class BadBuffer {
+    int*   data_;
+    size_t size_;
+public:
+    explicit BadBuffer(size_t n) : data_(new int[n]), size_(n) {}
+    ~BadBuffer() { delete[] data_; }
+    // No copy constructor, no copy assignment defined
+    // Compiler generates: data_ = other.data_  ← SHALLOW COPY!
+};
+
+BadBuffer a(10);
+BadBuffer b = a;   // b.data_ == a.data_ — same pointer!
+// When b is destroyed: delete[] b.data_
+// When a is destroyed: delete[] a.data_  ← DOUBLE FREE → crash</code></pre><div class="ex-why bad-why">❌ Why this fails: The compiler silently generates a shallow-copy that looks correct but crashes on destruction. Always define all five when you define a destructor.</div></div><h3 class="sec">2.2 Virtual Functions, VTable, and Virtual Destructors</h3><div class="diagram">Animal object in memory:
+┌──────────────────────────────────────────────┐
+│  vptr  ───────────────────────────────────────┼──► Animal VTable
+│  (8 bytes, offset 0)                          │    [0] &Animal::speak
+│  name_  = "Leo"                               │    [1] &Animal::~Animal
+└──────────────────────────────────────────────┘
+
+Dog object (inherits Animal):
+┌──────────────────────────────────────────────┐
+│  vptr  ───────────────────────────────────────┼──► Dog VTable
+│  name_  = "Rex"          (Animal part)        │    [0] &Dog::speak   ← overrides
+│  breed_ = "Labrador"     (Dog part)           │    [1] &Dog::~Dog    ← overrides
+└──────────────────────────────────────────────┘
+
+Call:  animal_ptr->speak();
+  CPU: load vptr from *animal_ptr
+       load function pointer from vptr[0]
+       indirect call   ← ~1-3 extra cycles vs static dispatch</div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>struct Animal {
+    std::string name_;
+    explicit Animal(std::string n) : name_(std::move(n)) {}
+
+    virtual void speak() const = 0;   // pure virtual → abstract class
+
+    // CRITICAL: virtual destructor so delete works correctly through base ptr
+    virtual ~Animal() = default;
+};
+
+struct Dog : Animal {
+    std::string breed_;
+    Dog(std::string n, std::string b)
+        : Animal(std::move(n)), breed_(std::move(b)) {}
+
+    void speak() const override {          // override catches typos at compile time
+        std::cout &lt;&lt; name_ &lt;&lt; " says: Woof! (breed: " &lt;&lt; breed_ &lt;&lt; ")
+";
+    }
+};
+
+// Polymorphic usage
+std::vector&lt;std::unique_ptr&lt;Animal&gt;&gt; zoo;
+zoo.push_back(std::make_unique&lt;Dog&gt;("Rex", "Labrador"));
+zoo.push_back(std::make_unique&lt;Cat&gt;("Whiskers", "Persian"));
+
+for (const auto&amp; a : zoo)
+    a-&gt;speak();   // correct method called for each type
+// Destructors called correctly: ~Dog(), ~Cat() through virtual ~Animal()</code></pre><div class="ex-why">✅ Why this works: override keyword verifies at compile time that you're actually overriding a virtual function — prevents silent bugs from misspelled function names.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// BAD 1: Forgetting virtual destructor → resource leak
+struct BadBase {
+    virtual void work() {}
+    ~BadBase() {}   // NOT virtual!
+};
+struct Derived : BadBase {
+    int* big_buffer = new int[1000000];
+    ~Derived() { delete[] big_buffer; }  // NEVER called if deleted via BadBase*
+};
+BadBase* b = new Derived();
+delete b;   // calls ~BadBase() only → big_buffer LEAKS → 4MB leak every call
+
+// BAD 2: Forgetting 'override' → silent virtual shadowing
+struct Animal2 {
+    virtual void speak() const {}
+};
+struct Dog2 : Animal2 {
+    void Speak() const {}  // typo! capital S — doesn't override, compiles silently
+};
+Animal2* a = new Dog2();
+a-&gt;speak();  // calls Animal2::speak() — Dog2::Speak() is never called!</code></pre><div class="ex-why bad-why">❌ Why this fails: Missing virtual destructor causes resource leaks that only show under Valgrind. Missing override causes silent polymorphism failures — both are extremely common bugs.</div></div><h2 class="chap">Chapter 3 — Memory Management</h2><h3 class="sec">3.1 Smart Pointers — Choosing the Right Tool</h3><div class="tbl"><table><thead><tr><th>Smart Pointer</th><th>Meaning</th><th>When to Use</th><th>Overhead</th></tr></thead><tbody><tr><td>unique_ptr<T></td><td>I am the sole owner. Transfer with std::move.</td><td>Single owner — default choice</td><td>Zero: same as raw pointer</td></tr><tr><td>shared_ptr<T></td><td>Multiple owners share object. Ref-counted.</td><td>Shared ownership: caches, graphs, async tasks</td><td>~2x: atomic refcount incr/decr</td></tr><tr><td>weak_ptr<T></td><td>Observer. Doesn't extend lifetime.</td><td>Break shared_ptr cycles; optional references</td><td>Minimal: checks control block</td></tr><tr><td>Raw T*</td><td>Non-owning observer only.</td><td>Function parameters, iterators</td><td>Zero</td></tr></tbody></table></div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// unique_ptr: most common — zero overhead, exclusive ownership
+auto widget = std::make_unique&lt;Widget&gt;(42, "hello");
+widget-&gt;process();   // access directly
+// Automatically deleted when widget goes out of scope
+
+// Transfer ownership explicitly
+auto moved = std::move(widget);   // widget is now nullptr
+// This makes ownership transfer visible in code
+
+// shared_ptr: when ownership is genuinely shared
+class Cache {
+    std::unordered_map&lt;int, std::shared_ptr&lt;Data&gt;&gt; store_;
+public:
+    std::shared_ptr&lt;Data&gt; get(int id) {
+        return store_[id];   // caller and cache share ownership
+    }
+};
+
+// weak_ptr: break cycles, or safe observation
+class Node {
+    std::shared_ptr&lt;Node&gt; next_;
+    std::weak_ptr&lt;Node&gt;   parent_;   // WEAK: no cycle → no leak
+public:
+    void visit_parent() {
+        if (auto p = parent_.lock())   // lock() returns shared_ptr if alive
+            p-&gt;process();
+        // else: parent was deleted, we handle gracefully
+    }
+};</code></pre><div class="ex-why">✅ Why this works: make_unique and make_shared are exception-safe (no raw new) and for shared_ptr, they make one allocation instead of two.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// BAD 1: Raw new/delete — manual tracking across all code paths
+Widget* w = new Widget();
+if (!w-&gt;init()) {
+    delete w;        // easy to forget every exit path
+    return;
+}
+// ... exception thrown here ...
+delete w;            // ← never reached → LEAK
+
+// BAD 2: shared_ptr for everything — unnecessary overhead
+// shared_ptr has atomic reference counting (~30ns per incr/decr)
+// Wrong when object has a single clear owner:
+std::shared_ptr&lt;int&gt; x = std::make_shared&lt;int&gt;(5);  // overkill — use unique_ptr
+// Especially wrong in tight loops or hot paths
+
+// BAD 3: shared_ptr cycle → memory never freed
+class Bad {
+    std::shared_ptr&lt;Bad&gt; other_;   // circular: A→B→A → refcount never reaches 0
+};</code></pre><div class="ex-why bad-why">❌ Why this fails: Shared pointer cycles are the most insidious memory leak — they don't show up as 'leaked' in simple tools because the reference count just never reaches zero. Always use weak_ptr for back-references.</div></div><h3 class="sec">3.2 RAII — The C++ Way to Manage Resources</h3><p>RAII (Resource Acquisition Is Initialization): bind a resource's lifetime to an object's lifetime. Constructor acquires, destructor releases. Works correctly even when exceptions are thrown.</p><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// RAII file handle — no manual close() needed
+class FileHandle {
+    FILE* f_;
+public:
+    explicit FileHandle(const char* path, const char* mode)
+        : f_(fopen(path, mode)) {
+        if (!f_) throw std::system_error(errno, std::system_category());
+    }
+    ~FileHandle() noexcept { if (f_) fclose(f_); }  // always closes
+
+    FILE* get() const { return f_; }
+
+    // Non-copyable (resource is unique)
+    FileHandle(const FileHandle&amp;) = delete;
+    FileHandle&amp; operator=(const FileHandle&amp;) = delete;
+
+    // Movable (transfer ownership)
+    FileHandle(FileHandle&amp;&amp; o) noexcept : f_(o.f_) { o.f_ = nullptr; }
+};
+
+void process_log(const char* path) {
+    FileHandle file(path, "r");   // acquired
+    char buf[256];
+    while (fgets(buf, sizeof(buf), file.get()))
+        parse_line(buf);
+}   // file destructor called here — even if parse_line() throws!</code></pre><div class="ex-why">✅ Why this works: The key benefit: the destructor runs regardless of how the function exits — normal return, exception, early return. No code path can skip cleanup.</div></div><h2 class="chap">Chapter 4 — Modern C++ (11/14/17/20)</h2><h3 class="sec">4.1 Move Semantics — Understanding Rvalue References</h3><p>Move semantics allow transferring resources from a temporary or explicitly-moved object instead of copying them. This makes returning large objects from functions free.</p><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// GOOD: move semantics — O(1) transfer of heap resource
+class BigMatrix {
+    double* data_;
+    size_t  rows_, cols_;
+public:
+    BigMatrix(size_t r, size_t c)
+        : data_(new double[r*c]), rows_(r), cols_(c) {}
+    ~BigMatrix() { delete[] data_; }
+
+    // Move constructor: steal pointer, leave source empty
+    BigMatrix(BigMatrix&amp;&amp; o) noexcept
+        : data_(o.data_), rows_(o.rows_), cols_(o.cols_) {
+        o.data_ = nullptr;   // must leave source in valid state
+        o.rows_ = 0; o.cols_ = 0;
+    }
+};
+
+// Return value optimization — zero copies
+BigMatrix compute() {
+    BigMatrix result(1000, 1000);   // 8MB on heap
+    fill_matrix(result);
+    return result;   // NRVO: no copy at all. Just pointer transfer.
+}
+BigMatrix m = compute();   // 8MB matrix returned with zero memcpy</code></pre><div class="ex-why">✅ Why this works: Move is O(1) — just pointer swap. Copy would be O(n) — allocates new memory and copies every element. For a 1000x1000 matrix, this is the difference between nanoseconds and milliseconds.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// BAD: std::move on a variable you use afterwards
+std::string name = "Alice";
+auto other = std::move(name);   // name is now in "valid-but-unspecified" state
+
+std::cout &lt;&lt; name.length();  // UNDEFINED — name was moved from!
+// name might be empty, might crash, might print garbage
+
+// BAD: std::move on a return value — DISABLES NRVO!
+BigMatrix make() {
+    BigMatrix result(1000, 1000);
+    return std::move(result);   // forces move, prevents copy elision
+    // Without std::move: compiler uses NRVO (zero copies)
+    // With std::move: one move operation (unnecessary overhead)
+}</code></pre><div class="ex-why bad-why">❌ Why this fails: Never use std::move on a local variable you're about to return — you disable NRVO (Named Return Value Optimization) which would have been even more efficient.</div></div><h3 class="sec">4.2 Lambda Expressions — Capture Modes Explained</h3><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// Capture by value [=]: independent copy, safe across threads
+int threshold = 100;
+auto filter = [threshold](int x) { return x &gt; threshold; };
+threshold = 999;   // doesn't affect filter — it has its own copy
+auto result = std::find_if(v.begin(), v.end(), filter);
+
+// Capture by reference [&amp;]: efficient but careful with lifetime
+void process_batch(std::vector&lt;int&gt;&amp; data) {
+    int sum = 0;
+    std::for_each(data.begin(), data.end(),
+        [&amp;sum](int x) { sum += x; });   // [&amp;sum]: capture only sum by ref
+    log("sum = ", sum);
+}   // sum still alive — reference is safe here
+
+// Init capture (C++14): move a non-copyable object into lambda
+auto ptr = std::make_unique&lt;Widget&gt;(42);
+auto task = [w = std::move(ptr)]() { w-&gt;run(); };   // owns unique_ptr
+// ptr is nullptr here; task owns the Widget
+submit_async(std::move(task));</code></pre><div class="ex-why">✅ Why this works: Prefer capturing only what you need: [&sum] instead of [&]. Wide captures [&] in async tasks are a common data race source.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// BAD: capture local by reference, use after destruction
+auto make_adder(int x) {
+    return [&amp;x](int y) { return x + y; };  // x is local! dies at return.
+}
+auto add5 = make_adder(5);
+add5(3);   // DANGLING REFERENCE — x no longer exists. UB.
+
+// BAD: capturing 'this' by value in async task
+class Server {
+    int port_ = 8080;
+    void start() {
+        // BUG: 'this' is a pointer — object might be destroyed before task runs
+        pool_.submit([this]() { use_port(port_); });
+        // If Server is destroyed before task runs → use-after-free
+        // Fix: [self = shared_from_this()]() { self-&gt;use_port(self-&gt;port_); }
+    }
+};</code></pre><div class="ex-why bad-why">❌ Why this fails: The most common lambda bug: capturing a local variable by reference, then returning or storing the lambda. The reference outlives the variable — undefined behavior every time.</div></div><h2 class="chap">Chapter 5 — STL Containers Deep Dive</h2><h3 class="sec">5.1 std::vector — Why It's 99% of the Time the Right Choice</h3><p>vector stores elements contiguously in heap memory. This makes it cache-friendly, fast to iterate, and the default choice unless you have a specific reason for another container.</p><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// Always reserve when you know approximate size
+std::vector&lt;int&gt; numbers;
+numbers.reserve(10000);   // one allocation instead of ~14 reallocations
+for (int i = 0; i &lt; 10000; ++i)
+    numbers.push_back(i);   // no reallocation — just increment size and write
+
+// emplace_back: construct in-place, no copy/move
+std::vector&lt;std::pair&lt;std::string, int&gt;&gt; pairs;
+pairs.emplace_back("alice", 42);   // constructs pair directly in vector storage
+// vs push_back: creates temporary pair, then copies/moves it in
+
+// Shrink when done inserting to release unused capacity
+numbers.shrink_to_fit();   // hint to reduce capacity to size</code></pre><div class="ex-why">✅ Why this works: reserve() prevents O(n log n) total copies during growth. Without it, each doubling copies all elements — 1+2+4+8+...+n = O(n) copies for n pushes, but with hidden constant costs.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// BAD: inserting at the front — O(n) every time!
+std::vector&lt;int&gt; v = {2, 3, 4, 5};
+v.insert(v.begin(), 1);   // shifts ALL elements right — O(n)
+// For 100K elements: 100K moves per insert → O(n^2) for n inserts
+// Use std::deque if you need efficient front insertion
+
+// BAD: holding iterator after modifying vector
+auto it = v.begin();   // iterator points into v's buffer
+v.push_back(99);       // MAY trigger reallocation — new buffer
+*it = 42;              // DANGLING ITERATOR — it points to freed memory!
+// Rule: any modifying operation may invalidate iterators
+
+// BAD: searching in unsorted vector when you need O(log n)
+// std::find is O(n). For repeated search: sort + binary_search, or use set</code></pre><div class="ex-why bad-why">❌ Why this fails: Iterator invalidation is the most common vector bug. After any modifying operation (push_back, insert, erase), all iterators to that vector may be invalid.</div></div><h3 class="sec">5.2 Choosing the Right Container</h3><div class="tbl"><table><thead><tr><th>Use case</th><th>Best Container</th><th>Why</th></tr></thead><tbody><tr><td>Fast random access by index</td><td>vector</td><td>Contiguous memory, O(1) access</td></tr><tr><td>Fast insert/delete at front AND back</td><td>deque</td><td>Two-ended, O(1) both ends</td></tr><tr><td>Fast insert/delete anywhere by iterator</td><td>list</td><td>O(1) splice, no element movement</td></tr><tr><td>Ordered key→value, iterate in order</td><td>map</td><td>Red-black tree, O(log n)</td></tr><tr><td>Fastest key→value, order doesn't matter</td><td>unordered_map</td><td>Hash table, O(1) avg</td></tr><tr><td>Unique elements, fast membership test</td><td>unordered_set</td><td>Hash set, O(1) contains</td></tr><tr><td>Priority queue (always get max/min)</td><td>priority_queue</td><td>Heap, O(1) top, O(log n) push</td></tr></tbody></table></div><h2 class="chap">Chapter 6 — Templates</h2><h3 class="sec">6.1 Function Templates — How Type Deduction Works</h3><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// Basic function template
+template&lt;typename T&gt;
+T max_val(T a, T b) {
+    return (a &gt; b) ? a : b;
+}
+// Compiler generates separate functions for each type used:
+max_val(3, 5);          // T=int:    int max_val(int, int)
+max_val(3.0, 5.0);      // T=double: double max_val(double, double)
+max_val(std::string("a"), std::string("b"));   // T=std::string
+
+// Template with multiple type parameters
+template&lt;typename Container, typename Predicate&gt;
+auto count_if_fast(const Container&amp; c, Predicate pred)
+    -&gt; typename Container::size_type {
+    typename Container::size_type n = 0;
+    for (const auto&amp; elem : c)
+        if (pred(elem)) ++n;
+    return n;
+}
+
+// Constexpr template: compile-time factorial
+template&lt;int N&gt;
+constexpr int factorial() { return N * factorial&lt;N-1&gt;(); }
+template&lt;&gt;
+constexpr int factorial&lt;0&gt;() { return 1; }
+static_assert(factorial&lt;5&gt;() == 120);  // verified at compile time</code></pre><div class="ex-why">✅ Why this works: Templates generate code for each instantiation — 'zero overhead abstraction'. The generated code is as efficient as a hand-written specific version.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// BAD: template in .cpp file — linker error
+// widget.h:
+template&lt;typename T&gt; void process(T val);
+
+// widget.cpp:
+template&lt;typename T&gt; void process(T val) { ... }  // definition in .cpp
+
+// main.cpp:
+process(42);   // LINKER ERROR: undefined reference to process&lt;int&gt;
+// The template was only instantiated in widget.cpp, not visible to linker
+
+// Fix: template definitions MUST be in header files (visible at point of use)
+// Or: explicit instantiation at end of .cpp:
+// template void process&lt;int&gt;(int);
+// template void process&lt;double&gt;(double);</code></pre><div class="ex-why bad-why">❌ Why this fails: Templates are instantiated at the point of use — the compiler needs the full definition. This is why template code lives in headers, unlike regular functions.</div></div><h2 class="chap">Chapter 7 — Exception Handling</h2><h3 class="sec">7.1 Exception Safety Levels</h3><div class="tbl"><table><thead><tr><th>Level</th><th>Guarantee</th><th>Example</th></tr></thead><tbody><tr><td>No guarantee</td><td>May leave object in invalid state</td><td>Avoid this level entirely</td></tr><tr><td>Basic (weak)</td><td>No leaks, object in valid (unspecified) state</td><td>Acceptable for many operations</td></tr><tr><td>Strong</td><td>Commit or rollback — as-if operation never happened</td><td>Copy-and-swap, transactional ops</td></tr><tr><td>Nothrow</td><td>Never throws — marked noexcept</td><td>Swap, move, destructors</td></tr></tbody></table></div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// Strong exception guarantee via copy-and-swap
+class Config {
+    std::map&lt;std::string, std::string&gt; data_;
+public:
+    // This either FULLY succeeds or leaves Config unchanged
+    void update(const Config&amp; other) {
+        Config tmp = other;      // copy (may throw — Config unchanged if it does)
+        std::swap(data_, tmp.data_);  // noexcept — can't fail
+    }
+
+    // noexcept: move and swap are always safe
+    Config(Config&amp;&amp;) noexcept = default;
+    Config&amp; operator=(Config&amp;&amp;) noexcept = default;
+};
+
+// Custom exception hierarchy
+struct AppError : std::runtime_error {
+    int code;
+    AppError(int c, const std::string&amp; msg)
+        : std::runtime_error(msg), code(c) {}
+};
+struct NetworkError : AppError {
+    std::string url;
+    NetworkError(int c, std::string u, const std::string&amp; msg)
+        : AppError(c, msg), url(std::move(u)) {}
+};</code></pre><div class="ex-why">✅ Why this works: noexcept on move constructors/assignment enables optimizations: std::vector uses move instead of copy during resize only if the move is noexcept. Without noexcept, vector falls back to copying.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// BAD: catching by value — slices derived exceptions
+try {
+    throw NetworkError(404, "https://api.com", "not found");
+} catch (AppError e) {   // BAD: catches by value — copies and SLICES
+    // e is an AppError, not a NetworkError — derived part is lost
+    // e.url doesn't exist!
+}
+
+// BAD: swallowing exceptions silently
+try {
+    risky_operation();
+} catch (...) {}   // catches EVERYTHING and does nothing
+// Now the caller has no idea something went wrong
+
+// BAD: throwing from destructor
+struct Bad {
+    ~Bad() { throw std::runtime_error("oh no"); }   // NEVER do this!
+};
+// If another exception is in flight and Bad is destroyed:
+// Two active exceptions → std::terminate() → program crashes</code></pre><div class="ex-why bad-why">❌ Why this fails: Catching by value slices polymorphic exceptions — always catch by const reference. Destructors must never throw — if an exception is propagating and another is thrown during stack unwinding, std::terminate is called.</div></div><h2 class="chap">Chapter 8 — Design Patterns</h2><h3 class="sec">8.1 RAII Mutex Lock — Simplest Pattern, Highest Impact</h3><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// GOOD: std::lock_guard — automatic RAII mutex management
+class Counter {
+    mutable std::mutex mtx_;
+    int value_ = 0;
+public:
+    void increment() {
+        std::lock_guard&lt;std::mutex&gt; lock(mtx_);  // locked here
+        ++value_;
+    }   // lock released here automatically — even if exception thrown
+
+    int get() const {
+        std::lock_guard&lt;std::mutex&gt; lock(mtx_);
+        return value_;
+    }
+};</code></pre><div class="ex-why">✅ Why this works: lock_guard's destructor releases the mutex regardless of how the scope exits. It's impossible to forget to unlock.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// BAD: manual mutex management — easy to forget unlock
+class BadCounter {
+    std::mutex mtx_;
+    int value_ = 0;
+public:
+    void increment() {
+        mtx_.lock();
+        if (check_limit()) {
+            mtx_.unlock();   // must remember to unlock in every branch
+            return;
+        }
+        ++value_;
+        mtx_.unlock();       // and here
+        // If ++value_ throws? unlock never called → DEADLOCK
+    }
+};</code></pre><div class="ex-why bad-why">❌ Why this fails: With manual lock()/unlock(), every early return, every exception, every code path needs an explicit unlock. Miss one → deadlock. Use RAII locks always.</div></div><h2 class="chap">Interview Q&amp;A — C++ Mastery</h2><div class="qa"><div class="question">❓ What is the Rule of Five and when do you need it?</div><div class="answer">The Rule of Five applies to any class that manually manages a resource (heap memory, file handles, sockets, mutexes). The five are: destructor, copy constructor, copy assignment, move constructor, move assignment. The compiler-generated versions do shallow copies: <code>data_ = other.data_</code> — two objects now share the same pointer. When either is destroyed, it frees the shared memory; the other now has a dangling pointer. Solution 1: Rule of Five — implement all five correctly. Solution 2: Rule of Zero — use only RAII wrappers (unique_ptr, vector, string) and let the compiler generate correct versions.</div><div class="followup"><b>Follow-up questions interviewers ask:</b><ul><li>What is copy-and-swap idiom and why is it safe?</li><li>What does =delete do? When would you use it?</li><li>Can you have a class that is movable but not copyable?</li></ul></div><div class="followup" style="background:#fef2f2;border-color:#fca5a5"><b>Common mistakes in answers:</b><ul><li>Saying 'I don't need it because I use smart pointers' — that's the Rule of Zero, not Rule of Five — know the distinction.</li><li>Forgetting that std::vector, std::string already follow Rule of Five, so wrapping them requires no special member functions.</li></ul></div></div><div class="qa"><div class="question">❓ Explain move semantics. What is the moved-from state?</div><div class="answer">Move semantics allow transferring a resource from one object to another in O(1) instead of copying it in O(n). Enabled by rvalue references (T&&). std::move() is just a cast to T&& — it doesn't move anything; the move constructor or move assignment does the actual transfer. After a move, the source object is in a 'valid-but-unspecified state' — it's safe to destroy and safe to assign to, but reading its value is unspecified. For std::string: moved-from string might be empty or might not — don't assume. Key performance impact: returning a vector<Widget> from a function moves the internal buffer — one pointer assignment vs copying all elements.</div><div class="followup"><b>Follow-up questions interviewers ask:</b><ul><li>What is NRVO and how does it relate to move semantics?</li><li>When does std::vector use move instead of copy during resize?</li><li>What is perfect forwarding and std::forward?</li></ul></div><div class="followup" style="background:#fef2f2;border-color:#fca5a5"><b>Common mistakes in answers:</b><ul><li>Saying 'moved object is invalid' — it's valid-but-unspecified, not invalid. You CAN assign to it again.</li><li>Using std::move on a variable you're about to return — this disables NRVO, making things slower.</li></ul></div></div><h2 class="chap">Chapter 9 — C++ Version Evolution: C++11 → C++14 → C++17 → C++20</h2><p>Each C++ standard brought targeted improvements. Knowing what arrived in which version is a common interview question and lets you use the right feature for the right toolchain.</p><div class="tbl"><table><thead><tr><th>Standard</th><th>Year</th><th>Key Theme</th><th>Most Important Additions</th></tr></thead><tbody><tr><td>C++98/03</td><td>1998/2003</td><td>Foundation</td><td>Basic templates, STL, exceptions, RTTI</td></tr><tr><td>C++11</td><td>2011</td><td>Modern C++ birth</td><td>Move semantics, lambdas, auto, range-for, smart pointers, threads, variadic templates, constexpr, nullptr, initializer lists, static_assert</td></tr><tr><td>C++14</td><td>2014</td><td>C++11 polish</td><td>Generic lambdas, auto return type, binary literals (0b1010), digit separators (1'000'000), std::make_unique, deprecated attribute</td></tr><tr><td>C++17</td><td>2017</td><td>Productivity</td><td>Structured bindings, if constexpr, fold expressions, std::optional/variant/any, parallel STL, string_view, filesystem, CTAD, [[nodiscard]]</td></tr><tr><td>C++20</td><td>2020</td><td>Concepts era</td><td>Concepts, coroutines, ranges, modules, std::span, three-way comparison (<=>), std::format, consteval, jthread</td></tr><tr><td>C++23</td><td>2023</td><td>Library catch-up</td><td>std::print, std::expected, stacktrace, ranges improvements, zip/enumerate views</td></tr></tbody></table></div><h3 class="sec">C++11 — The Revolution (What Every Engineer Must Know)</h3><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// 1. MOVE SEMANTICS + RVALUE REFERENCES (biggest performance change)
+std::vector&lt;std::string&gt; words;
+words.push_back(std::string("hello"));     // C++03: temp → copy → temp destroyed
+words.push_back(std::string("hello"));     // C++11: temp → MOVE → temp empty (O(1))
+
+// 2. AUTO — let the compiler deduce types
+auto it = v.begin();   // instead of std::vector&lt;int&gt;::iterator it = v.begin()
+auto [key, val] = my_map.begin();          // structured binding (C++17)
+
+// 3. RANGE-BASED FOR
+for (const auto&amp; elem : container) ...    // cleaner than index or iterator
+
+// 4. LAMBDAS
+auto square = [](int x) { return x * x; };
+std::sort(v.begin(), v.end(), [](int a, int b){ return a &gt; b; });
+
+// 5. SMART POINTERS (replaces raw new/delete)
+auto p = std::make_shared&lt;Widget&gt;(42);    // shared ownership
+auto u = std::make_unique&lt;Widget&gt;(42);    // exclusive ownership (C++14)
+
+// 6. NULLPTR (replaces NULL/0)
+void* p = nullptr;   // type-safe null — NULL is just 0 (int), causes ambiguity
+
+// 7. CONSTEXPR — compile-time evaluation
+constexpr int square(int x) { return x * x; }
+constexpr int s = square(5);   // evaluated at compile time, no runtime cost
+
+// 8. VARIADIC TEMPLATES
+template&lt;typename... Args&gt;
+void log(Args&amp;&amp;... args) {
+    (std::cout &lt;&lt; ... &lt;&lt; args) &lt;&lt; '
+';  // fold expression (C++17)
+}
+
+// 9. STD::THREAD
+std::thread t([]{ do_work(); });
+t.join();
+
+// 10. INITIALIZER LISTS
+std::vector&lt;int&gt; v = {1, 2, 3, 4, 5};   // list initialization everywhere</code></pre><div class="ex-why">✅ Why this works: C++11 is the baseline for all modern C++ codebases. If you write C++03-style code (raw pointers, no move, no auto), interviewers will flag it immediately.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// C++03 style — still compiles but signals outdated knowledge
+// BAD: raw pointer ownership
+Widget* w = new Widget(42);
+use(w);
+delete w;   // manual tracking, exception-unsafe
+
+// BAD: typedef instead of using
+typedef std::vector&lt;std::pair&lt;std::string, int&gt;&gt; WordCount;   // C++03
+using WordCount = std::vector&lt;std::pair&lt;std::string, int&gt;&gt;;  // C++11 — cleaner
+
+// BAD: NULL instead of nullptr
+void f(int x);
+void f(int* p);
+f(NULL);    // calls f(int)! NULL is 0 (int), ambiguous overload
+f(nullptr); // clearly calls f(int*)
+
+// BAD: 0-initialization trap
+int arr[5] = {0};  // OK: zero-initialize
+int arr2[5];       // BAD: uninitialized — reads are UB
+int arr3[5]{};     // C++11: value-initialize (zero for int) — preferred</code></pre><div class="ex-why bad-why">❌ Why this fails: NULL is an integer constant (0) — it resolves to int, not pointer, in ambiguous overloads. nullptr is a keyword of type std::nullptr_t, which converts to any pointer type.</div></div><h3 class="sec">C++14 — Small but Useful</h3><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// 1. GENERIC LAMBDAS (auto parameters)
+auto add = [](auto a, auto b) { return a + b; };
+add(1, 2);          // int
+add(1.5, 2.5);      // double
+add(std::string("a"), std::string("b"));  // string
+
+// 2. AUTO RETURN TYPE DEDUCTION
+auto compute(int x) {   // compiler deduces return type from return statement
+    if (x &gt; 0) return x * 2;    // int
+    return 0;
+}
+
+// 3. STD::MAKE_UNIQUE (missing from C++11!)
+auto p = std::make_unique&lt;Widget&gt;(42);   // exception-safe, one allocation
+
+// 4. BINARY LITERALS + DIGIT SEPARATORS
+int mask  = 0b1111'0000;           // binary with digit separator
+long big  = 1'000'000'000;         // readable million
+double pi = 3.141'592'653'589'793; // readable pi
+
+// 5. RELAXED CONSTEXPR (can have if/for/local vars)
+constexpr int factorial(int n) {
+    int result = 1;
+    for (int i = 2; i &lt;= n; ++i) result *= i;
+    return result;
+}
+// C++11 constexpr: only single return statement. C++14: full function body.</code></pre><div class="ex-why">✅ Why this works: std::make_unique was famously missing from C++11 (Herb Sutter called it an 'oversight'). C++14 added it — always use make_unique, never new.</div></div><h3 class="sec">C++17 — Productivity Leap</h3><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// 1. STRUCTURED BINDINGS — unpack tuple/pair/struct
+auto [min_val, max_val] = std::minmax_element(v.begin(), v.end());
+auto [it, inserted] = my_map.insert({"key", 42});
+if (!inserted) std::cout &lt;&lt; "already existed\n";
+
+// Iterate map without .first/.second:
+for (const auto&amp; [key, value] : my_map)
+    std::cout &lt;&lt; key &lt;&lt; ": " &lt;&lt; value &lt;&lt; "\n";
+
+// 2. IF CONSTEXPR — compile-time branching (replaces SFINAE for many cases)
+template&lt;typename T&gt;
+void serialize(const T&amp; val) {
+    if constexpr (std::is_integral_v&lt;T&gt;)
+        write_int(val);          // only compiled if T is integral
+    else if constexpr (std::is_floating_point_v&lt;T&gt;)
+        write_float(val);        // only compiled if T is float
+    else
+        write_string(val);
+}
+// vs C++11: needed complex SFINAE or tag dispatch for same effect
+
+// 3. STD::OPTIONAL — nullable value without pointer
+std::optional&lt;User&gt; find_user(int id) {
+    auto it = db_.find(id);
+    if (it == db_.end()) return std::nullopt;  // no user
+    return it-&gt;second;                          // has user
+}
+if (auto user = find_user(42)) {
+    process(*user);    // dereference optional
+}
+
+// 4. STD::VARIANT — type-safe union
+std::variant&lt;int, double, std::string&gt; v = 42;
+std::visit([](auto&amp;&amp; val) { std::cout &lt;&lt; val; }, v);  // type-safe dispatch
+
+// 5. STD::STRING_VIEW — non-owning string reference (zero-copy)
+void log(std::string_view msg) {   // accepts: std::string, const char*, char[]
+    std::cout &lt;&lt; msg;
+    // Never allocates — view into existing string memory
+}
+// vs: void log(const std::string&amp;)  ← forces copy from const char*
+
+// 6. FOLD EXPRESSIONS — variadic template made simple
+template&lt;typename... Args&gt;
+auto sum(Args... args) { return (0 + ... + args); }   // left fold
+sum(1, 2, 3, 4, 5);   // 15
+
+// 7. CTAD — Class Template Argument Deduction
+std::pair p(42, 3.14);              // deduced as pair&lt;int, double&gt;
+std::vector v2 = {1, 2, 3};        // deduced as vector&lt;int&gt;
+std::lock_guard lk(my_mutex);      // deduced as lock_guard&lt;std::mutex&gt;
+
+// 8. [[NODISCARD]] — warn if return value ignored
+[[nodiscard]] bool send_data(const Packet&amp; p) { ... }
+send_data(packet);   // WARNING: ignoring nodiscard return value
+                     // (common mistake: ignoring error return codes)</code></pre><div class="ex-why">✅ Why this works: string_view is the C++17 equivalent of a C++ string parameter that accepts both std::string and const char* efficiently. Use it for all read-only string parameters.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// BAD: not using structured bindings (C++03 style with pair)
+auto result = my_map.insert({"key", 42});
+auto it = result.first;
+bool inserted = result.second;
+// C++17: auto [it, inserted] = my_map.insert(...) — cleaner, self-documenting
+
+// BAD: std::string parameter instead of string_view for read-only use
+void log(const std::string&amp; msg) { ... }  // C++14 style
+log("hello world");   // const char* → constructs temporary std::string (allocation!)
+// C++17: void log(std::string_view msg) — zero allocation
+
+// BAD: using raw union where variant is appropriate
+union Value {
+    int   i;
+    float f;
+    // char* s;   // can't have non-trivial types in C union!
+};
+// No type safety: reading the wrong member is UB
+// std::variant tracks which type is active, throws on wrong access</code></pre><div class="ex-why bad-why">❌ Why this fails: string_view is one of the most impactful C++17 features for performance. Any function that currently takes (const std::string&) and doesn't store it should be changed to (std::string_view).</div></div><h3 class="sec">C++20 — Concepts and Coroutines</h3><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// 1. CONCEPTS — constrain template parameters at compile time
+// Before concepts: cryptic 10-line error messages on template mismatch
+// With concepts: clear, one-line error at constraint violation
+
+template&lt;typename T&gt;
+concept Numeric = std::is_integral_v&lt;T&gt; || std::is_floating_point_v&lt;T&gt;;
+
+template&lt;Numeric T&gt;        // constraint: T must satisfy Numeric
+T square(T x) { return x * x; }
+
+square(5);      // OK: int is Numeric
+square(3.14);   // OK: double is Numeric
+square("hi");   // ERROR: constraint not satisfied — clear compile error!
+
+// Standard library concepts (in &lt;concepts&gt;):
+template&lt;std::sortable Container&gt;       // must be sortable
+void sort_and_deduplicate(Container&amp; c) {
+    std::sort(c.begin(), c.end());
+    c.erase(std::unique(c.begin(), c.end()), c.end());
+}
+
+// 2. RANGES — composable lazy algorithms
+#include &lt;ranges&gt;
+auto result = v
+    | std::views::filter([](int x){ return x % 2 == 0; })  // lazy filter
+    | std::views::transform([](int x){ return x * x; })     // lazy transform
+    | std::views::take(5);                                   // take first 5
+// Nothing executes until you iterate — pipeline is composable and lazy
+
+// 3. COROUTINES — suspend and resume
+// co_yield, co_await, co_return — foundation for async frameworks
+Generator&lt;int&gt; fibonacci() {
+    int a = 0, b = 1;
+    while (true) {
+        co_yield a;   // suspend, return a to caller
+        auto tmp = a + b;
+        a = b; b = tmp;
+    }
+}
+for (int f : fibonacci() | std::views::take(10))
+    std::cout &lt;&lt; f &lt;&lt; ' ';  // 0 1 1 2 3 5 8 13 21 34
+
+// 4. THREE-WAY COMPARISON (spaceship operator)
+struct Point {
+    int x, y;
+    auto operator&lt;=&gt;(const Point&amp;) const = default;  // generates all 6 comparison operators!
+};
+Point a{1,2}, b{3,4};
+if (a &lt; b) ...   // works! generated by &lt;=&gt;
+
+// 5. STD::SPAN — non-owning view over contiguous memory
+void process(std::span&lt;const int&gt; data) {  // works with: array, vector, raw ptr+size
+    for (int x : data) ...
+}
+int raw[10];
+std::vector&lt;int&gt; vec(10);
+process(raw);                              // OK
+process(vec);                              // OK
+process({raw, 5});                         // OK: first 5 elements
+
+// 6. CONSTEVAL — must evaluate at compile time (stronger than constexpr)
+consteval int compile_time_only(int n) { return n * n; }
+constexpr int x = compile_time_only(5);  // OK
+int y = 5;
+int z = compile_time_only(y);   // ERROR: y not a constant expression</code></pre><div class="ex-why">✅ Why this works: Concepts are the biggest improvement to template error messages in C++ history. A bad type passed to a constrained template gives a one-line 'constraint not satisfied' error instead of 50 lines of internal template instantiation trace.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// BAD: using SFINAE instead of concepts (pre-C++20)
+// C++14/17 SFINAE — works but unreadable and error messages are terrible:
+template&lt;typename T,
+         typename = std::enable_if_t&lt;std::is_integral_v&lt;T&gt;&gt;&gt;
+T square_sfinae(T x) { return x * x; }
+
+// C++20 concept version — same effect, readable:
+template&lt;std::integral T&gt;
+T square_concept(T x) { return x * x; }
+// Or even simpler: T square(std::integral auto x) { return x * x; }
+
+// BAD: using raw loops instead of ranges (C++20)
+std::vector&lt;int&gt; result;
+for (int x : v) {
+    if (x % 2 == 0)
+        result.push_back(x * x);
+    if (result.size() &gt;= 5) break;
+}
+// C++20 ranges: cleaner, lazy (no intermediate vector), composable:
+auto result2 = v | std::views::filter([](int x){ return x%2==0; })
+                 | std::views::transform([](int x){ return x*x; })
+                 | std::views::take(5);</code></pre><div class="ex-why bad-why">❌ Why this fails: SFINAE (Substitution Failure Is Not An Error) is the C++14 way to constrain templates. It works but produces incomprehensible error messages. C++20 concepts replace it entirely — same power, readable syntax, clear errors.</div></div><h3 class="sec">Quick Decision Guide — Which Standard Feature to Use?</h3><div class="tbl"><table><thead><tr><th>Task</th><th>C++03 (Avoid)</th><th>C++11</th><th>C++14</th><th>C++17</th><th>C++20</th></tr></thead><tbody><tr><td>Null pointer</td><td>NULL / 0</td><td>nullptr</td><td>nullptr</td><td>nullptr</td><td>nullptr</td></tr><tr><td>Dynamic memory</td><td>new/delete</td><td>unique_ptr+shared_ptr</td><td>make_unique</td><td>make_unique</td><td>make_unique</td></tr><tr><td>Container init</td><td>vector<int> v; v.push_back(1)...</td><td>vector<int> v={1,2,3}</td><td>same</td><td>same</td><td>same</td></tr><tr><td>Type in loop</td><td>std::vector<int>::iterator it</td><td>auto it</td><td>auto it</td><td>auto it</td><td>auto it</td></tr><tr><td>String param (r-o)</td><td>const std::string&</td><td>const std::string&</td><td>const std::string&</td><td>string_view</td><td>string_view</td></tr><tr><td>Map iteration</td><td>for(;it!=m.end();++it) it->first</td><td>range-for + .first .second</td><td>same</td><td>auto& [k,v]</td><td>auto& [k,v]</td></tr><tr><td>Return nullable</td><td>T* (null=missing)</td><td>T* or std::pair<T,bool></td><td>same</td><td>std::optional<T></td><td>std::optional<T></td></tr><tr><td>Template constraint</td><td>Docs only / enable_if (ugly)</td><td>enable_if + is_integral</td><td>same</td><td>same</td><td>Concepts (clean)</td></tr><tr><td>Compile-time eval</td><td>enum hack</td><td>constexpr (limited)</td><td>constexpr (full body)</td><td>constexpr if</td><td>consteval</td></tr><tr><td>Async I/O</td><td>callbacks / manual FSM</td><td>futures/promises</td><td>same</td><td>same</td><td>coroutines (co_await)</td></tr></tbody></table></div><div class="qa"><div class="question">❓ When should you use C++17 std::optional vs a raw pointer for an optional return value?</div><div class="answer">Use <code>std::optional&lt;T&gt;</code> when: T is a value type (int, string, struct), the absence is a normal condition (not an error), and you don't need shared or polymorphic access. Use a raw pointer (T*) when: you're returning a non-owning view into existing data (e.g., a pointer into a container), or for legacy API compatibility. Use <code>std::unique_ptr&lt;T&gt;</code> when: you're returning ownership of a heap-allocated object (and nullptr signals absence). Key advantage of optional: it stores the value inline — no heap allocation. A <code>std::optional&lt;std::string&gt;</code> is 32 bytes on the stack (SSO string + 1 bool flag). A <code>std::unique_ptr&lt;std::string&gt;</code> is 8 bytes (pointer) but the string is heap-allocated, adding allocation + cache miss.</div><div class="followup"><b>Follow-up questions interviewers ask:</b><ul><li>What is the size overhead of std::optional?</li><li>Can optional hold a reference? What's the workaround?</li><li>What is std::expected (C++23) and when is it better than optional?</li></ul></div><div class="followup" style="background:#fef2f2;border-color:#fca5a5"><b>Common mistakes in answers:</b><ul><li>Returning optional<T&> (reference) — optional cannot hold references. Use T* or std::reference_wrapper<T>.</li><li>Using optional as a poor substitute for error handling — std::expected (C++23) carries both a value or an error, and communicates intent more clearly.</li></ul></div></div><div class="qa"><div class="question">❓ What are the main differences between C++11 and C++20 for writing a thread-safe queue?</div><div class="answer">C++11 approach: std::mutex + std::condition_variable + std::queue. Requires: explicit lock_guard/unique_lock, predicate lambda in wait() to handle spurious wakeups, join/detach for every thread. C++20 improvements: (1) std::jthread: automatically joins on destruction (no more forgotten join → terminate). (2) std::stop_token: cooperative cancellation — pass a stop token to workers, they check periodically. (3) std::atomic<T>::wait() (C++20): efficient blocking on atomic without condition variable overhead. (4) std::counting_semaphore: cleaner producer-consumer without mutex+condvar. (5) Coroutines: can build fully async queues where producers/consumers are coroutines that co_await each other. Practical advice: C++17 with mutex+condvar is still idiomatic and production-proven. Use C++20 jthread to eliminate the join boilerplate. Full coroutine-based async requires a framework (cppcoro, asio with co_await).</div><div class="followup"><b>Follow-up questions interviewers ask:</b><ul><li>What is std::latch and std::barrier in C++20?</li><li>How does jthread's stop_token enable cooperative cancellation?</li></ul></div></div>
+    <div class="pagination"><span></span><a href="part02.html">Part 02 →</a></div>
+  </div>
+</div>
+<button id="btt">↑</button>
+<script>
+document.querySelectorAll('pre').forEach(p=>{
+  const b=document.createElement('button');b.className='copy-btn';b.textContent='Copy';
+  p.appendChild(b);b.onclick=()=>{navigator.clipboard.writeText(p.innerText.replace('Copy','').trim())
+  .then(()=>{b.textContent='Copied!';setTimeout(()=>b.textContent='Copy',2000);});};});
+const btt=document.getElementById('btt');
+window.addEventListener('scroll',()=>btt&&btt.classList.toggle('show',scrollY>300));
+btt&&btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+const si=document.getElementById('search');
+if(si)si.addEventListener('input',function(){const q=this.value.toLowerCase();
+  document.querySelectorAll('.part-card').forEach(c=>c.style.display=
+    c.textContent.toLowerCase().includes(q)?'':'none');});
+</script></body></html>

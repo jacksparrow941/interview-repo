@@ -1,0 +1,179 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Part XIV: Resume Deep Dive — C++ Interview Handbook</title>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<div style="background:#0f172a;border-bottom:1px solid #334155;padding:8px 20px;
+  display:flex;align-items:center;gap:16px;font-size:13px;position:fixed;top:0;left:0;right:0;z-index:400;height:38px">
+  <a href="../index.html" style="color:#3b82f6;font-weight:600;text-decoration:none;
+     display:flex;align-items:center;gap:6px">
+    <span>⚡</span><span>InterviewRepo</span>
+  </a>
+  <span style="color:#334155">|</span>
+  <a href="index.html" style="color:#94a3b8;text-decoration:none">📘 C++ Master Handbook</a>
+  <span style="color:#334155;margin-left:auto;font-size:11px;color:#475569">
+    C++ · Multithreading · OS · Networks · AI Runtime · Embedded · 150 Problems
+  </span>
+</div>
+<nav id="sidebar"><div class="sb-head"><b>C++ Handbook</b><br><small>15 Parts · 150 Problems</small></div><a href="index.html" >🏠 Table of Contents</a>
+<a href="part01.html"><span class="badge" style="background:#1a2744">01</span>Part I: C++ Mastery</a>
+<a href="part02.html"><span class="badge" style="background:#065f46">02</span>Part II: Multithreading & Concurrency</a>
+<a href="part03.html"><span class="badge" style="background:#7c3aed">03</span>Part III: Operating Systems</a>
+<a href="part04.html"><span class="badge" style="background:#0e7490">04</span>Part IV: Computer Networks</a>
+<a href="part05.html"><span class="badge" style="background:#92400e">05</span>Part V: Linux & Performance Tools</a>
+<a href="part06.html"><span class="badge" style="background:#1e40af">06</span>Part VI: Distributed Systems</a>
+<a href="part07.html"><span class="badge" style="background:#b45309">07</span>Part VII: System Design</a>
+<a href="part08.html"><span class="badge" style="background:#be185d">08</span>Part VIII: Compiler Internals</a>
+<a href="part09.html"><span class="badge" style="background:#0f766e">09</span>Part IX: AI Runtime</a>
+<a href="part10.html"><span class="badge" style="background:#4338ca">10</span>Part X: Embedded Systems</a>
+<a href="part11.html"><span class="badge" style="background:#0369a1">11</span>Part XI: DevOps & Tools</a>
+<a href="part12.html"><span class="badge" style="background:#1e3a5f">12</span>Part XII: Coding Interviews — 150 Problems</a>
+<a href="part13.html"><span class="badge" style="background:#3f1f69">13</span>Part XIII: Behavioral & STAR</a>
+<a href="part14.html" class="active"><span class="badge" style="background:#064e3b">14</span>Part XIV: Resume Deep Dive</a>
+<a href="part15.html"><span class="badge" style="background:#7f1d1d">15</span>Part XV: Company-Specific</a>
+</nav>
+<div id="main">
+  <div id="topbar"><div class="tb-title" style="border-left:4px solid #064e3b;padding-left:12px">Part XIV: Resume Deep Dive</div></div>
+  <div id="content">
+    <h1 class="part-title">Part XIV: Resume Deep Dive</h1>
+    <p class="subtitle">Part XIV</p><hr class="divider">
+    <h2 class="chap">Resume Principles for Systems Engineers</h2><p>Your resume is a marketing document. Every line competes for attention against 200 other resumes. The goal: 6 seconds of recruiter attention → interview shortlist. The secret: specific numbers make you memorable.</p><h3 class="sec">The Power Formula for Bullet Points</h3><p><b>[Strong Action Verb] + [What You Built/Did] + [How (Technology/Method)] + [Impact (Metric)]</b></p><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// Strong bullet examples — these get callbacks
+• Engineered INT8 quantization pipeline for ResNet-50 using TensorRT PTQ,
+  achieving 3.8x throughput improvement (1,240 → 4,700 imgs/sec) on NVIDIA A10G
+
+• Eliminated 45ms p99 latency spike by identifying and replacing O(n²) distance
+  computation in the routing algorithm with spatial hashing (C++17, unordered_map)
+
+• Reduced inference memory footprint by 62% through liveness-analysis-based tensor
+  buffer reuse, enabling deployment on Jetson AGX Orin (16GB) vs prior 40GB GPU requirement
+
+• Led migration of 14 ONNX models to custom NPU backend; implemented graph
+  partitioning algorithm in C++ that increased NPU utilization from 31% to 84%
+
+• Designed and implemented lock-free SPSC queue in C++ (release/acquire memory order)
+  serving as zero-copy data path between camera ISR and inference pipeline at 30fps
+
+• Diagnosed production latency regression from 87ms to 340ms using perf flamegraphs;
+  root cause: false sharing in counter array; padded to cache-line boundaries; resolved in 4h</code></pre><div class="ex-why">✅ Why this works: Each bullet has: action verb (Engineered, Eliminated, Reduced), what (quantization pipeline, latency spike, memory footprint), how (TensorRT, spatial hashing, liveness analysis), and number (3.8x, 45ms, 62%).</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// Weak bullets — these get rejected
+• Worked on inference optimization                    ← no specifics, no impact
+• Helped improve model performance                   ← "helped" implies not owning
+• Implemented various features for the runtime        ← vague, "various" is a red flag
+• Responsible for memory management                   ← "responsible for" = not done
+• Contributed to a 3x faster pipeline                ← "contributed to" = unclear role
+• Fixed several bugs in the threading code            ← "several", no impact stated</code></pre><div class="ex-why bad-why">❌ Why this fails: Recruiters scan for: numbers, strong verbs, technology names. 'Worked on', 'helped', 'contributed to', 'various', 'several' are signals of low ownership and low impact. Delete them.</div></div><h3 class="sec">Quantifying Impact When You Don't Have Perfect Numbers</h3><p>If you don't have exact metrics, use estimates with proper hedging. Better to say '~3x improvement (estimated from benchmark runs)' than to omit numbers entirely.</p><div class="tbl"><table><thead><tr><th>Impact Type</th><th>How to Quantify</th></tr></thead><tbody><tr><td>Performance</td><td>Latency (p50/p99 before/after), throughput (QPS/imgs/sec), memory (MB/GB)</td></tr><tr><td>Scale</td><td>Users affected, requests/day, data size (TB), nodes in cluster</td></tr><tr><td>Reliability</td><td>Uptime % before/after, MTTR (mean time to resolve), incidents prevented</td></tr><tr><td>Efficiency</td><td>Cost reduction ($, %), engineering hours saved/week, FTE-equivalent automation</td></tr><tr><td>Code quality</td><td>Test coverage % change, bug reduction rate, cyclomatic complexity</td></tr><tr><td>Team impact</td><td>Engineers onboarded, design decisions influenced, cross-team adoption</td></tr></tbody></table></div><h2 class="chap">Skills Section — What to Include and Avoid</h2><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// Organized, honest, specific
+Languages:    C++17/20 (expert), Python 3 (proficient), CUDA C (proficient), Rust (learning)
+Frameworks:   ONNX Runtime, TensorRT 8.x, PyTorch, OpenCV, gRPC, Protocol Buffers
+Platforms:    NVIDIA CUDA (A100/H100/Jetson), ARM Cortex-M7, x86-64 SIMD (AVX2/AVX-512)
+Tools:        GDB, perf, Valgrind/ASan/TSan, CMake, Bazel, Docker, Kubernetes
+Concepts:     Lock-free programming, GPU memory hierarchy, compiler internals (LLVM),
+              operator fusion, quantization (INT8/FP16), RTOS (FreeRTOS), DMA</code></pre><div class="ex-why">✅ Why this works: Organize skills by category. Level qualifiers (expert/proficient/learning) are honest and save time in interviews — interviewers won't ask you CUDA expert questions if you say 'learning'.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// Red flags in skills sections
+Skills: C++, Python, Java, JavaScript, C, Rust, Go, Swift, Kotlin, PHP,  ← too many
+        MySQL, PostgreSQL, MongoDB, Redis, Cassandra, DynamoDB,             ← quantity not quality
+        AWS, GCP, Azure, Docker, Kubernetes, Jenkins, Ansible, Terraform,   ← listing everything
+        TensorFlow, PyTorch, Keras, scikit-learn, pandas, numpy, matplotlib ← not specific to role
+
+// Problems:
+// 1. Listing 30 technologies implies shallow knowledge of each
+// 2. Interviewers may ask deep questions on ANY item you list
+// 3. Shows lack of focus — what are you actually good at?
+
+// Rule: list only what you'd be comfortable being interviewed on at an expert level</code></pre><div class="ex-why bad-why">❌ Why this fails: Every skill you list is fair game for deep technical questions. List 'CUDA' only if you can explain warp divergence, memory coalescing, and occupancy optimization.</div></div><h2 class="chap">Answering 'Walk Me Through Your Resume'</h2><p>This is the most common opening question. You have 90 seconds to tell your career story in a compelling narrative. Prepare and rehearse this.</p><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// Strong narrative structure (90 seconds):
+"I started as a software engineer focused on C++ systems programming at [Company A],
+where I spent 2 years building high-performance data pipelines — that's where I first
+encountered the challenge of real-time latency requirements.
+
+That led me to my current role at [Company B], where I've been for 3 years building
+the inference runtime for our custom NPU. The most interesting work there was
+implementing the quantization pipeline — taking models from 87MB FP32 down to 22MB INT8
+while maintaining 99.4% of the original accuracy. I also led the memory planner redesign
+that reduced peak GPU memory by 60%.
+
+I'm now looking for a role where I can work at the intersection of compiler optimization
+and AI hardware — which is exactly what [Company] is doing with [specific product].
+I'm particularly excited about [specific technical detail you researched] because
+[genuine reason that shows you've thought about it]."
+
+// Why this works:
+// - Career trajectory is clear (C++ → systems → AI runtime)
+// - Each role has ONE specific concrete achievement with a number
+// - Natural setup for "tell me more about X"
+// - Ends with specific, researched interest in this role</code></pre><div class="ex-why">✅ Why this works: The narrative should flow chronologically and build logically. Each role is a sentence. End with a genuine, researched connection to the current role.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// Weak walk-through:
+"I graduated in 2019 with a CS degree and then joined Company A where I worked on
+various projects including backend development, some machine learning work, database
+optimization, and also helped with deployment. Then I moved to Company B where I'm
+currently working on the AI team doing inference stuff and optimization and also
+some compiler work. I'm looking for new opportunities because I want to grow."
+
+// Problems:
+// - "various projects" = no specific ownership or impact
+// - "some" and "stuff" show lack of confidence/pride
+// - "helped with" signals non-ownership
+// - No numbers anywhere
+// - Generic ending ("want to grow")</code></pre><div class="ex-why bad-why">❌ Why this fails: 'Various', 'some', 'helped with', 'stuff' — these words kill your narrative. Every sentence should have a specific technology or specific achievement. Rehearse until every sentence is crisp.</div></div><h2 class="chap">Project Deep Dive — What Questions to Prepare</h2><p>Interviewers will pick 1-2 projects from your resume and drill into every detail. Prepare answers for ALL of these for every significant project on your resume.</p><div class="tbl"><table><thead><tr><th>Category</th><th>Questions to Prepare</th></tr></thead><tbody><tr><td>Technical depth</td><td>What was the hardest technical challenge? How did you solve it?</td></tr><tr><td>Design decisions</td><td>Why did you choose X over Y? What alternatives did you consider?</td></tr><tr><td>Measurement</td><td>How did you measure success? What metrics did you track?</td></tr><tr><td>Failure</td><td>What didn't work? What would you do differently?</td></tr><tr><td>Scale</td><td>What happens at 10x the load? What breaks first?</td></tr><tr><td>Ownership</td><td>What specifically did YOU do vs teammates?</td></tr><tr><td>Impact</td><td>Who used this? How did it change their experience?</td></tr><tr><td>Follow-up</td><td>What would the next iteration look like?</td></tr></tbody></table></div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// Prepared answers for a memory planner project:
+Q: Why did you use liveness analysis rather than static allocation?
+A: "Static allocation requires knowing all tensor sizes at compile time.
+   Our NPU supports dynamic input shapes (variable batch size), so tensor sizes
+   aren't known until runtime. Liveness analysis works at execution time:
+   it tracks which tensors are live during each operator, then assigns buffers
+   greedily based on lifetime overlap. We got 60% peak memory reduction vs
+   naive allocation where every tensor has its own buffer."
+
+Q: What was the hardest bug you encountered?
+A: "The trickiest bug was with residual connections in ResNet. Tensors in
+   a residual branch need to outlive the last use we can see locally —
+   they're also consumed at the add() operation much later in the graph.
+   My initial liveness analysis didn't cross operator boundaries for
+   branch tracking. Fixed by walking the data-flow graph backward from
+   each use to all definitions, properly tracking merge points. Took 2 days
+   to diagnose, 4 hours to fix."
+
+Q: How would it handle 10x more models?
+A: "Currently memory is planned per-model load. At 10x models, we'd need
+   global memory planning across models — share buffers between models with
+   non-overlapping execution windows. This requires a model scheduler that
+   knows which models are active simultaneously. It's architecturally feasible
+   but we hadn't needed it yet at our scale."
+   
+// Notice: every answer has specifics, numbers where possible,
+// and shows genuine understanding of the tradeoffs.</code></pre><div class="ex-why">✅ Why this works: Prepare 3-5 detailed project stories with this level of depth. Having these ready means no stuttering when the interviewer drills. The 'hardest bug' and 'what you'd do differently' answers are almost always asked.</div></div><h2 class="chap">Salary Negotiation</h2><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// Framework: Never give a number first. Always ask for 48 hours.
+
+// When asked for salary expectations:
+"I'm flexible on compensation and would love to understand the full band for this role.
+What's the target range you have in mind?"
+// You've answered without giving a number.
+
+// After receiving an offer:
+"Thank you so much for the offer — I'm genuinely excited about this role.
+Could I have 48 hours to review the full compensation package?"
+// ALWAYS take time. Immediate acceptance leaves money on the table.
+
+// Counter-offer:
+"I've done my research on levels.fyi and Glassdoor for similar roles,
+and I was hoping we could get to $[X] in base, or alternatively increase
+the equity by [Y]%. My current package is $[Z], so this needs to make
+sense as a move. Is there flexibility?"
+// Specific number. Market data reference. Current package as anchor.
+
+// What to negotiate:
+// - Base salary (most negotiable in big tech)
+// - Signing bonus (often easier to increase than base)
+// - Equity grant size or cliff (can ask for smaller cliff)
+// - Start date (can buy you an extra paycheck at current job)
+// - Title (Senior vs Staff can be 20% comp difference)</code></pre><div class="ex-why">✅ Why this works: Negotiating doesn't hurt your offer — companies expect it. Not negotiating leaves 10-20% comp on the table. The worst they can say is no, and no well-run company rescinds an offer for negotiating professionally.</div></div><div class="tbl"><table><thead><tr><th>Company</th><th>SDE-2 Total Comp (USA)</th><th>SDE-2 Total Comp (India)</th></tr></thead><tbody><tr><td>NVIDIA</td><td>$250K - $400K</td><td>₹40-80 LPA</td></tr><tr><td>Google</td><td>$280K - $450K</td><td>₹45-90 LPA</td></tr><tr><td>Amazon</td><td>$200K - $320K</td><td>₹35-65 LPA</td></tr><tr><td>Apple</td><td>$220K - $380K</td><td>₹35-70 LPA</td></tr><tr><td>Intel</td><td>$180K - $280K</td><td>₹30-55 LPA</td></tr><tr><td>AMD</td><td>$180K - $300K</td><td>₹30-60 LPA</td></tr><tr><td>Qualcomm</td><td>$190K - $310K</td><td>₹28-58 LPA</td></tr><tr><td>Kinara.ai</td><td>$150K - $220K</td><td>₹20-40 LPA (+ equity options)</td></tr></tbody></table></div><div class="note">📌 <b>Note:</b> Figures from levels.fyi, Glassdoor, and Blind (2024-2025). Actual offers vary by specific role, location, experience, and negotiation. Always verify with current data before negotiating.</div>
+    <div class="pagination"><a href="part13.html">← Part 13</a><a href="part15.html">Part 15 →</a></div>
+  </div>
+</div>
+<button id="btt">↑</button>
+<script>
+document.querySelectorAll('pre').forEach(p=>{
+  const b=document.createElement('button');b.className='copy-btn';b.textContent='Copy';
+  p.appendChild(b);b.onclick=()=>{navigator.clipboard.writeText(p.innerText.replace('Copy','').trim())
+  .then(()=>{b.textContent='Copied!';setTimeout(()=>b.textContent='Copy',2000);});};});
+const btt=document.getElementById('btt');
+window.addEventListener('scroll',()=>btt&&btt.classList.toggle('show',scrollY>300));
+btt&&btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+const si=document.getElementById('search');
+if(si)si.addEventListener('input',function(){const q=this.value.toLowerCase();
+  document.querySelectorAll('.part-card').forEach(c=>c.style.display=
+    c.textContent.toLowerCase().includes(q)?'':'none');});
+</script></body></html>

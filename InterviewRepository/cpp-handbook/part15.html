@@ -1,0 +1,139 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Part XV: Company-Specific — C++ Interview Handbook</title>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<div style="background:#0f172a;border-bottom:1px solid #334155;padding:8px 20px;
+  display:flex;align-items:center;gap:16px;font-size:13px;position:fixed;top:0;left:0;right:0;z-index:400;height:38px">
+  <a href="../index.html" style="color:#3b82f6;font-weight:600;text-decoration:none;
+     display:flex;align-items:center;gap:6px">
+    <span>⚡</span><span>InterviewRepo</span>
+  </a>
+  <span style="color:#334155">|</span>
+  <a href="index.html" style="color:#94a3b8;text-decoration:none">📘 C++ Master Handbook</a>
+  <span style="color:#334155;margin-left:auto;font-size:11px;color:#475569">
+    C++ · Multithreading · OS · Networks · AI Runtime · Embedded · 150 Problems
+  </span>
+</div>
+<nav id="sidebar"><div class="sb-head"><b>C++ Handbook</b><br><small>15 Parts · 150 Problems</small></div><a href="index.html" >🏠 Table of Contents</a>
+<a href="part01.html"><span class="badge" style="background:#1a2744">01</span>Part I: C++ Mastery</a>
+<a href="part02.html"><span class="badge" style="background:#065f46">02</span>Part II: Multithreading & Concurrency</a>
+<a href="part03.html"><span class="badge" style="background:#7c3aed">03</span>Part III: Operating Systems</a>
+<a href="part04.html"><span class="badge" style="background:#0e7490">04</span>Part IV: Computer Networks</a>
+<a href="part05.html"><span class="badge" style="background:#92400e">05</span>Part V: Linux & Performance Tools</a>
+<a href="part06.html"><span class="badge" style="background:#1e40af">06</span>Part VI: Distributed Systems</a>
+<a href="part07.html"><span class="badge" style="background:#b45309">07</span>Part VII: System Design</a>
+<a href="part08.html"><span class="badge" style="background:#be185d">08</span>Part VIII: Compiler Internals</a>
+<a href="part09.html"><span class="badge" style="background:#0f766e">09</span>Part IX: AI Runtime</a>
+<a href="part10.html"><span class="badge" style="background:#4338ca">10</span>Part X: Embedded Systems</a>
+<a href="part11.html"><span class="badge" style="background:#0369a1">11</span>Part XI: DevOps & Tools</a>
+<a href="part12.html"><span class="badge" style="background:#1e3a5f">12</span>Part XII: Coding Interviews — 150 Problems</a>
+<a href="part13.html"><span class="badge" style="background:#3f1f69">13</span>Part XIII: Behavioral & STAR</a>
+<a href="part14.html"><span class="badge" style="background:#064e3b">14</span>Part XIV: Resume Deep Dive</a>
+<a href="part15.html" class="active"><span class="badge" style="background:#7f1d1d">15</span>Part XV: Company-Specific</a>
+</nav>
+<div id="main">
+  <div id="topbar"><div class="tb-title" style="border-left:4px solid #7f1d1d;padding-left:12px">Part XV: Company-Specific</div></div>
+  <div id="content">
+    <h1 class="part-title">Part XV: Company-Specific</h1>
+    <p class="subtitle">Part XV</p><hr class="divider">
+    <h2 class="chap">How to Use This Guide</h2><p>Research each company deeply before your interview. Know their products, their technical stack, their recent engineering blog posts. Interviewers are impressed by candidates who understand the specific challenges of their domain.</p><h2 class="chap">Kinara.ai</h2><div class="note">📌 <b>Note:</b> Focus: Ara-2 NPU, edge AI inference, operator fusion, memory management, ONNX porting, C++ runtime. Small team — engineers own large surface areas. Deep domain expertise is expected.</div><div class="tbl"><table><thead><tr><th>Round</th><th>Format</th><th>Focus</th></tr></thead><tbody><tr><td>Phone Screen (30min)</td><td>HR + basic C++</td><td>Background, C++ fundamentals, why Kinara</td></tr><tr><td>Round 1 (60min)</td><td>Technical — C++ + memory</td><td>Memory management, multithreading, RAII, smart ptrs</td></tr><tr><td>Round 2 (60min)</td><td>AI Runtime</td><td>ONNX, graph optimization, operator fusion, quantization</td></tr><tr><td>Round 3 (60min)</td><td>System Design</td><td>Design inference runtime for Ara-2 NPU</td></tr><tr><td>Round 4 (60min)</td><td>Coding + project deep dive</td><td>Algorithm + walk through your most relevant project</td></tr><tr><td>HM Round (45min)</td><td>Culture + ownership</td><td>Ambiguity, initiative, startup mentality</td></tr></tbody></table></div><div class="qa"><div class="question">❓ How would you design a memory manager for an NPU with 4MB SRAM and unknown model sizes at compile time?</div><div class="answer"><b>The question tests:</b> memory management theory + hardware awareness + practical inference knowledge. <br><b>Answer:</b> Two-tier approach: (1) Static allocation for models with fixed shapes (most common): run liveness analysis on the ONNX graph offline. Tensors with non-overlapping live ranges share memory. Assign offsets using greedy interval scheduling — O(n log n). Produces a flat memory map with zero runtime overhead. (2) Dynamic allocation for variable-shape tensors: pool allocator with size classes (64B, 256B, 1KB, 4KB, 16KB). Each size class is a singly-linked free list. O(1) alloc/free. No system malloc — deterministic latency. Critical constraints: 32-byte alignment for DMA. Power-of-2 size classes for fast lookup (bit shift). Never exceed 4MB at peak — fail loudly during model loading if peak memory exceeds budget (calculated from liveness analysis).</div><div class="followup"><b>Follow-up questions interviewers ask:</b><ul><li>How do you handle skip connections where tensors outlive their local region?</li><li>What happens when two models are co-loaded?</li><li>How do you validate that your memory planner is correct?</li></ul></div></div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// Kinara-style: verify inference correctness against reference
+// "Golden output" regression test for each model
+bool verify_output_correctness(
+    const Model&amp; model,
+    const Tensor&amp; input,
+    const Tensor&amp; expected_output,  // computed by ONNX Runtime (reference)
+    float atol = 1e-3f,
+    float rtol = 1e-3f)
+{
+    auto actual = model.infer(input);  // your NPU runtime
+    if (actual.shape() != expected_output.shape()) return false;
+
+    // Element-wise comparison: |actual - expected| &lt;= atol + rtol * |expected|
+    for (size_t i = 0; i &lt; actual.size(); ++i) {
+        float diff = std::abs(actual[i] - expected_output[i]);
+        float thresh = atol + rtol * std::abs(expected_output[i]);
+        if (diff &gt; thresh) {
+            printf("MISMATCH at %zu: actual=%.6f expected=%.6f diff=%.6f thresh=%.6f\n",
+                   i, actual[i], expected_output[i], diff, thresh);
+            return false;
+        }
+    }
+    // Cosine similarity check (catches systematic scale errors)
+    float dot=0, na=0, nb=0;
+    for (size_t i=0;i&lt;actual.size();++i){dot+=actual[i]*expected_output[i];na+=actual[i]*actual[i];nb+=expected_output[i]*expected_output[i];}
+    float cosine = dot / (std::sqrt(na) * std::sqrt(nb));
+    return cosine &gt; 0.999f;
+}</code></pre><div class="ex-why">✅ Why this works: Always validate correctness by comparing against a reference runtime (ONNX Runtime, PyTorch). Quantization, layout changes, and kernel bugs can all introduce subtle numerical errors.</div></div><h2 class="chap">NVIDIA</h2><div class="note">📌 <b>Note:</b> Focus: CUDA programming, GPU architecture, TensorRT, cuDNN, large-scale distributed training. Very competitive — 5-7 rounds. Leetcode Hard expected. Know GPU architecture deeply.</div><div class="tbl"><table><thead><tr><th>Topic</th><th>Depth Required</th></tr></thead><tbody><tr><td>CUDA memory hierarchy</td><td>Expert: registers, shared mem, L1/L2, GMEM, bandwidth, latency</td></tr><tr><td>Warp execution model</td><td>Expert: warp divergence, occupancy, scheduling, SIMT</td></tr><tr><td>Kernel optimization</td><td>Expert: memory coalescing, bank conflicts, occupancy tuning</td></tr><tr><td>TensorRT internals</td><td>Proficient: engine build, precision, kernel selection, profiles</td></tr><tr><td>NCCL/collective ops</td><td>Proficient: all-reduce, ring-allreduce for distributed training</td></tr><tr><td>C++ performance</td><td>Expert: cache, SIMD, lock-free, memory model</td></tr></tbody></table></div><div class="qa"><div class="question">❓ How do you maximize occupancy for a CUDA kernel?</div><div class="answer">Occupancy = active warps / max warps per SM. Limited by three resources: (1) Registers per thread: more registers = fewer warps can co-reside. Check: nvcc --ptxas-options=-v to see register usage. Reduce with -maxrregcount=N (may cause register spilling — tradeoff). (2) Shared memory per block: more shared mem = fewer blocks per SM. Solution: reduce shared memory usage, or use dynamic allocation to share across blocks. (3) Block size: too small = not enough warps per SM. Too large = limited by registers/smem. Sweet spot: 128-256 threads per block, multiple of 32 (warp size). Analyze with: Nsight Compute → 'Warp State Statistics' → check achieved vs theoretical occupancy. Important: occupancy > 50% rarely matters. What matters is hiding memory latency — if your kernel has enough in-flight memory requests, 50% occupancy may be sufficient. Use Nsight's roofline model.</div><div class="followup"><b>Follow-up questions interviewers ask:</b><ul><li>What is warp divergence? Give a real example of when it's unavoidable.</li><li>Explain memory coalescing with a specific example of coalesced vs uncoalesced access.</li><li>What is a CUDA stream? How do streams enable computation/transfer overlap?</li></ul></div></div><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// NVIDIA-style: profile-driven kernel optimization
+// Step 1: measure baseline
+ncu --set full ./kernel_test   // Nsight Compute full profile
+// Look at: % of peak FLOPS, % of peak memory bandwidth
+
+// Step 2: check memory access pattern
+// Coalesced: consecutive threads access consecutive memory addresses
+// thread 0 → addr 0, thread 1 → addr 1, ..., thread 31 → addr 31
+// → one 128-byte memory transaction for the warp
+__global__ void good_kernel(float* A, int N) {
+    int i = blockIdx.x * blockDim.x + threadIdx.x;
+    if (i &lt; N) A[i] *= 2.0f;   // coalesced: stride-1 access
+}
+
+// Uncoalesced: stride &gt; 1 → multiple transactions per warp
+__global__ void bad_kernel(float* A, int N, int stride) {
+    int i = (blockIdx.x * blockDim.x + threadIdx.x) * stride;
+    if (i &lt; N) A[i] *= 2.0f;   // stride-N: N transactions per warp!
+}
+
+// Step 3: use shared memory for reuse
+// Matrix multiply tile: load 16x16 tile into shared, compute, repeat
+__shared__ float tile_A[16][16];
+__shared__ float tile_B[16][16];
+// Loads: 16×16 = 256 floats per tile (coalesced)
+// Compute: 16×16×16 = 4096 MACs from 256 loads
+// Arithmetic intensity: 4096/256 = 16 FLOPs/float loaded → compute-bound</code></pre><div class="ex-why">✅ Why this works: Always analyze arithmetic intensity first. If your kernel is memory-bound (intensity < ridge point on roofline), shared memory and access pattern optimization matter. If compute-bound, optimize instruction throughput.</div></div><h2 class="chap">AMD</h2><div class="note">📌 <b>Note:</b> Focus: ROCm, HIP (CUDA-compatible), RDNA/CDNA GPU architecture, OpenCL, compiler (LLVM-based AMD backend). Know how HIP differs from CUDA.</div><div class="qa"><div class="question">❓ What is HIP and what are the key differences from CUDA?</div><div class="answer">HIP (Heterogeneous-compute Interface for Portability): AMD's CUDA-compatible API. Nearly identical API — hipMalloc vs cudaMalloc, hip<<<>>> vs cuda<<<>>>. HIP code can compile for both NVIDIA GPUs (via nvcc backend) and AMD GPUs (via amdclang++). Key differences: (1) AMD uses wavefronts of 64 threads (CDNA) or 32 threads (RDNA) — same concept as CUDA warp. (2) LDS (Local Data Share) = CUDA shared memory. (3) Different register file size per CU. (4) AMD CDNA has MFMA instructions (Matrix Fused Multiply-Add) — equivalent to CUDA Tensor Cores. (5) ROCm replaces CUDA ecosystem: rocBLAS (cuBLAS), MIOpen (cuDNN), hipBLAS. hipify-perl tool converts most CUDA code automatically (~90%). Manual work: warp-level intrinsics (different names), SM-specific optimizations, PTX inline assembly.</div><div class="followup"><b>Follow-up questions interviewers ask:</b><ul><li>How do you port a CUDA kernel that uses warp shuffle operations to HIP?</li><li>What is AMD's Infinity Fabric and how does it affect multi-GPU performance?</li></ul></div></div><h2 class="chap">Intel</h2><div class="note">📌 <b>Note:</b> Focus: oneAPI (DPC++/SYCL), OpenVINO, Gaudi accelerator, CPU microarchitecture, AVX-512 SIMD, memory hierarchy. Strong emphasis on performance engineering depth.</div><div class="qa"><div class="question">❓ Explain Intel's CPU execution pipeline and how to optimize for it.</div><div class="answer">Modern Intel CPUs (Ice Lake, Tiger Lake, Alder Lake) are out-of-order superscalar. Key concepts: (1) Front-end: fetch → decode → micro-op cache (DSB). Decoded streams go to Reservation Station. (2) Out-of-order execution: 12-wide issue, ~400-500 entry ROB (Reorder Buffer). Instructions execute as dependencies are resolved. (3) Execution units: 4 integer ALUs, 2 FP/SIMD units (256-bit), branch unit, load/store units. (4) Memory hierarchy: L1=48KB 4-cycle, L2=512KB 12-cycle, L3=per-core slice, DDR4=~100 cycles. Optimization: (a) Avoid store-to-load forwarding stalls: don't write and immediately read the same address. (b) Branch prediction: sorted loops, predictable branch patterns. (c) Vectorize inner loops: -O3 -march=native + __restrict__ on pointers. (d) Prefetch: __builtin_prefetch for irregular access. (e) Avoid false dependency: XOR-zero registers before use (mov eax, eax creates false dep on old eax).</div><div class="followup"><b>Follow-up questions interviewers ask:</b><ul><li>What is micro-op fusion? What is macro-op fusion?</li><li>When does AVX-512 actually help vs hurt performance (frequency scaling)?</li></ul></div></div><h2 class="chap">Qualcomm</h2><div class="note">📌 <b>Note:</b> Focus: Hexagon DSP, SNPE/QNN SDK, Snapdragon SoC architecture, mobile power optimization, on-device AI. Strong embedded + mobile AI knowledge required.</div><div class="qa"><div class="question">❓ How does SNPE/QNN decide which backend (CPU/GPU/DSP/HTP) to use for each operator?</div><div class="answer">QNN (Qualcomm AI Engine Direct): operator assignment algorithm: (1) Operator support check: each backend registers supported ops and dtypes. If op not supported → must use CPU. (2) Performance profiling: QNN can profile each op on each backend offline, build a lookup table of latency per backend per op shape. (3) Data layout conversion cost: switching between backends requires tensor format conversion (NCHW↔NHWC, FP32↔INT8). This cost is added to the assignment decision. (4) Graph partitioning: minimize cross-backend boundaries (each crossing = copy + conversion). (5) Power budget: HTP (Hexagon Tensor Processor) is most efficient for INT8 ops. GPU is faster for FP16 but more power. CPU for unsupported ops. In practice: quantized convolutions → HTP. FP16 activations → GPU. Non-quantizable ops (log, softmax with FP32) → CPU. The goal is to maximize time on HTP while minimizing CPU fallback.</div><div class="followup"><b>Follow-up questions interviewers ask:</b><ul><li>How do you debug a QNN model where accuracy drops after quantization?</li><li>What is the difference between HTA and HTP on Snapdragon?</li></ul></div></div><h2 class="chap">Google</h2><div class="note">📌 <b>Note:</b> Focus: Strong algorithms (LC Hard expected), system design at scale, C++ at scale (Abseil, Protobuf), ML systems (XLA, JAX, TPU). 5-7 rounds. Coding standard is very high.</div><div class="qa"><div class="question">❓ Explain XLA's compilation pipeline.</div><div class="answer">XLA (Accelerated Linear Algebra): domain-specific compiler for ML workloads, used by TensorFlow and JAX. Pipeline: (1) HLO (High-Level Operations) IR: TF/JAX computation graphs are lowered to HLO — abstract ops like dot(), convolution(), reduce(). (2) HLO analysis and optimization: constant folding, algebraic simplification, reshape elimination, CSE. (3) Layout assignment: choose NCHW or NHWC for each tensor based on hardware preference. (4) Fusion: combine elementwise ops into a single kernel — critical for bandwidth-bound layers. (5) Buffer assignment: SSA-based liveness analysis, minimize peak memory. (6) Backend codegen: LLVM for CPU/GPU, custom ISA for TPU. (7) For TPU: JIT compiles entire training step into one 'program' — no Python overhead during execution, very tight loop. Key differentiator: XLA aggressively fuses across op boundaries — ReLU+bias+matmul all in one kernel. This is why JAX+XLA can match or beat hand-tuned cuDNN for some workloads.</div><div class="followup"><b>Follow-up questions interviewers ask:</b><ul><li>How does XLA handle dynamic shapes? What are the tradeoffs of JIT re-tracing?</li><li>What is the difference between XLA and TVM?</li><li>How does TPU v4 differ architecturally from NVIDIA A100?</li></ul></div></div><h2 class="chap">Amazon / AWS</h2><div class="note">📌 <b>Note:</b> Focus: Leadership Principles (equal weight as technical). AWS Inferentia/Trainium chip software, SageMaker, C++ at scale. Always answer 'what was the impact?' with specific metrics.</div><div class="tbl"><table><thead><tr><th>Leadership Principle</th><th>What Interviewers Listen For</th></tr></thead><tbody><tr><td>Customer Obsession</td><td>Do you start from the user experience and work backwards?</td></tr><tr><td>Ownership</td><td>Did you act beyond your stated responsibility?</td></tr><tr><td>Invent & Simplify</td><td>Did you genuinely simplify, or just add complexity?</td></tr><tr><td>Dive Deep</td><td>Do you use data? Do you know the details of your own work?</td></tr><tr><td>Deliver Results</td><td>Did you actually ship? What was the measurable outcome?</td></tr><tr><td>Bias for Action</td><td>Did you move fast with calculated risk, or wait for perfect information?</td></tr></tbody></table></div><div class="qa"><div class="question">❓ Tell me about a time you made a system faster using minimal resources.</div><div class="answer"><b>This tests:</b> Dive Deep + Invent & Simplify + Deliver Results. <b>Answer structure:</b> Lead with the metric (what got faster, by how much, with what constraint). Then explain the technical insight (not just 'I profiled and fixed it'). Show the specific insight that made the difference. End with business impact (cost savings, capacity freed). <b>Example:</b> 'Our embedding lookup was taking 45% of total inference time. I profiled with perf — LLC miss rate was 78%, because the embedding table (8GB) didn't fit in any cache level. The key insight: during inference, we only needed ~2% of embeddings per batch. I implemented a hash-based hot embedding cache (512MB, LRU) that covered 73% of lookups. The 45% overhead dropped to 12%. No hardware change. This freed enough compute to handle 2.4x more QPS on the same fleet — equivalent to deferring a $2.1M hardware purchase by 18 months.'</div><div class="followup"><b>Follow-up questions interviewers ask:</b><ul><li>What was the data that told you this was the right problem to fix?</li><li>How did you validate the impact in production?</li></ul></div></div><h2 class="chap">Questions to Ask Interviewers</h2><p>Always ask 2-3 thoughtful questions. This demonstrates genuine interest and gives you information to evaluate the offer.</p><div class="good-ex"><div class="ex-badge good-badge">✅ DO THIS</div><pre><code>// Strong questions (shows technical depth and genuine curiosity)
+1. "What's the biggest technical challenge your team is facing right now
+   that you wish you had more bandwidth to tackle?"
+
+2. "How do you balance between writing custom kernels for your hardware
+   vs leveraging existing frameworks like TensorRT or ONNX Runtime?"
+
+3. "What does the code review and architecture decision process look like?
+   How does a new engineer's proposal for a major design change get evaluated?"
+
+4. "What's a technical decision you made 6 months ago that you'd make
+   differently today, and why?"
+
+5. "How does the team stay current with new research (Flash Attention,
+   Mamba, etc.)? Is there a process for evaluating whether to integrate?"
+
+6. "What does success look like for this role in the first 6 months?"
+
+7. "What parts of the codebase do you wish had been designed differently,
+   and what's prevented refactoring it?"
+
+// Each of these shows:
+// - You've thought about real engineering problems
+// - You care about code quality, process, and growth
+// - You're evaluating THEM as much as they're evaluating you</code></pre><div class="ex-why">✅ Why this works: The question 'What would success look like in 6 months?' gives you the exact rubric you'll be evaluated on if you join. Use it to negotiate expectations early.</div></div><div class="bad-ex"><div class="ex-badge bad-badge">❌ AVOID THIS</div><pre><code>// Weak questions — show you didn't prepare
+"What does [Company] do?"              ← shows no preparation
+"What's the work-life balance like?"   ← HR conversation, not interviewer
+"When will I hear back?"               ← practical, but not your best question
+"Do you offer remote work?"            ← should have researched this already
+"What's the salary range?"             ← ask HR, not the engineering interviewer</code></pre><div class="ex-why bad-why">❌ Why this fails: Save logistics questions (salary, remote, timeline) for the HR/recruiter. Your questions to engineers should be about technical work, team dynamics, and engineering culture.</div></div>
+    <div class="pagination"><a href="part14.html">← Part 14</a><span></span></div>
+  </div>
+</div>
+<button id="btt">↑</button>
+<script>
+document.querySelectorAll('pre').forEach(p=>{
+  const b=document.createElement('button');b.className='copy-btn';b.textContent='Copy';
+  p.appendChild(b);b.onclick=()=>{navigator.clipboard.writeText(p.innerText.replace('Copy','').trim())
+  .then(()=>{b.textContent='Copied!';setTimeout(()=>b.textContent='Copy',2000);});};});
+const btt=document.getElementById('btt');
+window.addEventListener('scroll',()=>btt&&btt.classList.toggle('show',scrollY>300));
+btt&&btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+const si=document.getElementById('search');
+if(si)si.addEventListener('input',function(){const q=this.value.toLowerCase();
+  document.querySelectorAll('.part-card').forEach(c=>c.style.display=
+    c.textContent.toLowerCase().includes(q)?'':'none');});
+</script></body></html>
